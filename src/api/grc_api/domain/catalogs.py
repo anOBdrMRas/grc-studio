@@ -24,6 +24,17 @@ MANDATE_TYPES: Final = [
     "Bank / payment authority",
     "Internal approval authority",
 ]
+# kinds of delegations and powers of attorney (the required transfer of a role uses the same ids)
+MANDATE_KINDS: Final = [*MANDATE_TYPES[1:], "Deputy"]
+REPRESENTATION: Final = ["Sole representation", "Joint representation"]
+SUPERVISION_FREQUENCIES: Final = [
+    "Monthly",
+    "Quarterly",
+    "Semi-annually",
+    "Annually",
+    "Event-driven",
+]
+MANDATE_STATES: Final = ["draft", "future", "pending", "active", "expired", "revoked"]
 SIGNING_AUTHORITIES: Final = [
     "None",
     "Commercial power of attorney",
@@ -187,6 +198,10 @@ def all_catalogs() -> dict[str, list[str]]:
         "role_types": list(ROLE_TYPES),
         "org_units": list(ORG_UNITS),
         "mandate_types": list(MANDATE_TYPES),
+        "mandate_kinds": list(MANDATE_KINDS),
+        "representation": list(REPRESENTATION),
+        "supervision_frequencies": list(SUPERVISION_FREQUENCIES),
+        "mandate_states": list(MANDATE_STATES),
         "signing_authorities": list(SIGNING_AUTHORITIES),
         "process_categories": list(PROCESS_CATEGORIES),
         "standards": list(STANDARDS),

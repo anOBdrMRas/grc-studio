@@ -5,38 +5,43 @@ from typing import Any
 from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from grc_api.models import Control, Kpi, Opportunity, Position, Process, Risk, Role, User
+from grc_api.models import (
+    Control,
+    Kpi,
+    Mandate,
+    Opportunity,
+    Position,
+    Process,
+    Risk,
+    Role,
+    User,
+)
+
+# every table of versioned elements
+Element = User | Role | Position | Process | Risk | Opportunity | Control | Kpi | Mandate
 
 
-async def list_all[M: User | Role | Position | Process | Risk | Opportunity | Control | Kpi](
-    db: AsyncSession, model: type[M]
-) -> list[M]:
+async def list_all[M: Element](db: AsyncSession, model: type[M]) -> list[M]:
     return list((await db.execute(select(model).order_by(model.code))).scalars())
 
 
-async def get[M: User | Role | Position | Process | Risk | Opportunity | Control | Kpi](
-    db: AsyncSession, model: type[M], id_: str
-) -> M | None:
+async def get[M: Element](db: AsyncSession, model: type[M], id_: str) -> M | None:
     return await db.get(model, id_)
 
 
-async def codes[M: User | Role | Position | Process | Risk | Opportunity | Control | Kpi](
-    db: AsyncSession, model: type[M]
-) -> list[str]:
+async def codes[M: Element](db: AsyncSession, model: type[M]) -> list[str]:
     return list((await db.execute(select(model.code))).scalars())
 
 
-async def insert[M: User | Role | Position | Process | Risk | Opportunity | Control | Kpi](
-    db: AsyncSession, obj: M
-) -> M:
+async def insert[M: Element](db: AsyncSession, obj: M) -> M:
     db.add(obj)
     await db.flush()
     return obj
 
 
-async def update_versioned[
-    M: User | Role | Position | Process | Risk | Opportunity | Control | Kpi
-](db: AsyncSession, model: type[M], id_: str, version: int, values: dict[str, Any]) -> bool:
+async def update_versioned[M: Element](
+    db: AsyncSession, model: type[M], id_: str, version: int, values: dict[str, Any]
+) -> bool:
     """UPDATE … WHERE id = :id AND version = :v; False when the version is stale."""
     stmt = (
         update(model)
@@ -48,7 +53,5 @@ async def update_versioned[
     return bool(result.rowcount)  # type: ignore[attr-defined]
 
 
-async def remove[M: User | Role | Position | Process | Risk | Opportunity | Control | Kpi](
-    db: AsyncSession, model: type[M], id_: str
-) -> None:
+async def remove[M: Element](db: AsyncSession, model: type[M], id_: str) -> None:
     await db.execute(delete(model).where(model.id == id_))

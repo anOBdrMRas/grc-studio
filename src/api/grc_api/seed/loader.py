@@ -13,6 +13,7 @@ from grc_api.models import (
     Control,
     Kpi,
     KpiMeasurement,
+    Mandate,
     Opportunity,
     Position,
     PositionRole,
@@ -34,6 +35,13 @@ DATES = (
     "last_assessment",
     "last_test",
     "next_test",
+    "valid_from",
+    "valid_until",
+    "revoked_at",
+    "accepted_at",
+    "registered_at",
+    "last_supervision",
+    "next_supervision",
 )
 
 
@@ -72,6 +80,8 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
         db.add(Control(**_row(c, ())))
     for k in data.get("kpis", []):
         db.add(Kpi(**_row(k, ("measurements",))))
+    for m in data.get("mandates", []):
+        db.add(Mandate(**_row(m, ("workflow",))))
     await db.flush()
     for p in data["positions"]:
         for i, pr in enumerate(p["roles"]):
@@ -96,6 +106,7 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
         ("process", data["processes"]),
         ("risk", data.get("risks", [])),
         ("opportunity", data.get("opportunities", [])),
+        ("mandate", data.get("mandates", [])),
     ):
         for e in items:
             for w in e.get("workflow", []):

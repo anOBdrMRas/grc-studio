@@ -73,6 +73,28 @@ class GrcClient:
         """GET /api/v1/auth/me (permission: people:read)."""
         return cast("Me", await self._call("GET", "/api/v1/auth/me"))
 
+    async def checks_list(
+        self,
+        user_id: str | None | None = None,
+        role_id: str | None | None = None,
+        position_id: str | None | None = None,
+        mandate_id: str | None | None = None,
+    ) -> list[CheckOut]:
+        """GET /api/v1/checks (permission: org:read)."""
+        return cast(
+            "list[CheckOut]",
+            await self._call(
+                "GET",
+                "/api/v1/checks",
+                params={
+                    "user_id": user_id,
+                    "role_id": role_id,
+                    "position_id": position_id,
+                    "mandate_id": mandate_id,
+                },
+            ),
+        )
+
     async def controls_list(self) -> list[ControlListItem]:
         """GET /api/v1/controls (permission: grc:read)."""
         return cast("list[ControlListItem]", await self._call("GET", "/api/v1/controls"))
@@ -158,6 +180,57 @@ class GrcClient:
         """DELETE /api/v1/kpis/{kpi_id}/measurements/{day} (permission: grc:read)."""
         return cast(
             "KpiOut", await self._call("DELETE", f"/api/v1/kpis/{kpi_id}/measurements/{day}")
+        )
+
+    async def mandates_list(self) -> list[MandateListItem]:
+        """GET /api/v1/mandates (permission: org:read)."""
+        return cast("list[MandateListItem]", await self._call("GET", "/api/v1/mandates"))
+
+    async def mandates_create(self, body: CreateElement) -> MandateOut:
+        """POST /api/v1/mandates (permission: org:manage)."""
+        return cast("MandateOut", await self._call("POST", "/api/v1/mandates", json=body))
+
+    async def mandates_delete(self, mandate_id: str) -> None:
+        """DELETE /api/v1/mandates/{mandate_id} (permission: org:manage)."""
+        await self._call("DELETE", f"/api/v1/mandates/{mandate_id}")
+
+    async def mandates_get(self, mandate_id: str) -> MandateOut:
+        """GET /api/v1/mandates/{mandate_id} (permission: org:read)."""
+        return cast("MandateOut", await self._call("GET", f"/api/v1/mandates/{mandate_id}"))
+
+    async def mandates_update(
+        self, mandate_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> MandateOut:
+        """PATCH /api/v1/mandates/{mandate_id} (permission: org:read)."""
+        return cast(
+            "MandateOut",
+            await self._call(
+                "PATCH", f"/api/v1/mandates/{mandate_id}", json=body, if_match=if_match
+            ),
+        )
+
+    async def mandates_history(self, mandate_id: str) -> list[Revision]:
+        """GET /api/v1/mandates/{mandate_id}/history (permission: org:read)."""
+        return cast(
+            "list[Revision]", await self._call("GET", f"/api/v1/mandates/{mandate_id}/history")
+        )
+
+    async def mandates_state(self, mandate_id: str, revision_id: str) -> StateView:
+        """GET /api/v1/mandates/{mandate_id}/history/{revision_id} (permission: org:read)."""
+        return cast(
+            "StateView",
+            await self._call("GET", f"/api/v1/mandates/{mandate_id}/history/{revision_id}"),
+        )
+
+    async def mandates_workflow(
+        self, mandate_id: str, body: MandateAction, if_match: str | None = None
+    ) -> MandateOut:
+        """POST /api/v1/mandates/{mandate_id}/workflow (permission: org:read)."""
+        return cast(
+            "MandateOut",
+            await self._call(
+                "POST", f"/api/v1/mandates/{mandate_id}/workflow", json=body, if_match=if_match
+            ),
         )
 
     async def meta_catalogs(self) -> Catalogs:

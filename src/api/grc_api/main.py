@@ -11,7 +11,7 @@ from grc_api.config import get_settings
 from grc_api.db import get_sessionmaker
 from grc_api.errors import install
 from grc_api.migrate import upgrade_async
-from grc_api.routers import auth, grc, health, meta, org, processes, users
+from grc_api.routers import auth, grc, health, mandates, meta, org, processes, users
 
 log = logging.getLogger("grc_api")
 
@@ -71,6 +71,7 @@ def create_app(*, run_lifespan: bool = True) -> FastAPI:
         org.router,
         processes.router,
         grc.router,
+        mandates.router,
     ):
         app.include_router(r)
     return app

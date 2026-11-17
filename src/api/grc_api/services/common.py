@@ -10,14 +10,24 @@ from grc_api.auth.principal import Principal
 from grc_api.domain import workflow as wf
 from grc_api.domain.history import diff, state_at
 from grc_api.errors import ProblemError
-from grc_api.models import Control, Kpi, Opportunity, Position, Process, Risk, Role, User
+from grc_api.models import (
+    Control,
+    Kpi,
+    Mandate,
+    Opportunity,
+    Position,
+    Process,
+    Risk,
+    Role,
+    User,
+)
 from grc_api.repositories import audit, elements
 from grc_api.schemas.common import Change, Revision, Rights, StateView, WorkflowEntryOut
 from grc_api.services.context import OrgData
 
 # elements with the approval workflow (status, doc_version, released)
 Approvable = Role | Position | Process | Risk | Opportunity
-Element = Approvable | Control | Kpi
+Element = Approvable | Control | Kpi | Mandate
 KIND_MODEL: dict[str, type[Element]] = {
     "role": Role,
     "position": Position,
@@ -26,6 +36,7 @@ KIND_MODEL: dict[str, type[Element]] = {
     "opportunity": Opportunity,
     "control": Control,
     "kpi": Kpi,
+    "mandate": Mandate,
 }
 MANAGE = {
     "role": "org:manage",
@@ -36,6 +47,7 @@ MANAGE = {
     "opportunity": "grc:manage",
     "control": "grc:manage",
     "kpi": "grc:manage",
+    "mandate": "org:manage",
 }
 # kinds that everybody records; the recorder edits them while they are drafts
 RECORDED = frozenset({"risk", "opportunity"})
@@ -48,6 +60,7 @@ OWNER_FIELDS = {
     "opportunity": ["owner_role_id"],
     "control": ["owner_role_id"],
     "kpi": ["owner_role_id"],
+    "mandate": ["granted_by_user_id", "granted_by_body"],
 }
 
 
@@ -60,6 +73,11 @@ def is_recorder(kind: str, obj: Element, p: Principal) -> bool:
     )
 
 
+def _editable(obj: Element) -> bool:
+    """A revoked delegation stays as it is (documentation)."""
+    return not (isinstance(obj, Mandate) and obj.status == "revoked")
+
+
 def rights(
     kind: str, obj: Element, org: OrgData, p: Principal, *, ever_submitted: bool = True
 ) -> Rights:
@@ -67,10 +85,11 @@ def rights(
     manage = p.can(MANAGE[kind])
     owner = p.user_id in org.owners(kind, obj)
     recorder = is_recorder(kind, obj, p)
-    # controls and KPI have no approval workflow (no status)
-    status: str | None = getattr(obj, "status", None)
+    # controls and KPI have no approval workflow; delegations have their own (domain.mandates)
+    status: str | None = None if isinstance(obj, Mandate) else getattr(obj, "status", None)
     return Rights(
-        can_edit=manage or ((owner or recorder) and status not in ("review", "archived")),
+        can_edit=manage
+        or ((owner or recorder) and status not in ("review", "archived") and _editable(obj)),
         can_manage=manage,
         can_delete=manage or (recorder and not ever_submitted),
         is_owner=owner,
@@ -159,7 +178,7 @@ async def save_element(
     if not changes and not cols and not note:
         return []
     extra: dict[str, Any] = {}
-    if not isinstance(obj, Control | Kpi) and wf.reopens(obj.status, r.can_manage):  # type: ignore[arg-type]
+    if not isinstance(obj, Control | Kpi | Mandate) and wf.reopens(obj.status, r.can_manage):  # type: ignore[arg-type]
         extra = {
             "status": "draft",
             "released": obj.released or {**before, "doc_version": obj.doc_version},
