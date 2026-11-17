@@ -6,7 +6,7 @@ from starlette.datastructures import FormData
 
 from grc_ui.forms import Section
 
-SKIP = {"readonly", "status"}
+SKIP = {"readonly", "status", "risk_eval", "risk_guide"}
 
 
 def values_from_form(
@@ -22,6 +22,17 @@ def values_from_form(
                 out[key] = form.get(key) == "on"
             elif kind in ("multiselect", "refs", "iso"):
                 out[key] = [str(v) for v in form.getlist(key) if v]
+            elif kind == "scale":
+                raw = str(form.get(key) or "0").strip()
+                out[key] = int(raw) if raw.isdigit() else 0
+            elif kind == "risk_actions":
+                texts = form.getlist("actions.text")
+                owners = form.getlist("actions.owner_user_id")
+                out[key] = [
+                    {"text": str(t).strip(), "owner_user_id": str(o) or None}
+                    for t, o in zip(texts, owners, strict=False)
+                    if str(t).strip()
+                ]
             elif kind == "number":
                 raw = str(form.get(key) or "0").strip()
                 out[key] = int(raw) if raw.lstrip("-").isdigit() else 0

@@ -12,6 +12,8 @@
           <td>
             {% set v = x[key] %}
             {% if key == "holders" %}{% if v %}{{ v[:2]|join(", ") }}{% if v|length > 2 %} <span class="opacity-60">+{{ v|length - 2 }}</span>{% endif %}{% else %}<span class="text-warning">{{ _("vacant") }}</span>{% endif %}
+            {% elif key == "score" %}{% if v %}<span class="level-badge level-{{ x.level }}">{{ v }}</span>{% else %}<span class="opacity-50">–</span>{% endif %}
+            {% elif key == "potential" %}{{ v or "–" }}
             {% else %}{{ _(v) if v else "–" }}{% endif %}
           </td>
           {% endfor %}

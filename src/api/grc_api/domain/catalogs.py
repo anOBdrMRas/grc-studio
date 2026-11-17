@@ -2,6 +2,8 @@
 
 from typing import Final
 
+from grc_api.domain import risk
+
 ROLE_TYPES: Final = ["Leadership role", "Functional role", "Committee", "Appointed officer"]
 ORG_UNITS: Final = [
     "Generic",
@@ -52,6 +54,113 @@ DEPARTMENTS: Final = [
     "Internal audit",
 ]
 RACI: Final = ["R", "A", "C", "I"]
+
+# ---- risk register (ISO 37301 4.6 / A.4.6), 4-level scales ----------------------------------
+RISK_DEPARTMENTS: Final = [
+    "ECC",
+    "I&A",
+    "Global IT",
+    "HR",
+    "Finance",
+    "Controlling",
+    "EHS",
+    "Global Sourcing",
+    "Sales",
+    "Marketing",
+    "Product Marketing",
+    "Engineering",
+    "Facility",
+    "Customer Repair & Service",
+    "Manufacturing Engineering",
+    "Product Qualification",
+    "Test System Solutions",
+    "Global Order Processing",
+    "Project Management (PJM)",
+    "Management Board - CTO/COO",
+    "Management Board - CEO",
+]
+RISK_ENTITIES: Final = ["CDE", "CUS", "CTW", "CMY", "CCZ"]
+RISK_CATEGORIES: Final = [
+    "Quality",
+    "Information security",
+    "Environmental",
+    "Compliance",
+    "Financial",
+    "Strategic",
+    "Operational",
+]
+CONSEQUENCE_TYPES: Final = [
+    "Personal or environmental harm",
+    "Economic loss",
+    "Reputational harm",
+    "Administrative measures",
+    "Civil or criminal liability",
+]
+ASSESSMENT_REASONS: Final = [
+    "Periodic (department session)",
+    "New or changed activity, product or service",
+    "Change of structure or strategy",
+    "Significant external change",
+    "Change of compliance obligation",
+    "Merger or acquisition",
+    "Noncompliance",
+    "Near-miss",
+    "Audit or hotline finding",
+    "Other",
+]
+TREATMENTS: Final = ["Reduce", "Avoid", "Transfer", "Accept"]
+TREATMENT_STATUSES: Final = ["Identified", "Assessed", "In treatment", "Accepted", "Closed"]
+PROTECTION_GOALS: Final = ["Confidentiality", "Integrity", "Availability"]
+LIKELIHOOD_LEVELS: Final = ["Very low", "Low", "Medium", "High"]
+LIKELIHOOD_DESCRIPTIONS: Final = [
+    "Has not happened yet – not even at comparable companies – but cannot be ruled out.",
+    "May occur within 5–10 years.",
+    "May occur within 3–5 years.",
+    "May occur within 3 years or has already occurred.",
+]
+IMPACT_LEVELS: Final = ["Insignificant", "Medium", "Significant", "Serious to existential"]
+IMPACT_DESCRIPTIONS: Final = {
+    "Personal or environmental harm": [
+        "No or minor injury or environmental impact without lasting effects.",
+        "Injury with lost time or local, reversible environmental impact.",
+        "Serious injury or significant environmental damage requiring lengthy remediation.",
+        "Permanent harm or death, or widespread irreversible environmental damage.",
+    ],
+    "Economic loss": ["< 25 TUSD", "25–300 TUSD", "300 TUSD – 3 m USD", "≥ 3 m USD"],
+    "Reputational harm": [
+        "No incident, or one noticed only internally.",
+        "Complaints from individual customers or partners, local media coverage.",
+        "Loss of important customers or partners, national media coverage.",
+        "Lasting loss of trust in the market, international media coverage.",
+    ],
+    "Administrative measures": [
+        "Notice or inquiry from an authority.",
+        "Official requirement or warning.",
+        "Fine, inspection or withdrawal of individual permits.",
+        "Prohibition of operations, withdrawal of essential permits or exclusion from tenders.",
+    ],
+    "Civil or criminal liability": [
+        "Unfounded or minor claims.",
+        "Justified civil claims of limited amount.",
+        "Significant damage claims or criminal investigation.",
+        "Criminal conviction of officers or employees, existential claims.",
+    ],
+}
+OPPORTUNITY_CATEGORIES: Final = [
+    "Customer satisfaction",
+    "Efficiency",
+    "Innovation",
+    "Market",
+    "Compliance",
+    "Information security",
+]
+PROGRESS_STATUSES: Final = [
+    "Identified",
+    "Assessed",
+    "In implementation",
+    "Realised",
+    "Discarded",
+]
 STATUSES: Final = ["draft", "review", "released", "archived"]
 SYSTEM_ROLE_IDS: Final = ["employee", "ia", "admin"]
 
@@ -67,6 +176,25 @@ def all_catalogs() -> dict[str, list[str]]:
         "divisions": list(DIVISIONS),
         "departments": list(DEPARTMENTS),
         "raci": list(RACI),
+        "risk_departments": list(RISK_DEPARTMENTS),
+        "risk_entities": list(RISK_ENTITIES),
+        "risk_categories": list(RISK_CATEGORIES),
+        "consequence_types": list(CONSEQUENCE_TYPES),
+        "assessment_reasons": list(ASSESSMENT_REASONS),
+        "treatments": list(TREATMENTS),
+        "treatment_statuses": list(TREATMENT_STATUSES),
+        "protection_goals": list(PROTECTION_GOALS),
+        "likelihood_levels": list(LIKELIHOOD_LEVELS),
+        "likelihood_descriptions": list(LIKELIHOOD_DESCRIPTIONS),
+        "impact_levels": list(IMPACT_LEVELS),
+        "opportunity_categories": list(OPPORTUNITY_CATEGORIES),
+        "progress_statuses": list(PROGRESS_STATUSES),
+        # level of every cell of the 4×4 matrix, row by row (likelihood 1..4 × impact 1..4)
+        "risk_matrix": [
+            str(risk.level(risk.score(li, im)))
+            for li in range(1, risk.SCALE + 1)
+            for im in range(1, risk.SCALE + 1)
+        ],
         "statuses": list(STATUSES),
         "system_roles": list(SYSTEM_ROLE_IDS),
-    }
+    } | {f"impact:{k}": list(v) for k, v in IMPACT_DESCRIPTIONS.items()}

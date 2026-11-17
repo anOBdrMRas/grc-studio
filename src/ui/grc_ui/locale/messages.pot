@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-17 17:26+0000\n"
+"POT-Creation-Date: 2026-11-17 18:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+msgid "1 = insignificant … 4 = serious"
+msgstr ""
+
+msgid "1 = very low … 4 = high"
+msgstr ""
+
+msgid "1 = very low … 5 = very high"
+msgstr ""
+
+msgid "1 Identify"
+msgstr ""
+
+msgid "2 Analyse"
+msgstr ""
+
+msgid "25–300 TUSD"
+msgstr ""
+
+msgid "3 Evaluate"
+msgstr ""
+
+msgid "300 TUSD – 3 m USD"
+msgstr ""
+
+msgid "4 Treat"
+msgstr ""
+
+msgid "5 Monitor"
+msgstr ""
+
+msgid "< 25 TUSD"
+msgstr ""
+
+msgid "Accept"
+msgstr ""
+
+msgid "Accepted"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
 msgid "Actions to address risks and opportunities"
+msgstr ""
+
+msgid "Activity, process, product or service"
 msgstr ""
 
 msgid "Add role …"
 msgstr ""
 
+msgid "Administrative measures"
+msgstr ""
+
 msgid "Administrator"
+msgstr ""
+
+msgid "Affected assets"
 msgstr ""
 
 msgid "Analysis and evaluation"
@@ -47,6 +98,18 @@ msgstr ""
 msgid "Area"
 msgstr ""
 
+msgid "Assessed"
+msgstr ""
+
+msgid "Assessment"
+msgstr ""
+
+msgid "Assessment date"
+msgstr ""
+
+msgid "Assessment scale"
+msgstr ""
+
 msgid "Assign"
 msgstr ""
 
@@ -56,10 +119,19 @@ msgstr ""
 msgid "Assignment in process step"
 msgstr ""
 
+msgid "Audit or hotline finding"
+msgstr ""
+
 msgid "Audits"
 msgstr ""
 
 msgid "Authorities of the position"
+msgstr ""
+
+msgid "Availability"
+msgstr ""
+
+msgid "Avoid"
 msgstr ""
 
 msgid "Awareness"
@@ -77,6 +149,9 @@ msgstr ""
 msgid "Bank / payment authority"
 msgstr ""
 
+msgid "Benefit potential"
+msgstr ""
+
 msgid "Business Enablement"
 msgstr ""
 
@@ -90,10 +165,37 @@ msgstr ""
 msgid "Business approval by {user}"
 msgstr ""
 
+msgid "CCZ"
+msgstr ""
+
+msgid "CDE"
+msgstr ""
+
+msgid "CMY"
+msgstr ""
+
+msgid "CTW"
+msgstr ""
+
+msgid "CUS"
+msgstr ""
+
 msgid "Cancel"
 msgstr ""
 
+msgid "Category"
+msgstr ""
+
+msgid "Cause and consequence"
+msgstr ""
+
 msgid "Change history"
+msgstr ""
+
+msgid "Change of compliance obligation"
+msgstr ""
+
+msgid "Change of structure or strategy"
 msgstr ""
 
 msgid "Changes to requirements"
@@ -105,7 +207,13 @@ msgstr ""
 msgid "Choose another person …"
 msgstr ""
 
+msgid "Civil or criminal liability"
+msgstr ""
+
 msgid "Close"
+msgstr ""
+
+msgid "Closed"
 msgstr ""
 
 msgid "Comment"
@@ -115,6 +223,9 @@ msgid "Comment (optional)"
 msgstr ""
 
 msgid "Comment (required to send back)"
+msgstr ""
+
+msgid "Comment / review note"
 msgstr ""
 
 msgid "Commercial power of attorney"
@@ -133,6 +244,12 @@ msgid "Competence"
 msgstr ""
 
 msgid "Competence / training"
+msgstr ""
+
+msgid "Complaints from individual customers or partners, local media coverage."
+msgstr ""
+
+msgid "Compliance"
 msgstr ""
 
 msgid "Compliance culture"
@@ -165,6 +282,9 @@ msgstr ""
 msgid "Compliance risk assessment"
 msgstr ""
 
+msgid "Confidentiality"
+msgstr ""
+
 msgid "Confidentiality agreement required"
 msgstr ""
 
@@ -178,9 +298,6 @@ msgid "Control of changes"
 msgstr ""
 
 msgid "Control of documented information"
-msgstr ""
-
-msgid "Control of externally provided processes, products and services"
 msgstr ""
 
 msgid "Control of nonconforming outputs"
@@ -205,6 +322,12 @@ msgid "Creates new elements and maintains users."
 msgstr ""
 
 msgid "Creating and updating"
+msgstr ""
+
+msgid "Criminal conviction of officers or employees, existential claims."
+msgstr ""
+
+msgid "Customer Repair & Service"
 msgstr ""
 
 msgid "Customer communication"
@@ -232,6 +355,9 @@ msgid "Demo sign-in without password. The administration switches it off with DE
 msgstr ""
 
 msgid "Department"
+msgstr ""
+
+msgid "Department / function"
 msgstr ""
 
 msgid "Deputised by position"
@@ -273,6 +399,9 @@ msgstr ""
 msgid "Diagram saved"
 msgstr ""
 
+msgid "Discarded"
+msgstr ""
+
 msgid "Documented information"
 msgstr ""
 
@@ -280,6 +409,15 @@ msgid "Draft"
 msgstr ""
 
 msgid "Draft (in progress)"
+msgstr ""
+
+msgid "ECC"
+msgstr ""
+
+msgid "EHS"
+msgstr ""
+
+msgid "Economic loss"
 msgstr ""
 
 msgid "Edit"
@@ -291,6 +429,9 @@ msgstr ""
 msgid "Education / qualification"
 msgstr ""
 
+msgid "Efficiency"
+msgstr ""
+
 msgid "Emergency preparedness and response"
 msgstr ""
 
@@ -300,7 +441,16 @@ msgstr ""
 msgid "Employment process"
 msgstr ""
 
+msgid "Engineering"
+msgstr ""
+
+msgid "Entity"
+msgstr ""
+
 msgid "Environment for the operation of processes"
+msgstr ""
+
+msgid "Environmental"
 msgstr ""
 
 msgid "Environmental aspects"
@@ -330,10 +480,16 @@ msgstr ""
 msgid "Evaluation of compliance"
 msgstr ""
 
+msgid "Expected benefit"
+msgstr ""
+
 msgid "Export Control & Customs"
 msgstr ""
 
 msgid "External communication"
+msgstr ""
+
+msgid "Facility"
 msgstr ""
 
 msgid "Field"
@@ -349,6 +505,12 @@ msgid "Finance & Admin"
 msgstr ""
 
 msgid "Finance and Admin"
+msgstr ""
+
+msgid "Financial"
+msgstr ""
+
+msgid "Fine, inspection or withdrawal of individual permits."
 msgstr ""
 
 msgid "First name"
@@ -423,13 +585,31 @@ msgstr ""
 msgid "Global IT"
 msgstr ""
 
+msgid "Global Order Processing"
+msgstr ""
+
+msgid "Global Sourcing"
+msgstr ""
+
 msgid "Governing body and top management"
+msgstr ""
+
+msgid "HR"
+msgstr ""
+
+msgid "Has not happened yet – not even at comparable companies – but cannot be ruled out."
 msgstr ""
 
 msgid "Headcount (planned)"
 msgstr ""
 
 msgid "Hierarchy & reporting lines"
+msgstr ""
+
+msgid "High"
+msgstr ""
+
+msgid "Higher risk – needs treatment or a documented acceptance"
 msgstr ""
 
 msgid "Holder"
@@ -450,16 +630,49 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
+msgid "ISO 27001 6.1.2 c) 2)"
+msgstr ""
+
+msgid "ISO 27001 6.1.3"
+msgstr ""
+
+msgid "ISO 27001 A.5.9"
+msgstr ""
+
+msgid "ISO 37301 A.4.6"
+msgstr ""
+
+msgid "ISO 9001 / 37301 4.2"
+msgstr ""
+
 msgid "ISO 9001 5.3"
 msgstr ""
 
 msgid "ISO 9001 7.2"
 msgstr ""
 
+msgid "ISO references"
+msgstr ""
+
 msgid "Identification and traceability"
 msgstr ""
 
+msgid "Identified"
+msgstr ""
+
+msgid "Impact"
+msgstr ""
+
+msgid "Impact by type of consequence"
+msgstr ""
+
+msgid "Implementation status"
+msgstr ""
+
 msgid "Improvement"
+msgstr ""
+
+msgid "In implementation"
 msgstr ""
 
 msgid "In my responsibility"
@@ -468,19 +681,43 @@ msgstr ""
 msgid "In preparation"
 msgstr ""
 
+msgid "In treatment"
+msgstr ""
+
 msgid "Incompatible roles (SoD)"
 msgstr ""
 
 msgid "Information for external providers"
 msgstr ""
 
+msgid "Information security"
+msgstr ""
+
+msgid "Information security (optional)"
+msgstr ""
+
 msgid "Infrastructure"
+msgstr ""
+
+msgid "Injury with lost time or local, reversible environmental impact."
+msgstr ""
+
+msgid "Innovation"
 msgstr ""
 
 msgid "Inputs"
 msgstr ""
 
+msgid "Insignificant"
+msgstr ""
+
 msgid "Integrated management system: processes, roles, positions and responsibilities."
+msgstr ""
+
+msgid "Integrity"
+msgstr ""
+
+msgid "Interested parties"
 msgstr ""
 
 msgid "Internal approval authority"
@@ -501,6 +738,9 @@ msgstr ""
 msgid "Job description"
 msgstr ""
 
+msgid "Justified civil claims of limited amount."
+msgstr ""
+
 msgid "KPI"
 msgstr ""
 
@@ -511,6 +751,9 @@ msgid "Last name"
 msgstr ""
 
 msgid "Last review"
+msgstr ""
+
+msgid "Lasting loss of trust in the market, international media coverage."
 msgstr ""
 
 msgid "Leadership"
@@ -528,6 +771,21 @@ msgstr ""
 msgid "Legal & Compliance"
 msgstr ""
 
+msgid "Legal area / obligation"
+msgstr ""
+
+msgid "Likelihood"
+msgstr ""
+
+msgid "Likelihood (rows) × impact (columns)"
+msgstr ""
+
+msgid "Likelihood of realisation"
+msgstr ""
+
+msgid "Linked processes"
+msgstr ""
+
 msgid "Load current values"
 msgstr ""
 
@@ -540,13 +798,28 @@ msgstr ""
 msgid "Logistics"
 msgstr ""
 
+msgid "Loss of important customers or partners, national media coverage."
+msgstr ""
+
+msgid "Low"
+msgstr ""
+
 msgid "Main menu"
 msgstr ""
 
 msgid "Main tasks"
 msgstr ""
 
+msgid "Main type of consequence"
+msgstr ""
+
 msgid "Management"
+msgstr ""
+
+msgid "Management Board - CEO"
+msgstr ""
+
+msgid "Management Board - CTO/COO"
 msgstr ""
 
 msgid "Management position"
@@ -573,6 +846,12 @@ msgstr ""
 msgid "Mandatory training / awareness"
 msgstr ""
 
+msgid "Manufacturing Engineering"
+msgstr ""
+
+msgid "Market"
+msgstr ""
+
 msgid "Marketing"
 msgstr ""
 
@@ -580,6 +859,24 @@ msgid "Marketing and Communication"
 msgstr ""
 
 msgid "Master data"
+msgstr ""
+
+msgid "May occur within 3 years or has already occurred."
+msgstr ""
+
+msgid "May occur within 3–5 years."
+msgstr ""
+
+msgid "May occur within 5–10 years."
+msgstr ""
+
+msgid "Measures to seize it"
+msgstr ""
+
+msgid "Medium"
+msgstr ""
+
+msgid "Merger or acquisition"
 msgstr ""
 
 msgid "Model (BPMN)"
@@ -594,10 +891,16 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+msgid "Near-miss"
+msgstr ""
+
 msgid "Needs and expectations of interested parties"
 msgstr ""
 
 msgid "New entry"
+msgstr ""
+
+msgid "New or changed activity, product or service"
 msgstr ""
 
 msgid "New process"
@@ -615,6 +918,12 @@ msgstr ""
 msgid "No entries."
 msgstr ""
 
+msgid "No incident, or one noticed only internally."
+msgstr ""
+
+msgid "No or minor injury or environmental impact without lasting effects."
+msgstr ""
+
 msgid "No position holds this role."
 msgstr ""
 
@@ -624,16 +933,31 @@ msgstr ""
 msgid "No roles assigned."
 msgstr ""
 
+msgid "Noncompliance"
+msgstr ""
+
 msgid "Nonconformity and corrective action"
 msgstr ""
 
 msgid "None"
 msgstr ""
 
+msgid "Not yet assessed"
+msgstr ""
+
+msgid "Notice or inquiry from an authority."
+msgstr ""
+
 msgid "Notification to authority / register"
 msgstr ""
 
+msgid "Official requirement or warning."
+msgstr ""
+
 msgid "Operation"
+msgstr ""
+
+msgid "Operational"
 msgstr ""
 
 msgid "Operational planning and control"
@@ -645,6 +969,9 @@ msgstr ""
 msgid "Opportunities"
 msgstr ""
 
+msgid "Opportunity"
+msgstr ""
+
 msgid "Org. unit"
 msgstr ""
 
@@ -652,6 +979,9 @@ msgid "Organisational unit"
 msgstr ""
 
 msgid "Organizational knowledge"
+msgstr ""
+
+msgid "Origin"
 msgstr ""
 
 msgid "Other"
@@ -670,6 +1000,15 @@ msgid "Password"
 msgstr ""
 
 msgid "Performance evaluation"
+msgstr ""
+
+msgid "Periodic (department session)"
+msgstr ""
+
+msgid "Permanent harm or death, or widespread irreversible environmental damage."
+msgstr ""
+
+msgid "Personal or environmental harm"
 msgstr ""
 
 msgid "Personal transfer required"
@@ -717,6 +1056,9 @@ msgstr ""
 msgid "Post-delivery activities"
 msgstr ""
 
+msgid "Potential"
+msgstr ""
+
 msgid "Preservation"
 msgstr ""
 
@@ -744,6 +1086,12 @@ msgstr ""
 msgid "Processes"
 msgstr ""
 
+msgid "Product Marketing"
+msgstr ""
+
+msgid "Product Qualification"
+msgstr ""
+
 msgid "Production and service provision"
 msgstr ""
 
@@ -756,10 +1104,19 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
+msgid "Prohibition of operations, withdrawal of essential permits or exclusion from tenders."
+msgstr ""
+
+msgid "Project Management (PJM)"
+msgstr ""
+
 msgid "Prokura (general commercial power)"
 msgstr ""
 
 msgid "Property of customers or external providers"
+msgstr ""
+
+msgid "Protection goals"
 msgstr ""
 
 msgid "Prototype"
@@ -772,6 +1129,9 @@ msgid "Purpose & scope"
 msgstr ""
 
 msgid "Purpose of the position"
+msgstr ""
+
+msgid "Quality"
 msgstr ""
 
 msgid "Quality approval by the I&A team"
@@ -802,13 +1162,28 @@ msgstr ""
 msgid "Read only"
 msgstr ""
 
+msgid "Realised"
+msgstr ""
+
 msgid "Really delete the process?"
 msgstr ""
 
 msgid "Really delete?"
 msgstr ""
 
+msgid "Reason for the assessment"
+msgstr ""
+
+msgid "Reason for the impact"
+msgstr ""
+
+msgid "Reason for the likelihood"
+msgstr ""
+
 msgid "Record-keeping"
+msgstr ""
+
+msgid "Reduce"
 msgstr ""
 
 msgid "Release of products and services"
@@ -836,6 +1211,9 @@ msgstr ""
 msgid "Reports functionally to"
 msgstr ""
 
+msgid "Reputational harm"
+msgstr ""
+
 msgid "Required competencies"
 msgstr ""
 
@@ -857,7 +1235,31 @@ msgstr ""
 msgid "Responsibilities & competence"
 msgstr ""
 
+msgid "Responsible"
+msgstr ""
+
 msgid "Review of the requirements"
+msgstr ""
+
+msgid "Risk"
+msgstr ""
+
+msgid "Risk ID"
+msgstr ""
+
+msgid "Risk category"
+msgstr ""
+
+msgid "Risk description"
+msgstr ""
+
+msgid "Risk matrix"
+msgstr ""
+
+msgid "Risk owner"
+msgstr ""
+
+msgid "Risk score"
 msgstr ""
 
 msgid "Risks"
@@ -881,7 +1283,7 @@ msgstr ""
 msgid "Roles, responsibilities and authorities"
 msgstr ""
 
-msgid "Roles, responsibilities and authorities / compliance function"
+msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
 msgstr ""
 
 msgid "Sales"
@@ -903,6 +1305,15 @@ msgid "Scope of the environmental management system"
 msgstr ""
 
 msgid "Scope of the quality management system"
+msgstr ""
+
+msgid "Score"
+msgstr ""
+
+msgid "Score = likelihood × impact"
+msgstr ""
+
+msgid "Score = likelihood × impact (1–16). Medium from 4, higher risk above 8."
 msgstr ""
 
 msgid "Search…"
@@ -929,7 +1340,19 @@ msgstr ""
 msgid "Sent back by the I&A team"
 msgstr ""
 
+msgid "Serious injury or significant environmental damage requiring lengthy remediation."
+msgstr ""
+
+msgid "Serious to existential"
+msgstr ""
+
 msgid "Set status (administration)"
+msgstr ""
+
+msgid "Short description of the risk"
+msgstr ""
+
+msgid "Show all"
 msgstr ""
 
 msgid "Show changes"
@@ -939,6 +1362,9 @@ msgid "Show position description (summary)"
 msgstr ""
 
 msgid "Show role description (summary)"
+msgstr ""
+
+msgid "Show the assessment scale"
 msgstr ""
 
 msgid "Sign in"
@@ -953,10 +1379,22 @@ msgstr ""
 msgid "Signed in"
 msgstr ""
 
+msgid "Significant"
+msgstr ""
+
+msgid "Significant damage claims or criminal investigation."
+msgstr ""
+
+msgid "Significant external change"
+msgstr ""
+
 msgid "Someone else changed this element in the meantime. Load the current values."
 msgstr ""
 
 msgid "Something went wrong."
+msgstr ""
+
+msgid "Source"
 msgstr ""
 
 msgid "Sources of feedback on compliance performance"
@@ -984,6 +1422,9 @@ msgstr ""
 msgid "Steps with roles"
 msgstr ""
 
+msgid "Strategic"
+msgstr ""
+
 msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
 msgstr ""
 
@@ -1003,6 +1444,9 @@ msgid "Target power of attorney of the position"
 msgstr ""
 
 msgid "Technology"
+msgstr ""
+
+msgid "Test System Solutions"
 msgstr ""
 
 msgid "The demo sign-in is switched off."
@@ -1038,13 +1482,31 @@ msgstr ""
 msgid "Training"
 msgstr ""
 
+msgid "Transfer"
+msgstr ""
+
+msgid "Treatment actions"
+msgstr ""
+
+msgid "Treatment option"
+msgstr ""
+
+msgid "Treatment status"
+msgstr ""
+
 msgid "Type"
 msgstr ""
 
 msgid "Type and extent of control"
 msgstr ""
 
+msgid "Type of consequence"
+msgstr ""
+
 msgid "Understanding the organization and its context"
+msgstr ""
+
+msgid "Unfounded or minor claims."
 msgstr ""
 
 msgid "Unsaved changes"
@@ -1069,6 +1531,9 @@ msgid "Validity & review"
 msgstr ""
 
 msgid "Version"
+msgstr ""
+
+msgid "Very low"
 msgstr ""
 
 msgid "View this state"
@@ -1132,6 +1597,9 @@ msgstr ""
 msgid "draft"
 msgstr ""
 
+msgid "e.g. workshop minutes, audit report, hotline report"
+msgstr ""
+
 msgid "employee"
 msgstr ""
 
@@ -1139,6 +1607,18 @@ msgid "ia"
 msgstr ""
 
 msgid "last changed"
+msgstr ""
+
+msgid "law, contract, customer requirement, code · ISO 37301 4.5"
+msgstr ""
+
+msgid "not assessed"
+msgstr ""
+
+msgid "one responsible person per action"
+msgstr ""
+
+msgid "regular interval 12 months"
 msgstr ""
 
 msgid "rejected"
@@ -1162,10 +1642,17 @@ msgstr ""
 msgid "submitted"
 msgstr ""
 
+msgid "the first sentence is shown in lists"
+msgstr ""
+
 msgid "vacant"
 msgstr ""
 
 msgid "with line management responsibility"
+msgstr ""
+
+#, python-brace-format
+msgid "{n} risks"
 msgstr ""
 
 #, python-brace-format
@@ -1176,6 +1663,12 @@ msgstr ""
 msgid "{role} removed from step {step}"
 msgstr ""
 
+msgid "— not assessed —"
+msgstr ""
+
 msgid "— not assigned —"
+msgstr ""
+
+msgid "≥ 3 m USD"
 msgstr ""
 

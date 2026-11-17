@@ -3,6 +3,9 @@
 from typing import Any, TypedDict
 
 
+Assessment = TypedDict("Assessment", {"score": "int", "level": "str", "high": "bool"}, total=False)
+
+
 Catalogs = TypedDict(
     "Catalogs", {"lists": "dict[str, list[str]]", "iso": "list[IsoClause]"}, total=False
 )
@@ -65,6 +68,55 @@ Me = TypedDict(
         "permissions": "list[str]",
         "csrf_token": "str",
         "position_title": "str",
+    },
+    total=False,
+)
+
+
+OpportunityListItem = TypedDict(
+    "OpportunityListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "category": "str",
+        "owner_role_title": "str",
+        "potential": "int",
+        "progress_status": "str",
+        "status": "str",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+OpportunityOut = TypedDict(
+    "OpportunityOut",
+    {
+        "title": "str",
+        "description": "str",
+        "category": "str",
+        "progress_status": "str",
+        "owner_role_id": "str | None",
+        "benefit": "str",
+        "likelihood": "int",
+        "benefit_score": "int",
+        "measures": "str",
+        "next_review": "str | None",
+        "iso_refs": "list[str]",
+        "id": "str",
+        "code": "str",
+        "status": "str",
+        "doc_version": "str",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "created_by_user_id": "str | None",
+        "potential": "int",
+        "rights": "Rights",
+        "workflow": "list[WorkflowEntryOut]",
+        "released": "dict[str, Any] | None",
+        "labels": "dict[str, str]",
     },
     total=False,
 )
@@ -229,6 +281,77 @@ Rights = TypedDict(
         "can_approve": "bool",
         "can_set_status": "bool",
         "owner_fields": "list[str]",
+    },
+    total=False,
+)
+
+
+RiskAction = TypedDict("RiskAction", {"text": "str", "owner_user_id": "str | None"}, total=False)
+
+
+RiskListItem = TypedDict(
+    "RiskListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "department": "str",
+        "owner_name": "str",
+        "likelihood": "int",
+        "impact": "int",
+        "score": "int",
+        "level": "str",
+        "treatment_status": "str",
+        "status": "str",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+RiskOut = TypedDict(
+    "RiskOut",
+    {
+        "description": "str",
+        "department": "str",
+        "category": "str",
+        "activity": "str",
+        "process_ids": "list[str]",
+        "compliance_obligation": "str",
+        "cause": "str",
+        "owner_user_id": "str | None",
+        "treatment_status": "str",
+        "consequence_type": "str",
+        "likelihood": "int",
+        "likelihood_reason": "str",
+        "impact": "int",
+        "impact_reason": "str",
+        "treatment": "str",
+        "actions": "list[RiskAction]",
+        "assessment_reason": "str",
+        "last_assessment": "str | None",
+        "next_review": "str | None",
+        "review_note": "str",
+        "affected_assets": "str",
+        "protection_goals": "list[str]",
+        "interested_parties": "str",
+        "entity": "str",
+        "source_ref": "str",
+        "iso_refs": "list[str]",
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "status": "str",
+        "doc_version": "str",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "created_by_user_id": "str | None",
+        "assessment": "Assessment",
+        "rights": "Rights",
+        "workflow": "list[WorkflowEntryOut]",
+        "released": "dict[str, Any] | None",
+        "labels": "dict[str, str]",
     },
     total=False,
 )

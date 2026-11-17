@@ -77,6 +77,57 @@ class GrcClient:
         """GET /api/v1/meta/catalogs (permission: people:read)."""
         return cast("Catalogs", await self._call("GET", "/api/v1/meta/catalogs"))
 
+    async def opportunities_list(self) -> list[OpportunityListItem]:
+        """GET /api/v1/opportunities (permission: grc:read)."""
+        return cast("list[OpportunityListItem]", await self._call("GET", "/api/v1/opportunities"))
+
+    async def opportunities_create(self, body: CreateElement) -> OpportunityOut:
+        """POST /api/v1/opportunities (permission: grc:record)."""
+        return cast("OpportunityOut", await self._call("POST", "/api/v1/opportunities", json=body))
+
+    async def opportunities_delete(self, opp_id: str) -> None:
+        """DELETE /api/v1/opportunities/{opp_id} (permission: grc:record)."""
+        await self._call("DELETE", f"/api/v1/opportunities/{opp_id}")
+
+    async def opportunities_get(self, opp_id: str) -> OpportunityOut:
+        """GET /api/v1/opportunities/{opp_id} (permission: grc:read)."""
+        return cast("OpportunityOut", await self._call("GET", f"/api/v1/opportunities/{opp_id}"))
+
+    async def opportunities_update(
+        self, opp_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> OpportunityOut:
+        """PATCH /api/v1/opportunities/{opp_id} (permission: grc:read)."""
+        return cast(
+            "OpportunityOut",
+            await self._call(
+                "PATCH", f"/api/v1/opportunities/{opp_id}", json=body, if_match=if_match
+            ),
+        )
+
+    async def opportunities_history(self, opp_id: str) -> list[Revision]:
+        """GET /api/v1/opportunities/{opp_id}/history (permission: grc:read)."""
+        return cast(
+            "list[Revision]", await self._call("GET", f"/api/v1/opportunities/{opp_id}/history")
+        )
+
+    async def opportunities_state(self, opp_id: str, revision_id: str) -> StateView:
+        """GET /api/v1/opportunities/{opp_id}/history/{revision_id} (permission: grc:read)."""
+        return cast(
+            "StateView",
+            await self._call("GET", f"/api/v1/opportunities/{opp_id}/history/{revision_id}"),
+        )
+
+    async def opportunities_workflow(
+        self, opp_id: str, body: WorkflowAction, if_match: str | None = None
+    ) -> OpportunityOut:
+        """POST /api/v1/opportunities/{opp_id}/workflow (permission: grc:read)."""
+        return cast(
+            "OpportunityOut",
+            await self._call(
+                "POST", f"/api/v1/opportunities/{opp_id}/workflow", json=body, if_match=if_match
+            ),
+        )
+
     async def people_list(self) -> list[PersonOut]:
         """GET /api/v1/people (permission: people:read)."""
         return cast("list[PersonOut]", await self._call("GET", "/api/v1/people"))
@@ -230,6 +281,52 @@ class GrcClient:
             "ProcessOut",
             await self._call(
                 "POST", f"/api/v1/processes/{process_id}/workflow", json=body, if_match=if_match
+            ),
+        )
+
+    async def risks_list(self) -> list[RiskListItem]:
+        """GET /api/v1/risks (permission: grc:read)."""
+        return cast("list[RiskListItem]", await self._call("GET", "/api/v1/risks"))
+
+    async def risks_create(self, body: CreateElement) -> RiskOut:
+        """POST /api/v1/risks (permission: grc:record)."""
+        return cast("RiskOut", await self._call("POST", "/api/v1/risks", json=body))
+
+    async def risks_delete(self, risk_id: str) -> None:
+        """DELETE /api/v1/risks/{risk_id} (permission: grc:record)."""
+        await self._call("DELETE", f"/api/v1/risks/{risk_id}")
+
+    async def risks_get(self, risk_id: str) -> RiskOut:
+        """GET /api/v1/risks/{risk_id} (permission: grc:read)."""
+        return cast("RiskOut", await self._call("GET", f"/api/v1/risks/{risk_id}"))
+
+    async def risks_update(
+        self, risk_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> RiskOut:
+        """PATCH /api/v1/risks/{risk_id} (permission: grc:read)."""
+        return cast(
+            "RiskOut",
+            await self._call("PATCH", f"/api/v1/risks/{risk_id}", json=body, if_match=if_match),
+        )
+
+    async def risks_history(self, risk_id: str) -> list[Revision]:
+        """GET /api/v1/risks/{risk_id}/history (permission: grc:read)."""
+        return cast("list[Revision]", await self._call("GET", f"/api/v1/risks/{risk_id}/history"))
+
+    async def risks_state(self, risk_id: str, revision_id: str) -> StateView:
+        """GET /api/v1/risks/{risk_id}/history/{revision_id} (permission: grc:read)."""
+        return cast(
+            "StateView", await self._call("GET", f"/api/v1/risks/{risk_id}/history/{revision_id}")
+        )
+
+    async def risks_workflow(
+        self, risk_id: str, body: WorkflowAction, if_match: str | None = None
+    ) -> RiskOut:
+        """POST /api/v1/risks/{risk_id}/workflow (permission: grc:read)."""
+        return cast(
+            "RiskOut",
+            await self._call(
+                "POST", f"/api/v1/risks/{risk_id}/workflow", json=body, if_match=if_match
             ),
         )
 

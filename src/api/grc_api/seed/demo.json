@@ -2482,5 +2482,444 @@
     }
    ]
   }
+ ],
+ "risks": [
+  {
+   "id": "R-001",
+   "code": "R-001",
+   "title": "Bestellung ohne gültige Genehmigung",
+   "description": "Bestellung ohne gültige Genehmigung. Bestellungen werden am Freigabeworkflow vorbei direkt beim Lieferanten ausgelöst.",
+   "department": "Global Sourcing",
+   "category": "Financial",
+   "activity": "Bestellanforderung und Bestellung im ERP",
+   "process_ids": [
+    "P-001"
+   ],
+   "compliance_obligation": "Unterschriften- und Freigaberichtlinie",
+   "cause": "Umgehung des Freigabeworkflows, fehlende Systemsperre.\nAuswirkung: Budgetüberschreitung, unberechtigte Verpflichtungen gegenüber Lieferanten.",
+   "owner_user_id": "U-002",
+   "treatment_status": "In treatment",
+   "consequence_type": "Economic loss",
+   "likelihood": 3,
+   "likelihood_reason": "In den letzten 3–5 Jahren mehrfach Bestellungen ohne Freigabe festgestellt (Revisionsbericht).",
+   "impact": 3,
+   "impact_reason": "Einzelfälle typischerweise 300 TUSD – 3 Mio. USD Budgetwirkung.",
+   "treatment": "Reduce",
+   "actions": [
+    {
+     "text": "Systemseitige Freigabesperre im ERP aktivieren",
+     "owner_user_id": "U-001"
+    },
+    {
+     "text": "Vier-Augen-Prinzip für Bestellungen über 25 TEUR einführen",
+     "owner_user_id": "U-003"
+    }
+   ],
+   "assessment_reason": "Periodic (department session)",
+   "last_assessment": "2026-03-10",
+   "next_review": "2027-03-10",
+   "review_note": "",
+   "affected_assets": "",
+   "protection_goals": [],
+   "interested_parties": "",
+   "entity": "CDE",
+   "source_ref": "Bereichsworkshop Einkauf 03/2026",
+   "iso_refs": [
+    "9001:6.1",
+    "9001:8.4"
+   ],
+   "created_by_user_id": "U-002",
+   "status": "released",
+   "doc_version": "1.0",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-002",
+     "at": "2026-03-12T09:00:00.000Z",
+     "comment": "",
+     "status": "review"
+    },
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-03-14T10:00:00.000Z",
+     "comment": "",
+     "status": "released"
+    }
+   ]
+  },
+  {
+   "id": "R-002",
+   "code": "R-002",
+   "title": "Korruption / Vorteilsnahme bei Vergabe",
+   "description": "Korruption / Vorteilsnahme bei Vergabe. Mitarbeitende nehmen Vorteile von Lieferanten an und beeinflussen dadurch Vergabeentscheidungen.",
+   "department": "Global Sourcing",
+   "category": "Compliance",
+   "activity": "Lieferantenauswahl und Vergabe",
+   "process_ids": [
+    "P-001"
+   ],
+   "compliance_obligation": "StGB §299, Verhaltenskodex",
+   "cause": "Interessenkonflikte, intransparente Vergabeentscheidungen.\nAuswirkung: Strafrechtliche Konsequenzen (§§ 299 ff. StGB), Reputationsschaden.",
+   "owner_user_id": "U-007",
+   "treatment_status": "In treatment",
+   "consequence_type": "Civil or criminal liability",
+   "likelihood": 2,
+   "likelihood_reason": "Bei uns noch nicht vorgekommen, in der Branche aber in 5–10 Jahren zu erwarten.",
+   "impact": 4,
+   "impact_reason": "Strafrechtliche Verfolgung von Mitarbeitenden und Organen möglich, Ausschluss von Ausschreibungen.",
+   "treatment": "Reduce",
+   "actions": [
+    {
+     "text": "Vergabedokumentation verpflichtend im ERP",
+     "owner_user_id": "U-002"
+    },
+    {
+     "text": "Jährliche Interessenkonflikterklärung der Einkäufer",
+     "owner_user_id": "U-007"
+    },
+    {
+     "text": "Anti-Korruptions-Schulung für Einkauf und Vertrieb",
+     "owner_user_id": "U-007"
+    }
+   ],
+   "assessment_reason": "Periodic (department session)",
+   "last_assessment": "2026-03-10",
+   "next_review": "2027-03-10",
+   "review_note": "",
+   "affected_assets": "",
+   "protection_goals": [],
+   "interested_parties": "Behörden, Kunden, Wettbewerber",
+   "entity": "CDE",
+   "source_ref": "Bereichsworkshop Einkauf 03/2026",
+   "iso_refs": [
+    "37301:4.6",
+    "37301:4.5"
+   ],
+   "created_by_user_id": "U-007",
+   "status": "released",
+   "doc_version": "1.0",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-007",
+     "at": "2026-03-12T09:00:00.000Z",
+     "comment": "",
+     "status": "review"
+    },
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-03-16T10:00:00.000Z",
+     "comment": "",
+     "status": "released"
+    }
+   ]
+  },
+  {
+   "id": "R-003",
+   "code": "R-003",
+   "title": "Lieferant mit unzureichender Informationssicherheit",
+   "description": "Lieferant mit unzureichender Informationssicherheit. Dienstleister mit Zugriff auf Kunden- und Konstruktionsdaten erfüllen keine Mindestanforderungen.",
+   "department": "Global IT",
+   "category": "Information security",
+   "activity": "Beauftragung von IT- und Engineering-Dienstleistern mit Datenzugriff",
+   "process_ids": [
+    "P-001"
+   ],
+   "compliance_obligation": "Kundenverträge (Geheimhaltung), DSGVO Art. 28",
+   "cause": "Keine IS-Anforderungen im Vertrag, fehlende Lieferantenbewertung.\nAuswirkung: Datenabfluss, Lieferkettenangriff.",
+   "owner_user_id": "U-008",
+   "treatment_status": "Assessed",
+   "consequence_type": "Economic loss",
+   "likelihood": 3,
+   "likelihood_reason": "Lieferkettenangriffe nehmen zu; ohne Lieferantenbewertung in 3–5 Jahren zu erwarten.",
+   "impact": 4,
+   "impact_reason": "Verlust von Konstruktionsdaten und Vertragsstrafen: über 3 Mio. USD möglich.",
+   "treatment": "Reduce",
+   "actions": [
+    {
+     "text": "IS-Anforderungen in alle Rahmenverträge aufnehmen",
+     "owner_user_id": "U-002"
+    },
+    {
+     "text": "Jährliche IS-Lieferantenbewertung",
+     "owner_user_id": null
+    }
+   ],
+   "assessment_reason": "New or changed activity, product or service",
+   "last_assessment": "2026-02-20",
+   "next_review": "2027-02-20",
+   "review_note": "",
+   "affected_assets": "Kunden- und Konstruktionsdaten",
+   "protection_goals": [
+    "Confidentiality",
+    "Integrity"
+   ],
+   "interested_parties": "",
+   "entity": "CDE",
+   "source_ref": "ISMS-Risikoanalyse 2026",
+   "iso_refs": [
+    "27001:6.1.2",
+    "27001:A.5.19",
+    "27001:A.5.21"
+   ],
+   "created_by_user_id": "U-008",
+   "status": "released",
+   "doc_version": "1.0",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-008",
+     "at": "2026-02-22T09:00:00.000Z",
+     "comment": "",
+     "status": "review"
+    },
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-02-25T10:00:00.000Z",
+     "comment": "",
+     "status": "released"
+    }
+   ]
+  },
+  {
+   "id": "R-004",
+   "code": "R-004",
+   "title": "Doppelte oder fehlerhafte Zahlung",
+   "description": "Doppelte oder fehlerhafte Zahlung. Rechnungen werden doppelt oder mit falschem Betrag bezahlt.",
+   "department": "Finance",
+   "category": "Financial",
+   "activity": "Rechnungsprüfung und Zahlungslauf",
+   "process_ids": [
+    "P-001"
+   ],
+   "compliance_obligation": "",
+   "cause": "Manuelle Rechnungserfassung, fehlender 3-Way-Match.\nAuswirkung: Finanzieller Verlust, Aufwand für Rückforderungen.",
+   "owner_user_id": "U-005",
+   "treatment_status": "In treatment",
+   "consequence_type": "Economic loss",
+   "likelihood": 3,
+   "likelihood_reason": "Doppelzahlungen zuletzt 2023 festgestellt.",
+   "impact": 2,
+   "impact_reason": "Einzelbeträge meist 25–300 TUSD, Rückforderung meist möglich.",
+   "treatment": "Reduce",
+   "actions": [
+    {
+     "text": "3-Way-Match im ERP und Dublettenprüfung vor dem Zahlungslauf",
+     "owner_user_id": "U-005"
+    }
+   ],
+   "assessment_reason": "Audit or hotline finding",
+   "last_assessment": "2026-01-15",
+   "next_review": "2027-01-15",
+   "review_note": "",
+   "affected_assets": "",
+   "protection_goals": [],
+   "interested_parties": "",
+   "entity": "CUS",
+   "source_ref": "Revisionsbericht IR-2025-04",
+   "iso_refs": [
+    "9001:6.1"
+   ],
+   "created_by_user_id": "U-005",
+   "status": "released",
+   "doc_version": "1.0",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-005",
+     "at": "2026-01-16T09:00:00.000Z",
+     "comment": "",
+     "status": "review"
+    },
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-01-20T10:00:00.000Z",
+     "comment": "",
+     "status": "released"
+    }
+   ]
+  },
+  {
+   "id": "R-005",
+   "code": "R-005",
+   "title": "Mangelhafte Ware wird angenommen",
+   "description": "Mangelhafte Ware wird angenommen. Fehlerhafte Zukaufteile gelangen ungeprüft in die Fertigung.",
+   "department": "Global Order Processing",
+   "category": "Quality",
+   "activity": "Wareneingang und Wareneingangsprüfung",
+   "process_ids": [
+    "P-001"
+   ],
+   "compliance_obligation": "Kundenanforderung (Qualitätssicherungsvereinbarung)",
+   "cause": "Keine oder unzureichende Wareneingangsprüfung.\nAuswirkung: Fehler im Endprodukt, Reklamationen.",
+   "owner_user_id": "U-009",
+   "treatment_status": "Assessed",
+   "consequence_type": "Reputational harm",
+   "likelihood": 3,
+   "likelihood_reason": "Reklamationen wegen Zukaufteilen in 3–5 Jahren zu erwarten.",
+   "impact": 2,
+   "impact_reason": "Beschwerden einzelner Kunden, kein Kundenverlust erwartet.",
+   "treatment": "Reduce",
+   "actions": [
+    {
+     "text": "Stichprobenplan im Wareneingang festlegen",
+     "owner_user_id": "U-009"
+    },
+    {
+     "text": "Lieferantenaudits bei Auffälligkeiten",
+     "owner_user_id": "U-013"
+    }
+   ],
+   "assessment_reason": "Periodic (department session)",
+   "last_assessment": "2026-02-05",
+   "next_review": "2027-02-05",
+   "review_note": "",
+   "affected_assets": "",
+   "protection_goals": [],
+   "interested_parties": "",
+   "entity": "CCZ",
+   "source_ref": "Bereichsworkshop Qualität 02/2026",
+   "iso_refs": [
+    "9001:8.4",
+    "9001:8.6",
+    "9001:8.7"
+   ],
+   "created_by_user_id": "U-009",
+   "status": "review",
+   "doc_version": "0.9",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-009",
+     "at": "2026-11-10T09:15:00.000Z",
+     "comment": "Bewertung nach Bereichsworkshop abgeschlossen.",
+     "status": "review"
+    }
+   ]
+  },
+  {
+   "id": "R-006",
+   "code": "R-006",
+   "title": "Überberechtigungen / verwaiste Accounts",
+   "description": "Überberechtigungen / verwaiste Accounts. Ausgeschiedene oder versetzte Mitarbeitende behalten Zugriffsrechte.",
+   "department": "Global IT",
+   "category": "Information security",
+   "activity": "Vergabe und Entzug von Berechtigungen",
+   "process_ids": [
+    "P-002"
+   ],
+   "compliance_obligation": "DSGVO Art. 32, Kundenverträge",
+   "cause": "Fehlende Rezertifizierung, kein Leaver-Prozess.\nAuswirkung: Unbefugter Zugriff auf vertrauliche Daten.",
+   "owner_user_id": "U-008",
+   "treatment_status": "In treatment",
+   "consequence_type": "Administrative measures",
+   "likelihood": 4,
+   "likelihood_reason": "Verwaiste Accounts beim letzten Audit gefunden – bereits eingetreten.",
+   "impact": 3,
+   "impact_reason": "Meldepflichtige Datenpanne mit Bußgeld möglich.",
+   "treatment": "Reduce",
+   "actions": [
+    {
+     "text": "Halbjährliche Rezertifizierung der Berechtigungen",
+     "owner_user_id": "U-008"
+    },
+    {
+     "text": "Automatischer Leaver-Prozess aus dem HR-System",
+     "owner_user_id": "U-001"
+    }
+   ],
+   "assessment_reason": "Audit or hotline finding",
+   "last_assessment": "2026-02-20",
+   "next_review": "2026-08-20",
+   "review_note": "Nach Einführung des Leaver-Prozesses neu bewerten.",
+   "affected_assets": "",
+   "protection_goals": [
+    "Confidentiality",
+    "Integrity"
+   ],
+   "interested_parties": "",
+   "entity": "CDE",
+   "source_ref": "ISMS-Audit 01/2026",
+   "iso_refs": [
+    "27001:6.1.2",
+    "27001:A.5.18",
+    "27001:A.8.2"
+   ],
+   "created_by_user_id": "U-006",
+   "status": "draft",
+   "doc_version": "0.1",
+   "released": null,
+   "workflow": []
+  }
+ ],
+ "opportunities": [
+  {
+   "id": "CH-001",
+   "code": "CH-001",
+   "title": "Bündelung von Bedarfen (Rahmenverträge)",
+   "description": "",
+   "category": "Efficiency",
+   "benefit": "Preisvorteile 5–8 %, weniger Bestellvorgänge",
+   "likelihood": 4,
+   "benefit_score": 4,
+   "measures": "",
+   "owner_role_id": "RO-004",
+   "progress_status": "Identified",
+   "next_review": null,
+   "iso_refs": [
+    "9001:6.1"
+   ],
+   "created_by_user_id": "U-002",
+   "status": "released",
+   "doc_version": "1.0",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-002",
+     "at": "2026-02-01T09:00:00.000Z",
+     "comment": "",
+     "status": "review"
+    },
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-02-03T10:00:00.000Z",
+     "comment": "",
+     "status": "released"
+    }
+   ]
+  },
+  {
+   "id": "CH-002",
+   "code": "CH-002",
+   "title": "Automatisierte Rechnungsverarbeitung (OCR/E-Rechnung)",
+   "description": "",
+   "category": "Innovation",
+   "benefit": "Kürzere Durchlaufzeit, Skontonutzung",
+   "likelihood": 3,
+   "benefit_score": 4,
+   "measures": "",
+   "owner_role_id": "RO-017",
+   "progress_status": "Identified",
+   "next_review": null,
+   "iso_refs": [
+    "9001:6.1"
+   ],
+   "created_by_user_id": "U-006",
+   "status": "draft",
+   "doc_version": "0.1",
+   "released": null,
+   "workflow": []
+  }
  ]
 }

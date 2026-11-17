@@ -1,6 +1,36 @@
 {
   "components": {
     "schemas": {
+      "Assessment": {
+        "properties": {
+          "high": {
+            "description": "higher risk: needs treatment or documented acceptance",
+            "title": "High",
+            "type": "boolean"
+          },
+          "level": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "title": "Level",
+            "type": "string"
+          },
+          "score": {
+            "description": "likelihood × impact (0 while not assessed)",
+            "title": "Score",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "score",
+          "level",
+          "high"
+        ],
+        "title": "Assessment",
+        "type": "object"
+      },
       "Catalogs": {
         "properties": {
           "iso": {
@@ -321,6 +351,229 @@
           "position_title"
         ],
         "title": "Me",
+        "type": "object"
+      },
+      "OpportunityListItem": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_owner": {
+            "title": "Is Owner",
+            "type": "boolean"
+          },
+          "owner_role_title": {
+            "title": "Owner Role Title",
+            "type": "string"
+          },
+          "potential": {
+            "title": "Potential",
+            "type": "integer"
+          },
+          "progress_status": {
+            "title": "Progress Status",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "category",
+          "owner_role_title",
+          "potential",
+          "progress_status",
+          "status",
+          "is_owner"
+        ],
+        "title": "OpportunityListItem",
+        "type": "object"
+      },
+      "OpportunityOut": {
+        "properties": {
+          "benefit": {
+            "default": "",
+            "title": "Benefit",
+            "type": "string"
+          },
+          "benefit_score": {
+            "default": 0,
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "title": "Benefit Score",
+            "type": "integer"
+          },
+          "category": {
+            "default": "",
+            "title": "Category",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "created_by_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created By User Id"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "doc_version": {
+            "title": "Doc Version",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "iso_refs": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Iso Refs",
+            "type": "array"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Labels",
+            "type": "object"
+          },
+          "likelihood": {
+            "default": 0,
+            "maximum": 5.0,
+            "minimum": 0.0,
+            "title": "Likelihood",
+            "type": "integer"
+          },
+          "measures": {
+            "default": "",
+            "title": "Measures",
+            "type": "string"
+          },
+          "next_review": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Review"
+          },
+          "owner_role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Role Id"
+          },
+          "potential": {
+            "description": "likelihood × benefit",
+            "title": "Potential",
+            "type": "integer"
+          },
+          "progress_status": {
+            "default": "Identified",
+            "title": "Progress Status",
+            "type": "string"
+          },
+          "released": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Released"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "title": {
+            "default": "",
+            "title": "Title",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "workflow": {
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEntryOut"
+            },
+            "title": "Workflow",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "status",
+          "doc_version",
+          "version",
+          "created_at",
+          "updated_at",
+          "created_by_user_id",
+          "potential",
+          "rights",
+          "workflow",
+          "released",
+          "labels"
+        ],
+        "title": "OpportunityOut",
         "type": "object"
       },
       "PasswordLogin": {
@@ -1052,6 +1305,368 @@
           "owner_fields"
         ],
         "title": "Rights",
+        "type": "object"
+      },
+      "RiskAction": {
+        "description": "Treatment action with the person responsible for it.",
+        "properties": {
+          "owner_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner User Id"
+          },
+          "text": {
+            "default": "",
+            "maxLength": 2000,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "title": "RiskAction",
+        "type": "object"
+      },
+      "RiskListItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "department": {
+            "title": "Department",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "impact": {
+            "title": "Impact",
+            "type": "integer"
+          },
+          "is_owner": {
+            "title": "Is Owner",
+            "type": "boolean"
+          },
+          "level": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "title": "Level",
+            "type": "string"
+          },
+          "likelihood": {
+            "title": "Likelihood",
+            "type": "integer"
+          },
+          "owner_name": {
+            "title": "Owner Name",
+            "type": "string"
+          },
+          "score": {
+            "title": "Score",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "treatment_status": {
+            "title": "Treatment Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "department",
+          "owner_name",
+          "likelihood",
+          "impact",
+          "score",
+          "level",
+          "treatment_status",
+          "status",
+          "is_owner"
+        ],
+        "title": "RiskListItem",
+        "type": "object"
+      },
+      "RiskOut": {
+        "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/RiskAction"
+            },
+            "title": "Actions",
+            "type": "array"
+          },
+          "activity": {
+            "default": "",
+            "title": "Activity",
+            "type": "string"
+          },
+          "affected_assets": {
+            "default": "",
+            "title": "Affected Assets",
+            "type": "string"
+          },
+          "assessment": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "assessment_reason": {
+            "default": "",
+            "title": "Assessment Reason",
+            "type": "string"
+          },
+          "category": {
+            "default": "",
+            "title": "Category",
+            "type": "string"
+          },
+          "cause": {
+            "default": "",
+            "description": "cause and consequence",
+            "title": "Cause",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "compliance_obligation": {
+            "default": "",
+            "title": "Compliance Obligation",
+            "type": "string"
+          },
+          "consequence_type": {
+            "default": "",
+            "title": "Consequence Type",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "created_by_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created By User Id"
+          },
+          "department": {
+            "default": "",
+            "title": "Department",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "doc_version": {
+            "title": "Doc Version",
+            "type": "string"
+          },
+          "entity": {
+            "default": "",
+            "title": "Entity",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "impact": {
+            "default": 0,
+            "description": "0 = not assessed, 1..4",
+            "maximum": 4.0,
+            "minimum": 0.0,
+            "title": "Impact",
+            "type": "integer"
+          },
+          "impact_reason": {
+            "default": "",
+            "title": "Impact Reason",
+            "type": "string"
+          },
+          "interested_parties": {
+            "default": "",
+            "title": "Interested Parties",
+            "type": "string"
+          },
+          "iso_refs": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Iso Refs",
+            "type": "array"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "display names of referenced ids",
+            "title": "Labels",
+            "type": "object"
+          },
+          "last_assessment": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Assessment"
+          },
+          "likelihood": {
+            "default": 0,
+            "description": "0 = not assessed, 1..4",
+            "maximum": 4.0,
+            "minimum": 0.0,
+            "title": "Likelihood",
+            "type": "integer"
+          },
+          "likelihood_reason": {
+            "default": "",
+            "title": "Likelihood Reason",
+            "type": "string"
+          },
+          "next_review": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Review"
+          },
+          "owner_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner User Id"
+          },
+          "process_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Process Ids",
+            "type": "array"
+          },
+          "protection_goals": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Protection Goals",
+            "type": "array"
+          },
+          "released": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Released"
+          },
+          "review_note": {
+            "default": "",
+            "title": "Review Note",
+            "type": "string"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          },
+          "source_ref": {
+            "default": "",
+            "title": "Source Ref",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "treatment": {
+            "default": "",
+            "title": "Treatment",
+            "type": "string"
+          },
+          "treatment_status": {
+            "default": "Identified",
+            "title": "Treatment Status",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "workflow": {
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEntryOut"
+            },
+            "title": "Workflow",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "status",
+          "doc_version",
+          "version",
+          "created_at",
+          "updated_at",
+          "created_by_user_id",
+          "assessment",
+          "rights",
+          "workflow",
+          "released",
+          "labels"
+        ],
+        "title": "RiskOut",
         "type": "object"
       },
       "RoleListItem": {
@@ -1830,6 +2445,384 @@
           "meta"
         ],
         "x-permission": "people:read"
+      }
+    },
+    "/api/v1/opportunities": {
+      "get": {
+        "operationId": "opportunities_list",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/OpportunityListItem"
+                  },
+                  "title": "Response Opportunities List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Opportunities List",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "post": {
+        "operationId": "opportunities_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Opportunities Create",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:record"
+      }
+    },
+    "/api/v1/opportunities/{opp_id}": {
+      "delete": {
+        "operationId": "opportunities_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "opp_id",
+            "required": true,
+            "schema": {
+              "title": "Opp Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Opportunities Delete",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:record"
+      },
+      "get": {
+        "operationId": "opportunities_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "opp_id",
+            "required": true,
+            "schema": {
+              "title": "Opp Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Opportunities Get",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "patch": {
+        "operationId": "opportunities_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "opp_id",
+            "required": true,
+            "schema": {
+              "title": "Opp Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Opportunities Update",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/opportunities/{opp_id}/history": {
+      "get": {
+        "operationId": "opportunities_history",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "opp_id",
+            "required": true,
+            "schema": {
+              "title": "Opp Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Revision"
+                  },
+                  "title": "Response Opportunities History",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Opportunities History",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/opportunities/{opp_id}/history/{revision_id}": {
+      "get": {
+        "operationId": "opportunities_state",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "opp_id",
+            "required": true,
+            "schema": {
+              "title": "Opp Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "revision_id",
+            "required": true,
+            "schema": {
+              "title": "Revision Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StateView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Opportunities State",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/opportunities/{opp_id}/workflow": {
+      "post": {
+        "operationId": "opportunities_workflow",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "opp_id",
+            "required": true,
+            "schema": {
+              "title": "Opp Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkflowAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpportunityOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Opportunities Workflow",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
       }
     },
     "/api/v1/people": {
@@ -2893,6 +3886,384 @@
           "processes"
         ],
         "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/risks": {
+      "get": {
+        "operationId": "risks_list",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RiskListItem"
+                  },
+                  "title": "Response Risks List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Risks List",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "post": {
+        "operationId": "risks_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Risks Create",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:record"
+      }
+    },
+    "/api/v1/risks/{risk_id}": {
+      "delete": {
+        "operationId": "risks_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "risk_id",
+            "required": true,
+            "schema": {
+              "title": "Risk Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Risks Delete",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:record"
+      },
+      "get": {
+        "operationId": "risks_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "risk_id",
+            "required": true,
+            "schema": {
+              "title": "Risk Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Risks Get",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "patch": {
+        "operationId": "risks_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "risk_id",
+            "required": true,
+            "schema": {
+              "title": "Risk Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Risks Update",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/risks/{risk_id}/history": {
+      "get": {
+        "operationId": "risks_history",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "risk_id",
+            "required": true,
+            "schema": {
+              "title": "Risk Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Revision"
+                  },
+                  "title": "Response Risks History",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Risks History",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/risks/{risk_id}/history/{revision_id}": {
+      "get": {
+        "operationId": "risks_state",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "risk_id",
+            "required": true,
+            "schema": {
+              "title": "Risk Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "revision_id",
+            "required": true,
+            "schema": {
+              "title": "Revision Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StateView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Risks State",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/risks/{risk_id}/workflow": {
+      "post": {
+        "operationId": "risks_workflow",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "risk_id",
+            "required": true,
+            "schema": {
+              "title": "Risk Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkflowAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Risks Workflow",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
       }
     },
     "/api/v1/roles": {

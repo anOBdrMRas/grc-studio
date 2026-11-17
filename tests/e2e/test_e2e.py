@@ -104,3 +104,35 @@ def test_english_interface(page: "Page") -> None:
     page.click("form[action='/language'] button:has-text('EN')")
     expect(page.locator(".app-menubar")).to_contain_text("Processes")
     page.click("form[action='/language'] button:has-text('DE')")
+
+
+def test_risk_recorded_assessed_and_released(page: "Page") -> None:
+    sign_in(page, "U-004")
+    page.goto(BASE + "/risks")
+    expect(page.locator(".risk-cell")).to_have_count(16)
+    page.fill("input[name=title]", "E2E: Lieferant liefert verspätet. Produktion steht.")
+    page.click("form[hx-post='/risks'] button")
+    page.wait_for_url(re.compile(r"/risks/R-\d+\?edit=1"))
+    url = page.url.split("?")[0]
+    page.select_option("#f-likelihood", "3")
+    page.select_option("#f-impact", "4")
+    page.click("#detail button:has-text('Maßnahme')")
+    page.locator("#rows-actions input").last.fill("Zweitlieferant qualifizieren")
+    page.click("#detail button:has-text('Speichern')")
+    expect(page.locator("#detail")).to_contain_text("Höheres Risiko")
+    page.click("#detail button:has-text('Fachlich freigeben')")
+    expect(page.locator("#detail")).to_contain_text("Qualitätsfreigabe durch das I&A-Team")
+    sign_in(page, "U-013")
+    page.goto(url)
+    page.click("#detail button:has-text('Qualität freigeben')")
+    expect(page.locator("#detail")).to_contain_text("1.0")
+
+
+def test_risk_matrix_filters_the_list(page: "Page") -> None:
+    sign_in(page, "U-004")
+    page.goto(BASE + "/risks?l=3&i=4")
+    expect(page.locator(".risk-cell[aria-current=true]")).to_have_count(1)
+    for title in page.locator("#list tbody tr").all_inner_texts():
+        assert title
+    page.click("text=Alle anzeigen")
+    expect(page.locator(".risk-cell[aria-current=true]")).to_have_count(0)

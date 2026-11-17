@@ -1,0 +1,20 @@
+{# 4×4 risk matrix: likelihood (rows, high on top) × impact (columns); a cell filters the list #}
+{% set labels = {"low": _("Low"), "medium": _("Medium"), "high": _("High")} %}
+<figure class="mb-3 rounded-box border border-base-300 bg-base-100 p-2" aria-labelledby="matrix-caption">
+  <figcaption id="matrix-caption" class="mb-1 flex items-center justify-between text-xs font-semibold">
+    <span>{{ _("Risk matrix") }} · {{ _("{n} risks").format(n=matrix.total) }}</span>
+    {% if matrix.cell %}<a class="link link-secondary font-normal" href="{{ mod.base }}">{{ _("Show all") }}</a>{% endif %}
+  </figcaption>
+  <div class="risk-matrix" role="grid" aria-label="{{ _('Likelihood (rows) × impact (columns)') }}">
+    {% for row in matrix.rows %}
+    <div class="risk-axis" role="rowheader">{{ row[0].l }}</div>
+    {% for c in row %}
+    <a role="gridcell" href="{{ mod.base }}?l={{ c.l }}&amp;i={{ c.i }}" class="risk-cell level-{{ c.level }} {% if matrix.cell == (c.l, c.i) %}is-selected{% endif %}"
+       title="{{ _('Likelihood') }} {{ c.l }} × {{ _('Impact') }} {{ c.i }} = {{ c.l * c.i }} ({{ labels[c.level] }})"
+       {% if matrix.cell == (c.l, c.i) %}aria-current="true"{% endif %}>{{ c.n or "" }}</a>
+    {% endfor %}
+    {% endfor %}
+    <div></div>{% for n in range(1, 5) %}<div class="risk-axis">{{ n }}</div>{% endfor %}
+  </div>
+  <p class="mt-1 text-[11px] opacity-70">{{ _("Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance.") }}</p>
+</figure>
