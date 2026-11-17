@@ -4,6 +4,7 @@
 {% elif f.kind == "readonly" %}<span class="font-mono text-sm">{{ v or "–" }}</span>
 {% elif f.kind == "status" %}{{ status_badge(v) }}
 {% elif f.kind == "bool" %}{{ _("Yes") if v else _("No") }}
+{% elif f.kind == "decimal" %}{{ v|num if v is not none else "–" }}
 {% elif f.kind == "number" %}{{ v if v is not none else "–" }}
 {% elif f.kind == "date" %}{{ v or "–" }}
 {% elif f.kind == "select" %}{{ _(v) if v else "–" }}

@@ -7,7 +7,14 @@ from grc_api.auth.deps import current_principal, secured
 from grc_api.auth.principal import Principal
 from grc_api.db import get_db
 from grc_api.schemas.common import CreateElement, ElementPatch, Revision, StateView, WorkflowAction
-from grc_api.schemas.processes import DiagramIn, DiagramOut, ProcessListItem, ProcessOut, StepRoleIn
+from grc_api.schemas.processes import (
+    DiagramIn,
+    DiagramOut,
+    ProcessListItem,
+    ProcessOut,
+    StepLinkIn,
+    StepRoleIn,
+)
 from grc_api.services import processes as svc
 
 router = APIRouter(prefix="/api/v1/processes", tags=["processes"])
@@ -108,3 +115,34 @@ async def processes_history(process_id: str, db: Db, p: Me) -> list[Revision]:
 )
 async def processes_state(process_id: str, revision_id: int, db: Db, p: Me) -> StateView:
     return await svc.state(db, process_id, revision_id, p)
+
+
+@router.put(
+    "/{process_id}/steps/{element_id}/links",
+    operation_id="processes_link_element",
+    **secured("processes:read"),
+)
+async def processes_link_element(
+    process_id: str, element_id: str, body: StepLinkIn, db: Db, p: Me, if_match: IfMatch = None
+) -> ProcessOut:
+    return await svc.link_element(db, process_id, element_id, body, if_match, p)
+
+
+@router.delete(
+    "/{process_id}/steps/{element_id}/links/{kind}/{target_id}",
+    operation_id="processes_unlink_element",
+    **secured("processes:read"),
+)
+async def processes_unlink_element(
+    process_id: str,
+    element_id: str,
+    kind: str,
+    target_id: str,
+    db: Db,
+    p: Me,
+    version: int | None = None,
+    if_match: IfMatch = None,
+) -> ProcessOut:
+    return await svc.unlink_element(
+        db, process_id, element_id, kind, target_id, version, if_match, p
+    )

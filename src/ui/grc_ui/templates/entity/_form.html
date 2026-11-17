@@ -45,6 +45,7 @@
         <button type="button" class="btn btn-ghost btn-xs mt-1" data-action="add-row" data-template="tpl-{{ f.key }}" data-target="rows-{{ f.key }}">{{ icon("plus") }} {{ _("Action") }}</button>
         {% elif f.kind == "text" %}<input id="f-{{ f.key }}" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm w-full" {% if err %}aria-invalid="true"{% endif %}>
         {% elif f.kind == "textarea" %}<textarea id="f-{{ f.key }}" name="{{ f.key }}" class="textarea textarea-bordered w-full text-sm" rows="{{ [3, [((v or '')|length // 90) + (v or '').count('\n') + 1, 20]|min]|max }}">{{ v or '' }}</textarea>
+        {% elif f.kind == "decimal" %}<input id="f-{{ f.key }}" type="number" step="any" inputmode="decimal" name="{{ f.key }}" value="{{ v if v is not none else 0 }}" class="input input-bordered input-sm w-40">
         {% elif f.kind == "number" %}<input id="f-{{ f.key }}" type="number" step="1" inputmode="numeric" name="{{ f.key }}" value="{{ v if v is not none else 0 }}" class="input input-bordered input-sm w-40">
         {% elif f.kind == "date" %}<input id="f-{{ f.key }}" type="date" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm">
         {% elif f.kind == "select" %}
@@ -59,7 +60,7 @@
           {% for id_, label in refs[f.ref] %}{% if id_ != item.id %}<option value="{{ id_ }}" {% if id_ == v %}selected{% endif %}>{{ label }}</option>{% endif %}{% endfor %}
         </select>
         {% elif f.kind in ("multiselect", "refs", "iso") %}
-        {% set choices = refs[f.get("ref", "roles")] if f.kind == "refs" else (lists[f.options]|map("string")|list if f.kind == "multiselect" else iso.keys()|list) %}
+        {% set choices = refs[f.get("ref", "roles")] if f.kind == "refs" else (lists[f.options]|map("string")|list if f.kind == "multiselect" else iso.keys()|select("startingwith", f.get("prefix", ""))|list) %}
         <input type="search" class="input input-bordered input-xs mb-1 w-full" placeholder="{{ _('Search…') }}" data-filter-choices aria-controls="c-{{ f.key }}" aria-label="{{ _('Search…') }}">
         <div id="c-{{ f.key }}" class="max-h-48 overflow-auto rounded border border-base-300 p-2 text-sm">
           {% for c in choices %}

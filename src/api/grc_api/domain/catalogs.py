@@ -154,6 +154,23 @@ OPPORTUNITY_CATEGORIES: Final = [
     "Compliance",
     "Information security",
 ]
+CONTROL_TYPES: Final = ["Preventive", "Detective", "Corrective"]
+AUTOMATION: Final = ["Manual", "IT-dependent manual", "Semi-automated", "Automated"]
+CONTROL_FREQUENCIES: Final = [
+    "Event-driven",
+    "Daily",
+    "Weekly",
+    "Monthly",
+    "Quarterly",
+    "Semi-annually",
+    "Annually",
+]
+YES_NO: Final = ["Yes", "No"]
+IMPLEMENTATION: Final = ["Planned", "Partially implemented", "Implemented", "Not implemented"]
+EFFECTIVENESS: Final = ["Not tested", "Effective", "Partially effective", "Not effective"]
+TEST_METHODS: Final = ["Inquiry", "Observation", "Inspection", "Re-performance", "Sampling"]
+KPI_FREQUENCIES: Final = ["Daily", "Weekly", "Monthly", "Quarterly", "Annually"]
+KPI_DIRECTIONS: Final = ["higher", "lower"]
 PROGRESS_STATUSES: Final = [
     "Identified",
     "Assessed",
@@ -189,6 +206,15 @@ def all_catalogs() -> dict[str, list[str]]:
         "impact_levels": list(IMPACT_LEVELS),
         "opportunity_categories": list(OPPORTUNITY_CATEGORIES),
         "progress_statuses": list(PROGRESS_STATUSES),
+        "control_types": list(CONTROL_TYPES),
+        "automation": list(AUTOMATION),
+        "control_frequencies": list(CONTROL_FREQUENCIES),
+        "yes_no": list(YES_NO),
+        "implementation": list(IMPLEMENTATION),
+        "effectiveness": list(EFFECTIVENESS),
+        "test_methods": list(TEST_METHODS),
+        "kpi_frequencies": list(KPI_FREQUENCIES),
+        "kpi_directions": list(KPI_DIRECTIONS),
         # level of every cell of the 4×4 matrix, row by row (likelihood 1..4 × impact 1..4)
         "risk_matrix": [
             str(risk.level(risk.score(li, im)))

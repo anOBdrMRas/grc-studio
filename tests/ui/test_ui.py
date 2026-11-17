@@ -85,3 +85,30 @@ def test_risk_form_values() -> None:
     assert values["process_ids"] == ["P-001"]
     assert "assessment" not in values
     assert "scale_guide" not in values
+
+
+def test_kpi_form_decimals() -> None:
+    form = FormData([("target", "99,5"), ("warning", "x"), ("critical", "95")])
+    values = values_from_form(FORMS["kpi"], form, editable_owner=True)
+    assert values["target"] == 99.5
+    assert values["warning"] == 0.0
+    assert values["critical"] == 95.0
+
+
+def test_number_filter() -> None:
+    from grc_ui.templating import num
+
+    assert num(99.0) == "99"
+    assert num(2.40) == "2.4"
+    assert num(10.05) == "10.05"
+
+
+def test_sparkline_scales_into_the_box() -> None:
+    from grc_ui.charts import HEIGHT, sparkline
+
+    s = sparkline([1.0, 2.0, 3.0], target=3.0)
+    assert s is not None
+    ys = [y for _, y in s["dots"]]
+    assert ys[0] > ys[-1]  # higher values are drawn higher
+    assert all(0 <= y <= HEIGHT for y in ys)
+    assert sparkline([]) is None

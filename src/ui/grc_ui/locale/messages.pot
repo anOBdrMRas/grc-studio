@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-17 18:39+0000\n"
+"POT-Creation-Date: 2026-11-17 19:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,6 +80,15 @@ msgstr ""
 msgid "Analysis and evaluation"
 msgstr ""
 
+msgid "Annex A controls"
+msgstr ""
+
+msgid "Annually"
+msgstr ""
+
+msgid "Applicable"
+msgstr ""
+
 msgid "Appointed officer"
 msgstr ""
 
@@ -113,6 +122,9 @@ msgstr ""
 msgid "Assign"
 msgstr ""
 
+msgid "Assign …"
+msgstr ""
+
 msgid "Assigned roles"
 msgstr ""
 
@@ -126,6 +138,9 @@ msgid "Audits"
 msgstr ""
 
 msgid "Authorities of the position"
+msgstr ""
+
+msgid "Automated"
 msgstr ""
 
 msgid "Availability"
@@ -294,16 +309,34 @@ msgstr ""
 msgid "Continual improvement"
 msgstr ""
 
+msgid "Control"
+msgstr ""
+
+msgid "Control design"
+msgstr ""
+
+msgid "Control objective"
+msgstr ""
+
 msgid "Control of changes"
 msgstr ""
 
 msgid "Control of documented information"
 msgstr ""
 
+msgid "Control of externally provided processes, products and services"
+msgstr ""
+
 msgid "Control of nonconforming outputs"
 msgstr ""
 
 msgid "Control of production and service provision"
+msgstr ""
+
+msgid "Control owner"
+msgstr ""
+
+msgid "Control type"
 msgstr ""
 
 msgid "Controlling"
@@ -313,6 +346,9 @@ msgid "Controls (ICS)"
 msgstr ""
 
 msgid "Core process"
+msgstr ""
+
+msgid "Corrective"
 msgstr ""
 
 msgid "Created"
@@ -327,6 +363,12 @@ msgstr ""
 msgid "Criminal conviction of officers or employees, existential claims."
 msgstr ""
 
+msgid "Critical"
+msgstr ""
+
+msgid "Critical threshold"
+msgstr ""
+
 msgid "Customer Repair & Service"
 msgstr ""
 
@@ -337,6 +379,18 @@ msgid "Customer focus"
 msgstr ""
 
 msgid "Customer satisfaction"
+msgstr ""
+
+msgid "Daily"
+msgstr ""
+
+msgid "Data source"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Degree of automation"
 msgstr ""
 
 msgid "Delegation of duties"
@@ -387,6 +441,12 @@ msgstr ""
 msgid "Design and development planning"
 msgstr ""
 
+msgid "Design effectiveness"
+msgstr ""
+
+msgid "Detective"
+msgstr ""
+
 msgid "Determining the requirements for products and services"
 msgstr ""
 
@@ -397,6 +457,9 @@ msgid "Diagram changed"
 msgstr ""
 
 msgid "Diagram saved"
+msgstr ""
+
+msgid "Direction"
 msgstr ""
 
 msgid "Discarded"
@@ -427,6 +490,15 @@ msgid "Edited"
 msgstr ""
 
 msgid "Education / qualification"
+msgstr ""
+
+msgid "Effective"
+msgstr ""
+
+msgid "Effectiveness"
+msgstr ""
+
+msgid "Effectiveness test"
 msgstr ""
 
 msgid "Efficiency"
@@ -480,6 +552,12 @@ msgstr ""
 msgid "Evaluation of compliance"
 msgstr ""
 
+msgid "Event-driven"
+msgstr ""
+
+msgid "Evidence / documentation"
+msgstr ""
+
 msgid "Expected benefit"
 msgstr ""
 
@@ -519,13 +597,22 @@ msgstr ""
 msgid "Fit to view"
 msgstr ""
 
+msgid "Formula"
+msgstr ""
+
 msgid "Four-eyes principle: whoever gave the business approval may not give the quality approval."
+msgstr ""
+
+msgid "Frequency"
 msgstr ""
 
 msgid "Functional authorities of the role"
 msgstr ""
 
 msgid "Functional role"
+msgstr ""
+
+msgid "Further ISO references"
 msgstr ""
 
 msgid "General (communication)"
@@ -627,6 +714,9 @@ msgstr ""
 msgid "I&A team"
 msgstr ""
 
+msgid "ICS check"
+msgstr ""
+
 msgid "ID"
 msgstr ""
 
@@ -648,10 +738,22 @@ msgstr ""
 msgid "ISO 9001 5.3"
 msgstr ""
 
+msgid "ISO 9001 6.2 / ISO 27001 6.2"
+msgstr ""
+
 msgid "ISO 9001 7.2"
 msgstr ""
 
+msgid "ISO 9001 7.5"
+msgstr ""
+
+msgid "ISO 9001 9.1.1"
+msgstr ""
+
 msgid "ISO references"
+msgstr ""
+
+msgid "IT-dependent manual"
 msgstr ""
 
 msgid "Identification and traceability"
@@ -667,6 +769,9 @@ msgid "Impact by type of consequence"
 msgstr ""
 
 msgid "Implementation status"
+msgstr ""
+
+msgid "Implemented"
 msgstr ""
 
 msgid "Improvement"
@@ -708,7 +813,13 @@ msgstr ""
 msgid "Inputs"
 msgstr ""
 
+msgid "Inquiry"
+msgstr ""
+
 msgid "Insignificant"
+msgstr ""
+
+msgid "Inspection"
 msgstr ""
 
 msgid "Integrated management system: processes, roles, positions and responsibilities."
@@ -732,16 +843,25 @@ msgstr ""
 msgid "Internal communication"
 msgstr ""
 
+msgid "Invalid value"
+msgstr ""
+
 msgid "Investigation processes"
 msgstr ""
 
 msgid "Job description"
 msgstr ""
 
+msgid "Justification (inclusion / exclusion)"
+msgstr ""
+
 msgid "Justified civil claims of limited amount."
 msgstr ""
 
 msgid "KPI"
+msgstr ""
+
+msgid "Key control"
 msgstr ""
 
 msgid "Language"
@@ -751,6 +871,12 @@ msgid "Last name"
 msgstr ""
 
 msgid "Last review"
+msgstr ""
+
+msgid "Last test"
+msgstr ""
+
+msgid "Last value"
 msgstr ""
 
 msgid "Lasting loss of trust in the market, international media coverage."
@@ -846,6 +972,9 @@ msgstr ""
 msgid "Mandatory training / awareness"
 msgstr ""
 
+msgid "Manual"
+msgstr ""
+
 msgid "Manufacturing Engineering"
 msgstr ""
 
@@ -870,6 +999,15 @@ msgstr ""
 msgid "May occur within 5–10 years."
 msgstr ""
 
+msgid "Measured values"
+msgstr ""
+
+msgid "Measurement frequency"
+msgstr ""
+
+msgid "Measurement rule"
+msgstr ""
+
 msgid "Measures to seize it"
 msgstr ""
 
@@ -886,6 +1024,9 @@ msgid "Monitoring and measuring resources"
 msgstr ""
 
 msgid "Monitoring, measurement, analysis and evaluation"
+msgstr ""
+
+msgid "Monthly"
 msgstr ""
 
 msgid "Name"
@@ -907,6 +1048,9 @@ msgid "New process"
 msgstr ""
 
 msgid "Next review"
+msgstr ""
+
+msgid "Next test"
 msgstr ""
 
 msgid "No"
@@ -933,6 +1077,9 @@ msgstr ""
 msgid "No roles assigned."
 msgstr ""
 
+msgid "No value yet"
+msgstr ""
+
 msgid "Noncompliance"
 msgstr ""
 
@@ -940,6 +1087,21 @@ msgid "Nonconformity and corrective action"
 msgstr ""
 
 msgid "None"
+msgstr ""
+
+msgid "None assigned."
+msgstr ""
+
+msgid "Not assigned to any process step yet."
+msgstr ""
+
+msgid "Not effective"
+msgstr ""
+
+msgid "Not implemented"
+msgstr ""
+
+msgid "Not tested"
 msgstr ""
 
 msgid "Not yet assessed"
@@ -951,7 +1113,13 @@ msgstr ""
 msgid "Notification to authority / register"
 msgstr ""
 
+msgid "Observation"
+msgstr ""
+
 msgid "Official requirement or warning."
+msgstr ""
+
+msgid "Operating effectiveness"
 msgstr ""
 
 msgid "Operation"
@@ -996,10 +1164,19 @@ msgstr ""
 msgid "Owner – you may edit"
 msgstr ""
 
+msgid "Partially effective"
+msgstr ""
+
+msgid "Partially implemented"
+msgstr ""
+
 msgid "Password"
 msgstr ""
 
 msgid "Performance evaluation"
+msgstr ""
+
+msgid "Performed by"
 msgstr ""
 
 msgid "Periodic (department session)"
@@ -1018,6 +1195,9 @@ msgid "Personnel"
 msgstr ""
 
 msgid "Persons"
+msgstr ""
+
+msgid "Planned"
 msgstr ""
 
 msgid "Planning"
@@ -1060,6 +1240,9 @@ msgid "Potential"
 msgstr ""
 
 msgid "Preservation"
+msgstr ""
+
+msgid "Preventive"
 msgstr ""
 
 msgid "Process"
@@ -1149,6 +1332,9 @@ msgstr ""
 msgid "Quality policy"
 msgstr ""
 
+msgid "Quarterly"
+msgstr ""
+
 msgid "R = responsible, A = accountable, C = consulted, I = informed"
 msgstr ""
 
@@ -1157,6 +1343,9 @@ msgid "RACI of {role} in step {step}: {raci}"
 msgstr ""
 
 msgid "Raising concerns (whistleblowing)"
+msgstr ""
+
+msgid "Re-performance"
 msgstr ""
 
 msgid "Read only"
@@ -1180,10 +1369,16 @@ msgstr ""
 msgid "Reason for the likelihood"
 msgstr ""
 
+msgid "Record value"
+msgstr ""
+
 msgid "Record-keeping"
 msgstr ""
 
 msgid "Reduce"
+msgstr ""
+
+msgid "Related objective"
 msgstr ""
 
 msgid "Release of products and services"
@@ -1238,6 +1433,12 @@ msgstr ""
 msgid "Responsible"
 msgstr ""
 
+msgid "Responsible for evaluation"
+msgstr ""
+
+msgid "Responsible for measuring"
+msgstr ""
+
 msgid "Review of the requirements"
 msgstr ""
 
@@ -1262,7 +1463,13 @@ msgstr ""
 msgid "Risk score"
 msgstr ""
 
+msgid "Risk without a control in this step"
+msgstr ""
+
 msgid "Risks"
+msgstr ""
+
+msgid "Risks addressed"
 msgstr ""
 
 msgid "Role"
@@ -1283,10 +1490,16 @@ msgstr ""
 msgid "Roles, responsibilities and authorities"
 msgstr ""
 
+msgid "Roles, responsibilities and authorities / compliance function"
+msgstr ""
+
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
 msgstr ""
 
 msgid "Sales"
+msgstr ""
+
+msgid "Sampling"
 msgstr ""
 
 msgid "Save"
@@ -1332,6 +1545,12 @@ msgid "Select an element in the diagram to assign roles with RACI."
 msgstr ""
 
 msgid "Select an entry or create a new one."
+msgstr ""
+
+msgid "Semi-annually"
+msgstr ""
+
+msgid "Semi-automated"
 msgstr ""
 
 msgid "Send back"
@@ -1413,6 +1632,9 @@ msgstr ""
 msgid "State of {date} ({user}) – read only, no restore."
 msgstr ""
 
+msgid "Statement of Applicability (ISO 27001)"
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
@@ -1423,6 +1645,9 @@ msgid "Steps with roles"
 msgstr ""
 
 msgid "Strategic"
+msgstr ""
+
+msgid "Suggested"
 msgstr ""
 
 msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
@@ -1440,13 +1665,28 @@ msgstr ""
 msgid "System roles (permissions in the tool)"
 msgstr ""
 
+msgid "Target"
+msgstr ""
+
+msgid "Target met"
+msgstr ""
+
 msgid "Target power of attorney of the position"
+msgstr ""
+
+msgid "Target value"
 msgstr ""
 
 msgid "Technology"
 msgstr ""
 
 msgid "Test System Solutions"
+msgstr ""
+
+msgid "Test method"
+msgstr ""
+
+msgid "Test result / findings"
 msgstr ""
 
 msgid "The demo sign-in is switched off."
@@ -1494,6 +1734,9 @@ msgstr ""
 msgid "Treatment status"
 msgstr ""
 
+msgid "Trend of the measured values"
+msgstr ""
+
 msgid "Type"
 msgstr ""
 
@@ -1509,10 +1752,16 @@ msgstr ""
 msgid "Unfounded or minor claims."
 msgstr ""
 
+msgid "Unit"
+msgstr ""
+
 msgid "Unsaved changes"
 msgstr ""
 
 msgid "Unsaved changes in the diagram will be lost."
+msgstr ""
+
+msgid "Used in process steps"
 msgstr ""
 
 msgid "User"
@@ -1530,6 +1779,12 @@ msgstr ""
 msgid "Validity & review"
 msgstr ""
 
+msgid "Value"
+msgstr ""
+
+msgid "Value recorded"
+msgstr ""
+
 msgid "Version"
 msgstr ""
 
@@ -1540,6 +1795,15 @@ msgid "View this state"
 msgstr ""
 
 msgid "Waiting for the I&A approval"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Warning threshold"
+msgstr ""
+
+msgid "Weekly"
 msgstr ""
 
 #, python-brace-format
@@ -1603,6 +1867,9 @@ msgstr ""
 msgid "employee"
 msgstr ""
 
+msgid "higher"
+msgstr ""
+
 msgid "ia"
 msgstr ""
 
@@ -1610,6 +1877,12 @@ msgid "last changed"
 msgstr ""
 
 msgid "law, contract, customer requirement, code · ISO 37301 4.5"
+msgstr ""
+
+msgid "lower"
+msgstr ""
+
+msgid "measurement"
 msgstr ""
 
 msgid "not assessed"
@@ -1652,7 +1925,19 @@ msgid "with line management responsibility"
 msgstr ""
 
 #, python-brace-format
+msgid "{item} assigned to step {step}"
+msgstr ""
+
+#, python-brace-format
+msgid "{item} removed from step {step}"
+msgstr ""
+
+#, python-brace-format
 msgid "{n} risks"
+msgstr ""
+
+#, python-brace-format
+msgid "{risk} has no mitigating control in this step."
 msgstr ""
 
 #, python-brace-format

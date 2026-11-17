@@ -26,7 +26,9 @@ async def ref_options(ctx: UiContext) -> dict[str, list[tuple[str, str]]]:
     roles = await ctx.api.roles_list()
     positions = await ctx.api.positions_list()
     processes = await ctx.api.processes_list() if ctx.can("processes:read") else []
+    risks = await ctx.api.risks_list() if ctx.can("grc:read") else []
     return {
+        "risks": [(x["id"], f"{x['code']} {x['title']}") for x in risks],
         "processes": [(x["id"], f"{x['code']} {x['title']}") for x in processes],
         "people": [(p["id"], p["name"]) for p in people],
         "roles": [(r["id"], f"{r['code']} {r['title']}") for r in roles],

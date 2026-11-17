@@ -606,6 +606,211 @@ OPPORTUNITY: list[Section] = [
     },
 ]
 
+CONTROL: list[Section] = [
+    {
+        "title": N_("Master data"),
+        "fields": [
+            {"key": "code", "label": N_("ID"), "kind": "readonly"},
+            {"key": "title", "label": N_("Title"), "kind": "text"},
+            {"key": "description", "label": N_("Description"), "kind": "textarea", "wide": True},
+            {
+                "key": "objective",
+                "label": N_("Control objective"),
+                "kind": "textarea",
+                "wide": True,
+            },
+            {"key": "key_control", "label": N_("Key control"), "kind": "bool"},
+        ],
+    },
+    {
+        "title": N_("Control design"),
+        "fields": [
+            {
+                "key": "control_type",
+                "label": N_("Control type"),
+                "kind": "select",
+                "options": "control_types",
+                "empty": True,
+            },
+            {
+                "key": "automation",
+                "label": N_("Degree of automation"),
+                "kind": "select",
+                "options": "automation",
+                "empty": True,
+            },
+            {
+                "key": "frequency",
+                "label": N_("Frequency"),
+                "kind": "select",
+                "options": "control_frequencies",
+                "empty": True,
+            },
+            {
+                "key": "owner_role_id",
+                "label": N_("Control owner"),
+                "kind": "ref",
+                "ref": "roles",
+                "owner": True,
+            },
+            {
+                "key": "executor_role_id",
+                "label": N_("Performed by"),
+                "kind": "ref",
+                "ref": "roles",
+            },
+            {
+                "key": "evidence",
+                "label": N_("Evidence / documentation"),
+                "kind": "text",
+                "hint": N_("ISO 9001 7.5"),
+            },
+            {
+                "key": "mitigates_risk_ids",
+                "label": N_("Risks addressed"),
+                "kind": "refs",
+                "ref": "risks",
+                "wide": True,
+            },
+        ],
+    },
+    {
+        "title": N_("Statement of Applicability (ISO 27001)"),
+        "fields": [
+            {
+                "key": "annex_a",
+                "label": N_("Annex A controls"),
+                "kind": "iso",
+                "prefix": "27001:A.",
+                "wide": True,
+            },
+            {
+                "key": "soa_applicable",
+                "label": N_("Applicable"),
+                "kind": "select",
+                "options": "yes_no",
+                "empty": True,
+            },
+            {
+                "key": "implementation",
+                "label": N_("Implementation status"),
+                "kind": "select",
+                "options": "implementation",
+                "empty": True,
+            },
+            {
+                "key": "soa_justification",
+                "label": N_("Justification (inclusion / exclusion)"),
+                "kind": "textarea",
+                "wide": True,
+            },
+        ],
+    },
+    {
+        "title": N_("Effectiveness test"),
+        "fields": [
+            {
+                "key": "test_method",
+                "label": N_("Test method"),
+                "kind": "select",
+                "options": "test_methods",
+                "empty": True,
+            },
+            {
+                "key": "design_effectiveness",
+                "label": N_("Design effectiveness"),
+                "kind": "select",
+                "options": "effectiveness",
+            },
+            {
+                "key": "operating_effectiveness",
+                "label": N_("Operating effectiveness"),
+                "kind": "select",
+                "options": "effectiveness",
+            },
+            {"key": "last_test", "label": N_("Last test"), "kind": "date"},
+            {"key": "next_test", "label": N_("Next test"), "kind": "date"},
+            {
+                "key": "test_result",
+                "label": N_("Test result / findings"),
+                "kind": "textarea",
+                "wide": True,
+            },
+        ],
+    },
+    {
+        "title": N_("Standard references"),
+        "fields": [
+            {
+                "key": "iso_refs",
+                "label": N_("Further ISO references"),
+                "kind": "iso",
+                "wide": True,
+            }
+        ],
+    },
+]
+
+KPI: list[Section] = [
+    {
+        "title": N_("Master data"),
+        "fields": [
+            {"key": "code", "label": N_("ID"), "kind": "readonly"},
+            {"key": "title", "label": N_("Title"), "kind": "text"},
+            {"key": "description", "label": N_("Description"), "kind": "textarea", "wide": True},
+            {
+                "key": "objective",
+                "label": N_("Related objective"),
+                "kind": "text",
+                "wide": True,
+                "hint": N_("ISO 9001 6.2 / ISO 27001 6.2"),
+            },
+        ],
+    },
+    {
+        "title": N_("Measurement rule"),
+        "fields": [
+            {"key": "formula", "label": N_("Formula"), "kind": "text", "wide": True},
+            {"key": "unit", "label": N_("Unit"), "kind": "text"},
+            {
+                "key": "direction",
+                "label": N_("Direction"),
+                "kind": "select",
+                "options": "kpi_directions",
+            },
+            {"key": "target", "label": N_("Target value"), "kind": "decimal"},
+            {"key": "warning", "label": N_("Warning threshold"), "kind": "decimal"},
+            {"key": "critical", "label": N_("Critical threshold"), "kind": "decimal"},
+            {
+                "key": "frequency",
+                "label": N_("Measurement frequency"),
+                "kind": "select",
+                "options": "kpi_frequencies",
+                "empty": True,
+            },
+            {"key": "data_source", "label": N_("Data source"), "kind": "text"},
+            {
+                "key": "owner_role_id",
+                "label": N_("Responsible for measuring"),
+                "kind": "ref",
+                "ref": "roles",
+                "owner": True,
+                "hint": N_("ISO 9001 9.1.1"),
+            },
+            {
+                "key": "evaluator_role_id",
+                "label": N_("Responsible for evaluation"),
+                "kind": "ref",
+                "ref": "roles",
+            },
+        ],
+    },
+    {
+        "title": N_("Standard references"),
+        "fields": [{"key": "iso_refs", "label": N_("ISO references"), "kind": "iso", "wide": True}],
+    },
+]
+
 FORMS: dict[str, list[Section]] = {
     "role": ROLE,
     "position": POSITION,
@@ -613,4 +818,6 @@ FORMS: dict[str, list[Section]] = {
     "process": PROCESS,
     "risk": RISK,
     "opportunity": OPPORTUNITY,
+    "control": CONTROL,
+    "kpi": KPI,
 }

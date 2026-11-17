@@ -23,7 +23,7 @@
       {% if item.rights is defined and item.rights.is_owner and not item.rights.can_manage %}<span class="badge badge-accent">{{ _("Owner – you may edit") }}</span>{% endif %}
     </div>
   </div>
-  {% if item.rights is defined %}{% include "entity/_wf.html" %}{% endif %}
+  {% if item.rights is defined and item.status is defined and mod.kind != "user" %}{% include "entity/_wf.html" %}{% endif %}
   {% if banner %}
   <div class="alert alert-warning py-2 text-sm" role="status">
     {{ icon("lock") }}
@@ -63,6 +63,17 @@
   <fieldset class="rounded-box border border-base-300 p-3">
     <legend class="px-1 text-sm font-semibold text-secondary">{{ _("Position holders") }}</legend>
     <p class="text-sm">{{ item.holders|map(attribute="name")|join(", ") or _("vacant") }}</p>
+  </fieldset>
+  {% endif %}
+  {% if mod.kind == "kpi" %}{% include "entity/_kpi.html" %}{% endif %}
+  {% if item.used_in is defined %}
+  <fieldset class="rounded-box border border-base-300 p-3">
+    <legend class="px-1 text-sm font-semibold text-secondary">{{ _("Used in process steps") }}</legend>
+    {% if item.used_in %}
+    <ul class="grid gap-1 text-sm">
+      {% for u in item.used_in %}<li><a class="link link-secondary" href="/processes/{{ u.process_id }}?step={{ u.element_id }}">{{ u.process_label }}</a> · {{ u.element_name }}</li>{% endfor %}
+    </ul>
+    {% else %}<p class="text-sm opacity-70">{{ _("Not assigned to any process step yet.") }}</p>{% endif %}
   </fieldset>
   {% endif %}
   <div id="history-{{ target }}">

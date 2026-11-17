@@ -8,6 +8,15 @@ from grc_api.schemas.common import Rights, WorkflowEntryOut
 Level = Literal["low", "medium", "high"]
 
 
+class Usage(BaseModel):
+    """A process step the element is assigned to."""
+
+    process_id: str
+    process_label: str
+    element_id: str
+    element_name: str
+
+
 class RiskAction(BaseModel):
     """Treatment action with the person responsible for it."""
 
@@ -64,6 +73,7 @@ class RiskOut(RiskFields):
     created_by_user_id: str | None
     assessment: Assessment
     rights: Rights
+    used_in: list[Usage]
     workflow: list[WorkflowEntryOut]
     released: dict[str, Any] | None
     labels: dict[str, str] = Field(description="display names of referenced ids")
@@ -109,6 +119,7 @@ class OpportunityOut(OpportunityFields):
     created_by_user_id: str | None
     potential: int = Field(description="likelihood × benefit")
     rights: Rights
+    used_in: list[Usage]
     workflow: list[WorkflowEntryOut]
     released: dict[str, Any] | None
     labels: dict[str, str]
@@ -123,4 +134,103 @@ class OpportunityListItem(BaseModel):
     potential: int
     progress_status: str
     status: str
+    is_owner: bool
+
+
+class ControlFields(BaseModel):
+    title: str = ""
+    description: str = ""
+    objective: str = ""
+    key_control: bool = False
+    control_type: str = ""
+    automation: str = ""
+    frequency: str = ""
+    owner_role_id: str | None = None
+    executor_role_id: str | None = None
+    evidence: str = ""
+    mitigates_risk_ids: list[str] = Field(default_factory=list)
+    annex_a: list[str] = Field(default_factory=list, description="ISO 27001 Annex A clause ids")
+    soa_applicable: str = ""
+    implementation: str = ""
+    soa_justification: str = ""
+    test_method: str = ""
+    design_effectiveness: str = "Not tested"
+    operating_effectiveness: str = "Not tested"
+    last_test: date | None = None
+    next_test: date | None = None
+    test_result: str = ""
+    iso_refs: list[str] = Field(default_factory=list)
+
+
+class ControlOut(ControlFields):
+    id: str
+    code: str
+    version: int
+    created_at: datetime
+    updated_at: datetime
+    rights: Rights
+    used_in: list[Usage]
+    labels: dict[str, str]
+
+
+class ControlListItem(BaseModel):
+    id: str
+    code: str
+    title: str
+    control_type: str
+    key_control: bool
+    operating_effectiveness: str
+    is_owner: bool
+
+
+Traffic = Literal["green", "yellow", "red", "none"]
+
+
+class KpiFields(BaseModel):
+    title: str = ""
+    description: str = ""
+    objective: str = ""
+    formula: str = ""
+    unit: str = ""
+    direction: str = Field(default="higher", pattern="^(higher|lower)$")
+    target: float = 0
+    warning: float = 0
+    critical: float = 0
+    frequency: str = ""
+    data_source: str = ""
+    owner_role_id: str | None = None
+    evaluator_role_id: str | None = None
+    iso_refs: list[str] = Field(default_factory=list)
+
+
+class Measurement(BaseModel):
+    date: date
+    value: float
+
+
+class MeasurementIn(Measurement):
+    pass
+
+
+class KpiOut(KpiFields):
+    id: str
+    code: str
+    version: int
+    created_at: datetime
+    updated_at: datetime
+    measurements: list[Measurement]
+    traffic: Traffic = Field(description="traffic light of the latest value")
+    can_measure: bool = Field(description="may record measured values")
+    rights: Rights
+    used_in: list[Usage]
+    labels: dict[str, str]
+
+
+class KpiListItem(BaseModel):
+    id: str
+    code: str
+    title: str
+    unit: str
+    last_value: float | None
+    traffic: Traffic = Field(description="traffic light of the latest value")
     is_owner: bool

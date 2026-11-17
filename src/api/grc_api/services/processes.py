@@ -3,19 +3,24 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.auth.principal import Principal
+from grc_api.domain import ics
 from grc_api.domain.bpmn import element_names, is_bpmn
 from grc_api.domain.codes import next_code
 from grc_api.errors import ProblemError
-from grc_api.models import Process
+from grc_api.models import Control, Kpi, Opportunity, Process, Risk
 from grc_api.repositories import audit, elements
 from grc_api.repositories import processes as proc_repo
 from grc_api.schemas.common import ElementPatch, Revision, StateView, WorkflowAction
+from grc_api.schemas.grc import Usage
 from grc_api.schemas.processes import (
     DiagramIn,
     DiagramOut,
+    IcsGap,
     ProcessFields,
     ProcessListItem,
     ProcessOut,
+    StepLinkIn,
+    StepLinkOut,
     StepRole,
     StepRoleIn,
 )
@@ -78,6 +83,31 @@ async def process_view(
             steps.setdefault(a.element_id, []).append(
                 StepRole(role_id=role.id, code=role.code, title=role.title, raci=a.raci)
             )
+    elements_by_kind = await grc_index(db)
+    links: dict[str, list[StepLinkOut]] = {}
+    for link in await proc_repo.links(db, x.id):
+        target = elements_by_kind[link.kind].get(link.target_id)
+        if target:
+            links.setdefault(link.element_id, []).append(
+                StepLinkOut(
+                    kind=link.kind,
+                    target_id=link.target_id,
+                    code=target[0],
+                    title=target[1],
+                )
+            )
+    mitigates = await mitigation(db)
+    gaps: dict[str, list[IcsGap]] = {}
+    for element_id, items in links.items():
+        found = ics.gaps(
+            [i.target_id for i in items if i.kind == "risk"],
+            [i.target_id for i in items if i.kind == "control"],
+            mitigates,
+        )
+        if found:
+            gaps[element_id] = [
+                IcsGap(risk_id=g.risk_id, suggestions=list(g.suggestions)) for g in found
+            ]
     return ProcessOut(
         **common.fields_of(x, ProcessFields),
         id=x.id,
@@ -90,6 +120,8 @@ async def process_view(
         rights=common.rights("process", x, org, p),
         owners=[org.name(u) for u in org.owners("process", x)],
         steps=steps,
+        links=links,
+        ics_gaps=gaps,
         workflow=await common.workflow_out(db, "process", x.id, org),
         released=x.released,
         labels={x.owner_role_id: org.label(x.owner_role_id)} if x.owner_role_id else {},
@@ -312,3 +344,112 @@ async def state(db: AsyncSession, process_id: str, revision_id: int, p: Principa
         common.fields_of(x, ProcessFields),
         await load_org(db),
     )
+
+
+# ---- risks, opportunities, controls and KPI of process steps -----------------------------------
+
+LINK_MODELS: dict[str, type[Risk] | type[Opportunity] | type[Control] | type[Kpi]] = {
+    "risk": Risk,
+    "opportunity": Opportunity,
+    "control": Control,
+    "kpi": Kpi,
+}
+
+
+async def grc_index(db: AsyncSession) -> dict[str, dict[str, tuple[str, str]]]:
+    """kind → id → (code, title) of the elements that can be linked to a step."""
+    return {
+        kind: {e.id: (e.code, e.title) for e in await elements.list_all(db, model)}
+        for kind, model in LINK_MODELS.items()
+    }
+
+
+async def mitigation(db: AsyncSession) -> dict[str, list[str]]:
+    """control id → risks it mitigates."""
+    return {c.id: list(c.mitigates_risk_ids) for c in await elements.list_all(db, Control)}
+
+
+async def usages(db: AsyncSession, kind: str, target_id: str) -> list[Usage]:
+    """The process steps an element is assigned to."""
+    out: list[Usage] = []
+    names: dict[str, tuple[str, dict[str, str]]] = {}
+    for link in await proc_repo.links_to(db, kind, target_id):
+        if link.process_id not in names:
+            x = await elements.get(db, Process, link.process_id)
+            if x is None:
+                continue
+            names[x.id] = (f"{x.code} {x.title}", element_names(x.xml))
+        label, steps = names[link.process_id]
+        out.append(
+            Usage(
+                process_id=link.process_id,
+                process_label=label,
+                element_id=link.element_id,
+                element_name=steps.get(link.element_id, link.element_id),
+            )
+        )
+    return out
+
+
+async def link_element(
+    db: AsyncSession,
+    process_id: str,
+    element_id: str,
+    body: StepLinkIn,
+    if_match: str | None,
+    p: Principal,
+) -> ProcessOut:
+    target = await elements.get(db, LINK_MODELS[body.kind], body.target_id)
+    if target is None:
+        raise ProblemError("invalid", "Unknown element")
+    x = await common.get_or_404(db, Process, process_id)
+    if await proc_repo.find_link(db, process_id, element_id, body.kind, body.target_id):
+        return await process_view(db, process_id, p)
+    await _step_change(
+        db,
+        process_id,
+        common.expected_version(if_match, body.version),
+        p,
+        "{item} assigned to step {step}",
+        {
+            "item": f"{target.code} {target.title}",
+            "step": element_names(x.xml).get(element_id, element_id),
+        },
+    )
+    await proc_repo.add_link(db, process_id, element_id, body.kind, body.target_id)
+    await db.commit()
+    db.expire_all()
+    return await process_view(db, process_id, p)
+
+
+async def unlink_element(
+    db: AsyncSession,
+    process_id: str,
+    element_id: str,
+    kind: str,
+    target_id: str,
+    version: int | None,
+    if_match: str | None,
+    p: Principal,
+) -> ProcessOut:
+    if kind not in LINK_MODELS:
+        raise ProblemError("invalid", "Unknown kind")
+    x = await common.get_or_404(db, Process, process_id)
+    if await proc_repo.find_link(db, process_id, element_id, kind, target_id) is None:
+        raise ProblemError("not_found", "Assignment not found")
+    target = await elements.get(db, LINK_MODELS[kind], target_id)
+    await _step_change(
+        db,
+        process_id,
+        common.expected_version(if_match, version),
+        p,
+        "{item} removed from step {step}",
+        {
+            "item": f"{target.code} {target.title}" if target else target_id,
+            "step": element_names(x.xml).get(element_id, element_id),
+        },
+    )
+    await proc_repo.remove_link(db, process_id, element_id, kind, target_id)
+    await db.commit()
+    db.expire_all()
+    return await process_view(db, process_id, p)

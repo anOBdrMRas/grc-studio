@@ -30,17 +30,27 @@
     if (state) state.textContent = d ? state.getAttribute('data-msg-dirty') : '';
   }
 
+  // assignments per step as small badges: roles (R), risks, controls, opportunities, KPI; red when the ICS check finds a gap
+  var BADGE = [['role', 'R'], ['risk', '\u26a0'], ['control', '\u2713'], ['opportunity', '\u2197'], ['kpi', '\u25d4']];
   function badges() {
     fetch('/processes/' + encodeURIComponent(pid) + '/badges.json', { credentials: 'same-origin' })
       .then(function (r) { return r.json(); })
-      .then(function (counts) {
+      .then(function (data) {
         var overlays = modeler.get('overlays');
         overlays.remove({ type: 'roles' });
-        Object.keys(counts).forEach(function (id) {
-          var badge = document.createElement('span');
-          badge.className = 'bpmn-badge';
-          badge.textContent = counts[id] + ' R';
-          try { overlays.add(id, 'roles', { position: { top: -9, right: 12 }, html: badge }); } catch (e) { /* element no longer in the diagram */ }
+        Object.keys(data.counts).forEach(function (id) {
+          var c = data.counts[id];
+          var box = document.createElement('span');
+          box.className = 'bpmn-badges';
+          BADGE.forEach(function (b) {
+            if (!c[b[0]]) return;
+            var badge = document.createElement('span');
+            badge.className = 'bpmn-badge kind-' + b[0] + (b[0] === 'risk' && c.gap ? ' is-gap' : '');
+            badge.textContent = c[b[0]] + ' ' + b[1];
+            badge.title = data.titles[b[0]] + (b[0] === 'risk' && c.gap ? ' \u2013 ' + data.titles.gap : '');
+            box.appendChild(badge);
+          });
+          try { overlays.add(id, 'roles', { position: { top: -9, right: 4 }, html: box }); } catch (e) { /* element no longer in the diagram */ }
         });
       });
   }
@@ -51,6 +61,14 @@
     .then(function () {
       modeler.get('canvas').zoom('fit-viewport');
       badges();
+      // ?step=<element id>: open that step (links from risks, controls, KPI …)
+      var wanted = new URLSearchParams(window.location.search).get('step');
+      var el = wanted && modeler.get('elementRegistry').get(wanted);
+      if (el) {
+        modeler.get('selection').select(el);
+        var url = '/processes/' + encodeURIComponent(pid) + '/steps/' + encodeURIComponent(el.id) + '?name=' + encodeURIComponent(el.businessObject.name || '');
+        window.htmx.ajax('GET', url, { target: '#step-panel', swap: 'innerHTML' });
+      }
       if (editable) modeler.on('commandStack.changed', function () { setDirty(true); });
     });
 

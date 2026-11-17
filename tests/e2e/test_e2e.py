@@ -136,3 +136,23 @@ def test_risk_matrix_filters_the_list(page: "Page") -> None:
         assert title
     page.click("text=Alle anzeigen")
     expect(page.locator(".risk-cell[aria-current=true]")).to_have_count(0)
+
+
+def test_control_assigned_to_step_closes_ics_gap(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/processes/P-001?step=Task_Bestellung")
+    expect(page.locator("#step-panel")).to_contain_text("IKS-Prüfung", timeout=15000)
+    form = page.locator("#step-panel form:has(input[name=kind][value=control])")
+    form.locator("select").select_option("K-001")
+    form.locator("button").click()
+    expect(page.locator("#step-panel .alert-warning")).to_have_count(0)
+
+
+def test_kpi_value_recorded(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/kpi/KPI-003")
+    page.fill("#detail input[name=date]", "2026-12-31")
+    page.fill("#detail input[name=value]", "100")
+    page.click("#detail button:has-text('Wert erfassen')")
+    expect(page.locator("#detail")).to_contain_text("Ziel erreicht")
+    expect(page.locator("#detail .kpi-chart")).to_be_visible()

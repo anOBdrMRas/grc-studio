@@ -33,6 +33,12 @@ def values_from_form(
                     for t, o in zip(texts, owners, strict=False)
                     if str(t).strip()
                 ]
+            elif kind == "decimal":
+                raw = str(form.get(key) or "0").strip().replace(",", ".")
+                try:
+                    out[key] = float(raw)
+                except ValueError:
+                    out[key] = 0.0
             elif kind == "number":
                 raw = str(form.get(key) or "0").strip()
                 out[key] = int(raw) if raw.lstrip("-").isdigit() else 0

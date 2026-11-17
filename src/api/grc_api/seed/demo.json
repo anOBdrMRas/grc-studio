@@ -1889,6 +1889,108 @@
      "role_id": "RO-005",
      "raci": "A"
     }
+   ],
+   "links": [
+    {
+     "element_id": "Task_Bedarf",
+     "kind": "kpi",
+     "target_id": "KPI-002"
+    },
+    {
+     "element_id": "Task_Genehmigen",
+     "kind": "risk",
+     "target_id": "R-001"
+    },
+    {
+     "element_id": "Task_Genehmigen",
+     "kind": "control",
+     "target_id": "K-001"
+    },
+    {
+     "element_id": "Task_Genehmigen",
+     "kind": "kpi",
+     "target_id": "KPI-001"
+    },
+    {
+     "element_id": "Sub_Lieferant",
+     "kind": "opportunity",
+     "target_id": "CH-001"
+    },
+    {
+     "element_id": "Task_Vergleich",
+     "kind": "opportunity",
+     "target_id": "CH-001"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "kind": "risk",
+     "target_id": "R-002"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "kind": "risk",
+     "target_id": "R-003"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "kind": "control",
+     "target_id": "K-003"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "kind": "control",
+     "target_id": "K-004"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "kind": "kpi",
+     "target_id": "KPI-003"
+    },
+    {
+     "element_id": "Task_Vergabe",
+     "kind": "risk",
+     "target_id": "R-002"
+    },
+    {
+     "element_id": "Task_Vergabe",
+     "kind": "control",
+     "target_id": "K-002"
+    },
+    {
+     "element_id": "Task_Bestellung",
+     "kind": "risk",
+     "target_id": "R-001"
+    },
+    {
+     "element_id": "Task_WE",
+     "kind": "risk",
+     "target_id": "R-005"
+    },
+    {
+     "element_id": "Task_WE",
+     "kind": "control",
+     "target_id": "K-006"
+    },
+    {
+     "element_id": "Task_WE",
+     "kind": "kpi",
+     "target_id": "KPI-004"
+    },
+    {
+     "element_id": "Task_Rechnung",
+     "kind": "risk",
+     "target_id": "R-004"
+    },
+    {
+     "element_id": "Task_Rechnung",
+     "kind": "opportunity",
+     "target_id": "CH-002"
+    },
+    {
+     "element_id": "Task_Rechnung",
+     "kind": "control",
+     "target_id": "K-005"
+    }
    ]
   },
   {
@@ -1945,6 +2047,28 @@
      "role_id": "RO-007",
      "raci": "A"
     }
+   ],
+   "links": [
+    {
+     "element_id": "IAM_Genehmigung",
+     "kind": "risk",
+     "target_id": "R-006"
+    },
+    {
+     "element_id": "IAM_Rezert",
+     "kind": "risk",
+     "target_id": "R-006"
+    },
+    {
+     "element_id": "IAM_Rezert",
+     "kind": "control",
+     "target_id": "K-007"
+    },
+    {
+     "element_id": "IAM_Rezert",
+     "kind": "kpi",
+     "target_id": "KPI-005"
+    }
    ]
   },
   {
@@ -1998,7 +2122,8 @@
      "role_id": "RO-010",
      "raci": "R"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-004",
@@ -2051,7 +2176,8 @@
      "role_id": "RO-010",
      "raci": "R"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-005",
@@ -2104,7 +2230,8 @@
      "role_id": "RO-010",
      "raci": "I"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-006",
@@ -2167,7 +2294,8 @@
      "role_id": "RO-005",
      "raci": "R"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-007",
@@ -2210,7 +2338,8 @@
      "role_id": "RO-008",
      "raci": "R"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-008",
@@ -2293,7 +2422,8 @@
      "role_id": "RO-008",
      "raci": "R"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-009",
@@ -2336,7 +2466,8 @@
      "role_id": "RO-011",
      "raci": "R"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-010",
@@ -2389,7 +2520,8 @@
      "role_id": "RO-002",
      "raci": "A"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-011",
@@ -2432,7 +2564,8 @@
      "role_id": "RO-002",
      "raci": "I"
     }
-   ]
+   ],
+   "links": []
   },
   {
    "id": "P-012",
@@ -2480,7 +2613,8 @@
      "role_id": "RO-009",
      "raci": "R"
     }
-   ]
+   ],
+   "links": []
   }
  ],
  "risks": [
@@ -2920,6 +3054,382 @@
    "doc_version": "0.1",
    "released": null,
    "workflow": []
+  }
+ ],
+ "controls": [
+  {
+   "id": "K-001",
+   "code": "K-001",
+   "title": "Systemseitige Freigabe von Bedarfsanforderungen",
+   "description": "",
+   "objective": "Nur genehmigte Bedarfe werden bestellt.",
+   "key_control": true,
+   "control_type": "Preventive",
+   "automation": "Automated",
+   "frequency": "Event-driven",
+   "owner_role_id": "RO-004",
+   "executor_role_id": "RO-002",
+   "evidence": "Workflow-Log im ERP",
+   "mitigates_risk_ids": [
+    "R-001"
+   ],
+   "annex_a": [],
+   "soa_applicable": "Yes",
+   "implementation": "Implemented",
+   "soa_justification": "",
+   "test_method": "Inspection",
+   "design_effectiveness": "Effective",
+   "operating_effectiveness": "Effective",
+   "last_test": "2026-03-15",
+   "next_test": "2027-03-15",
+   "test_result": "",
+   "iso_refs": [
+    "9001:8.4"
+   ]
+  },
+  {
+   "id": "K-002",
+   "code": "K-002",
+   "title": "Vier-Augen-Prinzip Vergabeentscheidung",
+   "description": "",
+   "objective": "Vergaben > 25 TEUR werden durch zwei Personen entschieden und dokumentiert.",
+   "key_control": true,
+   "control_type": "Preventive",
+   "automation": "Manual",
+   "frequency": "Event-driven",
+   "owner_role_id": "RO-004",
+   "executor_role_id": "RO-003",
+   "evidence": "Vergabevermerk",
+   "mitigates_risk_ids": [
+    "R-002",
+    "R-001"
+   ],
+   "annex_a": [
+    "27001:A.5.3"
+   ],
+   "soa_applicable": "Yes",
+   "implementation": "Implemented",
+   "soa_justification": "",
+   "test_method": "Inspection",
+   "design_effectiveness": "Effective",
+   "operating_effectiveness": "Partially effective",
+   "last_test": "2026-02-01",
+   "next_test": null,
+   "test_result": "2 von 25 Stichproben ohne Zweitunterschrift.",
+   "iso_refs": [
+    "37301:8.2"
+   ]
+  },
+  {
+   "id": "K-003",
+   "code": "K-003",
+   "title": "Geschäftspartnerprüfung (Sanktionslisten / Integrity Check)",
+   "description": "",
+   "objective": "Keine Geschäftsbeziehungen mit sanktionierten oder unzuverlässigen Partnern.",
+   "key_control": false,
+   "control_type": "Preventive",
+   "automation": "Semi-automated",
+   "frequency": "Event-driven",
+   "owner_role_id": "RO-006",
+   "executor_role_id": "RO-003",
+   "evidence": "Screening-Report",
+   "mitigates_risk_ids": [
+    "R-002"
+   ],
+   "annex_a": [],
+   "soa_applicable": "Yes",
+   "implementation": "Implemented",
+   "soa_justification": "",
+   "test_method": "Inspection",
+   "design_effectiveness": "Not tested",
+   "operating_effectiveness": "Not tested",
+   "last_test": null,
+   "next_test": null,
+   "test_result": "",
+   "iso_refs": [
+    "37301:8.2",
+    "37301:4.6"
+   ]
+  },
+  {
+   "id": "K-004",
+   "code": "K-004",
+   "title": "IS-Lieferantenbewertung & vertragliche IS-Anforderungen",
+   "description": "",
+   "objective": "Lieferanten mit Datenzugriff erfüllen definierte IS-Mindestanforderungen.",
+   "key_control": false,
+   "control_type": "Preventive",
+   "automation": "Manual",
+   "frequency": "Event-driven",
+   "owner_role_id": "RO-007",
+   "executor_role_id": "RO-003",
+   "evidence": "Lieferanten-Fragebogen, NDA, AV-Vertrag",
+   "mitigates_risk_ids": [
+    "R-003"
+   ],
+   "annex_a": [
+    "27001:A.5.19",
+    "27001:A.5.20",
+    "27001:A.5.21",
+    "27001:A.5.22"
+   ],
+   "soa_applicable": "Yes",
+   "implementation": "Partially implemented",
+   "soa_justification": "Erforderlich wegen Weitergabe vertraulicher Daten an Lieferanten.",
+   "test_method": "Inspection",
+   "design_effectiveness": "Not tested",
+   "operating_effectiveness": "Not tested",
+   "last_test": null,
+   "next_test": null,
+   "test_result": "",
+   "iso_refs": []
+  },
+  {
+   "id": "K-005",
+   "code": "K-005",
+   "title": "3-Way-Match (Bestellung / Wareneingang / Rechnung)",
+   "description": "",
+   "objective": "Nur berechtigte Rechnungen werden bezahlt.",
+   "key_control": true,
+   "control_type": "Detective",
+   "automation": "Automated",
+   "frequency": "Event-driven",
+   "owner_role_id": "RO-017",
+   "executor_role_id": "RO-005",
+   "evidence": "",
+   "mitigates_risk_ids": [
+    "R-004"
+   ],
+   "annex_a": [],
+   "soa_applicable": "Yes",
+   "implementation": "Implemented",
+   "soa_justification": "",
+   "test_method": "Inspection",
+   "design_effectiveness": "Effective",
+   "operating_effectiveness": "Effective",
+   "last_test": "2026-06-30",
+   "next_test": null,
+   "test_result": "",
+   "iso_refs": []
+  },
+  {
+   "id": "K-006",
+   "code": "K-006",
+   "title": "Wareneingangsprüfung nach Prüfplan",
+   "description": "",
+   "objective": "Fehlerhafte Ware wird erkannt und gesperrt.",
+   "key_control": false,
+   "control_type": "Detective",
+   "automation": "Manual",
+   "frequency": "Event-driven",
+   "owner_role_id": "RO-004",
+   "executor_role_id": "RO-008",
+   "evidence": "WE-Prüfprotokoll",
+   "mitigates_risk_ids": [
+    "R-005"
+   ],
+   "annex_a": [],
+   "soa_applicable": "Yes",
+   "implementation": "Implemented",
+   "soa_justification": "",
+   "test_method": "Inspection",
+   "design_effectiveness": "Not tested",
+   "operating_effectiveness": "Not tested",
+   "last_test": null,
+   "next_test": null,
+   "test_result": "",
+   "iso_refs": [
+    "9001:8.6"
+   ]
+  },
+  {
+   "id": "K-007",
+   "code": "K-007",
+   "title": "Halbjährliche Rezertifizierung von Berechtigungen",
+   "description": "",
+   "objective": "Berechtigungen entsprechen dem Need-to-know-Prinzip.",
+   "key_control": true,
+   "control_type": "Detective",
+   "automation": "IT-dependent manual",
+   "frequency": "Semi-annually",
+   "owner_role_id": "RO-007",
+   "executor_role_id": "RO-002",
+   "evidence": "",
+   "mitigates_risk_ids": [
+    "R-006"
+   ],
+   "annex_a": [
+    "27001:A.5.15",
+    "27001:A.5.18",
+    "27001:A.8.2"
+   ],
+   "soa_applicable": "Yes",
+   "implementation": "Partially implemented",
+   "soa_justification": "",
+   "test_method": "Inspection",
+   "design_effectiveness": "Not tested",
+   "operating_effectiveness": "Not tested",
+   "last_test": null,
+   "next_test": null,
+   "test_result": "",
+   "iso_refs": []
+  }
+ ],
+ "kpis": [
+  {
+   "id": "KPI-001",
+   "code": "KPI-001",
+   "title": "Bestellungen mit gültiger Freigabe",
+   "description": "",
+   "objective": "Ordnungsgemäße Beschaffung",
+   "formula": "freigegebene Bestellungen / alle Bestellungen × 100",
+   "unit": "%",
+   "direction": "higher",
+   "target": 100,
+   "warning": 98,
+   "critical": 95,
+   "frequency": "Monthly",
+   "data_source": "ERP",
+   "owner_role_id": "RO-004",
+   "evaluator_role_id": null,
+   "iso_refs": [
+    "9001:9.1"
+   ],
+   "measurements": [
+    {
+     "date": "2026-06-30",
+     "value": 97.5
+    },
+    {
+     "date": "2026-07-31",
+     "value": 98.8
+    },
+    {
+     "date": "2026-08-31",
+     "value": 99.4
+    }
+   ]
+  },
+  {
+   "id": "KPI-002",
+   "code": "KPI-002",
+   "title": "Durchlaufzeit Bedarf bis Bestellung",
+   "description": "",
+   "objective": "Effiziente Beschaffung",
+   "formula": "Ø Tage zwischen Anforderung und Bestellung",
+   "unit": "Tage",
+   "direction": "lower",
+   "target": 5,
+   "warning": 7,
+   "critical": 10,
+   "frequency": "Monthly",
+   "data_source": "ERP",
+   "owner_role_id": "RO-004",
+   "evaluator_role_id": null,
+   "iso_refs": [
+    "9001:9.1"
+   ],
+   "measurements": [
+    {
+     "date": "2026-06-30",
+     "value": 8.1
+    },
+    {
+     "date": "2026-07-31",
+     "value": 7.4
+    },
+    {
+     "date": "2026-08-31",
+     "value": 6.2
+    }
+   ]
+  },
+  {
+   "id": "KPI-003",
+   "code": "KPI-003",
+   "title": "Lieferanten mit gültiger IS-/Compliance-Bewertung",
+   "description": "",
+   "objective": "Sichere Lieferkette",
+   "formula": "bewertete kritische Lieferanten / alle kritischen Lieferanten × 100",
+   "unit": "%",
+   "direction": "higher",
+   "target": 100,
+   "warning": 90,
+   "critical": 75,
+   "frequency": "Monthly",
+   "data_source": "",
+   "owner_role_id": "RO-007",
+   "evaluator_role_id": null,
+   "iso_refs": [
+    "27001:9.1",
+    "37301:9.1"
+   ],
+   "measurements": [
+    {
+     "date": "2026-03-31",
+     "value": 62
+    },
+    {
+     "date": "2026-06-30",
+     "value": 71
+    }
+   ]
+  },
+  {
+   "id": "KPI-004",
+   "code": "KPI-004",
+   "title": "Reklamationsquote Wareneingang",
+   "description": "",
+   "objective": "Qualität zugekaufter Teile",
+   "formula": "reklamierte Lieferungen / alle Lieferungen × 100",
+   "unit": "%",
+   "direction": "lower",
+   "target": 1,
+   "warning": 2,
+   "critical": 3,
+   "frequency": "Monthly",
+   "data_source": "",
+   "owner_role_id": "RO-008",
+   "evaluator_role_id": null,
+   "iso_refs": [
+    "9001:9.1"
+   ],
+   "measurements": [
+    {
+     "date": "2026-07-31",
+     "value": 1.8
+    },
+    {
+     "date": "2026-08-31",
+     "value": 2.4
+    }
+   ]
+  },
+  {
+   "id": "KPI-005",
+   "code": "KPI-005",
+   "title": "Abgeschlossene Rezertifizierungen",
+   "description": "",
+   "objective": "",
+   "formula": "",
+   "unit": "%",
+   "direction": "higher",
+   "target": 100,
+   "warning": 95,
+   "critical": 85,
+   "frequency": "Monthly",
+   "data_source": "",
+   "owner_role_id": "RO-007",
+   "evaluator_role_id": null,
+   "iso_refs": [
+    "27001:9.1"
+   ],
+   "measurements": [
+    {
+     "date": "2026-06-30",
+     "value": 88
+    }
+   ]
   }
  ]
 }

@@ -43,6 +43,9 @@ Enforced by import-linter (`pyproject.toml`).
 | `step_assignments` | process × BPMN element × role with RACI (unique) |
 | `risks` | risk register: assessment (likelihood, impact 1–4), treatment actions (JSONB), recorder, workflow fields |
 | `opportunities` | opportunities: likelihood × benefit, responsible role, recorder, workflow fields |
+| `controls` | internal controls: design, risks addressed, SoA (Annex A), effectiveness (no workflow) |
+| `kpis`, `kpi_measurements` | KPI with thresholds; measured values, one per KPI and date |
+| `step_links` | process × BPMN element × risk / opportunity / control / KPI (unique) |
 | `audit_log` | every change (field diffs), sign-in, diagram and assignment notes |
 | `workflow_entries` | workflow steps per element (submitted, approved, rejected, reopened, status) |
 | `sessions` | server sessions (token hash, CSRF token, expiry) |

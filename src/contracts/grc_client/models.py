@@ -14,6 +14,59 @@ Catalogs = TypedDict(
 Change = TypedDict("Change", {"key": "str", "from": "Any", "to": "Any"}, total=False)
 
 
+ControlListItem = TypedDict(
+    "ControlListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "control_type": "str",
+        "key_control": "bool",
+        "operating_effectiveness": "str",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+ControlOut = TypedDict(
+    "ControlOut",
+    {
+        "title": "str",
+        "description": "str",
+        "objective": "str",
+        "key_control": "bool",
+        "control_type": "str",
+        "automation": "str",
+        "frequency": "str",
+        "owner_role_id": "str | None",
+        "executor_role_id": "str | None",
+        "evidence": "str",
+        "mitigates_risk_ids": "list[str]",
+        "annex_a": "list[str]",
+        "soa_applicable": "str",
+        "implementation": "str",
+        "soa_justification": "str",
+        "test_method": "str",
+        "design_effectiveness": "str",
+        "operating_effectiveness": "str",
+        "last_test": "str | None",
+        "next_test": "str | None",
+        "test_result": "str",
+        "iso_refs": "list[str]",
+        "id": "str",
+        "code": "str",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "rights": "Rights",
+        "used_in": "list[Usage]",
+        "labels": "dict[str, str]",
+    },
+    total=False,
+)
+
+
 CreateElement = TypedDict("CreateElement", {"title": "str"}, total=False)
 
 
@@ -54,8 +107,59 @@ Holder = TypedDict(
 )
 
 
+IcsGap = TypedDict("IcsGap", {"risk_id": "str", "suggestions": "list[str]"}, total=False)
+
+
 IsoClause = TypedDict(
     "IsoClause", {"id": "str", "standard": "str", "clause": "str", "title": "str"}, total=False
+)
+
+
+KpiListItem = TypedDict(
+    "KpiListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "unit": "str",
+        "last_value": "float | None",
+        "traffic": "str",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+KpiOut = TypedDict(
+    "KpiOut",
+    {
+        "title": "str",
+        "description": "str",
+        "objective": "str",
+        "formula": "str",
+        "unit": "str",
+        "direction": "str",
+        "target": "float",
+        "warning": "float",
+        "critical": "float",
+        "frequency": "str",
+        "data_source": "str",
+        "owner_role_id": "str | None",
+        "evaluator_role_id": "str | None",
+        "iso_refs": "list[str]",
+        "id": "str",
+        "code": "str",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "measurements": "list[Measurement]",
+        "traffic": "str",
+        "can_measure": "bool",
+        "rights": "Rights",
+        "used_in": "list[Usage]",
+        "labels": "dict[str, str]",
+    },
+    total=False,
 )
 
 
@@ -71,6 +175,12 @@ Me = TypedDict(
     },
     total=False,
 )
+
+
+Measurement = TypedDict("Measurement", {"date": "str", "value": "float"}, total=False)
+
+
+MeasurementIn = TypedDict("MeasurementIn", {"date": "str", "value": "float"}, total=False)
 
 
 OpportunityListItem = TypedDict(
@@ -114,6 +224,7 @@ OpportunityOut = TypedDict(
         "created_by_user_id": "str | None",
         "potential": "int",
         "rights": "Rights",
+        "used_in": "list[Usage]",
         "workflow": "list[WorkflowEntryOut]",
         "released": "dict[str, Any] | None",
         "labels": "dict[str, str]",
@@ -246,6 +357,8 @@ ProcessOut = TypedDict(
         "rights": "Rights",
         "owners": "list[str]",
         "steps": "dict[str, list[StepRole]]",
+        "links": "dict[str, list[StepLinkOut]]",
+        "ics_gaps": "dict[str, list[IcsGap]]",
         "workflow": "list[WorkflowEntryOut]",
         "released": "dict[str, Any] | None",
         "labels": "dict[str, str]",
@@ -349,6 +462,7 @@ RiskOut = TypedDict(
         "created_by_user_id": "str | None",
         "assessment": "Assessment",
         "rights": "Rights",
+        "used_in": "list[Usage]",
         "workflow": "list[WorkflowEntryOut]",
         "released": "dict[str, Any] | None",
         "labels": "dict[str, str]",
@@ -419,6 +533,16 @@ StateView = TypedDict(
 )
 
 
+StepLinkIn = TypedDict(
+    "StepLinkIn", {"kind": "str", "target_id": "str", "version": "int | None"}, total=False
+)
+
+
+StepLinkOut = TypedDict(
+    "StepLinkOut", {"kind": "str", "target_id": "str", "code": "str", "title": "str"}, total=False
+)
+
+
 StepRole = TypedDict(
     "StepRole", {"role_id": "str", "code": "str", "title": "str", "raci": "str"}, total=False
 )
@@ -426,6 +550,13 @@ StepRole = TypedDict(
 
 StepRoleIn = TypedDict(
     "StepRoleIn", {"role_id": "str", "raci": "str", "version": "int | None"}, total=False
+)
+
+
+Usage = TypedDict(
+    "Usage",
+    {"process_id": "str", "process_label": "str", "element_id": "str", "element_name": "str"},
+    total=False,
 )
 
 

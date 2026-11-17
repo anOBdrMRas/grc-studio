@@ -73,6 +73,93 @@ class GrcClient:
         """GET /api/v1/auth/me (permission: people:read)."""
         return cast("Me", await self._call("GET", "/api/v1/auth/me"))
 
+    async def controls_list(self) -> list[ControlListItem]:
+        """GET /api/v1/controls (permission: grc:read)."""
+        return cast("list[ControlListItem]", await self._call("GET", "/api/v1/controls"))
+
+    async def controls_create(self, body: CreateElement) -> ControlOut:
+        """POST /api/v1/controls (permission: grc:manage)."""
+        return cast("ControlOut", await self._call("POST", "/api/v1/controls", json=body))
+
+    async def controls_delete(self, control_id: str) -> None:
+        """DELETE /api/v1/controls/{control_id} (permission: grc:manage)."""
+        await self._call("DELETE", f"/api/v1/controls/{control_id}")
+
+    async def controls_get(self, control_id: str) -> ControlOut:
+        """GET /api/v1/controls/{control_id} (permission: grc:read)."""
+        return cast("ControlOut", await self._call("GET", f"/api/v1/controls/{control_id}"))
+
+    async def controls_update(
+        self, control_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> ControlOut:
+        """PATCH /api/v1/controls/{control_id} (permission: grc:read)."""
+        return cast(
+            "ControlOut",
+            await self._call(
+                "PATCH", f"/api/v1/controls/{control_id}", json=body, if_match=if_match
+            ),
+        )
+
+    async def controls_history(self, control_id: str) -> list[Revision]:
+        """GET /api/v1/controls/{control_id}/history (permission: grc:read)."""
+        return cast(
+            "list[Revision]", await self._call("GET", f"/api/v1/controls/{control_id}/history")
+        )
+
+    async def controls_state(self, control_id: str, revision_id: str) -> StateView:
+        """GET /api/v1/controls/{control_id}/history/{revision_id} (permission: grc:read)."""
+        return cast(
+            "StateView",
+            await self._call("GET", f"/api/v1/controls/{control_id}/history/{revision_id}"),
+        )
+
+    async def kpis_list(self) -> list[KpiListItem]:
+        """GET /api/v1/kpis (permission: grc:read)."""
+        return cast("list[KpiListItem]", await self._call("GET", "/api/v1/kpis"))
+
+    async def kpis_create(self, body: CreateElement) -> KpiOut:
+        """POST /api/v1/kpis (permission: grc:manage)."""
+        return cast("KpiOut", await self._call("POST", "/api/v1/kpis", json=body))
+
+    async def kpis_delete(self, kpi_id: str) -> None:
+        """DELETE /api/v1/kpis/{kpi_id} (permission: grc:manage)."""
+        await self._call("DELETE", f"/api/v1/kpis/{kpi_id}")
+
+    async def kpis_get(self, kpi_id: str) -> KpiOut:
+        """GET /api/v1/kpis/{kpi_id} (permission: grc:read)."""
+        return cast("KpiOut", await self._call("GET", f"/api/v1/kpis/{kpi_id}"))
+
+    async def kpis_update(
+        self, kpi_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> KpiOut:
+        """PATCH /api/v1/kpis/{kpi_id} (permission: grc:read)."""
+        return cast(
+            "KpiOut",
+            await self._call("PATCH", f"/api/v1/kpis/{kpi_id}", json=body, if_match=if_match),
+        )
+
+    async def kpis_history(self, kpi_id: str) -> list[Revision]:
+        """GET /api/v1/kpis/{kpi_id}/history (permission: grc:read)."""
+        return cast("list[Revision]", await self._call("GET", f"/api/v1/kpis/{kpi_id}/history"))
+
+    async def kpis_state(self, kpi_id: str, revision_id: str) -> StateView:
+        """GET /api/v1/kpis/{kpi_id}/history/{revision_id} (permission: grc:read)."""
+        return cast(
+            "StateView", await self._call("GET", f"/api/v1/kpis/{kpi_id}/history/{revision_id}")
+        )
+
+    async def kpis_record_measurement(self, kpi_id: str, body: MeasurementIn) -> KpiOut:
+        """PUT /api/v1/kpis/{kpi_id}/measurements (permission: grc:read)."""
+        return cast(
+            "KpiOut", await self._call("PUT", f"/api/v1/kpis/{kpi_id}/measurements", json=body)
+        )
+
+    async def kpis_delete_measurement(self, kpi_id: str, day: str) -> KpiOut:
+        """DELETE /api/v1/kpis/{kpi_id}/measurements/{day} (permission: grc:read)."""
+        return cast(
+            "KpiOut", await self._call("DELETE", f"/api/v1/kpis/{kpi_id}/measurements/{day}")
+        )
+
     async def meta_catalogs(self) -> Catalogs:
         """GET /api/v1/meta/catalogs (permission: people:read)."""
         return cast("Catalogs", await self._call("GET", "/api/v1/meta/catalogs"))
@@ -238,6 +325,40 @@ class GrcClient:
         return cast(
             "StateView",
             await self._call("GET", f"/api/v1/processes/{process_id}/history/{revision_id}"),
+        )
+
+    async def processes_link_element(
+        self, process_id: str, element_id: str, body: StepLinkIn, if_match: str | None = None
+    ) -> ProcessOut:
+        """PUT /api/v1/processes/{process_id}/steps/{element_id}/links (permission: processes:read)."""
+        return cast(
+            "ProcessOut",
+            await self._call(
+                "PUT",
+                f"/api/v1/processes/{process_id}/steps/{element_id}/links",
+                json=body,
+                if_match=if_match,
+            ),
+        )
+
+    async def processes_unlink_element(
+        self,
+        process_id: str,
+        element_id: str,
+        kind: str,
+        target_id: str,
+        version: int | None | None = None,
+        if_match: str | None = None,
+    ) -> ProcessOut:
+        """DELETE /api/v1/processes/{process_id}/steps/{element_id}/links/{kind}/{target_id} (permission: processes:read)."""
+        return cast(
+            "ProcessOut",
+            await self._call(
+                "DELETE",
+                f"/api/v1/processes/{process_id}/steps/{element_id}/links/{kind}/{target_id}",
+                params={"version": version},
+                if_match=if_match,
+            ),
         )
 
     async def processes_assign_role(

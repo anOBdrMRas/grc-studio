@@ -230,8 +230,34 @@ async def diagram_save(
 
 @router.get("/processes/{process_id}/badges.json")
 async def badges(process_id: str, ctx: UiContext = Depends(ui_context)) -> Response:
+    """Per BPMN element: counts of roles, risks, opportunities, controls and KPI, and ICS gaps."""
     item = await ctx.api.processes_get(process_id)
-    return JSONResponse({el: len(roles) for el, roles in item["steps"].items()})
+    out: dict[str, dict[str, Any]] = {}
+    for el, roles in item["steps"].items():
+        out.setdefault(el, {})["role"] = len(roles)
+    for el, links in item["links"].items():
+        counts = out.setdefault(el, {})
+        for link in links:
+            counts[link["kind"]] = counts.get(link["kind"], 0) + 1
+    for el in item["ics_gaps"]:
+        out.setdefault(el, {})["gap"] = 1
+    titles = {
+        "role": gettext("Roles"),
+        "risk": gettext("Risks"),
+        "opportunity": gettext("Opportunities"),
+        "control": gettext("Controls (ICS)"),
+        "kpi": gettext("KPI"),
+        "gap": gettext("Risk without a control in this step"),
+    }
+    return JSONResponse({"counts": out, "titles": titles})
+
+
+LINK_GROUPS = (
+    ("risk", N_("Risks"), "/risks"),
+    ("control", N_("Controls (ICS)"), "/controls"),
+    ("opportunity", N_("Opportunities"), "/opportunities"),
+    ("kpi", N_("KPI"), "/kpi"),
+)
 
 
 async def _steps(
@@ -245,6 +271,30 @@ async def _steps(
     item = plain(await ctx.api.processes_get(process_id))
     roles = [dict(r) for r in await ctx.api.roles_list()]
     assigned = item["steps"].get(element_id, [])
+    links = item["links"].get(element_id, [])
+    linked = {(x["kind"], x["target_id"]) for x in links}
+    candidates: dict[str, list[dict[str, Any]]] = {
+        "risk": [plain(x) for x in await ctx.api.risks_list()],
+        "opportunity": [plain(x) for x in await ctx.api.opportunities_list()],
+        "control": [plain(x) for x in await ctx.api.controls_list()],
+        "kpi": [plain(x) for x in await ctx.api.kpis_list()],
+    }
+    groups = [
+        {
+            "kind": kind,
+            "title": title,
+            "base": base,
+            "items": [x for x in links if x["kind"] == kind],
+            "options": [
+                (c["id"], f"{c['code']} {c['title']}")
+                for c in candidates[kind]
+                if (kind, c["id"]) not in linked
+            ],
+        }
+        for kind, title, base in LINK_GROUPS
+    ]
+    codes = {c["id"]: f"{c['code']} {c['title']}" for c in candidates["control"]}
+    codes |= {c["id"]: f"{c['code']} {c['title']}" for c in candidates["risk"]}
     return render(
         request,
         "processes/_steps.html",
@@ -254,6 +304,9 @@ async def _steps(
         name=name,
         assigned=assigned,
         roles=[r for r in roles if r["id"] not in {a["role_id"] for a in assigned}],
+        groups=groups,
+        gaps=item["ics_gaps"].get(element_id, []),
+        codes=codes,
         raci=["R", "A", "C", "I"],
         headers=headers,
     )
@@ -306,6 +359,50 @@ async def unassign(
     try:
         await ctx.api.processes_unassign_role(
             process_id, element_id, role_id, version=int(str(form.get("version")))
+        )
+    except ApiError as exc:
+        headers = toast("error", problem_text(exc))
+    return await _steps(request, ctx, process_id, element_id, str(form.get("name") or ""), headers)
+
+
+@router.post("/processes/{process_id}/steps/{element_id}/links", response_class=HTMLResponse)
+async def link(
+    request: Request, process_id: str, element_id: str, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    form = await request.form()
+    headers: dict[str, str] = {"HX-Trigger": "badgesChanged"}
+    try:
+        await ctx.api.processes_link_element(
+            process_id,
+            element_id,
+            {
+                "kind": str(form.get("kind")),
+                "target_id": str(form.get("target_id")),
+                "version": int(str(form.get("version"))),
+            },
+        )
+    except ApiError as exc:
+        headers = toast("error", problem_text(exc))
+    return await _steps(request, ctx, process_id, element_id, str(form.get("name") or ""), headers)
+
+
+@router.post(
+    "/processes/{process_id}/steps/{element_id}/links/{kind}/{target_id}/delete",
+    response_class=HTMLResponse,
+)
+async def unlink(
+    request: Request,
+    process_id: str,
+    element_id: str,
+    kind: str,
+    target_id: str,
+    ctx: UiContext = Depends(ui_context),
+) -> Response:
+    form = await request.form()
+    headers: dict[str, str] = {"HX-Trigger": "badgesChanged"}
+    try:
+        await ctx.api.processes_unlink_element(
+            process_id, element_id, kind, target_id, version=int(str(form.get("version")))
         )
     except ApiError as exc:
         headers = toast("error", problem_text(exc))
