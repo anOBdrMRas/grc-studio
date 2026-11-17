@@ -1,0 +1,15 @@
+{# read view of one field value: f (definition), v (value), item.labels, iso, lists #}
+{% from "macros.html" import status_badge %}
+{% if f.kind in ("text", "textarea") %}{% if v %}<div class="field-value">{{ v }}</div>{% else %}<span class="opacity-50">–</span>{% endif %}
+{% elif f.kind == "readonly" %}<span class="font-mono text-sm">{{ v or "–" }}</span>
+{% elif f.kind == "status" %}{{ status_badge(v) }}
+{% elif f.kind == "bool" %}{{ _("Yes") if v else _("No") }}
+{% elif f.kind == "number" %}{{ v if v is not none else "–" }}
+{% elif f.kind == "date" %}{{ v or "–" }}
+{% elif f.kind == "select" %}{{ _(v) if v else "–" }}
+{% elif f.kind == "multiselect" %}{% if v %}<div class="flex flex-wrap gap-1">{% for o in v %}<span class="badge badge-outline badge-sm">{{ _(o) }}</span>{% endfor %}</div>{% else %}<span class="opacity-50">–</span>{% endif %}
+{% elif f.kind == "ref" %}{% if v %}{% set base = {"people": "", "roles": "/roles/", "positions": "/positions/"}[f.ref] %}{% if base %}<a class="link link-secondary" href="{{ base }}{{ v }}">{{ item.labels.get(v, v) }}</a>{% else %}{{ item.labels.get(v, v) }}{% endif %}{% else %}<span class="opacity-50">–</span>{% endif %}
+{% elif f.kind == "refs" %}{% if v %}<div class="flex flex-wrap gap-1">{% for r in v %}<a class="badge badge-outline badge-sm" href="/roles/{{ r }}">{{ item.labels.get(r, r) }}</a>{% endfor %}</div>{% else %}<span class="opacity-50">–</span>{% endif %}
+{% elif f.kind == "iso" %}{% if v %}<div class="flex flex-wrap gap-1">{% for r in v %}<span class="badge badge-outline badge-sm" title="{{ _(iso[r].title) if r in iso else '' }}">{{ iso[r].label if r in iso else r }}</span>{% endfor %}</div>{% else %}<span class="opacity-50">–</span>{% endif %}
+{% elif f.kind == "position_roles" %}{% if v %}<ul class="grid gap-1 text-sm">{% for pr in v %}<li><a class="link link-secondary" href="/roles/{{ pr.role_id }}">{{ item.labels.get(pr.role_id, pr.role_id) }}</a>{% if pr.comment %} <span class="opacity-60">– {{ pr.comment }}</span>{% endif %}</li>{% endfor %}</ul>{% else %}<span class="opacity-50">–</span>{% endif %}
+{% else %}{{ v }}{% endif %}

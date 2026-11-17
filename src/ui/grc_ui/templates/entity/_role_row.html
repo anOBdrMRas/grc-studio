@@ -1,0 +1,8 @@
+<div class="flex gap-2" data-row>
+  <select name="roles.role_id" class="select select-bordered select-sm grow" aria-label="{{ _('Role') }}">
+    <option value="">—</option>
+    {% for id_, label in refs["roles"] %}<option value="{{ id_ }}" {% if id_ == pr.role_id %}selected{% endif %}>{{ label }}</option>{% endfor %}
+  </select>
+  <input name="roles.comment" value="{{ pr.comment }}" class="input input-bordered input-sm w-1/3" placeholder="{{ _('Comment') }}" aria-label="{{ _('Comment') }}">
+  <button type="button" class="btn btn-ghost btn-sm btn-square" data-action="remove-row" aria-label="{{ _('Remove') }}">{{ icon("x") }}</button>
+</div>

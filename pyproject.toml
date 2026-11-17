@@ -1,0 +1,77 @@
+[project]
+name = "grc-studio"
+version = "0.1.0"
+description = "GRC Studio – integrated management system (workspace root)"
+requires-python = ">=3.12"
+
+[tool.uv.workspace]
+members = ["src/api", "src/ui", "src/contracts"]
+
+[tool.uv.sources]
+grc-api = { workspace = true }
+grc-ui = { workspace = true }
+grc-client = { workspace = true }
+
+[dependency-groups]
+dev = [
+  "grc-api",
+  "grc-ui",
+  "grc-client",
+  "pytest>=8.3",
+  "pytest-asyncio>=0.25",
+  "ruff>=0.8",
+  "mypy>=1.13",
+  "import-linter>=2.1",
+  "yamllint>=1.35",
+  "playwright>=1.49",
+  "types-python-dateutil",
+  "types-defusedxml",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+markers = [
+  "e2e: browser tests against a running stack (set E2E_BASE_URL)",
+]
+
+[tool.mypy]
+strict = true
+plugins = ["pydantic.mypy"]
+python_version = "3.12"
+mypy_path = ["src/api", "src/ui", "src/contracts"]
+packages = ["grc_api", "grc_ui", "grc_client"]
+explicit_package_bases = true
+
+[[tool.mypy.overrides]]
+module = ["babel.*", "argon2.*"]
+ignore_missing_imports = true
+
+[tool.importlinter]
+root_packages = ["grc_api", "grc_ui", "grc_client"]
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "The interface and the client never import the API"
+type = "forbidden"
+source_modules = ["grc_ui", "grc_client"]
+forbidden_modules = ["grc_api"]
+
+[[tool.importlinter.contracts]]
+name = "API layers point downwards"
+type = "layers"
+layers = [
+  "grc_api.routers",
+  "grc_api.services",
+  "grc_api.repositories",
+  "grc_api.models",
+]
+containers = []
+
+[[tool.importlinter.contracts]]
+name = "The domain is pure (no database, no HTTP)"
+type = "forbidden"
+source_modules = ["grc_api.domain"]
+forbidden_modules = ["grc_api.repositories", "grc_api.models", "grc_api.routers", "grc_api.services", "sqlalchemy", "fastapi"]

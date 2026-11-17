@@ -1,0 +1,10 @@
+<div class="flex items-start justify-between">
+  <h2 class="text-xl font-bold">{{ _("Role description") if mod.kind == "role" else _("Position description") }}: {{ item.title }}</h2>
+  <form method="dialog"><button class="btn btn-ghost btn-sm btn-square" data-action="close-modal" aria-label="{{ _('Close') }}">{{ icon("x") }}</button></form>
+</div>
+<p class="text-sm opacity-70">{{ item.code }} · v{{ item.doc_version }}</p>
+<div class="mt-3 grid gap-3 text-sm">
+  {% for sec in sections %}{% for f in sec.fields if f.kind in ("textarea", "position_roles") and shown.get(f.key) %}
+  <div><div class="field-label">{{ _(f.label) }}</div>{% with v = shown.get(f.key) %}{% include "entity/_value.html" %}{% endwith %}</div>
+  {% endfor %}{% endfor %}
+</div>

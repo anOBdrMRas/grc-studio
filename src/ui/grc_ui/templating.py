@@ -1,0 +1,75 @@
+"""Jinja environment and render(): every page gets me, csrf_token, can() and the navigation."""
+
+import hashlib
+import json
+from functools import lru_cache
+from pathlib import Path
+from typing import Any
+
+from fastapi import Request
+from fastapi.responses import HTMLResponse
+from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
+
+from grc_ui.i18n import LANGUAGES, current_language, gettext
+from grc_ui.icons import icon
+from grc_ui.nav import is_active, nav_for
+from grc_ui.session import UiContext
+
+BASE = Path(__file__).parent
+STATIC = BASE / "static"
+
+
+@lru_cache
+def _fingerprint(path: str) -> str:
+    f = STATIC / path
+    return hashlib.sha256(f.read_bytes()).hexdigest()[:10] if f.exists() else "0"
+
+
+def asset_url(path: str) -> str:
+    return f"/static/{path}?v={_fingerprint(path)}"
+
+
+def _ngettext(s: str, p: str, n: int) -> str:
+    return gettext(s if n == 1 else p)
+
+
+env = Environment(
+    loader=FileSystemLoader(BASE / "templates"),
+    autoescape=select_autoescape(["html"]),
+    undefined=StrictUndefined,
+    extensions=["jinja2.ext.i18n"],
+    trim_blocks=True,
+    lstrip_blocks=True,
+)
+env.install_gettext_callables(gettext, _ngettext, newstyle=True)  # type: ignore[attr-defined]
+env.globals.update(icon=icon, asset_url=asset_url, languages=LANGUAGES, is_active=is_active)
+env.filters["tojson_attr"] = lambda v: json.dumps(v, ensure_ascii=False)
+
+
+def render(
+    request: Request,
+    template: str,
+    ctx: UiContext | None = None,
+    status: int = 200,
+    headers: dict[str, str] | None = None,
+    **kw: Any,
+) -> HTMLResponse:
+    perms = ctx.permissions if ctx else frozenset()
+    data = {
+        "request": request,
+        "path": request.url.path,
+        "me": ctx.me if ctx else None,
+        "csrf_token": ctx.me["csrf_token"] if ctx else "",
+        "can": (lambda p: p in perms),
+        "nav": nav_for(perms),
+        "lang": current_language.get(),
+        "hx": request.headers.get("HX-Request") == "true",
+        **kw,
+    }
+    html = env.get_template(template).render(data)
+    return HTMLResponse(html, status_code=status, headers=headers)
+
+
+def toast(kind: str, message: str) -> dict[str, str]:
+    """HX-Trigger header for a toast in the page."""
+    return {"HX-Trigger": json.dumps({"toast": {"kind": kind, "message": message}})}

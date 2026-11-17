@@ -1,0 +1,22 @@
+{
+  "name": "grc-ui-assets",
+  "private": true,
+  "description": "Build-time dependencies of the GRC Studio interface (nothing of this runs in production)",
+  "scripts": {
+    "vendor": "node scripts/vendor.mjs",
+    "css": "node scripts/build-css.mjs",
+    "build": "node scripts/vendor.mjs && node scripts/build-css.mjs",
+    "watch": "node scripts/build-css.mjs --watch"
+  },
+  "devDependencies": {
+    "@alpinejs/csp": "3.14.9",
+    "@fontsource/ibm-plex-sans": "5.1.1",
+    "@fontsource/manrope": "5.1.1",
+    "@tabler/icons": "3.29.0",
+    "bpmn-js": "18.6.1",
+    "daisyui": "4.12.23",
+    "htmx.org": "2.0.4",
+    "sortablejs": "1.15.6",
+    "tailwindcss": "3.4.17"
+  }
+}

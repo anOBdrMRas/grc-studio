@@ -1,0 +1,24 @@
+{% from "macros.html" import empty %}
+<div id="list" hx-get="{{ mod.base }}?q={{ q }}" hx-trigger="refreshList from:body" hx-target="this" hx-swap="outerHTML">
+  {% if items %}
+  <div class="overflow-x-auto rounded-box border border-base-300 bg-base-100">
+    <table class="table table-xs row-list">
+      <thead><tr><th>{{ _("Name") if mod.kind == "user" else _("Title") }}</th>{% for key, label in mod.columns %}<th>{{ _(label) }}</th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for x in items %}
+        <tr {% if x.id == selected %}aria-current="true"{% endif %} hx-get="{{ mod.base }}/{{ x.id }}" hx-target="#detail" hx-swap="innerHTML" hx-push-url="true" tabindex="0" title="{{ x.code }}">
+          <td>{{ x.title if x.title is defined else x.name }}{% if x.is_owner is defined and x.is_owner %} <span class="badge badge-xs badge-accent">{{ _("Owner") }}</span>{% endif %}</td>
+          {% for key, label in mod.columns %}
+          <td>
+            {% set v = x[key] %}
+            {% if key == "holders" %}{% if v %}{{ v[:2]|join(", ") }}{% if v|length > 2 %} <span class="opacity-60">+{{ v|length - 2 }}</span>{% endif %}{% else %}<span class="text-warning">{{ _("vacant") }}</span>{% endif %}
+            {% else %}{{ _(v) if v else "–" }}{% endif %}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}{{ empty(_("No entries.")) }}{% endif %}
+</div>

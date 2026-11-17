@@ -1,0 +1,5 @@
+node_modules/
+.tailwind.input.css
+grc_ui/static/app.css
+grc_ui/static/vendor/
+grc_ui/static/fonts/

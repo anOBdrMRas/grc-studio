@@ -1,0 +1,5 @@
+{% set target = "wfbar" %}
+{% set workflow_url = "/processes/" ~ item.id ~ "/workflow" %}
+{% set self_url = "/processes/" ~ item.id ~ "/profile" %}
+{% set banner = none %}
+<div id="wfbar" data-process-version="{{ item.version }}" hx-get="/processes/{{ item.id }}/wfbar" hx-trigger="badgesChanged from:body, processChanged from:body" hx-swap="outerHTML">{% include "entity/_wf.html" %}</div>

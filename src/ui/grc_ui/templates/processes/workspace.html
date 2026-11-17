@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}{{ item.title }} · {% endblock %}
+{% block head_styles %}
+<link rel="stylesheet" href="{{ asset_url('vendor/bpmn/diagram-js.css') }}">
+<link rel="stylesheet" href="{{ asset_url('vendor/bpmn/bpmn-js.css') }}">
+<link rel="stylesheet" href="{{ asset_url('vendor/bpmn/bpmn-font/css/bpmn.css') }}">
+{% endblock %}
+{% block head_scripts %}
+{% if tab == "model" %}
+<script src="{{ asset_url('vendor/bpmn-modeler.min.js' if item.rights.can_edit else 'vendor/bpmn-viewer.min.js') }}" defer></script>
+<script src="{{ asset_url('js/process.js') }}" defer></script>
+{% endif %}
+{% endblock %}
+{% block content %}
+<div class="px-4 pt-3">
+  <div class="flex flex-wrap items-center justify-between gap-2">
+    <div>
+      <div class="text-xs opacity-70"><a class="link" href="/processes">{{ _("Process landscape") }}</a> › {{ _(item.category) }}{% if item.area %} › {{ item.area }}{% endif %}</div>
+      <h1 class="text-xl font-bold"><span class="font-mono text-sm opacity-60">{{ item.code }} · v{{ item.doc_version }}</span> {{ item.title }}</h1>
+    </div>
+    <div class="flex items-center gap-2">
+      <div role="tablist" class="tabs tabs-boxed tabs-sm">
+        <a role="tab" class="tab {% if tab == 'model' %}tab-active{% endif %}" href="/processes/{{ item.id }}">{{ _("Model (BPMN)") }}</a>
+        <a role="tab" class="tab {% if tab == 'profile' %}tab-active{% endif %}" href="/processes/{{ item.id }}?tab=profile">{{ _("Profile") }}</a>
+      </div>
+      {% if item.rights.is_owner and not item.rights.can_manage %}<span class="badge badge-accent">{{ _("Owner – you may edit") }}</span>{% endif %}
+      {% if item.rights.can_delete %}<button class="btn btn-ghost btn-sm text-error" hx-post="/processes/{{ item.id }}/delete" hx-confirm="{{ _('Really delete the process?') }}">{{ icon("trash") }} {{ _("Delete") }}</button>{% endif %}
+    </div>
+  </div>
+  <div class="mt-2">{% include "processes/_wfbar.html" %}</div>
+</div>
+{% if tab == "model" %}
+<div class="grid gap-0 px-4 pb-4 lg:grid-cols-[minmax(0,1fr)_340px]">
+  <div class="rounded-l-box border border-base-300 bg-base-100">
+    <div class="flex items-center gap-2 border-b border-base-300 px-2 py-1">
+      {% if item.rights.can_edit %}
+      <button class="btn btn-primary btn-xs" data-action="save-diagram" disabled>{{ icon("device-floppy", "h-3 w-3") }} {{ _("Save diagram") }}</button>
+      <span class="text-xs opacity-70" id="diagram-state" data-msg-dirty="{{ _('Unsaved changes') }}" data-msg-saved="{{ _('Saved') }}"></span>
+      {% else %}<span class="text-xs opacity-70">{{ icon("lock", "h-3 w-3 inline") }} {{ _("Read only") }}</span>{% endif %}
+      <span class="ml-auto join">
+        <button class="btn btn-ghost btn-xs join-item" data-action="zoom-in" aria-label="{{ _('Zoom in') }}">{{ icon("zoom-in", "h-3 w-3") }}</button>
+        <button class="btn btn-ghost btn-xs join-item" data-action="zoom-out" aria-label="{{ _('Zoom out') }}">{{ icon("zoom-out", "h-3 w-3") }}</button>
+        <button class="btn btn-ghost btn-xs join-item" data-action="zoom-fit" aria-label="{{ _('Fit to view') }}">{{ icon("focus-centered", "h-3 w-3") }}</button>
+      </span>
+    </div>
+    <div id="bpmn-canvas" data-process="{{ item.id }}" data-editable="{{ 'true' if item.rights.can_edit else 'false' }}" data-msg-unsaved-leave="{{ _('Unsaved changes in the diagram will be lost.') }}"></div>
+  </div>
+  <aside id="step-panel" class="max-h-[calc(100vh-13rem)] overflow-auto rounded-r-box border border-l-0 border-base-300 bg-base-100 p-3 text-sm" aria-live="polite">
+    {% include "processes/_summary.html" %}
+  </aside>
+</div>
+{% else %}
+<div class="px-4 pb-4"><section id="profile" class="rounded-box border border-base-300 bg-base-100 p-4">
+  {% with d = profile %}{% include "entity/_detail_wrap.html" %}{% endwith %}
+</section></div>
+{% endif %}
+{% endblock %}

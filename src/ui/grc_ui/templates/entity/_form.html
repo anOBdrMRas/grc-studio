@@ -1,0 +1,74 @@
+{% set target = "profile" if mod.kind == "process" else "detail" %}
+{% set manage = item.rights.can_manage if item.rights is defined else item.can_manage %}
+<form hx-post="{{ save_url }}" hx-target="#{{ target }}" class="grid gap-3" hx-disable-elt="find button[type=submit]">
+  <input type="hidden" name="version" value="{{ item.version }}">
+  <div class="flex items-center justify-between gap-2 border-l-4 border-secondary pl-3">
+    <div>
+      {% if mod.kind != "process" %}<div class="text-xs opacity-60">{{ _(mod.singular) }}</div>
+      <h2 class="text-lg font-bold"><span class="font-mono text-sm opacity-70">{{ item.code }}</span> {{ item.title if item.title is defined else item.name }}</h2>{% endif %}
+    </div>
+    <div class="flex gap-2">
+      <button type="submit" class="btn btn-primary btn-sm">{{ icon("device-floppy") }} {{ _("Save") }}</button>
+      <button type="button" class="btn btn-ghost btn-sm" hx-get="{{ self_url }}" hx-target="#{{ target }}">{{ _("Cancel") }}</button>
+    </div>
+  </div>
+  {% if conflict %}
+  <div class="alert alert-warning py-2 text-sm" role="alert">{{ icon("alert-triangle") }} {{ message }}
+    <button type="button" class="btn btn-xs" hx-get="{{ edit_url }}" hx-target="#{{ target }}">{{ _("Load current values") }}</button></div>
+  {% elif message is defined and message %}<div class="alert alert-error py-2 text-sm" role="alert">{{ message }}</div>{% endif %}
+  {% for sec in sections %}
+  <fieldset class="rounded-box border border-base-300 p-3">
+    <legend class="px-1 text-sm font-semibold text-secondary">{{ _(sec.title) }}</legend>
+    <div class="grid gap-x-6 gap-y-3 md:grid-cols-2">
+      {% for f in sec.fields %}
+      {% set v = shown.get(f.key) %}
+      {% set locked = f.get("owner") and not manage %}
+      {% set err = errors.get(f.key) %}
+      <div class="{{ 'md:col-span-2' if f.get("wide") else '' }}">
+        {% if f.kind == "bool" %}
+        <label class="label cursor-pointer justify-start gap-2"><input type="checkbox" class="checkbox checkbox-sm" name="{{ f.key }}" {% if v %}checked{% endif %}><span class="field-label">{{ _(f.label) }}</span></label>
+        {% else %}
+        <label class="field-label" for="f-{{ f.key }}">{{ _(f.label) }}{% if f.get("hint") %} <span class="font-normal opacity-70">· {{ _(f.get("hint")) }}</span>{% endif %}{% if locked %} <span class="font-normal">· {{ icon("lock", "h-3 w-3 inline") }} {{ _("defines the ownership – administration and I&A team only") }}</span>{% endif %}</label>
+        {% if f.kind in ("readonly", "status") %}<div class="text-sm">{% include "entity/_value.html" %}</div>
+        {% elif f.kind == "text" %}<input id="f-{{ f.key }}" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm w-full" {% if err %}aria-invalid="true"{% endif %}>
+        {% elif f.kind == "textarea" %}<textarea id="f-{{ f.key }}" name="{{ f.key }}" class="textarea textarea-bordered w-full text-sm" rows="{{ [3, [((v or '')|length // 90) + (v or '').count('\n') + 1, 20]|min]|max }}">{{ v or '' }}</textarea>
+        {% elif f.kind == "number" %}<input id="f-{{ f.key }}" type="number" step="1" inputmode="numeric" name="{{ f.key }}" value="{{ v if v is not none else 0 }}" class="input input-bordered input-sm w-40">
+        {% elif f.kind == "date" %}<input id="f-{{ f.key }}" type="date" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm">
+        {% elif f.kind == "select" %}
+        <select id="f-{{ f.key }}" name="{{ f.key }}" class="select select-bordered select-sm w-full">
+          {% if f.get("empty") %}<option value="">—</option>{% endif %}
+          {% for o in lists[f.options] %}<option value="{{ o }}" {% if o == v %}selected{% endif %}>{{ _(o) }}</option>{% endfor %}
+        </select>
+        {% elif f.kind == "ref" %}
+        {% if locked %}<input type="hidden" name="{{ f.key }}" value="{{ v or '' }}">{% endif %}
+        <select id="f-{{ f.key }}" name="{{ f.key }}" class="select select-bordered select-sm w-full" {% if locked %}disabled{% endif %}>
+          <option value="">{{ _("— not assigned —") }}</option>
+          {% for id_, label in refs[f.ref] %}{% if id_ != item.id %}<option value="{{ id_ }}" {% if id_ == v %}selected{% endif %}>{{ label }}</option>{% endif %}{% endfor %}
+        </select>
+        {% elif f.kind in ("multiselect", "refs", "iso") %}
+        {% set choices = refs["roles"] if f.kind == "refs" else (lists[f.options]|map("string")|list if f.kind == "multiselect" else iso.keys()|list) %}
+        <input type="search" class="input input-bordered input-xs mb-1 w-full" placeholder="{{ _('Search…') }}" data-filter-choices aria-controls="c-{{ f.key }}" aria-label="{{ _('Search…') }}">
+        <div id="c-{{ f.key }}" class="max-h-48 overflow-auto rounded border border-base-300 p-2 text-sm">
+          {% for c in choices %}
+          {% set cid = c[0] if f.kind == "refs" else c %}
+          {% if cid != item.id %}
+          <label class="flex items-start gap-2 py-0.5" data-choice><input type="checkbox" class="checkbox checkbox-xs mt-0.5" name="{{ f.key }}" value="{{ cid }}" {% if v and cid in v %}checked{% endif %}>
+            <span>{% if f.kind == "refs" %}{{ c[1] }}{% elif f.kind == "iso" %}<b>{{ iso[c].label }}</b> <span class="opacity-70">{{ _(iso[c].title) }}</span>{% else %}{{ _(c) }}{% endif %}</span></label>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% elif f.kind == "position_roles" %}
+        <div class="grid gap-2" id="rows-{{ f.key }}">
+          {% for pr in (v or []) %}{% include "entity/_role_row.html" %}{% endfor %}
+        </div>
+        <template id="tpl-{{ f.key }}">{% with pr = {"role_id": "", "comment": ""} %}{% include "entity/_role_row.html" %}{% endwith %}</template>
+        <button type="button" class="btn btn-ghost btn-xs mt-1" data-action="add-row" data-template="tpl-{{ f.key }}" data-target="rows-{{ f.key }}">{{ icon("plus") }} {{ _("Role") }}</button>
+        {% endif %}
+        {% if err %}<p class="text-xs text-error" role="alert">{{ err }}</p>{% endif %}
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </fieldset>
+  {% endfor %}
+</form>

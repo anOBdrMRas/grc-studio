@@ -1,0 +1,9 @@
+{% extends "bare.html" %}
+{% block title %}{{ _("Error") }} · {% endblock %}
+{% block content %}
+<div class="rounded-box border border-base-300 bg-base-100 p-6">
+  <h1 class="text-xl font-bold">{{ _("Something went wrong.") }}</h1>
+  <p class="mt-2">{{ message }}</p>
+  <p class="mt-4"><a class="link link-secondary" href="/">{{ _("Back to the start page") }}</a></p>
+</div>
+{% endblock %}

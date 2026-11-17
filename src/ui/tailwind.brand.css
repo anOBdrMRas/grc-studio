@@ -1,0 +1,18 @@
+/* fidonis-brand: 1 – fonts, logo colours, colour scheme */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face { font-family: 'Manrope'; font-weight: 500; font-display: swap; src: url('fonts/files/manrope-500.woff2') format('woff2'); }
+@font-face { font-family: 'Manrope'; font-weight: 700; font-display: swap; src: url('fonts/files/manrope-700.woff2') format('woff2'); }
+@font-face { font-family: 'Manrope'; font-weight: 800; font-display: swap; src: url('fonts/files/manrope-800.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; font-display: swap; src: url('fonts/files/plex-400.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 500; font-display: swap; src: url('fonts/files/plex-500.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 600; font-display: swap; src: url('fonts/files/plex-600.woff2') format('woff2'); }
+
+:root[data-theme='fidonis-light'] { color-scheme: light; }
+:root[data-theme='fidonis-dark'] { color-scheme: dark; }
+h1, h2, h3, .font-brand { font-family: 'Manrope', 'IBM Plex Sans', system-ui, sans-serif; }
+.brand-mark-gold { fill: #c8972a; }
+.brand-mark-ink { fill: #0a2f4d; }
+[data-theme='fidonis-dark'] .brand-mark-ink { fill: #b8c7d6; }

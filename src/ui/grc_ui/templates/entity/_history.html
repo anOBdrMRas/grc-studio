@@ -1,0 +1,24 @@
+<div class="rounded-box border border-base-300 p-3">
+  <h3 class="mb-2 flex items-center gap-2 text-sm font-semibold">{{ icon("history") }} {{ _("Change history") }} ({{ revisions|length }})</h3>
+  {% if not revisions %}<p class="text-sm opacity-70">{{ _("No changes recorded yet. Changes are recorded from now on.") }}</p>{% endif %}
+  <ul class="grid gap-1">
+    {% for r in revisions %}
+    <li class="rounded border border-base-300 p-2 text-sm">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="font-mono text-xs">{{ r.at[:16]|replace("T", " ") }}</span>
+        <b>{{ r.actor_name }}</b>
+        <span class="badge badge-sm badge-outline">{{ _({"create": "Created", "update": "Edited", "workflow": "Approval workflow", "diagram": "Diagram changed", "assignment": "Assignment in process step", "delete": "Deleted", "login": "Signed in"}.get(r.action, r.action)) }}</span>
+        <span class="grow text-xs opacity-80">{% if r.note %}{{ _(r.note).format(**r.vars) if r.vars else _(r.note) }}{% endif %}{% if r.note and r.changes %} · {% endif %}{% for c in r.changes %}{{ _(labels.get(c.key, c.key)) }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+        {% if r.changes %}<button type="button" class="btn btn-ghost btn-xs" data-action="toggle-details" aria-controls="rev-{{ r.id }}" aria-expanded="false">{{ _("Show changes") }}</button>{% endif %}
+        {% if can_view and not loop.first %}<button type="button" class="btn btn-ghost btn-xs" hx-get="{{ base }}?revision={{ r.id }}" hx-target="{{ "#profile" if "/profile" in base else "#detail" }}">{{ _("View this state") }}</button>{% endif %}
+      </div>
+      {% if r.changes %}
+      <table id="rev-{{ r.id }}" class="table table-xs mt-1" hidden>
+        <thead><tr><th>{{ _("Field") }}</th><th>{{ _("before") }}</th><th>{{ _("after") }}</th></tr></thead>
+        <tbody>{% for c in r.changes %}<tr><td>{{ _(labels.get(c.key, c.key)) }}</td><td class="max-w-xs whitespace-pre-wrap break-words bg-error/10">{{ c["from"] if c["from"] is not none else "–" }}</td><td class="max-w-xs whitespace-pre-wrap break-words bg-success/10">{{ c.to if c.to is not none else "–" }}</td></tr>{% endfor %}</tbody>
+      </table>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
