@@ -56,6 +56,9 @@ async def anonymous_api(request: Request) -> AsyncIterator[GrcClient]:
 
 
 async def ui_context(request: Request) -> AsyncIterator[UiContext]:
+    if not request.cookies.get(SESSION_COOKIE):
+        # without a session cookie there is nothing to ask the API
+        raise NotSignedIn
     async with http_client(request) as http:
         api = GrcClient(http)
         try:
