@@ -1,0 +1,9 @@
+GRC Studio
+Copyright (c) 2026 the GRC Studio authors.
+
+This product includes third-party software. The interface ships, unmodified:
+- bpmn-js (bpmn.io license: the bpmn.io watermark must stay visible in the editor)
+- htmx (Zero-Clause BSD), Alpine.js CSP build (MIT), SortableJS (MIT)
+- Tabler Icons (MIT), Manrope and IBM Plex Sans fonts (SIL Open Font License 1.1)
+Their licence texts are copied to src/ui/grc_ui/static/vendor/licenses at build time.
+See THIRD_PARTY_LICENSES.md for the Python dependencies.

@@ -1,0 +1,6 @@
+# Changes to these paths need a review by the owners.
+*                         @anobdrmras
+/docker/                  @anobdrmras
+/.github/                 @anobdrmras
+/src/api/grc_api/auth/    @anobdrmras
+/src/api/grc_api/migrations/ @anobdrmras

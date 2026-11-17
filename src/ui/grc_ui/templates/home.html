@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "macros.html" import status_badge, empty %}
+{% block title %}{{ _("Start page") }} · {% endblock %}
+{% block content %}
+<div class="grid gap-4 p-6 lg:grid-cols-2">
+  <section class="rounded-box border border-base-300 bg-base-100 p-4 lg:col-span-2">
+    <p class="text-sm opacity-70">{{ _("Your start page") }}</p>
+    <h1 class="text-2xl font-bold">{{ _("Welcome, {name}").format(name=me.name) }}</h1>
+    {% if me.position_title %}<p class="mt-1 text-sm">{{ me.position_title }}</p>{% endif %}
+  </section>
+  {% if review %}
+  <section class="rounded-box border border-base-300 bg-base-100 p-4">
+    <h2 class="font-semibold">{{ _("Waiting for the I&A approval") }} <span class="badge badge-sm">{{ review|length }}</span></h2>
+    <ul class="mt-2 grid gap-1 text-sm">
+      {% for base, kind, x in review %}<li><a class="link link-secondary" href="{{ base }}/{{ x.id }}">{{ x.code }} {{ x.title }}</a> <span class="opacity-60">· {{ _(kind) }}</span></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+  <section class="rounded-box border border-base-300 bg-base-100 p-4">
+    <h2 class="font-semibold">{{ _("In my responsibility") }} <span class="badge badge-sm">{{ owned|length }}</span></h2>
+    {% if owned %}
+    <ul class="mt-2 grid gap-1 text-sm">
+      {% for base, kind, x in owned %}<li class="flex items-center gap-2"><a class="link link-secondary grow" href="{{ base }}/{{ x.id }}">{{ x.code }} {{ x.title }}</a> {{ status_badge(x.status) }}</li>{% endfor %}
+    </ul>
+    {% else %}<p class="mt-2 text-sm opacity-70">{{ _("You are not the owner of any element.") }}</p>{% endif %}
+  </section>
+</div>
+{% endblock %}

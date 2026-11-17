@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "macros.html" import status_badge, empty %}
+{% block title %}{{ _("Processes") }} · {% endblock %}
+{% block content %}
+<div class="p-6">
+  <div class="mb-4 flex items-center justify-between gap-2">
+    <div>
+      <p class="text-xs opacity-60">{{ _("Process landscape") }}</p>
+      <h1 class="text-xl font-bold">{{ _("Processes") }}</h1>
+    </div>
+    {% if can("processes:manage") %}
+    <form hx-post="/processes" class="join">
+      <input name="title" class="input input-bordered input-sm join-item" placeholder="{{ _('Title of the new process') }}" aria-label="{{ _('Title of the new process') }}" required>
+      <button class="btn btn-primary btn-sm join-item">{{ icon("plus") }} {{ _("Process") }}</button>
+    </form>
+    {% endif %}
+  </div>
+  {% for category, items in bands %}
+  <section class="mb-4 rounded-box border border-base-300 bg-base-100 p-4">
+    <h2 class="mb-3 text-sm font-semibold uppercase tracking-wide text-secondary">{{ _(category) }}</h2>
+    {% if items %}
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {% for x in items %}
+      <a href="/processes/{{ x.id }}" class="block rounded-box border border-base-300 p-3 hover:border-secondary">
+        <div class="flex items-center justify-between gap-2"><span class="font-mono text-xs opacity-60">{{ x.code }}</span>{{ status_badge(x.status) }}</div>
+        <div class="mt-1 font-semibold">{{ x.title }}</div>
+        <div class="text-xs opacity-70">{{ x.area }}{% if x.owner_role_title %} · {{ x.owner_role_title }}{% endif %}</div>
+        {% if x.is_owner %}<span class="badge badge-xs badge-accent mt-1">{{ _("Owner") }}</span>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}{{ empty(_("No processes.")) }}{% endif %}
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

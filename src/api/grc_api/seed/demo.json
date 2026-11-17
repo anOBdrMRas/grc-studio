@@ -1,0 +1,2486 @@
+{
+ "users": [
+  {
+   "id": "U-001",
+   "code": "U-001",
+   "last_name": "Becker",
+   "first_name": "Daniel",
+   "display_name": "Daniel Becker",
+   "division": "Business Enablement (BE)",
+   "department": "Global IT",
+   "position_id": "ST-008",
+   "position_since": "2015-10-01",
+   "description": "",
+   "system_roles": [
+    "admin"
+   ],
+   "status": "active",
+   "email": "d.becker@example.com"
+  },
+  {
+   "id": "U-002",
+   "code": "U-002",
+   "last_name": "Berger",
+   "first_name": "Dr. Anna",
+   "display_name": "Dr. Anna Berger",
+   "division": "Operations",
+   "department": "Purchasing",
+   "position_id": "ST-002",
+   "position_since": "2018-01-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "a.berger@example.com"
+  },
+  {
+   "id": "U-003",
+   "code": "U-003",
+   "last_name": "Huber",
+   "first_name": "Martin",
+   "display_name": "Martin Huber",
+   "division": "Operations",
+   "department": "Purchasing",
+   "position_id": "ST-003",
+   "position_since": "2019-03-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "m.huber@example.com"
+  },
+  {
+   "id": "U-004",
+   "code": "U-004",
+   "last_name": "Klein",
+   "first_name": "Sabine",
+   "display_name": "Sabine Klein",
+   "division": "Operations",
+   "department": "Purchasing",
+   "position_id": "ST-003",
+   "position_since": "2023-09-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "s.klein@example.com"
+  },
+  {
+   "id": "U-005",
+   "code": "U-005",
+   "last_name": "Wagner",
+   "first_name": "Katrin",
+   "display_name": "Katrin Wagner",
+   "division": "Finance & Admin",
+   "department": "Finance",
+   "position_id": "ST-004",
+   "position_since": "2017-06-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "k.wagner@example.com"
+  },
+  {
+   "id": "U-006",
+   "code": "U-006",
+   "last_name": "Roth",
+   "first_name": "Tobias",
+   "display_name": "Tobias Roth",
+   "division": "Finance & Admin",
+   "department": "Finance",
+   "position_id": "ST-005",
+   "position_since": "2022-01-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "t.roth@example.com"
+  },
+  {
+   "id": "U-007",
+   "code": "U-007",
+   "last_name": "Schmid",
+   "first_name": "Lena",
+   "display_name": "Lena Schmid",
+   "division": "Management",
+   "department": "Legal & Compliance",
+   "position_id": "ST-006",
+   "position_since": "2020-07-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "l.schmid@example.com"
+  },
+  {
+   "id": "U-008",
+   "code": "U-008",
+   "last_name": "Neumann",
+   "first_name": "Jonas",
+   "display_name": "Jonas Neumann",
+   "division": "Business Enablement (BE)",
+   "department": "Global IT",
+   "position_id": "ST-007",
+   "position_since": "2022-02-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "j.neumann@example.com"
+  },
+  {
+   "id": "U-009",
+   "code": "U-009",
+   "last_name": "Yilmaz",
+   "first_name": "Petra",
+   "display_name": "Petra Yilmaz",
+   "division": "Operations",
+   "department": "Logistics",
+   "position_id": "ST-009",
+   "position_since": "2016-05-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "p.yilmaz@example.com"
+  },
+  {
+   "id": "U-010",
+   "code": "U-010",
+   "last_name": "Huber",
+   "first_name": "Konrad",
+   "display_name": "Konrad Huber",
+   "division": "Management",
+   "department": "",
+   "position_id": "ST-001",
+   "position_since": "2014-01-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "k.huber@example.com"
+  },
+  {
+   "id": "U-011",
+   "code": "U-011",
+   "last_name": "Hoffmann",
+   "first_name": "Claudia",
+   "display_name": "Claudia Hoffmann",
+   "division": "Sales",
+   "department": "Sales",
+   "position_id": "ST-010",
+   "position_since": "2021-04-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "c.hoffmann@example.com"
+  },
+  {
+   "id": "U-012",
+   "code": "U-012",
+   "last_name": "Krüger",
+   "first_name": "Ralf",
+   "display_name": "Ralf Krüger",
+   "division": "Business Enablement (BE)",
+   "department": "I&A",
+   "position_id": "ST-011",
+   "position_since": "2020-01-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "r.krueger@example.com"
+  },
+  {
+   "id": "U-013",
+   "code": "U-013",
+   "last_name": "Lang",
+   "first_name": "Miriam",
+   "display_name": "Miriam Lang",
+   "division": "Business Enablement (BE)",
+   "department": "I&A",
+   "position_id": "ST-012",
+   "position_since": "2021-01-01",
+   "description": "",
+   "system_roles": [
+    "employee",
+    "ia"
+   ],
+   "status": "active",
+   "email": "m.lang@example.com"
+  },
+  {
+   "id": "U-014",
+   "code": "U-014",
+   "last_name": "Extern: Datenschutz GmbH",
+   "first_name": "",
+   "display_name": "Extern: Datenschutz GmbH",
+   "division": "",
+   "department": "",
+   "position_id": "ST-013",
+   "position_since": "2024-01-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "dsb@datenschutz-gmbh.example"
+  },
+  {
+   "id": "U-015",
+   "code": "U-015",
+   "last_name": "Müller",
+   "first_name": "Karsten",
+   "display_name": "Karsten Müller",
+   "division": "Business Enablement (BE)",
+   "department": "Export Control & Customs",
+   "position_id": "ST-014",
+   "position_since": "2023-04-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "k.mueller@example.com"
+  },
+  {
+   "id": "U-016",
+   "code": "U-016",
+   "last_name": "Maier",
+   "first_name": "Andreas",
+   "display_name": "Andreas Maier",
+   "division": "Business Enablement (BE)",
+   "department": "Legal & Compliance",
+   "position_id": "ST-015",
+   "position_since": "2021-10-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "a.maier@example.com"
+  },
+  {
+   "id": "U-017",
+   "code": "U-017",
+   "last_name": "Schmidt",
+   "first_name": "Torsten",
+   "display_name": "Torsten Schmidt",
+   "division": "Finance & Admin",
+   "department": "Controlling",
+   "position_id": "ST-016",
+   "position_since": "2019-07-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "t.schmidt@example.com"
+  },
+  {
+   "id": "U-018",
+   "code": "U-018",
+   "last_name": "Wolf",
+   "first_name": "Lisa",
+   "display_name": "Lisa Wolf",
+   "division": "Business Enablement (BE)",
+   "department": "Export Control & Customs",
+   "position_id": "ST-017",
+   "position_since": "2024-09-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "l.wolf@example.com"
+  },
+  {
+   "id": "U-019",
+   "code": "U-019",
+   "last_name": "Braun",
+   "first_name": "Michael",
+   "display_name": "Michael Braun",
+   "division": "Management",
+   "department": "",
+   "position_id": "ST-018",
+   "position_since": "2020-03-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "m.braun@example.com"
+  },
+  {
+   "id": "U-020",
+   "code": "U-020",
+   "last_name": "Vogel",
+   "first_name": "Sandra",
+   "display_name": "Sandra Vogel",
+   "division": "Business Enablement (BE)",
+   "department": "",
+   "position_id": "ST-019",
+   "position_since": "2024-02-01",
+   "description": "",
+   "system_roles": [
+    "employee"
+   ],
+   "status": "active",
+   "email": "s.vogel@example.com"
+  }
+ ],
+ "roles": [
+  {
+   "id": "RO-001",
+   "code": "RO-001",
+   "title": "Bedarfsträger",
+   "description": "Alle Mitarbeitenden, die Waren oder Dienstleistungen anfordern.",
+   "role_type": "Functional role",
+   "org_unit": "Generic",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-002",
+   "responsibilities": "Erfasst Bedarfe vollständig und sachlich korrekt.",
+   "authorities": "",
+   "competencies": "Kenntnis der Beschaffungsrichtlinie",
+   "trainings": "Beschaffungsrichtlinie (jährlich)",
+   "incompatible_role_ids": [],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-002",
+   "code": "RO-002",
+   "title": "Kostenstellenverantwortlicher",
+   "description": "Verantwortet das Budget einer Kostenstelle; Kostenstellen und Limits werden vom Controlling gepflegt.",
+   "role_type": "Leadership role",
+   "org_unit": "Generic",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-017",
+   "responsibilities": "Genehmigt Bedarfsanforderungen im Rahmen des Budgets.",
+   "authorities": "Genehmigung von Bedarfsanforderungen im Rahmen des Kostenstellenbudgets; der Betrag ergibt sich aus der Stelle",
+   "competencies": "Budgetplanung und -kontrolle, Grundkenntnisse Kostenrechnung",
+   "trainings": "Einführung Kostenstellenrechnung (einmalig), Beschaffungsrichtlinie (jährlich)",
+   "incompatible_role_ids": [
+    "RO-003"
+   ],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-003",
+   "code": "RO-003",
+   "title": "Einkäufer",
+   "description": "",
+   "role_type": "Functional role",
+   "org_unit": "Operation",
+   "mandatory": false,
+   "compliance_relevant": true,
+   "role_owner_user_id": "U-002",
+   "responsibilities": "Holt Angebote ein, verhandelt, löst Bestellungen aus.",
+   "authorities": "Bestellungen im genehmigten Rahmen",
+   "competencies": "Vertragsrecht, Verhandlungsführung",
+   "trainings": "Anti-Korruption (jährlich), IS-Awareness",
+   "incompatible_role_ids": [
+    "RO-002",
+    "RO-005"
+   ],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3",
+    "37301:5.3",
+    "27001:A.5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-004",
+   "code": "RO-004",
+   "title": "Leitung Einkauf",
+   "description": "",
+   "role_type": "Leadership role",
+   "org_unit": "Operation",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-010",
+   "responsibilities": "Prozessverantwortung Beschaffung, Lieferantenmanagement.",
+   "authorities": "Vergabeentscheidungen, Freigabe und Sperre von Lieferanten",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3",
+    "9001:8.4"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-005",
+   "code": "RO-005",
+   "title": "Kreditorenbuchhaltung",
+   "description": "",
+   "role_type": "Functional role",
+   "org_unit": "Finance and Admin",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-005",
+   "responsibilities": "Rechnungsprüfung, Zahlungsfreigabe (Vier-Augen-Prinzip).",
+   "authorities": "",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [
+    "RO-003"
+   ],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-006",
+   "code": "RO-006",
+   "title": "Compliance Officer",
+   "description": "Compliance-Funktion gemäß ISO 37301 5.3.2.",
+   "role_type": "Appointed officer",
+   "org_unit": "Business Enablement",
+   "mandatory": true,
+   "compliance_relevant": true,
+   "role_owner_user_id": "U-010",
+   "responsibilities": "Überwacht Compliance-Verpflichtungen, führt Geschäftspartnerprüfungen durch, berichtet an Geschäftsleitung.",
+   "authorities": "Veto bei Compliance-Verstößen, uneingeschränktes Informationsrecht",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "Appointment / designation",
+   "written_form": true,
+   "authority_notice": "",
+   "iso_refs": [
+    "37301:5.3",
+    "37301:5.1"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-007",
+   "code": "RO-007",
+   "title": "Informationssicherheitsbeauftragter (ISB)",
+   "description": "Verantwortlich für Aufbau, Betrieb und Verbesserung des ISMS nach ISO/IEC 27001.",
+   "role_type": "Appointed officer",
+   "org_unit": "Technology",
+   "mandatory": true,
+   "compliance_relevant": true,
+   "role_owner_user_id": "U-010",
+   "responsibilities": "Steuert das ISMS, bewertet IS-Risiken, berichtet an die Geschäftsleitung.",
+   "authorities": "Informations- und Prüfrecht in allen Bereichen, direkte Eskalation an die Geschäftsführung, Stopp von Änderungen bei akutem Sicherheitsrisiko",
+   "competencies": "ISO/IEC 27001 Lead Implementer, Risikomanagement, IT-Grundschutz",
+   "trainings": "ISMS-Fortbildung (jährlich), Awareness-Schulungen durchführen",
+   "incompatible_role_ids": [
+    "RO-009"
+   ],
+   "required_mandate": "Appointment / designation",
+   "written_form": true,
+   "authority_notice": "",
+   "iso_refs": [
+    "27001:5.3",
+    "27001:A.5.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-008",
+   "code": "RO-008",
+   "title": "Wareneingang / Lager",
+   "description": "",
+   "role_type": "Functional role",
+   "org_unit": "Operation",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-009",
+   "responsibilities": "Prüft Lieferungen auf Menge, Qualität und Beschädigung.",
+   "authorities": "Annahme verweigern bei Mengen- oder Qualitätsabweichung, Ware ins Sperrlager buchen",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-009",
+   "code": "RO-009",
+   "title": "IT-Administration",
+   "description": "",
+   "role_type": "Functional role",
+   "org_unit": "Technology",
+   "mandatory": false,
+   "compliance_relevant": true,
+   "role_owner_user_id": "U-008",
+   "responsibilities": "Richtet Berechtigungen ein und entzieht sie.",
+   "authorities": "",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [
+    "RO-007"
+   ],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "27001:A.8.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-010",
+   "code": "RO-010",
+   "title": "Geschäftsführung",
+   "description": "",
+   "role_type": "Leadership role",
+   "org_unit": "Generic",
+   "mandatory": true,
+   "compliance_relevant": false,
+   "role_owner_user_id": null,
+   "responsibilities": "Oberste Leitung: Verantwortung für die Managementsysteme, Politik, Ressourcen, Managementbewertung.",
+   "authorities": "",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "Appointment / designation",
+   "written_form": true,
+   "authority_notice": "Handelsregister",
+   "iso_refs": [
+    "9001:5.1",
+    "27001:5.1",
+    "37301:5.1"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-011",
+   "code": "RO-011",
+   "title": "Qualitätsmanagementbeauftragter (QMB)",
+   "description": "",
+   "role_type": "Appointed officer",
+   "org_unit": "Business Enablement",
+   "mandatory": true,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-010",
+   "responsibilities": "Sicherstellung der Konformität des QMS, Berichterstattung über die Leistung des QMS (ISO 9001 5.3).",
+   "authorities": "",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "Appointment / designation",
+   "written_form": true,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-012",
+   "code": "RO-012",
+   "title": "Datenschutzbeauftragter",
+   "description": "",
+   "role_type": "Appointed officer",
+   "org_unit": "Other",
+   "mandatory": true,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-007",
+   "responsibilities": "Aufgaben nach Art. 39 DSGVO; Beratung und Überwachung der Einhaltung des Datenschutzes.",
+   "authorities": "",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "Appointment / designation",
+   "written_form": true,
+   "authority_notice": "Datenschutzaufsicht (Art. 37 Abs. 7 DSGVO)",
+   "iso_refs": [
+    "27001:A.5.34"
+   ],
+   "status": "review",
+   "doc_version": "0.9",
+   "last_review": null,
+   "next_review": "2026-11-30",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-007",
+     "at": "2026-11-03T09:15:00.000Z",
+     "comment": "Aufgaben nach Art. 39 DSGVO ergänzt, bitte prüfen.",
+     "status": "review"
+    }
+   ]
+  },
+  {
+   "id": "RO-013",
+   "code": "RO-013",
+   "title": "Ausfuhrverantwortlicher",
+   "description": "Pflichtrolle nach Außenwirtschaftsrecht (Mitglied der Geschäftsleitung, gegenüber dem BAFA benannt).",
+   "role_type": "Appointed officer",
+   "org_unit": "Business Enablement",
+   "mandatory": true,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-007",
+   "responsibilities": "Verantwortet die Einhaltung des Exportkontrollrechts (AWG/AWV, EU-Dual-Use-VO), Sanktionslistenprüfung.",
+   "authorities": "",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "Appointment / designation",
+   "written_form": true,
+   "authority_notice": "BAFA",
+   "iso_refs": [
+    "37301:4.5"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-014",
+   "code": "RO-014",
+   "title": "Compliance-Komitee",
+   "description": "Quartalsweises Gremium aus GF, Compliance Officer, ISB und QMB.",
+   "role_type": "Committee",
+   "org_unit": "Generic",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-007",
+   "responsibilities": "Bewertet Compliance-, IS- und Qualitätsrisiken, beschließt Maßnahmen.",
+   "authorities": "",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "37301:9.3",
+    "37301:5.1"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-015",
+   "code": "RO-015",
+   "title": "Trade Compliance Beauftragter",
+   "description": "Operative Exportkontrolle und Zoll im Auftrag des Ausfuhrverantwortlichen.",
+   "role_type": "Appointed officer",
+   "org_unit": "Business Enablement",
+   "mandatory": false,
+   "compliance_relevant": true,
+   "role_owner_user_id": "U-010",
+   "responsibilities": "Güterklassifizierung (Ausfuhrliste, Dual-Use), Sanktionslisten- und Embargoprüfung, Genehmigungsanträge beim BAFA, Zollabwicklung und AEO-Bewilligung, Schulung der Fachbereiche.",
+   "authorities": "Lieferstopp bei Exportkontrollverdacht, uneingeschränktes Informationsrecht, direkter Zugang zum Ausfuhrverantwortlichen",
+   "competencies": "Exportkontroll- und Zollrecht (AWG/AWV, EU-Dual-Use-VO, UZK), Kenntnis US-Reexportrecht",
+   "trainings": "BAFA-Exportkontrollseminar, jährliche Fortbildung Zoll",
+   "incompatible_role_ids": [],
+   "required_mandate": "Appointment / designation",
+   "written_form": true,
+   "authority_notice": "",
+   "iso_refs": [
+    "37301:4.5",
+    "37301:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-010",
+     "at": "2026-11-04T08:00:00.000Z",
+     "comment": "",
+     "status": "review"
+    },
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-11-05T09:30:00.000Z",
+     "comment": "Geprüft, Normbezug vollständig.",
+     "status": "released"
+    }
+   ]
+  },
+  {
+   "id": "RO-016",
+   "code": "RO-016",
+   "title": "Exportkontroll-Sachbearbeiter",
+   "description": "Bearbeitet Exportvorgänge im Team Export Control & Customs.",
+   "role_type": "Functional role",
+   "org_unit": "Business Enablement",
+   "mandatory": false,
+   "compliance_relevant": true,
+   "role_owner_user_id": "U-015",
+   "responsibilities": "Prüft Aufträge auf Exportrelevanz, klassifiziert Güter, führt Sanktionslistenprüfungen durch und erstellt Ausfuhranmeldungen.",
+   "authorities": "Vorläufige Liefersperre bei Treffer in der Sanktionslistenprüfung",
+   "competencies": "Grundlagen Exportkontroll- und Zollrecht, ATLAS",
+   "trainings": "Exportkontrolle Grundlagen (einmalig), Zoll-Update (jährlich)",
+   "incompatible_role_ids": [],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "37301:4.5"
+   ],
+   "status": "draft",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": {
+    "responsibilities": "Prüft Aufträge auf Exportrelevanz und führt Sanktionslistenprüfungen durch.",
+    "authorities": "Keine eigenen Befugnisse; Eskalation an den Trade Compliance Beauftragten",
+    "doc_version": "1.0"
+   },
+   "workflow": [
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-01-15T10:00:00.000Z",
+     "comment": "",
+     "status": "released"
+    },
+    {
+     "step": "reopened",
+     "by_user_id": "U-015",
+     "at": "2026-10-18T08:30:00.000Z",
+     "comment": "",
+     "status": "draft"
+    },
+    {
+     "step": "submitted",
+     "by_user_id": "U-015",
+     "at": "2026-10-20T14:05:00.000Z",
+     "comment": "Befugnisse überarbeitet.",
+     "status": "review"
+    },
+    {
+     "step": "rejected",
+     "by_user_id": "U-013",
+     "at": "2026-10-22T11:40:00.000Z",
+     "comment": "Befugnisse unvollständig: Freigabegrenze für Standard-Ausfuhranmeldungen fehlt; bitte mit der Stelle ST-017 abstimmen.",
+     "status": "draft"
+    }
+   ]
+  },
+  {
+   "id": "RO-017",
+   "code": "RO-017",
+   "title": "Leitung Kreditorenbuchhaltung",
+   "description": "",
+   "role_type": "Leadership role",
+   "org_unit": "Finance and Admin",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-010",
+   "responsibilities": "Verantwortet Risiken, Kontrollen und Verbesserungen der Kreditorenbuchhaltung.",
+   "authorities": "Freigabe der Zahlläufe (zweite Unterschrift), Weisungsrecht im Team",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  },
+  {
+   "id": "RO-018",
+   "code": "RO-018",
+   "title": "Vertrieb",
+   "description": "",
+   "role_type": "Functional role",
+   "org_unit": "Sales",
+   "mandatory": false,
+   "compliance_relevant": false,
+   "role_owner_user_id": "U-011",
+   "responsibilities": "Qualifiziert Leads, erstellt Angebote und nimmt Aufträge an.",
+   "authorities": "Angebote im Rahmen der Preisliste",
+   "competencies": "",
+   "trainings": "",
+   "incompatible_role_ids": [],
+   "required_mandate": "None",
+   "written_form": false,
+   "authority_notice": "",
+   "iso_refs": [
+    "9001:8.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "released": null,
+   "workflow": []
+  }
+ ],
+ "positions": [
+  {
+   "id": "ST-001",
+   "code": "ST-001",
+   "title": "Geschäftsführer",
+   "description": "",
+   "org_unit": "Generic",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Leitung des Unternehmens, oberste Leitung im Sinne der Managementsystemnormen.",
+   "tasks": "Strategie, Ressourcen, Politik, Managementbewertung, Bestellung der Beauftragten.",
+   "authorities": "Alleinvertretungsberechtigt; Weisungsrecht gegenüber allen Mitarbeitenden; Budgetfreigabe ohne Limit",
+   "signing_authority": "Statutory representation (officer)",
+   "approval_limit": 0,
+   "qualification": "Hochschulabschluss Wirtschaft oder Technik",
+   "experience": "10 Jahre Führungserfahrung",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "n/a",
+   "reports_to_functional_id": "n/a",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.1",
+    "27001:5.1",
+    "37301:5.1"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-010",
+     "comment": ""
+    },
+    {
+     "role_id": "RO-013",
+     "comment": "gegenüber dem BAFA benannt"
+    },
+    {
+     "role_id": "RO-014",
+     "comment": "Vorsitz"
+    },
+    {
+     "role_id": "RO-002",
+     "comment": "Budget Geschäftsführung"
+    }
+   ]
+  },
+  {
+   "id": "ST-002",
+   "code": "ST-002",
+   "title": "Leiterin / Leiter Einkauf",
+   "description": "Leitet den Einkauf mit zwei Einkäuferinnen und Einkäufern.",
+   "org_unit": "Operation",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "Hauptsitz",
+   "purpose": "Verantwortung für die strategische und operative Beschaffung.",
+   "tasks": "Prozessverantwortung Purchase-to-Pay, Lieferantenmanagement, Führung des Einkaufsteams.",
+   "authorities": "Disziplinarische Führung des Einkaufs, Vergaben > 25.000 EUR, Freigabe von Bestellungen bis 250.000 EUR",
+   "signing_authority": "Prokura (general commercial power)",
+   "approval_limit": 250000,
+   "qualification": "Studium BWL / Wirtschaftsingenieurwesen",
+   "experience": "5 Jahre Einkauf, 2 Jahre Führung",
+   "competencies": "Vertragsrecht, Verhandlungsführung, Lieferantenbewertung",
+   "trainings": "Anti-Korruption (jährlich), IS-Awareness",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": "ST-003",
+   "deputy_inducted": true,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-004",
+     "comment": ""
+    },
+    {
+     "role_id": "RO-002",
+     "comment": "Kostenstelle Einkauf, bis 250.000 EUR"
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-003",
+   "code": "ST-003",
+   "title": "Einkäufer/in",
+   "description": "",
+   "org_unit": "Operation",
+   "is_manager": false,
+   "headcount": 2,
+   "location": "",
+   "purpose": "Wirtschaftliche Beschaffung von Material und Dienstleistungen.",
+   "tasks": "Angebote einholen und vergleichen, Lieferanten prüfen, Bestellungen auslösen.",
+   "authorities": "Bestellungen im genehmigten Rahmen",
+   "signing_authority": "Commercial power of attorney",
+   "approval_limit": 10000,
+   "qualification": "Kaufmännische Ausbildung",
+   "experience": "2 Jahre Einkauf",
+   "competencies": "Vertragsrecht, Verhandlungsführung",
+   "trainings": "Anti-Korruption (jährlich), IS-Awareness",
+   "screening_required": true,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-002",
+   "reports_to_functional_id": "ST-002",
+   "deputy_position_id": "ST-002",
+   "deputy_inducted": true,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-003",
+     "comment": ""
+    },
+    {
+     "role_id": "RO-001",
+     "comment": "für den eigenen Bereich"
+    }
+   ]
+  },
+  {
+   "id": "ST-004",
+   "code": "ST-004",
+   "title": "Teamleitung Kreditorenbuchhaltung",
+   "description": "",
+   "org_unit": "Finance and Admin",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Ordnungsgemäße Erfassung und Bezahlung von Lieferantenrechnungen.",
+   "tasks": "Rechnungsprüfung, Zahlungsfreigabe im Vier-Augen-Prinzip, Führung des Teams.",
+   "authorities": "Zahlungsfreigabe (2. Unterschrift)",
+   "signing_authority": "None",
+   "approval_limit": 50000,
+   "qualification": "Bilanzbuchhalter/in",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": "ST-005",
+   "deputy_inducted": true,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-017",
+     "comment": ""
+    },
+    {
+     "role_id": "RO-005",
+     "comment": "Freigabe der Zahlläufe"
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-005",
+   "code": "ST-005",
+   "title": "Kreditorenbuchhalter/in",
+   "description": "",
+   "org_unit": "Finance and Admin",
+   "is_manager": false,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Erfassung und Prüfung von Eingangsrechnungen.",
+   "tasks": "Rechnungen erfassen, 3-Way-Match klären, Zahlläufe vorbereiten.",
+   "authorities": "",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "Kaufmännische Ausbildung",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-004",
+   "reports_to_functional_id": "ST-004",
+   "deputy_position_id": "ST-004",
+   "deputy_inducted": true,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-005",
+     "comment": "Erfassung und Vorbereitung"
+    }
+   ]
+  },
+  {
+   "id": "ST-006",
+   "code": "ST-006",
+   "title": "Chief Compliance Officer",
+   "description": "",
+   "org_unit": "Business Enablement",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Leitung der Compliance-Funktion gemäß ISO 37301 5.3.2.",
+   "tasks": "Compliance-Risikobeurteilung, Geschäftspartnerprüfung, Hinweisgebersystem, Berichterstattung an die GF.",
+   "authorities": "Veto bei Compliance-Verstößen, uneingeschränktes Informationsrecht",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "Volljurist/in",
+   "experience": "5 Jahre Compliance",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": true,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "n/a",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "37301:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-006",
+     "comment": "Bestellung durch GF"
+    },
+    {
+     "role_id": "RO-014",
+     "comment": "Geschäftsführung des Komitees"
+    }
+   ]
+  },
+  {
+   "id": "ST-007",
+   "code": "ST-007",
+   "title": "Informationssicherheitsbeauftragte/r",
+   "description": "",
+   "org_unit": "Technology",
+   "is_manager": false,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Steuerung und Weiterentwicklung des ISMS.",
+   "tasks": "IS-Risikomanagement, Richtlinien, Awareness, Sicherheitsvorfälle, Berichte an die GF.",
+   "authorities": "",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "Studium Informatik, Zertifizierung ISO 27001 Lead Implementer",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": true,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-019",
+   "reports_to_functional_id": "n/a",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "27001:5.3",
+    "27001:A.5.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-007",
+     "comment": "Stabsstelle der GF"
+    },
+    {
+     "role_id": "RO-014",
+     "comment": "Mitglied"
+    }
+   ]
+  },
+  {
+   "id": "ST-008",
+   "code": "ST-008",
+   "title": "Systemadministrator/in",
+   "description": "",
+   "org_unit": "Technology",
+   "is_manager": false,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Betrieb der IT-Infrastruktur und Benutzerverwaltung.",
+   "tasks": "Berechtigungen einrichten und entziehen, Systembetrieb, Backups.",
+   "authorities": "",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "Fachinformatiker/in Systemintegration",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": true,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-019",
+   "reports_to_functional_id": "ST-007",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-009",
+     "comment": ""
+    },
+    {
+     "role_id": "RO-007",
+     "comment": "Stellvertretung des ISB"
+    }
+   ]
+  },
+  {
+   "id": "ST-009",
+   "code": "ST-009",
+   "title": "Leitung Wareneingang",
+   "description": "",
+   "org_unit": "Operation",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Qualitätsgesicherte Annahme von Lieferungen.",
+   "tasks": "Wareneingangsprüfung nach Prüfplan, Sperrung fehlerhafter Ware, Reklamationen.",
+   "authorities": "",
+   "signing_authority": "None",
+   "approval_limit": 5000,
+   "qualification": "Fachkraft Lagerlogistik, Meister/in",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "ST-002",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-008",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-010",
+   "code": "ST-010",
+   "title": "Bereichsleitung Vertrieb",
+   "description": "",
+   "org_unit": "Sales",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Verantwortung für Umsatz und Kundenbeziehungen.",
+   "tasks": "",
+   "authorities": "Disziplinarische Führung des Vertriebs, Freigabe von Angeboten und Kundenverträgen bis 100.000 EUR, Rabatte bis 15 %",
+   "signing_authority": "Commercial power of attorney",
+   "approval_limit": 100000,
+   "qualification": "",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-018",
+     "comment": "Leitung"
+    },
+    {
+     "role_id": "RO-002",
+     "comment": "Kostenstelle Vertrieb, bis 100.000 EUR"
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-011",
+   "code": "ST-011",
+   "title": "Interne Revision",
+   "description": "",
+   "org_unit": "Business Enablement",
+   "is_manager": false,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Unabhängige Prüfung der Managementsysteme und des IKS.",
+   "tasks": "Auditprogramm durchführen, Prüfberichte erstellen, Maßnahmen nachverfolgen.",
+   "authorities": "",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "Certified Internal Auditor (CIA), ISO-Auditorenqualifikation",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "n/a",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:9.2",
+    "27001:9.2",
+    "37301:9.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": []
+  },
+  {
+   "id": "ST-012",
+   "code": "ST-012",
+   "title": "Qualitätsmanager/in",
+   "description": "",
+   "org_unit": "Business Enablement",
+   "is_manager": false,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Aufrechterhaltung und Verbesserung des QM-Systems.",
+   "tasks": "Prozessmanagement, Managementbewertung vorbereiten, Lieferantenaudits.",
+   "authorities": "",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "Qualitätsmanager/in (DGQ) oder vergleichbar",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-019",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3",
+    "9001:7.2"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-011",
+     "comment": "Bestellung durch GF"
+    },
+    {
+     "role_id": "RO-014",
+     "comment": "Mitglied"
+    }
+   ]
+  },
+  {
+   "id": "ST-013",
+   "code": "ST-013",
+   "title": "Datenschutzbeauftragte/r (extern)",
+   "description": "",
+   "org_unit": "Other",
+   "is_manager": false,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Externe Wahrnehmung der Aufgaben nach Art. 39 DSGVO (Dienstleistungsvertrag).",
+   "tasks": "Beratung und Überwachung der Einhaltung des Datenschutzes, Schulungen, Ansprechpartner der Aufsichtsbehörde.",
+   "authorities": "",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "n/a",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "27001:A.5.34"
+   ],
+   "status": "review",
+   "doc_version": "0.9",
+   "last_review": null,
+   "next_review": "2026-11-30",
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-001",
+     "at": "2026-11-06T13:20:00.000Z",
+     "comment": "Vertrag bis 12/2027 verlängert.",
+     "status": "review"
+    }
+   ],
+   "roles": [
+    {
+     "role_id": "RO-012",
+     "comment": "externer Dienstleister, Vertrag bis 12/2027"
+    }
+   ]
+  },
+  {
+   "id": "ST-014",
+   "code": "ST-014",
+   "title": "Director Export Control & Customs",
+   "description": "Leitet das Team Export Control & Customs (4 Mitarbeitende).",
+   "org_unit": "Business Enablement",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "Hauptsitz",
+   "purpose": "Sicherstellung rechtskonformer Exporte und Zollabwicklung für alle Gesellschaften der Gruppe.",
+   "tasks": "Exportkontrolle und Güterklassifizierung, Sanktionslistenprüfung, Zoll und AEO, Exportkontroll-Richtlinien, Führung des Teams.",
+   "authorities": "Disziplinarische Führung des Teams, Budget der Kostenstelle 4710 bis 50.000 EUR, Freigabe von Exportvorgängen",
+   "signing_authority": "None",
+   "approval_limit": 50000,
+   "qualification": "Studium Jura, BWL oder Wirtschaftsingenieurwesen; Zertifikat Exportkontrolle",
+   "experience": "8 Jahre Exportkontrolle / Zoll, 3 Jahre Führung",
+   "competencies": "Außenwirtschafts- und Zollrecht, Verhandlungssicherheit mit Behörden, Englisch verhandlungssicher",
+   "trainings": "Anti-Korruption (jährlich), IS-Awareness, BAFA-Seminar",
+   "screening_required": true,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-015",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3",
+    "37301:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-016",
+     "at": "2026-11-02T15:00:00.000Z",
+     "comment": "",
+     "status": "review"
+    },
+    {
+     "step": "approved",
+     "by_user_id": "U-013",
+     "at": "2026-11-04T10:10:00.000Z",
+     "comment": "",
+     "status": "released"
+    }
+   ],
+   "roles": [
+    {
+     "role_id": "RO-015",
+     "comment": "bestellt durch GF / Ausfuhrverantwortlichen"
+    },
+    {
+     "role_id": "RO-002",
+     "comment": "Kostenstelle 4710 Export Control & Customs, bis 50.000 EUR"
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-015",
+   "code": "ST-015",
+   "title": "Head of Legal & Compliance",
+   "description": "",
+   "org_unit": "Business Enablement",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Leitung der Bereiche Recht, Compliance und Exportkontrolle.",
+   "tasks": "Rechtsberatung der Geschäftsführung, Vertragsmanagement, Führung Export Control & Customs.",
+   "authorities": "Disziplinarische Führung des Bereichs, Budgetverantwortung Legal & Compliance",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "37301:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-014",
+     "comment": "Mitglied"
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-016",
+   "code": "ST-016",
+   "title": "Leitung Controlling",
+   "description": "",
+   "org_unit": "Finance and Admin",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "",
+   "purpose": "Planung, Steuerung und Kontrolle der Kostenstellen und Budgets.",
+   "tasks": "Budgetplanung, Kostenstellenstruktur und Limits, Monatsreporting.",
+   "authorities": "Pflege der Kostenstellen und Freigabelimits, Budgetsperren",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "",
+   "experience": "",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-017",
+   "code": "ST-017",
+   "title": "Export Control Specialist",
+   "description": "",
+   "org_unit": "Business Enablement",
+   "is_manager": false,
+   "headcount": 1,
+   "location": "Hauptsitz",
+   "purpose": "Operative Abwicklung von Exportkontrolle und Zoll.",
+   "tasks": "Exportrelevanzprüfung, Güterklassifizierung, Sanktionslistenprüfung, Ausfuhranmeldungen.",
+   "authorities": "Vorläufige Liefersperre bei Treffer, Freigabe von Standard-Ausfuhranmeldungen",
+   "signing_authority": "None",
+   "approval_limit": 0,
+   "qualification": "Kaufmännische Ausbildung mit Weiterbildung Außenwirtschaft",
+   "experience": "2 Jahre Zoll oder Exportkontrolle",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": true,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-014",
+   "reports_to_functional_id": "ST-014",
+   "deputy_position_id": "ST-014",
+   "deputy_inducted": true,
+   "iso_refs": [
+    "37301:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-016",
+     "comment": ""
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-018",
+   "code": "ST-018",
+   "title": "Chief Technology Officer (CTO)",
+   "description": "",
+   "org_unit": "Technology",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "Hauptsitz",
+   "purpose": "Verantwortung für Technologie, IT und die technischen Unterstützungsfunktionen des Unternehmens.",
+   "tasks": "Technologiestrategie, IT-Governance, Führung der Bereiche Technology und Business Enablement.",
+   "authorities": "Disziplinarische Führung des Technologiebereichs, Budgetverantwortung Technology bis 500.000 EUR",
+   "signing_authority": "Prokura (general commercial power)",
+   "approval_limit": 500000,
+   "qualification": "Studium Informatik, Ingenieurwesen oder vergleichbar",
+   "experience": "15 Jahre IT, davon 8 Jahre Führung",
+   "competencies": "",
+   "trainings": "",
+   "screening_required": false,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-001",
+   "reports_to_functional_id": "ST-001",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3",
+    "27001:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-002",
+     "comment": "Kostenstellen Technology, bis 500.000 EUR"
+    },
+    {
+     "role_id": "RO-014",
+     "comment": "Mitglied"
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  },
+  {
+   "id": "ST-019",
+   "code": "ST-019",
+   "title": "VP Business Enablement",
+   "description": "Leitet die Bereiche IT und Integrity & Assurance; berichtet direkt an den CTO.",
+   "org_unit": "Business Enablement",
+   "is_manager": true,
+   "headcount": 1,
+   "location": "Hauptsitz",
+   "purpose": "Stellt die IT und die Integritäts- und Assurance-Funktionen bereit, die das Geschäft sicher und regelkonform ermöglichen.",
+   "tasks": "IT: IT-Betrieb, Systemadministration und Berechtigungsmanagement verantworten. Integrity & Assurance: Informationssicherheit, Qualitätsmanagement und interne Assurance steuern. Führung der Teams, Budget- und Ressourcenplanung, Berichterstattung an den CTO.",
+   "authorities": "Disziplinarische Führung der Bereiche IT und Integrity & Assurance, Budget der Kostenstellen IT und Integrity & Assurance bis 150.000 EUR, Freigabe von IT-Änderungen mit hohem Risiko",
+   "signing_authority": "Commercial power of attorney",
+   "approval_limit": 150000,
+   "qualification": "Studium Informatik, Wirtschaftsinformatik oder BWL; Kenntnisse ISO 27001 und ISO 9001",
+   "experience": "10 Jahre IT oder Governance, 5 Jahre Führung",
+   "competencies": "IT-Service-Management, Informationssicherheit, Qualitäts- und Risikomanagement, Führung",
+   "trainings": "Anti-Korruption (jährlich), IS-Awareness, Führungskräfteschulung Compliance",
+   "screening_required": true,
+   "nda_required": true,
+   "reports_to_disciplinary_id": "ST-018",
+   "reports_to_functional_id": "ST-018",
+   "deputy_position_id": null,
+   "deputy_inducted": false,
+   "iso_refs": [
+    "9001:5.3",
+    "27001:5.3",
+    "37301:5.3"
+   ],
+   "status": "released",
+   "doc_version": "1.0",
+   "last_review": "2026-01-15",
+   "next_review": "2027-01-15",
+   "workflow": [],
+   "roles": [
+    {
+     "role_id": "RO-002",
+     "comment": "Kostenstellen IT und Integrity & Assurance, bis 150.000 EUR"
+    },
+    {
+     "role_id": "RO-014",
+     "comment": "Mitglied"
+    },
+    {
+     "role_id": "RO-001",
+     "comment": ""
+    }
+   ]
+  }
+ ],
+ "processes": [
+  {
+   "id": "P-001",
+   "code": "P-001",
+   "title": "Beschaffung (Purchase-to-Pay)",
+   "description": "Von der Bedarfsanforderung bis zur Zahlung an den Lieferanten.",
+   "category": "Core process",
+   "owner_role_id": "RO-004",
+   "area": "Einkauf",
+   "landscape_order": 3,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001",
+    "ISO 27001",
+    "ISO 37301"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P2P\" name=\"Beschaffung (Purchase-to-Pay)\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"StartEvent_1\" name=\"Bedarf entstanden\">\n      <bpmn:outgoing>Flow_1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"Task_Bedarf\" name=\"Bedarfsanforderung erfassen\">\n      <bpmn:incoming>Flow_1</bpmn:incoming>\n      <bpmn:outgoing>Flow_2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"Task_Genehmigen\" name=\"Anforderung genehmigen\">\n      <bpmn:incoming>Flow_2</bpmn:incoming>\n      <bpmn:outgoing>Flow_3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:exclusiveGateway id=\"Gateway_Genehmigt\" name=\"Genehmigt?\">\n      <bpmn:incoming>Flow_3</bpmn:incoming>\n      <bpmn:outgoing>Flow_4</bpmn:outgoing>\n      <bpmn:outgoing>Flow_5</bpmn:outgoing>\n    </bpmn:exclusiveGateway>\n    <bpmn:subProcess id=\"Sub_Lieferant\" name=\"Lieferant auswählen\">\n      <bpmn:incoming>Flow_4</bpmn:incoming>\n      <bpmn:outgoing>Flow_6</bpmn:outgoing>\n      <bpmn:startEvent id=\"Sub_Start\" name=\"Bedarf freigegeben\">\n        <bpmn:outgoing>SF_1</bpmn:outgoing>\n      </bpmn:startEvent>\n      <bpmn:userTask id=\"Task_Angebote\" name=\"Angebote einholen\">\n        <bpmn:incoming>SF_1</bpmn:incoming>\n        <bpmn:outgoing>SF_2</bpmn:outgoing>\n      </bpmn:userTask>\n      <bpmn:userTask id=\"Task_Vergleich\" name=\"Angebote vergleichen\">\n        <bpmn:incoming>SF_2</bpmn:incoming>\n        <bpmn:outgoing>SF_3</bpmn:outgoing>\n      </bpmn:userTask>\n      <bpmn:userTask id=\"Task_LiefPruefung\" name=\"Lieferant prüfen (Compliance &amp; IS)\">\n        <bpmn:incoming>SF_3</bpmn:incoming>\n        <bpmn:outgoing>SF_4</bpmn:outgoing>\n      </bpmn:userTask>\n      <bpmn:userTask id=\"Task_Vergabe\" name=\"Vergabeentscheidung dokumentieren\">\n        <bpmn:incoming>SF_4</bpmn:incoming>\n        <bpmn:outgoing>SF_5</bpmn:outgoing>\n      </bpmn:userTask>\n      <bpmn:endEvent id=\"Sub_End\" name=\"Lieferant ausgewählt\">\n        <bpmn:incoming>SF_5</bpmn:incoming>\n      </bpmn:endEvent>\n      <bpmn:sequenceFlow id=\"SF_1\" sourceRef=\"Sub_Start\" targetRef=\"Task_Angebote\" />\n      <bpmn:sequenceFlow id=\"SF_2\" sourceRef=\"Task_Angebote\" targetRef=\"Task_Vergleich\" />\n      <bpmn:sequenceFlow id=\"SF_3\" sourceRef=\"Task_Vergleich\" targetRef=\"Task_LiefPruefung\" />\n      <bpmn:sequenceFlow id=\"SF_4\" sourceRef=\"Task_LiefPruefung\" targetRef=\"Task_Vergabe\" />\n      <bpmn:sequenceFlow id=\"SF_5\" sourceRef=\"Task_Vergabe\" targetRef=\"Sub_End\" />\n    </bpmn:subProcess>\n    <bpmn:userTask id=\"Task_Bestellung\" name=\"Bestellung auslösen\">\n      <bpmn:incoming>Flow_6</bpmn:incoming>\n      <bpmn:outgoing>Flow_7</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:manualTask id=\"Task_WE\" name=\"Wareneingang prüfen\">\n      <bpmn:incoming>Flow_7</bpmn:incoming>\n      <bpmn:outgoing>Flow_8</bpmn:outgoing>\n    </bpmn:manualTask>\n    <bpmn:userTask id=\"Task_Rechnung\" name=\"Rechnung prüfen &amp; freigeben\">\n      <bpmn:incoming>Flow_8</bpmn:incoming>\n      <bpmn:outgoing>Flow_9</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:serviceTask id=\"Task_Zahlung\" name=\"Zahlung ausführen\">\n      <bpmn:incoming>Flow_9</bpmn:incoming>\n      <bpmn:outgoing>Flow_10</bpmn:outgoing>\n    </bpmn:serviceTask>\n    <bpmn:endEvent id=\"End_Bezahlt\" name=\"Rechnung bezahlt\">\n      <bpmn:incoming>Flow_10</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:endEvent id=\"End_Abgelehnt\" name=\"Anforderung abgelehnt\">\n      <bpmn:incoming>Flow_5</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"Flow_1\" sourceRef=\"StartEvent_1\" targetRef=\"Task_Bedarf\" />\n    <bpmn:sequenceFlow id=\"Flow_2\" sourceRef=\"Task_Bedarf\" targetRef=\"Task_Genehmigen\" />\n    <bpmn:sequenceFlow id=\"Flow_3\" sourceRef=\"Task_Genehmigen\" targetRef=\"Gateway_Genehmigt\" />\n    <bpmn:sequenceFlow id=\"Flow_4\" name=\"ja\" sourceRef=\"Gateway_Genehmigt\" targetRef=\"Sub_Lieferant\" />\n    <bpmn:sequenceFlow id=\"Flow_5\" name=\"nein\" sourceRef=\"Gateway_Genehmigt\" targetRef=\"End_Abgelehnt\" />\n    <bpmn:sequenceFlow id=\"Flow_6\" sourceRef=\"Sub_Lieferant\" targetRef=\"Task_Bestellung\" />\n    <bpmn:sequenceFlow id=\"Flow_7\" sourceRef=\"Task_Bestellung\" targetRef=\"Task_WE\" />\n    <bpmn:sequenceFlow id=\"Flow_8\" sourceRef=\"Task_WE\" targetRef=\"Task_Rechnung\" />\n    <bpmn:sequenceFlow id=\"Flow_9\" sourceRef=\"Task_Rechnung\" targetRef=\"Task_Zahlung\" />\n    <bpmn:sequenceFlow id=\"Flow_10\" sourceRef=\"Task_Zahlung\" targetRef=\"End_Bezahlt\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P2P\">\n      <bpmndi:BPMNShape id=\"StartEvent_1_di\" bpmnElement=\"StartEvent_1\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Bedarf_di\" bpmnElement=\"Task_Bedarf\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Genehmigen_di\" bpmnElement=\"Task_Genehmigen\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Gateway_Genehmigt_di\" bpmnElement=\"Gateway_Genehmigt\">\n        <dc:Bounds x=\"540\" y=\"175\" width=\"50\" height=\"50\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Sub_Lieferant_di\" bpmnElement=\"Sub_Lieferant\" isExpanded=\"false\">\n        <dc:Bounds x=\"640\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Bestellung_di\" bpmnElement=\"Task_Bestellung\">\n        <dc:Bounds x=\"790\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_WE_di\" bpmnElement=\"Task_WE\">\n        <dc:Bounds x=\"940\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Rechnung_di\" bpmnElement=\"Task_Rechnung\">\n        <dc:Bounds x=\"1090\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Zahlung_di\" bpmnElement=\"Task_Zahlung\">\n        <dc:Bounds x=\"1240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"End_Bezahlt_di\" bpmnElement=\"End_Bezahlt\">\n        <dc:Bounds x=\"1392\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"End_Abgelehnt_di\" bpmnElement=\"End_Abgelehnt\">\n        <dc:Bounds x=\"547\" y=\"312\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"Flow_1_di\" bpmnElement=\"Flow_1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_2_di\" bpmnElement=\"Flow_2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_3_di\" bpmnElement=\"Flow_3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_4_di\" bpmnElement=\"Flow_4\">\n        <di:waypoint x=\"590\" y=\"200\" />\n        <di:waypoint x=\"640\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_5_di\" bpmnElement=\"Flow_5\">\n        <di:waypoint x=\"565\" y=\"225\" />\n        <di:waypoint x=\"565\" y=\"312\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_6_di\" bpmnElement=\"Flow_6\">\n        <di:waypoint x=\"740\" y=\"200\" />\n        <di:waypoint x=\"790\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_7_di\" bpmnElement=\"Flow_7\">\n        <di:waypoint x=\"890\" y=\"200\" />\n        <di:waypoint x=\"940\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_8_di\" bpmnElement=\"Flow_8\">\n        <di:waypoint x=\"1040\" y=\"200\" />\n        <di:waypoint x=\"1090\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_9_di\" bpmnElement=\"Flow_9\">\n        <di:waypoint x=\"1190\" y=\"200\" />\n        <di:waypoint x=\"1240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"Flow_10_di\" bpmnElement=\"Flow_10\">\n        <di:waypoint x=\"1340\" y=\"200\" />\n        <di:waypoint x=\"1392\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_Sub\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_Sub\" bpmnElement=\"Sub_Lieferant\">\n      <bpmndi:BPMNShape id=\"Sub_Start_di\" bpmnElement=\"Sub_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Angebote_di\" bpmnElement=\"Task_Angebote\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Vergleich_di\" bpmnElement=\"Task_Vergleich\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_LiefPruefung_di\" bpmnElement=\"Task_LiefPruefung\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Task_Vergabe_di\" bpmnElement=\"Task_Vergabe\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"Sub_End_di\" bpmnElement=\"Sub_End\">\n        <dc:Bounds x=\"842\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"SF_1_di\" bpmnElement=\"SF_1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SF_2_di\" bpmnElement=\"SF_2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SF_3_di\" bpmnElement=\"SF_3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SF_4_di\" bpmnElement=\"SF_4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"SF_5_di\" bpmnElement=\"SF_5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"842\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.2",
+   "next_review": "2027-01-31",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "Task_Bedarf",
+     "role_id": "RO-001",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_Genehmigen",
+     "role_id": "RO-002",
+     "raci": "A"
+    },
+    {
+     "element_id": "Task_Genehmigen",
+     "role_id": "RO-003",
+     "raci": "I"
+    },
+    {
+     "element_id": "Sub_Lieferant",
+     "role_id": "RO-004",
+     "raci": "A"
+    },
+    {
+     "element_id": "Task_Angebote",
+     "role_id": "RO-003",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_Vergleich",
+     "role_id": "RO-003",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "role_id": "RO-003",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "role_id": "RO-006",
+     "raci": "C"
+    },
+    {
+     "element_id": "Task_LiefPruefung",
+     "role_id": "RO-007",
+     "raci": "C"
+    },
+    {
+     "element_id": "Task_Vergabe",
+     "role_id": "RO-003",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_Vergabe",
+     "role_id": "RO-004",
+     "raci": "A"
+    },
+    {
+     "element_id": "Task_Bestellung",
+     "role_id": "RO-003",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_WE",
+     "role_id": "RO-008",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_Rechnung",
+     "role_id": "RO-005",
+     "raci": "R"
+    },
+    {
+     "element_id": "Task_Zahlung",
+     "role_id": "RO-005",
+     "raci": "A"
+    }
+   ]
+  },
+  {
+   "id": "P-002",
+   "code": "P-002",
+   "title": "Berechtigungsmanagement",
+   "description": "Vergabe, Änderung und Rezertifizierung von Zugriffsrechten.",
+   "category": "Support process",
+   "owner_role_id": "RO-007",
+   "area": "IT",
+   "landscape_order": 3,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 27001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_IAM\" name=\"Berechtigungsmanagement\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"IAM_Start\" name=\"Berechtigung benötigt\">\n      <bpmn:outgoing>IAM_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"IAM_Antrag\" name=\"Berechtigungsantrag stellen\">\n      <bpmn:incoming>IAM_F1</bpmn:incoming>\n      <bpmn:outgoing>IAM_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"IAM_Genehmigung\" name=\"Antrag genehmigen (Vorgesetzter &amp; Dateneigner)\">\n      <bpmn:incoming>IAM_F2</bpmn:incoming>\n      <bpmn:outgoing>IAM_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:serviceTask id=\"IAM_Einrichten\" name=\"Berechtigung einrichten\">\n      <bpmn:incoming>IAM_F3</bpmn:incoming>\n      <bpmn:outgoing>IAM_F4</bpmn:outgoing>\n    </bpmn:serviceTask>\n    <bpmn:userTask id=\"IAM_Rezert\" name=\"Berechtigungen rezertifizieren\">\n      <bpmn:incoming>IAM_F4</bpmn:incoming>\n      <bpmn:outgoing>IAM_F5</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"IAM_End\" name=\"Berechtigung aktiv\">\n      <bpmn:incoming>IAM_F5</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"IAM_F1\" sourceRef=\"IAM_Start\" targetRef=\"IAM_Antrag\" />\n    <bpmn:sequenceFlow id=\"IAM_F2\" sourceRef=\"IAM_Antrag\" targetRef=\"IAM_Genehmigung\" />\n    <bpmn:sequenceFlow id=\"IAM_F3\" sourceRef=\"IAM_Genehmigung\" targetRef=\"IAM_Einrichten\" />\n    <bpmn:sequenceFlow id=\"IAM_F4\" sourceRef=\"IAM_Einrichten\" targetRef=\"IAM_Rezert\" />\n    <bpmn:sequenceFlow id=\"IAM_F5\" sourceRef=\"IAM_Rezert\" targetRef=\"IAM_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_IAM\">\n      <bpmndi:BPMNShape id=\"IAM_Start_di\" bpmnElement=\"IAM_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"IAM_Antrag_di\" bpmnElement=\"IAM_Antrag\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"IAM_Genehmigung_di\" bpmnElement=\"IAM_Genehmigung\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"IAM_Einrichten_di\" bpmnElement=\"IAM_Einrichten\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"IAM_Rezert_di\" bpmnElement=\"IAM_Rezert\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"IAM_End_di\" bpmnElement=\"IAM_End\">\n        <dc:Bounds x=\"842\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"IAM_F1_di\" bpmnElement=\"IAM_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"IAM_F2_di\" bpmnElement=\"IAM_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"IAM_F3_di\" bpmnElement=\"IAM_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"IAM_F4_di\" bpmnElement=\"IAM_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"IAM_F5_di\" bpmnElement=\"IAM_F5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"842\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "review",
+   "doc_version": "1.0",
+   "next_review": "2026-12-31",
+   "workflow": [
+    {
+     "step": "submitted",
+     "by_user_id": "U-008",
+     "at": "2026-11-07T07:45:00.000Z",
+     "comment": "Rezertifizierung halbjährlich ergänzt.",
+     "status": "review"
+    }
+   ],
+   "steps": [
+    {
+     "element_id": "IAM_Antrag",
+     "role_id": "RO-001",
+     "raci": "R"
+    },
+    {
+     "element_id": "IAM_Genehmigung",
+     "role_id": "RO-002",
+     "raci": "A"
+    },
+    {
+     "element_id": "IAM_Einrichten",
+     "role_id": "RO-009",
+     "raci": "R"
+    },
+    {
+     "element_id": "IAM_Rezert",
+     "role_id": "RO-002",
+     "raci": "R"
+    },
+    {
+     "element_id": "IAM_Rezert",
+     "role_id": "RO-007",
+     "raci": "A"
+    }
+   ]
+  },
+  {
+   "id": "P-003",
+   "code": "P-003",
+   "title": "Strategie & Planung",
+   "description": "Jährliche Strategie, Ziele und Budget.",
+   "category": "Management process",
+   "owner_role_id": "RO-010",
+   "area": "Geschäftsführung",
+   "landscape_order": 1,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P003\" name=\"Strategie &amp; Planung\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P003_Start\" name=\"Planungszyklus startet\">\n      <bpmn:outgoing>P003_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P003_T1\" name=\"Kontext und interessierte Parteien analysieren\">\n      <bpmn:incoming>P003_F1</bpmn:incoming>\n      <bpmn:outgoing>P003_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P003_T2\" name=\"Strategische Ziele festlegen\">\n      <bpmn:incoming>P003_F2</bpmn:incoming>\n      <bpmn:outgoing>P003_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P003_T3\" name=\"Budget planen\">\n      <bpmn:incoming>P003_F3</bpmn:incoming>\n      <bpmn:outgoing>P003_F4</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P003_T4\" name=\"Ziele kommunizieren\">\n      <bpmn:incoming>P003_F4</bpmn:incoming>\n      <bpmn:outgoing>P003_F5</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"P003_End\" name=\"Ziele und Budget freigegeben\">\n      <bpmn:incoming>P003_F5</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P003_F1\" sourceRef=\"P003_Start\" targetRef=\"P003_T1\" />\n    <bpmn:sequenceFlow id=\"P003_F2\" sourceRef=\"P003_T1\" targetRef=\"P003_T2\" />\n    <bpmn:sequenceFlow id=\"P003_F3\" sourceRef=\"P003_T2\" targetRef=\"P003_T3\" />\n    <bpmn:sequenceFlow id=\"P003_F4\" sourceRef=\"P003_T3\" targetRef=\"P003_T4\" />\n    <bpmn:sequenceFlow id=\"P003_F5\" sourceRef=\"P003_T4\" targetRef=\"P003_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P003\">\n      <bpmndi:BPMNShape id=\"P003_Start_di\" bpmnElement=\"P003_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P003_T1_di\" bpmnElement=\"P003_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P003_T2_di\" bpmnElement=\"P003_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P003_T3_di\" bpmnElement=\"P003_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P003_T4_di\" bpmnElement=\"P003_T4\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P003_End_di\" bpmnElement=\"P003_End\">\n        <dc:Bounds x=\"842\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P003_F1_di\" bpmnElement=\"P003_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P003_F2_di\" bpmnElement=\"P003_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P003_F3_di\" bpmnElement=\"P003_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P003_F4_di\" bpmnElement=\"P003_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P003_F5_di\" bpmnElement=\"P003_F5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"842\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P003_T1",
+     "role_id": "RO-010",
+     "raci": "A"
+    },
+    {
+     "element_id": "P003_T1",
+     "role_id": "RO-006",
+     "raci": "C"
+    },
+    {
+     "element_id": "P003_T2",
+     "role_id": "RO-010",
+     "raci": "R"
+    },
+    {
+     "element_id": "P003_T3",
+     "role_id": "RO-010",
+     "raci": "A"
+    },
+    {
+     "element_id": "P003_T3",
+     "role_id": "RO-002",
+     "raci": "R"
+    },
+    {
+     "element_id": "P003_T4",
+     "role_id": "RO-010",
+     "raci": "R"
+    }
+   ]
+  },
+  {
+   "id": "P-004",
+   "code": "P-004",
+   "title": "Managementbewertung",
+   "description": "Bewertung der Managementsysteme durch die oberste Leitung (ISO 9001/27001/37301 9.3).",
+   "category": "Management process",
+   "owner_role_id": "RO-011",
+   "area": "Qualitätsmanagement",
+   "landscape_order": 2,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P004\" name=\"Managementbewertung\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P004_Start\" name=\"Termin Managementbewertung\">\n      <bpmn:outgoing>P004_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P004_T1\" name=\"Eingaben sammeln (KPI, Audits, Risiken)\">\n      <bpmn:incoming>P004_F1</bpmn:incoming>\n      <bpmn:outgoing>P004_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P004_T2\" name=\"Bewertung durchführen\">\n      <bpmn:incoming>P004_F2</bpmn:incoming>\n      <bpmn:outgoing>P004_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P004_T3\" name=\"Maßnahmen beschließen\">\n      <bpmn:incoming>P004_F3</bpmn:incoming>\n      <bpmn:outgoing>P004_F4</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"P004_End\" name=\"Protokoll freigegeben\">\n      <bpmn:incoming>P004_F4</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P004_F1\" sourceRef=\"P004_Start\" targetRef=\"P004_T1\" />\n    <bpmn:sequenceFlow id=\"P004_F2\" sourceRef=\"P004_T1\" targetRef=\"P004_T2\" />\n    <bpmn:sequenceFlow id=\"P004_F3\" sourceRef=\"P004_T2\" targetRef=\"P004_T3\" />\n    <bpmn:sequenceFlow id=\"P004_F4\" sourceRef=\"P004_T3\" targetRef=\"P004_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P004\">\n      <bpmndi:BPMNShape id=\"P004_Start_di\" bpmnElement=\"P004_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P004_T1_di\" bpmnElement=\"P004_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P004_T2_di\" bpmnElement=\"P004_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P004_T3_di\" bpmnElement=\"P004_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P004_End_di\" bpmnElement=\"P004_End\">\n        <dc:Bounds x=\"692\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P004_F1_di\" bpmnElement=\"P004_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P004_F2_di\" bpmnElement=\"P004_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P004_F3_di\" bpmnElement=\"P004_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P004_F4_di\" bpmnElement=\"P004_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"692\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P004_T1",
+     "role_id": "RO-011",
+     "raci": "R"
+    },
+    {
+     "element_id": "P004_T1",
+     "role_id": "RO-007",
+     "raci": "C"
+    },
+    {
+     "element_id": "P004_T1",
+     "role_id": "RO-006",
+     "raci": "C"
+    },
+    {
+     "element_id": "P004_T2",
+     "role_id": "RO-010",
+     "raci": "A"
+    },
+    {
+     "element_id": "P004_T2",
+     "role_id": "RO-011",
+     "raci": "R"
+    },
+    {
+     "element_id": "P004_T3",
+     "role_id": "RO-010",
+     "raci": "R"
+    }
+   ]
+  },
+  {
+   "id": "P-005",
+   "code": "P-005",
+   "title": "Compliance-Management",
+   "description": "Ermittlung von Compliance-Pflichten, Risiken und Maßnahmen (ISO 37301).",
+   "category": "Management process",
+   "owner_role_id": "RO-006",
+   "area": "Compliance",
+   "landscape_order": 3,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P005\" name=\"Compliance-Management\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P005_Start\" name=\"Jahreszyklus\">\n      <bpmn:outgoing>P005_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P005_T1\" name=\"Compliance-Pflichten ermitteln\">\n      <bpmn:incoming>P005_F1</bpmn:incoming>\n      <bpmn:outgoing>P005_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P005_T2\" name=\"Compliance-Risiken bewerten\">\n      <bpmn:incoming>P005_F2</bpmn:incoming>\n      <bpmn:outgoing>P005_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P005_T3\" name=\"Hinweise bearbeiten\">\n      <bpmn:incoming>P005_F3</bpmn:incoming>\n      <bpmn:outgoing>P005_F4</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P005_T4\" name=\"Compliance-Bericht erstellen\">\n      <bpmn:incoming>P005_F4</bpmn:incoming>\n      <bpmn:outgoing>P005_F5</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"P005_End\" name=\"Bericht an die GF\">\n      <bpmn:incoming>P005_F5</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P005_F1\" sourceRef=\"P005_Start\" targetRef=\"P005_T1\" />\n    <bpmn:sequenceFlow id=\"P005_F2\" sourceRef=\"P005_T1\" targetRef=\"P005_T2\" />\n    <bpmn:sequenceFlow id=\"P005_F3\" sourceRef=\"P005_T2\" targetRef=\"P005_T3\" />\n    <bpmn:sequenceFlow id=\"P005_F4\" sourceRef=\"P005_T3\" targetRef=\"P005_T4\" />\n    <bpmn:sequenceFlow id=\"P005_F5\" sourceRef=\"P005_T4\" targetRef=\"P005_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P005\">\n      <bpmndi:BPMNShape id=\"P005_Start_di\" bpmnElement=\"P005_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P005_T1_di\" bpmnElement=\"P005_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P005_T2_di\" bpmnElement=\"P005_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P005_T3_di\" bpmnElement=\"P005_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P005_T4_di\" bpmnElement=\"P005_T4\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P005_End_di\" bpmnElement=\"P005_End\">\n        <dc:Bounds x=\"842\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P005_F1_di\" bpmnElement=\"P005_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P005_F2_di\" bpmnElement=\"P005_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P005_F3_di\" bpmnElement=\"P005_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P005_F4_di\" bpmnElement=\"P005_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P005_F5_di\" bpmnElement=\"P005_F5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"842\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P005_T1",
+     "role_id": "RO-006",
+     "raci": "R"
+    },
+    {
+     "element_id": "P005_T2",
+     "role_id": "RO-006",
+     "raci": "R"
+    },
+    {
+     "element_id": "P005_T2",
+     "role_id": "RO-014",
+     "raci": "C"
+    },
+    {
+     "element_id": "P005_T3",
+     "role_id": "RO-006",
+     "raci": "R"
+    },
+    {
+     "element_id": "P005_T4",
+     "role_id": "RO-006",
+     "raci": "R"
+    },
+    {
+     "element_id": "P005_T4",
+     "role_id": "RO-010",
+     "raci": "I"
+    }
+   ]
+  },
+  {
+   "id": "P-006",
+   "code": "P-006",
+   "title": "Lead-to-Cash",
+   "description": "Vom Interessenten bis zum Zahlungseingang.",
+   "category": "Core process",
+   "owner_role_id": "RO-010",
+   "area": "Vertrieb",
+   "landscape_order": 1,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P006\" name=\"Lead-to-Cash\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P006_Start\" name=\"Kundenanfrage\">\n      <bpmn:outgoing>P006_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P006_T1\" name=\"Lead qualifizieren\">\n      <bpmn:incoming>P006_F1</bpmn:incoming>\n      <bpmn:outgoing>P006_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P006_T2\" name=\"Angebot erstellen\">\n      <bpmn:incoming>P006_F2</bpmn:incoming>\n      <bpmn:outgoing>P006_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P006_T3\" name=\"Angebot freigeben\">\n      <bpmn:incoming>P006_F3</bpmn:incoming>\n      <bpmn:outgoing>P006_F4</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P006_T4\" name=\"Auftrag annehmen\">\n      <bpmn:incoming>P006_F4</bpmn:incoming>\n      <bpmn:outgoing>P006_F5</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:exclusiveGateway id=\"P006_G5\" name=\"Exportprüfung erforderlich?\">\n      <bpmn:incoming>P006_F5</bpmn:incoming>\n      <bpmn:outgoing>P006_F6</bpmn:outgoing>\n      <bpmn:outgoing>P006_F7</bpmn:outgoing>\n    </bpmn:exclusiveGateway>\n    <bpmn:endEvent id=\"P006_G5_End\" name=\"Auftrag ohne Export\">\n      <bpmn:incoming>P006_F6</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:userTask id=\"P006_T6\" name=\"Exportprüfung anstoßen\">\n      <bpmn:incoming>P006_F7</bpmn:incoming>\n      <bpmn:outgoing>P006_F8</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:serviceTask id=\"P006_T7\" name=\"Rechnung stellen\">\n      <bpmn:incoming>P006_F8</bpmn:incoming>\n      <bpmn:outgoing>P006_F9</bpmn:outgoing>\n    </bpmn:serviceTask>\n    <bpmn:endEvent id=\"P006_End\" name=\"Zahlung eingegangen\">\n      <bpmn:incoming>P006_F9</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P006_F1\" sourceRef=\"P006_Start\" targetRef=\"P006_T1\" />\n    <bpmn:sequenceFlow id=\"P006_F2\" sourceRef=\"P006_T1\" targetRef=\"P006_T2\" />\n    <bpmn:sequenceFlow id=\"P006_F3\" sourceRef=\"P006_T2\" targetRef=\"P006_T3\" />\n    <bpmn:sequenceFlow id=\"P006_F4\" sourceRef=\"P006_T3\" targetRef=\"P006_T4\" />\n    <bpmn:sequenceFlow id=\"P006_F5\" sourceRef=\"P006_T4\" targetRef=\"P006_G5\" />\n    <bpmn:sequenceFlow id=\"P006_F6\" name=\"nein\" sourceRef=\"P006_G5\" targetRef=\"P006_G5_End\" />\n    <bpmn:sequenceFlow id=\"P006_F7\" name=\"ja\" sourceRef=\"P006_G5\" targetRef=\"P006_T6\" />\n    <bpmn:sequenceFlow id=\"P006_F8\" sourceRef=\"P006_T6\" targetRef=\"P006_T7\" />\n    <bpmn:sequenceFlow id=\"P006_F9\" sourceRef=\"P006_T7\" targetRef=\"P006_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P006\">\n      <bpmndi:BPMNShape id=\"P006_Start_di\" bpmnElement=\"P006_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_T1_di\" bpmnElement=\"P006_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_T2_di\" bpmnElement=\"P006_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_T3_di\" bpmnElement=\"P006_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_T4_di\" bpmnElement=\"P006_T4\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_G5_di\" bpmnElement=\"P006_G5\">\n        <dc:Bounds x=\"840\" y=\"175\" width=\"50\" height=\"50\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_G5_End_di\" bpmnElement=\"P006_G5_End\">\n        <dc:Bounds x=\"847\" y=\"312\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_T6_di\" bpmnElement=\"P006_T6\">\n        <dc:Bounds x=\"940\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_T7_di\" bpmnElement=\"P006_T7\">\n        <dc:Bounds x=\"1090\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P006_End_di\" bpmnElement=\"P006_End\">\n        <dc:Bounds x=\"1242\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P006_F1_di\" bpmnElement=\"P006_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F2_di\" bpmnElement=\"P006_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F3_di\" bpmnElement=\"P006_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F4_di\" bpmnElement=\"P006_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F5_di\" bpmnElement=\"P006_F5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"840\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F6_di\" bpmnElement=\"P006_F6\">\n        <di:waypoint x=\"865\" y=\"225\" />\n        <di:waypoint x=\"865\" y=\"312\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F7_di\" bpmnElement=\"P006_F7\">\n        <di:waypoint x=\"890\" y=\"200\" />\n        <di:waypoint x=\"940\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F8_di\" bpmnElement=\"P006_F8\">\n        <di:waypoint x=\"1040\" y=\"200\" />\n        <di:waypoint x=\"1090\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P006_F9_di\" bpmnElement=\"P006_F9\">\n        <di:waypoint x=\"1190\" y=\"200\" />\n        <di:waypoint x=\"1242\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P006_T1",
+     "role_id": "RO-018",
+     "raci": "R"
+    },
+    {
+     "element_id": "P006_T2",
+     "role_id": "RO-018",
+     "raci": "R"
+    },
+    {
+     "element_id": "P006_T3",
+     "role_id": "RO-018",
+     "raci": "A"
+    },
+    {
+     "element_id": "P006_T4",
+     "role_id": "RO-018",
+     "raci": "R"
+    },
+    {
+     "element_id": "P006_G5",
+     "role_id": "RO-015",
+     "raci": "C"
+    },
+    {
+     "element_id": "P006_T6",
+     "role_id": "RO-016",
+     "raci": "R"
+    },
+    {
+     "element_id": "P006_T6",
+     "role_id": "RO-015",
+     "raci": "A"
+    },
+    {
+     "element_id": "P006_T7",
+     "role_id": "RO-005",
+     "raci": "R"
+    }
+   ]
+  },
+  {
+   "id": "P-007",
+   "code": "P-007",
+   "title": "Order-to-Delivery",
+   "description": "Von der Auftragsfreigabe bis zur Auslieferung.",
+   "category": "Core process",
+   "owner_role_id": "RO-008",
+   "area": "Operations & Logistik",
+   "landscape_order": 2,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P007\" name=\"Order-to-Delivery\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P007_Start\" name=\"Auftrag freigegeben\">\n      <bpmn:outgoing>P007_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P007_T1\" name=\"Auftrag einplanen\">\n      <bpmn:incoming>P007_F1</bpmn:incoming>\n      <bpmn:outgoing>P007_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:manualTask id=\"P007_T2\" name=\"Ware kommissionieren\">\n      <bpmn:incoming>P007_F2</bpmn:incoming>\n      <bpmn:outgoing>P007_F3</bpmn:outgoing>\n    </bpmn:manualTask>\n    <bpmn:exclusiveGateway id=\"P007_G3\" name=\"Ausfuhrfreigabe vorhanden?\">\n      <bpmn:incoming>P007_F3</bpmn:incoming>\n      <bpmn:outgoing>P007_F4</bpmn:outgoing>\n      <bpmn:outgoing>P007_F5</bpmn:outgoing>\n    </bpmn:exclusiveGateway>\n    <bpmn:endEvent id=\"P007_G3_End\" name=\"Versand gestoppt\">\n      <bpmn:incoming>P007_F4</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:manualTask id=\"P007_T4\" name=\"Ware versenden\">\n      <bpmn:incoming>P007_F5</bpmn:incoming>\n      <bpmn:outgoing>P007_F6</bpmn:outgoing>\n    </bpmn:manualTask>\n    <bpmn:endEvent id=\"P007_End\" name=\"Ware ausgeliefert\">\n      <bpmn:incoming>P007_F6</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P007_F1\" sourceRef=\"P007_Start\" targetRef=\"P007_T1\" />\n    <bpmn:sequenceFlow id=\"P007_F2\" sourceRef=\"P007_T1\" targetRef=\"P007_T2\" />\n    <bpmn:sequenceFlow id=\"P007_F3\" sourceRef=\"P007_T2\" targetRef=\"P007_G3\" />\n    <bpmn:sequenceFlow id=\"P007_F4\" name=\"nein\" sourceRef=\"P007_G3\" targetRef=\"P007_G3_End\" />\n    <bpmn:sequenceFlow id=\"P007_F5\" name=\"ja\" sourceRef=\"P007_G3\" targetRef=\"P007_T4\" />\n    <bpmn:sequenceFlow id=\"P007_F6\" sourceRef=\"P007_T4\" targetRef=\"P007_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P007\">\n      <bpmndi:BPMNShape id=\"P007_Start_di\" bpmnElement=\"P007_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P007_T1_di\" bpmnElement=\"P007_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P007_T2_di\" bpmnElement=\"P007_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P007_G3_di\" bpmnElement=\"P007_G3\">\n        <dc:Bounds x=\"540\" y=\"175\" width=\"50\" height=\"50\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P007_G3_End_di\" bpmnElement=\"P007_G3_End\">\n        <dc:Bounds x=\"547\" y=\"312\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P007_T4_di\" bpmnElement=\"P007_T4\">\n        <dc:Bounds x=\"640\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P007_End_di\" bpmnElement=\"P007_End\">\n        <dc:Bounds x=\"792\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P007_F1_di\" bpmnElement=\"P007_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P007_F2_di\" bpmnElement=\"P007_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P007_F3_di\" bpmnElement=\"P007_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P007_F4_di\" bpmnElement=\"P007_F4\">\n        <di:waypoint x=\"565\" y=\"225\" />\n        <di:waypoint x=\"565\" y=\"312\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P007_F5_di\" bpmnElement=\"P007_F5\">\n        <di:waypoint x=\"590\" y=\"200\" />\n        <di:waypoint x=\"640\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P007_F6_di\" bpmnElement=\"P007_F6\">\n        <di:waypoint x=\"740\" y=\"200\" />\n        <di:waypoint x=\"792\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P007_T1",
+     "role_id": "RO-008",
+     "raci": "R"
+    },
+    {
+     "element_id": "P007_T2",
+     "role_id": "RO-008",
+     "raci": "R"
+    },
+    {
+     "element_id": "P007_G3",
+     "role_id": "RO-016",
+     "raci": "C"
+    },
+    {
+     "element_id": "P007_T4",
+     "role_id": "RO-008",
+     "raci": "R"
+    }
+   ]
+  },
+  {
+   "id": "P-008",
+   "code": "P-008",
+   "title": "Export & Zoll",
+   "description": "Exportkontrolle und Zollabwicklung für alle Ausfuhren (AWG/AWV, EU-Dual-Use-VO).",
+   "category": "Core process",
+   "owner_role_id": "RO-015",
+   "area": "Trade Compliance",
+   "landscape_order": 4,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P008\" name=\"Export &amp; Zoll\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P008_Start\" name=\"Exportauftrag eingegangen\">\n      <bpmn:outgoing>P008_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P008_T1\" name=\"Auftrag auf Exportrelevanz prüfen\">\n      <bpmn:incoming>P008_F1</bpmn:incoming>\n      <bpmn:outgoing>P008_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P008_T2\" name=\"Güter klassifizieren\">\n      <bpmn:incoming>P008_F2</bpmn:incoming>\n      <bpmn:outgoing>P008_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:serviceTask id=\"P008_T3\" name=\"Sanktionslisten prüfen\">\n      <bpmn:incoming>P008_F3</bpmn:incoming>\n      <bpmn:outgoing>P008_F4</bpmn:outgoing>\n    </bpmn:serviceTask>\n    <bpmn:exclusiveGateway id=\"P008_G4\" name=\"Genehmigung erforderlich?\">\n      <bpmn:incoming>P008_F4</bpmn:incoming>\n      <bpmn:outgoing>P008_F5</bpmn:outgoing>\n      <bpmn:outgoing>P008_F6</bpmn:outgoing>\n    </bpmn:exclusiveGateway>\n    <bpmn:endEvent id=\"P008_G4_End\" name=\"Keine Genehmigung nötig\">\n      <bpmn:incoming>P008_F5</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:userTask id=\"P008_T5\" name=\"Genehmigung beim BAFA beantragen\">\n      <bpmn:incoming>P008_F6</bpmn:incoming>\n      <bpmn:outgoing>P008_F7</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P008_T6\" name=\"Ausfuhranmeldung erstellen\">\n      <bpmn:incoming>P008_F7</bpmn:incoming>\n      <bpmn:outgoing>P008_F8</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P008_T7\" name=\"Ware zur Ausfuhr freigeben\">\n      <bpmn:incoming>P008_F8</bpmn:incoming>\n      <bpmn:outgoing>P008_F9</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"P008_End\" name=\"Ausfuhr freigegeben\">\n      <bpmn:incoming>P008_F9</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P008_F1\" sourceRef=\"P008_Start\" targetRef=\"P008_T1\" />\n    <bpmn:sequenceFlow id=\"P008_F2\" sourceRef=\"P008_T1\" targetRef=\"P008_T2\" />\n    <bpmn:sequenceFlow id=\"P008_F3\" sourceRef=\"P008_T2\" targetRef=\"P008_T3\" />\n    <bpmn:sequenceFlow id=\"P008_F4\" sourceRef=\"P008_T3\" targetRef=\"P008_G4\" />\n    <bpmn:sequenceFlow id=\"P008_F5\" name=\"nein\" sourceRef=\"P008_G4\" targetRef=\"P008_G4_End\" />\n    <bpmn:sequenceFlow id=\"P008_F6\" name=\"ja\" sourceRef=\"P008_G4\" targetRef=\"P008_T5\" />\n    <bpmn:sequenceFlow id=\"P008_F7\" sourceRef=\"P008_T5\" targetRef=\"P008_T6\" />\n    <bpmn:sequenceFlow id=\"P008_F8\" sourceRef=\"P008_T6\" targetRef=\"P008_T7\" />\n    <bpmn:sequenceFlow id=\"P008_F9\" sourceRef=\"P008_T7\" targetRef=\"P008_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P008\">\n      <bpmndi:BPMNShape id=\"P008_Start_di\" bpmnElement=\"P008_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_T1_di\" bpmnElement=\"P008_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_T2_di\" bpmnElement=\"P008_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_T3_di\" bpmnElement=\"P008_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_G4_di\" bpmnElement=\"P008_G4\">\n        <dc:Bounds x=\"690\" y=\"175\" width=\"50\" height=\"50\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_G4_End_di\" bpmnElement=\"P008_G4_End\">\n        <dc:Bounds x=\"697\" y=\"312\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_T5_di\" bpmnElement=\"P008_T5\">\n        <dc:Bounds x=\"790\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_T6_di\" bpmnElement=\"P008_T6\">\n        <dc:Bounds x=\"940\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_T7_di\" bpmnElement=\"P008_T7\">\n        <dc:Bounds x=\"1090\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P008_End_di\" bpmnElement=\"P008_End\">\n        <dc:Bounds x=\"1242\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P008_F1_di\" bpmnElement=\"P008_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F2_di\" bpmnElement=\"P008_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F3_di\" bpmnElement=\"P008_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F4_di\" bpmnElement=\"P008_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F5_di\" bpmnElement=\"P008_F5\">\n        <di:waypoint x=\"715\" y=\"225\" />\n        <di:waypoint x=\"715\" y=\"312\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F6_di\" bpmnElement=\"P008_F6\">\n        <di:waypoint x=\"740\" y=\"200\" />\n        <di:waypoint x=\"790\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F7_di\" bpmnElement=\"P008_F7\">\n        <di:waypoint x=\"890\" y=\"200\" />\n        <di:waypoint x=\"940\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F8_di\" bpmnElement=\"P008_F8\">\n        <di:waypoint x=\"1040\" y=\"200\" />\n        <di:waypoint x=\"1090\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P008_F9_di\" bpmnElement=\"P008_F9\">\n        <di:waypoint x=\"1190\" y=\"200\" />\n        <di:waypoint x=\"1242\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P008_T1",
+     "role_id": "RO-016",
+     "raci": "R"
+    },
+    {
+     "element_id": "P008_T1",
+     "role_id": "RO-015",
+     "raci": "A"
+    },
+    {
+     "element_id": "P008_T2",
+     "role_id": "RO-016",
+     "raci": "R"
+    },
+    {
+     "element_id": "P008_T2",
+     "role_id": "RO-015",
+     "raci": "A"
+    },
+    {
+     "element_id": "P008_T3",
+     "role_id": "RO-016",
+     "raci": "R"
+    },
+    {
+     "element_id": "P008_G4",
+     "role_id": "RO-015",
+     "raci": "R"
+    },
+    {
+     "element_id": "P008_T5",
+     "role_id": "RO-015",
+     "raci": "R"
+    },
+    {
+     "element_id": "P008_T5",
+     "role_id": "RO-013",
+     "raci": "A"
+    },
+    {
+     "element_id": "P008_T6",
+     "role_id": "RO-016",
+     "raci": "R"
+    },
+    {
+     "element_id": "P008_T6",
+     "role_id": "RO-008",
+     "raci": "I"
+    },
+    {
+     "element_id": "P008_T7",
+     "role_id": "RO-015",
+     "raci": "A"
+    },
+    {
+     "element_id": "P008_T7",
+     "role_id": "RO-008",
+     "raci": "R"
+    }
+   ]
+  },
+  {
+   "id": "P-009",
+   "code": "P-009",
+   "title": "Reklamation",
+   "description": "Bearbeitung von Kundenreklamationen bis zur Wirksamkeitsprüfung.",
+   "category": "Core process",
+   "owner_role_id": "RO-011",
+   "area": "Qualität",
+   "landscape_order": 5,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P009\" name=\"Reklamation\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P009_Start\" name=\"Reklamation eingegangen\">\n      <bpmn:outgoing>P009_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P009_T1\" name=\"Reklamation erfassen\">\n      <bpmn:incoming>P009_F1</bpmn:incoming>\n      <bpmn:outgoing>P009_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P009_T2\" name=\"Ursache analysieren\">\n      <bpmn:incoming>P009_F2</bpmn:incoming>\n      <bpmn:outgoing>P009_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P009_T3\" name=\"Korrekturmaßnahme umsetzen\">\n      <bpmn:incoming>P009_F3</bpmn:incoming>\n      <bpmn:outgoing>P009_F4</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P009_T4\" name=\"Wirksamkeit prüfen\">\n      <bpmn:incoming>P009_F4</bpmn:incoming>\n      <bpmn:outgoing>P009_F5</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"P009_End\" name=\"Reklamation abgeschlossen\">\n      <bpmn:incoming>P009_F5</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P009_F1\" sourceRef=\"P009_Start\" targetRef=\"P009_T1\" />\n    <bpmn:sequenceFlow id=\"P009_F2\" sourceRef=\"P009_T1\" targetRef=\"P009_T2\" />\n    <bpmn:sequenceFlow id=\"P009_F3\" sourceRef=\"P009_T2\" targetRef=\"P009_T3\" />\n    <bpmn:sequenceFlow id=\"P009_F4\" sourceRef=\"P009_T3\" targetRef=\"P009_T4\" />\n    <bpmn:sequenceFlow id=\"P009_F5\" sourceRef=\"P009_T4\" targetRef=\"P009_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P009\">\n      <bpmndi:BPMNShape id=\"P009_Start_di\" bpmnElement=\"P009_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P009_T1_di\" bpmnElement=\"P009_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P009_T2_di\" bpmnElement=\"P009_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P009_T3_di\" bpmnElement=\"P009_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P009_T4_di\" bpmnElement=\"P009_T4\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P009_End_di\" bpmnElement=\"P009_End\">\n        <dc:Bounds x=\"842\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P009_F1_di\" bpmnElement=\"P009_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P009_F2_di\" bpmnElement=\"P009_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P009_F3_di\" bpmnElement=\"P009_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P009_F4_di\" bpmnElement=\"P009_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P009_F5_di\" bpmnElement=\"P009_F5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"842\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P009_T1",
+     "role_id": "RO-018",
+     "raci": "R"
+    },
+    {
+     "element_id": "P009_T2",
+     "role_id": "RO-011",
+     "raci": "R"
+    },
+    {
+     "element_id": "P009_T3",
+     "role_id": "RO-011",
+     "raci": "A"
+    },
+    {
+     "element_id": "P009_T4",
+     "role_id": "RO-011",
+     "raci": "R"
+    }
+   ]
+  },
+  {
+   "id": "P-010",
+   "code": "P-010",
+   "title": "Hire-to-Retire",
+   "description": "Personalgewinnung, Einarbeitung, Veränderung und Austritt.",
+   "category": "Support process",
+   "owner_role_id": "RO-010",
+   "area": "Personal",
+   "landscape_order": 1,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P010\" name=\"Hire-to-Retire\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P010_Start\" name=\"Personalbedarf\">\n      <bpmn:outgoing>P010_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P010_T1\" name=\"Stelle ausschreiben\">\n      <bpmn:incoming>P010_F1</bpmn:incoming>\n      <bpmn:outgoing>P010_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P010_T2\" name=\"Bewerber auswählen\">\n      <bpmn:incoming>P010_F2</bpmn:incoming>\n      <bpmn:outgoing>P010_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P010_T3\" name=\"Vertrag und Verpflichtungen unterzeichnen\">\n      <bpmn:incoming>P010_F3</bpmn:incoming>\n      <bpmn:outgoing>P010_F4</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P010_T4\" name=\"Einarbeitung und Pflichtschulungen\">\n      <bpmn:incoming>P010_F4</bpmn:incoming>\n      <bpmn:outgoing>P010_F5</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P010_T5\" name=\"Austritt: Rechte und Vollmachten entziehen\">\n      <bpmn:incoming>P010_F5</bpmn:incoming>\n      <bpmn:outgoing>P010_F6</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"P010_End\" name=\"Austritt abgeschlossen\">\n      <bpmn:incoming>P010_F6</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P010_F1\" sourceRef=\"P010_Start\" targetRef=\"P010_T1\" />\n    <bpmn:sequenceFlow id=\"P010_F2\" sourceRef=\"P010_T1\" targetRef=\"P010_T2\" />\n    <bpmn:sequenceFlow id=\"P010_F3\" sourceRef=\"P010_T2\" targetRef=\"P010_T3\" />\n    <bpmn:sequenceFlow id=\"P010_F4\" sourceRef=\"P010_T3\" targetRef=\"P010_T4\" />\n    <bpmn:sequenceFlow id=\"P010_F5\" sourceRef=\"P010_T4\" targetRef=\"P010_T5\" />\n    <bpmn:sequenceFlow id=\"P010_F6\" sourceRef=\"P010_T5\" targetRef=\"P010_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P010\">\n      <bpmndi:BPMNShape id=\"P010_Start_di\" bpmnElement=\"P010_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P010_T1_di\" bpmnElement=\"P010_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P010_T2_di\" bpmnElement=\"P010_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P010_T3_di\" bpmnElement=\"P010_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P010_T4_di\" bpmnElement=\"P010_T4\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P010_T5_di\" bpmnElement=\"P010_T5\">\n        <dc:Bounds x=\"840\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P010_End_di\" bpmnElement=\"P010_End\">\n        <dc:Bounds x=\"992\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P010_F1_di\" bpmnElement=\"P010_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P010_F2_di\" bpmnElement=\"P010_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P010_F3_di\" bpmnElement=\"P010_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P010_F4_di\" bpmnElement=\"P010_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P010_F5_di\" bpmnElement=\"P010_F5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"840\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P010_F6_di\" bpmnElement=\"P010_F6\">\n        <di:waypoint x=\"940\" y=\"200\" />\n        <di:waypoint x=\"992\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P010_T1",
+     "role_id": "RO-002",
+     "raci": "R"
+    },
+    {
+     "element_id": "P010_T2",
+     "role_id": "RO-002",
+     "raci": "R"
+    },
+    {
+     "element_id": "P010_T3",
+     "role_id": "RO-010",
+     "raci": "A"
+    },
+    {
+     "element_id": "P010_T4",
+     "role_id": "RO-002",
+     "raci": "R"
+    },
+    {
+     "element_id": "P010_T5",
+     "role_id": "RO-009",
+     "raci": "R"
+    },
+    {
+     "element_id": "P010_T5",
+     "role_id": "RO-002",
+     "raci": "A"
+    }
+   ]
+  },
+  {
+   "id": "P-011",
+   "code": "P-011",
+   "title": "Record-to-Report",
+   "description": "Buchhaltung, Monatsabschluss und Berichtswesen.",
+   "category": "Support process",
+   "owner_role_id": "RO-010",
+   "area": "Finanzen",
+   "landscape_order": 2,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P011\" name=\"Record-to-Report\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P011_Start\" name=\"Monat beginnt\">\n      <bpmn:outgoing>P011_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P011_T1\" name=\"Kreditorenrechnungen buchen\">\n      <bpmn:incoming>P011_F1</bpmn:incoming>\n      <bpmn:outgoing>P011_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P011_T2\" name=\"Zahllauf freigeben\">\n      <bpmn:incoming>P011_F2</bpmn:incoming>\n      <bpmn:outgoing>P011_F3</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P011_T3\" name=\"Monatsabschluss erstellen\">\n      <bpmn:incoming>P011_F3</bpmn:incoming>\n      <bpmn:outgoing>P011_F4</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:serviceTask id=\"P011_T4\" name=\"Kostenstellenbericht versenden\">\n      <bpmn:incoming>P011_F4</bpmn:incoming>\n      <bpmn:outgoing>P011_F5</bpmn:outgoing>\n    </bpmn:serviceTask>\n    <bpmn:endEvent id=\"P011_End\" name=\"Bericht versendet\">\n      <bpmn:incoming>P011_F5</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P011_F1\" sourceRef=\"P011_Start\" targetRef=\"P011_T1\" />\n    <bpmn:sequenceFlow id=\"P011_F2\" sourceRef=\"P011_T1\" targetRef=\"P011_T2\" />\n    <bpmn:sequenceFlow id=\"P011_F3\" sourceRef=\"P011_T2\" targetRef=\"P011_T3\" />\n    <bpmn:sequenceFlow id=\"P011_F4\" sourceRef=\"P011_T3\" targetRef=\"P011_T4\" />\n    <bpmn:sequenceFlow id=\"P011_F5\" sourceRef=\"P011_T4\" targetRef=\"P011_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P011\">\n      <bpmndi:BPMNShape id=\"P011_Start_di\" bpmnElement=\"P011_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P011_T1_di\" bpmnElement=\"P011_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P011_T2_di\" bpmnElement=\"P011_T2\">\n        <dc:Bounds x=\"390\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P011_T3_di\" bpmnElement=\"P011_T3\">\n        <dc:Bounds x=\"540\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P011_T4_di\" bpmnElement=\"P011_T4\">\n        <dc:Bounds x=\"690\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P011_End_di\" bpmnElement=\"P011_End\">\n        <dc:Bounds x=\"842\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P011_F1_di\" bpmnElement=\"P011_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P011_F2_di\" bpmnElement=\"P011_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P011_F3_di\" bpmnElement=\"P011_F3\">\n        <di:waypoint x=\"490\" y=\"200\" />\n        <di:waypoint x=\"540\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P011_F4_di\" bpmnElement=\"P011_F4\">\n        <di:waypoint x=\"640\" y=\"200\" />\n        <di:waypoint x=\"690\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P011_F5_di\" bpmnElement=\"P011_F5\">\n        <di:waypoint x=\"790\" y=\"200\" />\n        <di:waypoint x=\"842\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P011_T1",
+     "role_id": "RO-005",
+     "raci": "R"
+    },
+    {
+     "element_id": "P011_T2",
+     "role_id": "RO-005",
+     "raci": "A"
+    },
+    {
+     "element_id": "P011_T3",
+     "role_id": "RO-005",
+     "raci": "R"
+    },
+    {
+     "element_id": "P011_T4",
+     "role_id": "RO-002",
+     "raci": "I"
+    }
+   ]
+  },
+  {
+   "id": "P-012",
+   "code": "P-012",
+   "title": "IT-Service & Incident",
+   "description": "Störungen und Anfragen an die IT bearbeiten.",
+   "category": "Support process",
+   "owner_role_id": "RO-009",
+   "area": "IT",
+   "landscape_order": 4,
+   "inputs": "",
+   "outputs": "",
+   "resources": "",
+   "standards": [
+    "ISO 9001"
+   ],
+   "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_1\" targetNamespace=\"http://grc.example/bpmn\">\n  <bpmn:process id=\"Process_P012\" name=\"IT-Service &amp; Incident\" isExecutable=\"false\">\n    <bpmn:startEvent id=\"P012_Start\" name=\"Störung gemeldet\">\n      <bpmn:outgoing>P012_F1</bpmn:outgoing>\n    </bpmn:startEvent>\n    <bpmn:userTask id=\"P012_T1\" name=\"Ticket erfassen\">\n      <bpmn:incoming>P012_F1</bpmn:incoming>\n      <bpmn:outgoing>P012_F2</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:exclusiveGateway id=\"P012_G2\" name=\"Sicherheitsvorfall?\">\n      <bpmn:incoming>P012_F2</bpmn:incoming>\n      <bpmn:outgoing>P012_F3</bpmn:outgoing>\n      <bpmn:outgoing>P012_F4</bpmn:outgoing>\n    </bpmn:exclusiveGateway>\n    <bpmn:endEvent id=\"P012_G2_End\" name=\"Standard-Incident gelöst\">\n      <bpmn:incoming>P012_F3</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:userTask id=\"P012_T3\" name=\"Sicherheitsvorfall bewerten\">\n      <bpmn:incoming>P012_F4</bpmn:incoming>\n      <bpmn:outgoing>P012_F5</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:userTask id=\"P012_T4\" name=\"Maßnahmen umsetzen\">\n      <bpmn:incoming>P012_F5</bpmn:incoming>\n      <bpmn:outgoing>P012_F6</bpmn:outgoing>\n    </bpmn:userTask>\n    <bpmn:endEvent id=\"P012_End\" name=\"Ticket geschlossen\">\n      <bpmn:incoming>P012_F6</bpmn:incoming>\n    </bpmn:endEvent>\n    <bpmn:sequenceFlow id=\"P012_F1\" sourceRef=\"P012_Start\" targetRef=\"P012_T1\" />\n    <bpmn:sequenceFlow id=\"P012_F2\" sourceRef=\"P012_T1\" targetRef=\"P012_G2\" />\n    <bpmn:sequenceFlow id=\"P012_F3\" name=\"nein\" sourceRef=\"P012_G2\" targetRef=\"P012_G2_End\" />\n    <bpmn:sequenceFlow id=\"P012_F4\" name=\"ja\" sourceRef=\"P012_G2\" targetRef=\"P012_T3\" />\n    <bpmn:sequenceFlow id=\"P012_F5\" sourceRef=\"P012_T3\" targetRef=\"P012_T4\" />\n    <bpmn:sequenceFlow id=\"P012_F6\" sourceRef=\"P012_T4\" targetRef=\"P012_End\" />\n  </bpmn:process>\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_P012\">\n      <bpmndi:BPMNShape id=\"P012_Start_di\" bpmnElement=\"P012_Start\">\n        <dc:Bounds x=\"152\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P012_T1_di\" bpmnElement=\"P012_T1\">\n        <dc:Bounds x=\"240\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P012_G2_di\" bpmnElement=\"P012_G2\">\n        <dc:Bounds x=\"390\" y=\"175\" width=\"50\" height=\"50\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P012_G2_End_di\" bpmnElement=\"P012_G2_End\">\n        <dc:Bounds x=\"397\" y=\"312\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P012_T3_di\" bpmnElement=\"P012_T3\">\n        <dc:Bounds x=\"490\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P012_T4_di\" bpmnElement=\"P012_T4\">\n        <dc:Bounds x=\"640\" y=\"160\" width=\"100\" height=\"80\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNShape id=\"P012_End_di\" bpmnElement=\"P012_End\">\n        <dc:Bounds x=\"792\" y=\"182\" width=\"36\" height=\"36\" />\n      </bpmndi:BPMNShape>\n      <bpmndi:BPMNEdge id=\"P012_F1_di\" bpmnElement=\"P012_F1\">\n        <di:waypoint x=\"188\" y=\"200\" />\n        <di:waypoint x=\"240\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P012_F2_di\" bpmnElement=\"P012_F2\">\n        <di:waypoint x=\"340\" y=\"200\" />\n        <di:waypoint x=\"390\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P012_F3_di\" bpmnElement=\"P012_F3\">\n        <di:waypoint x=\"415\" y=\"225\" />\n        <di:waypoint x=\"415\" y=\"312\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P012_F4_di\" bpmnElement=\"P012_F4\">\n        <di:waypoint x=\"440\" y=\"200\" />\n        <di:waypoint x=\"490\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P012_F5_di\" bpmnElement=\"P012_F5\">\n        <di:waypoint x=\"590\" y=\"200\" />\n        <di:waypoint x=\"640\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n      <bpmndi:BPMNEdge id=\"P012_F6_di\" bpmnElement=\"P012_F6\">\n        <di:waypoint x=\"740\" y=\"200\" />\n        <di:waypoint x=\"792\" y=\"200\" />\n      </bpmndi:BPMNEdge>\n    </bpmndi:BPMNPlane>\n  </bpmndi:BPMNDiagram>\n</bpmn:definitions>",
+   "status": "released",
+   "doc_version": "1.0",
+   "next_review": "2027-06-30",
+   "workflow": [],
+   "steps": [
+    {
+     "element_id": "P012_T1",
+     "role_id": "RO-001",
+     "raci": "R"
+    },
+    {
+     "element_id": "P012_G2",
+     "role_id": "RO-009",
+     "raci": "R"
+    },
+    {
+     "element_id": "P012_T3",
+     "role_id": "RO-007",
+     "raci": "R"
+    },
+    {
+     "element_id": "P012_T3",
+     "role_id": "RO-009",
+     "raci": "C"
+    },
+    {
+     "element_id": "P012_T4",
+     "role_id": "RO-009",
+     "raci": "R"
+    }
+   ]
+  }
+ ]
+}

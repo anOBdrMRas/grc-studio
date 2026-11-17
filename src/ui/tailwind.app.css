@@ -1,0 +1,28 @@
+/* App shell of GRC Studio. Deviation A1: a horizontal menu bar under the header instead of the sidebar. */
+@layer components {
+  .app-header { @apply sticky top-0 z-30 border-b border-base-300 bg-base-100; }
+  .app-menubar { @apply flex items-stretch gap-1 overflow-x-auto bg-primary px-3 text-primary-content; scrollbar-width: thin; }
+  .app-menubar a { @apply whitespace-nowrap px-3 py-2 text-sm opacity-85; border-bottom: 2px solid transparent; }
+  .app-menubar a:hover { @apply opacity-100; background: rgb(255 255 255 / 0.08); }
+  .app-menubar a[aria-current='page'] { @apply font-semibold opacity-100; border-bottom-color: #c8972a; background: rgb(255 255 255 / 0.12); }
+  .split { @apply grid min-h-0 gap-0; grid-template-columns: minmax(300px, 1fr) minmax(0, 2fr); height: calc(100vh - 7.25rem); }
+  .split-list { @apply overflow-auto border-r border-base-300 p-3; }
+  .split-detail { @apply overflow-auto bg-base-100 p-4; }
+  .field-label { @apply text-xs font-semibold opacity-70; }
+  .field-value { @apply whitespace-pre-wrap break-words text-sm; }
+  .wf-chip { @apply inline-flex items-center gap-1 rounded-full border border-base-300 px-2 py-0.5 text-xs; }
+  .wf-chip.done { @apply border-success text-success; }
+  .wf-chip.current { @apply border-secondary bg-secondary text-secondary-content; }
+  .row-list tr { @apply cursor-pointer; }
+  .row-list tr[aria-current='true'] { @apply bg-secondary/15; }
+}
+
+/* outside @layer: rules the class scanner cannot see */
+:focus-visible { outline: 2px solid var(--fallback-s, oklch(var(--s))); outline-offset: 2px; border-radius: 2px; }
+dialog.modal:not([open]) { display: none; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+#bpmn-canvas { height: calc(100vh - 13rem); min-height: 420px; }
+#bpmn-canvas .djs-container { background: var(--fallback-b1, oklch(var(--b1))); }
+.bpmn-badge { background: #1b5e8c; color: #fff; border-radius: 9px; font-size: 11px; padding: 0 6px; line-height: 18px; white-space: nowrap; }
+[data-theme='fidonis-dark'] #bpmn-canvas .djs-container { filter: invert(0.88) hue-rotate(180deg); }
+[hidden] { display: none !important; }

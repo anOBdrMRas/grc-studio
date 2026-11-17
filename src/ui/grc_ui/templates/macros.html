@@ -1,0 +1,23 @@
+{% macro brand_mark() %}
+<svg viewBox="0 0 24 24" class="h-6 w-6" aria-hidden="true"><rect class="brand-mark-gold" x="2" y="2" width="9" height="9" rx="1.5"/><rect class="brand-mark-ink" x="13" y="2" width="9" height="9" rx="1.5"/><rect class="brand-mark-ink" x="2" y="13" width="9" height="9" rx="1.5"/><rect class="brand-mark-ink" x="13" y="13" width="9" height="9" rx="1.5"/></svg>
+{% endmacro %}
+
+{% macro status_badge(status) %}
+{% set labels = {"draft": _("Draft"), "review": _("I&A review"), "released": _("Released"), "archived": _("Archived")} %}
+{% if status == "released" %}<span class="badge badge-sm badge-outline border-success text-success">{{ labels[status] }}</span>
+{% elif status == "review" %}<span class="badge badge-sm badge-outline border-info text-info">{{ labels[status] }}</span>
+{% elif status == "archived" %}<span class="badge badge-sm badge-outline opacity-60">{{ labels[status] }}</span>
+{% else %}<span class="badge badge-sm badge-outline border-warning text-warning">{{ labels.get(status, status) }}</span>{% endif %}
+{% endmacro %}
+
+{% macro empty(message, hint="") %}
+<div class="rounded-box border border-dashed border-base-300 bg-base-100 p-6 text-center text-sm opacity-70">
+  <p>{{ message }}</p>{% if hint %}<p class="mt-1 text-xs">{{ hint }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro theme_toggle() %}
+<button type="button" class="btn btn-ghost btn-sm btn-square" data-action="toggle-theme" aria-pressed="false" aria-label="{{ _('Switch light / dark') }}" title="{{ _('Switch light / dark') }}">
+  <span class="theme-icon-light">{{ icon("moon") }}</span>
+</button>
+{% endmacro %}

@@ -1,0 +1,1181 @@
+# Translations template for GRC Studio.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the GRC Studio project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: GRC Studio VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-17 17:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Actions to address risks and opportunities"
+msgstr ""
+
+msgid "Add role …"
+msgstr ""
+
+msgid "Administrator"
+msgstr ""
+
+msgid "Analysis and evaluation"
+msgstr ""
+
+msgid "Appointed officer"
+msgstr ""
+
+msgid "Appointment / designation"
+msgstr ""
+
+msgid "Approval limit (EUR)"
+msgstr ""
+
+msgid "Approval workflow"
+msgstr ""
+
+msgid "Archived"
+msgstr ""
+
+msgid "Area"
+msgstr ""
+
+msgid "Assign"
+msgstr ""
+
+msgid "Assigned roles"
+msgstr ""
+
+msgid "Assignment in process step"
+msgstr ""
+
+msgid "Audits"
+msgstr ""
+
+msgid "Authorities of the position"
+msgstr ""
+
+msgid "Awareness"
+msgstr ""
+
+msgid "Back to the current state"
+msgstr ""
+
+msgid "Back to the start page"
+msgstr ""
+
+msgid "Background screening required"
+msgstr ""
+
+msgid "Bank / payment authority"
+msgstr ""
+
+msgid "Business Enablement"
+msgstr ""
+
+msgid "Business Enablement (BE)"
+msgstr ""
+
+msgid "Business approval"
+msgstr ""
+
+#, python-brace-format
+msgid "Business approval by {user}"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Change history"
+msgstr ""
+
+msgid "Changes to requirements"
+msgstr ""
+
+msgid "Choose another person"
+msgstr ""
+
+msgid "Choose another person …"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Comment (optional)"
+msgstr ""
+
+msgid "Comment (required to send back)"
+msgstr ""
+
+msgid "Commercial power of attorney"
+msgstr ""
+
+msgid "Committee"
+msgstr ""
+
+msgid "Communicating the quality policy"
+msgstr ""
+
+msgid "Communication"
+msgstr ""
+
+msgid "Competence"
+msgstr ""
+
+msgid "Competence / training"
+msgstr ""
+
+msgid "Compliance culture"
+msgstr ""
+
+msgid "Compliance function"
+msgstr ""
+
+msgid "Compliance function / sensitive role"
+msgstr ""
+
+msgid "Compliance governance"
+msgstr ""
+
+msgid "Compliance management system"
+msgstr ""
+
+msgid "Compliance objectives and planning"
+msgstr ""
+
+msgid "Compliance obligations"
+msgstr ""
+
+msgid "Compliance policy"
+msgstr ""
+
+msgid "Compliance reporting"
+msgstr ""
+
+msgid "Compliance risk assessment"
+msgstr ""
+
+msgid "Confidentiality agreement required"
+msgstr ""
+
+msgid "Context of the organization"
+msgstr ""
+
+msgid "Continual improvement"
+msgstr ""
+
+msgid "Control of changes"
+msgstr ""
+
+msgid "Control of documented information"
+msgstr ""
+
+msgid "Control of externally provided processes, products and services"
+msgstr ""
+
+msgid "Control of nonconforming outputs"
+msgstr ""
+
+msgid "Control of production and service provision"
+msgstr ""
+
+msgid "Controlling"
+msgstr ""
+
+msgid "Controls (ICS)"
+msgstr ""
+
+msgid "Core process"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+msgid "Creates new elements and maintains users."
+msgstr ""
+
+msgid "Creating and updating"
+msgstr ""
+
+msgid "Customer communication"
+msgstr ""
+
+msgid "Customer focus"
+msgstr ""
+
+msgid "Customer satisfaction"
+msgstr ""
+
+msgid "Delegation of duties"
+msgstr ""
+
+msgid "Delegations & powers of attorney"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Deleted"
+msgstr ""
+
+msgid "Demo sign-in without password. The administration switches it off with DEMO_LOGIN=false."
+msgstr ""
+
+msgid "Department"
+msgstr ""
+
+msgid "Deputised by position"
+msgstr ""
+
+msgid "Deputy inducted"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Design and development changes"
+msgstr ""
+
+msgid "Design and development controls"
+msgstr ""
+
+msgid "Design and development inputs"
+msgstr ""
+
+msgid "Design and development of products and services"
+msgstr ""
+
+msgid "Design and development outputs"
+msgstr ""
+
+msgid "Design and development planning"
+msgstr ""
+
+msgid "Determining the requirements for products and services"
+msgstr ""
+
+msgid "Development of indicators"
+msgstr ""
+
+msgid "Diagram changed"
+msgstr ""
+
+msgid "Diagram saved"
+msgstr ""
+
+msgid "Documented information"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Draft (in progress)"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edited"
+msgstr ""
+
+msgid "Education / qualification"
+msgstr ""
+
+msgid "Emergency preparedness and response"
+msgstr ""
+
+msgid "Employee"
+msgstr ""
+
+msgid "Employment process"
+msgstr ""
+
+msgid "Environment for the operation of processes"
+msgstr ""
+
+msgid "Environmental aspects"
+msgstr ""
+
+msgid "Environmental management system"
+msgstr ""
+
+msgid "Environmental objectives"
+msgstr ""
+
+msgid "Environmental objectives and planning to achieve them"
+msgstr ""
+
+msgid "Environmental policy"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Establishing controls and procedures"
+msgstr ""
+
+msgid "Establishing the quality policy"
+msgstr ""
+
+msgid "Evaluation of compliance"
+msgstr ""
+
+msgid "Export Control & Customs"
+msgstr ""
+
+msgid "External communication"
+msgstr ""
+
+msgid "Field"
+msgstr ""
+
+msgid "Filter…"
+msgstr ""
+
+msgid "Finance"
+msgstr ""
+
+msgid "Finance & Admin"
+msgstr ""
+
+msgid "Finance and Admin"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "Fit to view"
+msgstr ""
+
+msgid "Four-eyes principle: whoever gave the business approval may not give the quality approval."
+msgstr ""
+
+msgid "Functional authorities of the role"
+msgstr ""
+
+msgid "Functional role"
+msgstr ""
+
+msgid "General (communication)"
+msgstr ""
+
+msgid "General (competence)"
+msgstr ""
+
+msgid "General (design and development)"
+msgstr ""
+
+msgid "General (documented information)"
+msgstr ""
+
+msgid "General (external providers)"
+msgstr ""
+
+msgid "General (improvement)"
+msgstr ""
+
+msgid "General (internal audit)"
+msgstr ""
+
+msgid "General (leadership)"
+msgstr ""
+
+msgid "General (management review)"
+msgstr ""
+
+msgid "General (monitoring and measurement)"
+msgstr ""
+
+msgid "General (monitoring)"
+msgstr ""
+
+msgid "General (resources)"
+msgstr ""
+
+msgid "General (risks and opportunities)"
+msgstr ""
+
+msgid "General (roles and authorities)"
+msgstr ""
+
+msgid "Generic"
+msgstr ""
+
+msgid "Give business approval"
+msgstr ""
+
+msgid "Give quality approval"
+msgstr ""
+
+msgid "Gives the quality approval and manages the GRC modules."
+msgstr ""
+
+msgid "Global IT"
+msgstr ""
+
+msgid "Governing body and top management"
+msgstr ""
+
+msgid "Headcount (planned)"
+msgstr ""
+
+msgid "Hierarchy & reporting lines"
+msgstr ""
+
+msgid "Holder"
+msgstr ""
+
+msgid "I&A"
+msgstr ""
+
+msgid "I&A cockpit"
+msgstr ""
+
+msgid "I&A review"
+msgstr ""
+
+msgid "I&A team"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "ISO 9001 5.3"
+msgstr ""
+
+msgid "ISO 9001 7.2"
+msgstr ""
+
+msgid "Identification and traceability"
+msgstr ""
+
+msgid "Improvement"
+msgstr ""
+
+msgid "In my responsibility"
+msgstr ""
+
+msgid "In preparation"
+msgstr ""
+
+msgid "Incompatible roles (SoD)"
+msgstr ""
+
+msgid "Information for external providers"
+msgstr ""
+
+msgid "Infrastructure"
+msgstr ""
+
+msgid "Inputs"
+msgstr ""
+
+msgid "Integrated management system: processes, roles, positions and responsibilities."
+msgstr ""
+
+msgid "Internal approval authority"
+msgstr ""
+
+msgid "Internal audit"
+msgstr ""
+
+msgid "Internal audit programme"
+msgstr ""
+
+msgid "Internal communication"
+msgstr ""
+
+msgid "Investigation processes"
+msgstr ""
+
+msgid "Job description"
+msgstr ""
+
+msgid "KPI"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Last review"
+msgstr ""
+
+msgid "Leadership"
+msgstr ""
+
+msgid "Leadership and commitment"
+msgstr ""
+
+msgid "Leadership and commitment / compliance culture"
+msgstr ""
+
+msgid "Leadership role"
+msgstr ""
+
+msgid "Legal & Compliance"
+msgstr ""
+
+msgid "Load current values"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "Logistics"
+msgstr ""
+
+msgid "Main menu"
+msgstr ""
+
+msgid "Main tasks"
+msgstr ""
+
+msgid "Management"
+msgstr ""
+
+msgid "Management position"
+msgstr ""
+
+msgid "Management process"
+msgstr ""
+
+msgid "Management review"
+msgstr ""
+
+msgid "Management review inputs"
+msgstr ""
+
+msgid "Management review outputs"
+msgstr ""
+
+msgid "Manager"
+msgstr ""
+
+msgid "Mandatory role"
+msgstr ""
+
+msgid "Mandatory training / awareness"
+msgstr ""
+
+msgid "Marketing"
+msgstr ""
+
+msgid "Marketing and Communication"
+msgstr ""
+
+msgid "Master data"
+msgstr ""
+
+msgid "Model (BPMN)"
+msgstr ""
+
+msgid "Monitoring and measuring resources"
+msgstr ""
+
+msgid "Monitoring, measurement, analysis and evaluation"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Needs and expectations of interested parties"
+msgstr ""
+
+msgid "New entry"
+msgstr ""
+
+msgid "New process"
+msgstr ""
+
+msgid "Next review"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No changes recorded yet. Changes are recorded from now on."
+msgstr ""
+
+msgid "No entries."
+msgstr ""
+
+msgid "No position holds this role."
+msgstr ""
+
+msgid "No processes."
+msgstr ""
+
+msgid "No roles assigned."
+msgstr ""
+
+msgid "Nonconformity and corrective action"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Notification to authority / register"
+msgstr ""
+
+msgid "Operation"
+msgstr ""
+
+msgid "Operational planning and control"
+msgstr ""
+
+msgid "Operations"
+msgstr ""
+
+msgid "Opportunities"
+msgstr ""
+
+msgid "Org. unit"
+msgstr ""
+
+msgid "Organisational unit"
+msgstr ""
+
+msgid "Organizational knowledge"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Outputs"
+msgstr ""
+
+msgid "Owner"
+msgstr ""
+
+msgid "Owner – you may edit"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Performance evaluation"
+msgstr ""
+
+msgid "Personal transfer required"
+msgstr ""
+
+msgid "Personnel"
+msgstr ""
+
+msgid "Persons"
+msgstr ""
+
+msgid "Planning"
+msgstr ""
+
+msgid "Planning action"
+msgstr ""
+
+msgid "Planning actions to achieve environmental objectives"
+msgstr ""
+
+msgid "Planning of changes"
+msgstr ""
+
+msgid "Please check your entries."
+msgstr ""
+
+msgid "Please sign in."
+msgstr ""
+
+msgid "Position"
+msgstr ""
+
+msgid "Position description"
+msgstr ""
+
+msgid "Position holders"
+msgstr ""
+
+msgid "Positions"
+msgstr ""
+
+msgid "Positions & persons"
+msgstr ""
+
+msgid "Post-delivery activities"
+msgstr ""
+
+msgid "Preservation"
+msgstr ""
+
+msgid "Process"
+msgstr ""
+
+msgid "Process area"
+msgstr ""
+
+msgid "Process category"
+msgstr ""
+
+msgid "Process landscape"
+msgstr ""
+
+msgid "Process owner"
+msgstr ""
+
+msgid "Process profile (ISO 9001 4.4)"
+msgstr ""
+
+msgid "Process step"
+msgstr ""
+
+msgid "Processes"
+msgstr ""
+
+msgid "Production and service provision"
+msgstr ""
+
+msgid "Professional & personal competencies"
+msgstr ""
+
+msgid "Professional experience"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Prokura (general commercial power)"
+msgstr ""
+
+msgid "Property of customers or external providers"
+msgstr ""
+
+msgid "Prototype"
+msgstr ""
+
+msgid "Purchasing"
+msgstr ""
+
+msgid "Purpose & scope"
+msgstr ""
+
+msgid "Purpose of the position"
+msgstr ""
+
+msgid "Quality approval by the I&A team"
+msgstr ""
+
+msgid "Quality management"
+msgstr ""
+
+msgid "Quality management system and its processes"
+msgstr ""
+
+msgid "Quality objectives and planning to achieve them"
+msgstr ""
+
+msgid "Quality policy"
+msgstr ""
+
+msgid "R = responsible, A = accountable, C = consulted, I = informed"
+msgstr ""
+
+#, python-brace-format
+msgid "RACI of {role} in step {step}: {raci}"
+msgstr ""
+
+msgid "Raising concerns (whistleblowing)"
+msgstr ""
+
+msgid "Read only"
+msgstr ""
+
+msgid "Really delete the process?"
+msgstr ""
+
+msgid "Really delete?"
+msgstr ""
+
+msgid "Record-keeping"
+msgstr ""
+
+msgid "Release of products and services"
+msgstr ""
+
+msgid "Released"
+msgstr ""
+
+#, python-brace-format
+msgid "Released version v{v} – read only. The changes of the draft are not yet approved."
+msgstr ""
+
+msgid "Relevant management systems"
+msgstr ""
+
+msgid "Remarks"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Reports disciplinarily to"
+msgstr ""
+
+msgid "Reports functionally to"
+msgstr ""
+
+msgid "Required competencies"
+msgstr ""
+
+msgid "Required transfer"
+msgstr ""
+
+msgid "Requirements & competence"
+msgstr ""
+
+msgid "Requirements for products and services"
+msgstr ""
+
+msgid "Resources"
+msgstr ""
+
+msgid "Responsibilities"
+msgstr ""
+
+msgid "Responsibilities & competence"
+msgstr ""
+
+msgid "Review of the requirements"
+msgstr ""
+
+msgid "Risks"
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Role description"
+msgstr ""
+
+msgid "Role owner"
+msgstr ""
+
+msgid "Role type"
+msgstr ""
+
+msgid "Roles"
+msgstr ""
+
+msgid "Roles, responsibilities and authorities"
+msgstr ""
+
+msgid "Roles, responsibilities and authorities / compliance function"
+msgstr ""
+
+msgid "Sales"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save diagram"
+msgstr ""
+
+msgid "Saved"
+msgstr ""
+
+msgid "Scope of the compliance management system"
+msgstr ""
+
+msgid "Scope of the environmental management system"
+msgstr ""
+
+msgid "Scope of the quality management system"
+msgstr ""
+
+msgid "Search…"
+msgstr ""
+
+msgid "Sees the process landscape and what is assigned to him."
+msgstr ""
+
+msgid "Segregation of duties"
+msgstr ""
+
+msgid "Segregation of duties conflicts"
+msgstr ""
+
+msgid "Select an element in the diagram to assign roles with RACI."
+msgstr ""
+
+msgid "Select an entry or create a new one."
+msgstr ""
+
+msgid "Send back"
+msgstr ""
+
+msgid "Sent back by the I&A team"
+msgstr ""
+
+msgid "Set status (administration)"
+msgstr ""
+
+msgid "Show changes"
+msgstr ""
+
+msgid "Show position description (summary)"
+msgstr ""
+
+msgid "Show role description (summary)"
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign in as …"
+msgstr ""
+
+msgid "Sign-in failed."
+msgstr ""
+
+msgid "Signed in"
+msgstr ""
+
+msgid "Someone else changed this element in the meantime. Load the current values."
+msgstr ""
+
+msgid "Something went wrong."
+msgstr ""
+
+msgid "Sources of feedback on compliance performance"
+msgstr ""
+
+msgid "Standard references"
+msgstr ""
+
+msgid "Standards reference"
+msgstr ""
+
+msgid "Start page"
+msgstr ""
+
+#, python-brace-format
+msgid "State of {date} ({user}) – read only, no restore."
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Statutory representation (officer)"
+msgstr ""
+
+msgid "Steps with roles"
+msgstr ""
+
+msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "Support process"
+msgstr ""
+
+msgid "Switch light / dark"
+msgstr ""
+
+msgid "System roles (permissions in the tool)"
+msgstr ""
+
+msgid "Target power of attorney of the position"
+msgstr ""
+
+msgid "Technology"
+msgstr ""
+
+msgid "The demo sign-in is switched off."
+msgstr ""
+
+msgid "The element no longer exists."
+msgstr ""
+
+msgid "The server cannot be reached. Please try again."
+msgstr ""
+
+msgid "The version of the element is missing."
+msgstr ""
+
+msgid "This is not possible."
+msgstr ""
+
+msgid "This module follows in the next stage. Until then it is available in the prototype."
+msgstr ""
+
+msgid "This step is not possible in the current status."
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Title of the new entry"
+msgstr ""
+
+msgid "Title of the new process"
+msgstr ""
+
+msgid "Training"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Type and extent of control"
+msgstr ""
+
+msgid "Understanding the organization and its context"
+msgstr ""
+
+msgid "Unsaved changes"
+msgstr ""
+
+msgid "Unsaved changes in the diagram will be lost."
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "User ID"
+msgstr ""
+
+msgid "User management"
+msgstr ""
+
+msgid "User name"
+msgstr ""
+
+msgid "Validity & review"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "View this state"
+msgstr ""
+
+msgid "Waiting for the I&A approval"
+msgstr ""
+
+#, python-brace-format
+msgid "Welcome, {name}"
+msgstr ""
+
+msgid "Written form required"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "You are not allowed to do this."
+msgstr ""
+
+msgid "You are not the owner of any element."
+msgstr ""
+
+msgid "Your session has expired. Please reload the page."
+msgstr ""
+
+msgid "Your start page"
+msgstr ""
+
+msgid "Zoom in"
+msgstr ""
+
+msgid "Zoom out"
+msgstr ""
+
+msgid "admin"
+msgstr ""
+
+msgid "after"
+msgstr ""
+
+msgid "applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the position or a transfer"
+msgstr ""
+
+msgid "approved"
+msgstr ""
+
+msgid "archived"
+msgstr ""
+
+msgid "before"
+msgstr ""
+
+msgid "defines and reviews the role"
+msgstr ""
+
+msgid "defines the ownership – administration and I&A team only"
+msgstr ""
+
+msgid "draft"
+msgstr ""
+
+msgid "employee"
+msgstr ""
+
+msgid "ia"
+msgstr ""
+
+msgid "last changed"
+msgstr ""
+
+msgid "rejected"
+msgstr ""
+
+msgid "released"
+msgstr ""
+
+msgid "reopened"
+msgstr ""
+
+msgid "required by a standard, law or authority, e.g. CISO, DPO, export control officer"
+msgstr ""
+
+msgid "review"
+msgstr ""
+
+msgid "status"
+msgstr ""
+
+msgid "submitted"
+msgstr ""
+
+msgid "vacant"
+msgstr ""
+
+msgid "with line management responsibility"
+msgstr ""
+
+#, python-brace-format
+msgid "{role} assigned to step {step}"
+msgstr ""
+
+#, python-brace-format
+msgid "{role} removed from step {step}"
+msgstr ""
+
+msgid "— not assigned —"
+msgstr ""
+

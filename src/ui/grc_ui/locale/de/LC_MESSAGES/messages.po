@@ -1,0 +1,1183 @@
+# German translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-17 17:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Actions to address risks and opportunities"
+msgstr "Maßnahmen zum Umgang mit Risiken und Chancen"
+
+msgid "Add role …"
+msgstr "Rolle hinzufügen …"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Analysis and evaluation"
+msgstr "Analyse und Bewertung"
+
+msgid "Appointed officer"
+msgstr "Beauftragter"
+
+msgid "Appointment / designation"
+msgstr "Bestellung / Benennung"
+
+msgid "Approval limit (EUR)"
+msgstr "Freigabelimit (EUR)"
+
+msgid "Approval workflow"
+msgstr "Freigabe-Workflow"
+
+msgid "Archived"
+msgstr "Archiviert"
+
+msgid "Area"
+msgstr "Bereich"
+
+msgid "Assign"
+msgstr "Zuordnen"
+
+msgid "Assigned roles"
+msgstr "Zugeordnete Rollen"
+
+msgid "Assignment in process step"
+msgstr "Zuordnung im Prozessschritt"
+
+msgid "Audits"
+msgstr "Audits"
+
+msgid "Authorities of the position"
+msgstr "Befugnisse der Stelle"
+
+msgid "Awareness"
+msgstr "Bewusstsein"
+
+msgid "Back to the current state"
+msgstr "Zurück zum aktuellen Stand"
+
+msgid "Back to the start page"
+msgstr "Zurück zur Startseite"
+
+msgid "Background screening required"
+msgstr "Sicherheitsüberprüfung erforderlich"
+
+msgid "Bank / payment authority"
+msgstr "Bank- / Zahlungsvollmacht"
+
+msgid "Business Enablement"
+msgstr "Business Enablement"
+
+msgid "Business Enablement (BE)"
+msgstr "Business Enablement (BE)"
+
+msgid "Business approval"
+msgstr "Fachliche Freigabe"
+
+#, python-brace-format
+msgid "Business approval by {user}"
+msgstr "Fachlich freigegeben von {user}"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Change history"
+msgstr "Änderungshistorie"
+
+msgid "Changes to requirements"
+msgstr "Änderungen von Anforderungen"
+
+msgid "Choose another person"
+msgstr "Andere Person wählen"
+
+msgid "Choose another person …"
+msgstr "Andere Person wählen …"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "Comment (optional)"
+msgstr "Kommentar (optional)"
+
+msgid "Comment (required to send back)"
+msgstr "Kommentar (für Zurückweisen erforderlich)"
+
+msgid "Commercial power of attorney"
+msgstr "Handlungsvollmacht"
+
+msgid "Committee"
+msgstr "Gremium"
+
+msgid "Communicating the quality policy"
+msgstr "Bekanntmachen der Qualitätspolitik"
+
+msgid "Communication"
+msgstr "Kommunikation"
+
+msgid "Competence"
+msgstr "Kompetenz"
+
+msgid "Competence / training"
+msgstr "Kompetenz / Schulung"
+
+msgid "Compliance culture"
+msgstr "Compliance-Kultur"
+
+msgid "Compliance function"
+msgstr "Compliance-Funktion"
+
+msgid "Compliance function / sensitive role"
+msgstr "Compliance-Funktion / sensible Rolle"
+
+msgid "Compliance governance"
+msgstr "Compliance-Governance"
+
+msgid "Compliance management system"
+msgstr "Compliance-Managementsystem"
+
+msgid "Compliance objectives and planning"
+msgstr "Compliance-Ziele und Planung"
+
+msgid "Compliance obligations"
+msgstr "Compliance-Verpflichtungen"
+
+msgid "Compliance policy"
+msgstr "Compliance-Politik"
+
+msgid "Compliance reporting"
+msgstr "Compliance-Berichterstattung"
+
+msgid "Compliance risk assessment"
+msgstr "Compliance-Risikobeurteilung"
+
+msgid "Confidentiality agreement required"
+msgstr "Vertraulichkeitsvereinbarung erforderlich"
+
+msgid "Context of the organization"
+msgstr "Kontext der Organisation"
+
+msgid "Continual improvement"
+msgstr "Fortlaufende Verbesserung"
+
+msgid "Control of changes"
+msgstr "Überwachung von Änderungen"
+
+msgid "Control of documented information"
+msgstr "Lenkung dokumentierter Information"
+
+msgid "Control of externally provided processes, products and services"
+msgstr "Steuerung extern bereitgestellter Prozesse, Produkte und Dienstleistungen"
+
+msgid "Control of nonconforming outputs"
+msgstr "Steuerung nichtkonformer Ergebnisse"
+
+msgid "Control of production and service provision"
+msgstr "Steuerung der Produktion und Dienstleistungserbringung"
+
+msgid "Controlling"
+msgstr "Controlling"
+
+msgid "Controls (ICS)"
+msgstr "Controls (IKS)"
+
+msgid "Core process"
+msgstr "Kernprozess"
+
+msgid "Created"
+msgstr "Angelegt"
+
+msgid "Creates new elements and maintains users."
+msgstr "Legt neue Elemente an und pflegt Benutzer."
+
+msgid "Creating and updating"
+msgstr "Erstellen und Aktualisieren"
+
+msgid "Customer communication"
+msgstr "Kommunikation mit Kunden"
+
+msgid "Customer focus"
+msgstr "Kundenorientierung"
+
+msgid "Customer satisfaction"
+msgstr "Kundenzufriedenheit"
+
+msgid "Delegation of duties"
+msgstr "Pflichtendelegation"
+
+msgid "Delegations & powers of attorney"
+msgstr "Delegationen & Vollmachten"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Deleted"
+msgstr "Gelöscht"
+
+msgid "Demo sign-in without password. The administration switches it off with DEMO_LOGIN=false."
+msgstr "Demo-Anmeldung ohne Passwort. Die Administration schaltet sie mit DEMO_LOGIN=false ab."
+
+msgid "Department"
+msgstr "Abteilung"
+
+msgid "Deputised by position"
+msgstr "Vertretung durch Stelle"
+
+msgid "Deputy inducted"
+msgstr "Vertretung eingearbeitet"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Design and development changes"
+msgstr "Entwicklungsänderungen"
+
+msgid "Design and development controls"
+msgstr "Steuerungsmaßnahmen für die Entwicklung"
+
+msgid "Design and development inputs"
+msgstr "Entwicklungseingaben"
+
+msgid "Design and development of products and services"
+msgstr "Entwicklung von Produkten und Dienstleistungen"
+
+msgid "Design and development outputs"
+msgstr "Entwicklungsergebnisse"
+
+msgid "Design and development planning"
+msgstr "Entwicklungsplanung"
+
+msgid "Determining the requirements for products and services"
+msgstr "Bestimmen der Anforderungen an Produkte und Dienstleistungen"
+
+msgid "Development of indicators"
+msgstr "Entwicklung von Indikatoren"
+
+msgid "Diagram changed"
+msgstr "Diagramm geändert"
+
+msgid "Diagram saved"
+msgstr "Diagramm gespeichert"
+
+msgid "Documented information"
+msgstr "Dokumentierte Information"
+
+msgid "Draft"
+msgstr "Entwurf"
+
+msgid "Draft (in progress)"
+msgstr "Entwurf (in Arbeit)"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Edited"
+msgstr "Bearbeitet"
+
+msgid "Education / qualification"
+msgstr "Ausbildung / Qualifikation"
+
+msgid "Emergency preparedness and response"
+msgstr "Notfallvorsorge und Gefahrenabwehr"
+
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+msgid "Employment process"
+msgstr "Beschäftigungsprozess"
+
+msgid "Environment for the operation of processes"
+msgstr "Prozessumgebung"
+
+msgid "Environmental aspects"
+msgstr "Umweltaspekte"
+
+msgid "Environmental management system"
+msgstr "Umweltmanagementsystem"
+
+msgid "Environmental objectives"
+msgstr "Umweltziele"
+
+msgid "Environmental objectives and planning to achieve them"
+msgstr "Umweltziele und Planung zu deren Erreichung"
+
+msgid "Environmental policy"
+msgstr "Umweltpolitik"
+
+msgid "Error"
+msgstr "Fehler"
+
+msgid "Establishing controls and procedures"
+msgstr "Festlegen von Kontrollen und Verfahren"
+
+msgid "Establishing the quality policy"
+msgstr "Festlegen der Qualitätspolitik"
+
+msgid "Evaluation of compliance"
+msgstr "Bewertung der Einhaltung von Verpflichtungen"
+
+msgid "Export Control & Customs"
+msgstr "Export Control & Customs"
+
+msgid "External communication"
+msgstr "Externe Kommunikation"
+
+msgid "Field"
+msgstr "Feld"
+
+msgid "Filter…"
+msgstr "Filtern…"
+
+msgid "Finance"
+msgstr "Finance"
+
+msgid "Finance & Admin"
+msgstr "Finance & Admin"
+
+msgid "Finance and Admin"
+msgstr "Finance and Admin"
+
+msgid "First name"
+msgstr "Vorname"
+
+msgid "Fit to view"
+msgstr "An Ansicht anpassen"
+
+msgid "Four-eyes principle: whoever gave the business approval may not give the quality approval."
+msgstr "Vier-Augen-Prinzip: Wer fachlich freigegeben hat, darf nicht die Qualitätsfreigabe geben."
+
+msgid "Functional authorities of the role"
+msgstr "Funktionale Befugnisse der Rolle"
+
+msgid "Functional role"
+msgstr "Fachrolle"
+
+msgid "General (communication)"
+msgstr "Allgemeines (Kommunikation)"
+
+msgid "General (competence)"
+msgstr "Allgemeines (Kompetenz)"
+
+msgid "General (design and development)"
+msgstr "Allgemeines (Entwicklung)"
+
+msgid "General (documented information)"
+msgstr "Allgemeines (dokumentierte Information)"
+
+msgid "General (external providers)"
+msgstr "Allgemeines (externe Anbieter)"
+
+msgid "General (improvement)"
+msgstr "Allgemeines (Verbesserung)"
+
+msgid "General (internal audit)"
+msgstr "Allgemeines (internes Audit)"
+
+msgid "General (leadership)"
+msgstr "Allgemeines (Führung)"
+
+msgid "General (management review)"
+msgstr "Allgemeines (Managementbewertung)"
+
+msgid "General (monitoring and measurement)"
+msgstr "Allgemeines (Überwachung und Messung)"
+
+msgid "General (monitoring)"
+msgstr "Allgemeines (Überwachung)"
+
+msgid "General (resources)"
+msgstr "Allgemeines (Ressourcen)"
+
+msgid "General (risks and opportunities)"
+msgstr "Allgemeines (Risiken und Chancen)"
+
+msgid "General (roles and authorities)"
+msgstr "Allgemeines (Rollen und Befugnisse)"
+
+msgid "Generic"
+msgstr "Generic"
+
+msgid "Give business approval"
+msgstr "Fachlich freigeben"
+
+msgid "Give quality approval"
+msgstr "Qualität freigeben"
+
+msgid "Gives the quality approval and manages the GRC modules."
+msgstr "Gibt Qualität frei und verwaltet die GRC-Module."
+
+msgid "Global IT"
+msgstr "Global IT"
+
+msgid "Governing body and top management"
+msgstr "Leitungsorgan und oberste Leitung"
+
+msgid "Headcount (planned)"
+msgstr "Planstellen (Anzahl)"
+
+msgid "Hierarchy & reporting lines"
+msgstr "Hierarchie & Berichtslinien"
+
+msgid "Holder"
+msgstr "Inhaber"
+
+msgid "I&A"
+msgstr "I&A"
+
+msgid "I&A cockpit"
+msgstr "I&A-Cockpit"
+
+msgid "I&A review"
+msgstr "I&A-Review"
+
+msgid "I&A team"
+msgstr "I&A-Team"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ISO 9001 5.3"
+msgstr "ISO 9001 5.3"
+
+msgid "ISO 9001 7.2"
+msgstr "ISO 9001 7.2"
+
+msgid "Identification and traceability"
+msgstr "Kennzeichnung und Rückverfolgbarkeit"
+
+msgid "Improvement"
+msgstr "Verbesserung"
+
+msgid "In my responsibility"
+msgstr "In meiner Verantwortung"
+
+msgid "In preparation"
+msgstr "In Vorbereitung"
+
+msgid "Incompatible roles (SoD)"
+msgstr "Unvereinbare Rollen (SoD)"
+
+msgid "Information for external providers"
+msgstr "Informationen für externe Anbieter"
+
+msgid "Infrastructure"
+msgstr "Infrastruktur"
+
+msgid "Inputs"
+msgstr "Eingaben (Inputs)"
+
+msgid "Integrated management system: processes, roles, positions and responsibilities."
+msgstr "Integriertes Managementsystem: Prozesse, Rollen, Stellen und Verantwortlichkeiten."
+
+msgid "Internal approval authority"
+msgstr "Interne Freigabebefugnis"
+
+msgid "Internal audit"
+msgstr "Internes Audit"
+
+msgid "Internal audit programme"
+msgstr "Internes Auditprogramm"
+
+msgid "Internal communication"
+msgstr "Interne Kommunikation"
+
+msgid "Investigation processes"
+msgstr "Untersuchungsprozesse"
+
+msgid "Job description"
+msgstr "Stellenbeschreibung"
+
+msgid "KPI"
+msgstr "KPI"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Last name"
+msgstr "Nachname"
+
+msgid "Last review"
+msgstr "Letzte Überprüfung"
+
+msgid "Leadership"
+msgstr "Führung"
+
+msgid "Leadership and commitment"
+msgstr "Führung und Verpflichtung"
+
+msgid "Leadership and commitment / compliance culture"
+msgstr "Führung und Verpflichtung / Compliance-Kultur"
+
+msgid "Leadership role"
+msgstr "Führungsrolle"
+
+msgid "Legal & Compliance"
+msgstr "Legal & Compliance"
+
+msgid "Load current values"
+msgstr "Aktuelle Werte laden"
+
+msgid "Location"
+msgstr "Standort"
+
+msgid "Log out"
+msgstr "Abmelden"
+
+msgid "Logistics"
+msgstr "Logistik"
+
+msgid "Main menu"
+msgstr "Hauptmenü"
+
+msgid "Main tasks"
+msgstr "Hauptaufgaben"
+
+msgid "Management"
+msgstr "Geschäftsführung"
+
+msgid "Management position"
+msgstr "Führungsstelle"
+
+msgid "Management process"
+msgstr "Führungsprozess"
+
+msgid "Management review"
+msgstr "Managementbewertung"
+
+msgid "Management review inputs"
+msgstr "Eingaben für die Managementbewertung"
+
+msgid "Management review outputs"
+msgstr "Ergebnisse der Managementbewertung"
+
+msgid "Manager"
+msgstr "Führungskraft"
+
+msgid "Mandatory role"
+msgstr "Pflichtrolle"
+
+msgid "Mandatory training / awareness"
+msgstr "Pflichtschulungen / Awareness"
+
+msgid "Marketing"
+msgstr "Marketing"
+
+msgid "Marketing and Communication"
+msgstr "Marketing and Communication"
+
+msgid "Master data"
+msgstr "Stammdaten"
+
+msgid "Model (BPMN)"
+msgstr "Modell (BPMN)"
+
+msgid "Monitoring and measuring resources"
+msgstr "Ressourcen zur Überwachung und Messung"
+
+msgid "Monitoring, measurement, analysis and evaluation"
+msgstr "Überwachung, Messung, Analyse und Bewertung"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Needs and expectations of interested parties"
+msgstr "Erfordernisse und Erwartungen interessierter Parteien"
+
+msgid "New entry"
+msgstr "Neuer Eintrag"
+
+msgid "New process"
+msgstr "Neuer Prozess"
+
+msgid "Next review"
+msgstr "Nächste Überprüfung"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "No changes recorded yet. Changes are recorded from now on."
+msgstr "Noch keine Änderungen protokolliert. Änderungen werden ab jetzt protokolliert."
+
+msgid "No entries."
+msgstr "Keine Einträge."
+
+msgid "No position holds this role."
+msgstr "Keine Stelle hat diese Rolle."
+
+msgid "No processes."
+msgstr "Keine Prozesse."
+
+msgid "No roles assigned."
+msgstr "Keine Rollen zugeordnet."
+
+msgid "Nonconformity and corrective action"
+msgstr "Nichtkonformität und Korrekturmaßnahmen"
+
+msgid "None"
+msgstr "Keine"
+
+msgid "Notification to authority / register"
+msgstr "Meldung an Behörde / Register"
+
+msgid "Operation"
+msgstr "Operation"
+
+msgid "Operational planning and control"
+msgstr "Betriebliche Planung und Steuerung"
+
+msgid "Operations"
+msgstr "Operations"
+
+msgid "Opportunities"
+msgstr "Chancen"
+
+msgid "Org. unit"
+msgstr "Org.-Einheit"
+
+msgid "Organisational unit"
+msgstr "Organisationseinheit"
+
+msgid "Organizational knowledge"
+msgstr "Wissen der Organisation"
+
+msgid "Other"
+msgstr "Other"
+
+msgid "Outputs"
+msgstr "Ergebnisse (Outputs)"
+
+msgid "Owner"
+msgstr "Eigner"
+
+msgid "Owner – you may edit"
+msgstr "Owner – Sie dürfen bearbeiten"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Performance evaluation"
+msgstr "Bewertung der Leistung"
+
+msgid "Personal transfer required"
+msgstr "Persönliche Übertragung erforderlich"
+
+msgid "Personnel"
+msgstr "Mitarbeitende"
+
+msgid "Persons"
+msgstr "Personen"
+
+msgid "Planning"
+msgstr "Planung"
+
+msgid "Planning action"
+msgstr "Planung von Maßnahmen"
+
+msgid "Planning actions to achieve environmental objectives"
+msgstr "Planung von Maßnahmen zum Erreichen der Umweltziele"
+
+msgid "Planning of changes"
+msgstr "Planung von Änderungen"
+
+msgid "Please check your entries."
+msgstr "Bitte prüfen Sie Ihre Eingaben."
+
+msgid "Please sign in."
+msgstr "Bitte melden Sie sich an."
+
+msgid "Position"
+msgstr "Stelle"
+
+msgid "Position description"
+msgstr "Stellenbeschreibung"
+
+msgid "Position holders"
+msgstr "Stelleninhaber"
+
+msgid "Positions"
+msgstr "Stellen"
+
+msgid "Positions & persons"
+msgstr "Stellen & Personen"
+
+msgid "Post-delivery activities"
+msgstr "Tätigkeiten nach der Lieferung"
+
+msgid "Preservation"
+msgstr "Erhaltung"
+
+msgid "Process"
+msgstr "Prozess"
+
+msgid "Process area"
+msgstr "Prozessbereich"
+
+msgid "Process category"
+msgstr "Prozesskategorie"
+
+msgid "Process landscape"
+msgstr "Prozesslandschaft"
+
+msgid "Process owner"
+msgstr "Prozessverantwortlicher"
+
+msgid "Process profile (ISO 9001 4.4)"
+msgstr "Prozesssteckbrief (ISO 9001 4.4)"
+
+msgid "Process step"
+msgstr "Prozessschritt"
+
+msgid "Processes"
+msgstr "Prozesse"
+
+msgid "Production and service provision"
+msgstr "Produktion und Dienstleistungserbringung"
+
+msgid "Professional & personal competencies"
+msgstr "Fachliche & persönliche Kompetenzen"
+
+msgid "Professional experience"
+msgstr "Berufserfahrung"
+
+msgid "Profile"
+msgstr "Steckbrief"
+
+msgid "Prokura (general commercial power)"
+msgstr "Prokura"
+
+msgid "Property of customers or external providers"
+msgstr "Eigentum der Kunden oder externer Anbieter"
+
+msgid "Prototype"
+msgstr "Prototyp"
+
+msgid "Purchasing"
+msgstr "Einkauf"
+
+msgid "Purpose & scope"
+msgstr "Zweck & Anwendungsbereich"
+
+msgid "Purpose of the position"
+msgstr "Ziel / Zweck der Stelle"
+
+msgid "Quality approval by the I&A team"
+msgstr "Qualitätsfreigabe durch das I&A-Team"
+
+msgid "Quality management"
+msgstr "Qualitätsmanagement"
+
+msgid "Quality management system and its processes"
+msgstr "QM-System und seine Prozesse"
+
+msgid "Quality objectives and planning to achieve them"
+msgstr "Qualitätsziele und Planung zu deren Erreichung"
+
+msgid "Quality policy"
+msgstr "Qualitätspolitik"
+
+msgid "R = responsible, A = accountable, C = consulted, I = informed"
+msgstr "R = durchführend, A = verantwortlich, C = beratend, I = informiert"
+
+#, python-brace-format
+msgid "RACI of {role} in step {step}: {raci}"
+msgstr "RACI von {role} im Schritt „{step}“: {raci}"
+
+msgid "Raising concerns (whistleblowing)"
+msgstr "Äußern von Bedenken (Hinweisgebersystem)"
+
+msgid "Read only"
+msgstr "Nur Lesen"
+
+msgid "Really delete the process?"
+msgstr "Prozess wirklich löschen?"
+
+msgid "Really delete?"
+msgstr "Wirklich löschen?"
+
+msgid "Record-keeping"
+msgstr "Aufbewahrung von Aufzeichnungen"
+
+msgid "Release of products and services"
+msgstr "Freigabe von Produkten und Dienstleistungen"
+
+msgid "Released"
+msgstr "Freigegeben"
+
+#, python-brace-format
+msgid "Released version v{v} – read only. The changes of the draft are not yet approved."
+msgstr "Freigegebener Stand v{v} – nur Lesen. Die Änderungen des Entwurfs sind noch nicht freigegeben."
+
+msgid "Relevant management systems"
+msgstr "Relevante Managementsysteme"
+
+msgid "Remarks"
+msgstr "Bemerkung"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "Reports disciplinarily to"
+msgstr "Berichtet disziplinarisch an"
+
+msgid "Reports functionally to"
+msgstr "Berichtet fachlich an"
+
+msgid "Required competencies"
+msgstr "Erforderliche Kompetenzen"
+
+msgid "Required transfer"
+msgstr "Erforderliche Übertragung"
+
+msgid "Requirements & competence"
+msgstr "Anforderungen & Kompetenz"
+
+msgid "Requirements for products and services"
+msgstr "Anforderungen an Produkte und Dienstleistungen"
+
+msgid "Resources"
+msgstr "Ressourcen"
+
+msgid "Responsibilities"
+msgstr "Verantwortlichkeiten"
+
+msgid "Responsibilities & competence"
+msgstr "Verantwortung & Kompetenz"
+
+msgid "Review of the requirements"
+msgstr "Überprüfung der Anforderungen"
+
+msgid "Risks"
+msgstr "Risiken"
+
+msgid "Role"
+msgstr "Rolle"
+
+msgid "Role description"
+msgstr "Rollenbeschreibung"
+
+msgid "Role owner"
+msgstr "Rollenverantwortlicher"
+
+msgid "Role type"
+msgstr "Rollentyp"
+
+msgid "Roles"
+msgstr "Rollen"
+
+msgid "Roles, responsibilities and authorities"
+msgstr "Rollen, Verantwortlichkeiten und Befugnisse"
+
+msgid "Roles, responsibilities and authorities / compliance function"
+msgstr "Rollen, Verantwortlichkeiten und Befugnisse / Compliance-Funktion"
+
+msgid "Sales"
+msgstr "Sales"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Save diagram"
+msgstr "Diagramm speichern"
+
+msgid "Saved"
+msgstr "Gespeichert"
+
+msgid "Scope of the compliance management system"
+msgstr "Anwendungsbereich des CMS"
+
+msgid "Scope of the environmental management system"
+msgstr "Anwendungsbereich des Umweltmanagementsystems"
+
+msgid "Scope of the quality management system"
+msgstr "Anwendungsbereich des QM-Systems"
+
+msgid "Search…"
+msgstr "Suchen…"
+
+msgid "Sees the process landscape and what is assigned to him."
+msgstr "Sieht die Prozesslandschaft und was ihm zugewiesen ist."
+
+msgid "Segregation of duties"
+msgstr "Funktionstrennung"
+
+msgid "Segregation of duties conflicts"
+msgstr "Funktionstrennungskonflikte"
+
+msgid "Select an element in the diagram to assign roles with RACI."
+msgstr "Element im Diagramm auswählen, um Rollen mit RACI zuzuordnen."
+
+msgid "Select an entry or create a new one."
+msgstr "Eintrag auswählen oder neu anlegen."
+
+msgid "Send back"
+msgstr "Zurückweisen"
+
+msgid "Sent back by the I&A team"
+msgstr "Zurückgewiesen vom I&A-Team"
+
+msgid "Set status (administration)"
+msgstr "Status setzen (Administration)"
+
+msgid "Show changes"
+msgstr "Änderungen anzeigen"
+
+msgid "Show position description (summary)"
+msgstr "Stellenbeschreibung (Zusammenfassung) anzeigen"
+
+msgid "Show role description (summary)"
+msgstr "Rollenbeschreibung (Zusammenfassung) anzeigen"
+
+msgid "Sign in"
+msgstr "Anmelden"
+
+msgid "Sign in as …"
+msgstr "Anmelden als …"
+
+msgid "Sign-in failed."
+msgstr "Anmeldung fehlgeschlagen."
+
+msgid "Signed in"
+msgstr "Angemeldet"
+
+msgid "Someone else changed this element in the meantime. Load the current values."
+msgstr "Jemand anderes hat dieses Element inzwischen geändert. Laden Sie die aktuellen Werte."
+
+msgid "Something went wrong."
+msgstr "Etwas ist schiefgelaufen."
+
+msgid "Sources of feedback on compliance performance"
+msgstr "Quellen für Rückmeldungen zur Compliance-Leistung"
+
+msgid "Standard references"
+msgstr "Normreferenzen"
+
+msgid "Standards reference"
+msgstr "Normbezug"
+
+msgid "Start page"
+msgstr "Startseite"
+
+#, python-brace-format
+msgid "State of {date} ({user}) – read only, no restore."
+msgstr "Stand vom {date} ({user}) – nur Lesen, kein Wiederherstellen."
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Statutory representation (officer)"
+msgstr "Gesetzliche Vertretung (Organ)"
+
+msgid "Steps with roles"
+msgstr "Schritte mit Rollen"
+
+msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
+msgstr "Vorgesetzter und damit Owner der Stelle Director Export Control & Customs."
+
+msgid "Support"
+msgstr "Unterstützung"
+
+msgid "Support process"
+msgstr "Unterstützungsprozess"
+
+msgid "Switch light / dark"
+msgstr "Hell / dunkel umschalten"
+
+msgid "System roles (permissions in the tool)"
+msgstr "Systemrollen (Berechtigungen im Tool)"
+
+msgid "Target power of attorney of the position"
+msgstr "Soll-Vollmacht der Stelle"
+
+msgid "Technology"
+msgstr "Technology"
+
+msgid "The demo sign-in is switched off."
+msgstr "Die Demo-Anmeldung ist abgeschaltet."
+
+msgid "The element no longer exists."
+msgstr "Das Element existiert nicht mehr."
+
+msgid "The server cannot be reached. Please try again."
+msgstr "Der Server ist nicht erreichbar. Bitte erneut versuchen."
+
+msgid "The version of the element is missing."
+msgstr "Die Version des Elements fehlt."
+
+msgid "This is not possible."
+msgstr "Das ist nicht möglich."
+
+msgid "This module follows in the next stage. Until then it is available in the prototype."
+msgstr "Dieses Modul folgt in der nächsten Ausbaustufe. Bis dahin steht es im Prototyp zur Verfügung."
+
+msgid "This step is not possible in the current status."
+msgstr "Dieser Schritt ist im aktuellen Status nicht möglich."
+
+msgid "Title"
+msgstr "Bezeichnung"
+
+msgid "Title of the new entry"
+msgstr "Bezeichnung des neuen Eintrags"
+
+msgid "Title of the new process"
+msgstr "Bezeichnung des neuen Prozesses"
+
+msgid "Training"
+msgstr "Schulung"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Type and extent of control"
+msgstr "Art und Umfang der Steuerung"
+
+msgid "Understanding the organization and its context"
+msgstr "Verstehen der Organisation und ihres Kontextes"
+
+msgid "Unsaved changes"
+msgstr "Ungespeicherte Änderungen"
+
+msgid "Unsaved changes in the diagram will be lost."
+msgstr "Ungespeicherte Änderungen am Diagramm gehen verloren."
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "User ID"
+msgstr "Benutzer-ID"
+
+msgid "User management"
+msgstr "Benutzerverwaltung"
+
+msgid "User name"
+msgstr "Benutzername"
+
+msgid "Validity & review"
+msgstr "Gültigkeit & Review"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "View this state"
+msgstr "Diesen Stand ansehen"
+
+msgid "Waiting for the I&A approval"
+msgstr "Wartet auf I&A-Freigabe"
+
+#, python-brace-format
+msgid "Welcome, {name}"
+msgstr "Willkommen, {name}"
+
+msgid "Written form required"
+msgstr "Schriftform erforderlich"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "You are not allowed to do this."
+msgstr "Das dürfen Sie nicht."
+
+msgid "You are not the owner of any element."
+msgstr "Sie sind für kein Element Owner."
+
+msgid "Your session has expired. Please reload the page."
+msgstr "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu."
+
+msgid "Your start page"
+msgstr "Ihre Startseite"
+
+msgid "Zoom in"
+msgstr "Vergrößern"
+
+msgid "Zoom out"
+msgstr "Verkleinern"
+
+msgid "admin"
+msgstr "Administrator"
+
+msgid "after"
+msgstr "nachher"
+
+msgid "applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the position or a transfer"
+msgstr "gilt für jeden Inhaber, z. B. Informations-, Prüf-, Vetorecht; Beträge und Vollmachten an der Stelle bzw. als Übertragung"
+
+msgid "approved"
+msgstr "Qualität freigegeben (I&A)"
+
+msgid "archived"
+msgstr "Archiviert"
+
+msgid "before"
+msgstr "vorher"
+
+msgid "defines and reviews the role"
+msgstr "definiert und reviewt die Rolle"
+
+msgid "defines the ownership – administration and I&A team only"
+msgstr "legt die Ownership fest – nur Administration und I&A-Team"
+
+msgid "draft"
+msgstr "Entwurf"
+
+msgid "employee"
+msgstr "Mitarbeiter"
+
+msgid "ia"
+msgstr "I&A-Team"
+
+msgid "last changed"
+msgstr "zuletzt geändert"
+
+msgid "rejected"
+msgstr "Zurückgewiesen (I&A)"
+
+msgid "released"
+msgstr "Freigegeben"
+
+msgid "reopened"
+msgstr "Nach Freigabe geändert"
+
+msgid "required by a standard, law or authority, e.g. CISO, DPO, export control officer"
+msgstr "von Norm, Gesetz oder Behörde gefordert, z. B. ISB, DSB, Ausfuhrverantwortlicher"
+
+msgid "review"
+msgstr "I&A-Review"
+
+msgid "status"
+msgstr "Status gesetzt (Administration)"
+
+msgid "submitted"
+msgstr "Fachlich freigegeben"
+
+msgid "vacant"
+msgstr "unbesetzt"
+
+msgid "with line management responsibility"
+msgstr "mit disziplinarischer Personalverantwortung"
+
+#, python-brace-format
+msgid "{role} assigned to step {step}"
+msgstr "{role} dem Schritt „{step}“ zugeordnet"
+
+#, python-brace-format
+msgid "{role} removed from step {step}"
+msgstr "{role} vom Schritt „{step}“ entfernt"
+
+msgid "— not assigned —"
+msgstr "— nicht zugewiesen —"
+

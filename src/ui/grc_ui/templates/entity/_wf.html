@@ -1,0 +1,46 @@
+{# compact approval workflow in one line #}
+{% set st = item.status %}
+{% set pos = {"draft": 0, "review": 2, "released": 3, "archived": 3}[st] %}
+{% set steps = [_("Draft"), _("Business approval"), _("I&A review"), _("Released")] %}
+<div class="mb-3 rounded-box border border-base-300 p-2 text-sm">
+  <div class="flex flex-wrap items-center gap-2">
+    {% for s in steps %}
+    <span class="wf-chip {% if loop.index0 < pos or st == 'released' %}done{% elif loop.index0 == pos %}current{% endif %}">{% if loop.index0 < pos or st == 'released' %}{{ icon("check", "h-3 w-3") }}{% endif %}{{ s }}</span>
+    {% endfor %}
+    {% if st == "archived" %}<span class="badge badge-sm">{{ _("Archived") }}</span>{% endif %}
+    {% if item.released and target != "wfbar" %}
+    <span class="join ml-2">
+      <button class="btn join-item btn-xs {% if not banner or banner.kind != 'released' %}btn-secondary{% else %}btn-ghost{% endif %}" hx-get="{{ self_url }}" hx-target="#{{ target }}"{% if target == "wfbar" %} hx-swap="outerHTML"{% endif %}>{{ _("Draft (in progress)") }}</button>
+      <button class="btn join-item btn-xs {% if banner and banner.kind == 'released' %}btn-secondary{% else %}btn-ghost{% endif %}" hx-get="{{ self_url }}?view=released" hx-target="#{{ target }}"{% if target == "wfbar" %} hx-swap="outerHTML"{% endif %}>{{ _("Released") }} v{{ item.released.doc_version }}</button>
+    </span>
+    {% endif %}
+    <span class="ml-auto flex flex-wrap items-center gap-2">
+      {% if item.rights.can_submit %}
+      <form hx-post="{{ workflow_url }}" hx-target="#{{ target }}"{% if target == "wfbar" %} hx-swap="outerHTML"{% endif %} class="flex items-center gap-1">
+        <input type="hidden" name="action" value="submit"><input type="hidden" name="version" value="{{ item.version }}">
+        <input name="comment" class="input input-bordered input-xs w-48" placeholder="{{ _('Comment (optional)') }}" aria-label="{{ _('Comment (optional)') }}">
+        <button class="btn btn-primary btn-xs">{{ icon("check", "h-3 w-3") }} {{ _("Give business approval") }}</button>
+      </form>
+      {% endif %}
+      {% if item.rights.can_approve %}
+      <form hx-post="{{ workflow_url }}" hx-target="#{{ target }}"{% if target == "wfbar" %} hx-swap="outerHTML"{% endif %} class="flex items-center gap-1">
+        <input type="hidden" name="version" value="{{ item.version }}">
+        <input name="comment" class="input input-bordered input-xs w-48" placeholder="{{ _('Comment (required to send back)') }}" aria-label="{{ _('Comment (required to send back)') }}">
+        <button class="btn btn-primary btn-xs" name="action" value="approve">{{ icon("check", "h-3 w-3") }} {{ _("Give quality approval") }}</button>
+        <button class="btn btn-outline btn-error btn-xs" name="action" value="reject">{{ icon("arrow-back-up", "h-3 w-3") }} {{ _("Send back") }}</button>
+      </form>
+      {% elif st == "review" %}<span class="text-xs opacity-70">{{ icon("lock", "h-3 w-3 inline") }} {{ _("Quality approval by the I&A team") }}</span>{% endif %}
+      {% if item.rights.can_set_status %}
+      <form hx-post="{{ workflow_url }}" hx-target="#{{ target }}"{% if target == "wfbar" %} hx-swap="outerHTML"{% endif %} hx-trigger="change">
+        <input type="hidden" name="action" value="set_status"><input type="hidden" name="version" value="{{ item.version }}">
+        <select name="target_status" class="select select-bordered select-xs" aria-label="{{ _('Set status (administration)') }}" title="{{ _('Set status (administration)') }}">
+          {% for s, l in [("draft", _("Draft")), ("review", _("I&A review")), ("released", _("Released")), ("archived", _("Archived"))] %}<option value="{{ s }}" {% if s == st %}selected{% endif %}>{{ l }}</option>{% endfor %}
+        </select>
+      </form>
+      {% endif %}
+    </span>
+  </div>
+  {% set last = item.workflow[-1] if item.workflow else none %}
+  {% if last and last.step == "rejected" and st == "draft" %}<p class="mt-1 text-xs text-error">{{ icon("arrow-back-up", "h-3 w-3 inline") }} <b>{{ _("Sent back by the I&A team") }}</b> ({{ last.by_name }}): {{ last.comment }}</p>{% endif %}
+  {% if st == "review" and last and last.step == "submitted" %}<p class="mt-1 text-xs opacity-70">{{ _("Business approval by {user}").format(user=last.by_name) }}{% if last.comment %} – „{{ last.comment }}“{% endif %}</p>{% endif %}
+</div>

@@ -1,0 +1,72 @@
+{% from "macros.html" import status_badge %}
+{% set target = "profile" if mod.kind == "process" else "detail" %}
+<div class="grid gap-3">
+  {% if mod.kind != "process" %}
+  <div class="flex items-start justify-between gap-2 border-l-4 border-secondary pl-3">
+    <div>
+      <div class="text-xs opacity-60">{{ _(mod.singular) }}</div>
+      <h2 class="text-lg font-bold"><span class="font-mono text-sm opacity-70">{{ item.code }}</span> {{ item.title if item.title is defined else item.name }}
+        {% if profile_url and mod.kind in ("role", "position") %}
+        <button class="btn btn-ghost btn-xs" hx-get="{{ profile_url }}" hx-target="#modal-body" title="{{ _('Show role description (summary)') if mod.kind == 'role' else _('Show position description (summary)') }}" aria-label="{{ _('Show role description (summary)') if mod.kind == 'role' else _('Show position description (summary)') }}">{{ icon("file-description") }}</button>
+        {% endif %}
+      </h2>
+    </div>
+  {% else %}
+  <div class="flex items-start justify-end gap-2">
+  {% endif %}
+    <div class="flex gap-2">
+      {% set can_edit = item.rights.can_edit if item.rights is defined else item.can_manage %}
+      {% if can_edit and not banner %}<button class="btn btn-primary btn-sm" hx-get="{{ edit_url }}" hx-target="#{{ target }}">{{ icon("pencil") }} {{ _("Edit") }}</button>{% endif %}
+      {% if mod.kind != "process" and ((item.rights is defined and item.rights.can_delete) or (item.can_manage is defined and item.can_manage)) %}
+      <button class="btn btn-ghost btn-sm text-error" hx-post="{{ self_url }}/delete" hx-confirm="{{ _('Really delete?') }}">{{ icon("trash") }} {{ _("Delete") }}</button>
+      {% endif %}
+      {% if item.rights is defined and item.rights.is_owner and not item.rights.can_manage %}<span class="badge badge-accent">{{ _("Owner – you may edit") }}</span>{% endif %}
+    </div>
+  </div>
+  {% if item.rights is defined %}{% include "entity/_wf.html" %}{% endif %}
+  {% if banner %}
+  <div class="alert alert-warning py-2 text-sm" role="status">
+    {{ icon("lock") }}
+    {% if banner.kind == "released" %}{{ _("Released version v{v} – read only. The changes of the draft are not yet approved.").format(v=banner.version) }}
+    {% else %}{{ _("State of {date} ({user}) – read only, no restore.").format(date=banner.at[:16]|replace("T", " "), user=banner.actor) }}{% endif %}
+    <button class="btn btn-xs" hx-get="{{ self_url }}" hx-target="#{{ target }}">{{ _("Back to the current state") }}</button>
+  </div>
+  {% endif %}
+  {% if mod.kind == "position" and item.sod_conflicts %}
+  <div class="alert alert-error py-2 text-sm" role="alert">{{ icon("alert-triangle") }} {{ _("Segregation of duties conflicts") }}: {% for a, b in item.sod_conflicts %}{{ item.labels.get(a, a) }} + {{ item.labels.get(b, b) }}{% if not loop.last %}; {% endif %}{% endfor %}</div>
+  {% endif %}
+  {% for sec in sections %}
+  <fieldset class="rounded-box border border-base-300 p-3">
+    <legend class="px-1 text-sm font-semibold text-secondary">{{ _(sec.title) }}</legend>
+    <div class="grid gap-x-6 gap-y-2 md:grid-cols-2">
+      {% for f in sec.fields %}
+      {% if not (f.key == "written_form" and shown.get("required_mandate") in (none, "None")) %}
+      <div class="{{ 'md:col-span-2' if f.get("wide") else '' }}">
+        <div class="field-label">{{ _(f.label) }}</div>
+        {% with v = shown.get(f.key) %}{% include "entity/_value.html" %}{% endwith %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </fieldset>
+  {% endfor %}
+  {% if mod.kind == "role" %}
+  <fieldset class="rounded-box border border-base-300 p-3">
+    <legend class="px-1 text-sm font-semibold text-secondary">{{ _("Positions & persons") }}</legend>
+    {% if item.positions %}
+    <table class="table table-xs"><thead><tr><th>{{ _("Position") }}</th><th>{{ _("Comment") }}</th><th>{{ _("Holder") }}</th></tr></thead><tbody>
+      {% for p in item.positions %}<tr><td><a class="link link-secondary" href="/positions/{{ p.id }}">{{ p.code }} {{ p.title }}</a></td><td>{{ p.comment }}</td><td>{{ item.holders|selectattr("position_id", "equalto", p.id)|map(attribute="user")|map(attribute="name")|join(", ") or _("vacant") }}</td></tr>{% endfor %}
+    </tbody></table>
+    {% else %}<p class="text-sm opacity-70">{{ _("No position holds this role.") }}</p>{% endif %}
+  </fieldset>
+  {% elif mod.kind == "position" %}
+  <fieldset class="rounded-box border border-base-300 p-3">
+    <legend class="px-1 text-sm font-semibold text-secondary">{{ _("Position holders") }}</legend>
+    <p class="text-sm">{{ item.holders|map(attribute="name")|join(", ") or _("vacant") }}</p>
+  </fieldset>
+  {% endif %}
+  <div id="history-{{ target }}">
+    <button class="btn btn-ghost btn-sm" hx-get="{{ history_url }}" hx-target="#history-{{ target }}" hx-swap="innerHTML">{{ icon("history") }} {{ _("Change history") }}</button>
+  </div>
+  <p class="text-xs opacity-60">{{ _("Created") }} {{ item.created_at[:16]|replace("T", " ") }} · {{ _("last changed") }} {{ item.updated_at[:16]|replace("T", " ") }}</p>
+</div>

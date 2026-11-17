@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% from "macros.html" import brand_mark, theme_toggle %}
+{% block body_attrs %} hx-headers='{{ {"X-CSRF-Token": csrf_token}|tojson }}'{% endblock %}
+{% block body %}
+<header class="app-header">
+  <div class="flex items-center justify-between gap-3 px-4 py-2">
+    <a href="/" class="flex items-center gap-2 font-brand text-lg font-extrabold" aria-label="GRC Studio">
+      {{ brand_mark() }}<span>GRC <span class="font-medium text-secondary">Studio</span></span>
+      <span class="ml-2 text-[11px] font-medium uppercase tracking-wider opacity-60">{{ _("Prototype") }}</span>
+    </a>
+    <div class="flex items-center gap-3">
+      <form method="post" action="/language" class="join" aria-label="{{ _('Language') }}">
+        <input type="hidden" name="next" value="{{ path }}">
+        {% for code, name in languages.items() %}
+        <button class="btn join-item btn-xs {% if code == lang %}btn-secondary{% else %}btn-ghost{% endif %}" name="lang" value="{{ code }}" lang="{{ code }}" {% if code == lang %}aria-current="true"{% endif %} title="{{ name }}">{{ code|upper }}</button>
+        {% endfor %}
+      </form>
+      {{ theme_toggle() }}
+      <div class="hidden text-right text-xs leading-tight sm:block">
+        <div class="font-semibold">{{ me.name }}</div>
+        <div class="opacity-60">{{ me.system_roles|map("replace", "employee", _("Employee"))|map("replace", "ia", _("I&A team"))|map("replace", "admin", _("Administrator"))|join(" · ") }}{% if me.position_title %} · {{ me.position_title }}{% endif %}</div>
+      </div>
+      <form method="post" action="/logout">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="btn btn-ghost btn-sm">{{ icon("logout") }} {{ _("Log out") }}</button>
+      </form>
+    </div>
+  </div>
+  <nav class="app-menubar" aria-label="{{ _('Main menu') }}">
+    {% for n in nav %}
+    <a href="{{ n.href }}" {% if is_active(path, n.href) %}aria-current="page"{% endif %} {% if n.href == "/" %}title="{{ _('Start page') }}" aria-label="{{ _('Start page') }}"{% endif %}>
+      {% if n.href == "/" %}{{ icon("home", "h-4 w-4 inline") }}{% else %}{{ _(n.label) }}{% endif %}
+    </a>
+    {% endfor %}
+  </nav>
+</header>
+<main class="mx-auto max-w-[1680px]">
+{% block content %}{% endblock %}
+</main>
+<dialog id="modal" class="modal" aria-modal="true">
+  <div class="modal-box max-w-4xl" id="modal-body"></div>
+  <form method="dialog" class="modal-backdrop"><button>{{ _("Close") }}</button></form>
+</dialog>
+{% endblock %}

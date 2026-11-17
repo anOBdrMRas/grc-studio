@@ -1,0 +1,4 @@
+<p class="font-semibold">{{ item.title }}</p>
+<p class="mt-1 opacity-70">{{ _("Select an element in the diagram to assign roles with RACI.") }}</p>
+<p class="mt-3"><span class="field-label">{{ _("Process owner") }}</span><br>{{ item.labels.get(item.owner_role_id, "–") if item.owner_role_id else "–" }}{% if item.owners %} · {{ item.owners|join(", ") }}{% endif %}</p>
+<p class="mt-2"><span class="field-label">{{ _("Steps with roles") }}</span><br>{{ item.steps|length }}</p>
