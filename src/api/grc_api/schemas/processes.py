@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -27,6 +27,23 @@ class StepRole(BaseModel):
     raci: str
 
 
+LinkKind = Literal["risk", "opportunity", "control", "kpi"]
+
+
+class StepLinkOut(BaseModel):
+    kind: LinkKind
+    target_id: str
+    code: str
+    title: str
+
+
+class IcsGap(BaseModel):
+    """A risk of the step without a mitigating control in the same step."""
+
+    risk_id: str
+    suggestions: list[str] = Field(description="controls mitigating the risk elsewhere")
+
+
 class ProcessOut(ProcessFields):
     id: str
     code: str
@@ -38,6 +55,10 @@ class ProcessOut(ProcessFields):
     rights: Rights
     owners: list[str]
     steps: dict[str, list[StepRole]] = Field(description="element id → roles with RACI")
+    links: dict[str, list[StepLinkOut]] = Field(
+        description="element id → risks, opportunities, controls and KPI"
+    )
+    ics_gaps: dict[str, list[IcsGap]] = Field(description="element id → risks without control")
     workflow: list[WorkflowEntryOut]
     released: dict[str, Any] | None
     labels: dict[str, str]
@@ -62,6 +83,12 @@ class DiagramOut(BaseModel):
 
 class DiagramIn(BaseModel):
     xml: str = Field(min_length=20, max_length=5_000_000)
+    version: int | None = None
+
+
+class StepLinkIn(BaseModel):
+    kind: LinkKind
+    target_id: str
     version: int | None = None
 
 

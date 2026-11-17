@@ -77,6 +77,247 @@
         "title": "Change",
         "type": "object"
       },
+      "ControlListItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "control_type": {
+            "title": "Control Type",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_owner": {
+            "title": "Is Owner",
+            "type": "boolean"
+          },
+          "key_control": {
+            "title": "Key Control",
+            "type": "boolean"
+          },
+          "operating_effectiveness": {
+            "title": "Operating Effectiveness",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "control_type",
+          "key_control",
+          "operating_effectiveness",
+          "is_owner"
+        ],
+        "title": "ControlListItem",
+        "type": "object"
+      },
+      "ControlOut": {
+        "properties": {
+          "annex_a": {
+            "description": "ISO 27001 Annex A clause ids",
+            "items": {
+              "type": "string"
+            },
+            "title": "Annex A",
+            "type": "array"
+          },
+          "automation": {
+            "default": "",
+            "title": "Automation",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "control_type": {
+            "default": "",
+            "title": "Control Type",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "design_effectiveness": {
+            "default": "Not tested",
+            "title": "Design Effectiveness",
+            "type": "string"
+          },
+          "evidence": {
+            "default": "",
+            "title": "Evidence",
+            "type": "string"
+          },
+          "executor_role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Executor Role Id"
+          },
+          "frequency": {
+            "default": "",
+            "title": "Frequency",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "implementation": {
+            "default": "",
+            "title": "Implementation",
+            "type": "string"
+          },
+          "iso_refs": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Iso Refs",
+            "type": "array"
+          },
+          "key_control": {
+            "default": false,
+            "title": "Key Control",
+            "type": "boolean"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Labels",
+            "type": "object"
+          },
+          "last_test": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Test"
+          },
+          "mitigates_risk_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Mitigates Risk Ids",
+            "type": "array"
+          },
+          "next_test": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Test"
+          },
+          "objective": {
+            "default": "",
+            "title": "Objective",
+            "type": "string"
+          },
+          "operating_effectiveness": {
+            "default": "Not tested",
+            "title": "Operating Effectiveness",
+            "type": "string"
+          },
+          "owner_role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Role Id"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          },
+          "soa_applicable": {
+            "default": "",
+            "title": "Soa Applicable",
+            "type": "string"
+          },
+          "soa_justification": {
+            "default": "",
+            "title": "Soa Justification",
+            "type": "string"
+          },
+          "test_method": {
+            "default": "",
+            "title": "Test Method",
+            "type": "string"
+          },
+          "test_result": {
+            "default": "",
+            "title": "Test Result",
+            "type": "string"
+          },
+          "title": {
+            "default": "",
+            "title": "Title",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "used_in": {
+            "items": {
+              "$ref": "#/components/schemas/Usage"
+            },
+            "title": "Used In",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "version",
+          "created_at",
+          "updated_at",
+          "rights",
+          "used_in",
+          "labels"
+        ],
+        "title": "ControlOut",
+        "type": "object"
+      },
       "CreateElement": {
         "properties": {
           "title": {
@@ -281,6 +522,29 @@
         "title": "Holder",
         "type": "object"
       },
+      "IcsGap": {
+        "description": "A risk of the step without a mitigating control in the same step.",
+        "properties": {
+          "risk_id": {
+            "title": "Risk Id",
+            "type": "string"
+          },
+          "suggestions": {
+            "description": "controls mitigating the risk elsewhere",
+            "items": {
+              "type": "string"
+            },
+            "title": "Suggestions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "risk_id",
+          "suggestions"
+        ],
+        "title": "IcsGap",
+        "type": "object"
+      },
       "IsoClause": {
         "properties": {
           "clause": {
@@ -307,6 +571,229 @@
           "title"
         ],
         "title": "IsoClause",
+        "type": "object"
+      },
+      "KpiListItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_owner": {
+            "title": "Is Owner",
+            "type": "boolean"
+          },
+          "last_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Value"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "traffic": {
+            "description": "traffic light of the latest value",
+            "enum": [
+              "green",
+              "yellow",
+              "red",
+              "none"
+            ],
+            "title": "Traffic",
+            "type": "string"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "unit",
+          "last_value",
+          "traffic",
+          "is_owner"
+        ],
+        "title": "KpiListItem",
+        "type": "object"
+      },
+      "KpiOut": {
+        "properties": {
+          "can_measure": {
+            "description": "may record measured values",
+            "title": "Can Measure",
+            "type": "boolean"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "critical": {
+            "default": 0,
+            "title": "Critical",
+            "type": "number"
+          },
+          "data_source": {
+            "default": "",
+            "title": "Data Source",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "direction": {
+            "default": "higher",
+            "pattern": "^(higher|lower)$",
+            "title": "Direction",
+            "type": "string"
+          },
+          "evaluator_role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evaluator Role Id"
+          },
+          "formula": {
+            "default": "",
+            "title": "Formula",
+            "type": "string"
+          },
+          "frequency": {
+            "default": "",
+            "title": "Frequency",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "iso_refs": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Iso Refs",
+            "type": "array"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Labels",
+            "type": "object"
+          },
+          "measurements": {
+            "items": {
+              "$ref": "#/components/schemas/Measurement"
+            },
+            "title": "Measurements",
+            "type": "array"
+          },
+          "objective": {
+            "default": "",
+            "title": "Objective",
+            "type": "string"
+          },
+          "owner_role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Role Id"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          },
+          "target": {
+            "default": 0,
+            "title": "Target",
+            "type": "number"
+          },
+          "title": {
+            "default": "",
+            "title": "Title",
+            "type": "string"
+          },
+          "traffic": {
+            "description": "traffic light of the latest value",
+            "enum": [
+              "green",
+              "yellow",
+              "red",
+              "none"
+            ],
+            "title": "Traffic",
+            "type": "string"
+          },
+          "unit": {
+            "default": "",
+            "title": "Unit",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "used_in": {
+            "items": {
+              "$ref": "#/components/schemas/Usage"
+            },
+            "title": "Used In",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "warning": {
+            "default": 0,
+            "title": "Warning",
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "version",
+          "created_at",
+          "updated_at",
+          "measurements",
+          "traffic",
+          "can_measure",
+          "rights",
+          "used_in",
+          "labels"
+        ],
+        "title": "KpiOut",
         "type": "object"
       },
       "Me": {
@@ -351,6 +838,44 @@
           "position_title"
         ],
         "title": "Me",
+        "type": "object"
+      },
+      "Measurement": {
+        "properties": {
+          "date": {
+            "format": "date",
+            "title": "Date",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "date",
+          "value"
+        ],
+        "title": "Measurement",
+        "type": "object"
+      },
+      "MeasurementIn": {
+        "properties": {
+          "date": {
+            "format": "date",
+            "title": "Date",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          }
+        },
+        "required": [
+          "date",
+          "value"
+        ],
+        "title": "MeasurementIn",
         "type": "object"
       },
       "OpportunityListItem": {
@@ -546,6 +1071,13 @@
             "title": "Updated At",
             "type": "string"
           },
+          "used_in": {
+            "items": {
+              "$ref": "#/components/schemas/Usage"
+            },
+            "title": "Used In",
+            "type": "array"
+          },
           "version": {
             "title": "Version",
             "type": "integer"
@@ -569,6 +1101,7 @@
           "created_by_user_id",
           "potential",
           "rights",
+          "used_in",
           "workflow",
           "released",
           "labels"
@@ -1061,6 +1594,17 @@
             "title": "Doc Version",
             "type": "string"
           },
+          "ics_gaps": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/IcsGap"
+              },
+              "type": "array"
+            },
+            "description": "element id → risks without control",
+            "title": "Ics Gaps",
+            "type": "object"
+          },
           "id": {
             "title": "Id",
             "type": "string"
@@ -1081,6 +1625,17 @@
             "default": 0,
             "title": "Landscape Order",
             "type": "integer"
+          },
+          "links": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/StepLinkOut"
+              },
+              "type": "array"
+            },
+            "description": "element id → risks, opportunities, controls and KPI",
+            "title": "Links",
+            "type": "object"
           },
           "next_review": {
             "anyOf": [
@@ -1192,6 +1747,8 @@
           "rights",
           "owners",
           "steps",
+          "links",
+          "ics_gaps",
           "workflow",
           "released",
           "labels"
@@ -1638,6 +2195,13 @@
             "title": "Updated At",
             "type": "string"
           },
+          "used_in": {
+            "items": {
+              "$ref": "#/components/schemas/Usage"
+            },
+            "title": "Used In",
+            "type": "array"
+          },
           "version": {
             "title": "Version",
             "type": "integer"
@@ -1662,6 +2226,7 @@
           "created_by_user_id",
           "assessment",
           "rights",
+          "used_in",
           "workflow",
           "released",
           "labels"
@@ -1964,6 +2529,75 @@
         "title": "StateView",
         "type": "object"
       },
+      "StepLinkIn": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "risk",
+              "opportunity",
+              "control",
+              "kpi"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "target_id": {
+            "title": "Target Id",
+            "type": "string"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          }
+        },
+        "required": [
+          "kind",
+          "target_id"
+        ],
+        "title": "StepLinkIn",
+        "type": "object"
+      },
+      "StepLinkOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "risk",
+              "opportunity",
+              "control",
+              "kpi"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "target_id": {
+            "title": "Target Id",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "target_id",
+          "code",
+          "title"
+        ],
+        "title": "StepLinkOut",
+        "type": "object"
+      },
       "StepRole": {
         "properties": {
           "code": {
@@ -2020,6 +2654,35 @@
           "role_id"
         ],
         "title": "StepRoleIn",
+        "type": "object"
+      },
+      "Usage": {
+        "description": "A process step the element is assigned to.",
+        "properties": {
+          "element_id": {
+            "title": "Element Id",
+            "type": "string"
+          },
+          "element_name": {
+            "title": "Element Name",
+            "type": "string"
+          },
+          "process_id": {
+            "title": "Process Id",
+            "type": "string"
+          },
+          "process_label": {
+            "title": "Process Label",
+            "type": "string"
+          }
+        },
+        "required": [
+          "process_id",
+          "process_label",
+          "element_id",
+          "element_name"
+        ],
+        "title": "Usage",
         "type": "object"
       },
       "UserListItem": {
@@ -2423,6 +3086,730 @@
           "auth"
         ],
         "x-permission": "people:read"
+      }
+    },
+    "/api/v1/controls": {
+      "get": {
+        "operationId": "controls_list",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ControlListItem"
+                  },
+                  "title": "Response Controls List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Controls List",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "post": {
+        "operationId": "controls_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ControlOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Controls Create",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:manage"
+      }
+    },
+    "/api/v1/controls/{control_id}": {
+      "delete": {
+        "operationId": "controls_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "control_id",
+            "required": true,
+            "schema": {
+              "title": "Control Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Controls Delete",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:manage"
+      },
+      "get": {
+        "operationId": "controls_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "control_id",
+            "required": true,
+            "schema": {
+              "title": "Control Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ControlOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Controls Get",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "patch": {
+        "operationId": "controls_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "control_id",
+            "required": true,
+            "schema": {
+              "title": "Control Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ControlOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Controls Update",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/controls/{control_id}/history": {
+      "get": {
+        "operationId": "controls_history",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "control_id",
+            "required": true,
+            "schema": {
+              "title": "Control Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Revision"
+                  },
+                  "title": "Response Controls History",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Controls History",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/controls/{control_id}/history/{revision_id}": {
+      "get": {
+        "operationId": "controls_state",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "control_id",
+            "required": true,
+            "schema": {
+              "title": "Control Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "revision_id",
+            "required": true,
+            "schema": {
+              "title": "Revision Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StateView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Controls State",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/kpis": {
+      "get": {
+        "operationId": "kpis_list",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/KpiListItem"
+                  },
+                  "title": "Response Kpis List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Kpis List",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "post": {
+        "operationId": "kpis_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KpiOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis Create",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:manage"
+      }
+    },
+    "/api/v1/kpis/{kpi_id}": {
+      "delete": {
+        "operationId": "kpis_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kpi_id",
+            "required": true,
+            "schema": {
+              "title": "Kpi Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis Delete",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:manage"
+      },
+      "get": {
+        "operationId": "kpis_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kpi_id",
+            "required": true,
+            "schema": {
+              "title": "Kpi Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KpiOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis Get",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      },
+      "patch": {
+        "operationId": "kpis_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kpi_id",
+            "required": true,
+            "schema": {
+              "title": "Kpi Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KpiOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis Update",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/kpis/{kpi_id}/history": {
+      "get": {
+        "operationId": "kpis_history",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kpi_id",
+            "required": true,
+            "schema": {
+              "title": "Kpi Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Revision"
+                  },
+                  "title": "Response Kpis History",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis History",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/kpis/{kpi_id}/history/{revision_id}": {
+      "get": {
+        "operationId": "kpis_state",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kpi_id",
+            "required": true,
+            "schema": {
+              "title": "Kpi Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "revision_id",
+            "required": true,
+            "schema": {
+              "title": "Revision Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StateView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis State",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/kpis/{kpi_id}/measurements": {
+      "put": {
+        "operationId": "kpis_record_measurement",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kpi_id",
+            "required": true,
+            "schema": {
+              "title": "Kpi Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MeasurementIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KpiOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis Record Measurement",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/kpis/{kpi_id}/measurements/{day}": {
+      "delete": {
+        "operationId": "kpis_delete_measurement",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kpi_id",
+            "required": true,
+            "schema": {
+              "title": "Kpi Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "day",
+            "required": true,
+            "schema": {
+              "format": "date",
+              "title": "Day",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KpiOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Kpis Delete Measurement",
+        "tags": [
+          "risks and opportunities"
+        ],
+        "x-permission": "grc:read"
       }
     },
     "/api/v1/meta/catalogs": {
@@ -3642,6 +5029,186 @@
           }
         },
         "summary": "Processes State",
+        "tags": [
+          "processes"
+        ],
+        "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/processes/{process_id}/steps/{element_id}/links": {
+      "put": {
+        "operationId": "processes_link_element",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "process_id",
+            "required": true,
+            "schema": {
+              "title": "Process Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "element_id",
+            "required": true,
+            "schema": {
+              "title": "Element Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StepLinkIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Processes Link Element",
+        "tags": [
+          "processes"
+        ],
+        "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/processes/{process_id}/steps/{element_id}/links/{kind}/{target_id}": {
+      "delete": {
+        "operationId": "processes_unlink_element",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "process_id",
+            "required": true,
+            "schema": {
+              "title": "Process Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "element_id",
+            "required": true,
+            "schema": {
+              "title": "Element Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "kind",
+            "required": true,
+            "schema": {
+              "title": "Kind",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "target_id",
+            "required": true,
+            "schema": {
+              "title": "Target Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Version"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Processes Unlink Element",
         "tags": [
           "processes"
         ],

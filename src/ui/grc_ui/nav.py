@@ -19,11 +19,11 @@ NAV: list[NavItem] = [
     NavItem("/ia", N_("I&A cockpit"), "quality:approve", ready=False),
     NavItem("/risks", N_("Risks"), "grc:read"),
     NavItem("/opportunities", N_("Opportunities"), "grc:read"),
-    NavItem("/controls", N_("Controls (ICS)"), "org:read", ready=False),
+    NavItem("/controls", N_("Controls (ICS)"), "grc:read"),
     NavItem("/roles", N_("Roles"), "org:read"),
     NavItem("/positions", N_("Positions"), "org:read"),
     NavItem("/delegations", N_("Delegations & powers of attorney"), "org:read", ready=False),
-    NavItem("/kpi", N_("KPI"), "org:read", ready=False),
+    NavItem("/kpi", N_("KPI"), "grc:read"),
     NavItem("/audits", N_("Audits"), "org:read", ready=False),
     NavItem("/users", N_("User management"), "users:read"),
 ]

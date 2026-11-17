@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse, Response
 
 from grc_client import ApiError
+from grc_ui.charts import sparkline
 from grc_ui.formdata import values_from_form
 from grc_ui.forms import FORMS
 from grc_ui.i18n import N_, gettext
@@ -48,6 +49,26 @@ MODULES = {
         (("owner_name", N_("Owner")), ("score", N_("Score"))),
         create_perm="grc:record",
         new_hint=N_("Short description of the risk"),
+    ),
+    "controls": Module(
+        "control",
+        "/controls",
+        N_("Controls (ICS)"),
+        N_("Control"),
+        "grc:read",
+        "grc:manage",
+        "controls",
+        (("control_type", N_("Type")), ("operating_effectiveness", N_("Effectiveness"))),
+    ),
+    "kpi": Module(
+        "kpi",
+        "/kpi",
+        N_("KPI"),
+        N_("KPI"),
+        "grc:read",
+        "grc:manage",
+        "kpis",
+        (("last_value", N_("Last value")),),
     ),
     "opportunities": Module(
         "opportunity",
@@ -114,7 +135,7 @@ async def _list(
     return items
 
 
-async def _detail(
+async def detail_context(
     request: Request,
     ctx: UiContext,
     mod: Module,
@@ -139,8 +160,12 @@ async def _detail(
             "actor": state["actor_name"],
             "id": revision,
         }
+    spark = None
+    if mod.kind == "kpi":
+        spark = sparkline([m["value"] for m in item["measurements"]], item["target"])
     return {
         "mod": mod,
+        "spark": spark,
         "item": item,
         "shown": shown,
         "sections": FORMS[mod.kind],
@@ -176,7 +201,7 @@ async def _matrix(
     return {"rows": rows, "cell": cell, "total": sum(counts.values())}
 
 
-def _detail_urls(mod: Module, item_id: str) -> dict[str, Any]:
+def detail_urls(mod: Module, item_id: str) -> dict[str, Any]:
     b = f"{mod.base}/{item_id}"
     return {
         "self_url": b,
@@ -233,8 +258,8 @@ def page_routes(slug: str) -> None:
         edit: int = 0,
         ctx: UiContext = Depends(ui_context),
     ) -> Response:
-        d = await _detail(request, ctx, mod, item_id, view=view, revision=revision)
-        urls = _detail_urls(mod, item_id)
+        d = await detail_context(request, ctx, mod, item_id, view=view, revision=revision)
+        urls = detail_urls(mod, item_id)
         if request.headers.get("HX-Target") == "detail":
             return render(request, "entity/_detail.html", ctx, **d, **urls)
         items = await _list(ctx, mod)
@@ -257,13 +282,13 @@ def page_routes(slug: str) -> None:
     async def edit(
         request: Request, item_id: str, ctx: UiContext = Depends(ui_context)
     ) -> Response:
-        d = await _detail(request, ctx, mod, item_id)
+        d = await detail_context(request, ctx, mod, item_id)
         return render(
             request,
             "entity/_form.html",
             ctx,
             **d,
-            **_detail_urls(mod, item_id),
+            **detail_urls(mod, item_id),
             refs=await ref_options(ctx),
             errors={},
             conflict=False,
@@ -287,7 +312,7 @@ def page_routes(slug: str) -> None:
         except ApiError as exc:
             if exc.status not in (409, 412, 422, 428):
                 raise
-            d = await _detail(request, ctx, mod, item_id)
+            d = await detail_context(request, ctx, mod, item_id)
             d["shown"] = d["item"] | values  # keep what was typed
             return render(
                 request,
@@ -295,19 +320,19 @@ def page_routes(slug: str) -> None:
                 ctx,
                 status=exc.status,
                 **d,
-                **_detail_urls(mod, item_id),
+                **detail_urls(mod, item_id),
                 refs=await ref_options(ctx),
                 errors=field_errors(exc),
                 conflict=exc.code == "version_conflict",
                 message=problem_text(exc),
             )
-        d = await _detail(request, ctx, mod, item_id)
+        d = await detail_context(request, ctx, mod, item_id)
         return render(
             request,
             "entity/_detail.html",
             ctx,
             **d,
-            **_detail_urls(mod, item_id),
+            **detail_urls(mod, item_id),
             headers={"HX-Trigger": "refreshList"} | toast("success", gettext("Saved")),
         )
 
@@ -348,9 +373,9 @@ def page_routes(slug: str) -> None:
             if exc.status not in (403, 409, 412, 422):
                 raise
             headers = toast("error", problem_text(exc))
-        d = await _detail(request, ctx, mod, item_id)
+        d = await detail_context(request, ctx, mod, item_id)
         return render(
-            request, "entity/_detail.html", ctx, **d, **_detail_urls(mod, item_id), headers=headers
+            request, "entity/_detail.html", ctx, **d, **detail_urls(mod, item_id), headers=headers
         )
 
     @router.get(mod.base + "/{item_id}/history", response_class=HTMLResponse)
@@ -373,7 +398,7 @@ def page_routes(slug: str) -> None:
     async def profile(
         request: Request, item_id: str, ctx: UiContext = Depends(ui_context)
     ) -> Response:
-        d = await _detail(request, ctx, mod, item_id)
+        d = await detail_context(request, ctx, mod, item_id)
         return render(request, "entity/_profile.html", ctx, **d)
 
 

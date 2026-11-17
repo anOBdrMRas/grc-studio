@@ -10,18 +10,22 @@ from grc_api.auth.principal import Principal
 from grc_api.domain import workflow as wf
 from grc_api.domain.history import diff, state_at
 from grc_api.errors import ProblemError
-from grc_api.models import Opportunity, Position, Process, Risk, Role, User
+from grc_api.models import Control, Kpi, Opportunity, Position, Process, Risk, Role, User
 from grc_api.repositories import audit, elements
 from grc_api.schemas.common import Change, Revision, Rights, StateView, WorkflowEntryOut
 from grc_api.services.context import OrgData
 
-Element = Role | Position | Process | Risk | Opportunity
+# elements with the approval workflow (status, doc_version, released)
+Approvable = Role | Position | Process | Risk | Opportunity
+Element = Approvable | Control | Kpi
 KIND_MODEL: dict[str, type[Element]] = {
     "role": Role,
     "position": Position,
     "process": Process,
     "risk": Risk,
     "opportunity": Opportunity,
+    "control": Control,
+    "kpi": Kpi,
 }
 MANAGE = {
     "role": "org:manage",
@@ -30,6 +34,8 @@ MANAGE = {
     "user": "users:manage",
     "risk": "grc:manage",
     "opportunity": "grc:manage",
+    "control": "grc:manage",
+    "kpi": "grc:manage",
 }
 # kinds that everybody records; the recorder edits them while they are drafts
 RECORDED = frozenset({"risk", "opportunity"})
@@ -40,6 +46,8 @@ OWNER_FIELDS = {
     "user": [],
     "risk": ["owner_user_id"],
     "opportunity": ["owner_role_id"],
+    "control": ["owner_role_id"],
+    "kpi": ["owner_role_id"],
 }
 
 
@@ -47,7 +55,7 @@ def is_recorder(kind: str, obj: Element, p: Principal) -> bool:
     """The person who recorded a risk or opportunity, while it is still a draft."""
     return (
         kind in RECORDED
-        and obj.status == "draft"
+        and getattr(obj, "status", None) == "draft"
         and getattr(obj, "created_by_user_id", None) == p.user_id
     )
 
@@ -59,15 +67,16 @@ def rights(
     manage = p.can(MANAGE[kind])
     owner = p.user_id in org.owners(kind, obj)
     recorder = is_recorder(kind, obj, p)
-    in_review = obj.status == "review"
+    # controls and KPI have no approval workflow (no status)
+    status: str | None = getattr(obj, "status", None)
     return Rights(
-        can_edit=manage or ((owner or recorder) and not in_review and obj.status != "archived"),
+        can_edit=manage or ((owner or recorder) and status not in ("review", "archived")),
         can_manage=manage,
         can_delete=manage or (recorder and not ever_submitted),
         is_owner=owner,
-        can_submit=obj.status == "draft" and (owner or manage),
-        can_approve=obj.status == "review" and p.can("quality:approve"),
-        can_set_status=p.can("workflow:set-status"),
+        can_submit=status == "draft" and (owner or manage),
+        can_approve=status == "review" and p.can("quality:approve"),
+        can_set_status=status is not None and p.can("workflow:set-status"),
         # the recorder still chooses the owner of an own draft
         owner_fields=[] if manage or recorder else OWNER_FIELDS[kind],
     )
@@ -150,7 +159,7 @@ async def save_element(
     if not changes and not cols and not note:
         return []
     extra: dict[str, Any] = {}
-    if wf.reopens(obj.status, r.can_manage):  # type: ignore[arg-type]
+    if not isinstance(obj, Control | Kpi) and wf.reopens(obj.status, r.can_manage):  # type: ignore[arg-type]
         extra = {
             "status": "draft",
             "released": obj.released or {**before, "doc_version": obj.doc_version},
@@ -174,7 +183,7 @@ def to_column(model: type[BaseModel], key: str, value: Any) -> Any:
 async def workflow_action(
     db: AsyncSession,
     kind: str,
-    obj: Element,
+    obj: Approvable,
     model: type[BaseModel],
     action: str,
     comment: str,

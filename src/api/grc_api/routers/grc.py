@@ -1,5 +1,7 @@
-"""Risks and opportunities. Everybody records (grc:record); rights per element are decided in the service."""
+"""Risks, opportunities, controls and KPI. Everybody records risks and opportunities (grc:record);
+rights per element are decided in the service."""
 
+from datetime import date
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Header
@@ -10,6 +12,11 @@ from grc_api.auth.principal import Principal
 from grc_api.db import get_db
 from grc_api.schemas.common import CreateElement, ElementPatch, Revision, StateView, WorkflowAction
 from grc_api.schemas.grc import (
+    ControlListItem,
+    ControlOut,
+    KpiListItem,
+    KpiOut,
+    MeasurementIn,
     OpportunityListItem,
     OpportunityOut,
     RiskListItem,
@@ -143,3 +150,114 @@ async def opportunities_history(opp_id: str, db: Db, p: Me) -> list[Revision]:
 )
 async def opportunities_state(opp_id: str, revision_id: int, db: Db, p: Me) -> StateView:
     return await svc.state(db, "opportunity", opp_id, revision_id, p)
+
+
+# ---- controls (ICS) ----------------------------------------------------------------------------
+
+
+@router.get("/controls", operation_id="controls_list", **secured("grc:read"))
+async def controls_list(db: Db, p: Me) -> list[ControlListItem]:
+    return await svc.list_controls(db, p)
+
+
+@router.post("/controls", operation_id="controls_create", status_code=201, **secured("grc:manage"))
+async def controls_create(body: CreateElement, db: Db, p: Me) -> ControlOut:
+    return await svc.create_control(db, body.title, p)
+
+
+@router.get("/controls/{control_id}", operation_id="controls_get", **secured("grc:read"))
+async def controls_get(control_id: str, db: Db, p: Me) -> ControlOut:
+    return await svc.control_view(db, control_id, p)
+
+
+@router.patch("/controls/{control_id}", operation_id="controls_update", **secured("grc:read"))
+async def controls_update(
+    control_id: str, body: ElementPatch, db: Db, p: Me, if_match: IfMatch = None
+) -> ControlOut:
+    return await svc.update_control(db, control_id, body, if_match, p)
+
+
+@router.delete(
+    "/controls/{control_id}",
+    operation_id="controls_delete",
+    status_code=204,
+    **secured("grc:manage"),
+)
+async def controls_delete(control_id: str, db: Db, p: Me) -> None:
+    await svc.delete(db, "control", control_id, p)
+
+
+@router.get(
+    "/controls/{control_id}/history", operation_id="controls_history", **secured("grc:read")
+)
+async def controls_history(control_id: str, db: Db, p: Me) -> list[Revision]:
+    return await svc.history(db, "control", control_id, p)
+
+
+@router.get(
+    "/controls/{control_id}/history/{revision_id}",
+    operation_id="controls_state",
+    **secured("grc:read"),
+)
+async def controls_state(control_id: str, revision_id: int, db: Db, p: Me) -> StateView:
+    return await svc.state(db, "control", control_id, revision_id, p)
+
+
+# ---- KPI ---------------------------------------------------------------------------------------
+
+
+@router.get("/kpis", operation_id="kpis_list", **secured("grc:read"))
+async def kpis_list(db: Db, p: Me) -> list[KpiListItem]:
+    return await svc.list_kpis(db, p)
+
+
+@router.post("/kpis", operation_id="kpis_create", status_code=201, **secured("grc:manage"))
+async def kpis_create(body: CreateElement, db: Db, p: Me) -> KpiOut:
+    return await svc.create_kpi(db, body.title, p)
+
+
+@router.get("/kpis/{kpi_id}", operation_id="kpis_get", **secured("grc:read"))
+async def kpis_get(kpi_id: str, db: Db, p: Me) -> KpiOut:
+    return await svc.kpi_view(db, kpi_id, p)
+
+
+@router.patch("/kpis/{kpi_id}", operation_id="kpis_update", **secured("grc:read"))
+async def kpis_update(
+    kpi_id: str, body: ElementPatch, db: Db, p: Me, if_match: IfMatch = None
+) -> KpiOut:
+    return await svc.update_kpi(db, kpi_id, body, if_match, p)
+
+
+@router.delete(
+    "/kpis/{kpi_id}", operation_id="kpis_delete", status_code=204, **secured("grc:manage")
+)
+async def kpis_delete(kpi_id: str, db: Db, p: Me) -> None:
+    await svc.delete(db, "kpi", kpi_id, p)
+
+
+@router.put(
+    "/kpis/{kpi_id}/measurements", operation_id="kpis_record_measurement", **secured("grc:read")
+)
+async def kpis_record_measurement(kpi_id: str, body: MeasurementIn, db: Db, p: Me) -> KpiOut:
+    return await svc.record_measurement(db, kpi_id, body, p)
+
+
+@router.delete(
+    "/kpis/{kpi_id}/measurements/{day}",
+    operation_id="kpis_delete_measurement",
+    **secured("grc:read"),
+)
+async def kpis_delete_measurement(kpi_id: str, day: date, db: Db, p: Me) -> KpiOut:
+    return await svc.delete_measurement(db, kpi_id, day, p)
+
+
+@router.get("/kpis/{kpi_id}/history", operation_id="kpis_history", **secured("grc:read"))
+async def kpis_history(kpi_id: str, db: Db, p: Me) -> list[Revision]:
+    return await svc.history(db, "kpi", kpi_id, p)
+
+
+@router.get(
+    "/kpis/{kpi_id}/history/{revision_id}", operation_id="kpis_state", **secured("grc:read")
+)
+async def kpis_state(kpi_id: str, revision_id: int, db: Db, p: Me) -> StateView:
+    return await svc.state(db, "kpi", kpi_id, revision_id, p)

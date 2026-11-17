@@ -5,6 +5,18 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 2b)
+- Controls (ICS): control design, risks addressed, Statement of Applicability with the
+  ISO 27001 Annex A picker, design and operating effectiveness.
+- KPI: measurement rule, thresholds, series of measured values (one per date) with a
+  server-rendered trend chart and traffic light; owners, the evaluating role and managers record.
+- Risks, opportunities, controls and KPI assigned to process steps, with badges per kind in the
+  diagram and the ICS check (risk without a mitigating control in the step, with suggestions).
+- "Used in process steps" on every element, linking straight into the step (`?step=`).
+
+### Fixed (stage 2b)
+- The translation extractor missed ISO clause titles that the formatter wraps across lines.
+
 ### Added (stage 2a)
 - Risk register: 4×4 matrix (medium from 4, higher risk above 8) with filter, assessment scale
   per type of consequence, treatment actions with responsible persons, entity, linked processes.

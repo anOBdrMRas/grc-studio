@@ -14,6 +14,7 @@
             {% if key == "holders" %}{% if v %}{{ v[:2]|join(", ") }}{% if v|length > 2 %} <span class="opacity-60">+{{ v|length - 2 }}</span>{% endif %}{% else %}<span class="text-warning">{{ _("vacant") }}</span>{% endif %}
             {% elif key == "score" %}{% if v %}<span class="level-badge level-{{ x.level }}">{{ v }}</span>{% else %}<span class="opacity-50">–</span>{% endif %}
             {% elif key == "potential" %}{{ v or "–" }}
+            {% elif key == "last_value" %}{% if v is not none %}<span class="traffic traffic-{{ x.traffic }}" aria-hidden="true"></span> {{ v|num }} {{ x.unit }}{% else %}<span class="opacity-50">–</span>{% endif %}
             {% else %}{{ _(v) if v else "–" }}{% endif %}
           </td>
           {% endfor %}

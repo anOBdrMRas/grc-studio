@@ -10,6 +10,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.models import (
     AuditEntry,
+    Control,
+    Kpi,
+    KpiMeasurement,
     Opportunity,
     Position,
     PositionRole,
@@ -17,13 +20,21 @@ from grc_api.models import (
     Risk,
     Role,
     StepAssignment,
+    StepLink,
     User,
     WorkflowEntry,
 )
 from grc_api.schemas.org import RoleFields
 
 DEMO = Path(__file__).with_name("demo.json")
-DATES = ("position_since", "last_review", "next_review", "last_assessment")
+DATES = (
+    "position_since",
+    "last_review",
+    "next_review",
+    "last_assessment",
+    "last_test",
+    "next_test",
+)
 
 
 def _row(d: dict[str, Any], skip: tuple[str, ...]) -> dict[str, Any]:
@@ -52,11 +63,15 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
     for p in data["positions"]:
         db.add(Position(**_row(p, ("workflow", "roles"))))
     for p in data["processes"]:
-        db.add(Process(**_row(p, ("workflow", "steps"))))
+        db.add(Process(**_row(p, ("workflow", "steps", "links"))))
     for r in data.get("risks", []):
         db.add(Risk(**_row(r, ("workflow",))))
     for o in data.get("opportunities", []):
         db.add(Opportunity(**_row(o, ("workflow",))))
+    for c in data.get("controls", []):
+        db.add(Control(**_row(c, ())))
+    for k in data.get("kpis", []):
+        db.add(Kpi(**_row(k, ("measurements",))))
     await db.flush()
     for p in data["positions"]:
         for i, pr in enumerate(p["roles"]):
@@ -68,6 +83,13 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
     for p in data["processes"]:
         for s in p["steps"]:
             db.add(StepAssignment(process_id=p["id"], **s))
+        for link in p.get("links", []):
+            db.add(StepLink(process_id=p["id"], **link))
+    for k in data.get("kpis", []):
+        for m in k["measurements"]:
+            db.add(
+                KpiMeasurement(kpi_id=k["id"], date=date.fromisoformat(m["date"]), value=m["value"])
+            )
     for kind, items in (
         ("role", data["roles"]),
         ("position", data["positions"]),

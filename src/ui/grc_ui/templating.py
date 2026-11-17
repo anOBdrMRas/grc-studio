@@ -46,6 +46,15 @@ env.globals.update(icon=icon, asset_url=asset_url, languages=LANGUAGES, is_activ
 env.filters["tojson_attr"] = lambda v: json.dumps(v, ensure_ascii=False)
 
 
+def num(v: float | int) -> str:
+    """A measured value without trailing zeros: 99.0 → 99, 2.40 → 2.4."""
+    return f"{float(v):.4f}".rstrip("0").rstrip(".")
+
+
+env.filters["num"] = num
+env.tests["startingwith"] = lambda s, prefix: str(s).startswith(prefix)
+
+
 def render(
     request: Request,
     template: str,

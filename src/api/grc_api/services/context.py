@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.domain.org import PersonRef, position_owners, role_holders
-from grc_api.models import Opportunity, Position, Process, Risk, Role, User
+from grc_api.models import Control, Kpi, Opportunity, Position, Process, Risk, Role, User
 from grc_api.repositories import elements, org
 
 
@@ -33,7 +33,7 @@ class OrgData:
             return [obj.role_owner_user_id] if obj.role_owner_user_id else []
         if isinstance(obj, Position):
             return position_owners(obj.reports_to_disciplinary_id, self.refs)
-        if isinstance(obj, Process | Opportunity):
+        if isinstance(obj, Process | Opportunity | Control | Kpi):
             return self.role_holders(obj.owner_role_id) if obj.owner_role_id else []
         if isinstance(obj, Risk):
             return [obj.owner_user_id] if obj.owner_user_id else []

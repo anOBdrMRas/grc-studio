@@ -45,7 +45,7 @@
     </div>
     <div id="bpmn-canvas" data-process="{{ item.id }}" data-editable="{{ 'true' if item.rights.can_edit else 'false' }}" data-msg-unsaved-leave="{{ _('Unsaved changes in the diagram will be lost.') }}"></div>
   </div>
-  <aside id="step-panel" class="max-h-[calc(100vh-13rem)] overflow-auto rounded-r-box border border-l-0 border-base-300 bg-base-100 p-3 text-sm" aria-live="polite">
+  <aside id="step-panel" class="min-w-0 max-h-[calc(100vh-13rem)] overflow-y-auto overflow-x-hidden rounded-r-box border border-l-0 border-base-300 bg-base-100 p-3 text-sm" aria-live="polite">
     {% include "processes/_summary.html" %}
   </aside>
 </div>

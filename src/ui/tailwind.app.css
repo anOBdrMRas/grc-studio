@@ -24,6 +24,12 @@ dialog.modal:not([open]) { display: none; }
 #bpmn-canvas { height: calc(100vh - 13rem); min-height: 420px; }
 #bpmn-canvas .djs-container { background: var(--fallback-b1, oklch(var(--b1))); }
 .bpmn-badge { background: #1b5e8c; color: #fff; border-radius: 9px; font-size: 11px; padding: 0 6px; line-height: 18px; white-space: nowrap; }
+.bpmn-badges { display: inline-flex; gap: 2px; }
+.bpmn-badge.kind-risk { background: #b54708; }
+.bpmn-badge.kind-risk.is-gap { background: #c92a2a; box-shadow: 0 0 0 2px #fff; }
+.bpmn-badge.kind-control { background: #2b8a3e; }
+.bpmn-badge.kind-opportunity { background: #5f3dc4; }
+.bpmn-badge.kind-kpi { background: #e8590c; }
 [data-theme='fidonis-dark'] #bpmn-canvas .djs-container { filter: invert(0.88) hue-rotate(180deg); }
 [hidden] { display: none !important; }
 
@@ -37,3 +43,14 @@ dialog.modal:not([open]) { display: none; }
 .risk-cell:hover { filter: brightness(0.94); }
 .risk-cell.is-selected { outline: 2px solid currentColor; }
 .risk-axis { display: flex; align-items: center; justify-content: center; font-size: 11px; opacity: 0.6; }
+/* KPI: traffic light and chart (class names assembled in templates) */
+.traffic { display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 9999px; vertical-align: middle; background: #adb5bd; }
+.traffic-green { background: #2f9e44; }
+.traffic-yellow { background: #f59f00; }
+.traffic-red { background: #e03131; }
+.kpi-chart { width: 100%; max-width: 28rem; height: auto; }
+.kpi-line { stroke: #1b5e8c; stroke-width: 2; }
+.kpi-dot { fill: #1b5e8c; }
+.kpi-target { stroke: #2f9e44; stroke-width: 1; stroke-dasharray: 4 3; }
+[data-theme='fidonis-dark'] .kpi-line { stroke: #8cc4ef; }
+[data-theme='fidonis-dark'] .kpi-dot { fill: #8cc4ef; }

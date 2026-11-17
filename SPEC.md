@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a** = Stufe 2a (umgesetzt) · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a** / **S2b** = Stufe 2a/2b (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -77,7 +77,8 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-PRC-05 | Schrittbereich: Klick auf eine Aktivität zeigt deren Zuordnungen; Rollen mit RACI zuordnen und entfernen | S1 |
 | FR-PRC-06 | Badges im Diagramm zeigen die Zuordnungen je Schritt | S1 |
 | FR-PRC-07 | Änderungen an Diagramm und Zuordnungen zählen als Änderung des Prozesses (Version, Workflow, Historie) | S1 |
-| FR-PRC-08 | Risiken, Chancen, Controls, KPI je Schritt; IKS-Hinweis bei Risiko ohne Kontrolle | S2 |
+| FR-PRC-08 | Risiken, Chancen, Controls, KPI je Schritt zuordnen; Badges je Art im Diagramm; IKS-Hinweis bei Risiko ohne Kontrolle im Schritt mit Vorschlag passender Controls | S2b |
+| FR-PRC-10 | Jedes Element zeigt, in welchen Prozessschritten es verwendet wird (Sprung direkt in den Schritt) | S2b |
 | FR-PRC-09 | Subprozesse mit Drill-down, Aufrufaktivitäten verknüpft, Import/Export `.bpmn` und `.svg` | S2 |
 
 ## 6. Risiken, Chancen, IKS, KPI, Audits
@@ -89,8 +90,8 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-RSK-05 | Risikomatrix über der Liste; ein Feld filtert die Liste | S2a |
 | FR-RSK-02 | Chancen nach ISO 9001 6.1 (Owner: Inhaber der verantwortlichen Rolle) | S2a |
 | FR-RSK-03 | Jede Person darf Risiken und Chancen erfassen; der Erfasser bearbeitet seinen Entwurf, wählt den Owner und löscht einen nie eingereichten Entwurf; Freigabe über den Workflow | S2a |
-| FR-ICS-01 | Controls (IKS) mit Wirksamkeit und Statement of Applicability (ISO 27001 Annex A) | S2 |
-| FR-KPI-01 | KPI mit Schwellen, Messreihe und Ampel | S2 |
+| FR-ICS-01 | Controls (IKS) mit Kontrolldesign, adressierten Risiken, Wirksamkeit und Statement of Applicability (ISO 27001 Annex A); Owner = Inhaber der Rolle „Kontrollverantwortlicher“ | S2b |
+| FR-KPI-01 | KPI mit Schwellen, Messreihe (ein Wert je Datum), Verlauf und Ampel; Messwerte erfassen Owner, auswertende Rolle, I&A und Administration | S2b |
 | FR-AUD-01 | Audits, Zertifikate und Feststellungen; Qualitätsprüfungen | S3 |
 
 ## 7. Nicht-funktionale Anforderungen

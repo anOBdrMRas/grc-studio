@@ -31,6 +31,9 @@ EXTRA = [
     "Signed in",
     "{role} assigned to step {step}",
     "{role} removed from step {step}",
+    "{item} assigned to step {step}",
+    "{item} removed from step {step}",
+    "measurement",
     "RACI of {role} in step {step}: {raci}",
     "submitted",
     "approved",
@@ -65,7 +68,7 @@ def extract() -> list[str]:
                 ):
                     ids[e.value] = None
     for m in re.finditer(
-        r'\("[^"]+", "ISO (?:9001|37301|14001)", "[^"]+", "((?:\\.|[^"\\])*)"\)',
+        r'\(\s*"[^"]+",\s*"ISO (?:9001|37301|14001)",\s*"[^"]+",\s*"((?:\\.|[^"\\])*)",?\s*\)',
         API_ISO.read_text(encoding="utf-8"),
     ):
         ids[literal(m.group(1))] = None
