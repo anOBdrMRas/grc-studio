@@ -811,6 +811,148 @@ KPI: list[Section] = [
     },
 ]
 
+MANDATE: list[Section] = [
+    {
+        "title": N_("Master data"),
+        "fields": [
+            {"key": "code", "label": N_("ID"), "kind": "readonly"},
+            {"key": "state", "label": N_("State"), "kind": "mandate_state"},
+            {"key": "title", "label": N_("Title"), "kind": "text"},
+            {"key": "description", "label": N_("Description"), "kind": "textarea", "wide": True},
+            {
+                "key": "mandate_type",
+                "label": N_("Type of transfer"),
+                "kind": "select",
+                "options": "mandate_kinds",
+                "empty": True,
+            },
+            {
+                "key": "legal_basis",
+                "label": N_("Legal basis / requirement"),
+                "kind": "text",
+                "hint": N_("e.g. Art. 37 GDPR, § 13 (2) ArbSchG, §§ 48 ff. HGB"),
+            },
+        ],
+    },
+    {
+        "title": N_("Parties & reference"),
+        "fields": [
+            {
+                "key": "recipient_user_id",
+                "label": N_("Recipient (person)"),
+                "kind": "ref",
+                "ref": "people",
+            },
+            {
+                "key": "granted_by_user_id",
+                "label": N_("Granted by (person)"),
+                "kind": "ref",
+                "ref": "people",
+                "owner": True,
+            },
+            {
+                "key": "granted_by_body",
+                "label": N_("Granted by (body)"),
+                "kind": "text",
+                "hint": N_("e.g. shareholders' meeting"),
+                "owner": True,
+            },
+            {"key": "role_id", "label": N_("Reference: role"), "kind": "ref", "ref": "roles"},
+            {
+                "key": "position_id",
+                "label": N_("Reference: position"),
+                "kind": "ref",
+                "ref": "positions",
+            },
+        ],
+    },
+    {
+        "title": N_("Content & scope"),
+        "fields": [
+            {
+                "key": "scope",
+                "label": N_("Duties / tasks transferred"),
+                "kind": "textarea",
+                "wide": True,
+                "hint": N_("clearly delimited"),
+            },
+            {
+                "key": "powers",
+                "label": N_("Powers (instruction, decision, information rights)"),
+                "kind": "textarea",
+                "wide": True,
+            },
+            {"key": "budget", "label": N_("Resources / budget"), "kind": "text"},
+            {
+                "key": "amount_limit",
+                "label": N_("Amount limit (EUR)"),
+                "kind": "number",
+                "hint": N_("0 = none"),
+            },
+            {
+                "key": "representation",
+                "label": N_("Representation"),
+                "kind": "select",
+                "options": "representation",
+                "empty": True,
+            },
+            {
+                "key": "sub_delegation_allowed",
+                "label": N_("Sub-delegation allowed"),
+                "kind": "bool",
+            },
+        ],
+    },
+    {
+        "title": N_("Validity & evidence"),
+        "fields": [
+            {"key": "valid_from", "label": N_("Valid from"), "kind": "date"},
+            {
+                "key": "valid_until",
+                "label": N_("Valid until"),
+                "kind": "date",
+                "hint": N_("empty = unlimited"),
+            },
+            {
+                "key": "document",
+                "label": N_("Document"),
+                "kind": "text",
+                "hint": N_("document name, storage location or link"),
+            },
+            {"key": "accepted_at", "label": N_("Accepted / countersigned on"), "kind": "readonly"},
+            {
+                "key": "register_entry",
+                "label": N_("Register entry / notification to authority"),
+                "kind": "text",
+                "hint": N_("e.g. commercial register, BAFA, data protection authority"),
+            },
+            {"key": "registered_at", "label": N_("Registered / notified on"), "kind": "date"},
+            {"key": "revoked_at", "label": N_("Revoked on"), "kind": "readonly"},
+        ],
+    },
+    {
+        "title": N_("Supervision by the delegating person"),
+        "fields": [
+            {
+                "key": "supervision",
+                "label": N_("Supervision measure"),
+                "kind": "textarea",
+                "wide": True,
+                "hint": N_("selection, instruction, supervision (§ 130 OWiG)"),
+            },
+            {
+                "key": "supervision_frequency",
+                "label": N_("Frequency"),
+                "kind": "select",
+                "options": "supervision_frequencies",
+                "empty": True,
+            },
+            {"key": "last_supervision", "label": N_("Last check"), "kind": "date"},
+            {"key": "next_supervision", "label": N_("Next check"), "kind": "date"},
+        ],
+    },
+]
+
 FORMS: dict[str, list[Section]] = {
     "role": ROLE,
     "position": POSITION,
@@ -820,4 +962,5 @@ FORMS: dict[str, list[Section]] = {
     "opportunity": OPPORTUNITY,
     "control": CONTROL,
     "kpi": KPI,
+    "mandate": MANDATE,
 }

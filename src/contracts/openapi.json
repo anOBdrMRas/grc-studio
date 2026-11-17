@@ -77,6 +77,91 @@
         "title": "Change",
         "type": "object"
       },
+      "CheckOut": {
+        "description": "A legal-certainty finding; `message` is an English message id, `vars` fill its placeholders.",
+        "properties": {
+          "element_id": {
+            "title": "Element Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "role",
+              "position",
+              "mandate"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "mandate_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mandate Id"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "position_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position Id"
+          },
+          "role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Role Id"
+          },
+          "user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User Id"
+          },
+          "vars": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Vars",
+            "type": "object"
+          }
+        },
+        "required": [
+          "message",
+          "vars",
+          "kind",
+          "element_id",
+          "user_id",
+          "role_id",
+          "position_id",
+          "mandate_id"
+        ],
+        "title": "CheckOut",
+        "type": "object"
+      },
       "ControlListItem": {
         "properties": {
           "code": {
@@ -794,6 +879,436 @@
           "labels"
         ],
         "title": "KpiOut",
+        "type": "object"
+      },
+      "MandateAction": {
+        "properties": {
+          "action": {
+            "enum": [
+              "grant",
+              "accept",
+              "decline",
+              "revoke"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "comment": {
+            "default": "",
+            "title": "Comment",
+            "type": "string"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "title": "MandateAction",
+        "type": "object"
+      },
+      "MandateActions": {
+        "properties": {
+          "can_accept": {
+            "title": "Can Accept",
+            "type": "boolean"
+          },
+          "can_decline": {
+            "title": "Can Decline",
+            "type": "boolean"
+          },
+          "can_grant": {
+            "title": "Can Grant",
+            "type": "boolean"
+          },
+          "can_revoke": {
+            "title": "Can Revoke",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "can_grant",
+          "can_accept",
+          "can_decline",
+          "can_revoke"
+        ],
+        "title": "MandateActions",
+        "type": "object"
+      },
+      "MandateListItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "granted_by_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Granted By User Id"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_owner": {
+            "title": "Is Owner",
+            "type": "boolean"
+          },
+          "mandate_type": {
+            "title": "Mandate Type",
+            "type": "string"
+          },
+          "recipient_name": {
+            "title": "Recipient Name",
+            "type": "string"
+          },
+          "recipient_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recipient User Id"
+          },
+          "state": {
+            "enum": [
+              "draft",
+              "future",
+              "pending",
+              "active",
+              "expired",
+              "revoked"
+            ],
+            "title": "State",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "mandate_type",
+          "recipient_name",
+          "recipient_user_id",
+          "granted_by_user_id",
+          "state",
+          "is_owner"
+        ],
+        "title": "MandateListItem",
+        "type": "object"
+      },
+      "MandateOut": {
+        "properties": {
+          "accepted_at": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accepted At"
+          },
+          "actions": {
+            "$ref": "#/components/schemas/MandateActions"
+          },
+          "amount_limit": {
+            "default": 0,
+            "minimum": 0.0,
+            "title": "Amount Limit",
+            "type": "integer"
+          },
+          "budget": {
+            "default": "",
+            "title": "Budget",
+            "type": "string"
+          },
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/CheckOut"
+            },
+            "title": "Checks",
+            "type": "array"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "document": {
+            "default": "",
+            "title": "Document",
+            "type": "string"
+          },
+          "granted_by_body": {
+            "default": "",
+            "title": "Granted By Body",
+            "type": "string"
+          },
+          "granted_by_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Granted By User Id"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Labels",
+            "type": "object"
+          },
+          "last_supervision": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Supervision"
+          },
+          "legal_basis": {
+            "default": "",
+            "title": "Legal Basis",
+            "type": "string"
+          },
+          "mandate_type": {
+            "default": "",
+            "title": "Mandate Type",
+            "type": "string"
+          },
+          "next_supervision": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Supervision"
+          },
+          "position_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position Id"
+          },
+          "powers": {
+            "default": "",
+            "title": "Powers",
+            "type": "string"
+          },
+          "recipient_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recipient User Id"
+          },
+          "register_entry": {
+            "default": "",
+            "title": "Register Entry",
+            "type": "string"
+          },
+          "registered_at": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Registered At"
+          },
+          "representation": {
+            "default": "",
+            "title": "Representation",
+            "type": "string"
+          },
+          "revoked_at": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revoked At"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          },
+          "role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Role Id"
+          },
+          "scope": {
+            "default": "",
+            "title": "Scope",
+            "type": "string"
+          },
+          "state": {
+            "description": "effective state: granted, valid and accepted",
+            "enum": [
+              "draft",
+              "future",
+              "pending",
+              "active",
+              "expired",
+              "revoked"
+            ],
+            "title": "State",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "sub_delegation_allowed": {
+            "default": false,
+            "title": "Sub Delegation Allowed",
+            "type": "boolean"
+          },
+          "supervision": {
+            "default": "",
+            "title": "Supervision",
+            "type": "string"
+          },
+          "supervision_frequency": {
+            "default": "",
+            "title": "Supervision Frequency",
+            "type": "string"
+          },
+          "title": {
+            "default": "",
+            "title": "Title",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "valid_from": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valid From"
+          },
+          "valid_until": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Valid Until"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "workflow": {
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEntryOut"
+            },
+            "title": "Workflow",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "status",
+          "state",
+          "accepted_at",
+          "revoked_at",
+          "version",
+          "created_at",
+          "updated_at",
+          "rights",
+          "actions",
+          "workflow",
+          "checks",
+          "labels"
+        ],
+        "title": "MandateOut",
         "type": "object"
       },
       "Me": {
@@ -1890,6 +2405,13 @@
       },
       "RiskListItem": {
         "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/RiskAction"
+            },
+            "title": "Actions",
+            "type": "array"
+          },
           "code": {
             "title": "Code",
             "type": "string"
@@ -1955,6 +2477,7 @@
           "score",
           "level",
           "treatment_status",
+          "actions",
           "status",
           "is_owner"
         ],
@@ -3088,6 +3611,109 @@
         "x-permission": "people:read"
       }
     },
+    "/api/v1/checks": {
+      "get": {
+        "description": "Legal-certainty findings across persons, roles, positions and delegations.",
+        "operationId": "checks_list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "User Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "role_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Role Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "position_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Position Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mandate_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mandate Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CheckOut"
+                  },
+                  "title": "Response Checks List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Checks List",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:read"
+      }
+    },
     "/api/v1/controls": {
       "get": {
         "operationId": "controls_list",
@@ -3810,6 +4436,384 @@
           "risks and opportunities"
         ],
         "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/mandates": {
+      "get": {
+        "operationId": "mandates_list",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/MandateListItem"
+                  },
+                  "title": "Response Mandates List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Mandates List",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:read"
+      },
+      "post": {
+        "operationId": "mandates_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MandateOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mandates Create",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:manage"
+      }
+    },
+    "/api/v1/mandates/{mandate_id}": {
+      "delete": {
+        "operationId": "mandates_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandate_id",
+            "required": true,
+            "schema": {
+              "title": "Mandate Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mandates Delete",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:manage"
+      },
+      "get": {
+        "operationId": "mandates_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandate_id",
+            "required": true,
+            "schema": {
+              "title": "Mandate Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MandateOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mandates Get",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:read"
+      },
+      "patch": {
+        "operationId": "mandates_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandate_id",
+            "required": true,
+            "schema": {
+              "title": "Mandate Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MandateOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mandates Update",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:read"
+      }
+    },
+    "/api/v1/mandates/{mandate_id}/history": {
+      "get": {
+        "operationId": "mandates_history",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandate_id",
+            "required": true,
+            "schema": {
+              "title": "Mandate Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Revision"
+                  },
+                  "title": "Response Mandates History",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mandates History",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:read"
+      }
+    },
+    "/api/v1/mandates/{mandate_id}/history/{revision_id}": {
+      "get": {
+        "operationId": "mandates_state",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandate_id",
+            "required": true,
+            "schema": {
+              "title": "Mandate Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "revision_id",
+            "required": true,
+            "schema": {
+              "title": "Revision Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StateView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mandates State",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:read"
+      }
+    },
+    "/api/v1/mandates/{mandate_id}/workflow": {
+      "post": {
+        "operationId": "mandates_workflow",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mandate_id",
+            "required": true,
+            "schema": {
+              "title": "Mandate Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MandateAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MandateOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mandates Workflow",
+        "tags": [
+          "delegations"
+        ],
+        "x-permission": "org:read"
       }
     },
     "/api/v1/meta/catalogs": {

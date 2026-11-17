@@ -112,3 +112,26 @@ def test_sparkline_scales_into_the_box() -> None:
     assert ys[0] > ys[-1]  # higher values are drawn higher
     assert all(0 <= y <= HEIGHT for y in ys)
     assert sparkline([]) is None
+
+
+def test_check_text_translates_type_and_amounts() -> None:
+    from grc_ui.i18n import current_language
+    from grc_ui.templating import check_text
+
+    check = {
+        "message": "{mandate}: amount limit {amount} EUR above the limit of the position ({limit} EUR).",
+        "vars": {"mandate": "DV-8", "amount": "25000", "limit": "10000", "user": "Anna"},
+    }
+    token = current_language.set("de")
+    try:
+        assert (
+            check_text(check)
+            == "DV-8: Betragsgrenze 25.000 EUR über dem Limit der Stelle (10.000 EUR)."
+        )
+        role = {
+            "message": "{role}: {user} has no effective {type}.",
+            "vars": {"role": "DPO", "user": "Anna", "type": "Appointment / designation"},
+        }
+        assert check_text(role) == "„DPO“: Anna hat keine wirksame Bestellung / Benennung."
+    finally:
+        current_language.reset(token)

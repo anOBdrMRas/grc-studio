@@ -118,3 +118,49 @@ class PositionRole(Base):
     )
     comment: Mapped[str] = text_col()
     sort: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
+
+
+class Mandate(Versioned, Base):
+    """Delegation or power of attorney given to a person (appointment, delegation of duties, Prokura …).
+
+    Its approval is its own: granted by the grantor, accepted by the recipient (see domain.mandates).
+    """
+
+    __tablename__ = "mandates"
+
+    id: Mapped[str] = mapped_column(String(40), primary_key=True)
+    code: Mapped[str] = mapped_column(String(40), unique=True, nullable=False)
+    title: Mapped[str] = text_col()
+    description: Mapped[str] = text_col()
+    mandate_type: Mapped[str] = text_col()
+    legal_basis: Mapped[str] = text_col()
+    recipient_user_id: Mapped[str | None] = mapped_column(String(40), index=True)
+    granted_by_user_id: Mapped[str | None] = mapped_column(String(40))
+    granted_by_body: Mapped[str] = text_col()
+    role_id: Mapped[str | None] = mapped_column(String(40))
+    position_id: Mapped[str | None] = mapped_column(String(40))
+    scope: Mapped[str] = text_col()
+    powers: Mapped[str] = text_col()
+    budget: Mapped[str] = text_col()
+    amount_limit: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0, server_default="0"
+    )
+    representation: Mapped[str] = text_col()
+    sub_delegation_allowed: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default="false"
+    )
+    # draft → granted → (accepted_at set) … revoked
+    status: Mapped[str] = mapped_column(
+        String(20), nullable=False, default="draft", server_default="draft"
+    )
+    valid_from: Mapped[date | None] = mapped_column(Date)
+    valid_until: Mapped[date | None] = mapped_column(Date)
+    revoked_at: Mapped[date | None] = mapped_column(Date)
+    document: Mapped[str] = text_col()
+    accepted_at: Mapped[date | None] = mapped_column(Date)
+    register_entry: Mapped[str] = text_col()
+    registered_at: Mapped[date | None] = mapped_column(Date)
+    supervision: Mapped[str] = text_col()
+    supervision_frequency: Mapped[str] = text_col()
+    last_supervision: Mapped[date | None] = mapped_column(Date)
+    next_supervision: Mapped[date | None] = mapped_column(Date)

@@ -14,6 +14,22 @@ Catalogs = TypedDict(
 Change = TypedDict("Change", {"key": "str", "from": "Any", "to": "Any"}, total=False)
 
 
+CheckOut = TypedDict(
+    "CheckOut",
+    {
+        "message": "str",
+        "vars": "dict[str, str]",
+        "kind": "str",
+        "element_id": "str",
+        "user_id": "str | None",
+        "role_id": "str | None",
+        "position_id": "str | None",
+        "mandate_id": "str | None",
+    },
+    total=False,
+)
+
+
 ControlListItem = TypedDict(
     "ControlListItem",
     {
@@ -157,6 +173,81 @@ KpiOut = TypedDict(
         "can_measure": "bool",
         "rights": "Rights",
         "used_in": "list[Usage]",
+        "labels": "dict[str, str]",
+    },
+    total=False,
+)
+
+
+MandateAction = TypedDict(
+    "MandateAction", {"action": "str", "comment": "str", "version": "int | None"}, total=False
+)
+
+
+MandateActions = TypedDict(
+    "MandateActions",
+    {"can_grant": "bool", "can_accept": "bool", "can_decline": "bool", "can_revoke": "bool"},
+    total=False,
+)
+
+
+MandateListItem = TypedDict(
+    "MandateListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "mandate_type": "str",
+        "recipient_name": "str",
+        "recipient_user_id": "str | None",
+        "granted_by_user_id": "str | None",
+        "state": "str",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+MandateOut = TypedDict(
+    "MandateOut",
+    {
+        "title": "str",
+        "description": "str",
+        "mandate_type": "str",
+        "legal_basis": "str",
+        "recipient_user_id": "str | None",
+        "granted_by_user_id": "str | None",
+        "granted_by_body": "str",
+        "role_id": "str | None",
+        "position_id": "str | None",
+        "scope": "str",
+        "powers": "str",
+        "budget": "str",
+        "amount_limit": "int",
+        "representation": "str",
+        "sub_delegation_allowed": "bool",
+        "valid_from": "str | None",
+        "valid_until": "str | None",
+        "document": "str",
+        "register_entry": "str",
+        "registered_at": "str | None",
+        "supervision": "str",
+        "supervision_frequency": "str",
+        "last_supervision": "str | None",
+        "next_supervision": "str | None",
+        "id": "str",
+        "code": "str",
+        "status": "str",
+        "state": "str",
+        "accepted_at": "str | None",
+        "revoked_at": "str | None",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "rights": "Rights",
+        "actions": "MandateActions",
+        "workflow": "list[WorkflowEntryOut]",
+        "checks": "list[CheckOut]",
         "labels": "dict[str, str]",
     },
     total=False,
@@ -415,6 +506,7 @@ RiskListItem = TypedDict(
         "score": "int",
         "level": "str",
         "treatment_status": "str",
+        "actions": "list[RiskAction]",
         "status": "str",
         "is_owner": "bool",
     },

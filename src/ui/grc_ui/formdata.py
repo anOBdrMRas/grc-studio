@@ -6,7 +6,7 @@ from starlette.datastructures import FormData
 
 from grc_ui.forms import Section
 
-SKIP = {"readonly", "status", "risk_eval", "risk_guide"}
+SKIP = {"readonly", "status", "risk_eval", "risk_guide", "mandate_state"}
 
 
 def values_from_form(

@@ -1,4 +1,4 @@
-{% from "macros.html" import empty %}
+{% from "macros.html" import empty, mandate_state %}
 <div id="list" hx-get="{{ mod.base }}?q={{ q }}" hx-trigger="refreshList from:body" hx-target="this" hx-swap="outerHTML">
   {% if items %}
   <div class="overflow-x-auto rounded-box border border-base-300 bg-base-100">
@@ -13,6 +13,7 @@
             {% set v = x[key] %}
             {% if key == "holders" %}{% if v %}{{ v[:2]|join(", ") }}{% if v|length > 2 %} <span class="opacity-60">+{{ v|length - 2 }}</span>{% endif %}{% else %}<span class="text-warning">{{ _("vacant") }}</span>{% endif %}
             {% elif key == "score" %}{% if v %}<span class="level-badge level-{{ x.level }}">{{ v }}</span>{% else %}<span class="opacity-50">–</span>{% endif %}
+            {% elif key == "state" %}{{ mandate_state(v) }}
             {% elif key == "potential" %}{{ v or "–" }}
             {% elif key == "last_value" %}{% if v is not none %}<span class="traffic traffic-{{ x.traffic }}" aria-hidden="true"></span> {{ v|num }} {{ x.unit }}{% else %}<span class="opacity-50">–</span>{% endif %}
             {% else %}{{ _(v) if v else "–" }}{% endif %}

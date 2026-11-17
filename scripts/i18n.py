@@ -18,6 +18,7 @@ LOCALE = UI / "locale"
 DE = LOCALE / "de/LC_MESSAGES/messages.po"
 API_CATALOGS = ROOT / "src/api/grc_api/domain/catalogs.py"
 API_ISO = ROOT / "src/api/grc_api/domain/iso.py"
+API_CHECKS = ROOT / "src/api/grc_api/domain/mandates.py"
 
 CALL = re.compile(r"""\b(?:_|N_|gettext)\(\s*(["'])((?:\\.|(?!\1).)*)\1""", re.S)
 # values shown through _(variable): option lists of the API, history actions, notes of the API
@@ -32,6 +33,10 @@ EXTRA = [
     "{role} assigned to step {step}",
     "{role} removed from step {step}",
     "{item} assigned to step {step}",
+    "granted",
+    "accepted",
+    "declined",
+    "revoked",
     "{item} removed from step {step}",
     "measurement",
     "RACI of {role} in step {step}: {raci}",
@@ -72,6 +77,12 @@ def extract() -> list[str]:
         API_ISO.read_text(encoding="utf-8"),
     ):
         ids[literal(m.group(1))] = None
+    # legal-certainty findings: English message ids with {placeholders}
+    for m in re.finditer(
+        r'"((?:\{mandate\}|\{role\}|Position \{position\})[^"]*)"',
+        API_CHECKS.read_text(encoding="utf-8"),
+    ):
+        ids[m.group(1)] = None
     for e in EXTRA:
         ids[e] = None
     return [i for i in ids if i.strip()]

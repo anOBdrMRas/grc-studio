@@ -90,6 +90,7 @@ class RiskListItem(BaseModel):
     score: int
     level: Level
     treatment_status: str
+    actions: list[RiskAction]
     status: str
     is_owner: bool
 

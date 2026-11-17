@@ -1,0 +1,25 @@
+{# approval of a delegation: granted by the grantor, accepted by the recipient #}
+{% from "macros.html" import mandate_state %}
+{% set granted = item.status in ("granted", "revoked") %}
+{% set accepted = item.accepted_at is not none %}
+<div class="mb-3 rounded-box border border-base-300 p-2 text-sm">
+  <div class="flex flex-wrap items-center gap-2">
+    <span class="wf-chip {% if granted %}done{% else %}current{% endif %}">{% if granted %}{{ icon("check", "h-3 w-3") }}{% endif %}{{ _("Draft") }}</span>
+    <span class="wf-chip {% if granted %}done{% endif %}">{% if granted %}{{ icon("check", "h-3 w-3") }}{% endif %}{{ _("Granted (grantor)") }}</span>
+    <span class="wf-chip {% if accepted %}done{% elif item.status == 'granted' %}current{% endif %}">{% if accepted %}{{ icon("check", "h-3 w-3") }}{% endif %}{{ _("Accepted (recipient)") }}</span>
+    {{ mandate_state(item.state) }}
+    <span class="ml-auto flex flex-wrap items-center gap-1">
+      {% set a = item.actions %}
+      {% if a.can_grant or a.can_accept or a.can_decline or a.can_revoke %}
+      <form hx-post="{{ workflow_url }}" hx-target="#detail" class="flex flex-wrap items-center gap-1">
+        <input type="hidden" name="version" value="{{ item.version }}">
+        <input name="comment" class="input input-bordered input-xs w-40" placeholder="{{ _('Comment (optional)') }}" aria-label="{{ _('Comment (optional)') }}">
+        {% if a.can_grant %}<button class="btn btn-primary btn-xs" name="action" value="grant">{{ icon("check", "h-3 w-3") }} {{ _("Grant") }}</button>{% endif %}
+        {% if a.can_accept %}<button class="btn btn-primary btn-xs" name="action" value="accept">{{ icon("check", "h-3 w-3") }} {{ _("Accept the delegation") }}</button>{% endif %}
+        {% if a.can_decline %}<button class="btn btn-outline btn-xs" name="action" value="decline">{{ icon("arrow-back-up", "h-3 w-3") }} {{ _("Return") }}</button>{% endif %}
+        {% if a.can_revoke %}<button class="btn btn-outline btn-error btn-xs" name="action" value="revoke" hx-confirm="{{ _('Really revoke the delegation?') }}">{{ icon("x", "h-3 w-3") }} {{ _("Revoke") }}</button>{% endif %}
+      </form>
+      {% elif item.status == "granted" and not accepted %}<span class="text-xs opacity-70">{{ _("Waiting for the acceptance by the recipient") }}</span>{% endif %}
+    </span>
+  </div>
+</div>

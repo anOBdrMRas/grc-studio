@@ -29,6 +29,7 @@ from grc_api.schemas.grc import (
     OpportunityFields,
     OpportunityListItem,
     OpportunityOut,
+    RiskAction,
     RiskFields,
     RiskListItem,
     RiskOut,
@@ -79,6 +80,7 @@ async def list_risks(db: AsyncSession, p: Principal) -> list[RiskListItem]:
                 score=s,
                 level=rk.level(s),
                 treatment_status=r.treatment_status,
+                actions=[RiskAction.model_validate(a) for a in r.actions],
                 status=r.status,
                 is_owner=p.user_id in org.owners("risk", r),
             )
