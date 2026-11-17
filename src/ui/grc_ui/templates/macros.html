@@ -21,5 +21,5 @@
 {% macro mandate_state(state) %}
 {% set labels = {"draft": _("Draft"), "future": _("Not yet valid"), "pending": _("Acceptance missing"), "active": _("Effective"), "expired": _("Expired"), "revoked": _("Revoked")} %}
 {% set tone = {"active": "border-success text-success", "pending": "border-warning text-warning", "future": "border-info text-info", "expired": "border-error text-error", "revoked": "opacity-60"}.get(state, "") %}
-<span class="badge badge-sm badge-outline {{ tone }}">{{ labels.get(state, state) }}</span>
+<span class="badge badge-sm badge-outline whitespace-nowrap {{ tone }}">{{ labels.get(state, state) }}</span>
 {% endmacro %}

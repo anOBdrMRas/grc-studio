@@ -5,6 +5,17 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 2c)
+- Delegations & powers of attorney (appointments, delegation of duties, Prokura, commercial and
+  payment authorities, internal approval authority, deputy) with their own approval: granted by
+  the grantor, accepted by the recipient, returned or revoked; effective state (draft, not yet
+  valid, acceptance missing, effective, expired, revoked).
+- Legal-certainty checks: roles needing a formal transfer, written form and notification to
+  authorities, leavers, expiry, overdue supervision, sole payment authority, role no longer held,
+  powers and amounts above the target of the position, target powers of positions not granted.
+  Shown on roles, positions, persons, delegations and the start page.
+- Start page: everything in my responsibility (all modules), my delegations, and "for me to do".
+
 ### Added (stage 2b)
 - Controls (ICS): control design, risks addressed, Statement of Applicability with the
   ISO 27001 Annex A picker, design and operating effectiveness.

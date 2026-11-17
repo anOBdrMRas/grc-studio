@@ -56,7 +56,16 @@ env.filters["num"] = num
 
 def check_text(check: dict[str, Any]) -> str:
     """A legal-certainty finding of the API in the current language (catalogue values translated)."""
-    values = {k: gettext(v) if k == "type" else v for k, v in check["vars"].items()}
+    sep = "." if current_language.get() == "de" else ","
+
+    def shown(key: str, value: str) -> str:
+        if key == "type":
+            return gettext(value)
+        if key in ("amount", "limit") and value.isdigit():
+            return f"{int(value):,}".replace(",", sep)
+        return value
+
+    values = {k: shown(k, v) for k, v in check["vars"].items()}
     return gettext(check["message"]).format(**values)
 
 

@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a** / **S2b** = Stufe 2a/2b (umgesetzt) · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a** / **S2b** / **S2c** = Stufe 2a/2b/2c (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -51,7 +51,7 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-WF-08 | „Diesen Stand ansehen“ zeigt einen früheren Stand (lesend, keine Wiederherstellung) | S1 |
 | FR-WF-09 | Startseite: „In meiner Verantwortung“ und für I&A „Wartet auf I&A-Freigabe“ | S1 |
 | FR-WF-10 | Workflow auch für Risiken und Chancen | S2a |
-| FR-WF-11 | Delegationen: Erteilung durch den Erteilenden, Annahme durch den Empfänger | S2 |
+| FR-WF-11 | Delegationen: Erteilung durch den Erteilenden (oder I&A/Administration), Annahme durch den Empfänger, Zurückgeben, Widerrufen; wirksam erst mit Annahme und innerhalb der Gültigkeit | S2c |
 
 ## 4. Organisation
 
@@ -63,7 +63,8 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-ORG-04 | Stellen: Zweck, Aufgaben, Befugnisse, Anforderungen, disziplinarische/fachliche Hierarchie, Vertretung, Inhaber, Rollen mit Kommentar | S1 |
 | FR-ORG-05 | Funktionstrennung: Warnung, wenn eine Stelle unvereinbare Rollen vereint | S1 |
 | FR-ORG-06 | Benutzer: Nachname, Vorname, Bereich, Abteilung, Stelle, Bemerkung, Systemrollen | S1 |
-| FR-ORG-07 | Delegationen und Vollmachten mit Gültigkeit, Annahme, Überwachung; Prüfungen zur Rechtssicherheit | S2 |
+| FR-ORG-07 | Delegationen und Vollmachten mit Gültigkeit, Annahme, Überwachung; Prüfungen zur Rechtssicherheit an Rolle, Stelle, Person und Übertragung | S2c |
+| FR-ORG-09 | Startseite: „In meiner Verantwortung“ (alle Module), „Für mich zu tun“ (anzunehmende Übertragungen, eigene Maßnahmen, Prüfhinweise), „Meine Übertragungen“ | S2c |
 | FR-ORG-08 | Organigramm und Rollenzuordnungsmatrix | S2 |
 
 ## 5. Prozesse

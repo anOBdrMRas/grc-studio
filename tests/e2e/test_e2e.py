@@ -156,3 +156,21 @@ def test_kpi_value_recorded(page: "Page") -> None:
     page.click("#detail button:has-text('Wert erfassen')")
     expect(page.locator("#detail")).to_contain_text("Ziel erreicht")
     expect(page.locator("#detail .kpi-chart")).to_be_visible()
+
+
+def test_delegation_granted_and_accepted(page: "Page") -> None:
+    sign_in(page, "U-016")
+    page.goto(BASE + "/delegations/DV-017")
+    page.click("#detail button[value=grant]")
+    expect(page.locator("#detail")).to_contain_text("Erteilt (Erteilende/r)")
+    sign_in(page, "U-015")
+    expect(page.locator("main")).to_contain_text("DV-017")
+    page.goto(BASE + "/delegations/DV-017")
+    page.click("#detail button[value=accept]")
+    expect(page.locator("#detail .wf-chip.done")).to_have_count(3)
+
+
+def test_checks_on_role(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/roles/RO-007")
+    expect(page.locator("#detail .alert-warning")).to_contain_text("Prüfungen zur Rechtssicherheit")
