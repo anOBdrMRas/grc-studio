@@ -1,0 +1,24 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+# Node (build time of the interface)
+node_modules/
+# local configuration and secrets – never commit
+.env
+.env.*
+!.env.example
+# editors and OS
+.idea/
+.vscode/
+.DS_Store
+# test output
+test-results/
+playwright-report/
+.import_linter_cache/

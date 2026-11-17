@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.png binary
+*.woff binary
+*.woff2 binary
+*.xlsx binary
+# generated: shown collapsed in diffs
+src/contracts/openapi.json linguist-generated=true
+src/contracts/grc_client/*.py linguist-generated=true
+src/ui/package-lock.json linguist-generated=true
+uv.lock linguist-generated=true
