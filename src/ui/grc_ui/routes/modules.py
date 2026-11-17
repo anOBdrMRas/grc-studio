@@ -28,9 +28,38 @@ class Module:
     manage_perm: str
     api: str  # method prefix of the generated client: roles, positions, users
     columns: tuple[tuple[str, str], ...]  # (key, label) of the narrow list
+    create_perm: str = ""  # who may create (default: manage_perm)
+    new_hint: str = N_("Title of the new entry")
+
+    @property
+    def can_create(self) -> str:
+        return self.create_perm or self.manage_perm
 
 
 MODULES = {
+    "risks": Module(
+        "risk",
+        "/risks",
+        N_("Risks"),
+        N_("Risk"),
+        "grc:read",
+        "grc:manage",
+        "risks",
+        (("owner_name", N_("Owner")), ("score", N_("Score"))),
+        create_perm="grc:record",
+        new_hint=N_("Short description of the risk"),
+    ),
+    "opportunities": Module(
+        "opportunity",
+        "/opportunities",
+        N_("Opportunities"),
+        N_("Opportunity"),
+        "grc:read",
+        "grc:manage",
+        "opportunities",
+        (("owner_role_title", N_("Responsible")), ("potential", N_("Potential"))),
+        create_perm="grc:record",
+    ),
     "roles": Module(
         "role",
         "/roles",
@@ -69,8 +98,12 @@ def _m(ctx: UiContext, mod: Module, op: str) -> Callable[..., Awaitable[Any]]:
     return fn
 
 
-async def _list(ctx: UiContext, mod: Module, q: str = "") -> list[dict[str, Any]]:
+async def _list(
+    ctx: UiContext, mod: Module, q: str = "", cell: tuple[int, int] | None = None
+) -> list[dict[str, Any]]:
     items = [dict(x) for x in await _m(ctx, mod, "list")()]
+    if cell and mod.kind == "risk":
+        items = [x for x in items if (x["likelihood"], x["impact"]) == cell]
     needle = q.strip().lower()
     if needle:
         items = [
@@ -117,6 +150,32 @@ async def _detail(
     }
 
 
+async def _matrix(
+    ctx: UiContext, mod: Module, cell: tuple[int, int] | None
+) -> dict[str, Any] | None:
+    """Counts of the 4×4 risk matrix (likelihood × impact) with the level of every cell."""
+    if mod.kind != "risk":
+        return None
+    counts: dict[tuple[int, int], int] = {}
+    for x in await ctx.api.risks_list():
+        counts[(x["likelihood"], x["impact"])] = counts.get((x["likelihood"], x["impact"]), 0) + 1
+    levels = (await catalogs(ctx.api))["lists"]["risk_matrix"]
+    size = 4
+    rows = [
+        [
+            {
+                "l": li,
+                "i": im,
+                "n": counts.get((li, im), 0),
+                "level": levels[(li - 1) * size + (im - 1)],
+            }
+            for im in range(1, size + 1)
+        ]
+        for li in range(size, 0, -1)
+    ]
+    return {"rows": rows, "cell": cell, "total": sum(counts.values())}
+
+
 def _detail_urls(mod: Module, item_id: str) -> dict[str, Any]:
     b = f"{mod.base}/{item_id}"
     return {
@@ -134,7 +193,11 @@ def page_routes(slug: str) -> None:
 
     @router.get(mod.base, response_class=HTMLResponse, name=f"{slug}_index")
     async def index(
-        request: Request, q: str = "", ctx: UiContext = Depends(ui_context)
+        request: Request,
+        q: str = "",
+        l: int = 0,  # noqa: E741 - likelihood cell of the risk matrix
+        i: int = 0,
+        ctx: UiContext = Depends(ui_context),
     ) -> Response:
         if not ctx.can(mod.read_perm):
             return render(
@@ -144,7 +207,8 @@ def page_routes(slug: str) -> None:
                 status=403,
                 message=gettext("You are not allowed to do this."),
             )
-        items = await _list(ctx, mod, q)
+        cell = (l, i) if l and i else None
+        items = await _list(ctx, mod, q, cell)
         if request.headers.get("HX-Target") == "list":
             return render(request, "entity/_list.html", ctx, mod=mod, items=items, q=q, selected="")
         return render(
@@ -157,6 +221,7 @@ def page_routes(slug: str) -> None:
             selected="",
             detail=None,
             form=None,
+            matrix=await _matrix(ctx, mod, cell),
         )
 
     @router.get(mod.base + "/{item_id}", response_class=HTMLResponse, name=f"{slug}_detail")
@@ -185,6 +250,7 @@ def page_routes(slug: str) -> None:
             selected=item_id,
             detail=d | urls,
             form=form,
+            matrix=await _matrix(ctx, mod, None),
         )
 
     @router.get(mod.base + "/{item_id}/edit", response_class=HTMLResponse)
@@ -209,8 +275,12 @@ def page_routes(slug: str) -> None:
     ) -> Response:
         form = await request.form()
         item = dict(await _m(ctx, mod, "get")(item_id))
-        manage = ctx.can(mod.manage_perm)
-        values = values_from_form(FORMS[mod.kind], form, manage)
+        rights = item.get("rights")
+        # owner fields: managers, and the recorder of an own draft (the API lists none then)
+        owner_editable = ctx.can(mod.manage_perm) or (
+            isinstance(rights, dict) and not rights.get("owner_fields")
+        )
+        values = values_from_form(FORMS[mod.kind], form, owner_editable)
         version = int(str(form.get("version") or item["version"]))
         try:
             await _m(ctx, mod, "update")(item_id, {"version": version, "values": values})

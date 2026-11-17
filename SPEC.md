@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = in dieser Version umgesetzt · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a** = Stufe 2a (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -31,7 +31,7 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-AUTH-01 | Demo-Anmeldung: Kacheln (Mitarbeiter, Führungskraft, I&A-Team, Administrator) und „Andere Person wählen“ | S1 |
 | FR-AUTH-02 | Abschaltbar (`DEMO_LOGIN=false`): dann Benutzername und Passwort (argon2id, Sperre nach Fehlversuchen) | S1 |
 | FR-AUTH-03 | Konten mit Passwort sind nie per Demo-Anmeldung erreichbar | S1 |
-| FR-AUTH-04 | Systemrollen: Mitarbeiter (lesen), I&A-Team (alle Fachmodule bearbeiten, Qualitätsfreigabe), Administrator (Benutzerverwaltung, Status setzen, keine Qualitätsfreigabe) | S1 |
+| FR-AUTH-04 | Systemrollen: Mitarbeiter (lesen, Risiken/Chancen erfassen), I&A-Team (alle Fachmodule bearbeiten, Qualitätsfreigabe), Administrator (Benutzerverwaltung, Status setzen, keine Qualitätsfreigabe) | S1 |
 | FR-AUTH-05 | Owner bearbeiten ihre Elemente: Rollenverantwortlicher (Rolle), disziplinarischer Vorgesetzter (Stelle), Inhaber der verantwortlichen Rolle (Prozess) | S1 |
 | FR-AUTH-06 | Owner-Felder (Verantwortliche) ändern nur I&A und Administration | S1 |
 | FR-AUTH-07 | Benutzerverwaltung nur für die Administration | S1 |
@@ -50,7 +50,8 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-WF-07 | Änderungshistorie je Element: wer, wann, welches Feld alt → neu; Diagramm- und Zuordnungsänderungen als Notiz | S1 |
 | FR-WF-08 | „Diesen Stand ansehen“ zeigt einen früheren Stand (lesend, keine Wiederherstellung) | S1 |
 | FR-WF-09 | Startseite: „In meiner Verantwortung“ und für I&A „Wartet auf I&A-Freigabe“ | S1 |
-| FR-WF-10 | Workflow auch für Risiken, Chancen und Delegationen (Delegation: Bestätigung durch Erteilenden und Empfänger) | S2 |
+| FR-WF-10 | Workflow auch für Risiken und Chancen | S2a |
+| FR-WF-11 | Delegationen: Erteilung durch den Erteilenden, Annahme durch den Empfänger | S2 |
 
 ## 4. Organisation
 
@@ -83,9 +84,11 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
 | ID | Anforderung | Stufe |
 |---|---|---|
-| FR-RSK-01 | Risikoregister mit 4×4-Matrix (mittel ab 4, hoch über 8), Ursache und Auswirkung, Owner (Person), Maßnahmenliste mit Verantwortlichen, Gesellschaft (CDE/CUS/CTW/CMY/CCZ) | S2 |
-| FR-RSK-02 | Chancen nach ISO 9001 6.1 | S2 |
-| FR-RSK-03 | Jede Person darf Risiken und Chancen erfassen; Freigabe über den Workflow | S2 |
+| FR-RSK-01 | Risikoregister mit 4×4-Matrix (mittel ab 4, hoch über 8), Ursache und Auswirkung, Owner (Person), Maßnahmenliste mit Verantwortlichen, Gesellschaft (CDE/CUS/CTW/CMY/CCZ) | S2a |
+| FR-RSK-04 | Titel eines Risikos = erster Satz der Beschreibung; Bewertungsskala je Auswirkungsart abrufbar | S2a |
+| FR-RSK-05 | Risikomatrix über der Liste; ein Feld filtert die Liste | S2a |
+| FR-RSK-02 | Chancen nach ISO 9001 6.1 (Owner: Inhaber der verantwortlichen Rolle) | S2a |
+| FR-RSK-03 | Jede Person darf Risiken und Chancen erfassen; der Erfasser bearbeitet seinen Entwurf, wählt den Owner und löscht einen nie eingereichten Entwurf; Freigabe über den Workflow | S2a |
 | FR-ICS-01 | Controls (IKS) mit Wirksamkeit und Statement of Applicability (ISO 27001 Annex A) | S2 |
 | FR-KPI-01 | KPI mit Schwellen, Messreihe und Ampel | S2 |
 | FR-AUD-01 | Audits, Zertifikate und Feststellungen; Qualitätsprüfungen | S3 |

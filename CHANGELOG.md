@@ -5,6 +5,14 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 2a)
+- Risk register: 4×4 matrix (medium from 4, higher risk above 8) with filter, assessment scale
+  per type of consequence, treatment actions with responsible persons, entity, linked processes.
+- Opportunities with likelihood × benefit potential, owned by the holders of the responsible role.
+- Everybody records risks and opportunities; the recorder edits the own draft, chooses the owner
+  and deletes a draft that was never submitted. Approval workflow as for roles and processes.
+- Permissions `grc:read`, `grc:record`, `grc:manage`; demo risks and opportunities.
+
 ## [0.1.0] – stage 1
 
 ### Added

@@ -63,3 +63,25 @@ def test_owner_fields_kept_when_not_editable() -> None:
         editable_owner=False,
     )
     assert "role_owner_user_id" not in values
+
+
+def test_risk_form_values() -> None:
+    form = FormData(
+        [
+            ("likelihood", "3"),
+            ("impact", "x"),
+            ("actions.text", "Zweitlieferant"),
+            ("actions.owner_user_id", "U-003"),
+            ("actions.text", "  "),
+            ("actions.owner_user_id", ""),
+            ("process_ids", "P-001"),
+            ("assessment", "ignored"),
+        ]
+    )
+    values = values_from_form(FORMS["risk"], form, editable_owner=True)
+    assert values["likelihood"] == 3
+    assert values["impact"] == 0
+    assert values["actions"] == [{"text": "Zweitlieferant", "owner_user_id": "U-003"}]
+    assert values["process_ids"] == ["P-001"]
+    assert "assessment" not in values
+    assert "scale_guide" not in values

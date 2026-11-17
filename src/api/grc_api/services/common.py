@@ -10,44 +10,66 @@ from grc_api.auth.principal import Principal
 from grc_api.domain import workflow as wf
 from grc_api.domain.history import diff, state_at
 from grc_api.errors import ProblemError
-from grc_api.models import Position, Process, Role, User
+from grc_api.models import Opportunity, Position, Process, Risk, Role, User
 from grc_api.repositories import audit, elements
 from grc_api.schemas.common import Change, Revision, Rights, StateView, WorkflowEntryOut
 from grc_api.services.context import OrgData
 
-Element = Role | Position | Process
-KIND_MODEL: dict[str, type[Role] | type[Position] | type[Process]] = {
+Element = Role | Position | Process | Risk | Opportunity
+KIND_MODEL: dict[str, type[Element]] = {
     "role": Role,
     "position": Position,
     "process": Process,
+    "risk": Risk,
+    "opportunity": Opportunity,
 }
 MANAGE = {
     "role": "org:manage",
     "position": "org:manage",
     "process": "processes:manage",
     "user": "users:manage",
+    "risk": "grc:manage",
+    "opportunity": "grc:manage",
 }
+# kinds that everybody records; the recorder edits them while they are drafts
+RECORDED = frozenset({"risk", "opportunity"})
 OWNER_FIELDS = {
     "role": ["role_owner_user_id"],
     "position": ["reports_to_disciplinary_id"],
     "process": ["owner_role_id"],
     "user": [],
+    "risk": ["owner_user_id"],
+    "opportunity": ["owner_role_id"],
 }
 
 
-def rights(kind: str, obj: Element, org: OrgData, p: Principal) -> Rights:
+def is_recorder(kind: str, obj: Element, p: Principal) -> bool:
+    """The person who recorded a risk or opportunity, while it is still a draft."""
+    return (
+        kind in RECORDED
+        and obj.status == "draft"
+        and getattr(obj, "created_by_user_id", None) == p.user_id
+    )
+
+
+def rights(
+    kind: str, obj: Element, org: OrgData, p: Principal, *, ever_submitted: bool = True
+) -> Rights:
+    """What `p` may do with `obj`. `ever_submitted` decides whether a recorder may still delete."""
     manage = p.can(MANAGE[kind])
     owner = p.user_id in org.owners(kind, obj)
+    recorder = is_recorder(kind, obj, p)
     in_review = obj.status == "review"
     return Rights(
-        can_edit=manage or (owner and not in_review and obj.status != "archived"),
+        can_edit=manage or ((owner or recorder) and not in_review and obj.status != "archived"),
         can_manage=manage,
-        can_delete=manage,
+        can_delete=manage or (recorder and not ever_submitted),
         is_owner=owner,
         can_submit=obj.status == "draft" and (owner or manage),
         can_approve=obj.status == "review" and p.can("quality:approve"),
         can_set_status=p.can("workflow:set-status"),
-        owner_fields=OWNER_FIELDS[kind],
+        # the recorder still chooses the owner of an own draft
+        owner_fields=[] if manage or recorder else OWNER_FIELDS[kind],
     )
 
 
@@ -119,9 +141,7 @@ async def save_element(
     r = rights(kind, obj, org, p)
     if not r.can_edit:
         raise ProblemError("forbidden", "You may not edit this element")
-    if not r.can_manage and any(
-        k in values and values[k] != jsonable(getattr(obj, k)) for k in r.owner_fields
-    ):
+    if any(k in values and values[k] != jsonable(getattr(obj, k)) for k in r.owner_fields):
         raise ProblemError("forbidden", "Only the administration and the I&A team change the owner")
     before = fields_of(obj, model) | (before_extra or {})
     after = validate_merge(model, before, values) if values else before
@@ -242,9 +262,7 @@ async def state_after(
     )
 
 
-async def get_or_404(
-    db: AsyncSession, model: type[User] | type[Role] | type[Position] | type[Process], id_: str
-) -> Any:
+async def get_or_404(db: AsyncSession, model: type[User] | type[Element], id_: str) -> Any:
     obj = await elements.get(db, model, id_)
     if obj is None:
         raise ProblemError("not_found", "Element not found")

@@ -10,12 +10,15 @@ PERMISSIONS: Final[dict[str, str]] = {
     "org:manage": "Create, edit and delete roles and positions, set their owners",
     "processes:read": "Read processes",
     "processes:manage": "Create, edit and delete processes, set their owners",
+    "grc:read": "Read risks, opportunities, controls and KPI",
+    "grc:record": "Record new risks and opportunities",
+    "grc:manage": "Create, edit and delete all GRC elements, set their owners",
     "quality:approve": "Give or refuse the I&A quality approval",
     "workflow:set-status": "Set the approval status directly",
 }
 
 SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
-    "employee": frozenset({"people:read", "org:read", "processes:read"}),
+    "employee": frozenset({"people:read", "org:read", "processes:read", "grc:read", "grc:record"}),
     "ia": frozenset(
         {
             "people:read",
@@ -23,6 +26,9 @@ SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
             "org:manage",
             "processes:read",
             "processes:manage",
+            "grc:read",
+            "grc:record",
+            "grc:manage",
             "quality:approve",
             "workflow:set-status",
         }
@@ -36,6 +42,9 @@ SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
             "org:manage",
             "processes:read",
             "processes:manage",
+            "grc:read",
+            "grc:record",
+            "grc:manage",
             "workflow:set-status",
         }
     ),

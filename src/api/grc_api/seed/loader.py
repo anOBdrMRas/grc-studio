@@ -10,9 +10,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.models import (
     AuditEntry,
+    Opportunity,
     Position,
     PositionRole,
     Process,
+    Risk,
     Role,
     StepAssignment,
     User,
@@ -21,7 +23,7 @@ from grc_api.models import (
 from grc_api.schemas.org import RoleFields
 
 DEMO = Path(__file__).with_name("demo.json")
-DATES = ("position_since", "last_review", "next_review")
+DATES = ("position_since", "last_review", "next_review", "last_assessment")
 
 
 def _row(d: dict[str, Any], skip: tuple[str, ...]) -> dict[str, Any]:
@@ -51,6 +53,10 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
         db.add(Position(**_row(p, ("workflow", "roles"))))
     for p in data["processes"]:
         db.add(Process(**_row(p, ("workflow", "steps"))))
+    for r in data.get("risks", []):
+        db.add(Risk(**_row(r, ("workflow",))))
+    for o in data.get("opportunities", []):
+        db.add(Opportunity(**_row(o, ("workflow",))))
     await db.flush()
     for p in data["positions"]:
         for i, pr in enumerate(p["roles"]):
@@ -66,6 +72,8 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
         ("role", data["roles"]),
         ("position", data["positions"]),
         ("process", data["processes"]),
+        ("risk", data.get("risks", [])),
+        ("opportunity", data.get("opportunities", [])),
     ):
         for e in items:
             for w in e.get("workflow", []):

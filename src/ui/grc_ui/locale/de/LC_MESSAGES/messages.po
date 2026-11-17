@@ -19,14 +19,65 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+msgid "1 = insignificant … 4 = serious"
+msgstr "1 = unbedeutend … 4 = schwerwiegend"
+
+msgid "1 = very low … 4 = high"
+msgstr "1 = sehr gering … 4 = hoch"
+
+msgid "1 = very low … 5 = very high"
+msgstr "1 = sehr gering … 5 = sehr hoch"
+
+msgid "1 Identify"
+msgstr "1 Identifizieren"
+
+msgid "2 Analyse"
+msgstr "2 Analysieren"
+
+msgid "25–300 TUSD"
+msgstr "25–300 TUSD"
+
+msgid "3 Evaluate"
+msgstr "3 Bewerten"
+
+msgid "300 TUSD – 3 m USD"
+msgstr "300 TUSD – 3 Mio. USD"
+
+msgid "4 Treat"
+msgstr "4 Behandeln"
+
+msgid "5 Monitor"
+msgstr "5 Überwachen"
+
+msgid "< 25 TUSD"
+msgstr "< 25 TUSD"
+
+msgid "Accept"
+msgstr "Akzeptieren"
+
+msgid "Accepted"
+msgstr "Akzeptiert"
+
+msgid "Action"
+msgstr "Maßnahme"
+
 msgid "Actions to address risks and opportunities"
 msgstr "Maßnahmen zum Umgang mit Risiken und Chancen"
+
+msgid "Activity, process, product or service"
+msgstr "Aktivität, Prozess, Produkt oder Service"
 
 msgid "Add role …"
 msgstr "Rolle hinzufügen …"
 
+msgid "Administrative measures"
+msgstr "Behördliche Maßnahmen"
+
 msgid "Administrator"
 msgstr "Administrator"
+
+msgid "Affected assets"
+msgstr "Betroffene Werte (Assets)"
 
 msgid "Analysis and evaluation"
 msgstr "Analyse und Bewertung"
@@ -49,6 +100,18 @@ msgstr "Archiviert"
 msgid "Area"
 msgstr "Bereich"
 
+msgid "Assessed"
+msgstr "Bewertet"
+
+msgid "Assessment"
+msgstr "Bewertung"
+
+msgid "Assessment date"
+msgstr "Bewertungsdatum"
+
+msgid "Assessment scale"
+msgstr "Bewertungsskala"
+
 msgid "Assign"
 msgstr "Zuordnen"
 
@@ -58,11 +121,20 @@ msgstr "Zugeordnete Rollen"
 msgid "Assignment in process step"
 msgstr "Zuordnung im Prozessschritt"
 
+msgid "Audit or hotline finding"
+msgstr "Audit- oder Hinweisgeber-Feststellung"
+
 msgid "Audits"
 msgstr "Audits"
 
 msgid "Authorities of the position"
 msgstr "Befugnisse der Stelle"
+
+msgid "Availability"
+msgstr "Verfügbarkeit"
+
+msgid "Avoid"
+msgstr "Vermeiden"
 
 msgid "Awareness"
 msgstr "Bewusstsein"
@@ -79,6 +151,9 @@ msgstr "Sicherheitsüberprüfung erforderlich"
 msgid "Bank / payment authority"
 msgstr "Bank- / Zahlungsvollmacht"
 
+msgid "Benefit potential"
+msgstr "Nutzenpotenzial"
+
 msgid "Business Enablement"
 msgstr "Business Enablement"
 
@@ -92,11 +167,38 @@ msgstr "Fachliche Freigabe"
 msgid "Business approval by {user}"
 msgstr "Fachlich freigegeben von {user}"
 
+msgid "CCZ"
+msgstr "CCZ"
+
+msgid "CDE"
+msgstr "CDE"
+
+msgid "CMY"
+msgstr "CMY"
+
+msgid "CTW"
+msgstr "CTW"
+
+msgid "CUS"
+msgstr "CUS"
+
 msgid "Cancel"
 msgstr "Abbrechen"
 
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "Cause and consequence"
+msgstr "Ursache und Auswirkung"
+
 msgid "Change history"
 msgstr "Änderungshistorie"
+
+msgid "Change of compliance obligation"
+msgstr "Änderung einer Compliance-Verpflichtung"
+
+msgid "Change of structure or strategy"
+msgstr "Änderung der Struktur oder Strategie"
 
 msgid "Changes to requirements"
 msgstr "Änderungen von Anforderungen"
@@ -107,8 +209,14 @@ msgstr "Andere Person wählen"
 msgid "Choose another person …"
 msgstr "Andere Person wählen …"
 
+msgid "Civil or criminal liability"
+msgstr "Zivil- oder strafrechtliche Haftung"
+
 msgid "Close"
 msgstr "Schließen"
+
+msgid "Closed"
+msgstr "Geschlossen"
 
 msgid "Comment"
 msgstr "Kommentar"
@@ -118,6 +226,9 @@ msgstr "Kommentar (optional)"
 
 msgid "Comment (required to send back)"
 msgstr "Kommentar (für Zurückweisen erforderlich)"
+
+msgid "Comment / review note"
+msgstr "Kommentar / Review-Notiz"
 
 msgid "Commercial power of attorney"
 msgstr "Handlungsvollmacht"
@@ -136,6 +247,12 @@ msgstr "Kompetenz"
 
 msgid "Competence / training"
 msgstr "Kompetenz / Schulung"
+
+msgid "Complaints from individual customers or partners, local media coverage."
+msgstr "Beschwerden einzelner Kunden oder Partner, lokale Berichterstattung."
+
+msgid "Compliance"
+msgstr "Compliance"
 
 msgid "Compliance culture"
 msgstr "Compliance-Kultur"
@@ -166,6 +283,9 @@ msgstr "Compliance-Berichterstattung"
 
 msgid "Compliance risk assessment"
 msgstr "Compliance-Risikobeurteilung"
+
+msgid "Confidentiality"
+msgstr "Vertraulichkeit"
 
 msgid "Confidentiality agreement required"
 msgstr "Vertraulichkeitsvereinbarung erforderlich"
@@ -209,6 +329,12 @@ msgstr "Legt neue Elemente an und pflegt Benutzer."
 msgid "Creating and updating"
 msgstr "Erstellen und Aktualisieren"
 
+msgid "Criminal conviction of officers or employees, existential claims."
+msgstr "Strafrechtliche Verurteilung von Organen oder Mitarbeitenden, existenzbedrohende Ansprüche."
+
+msgid "Customer Repair & Service"
+msgstr "Customer Repair & Service"
+
 msgid "Customer communication"
 msgstr "Kommunikation mit Kunden"
 
@@ -235,6 +361,9 @@ msgstr "Demo-Anmeldung ohne Passwort. Die Administration schaltet sie mit DEMO_L
 
 msgid "Department"
 msgstr "Abteilung"
+
+msgid "Department / function"
+msgstr "Bereich / Funktion"
 
 msgid "Deputised by position"
 msgstr "Vertretung durch Stelle"
@@ -275,6 +404,9 @@ msgstr "Diagramm geändert"
 msgid "Diagram saved"
 msgstr "Diagramm gespeichert"
 
+msgid "Discarded"
+msgstr "Verworfen"
+
 msgid "Documented information"
 msgstr "Dokumentierte Information"
 
@@ -283,6 +415,15 @@ msgstr "Entwurf"
 
 msgid "Draft (in progress)"
 msgstr "Entwurf (in Arbeit)"
+
+msgid "ECC"
+msgstr "ECC"
+
+msgid "EHS"
+msgstr "EHS"
+
+msgid "Economic loss"
+msgstr "Wirtschaftlicher Schaden"
 
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -293,6 +434,9 @@ msgstr "Bearbeitet"
 msgid "Education / qualification"
 msgstr "Ausbildung / Qualifikation"
 
+msgid "Efficiency"
+msgstr "Effizienz"
+
 msgid "Emergency preparedness and response"
 msgstr "Notfallvorsorge und Gefahrenabwehr"
 
@@ -302,8 +446,17 @@ msgstr "Mitarbeiter"
 msgid "Employment process"
 msgstr "Beschäftigungsprozess"
 
+msgid "Engineering"
+msgstr "Engineering"
+
+msgid "Entity"
+msgstr "Gesellschaft"
+
 msgid "Environment for the operation of processes"
 msgstr "Prozessumgebung"
+
+msgid "Environmental"
+msgstr "Umwelt"
 
 msgid "Environmental aspects"
 msgstr "Umweltaspekte"
@@ -332,11 +485,17 @@ msgstr "Festlegen der Qualitätspolitik"
 msgid "Evaluation of compliance"
 msgstr "Bewertung der Einhaltung von Verpflichtungen"
 
+msgid "Expected benefit"
+msgstr "Erwarteter Nutzen"
+
 msgid "Export Control & Customs"
 msgstr "Export Control & Customs"
 
 msgid "External communication"
 msgstr "Externe Kommunikation"
+
+msgid "Facility"
+msgstr "Facility"
 
 msgid "Field"
 msgstr "Feld"
@@ -352,6 +511,12 @@ msgstr "Finance & Admin"
 
 msgid "Finance and Admin"
 msgstr "Finance and Admin"
+
+msgid "Financial"
+msgstr "Finanziell"
+
+msgid "Fine, inspection or withdrawal of individual permits."
+msgstr "Bußgeld, Prüfung oder Entzug einzelner Genehmigungen."
 
 msgid "First name"
 msgstr "Vorname"
@@ -425,14 +590,32 @@ msgstr "Gibt Qualität frei und verwaltet die GRC-Module."
 msgid "Global IT"
 msgstr "Global IT"
 
+msgid "Global Order Processing"
+msgstr "Global Order Processing"
+
+msgid "Global Sourcing"
+msgstr "Global Sourcing"
+
 msgid "Governing body and top management"
 msgstr "Leitungsorgan und oberste Leitung"
+
+msgid "HR"
+msgstr "HR"
+
+msgid "Has not happened yet – not even at comparable companies – but cannot be ruled out."
+msgstr "Ist noch nicht vorgekommen – auch nicht bei vergleichbaren Unternehmen –, kann aber nicht ausgeschlossen werden."
 
 msgid "Headcount (planned)"
 msgstr "Planstellen (Anzahl)"
 
 msgid "Hierarchy & reporting lines"
 msgstr "Hierarchie & Berichtslinien"
+
+msgid "High"
+msgstr "Hoch"
+
+msgid "Higher risk – needs treatment or a documented acceptance"
+msgstr "Höheres Risiko – braucht eine Behandlung oder eine dokumentierte Akzeptanz"
 
 msgid "Holder"
 msgstr "Inhaber"
@@ -452,17 +635,50 @@ msgstr "I&A-Team"
 msgid "ID"
 msgstr "ID"
 
+msgid "ISO 27001 6.1.2 c) 2)"
+msgstr "ISO 27001 6.1.2 c) 2)"
+
+msgid "ISO 27001 6.1.3"
+msgstr "ISO 27001 6.1.3"
+
+msgid "ISO 27001 A.5.9"
+msgstr "ISO 27001 A.5.9"
+
+msgid "ISO 37301 A.4.6"
+msgstr "ISO 37301 A.4.6"
+
+msgid "ISO 9001 / 37301 4.2"
+msgstr "ISO 9001 / 37301 4.2"
+
 msgid "ISO 9001 5.3"
 msgstr "ISO 9001 5.3"
 
 msgid "ISO 9001 7.2"
 msgstr "ISO 9001 7.2"
 
+msgid "ISO references"
+msgstr "Normreferenzen"
+
 msgid "Identification and traceability"
 msgstr "Kennzeichnung und Rückverfolgbarkeit"
 
+msgid "Identified"
+msgstr "Identifiziert"
+
+msgid "Impact"
+msgstr "Schadensausmaß"
+
+msgid "Impact by type of consequence"
+msgstr "Schadensausmaß je Auswirkungsart"
+
+msgid "Implementation status"
+msgstr "Umsetzungsstatus"
+
 msgid "Improvement"
 msgstr "Verbesserung"
+
+msgid "In implementation"
+msgstr "In Umsetzung"
 
 msgid "In my responsibility"
 msgstr "In meiner Verantwortung"
@@ -470,20 +686,44 @@ msgstr "In meiner Verantwortung"
 msgid "In preparation"
 msgstr "In Vorbereitung"
 
+msgid "In treatment"
+msgstr "In Behandlung"
+
 msgid "Incompatible roles (SoD)"
 msgstr "Unvereinbare Rollen (SoD)"
 
 msgid "Information for external providers"
 msgstr "Informationen für externe Anbieter"
 
+msgid "Information security"
+msgstr "Informationssicherheit"
+
+msgid "Information security (optional)"
+msgstr "Informationssicherheit (optional)"
+
 msgid "Infrastructure"
 msgstr "Infrastruktur"
+
+msgid "Injury with lost time or local, reversible environmental impact."
+msgstr "Verletzung mit Arbeitsausfall bzw. örtlich begrenzte, behebbare Umweltbeeinträchtigung."
+
+msgid "Innovation"
+msgstr "Innovation"
 
 msgid "Inputs"
 msgstr "Eingaben (Inputs)"
 
+msgid "Insignificant"
+msgstr "Unbedeutend"
+
 msgid "Integrated management system: processes, roles, positions and responsibilities."
 msgstr "Integriertes Managementsystem: Prozesse, Rollen, Stellen und Verantwortlichkeiten."
+
+msgid "Integrity"
+msgstr "Integrität"
+
+msgid "Interested parties"
+msgstr "Interessierte Parteien"
 
 msgid "Internal approval authority"
 msgstr "Interne Freigabebefugnis"
@@ -503,6 +743,9 @@ msgstr "Untersuchungsprozesse"
 msgid "Job description"
 msgstr "Stellenbeschreibung"
 
+msgid "Justified civil claims of limited amount."
+msgstr "Begründete zivilrechtliche Ansprüche in begrenzter Höhe."
+
 msgid "KPI"
 msgstr "KPI"
 
@@ -514,6 +757,9 @@ msgstr "Nachname"
 
 msgid "Last review"
 msgstr "Letzte Überprüfung"
+
+msgid "Lasting loss of trust in the market, international media coverage."
+msgstr "Nachhaltiger Vertrauensverlust am Markt, internationale Berichterstattung."
 
 msgid "Leadership"
 msgstr "Führung"
@@ -530,6 +776,21 @@ msgstr "Führungsrolle"
 msgid "Legal & Compliance"
 msgstr "Legal & Compliance"
 
+msgid "Legal area / obligation"
+msgstr "Rechtsgebiet / Verpflichtung"
+
+msgid "Likelihood"
+msgstr "Wahrscheinlichkeit"
+
+msgid "Likelihood (rows) × impact (columns)"
+msgstr "Wahrscheinlichkeit (Zeilen) × Ausmaß (Spalten)"
+
+msgid "Likelihood of realisation"
+msgstr "Realisierungswahrscheinlichkeit"
+
+msgid "Linked processes"
+msgstr "Verknüpfte Prozesse"
+
 msgid "Load current values"
 msgstr "Aktuelle Werte laden"
 
@@ -542,14 +803,29 @@ msgstr "Abmelden"
 msgid "Logistics"
 msgstr "Logistik"
 
+msgid "Loss of important customers or partners, national media coverage."
+msgstr "Verlust wichtiger Kunden oder Partner, überregionale Berichterstattung."
+
+msgid "Low"
+msgstr "Gering"
+
 msgid "Main menu"
 msgstr "Hauptmenü"
 
 msgid "Main tasks"
 msgstr "Hauptaufgaben"
 
+msgid "Main type of consequence"
+msgstr "Hauptsächliche Auswirkungsart"
+
 msgid "Management"
 msgstr "Geschäftsführung"
+
+msgid "Management Board - CEO"
+msgstr "Management Board - CEO"
+
+msgid "Management Board - CTO/COO"
+msgstr "Management Board - CTO/COO"
 
 msgid "Management position"
 msgstr "Führungsstelle"
@@ -575,6 +851,12 @@ msgstr "Pflichtrolle"
 msgid "Mandatory training / awareness"
 msgstr "Pflichtschulungen / Awareness"
 
+msgid "Manufacturing Engineering"
+msgstr "Manufacturing Engineering"
+
+msgid "Market"
+msgstr "Markt"
+
 msgid "Marketing"
 msgstr "Marketing"
 
@@ -583,6 +865,24 @@ msgstr "Marketing and Communication"
 
 msgid "Master data"
 msgstr "Stammdaten"
+
+msgid "May occur within 3 years or has already occurred."
+msgstr "Kann innerhalb von 3 Jahren eintreten oder ist bereits eingetreten."
+
+msgid "May occur within 3–5 years."
+msgstr "Kann in 3–5 Jahren eintreten."
+
+msgid "May occur within 5–10 years."
+msgstr "Kann in 5–10 Jahren eintreten."
+
+msgid "Measures to seize it"
+msgstr "Maßnahmen zur Nutzung"
+
+msgid "Medium"
+msgstr "Mittel"
+
+msgid "Merger or acquisition"
+msgstr "Fusion oder Übernahme"
 
 msgid "Model (BPMN)"
 msgstr "Modell (BPMN)"
@@ -596,11 +896,17 @@ msgstr "Überwachung, Messung, Analyse und Bewertung"
 msgid "Name"
 msgstr "Name"
 
+msgid "Near-miss"
+msgstr "Beinahe-Vorfall"
+
 msgid "Needs and expectations of interested parties"
 msgstr "Erfordernisse und Erwartungen interessierter Parteien"
 
 msgid "New entry"
 msgstr "Neuer Eintrag"
+
+msgid "New or changed activity, product or service"
+msgstr "Neue oder geänderte Aktivität, Produkt oder Service"
 
 msgid "New process"
 msgstr "Neuer Prozess"
@@ -617,6 +923,12 @@ msgstr "Noch keine Änderungen protokolliert. Änderungen werden ab jetzt protok
 msgid "No entries."
 msgstr "Keine Einträge."
 
+msgid "No incident, or one noticed only internally."
+msgstr "Kein oder nur intern wahrgenommener Vorfall."
+
+msgid "No or minor injury or environmental impact without lasting effects."
+msgstr "Keine oder geringfügige Verletzung bzw. Umweltbeeinträchtigung ohne bleibende Folgen."
+
 msgid "No position holds this role."
 msgstr "Keine Stelle hat diese Rolle."
 
@@ -626,17 +938,32 @@ msgstr "Keine Prozesse."
 msgid "No roles assigned."
 msgstr "Keine Rollen zugeordnet."
 
+msgid "Noncompliance"
+msgstr "Nichtkonformität"
+
 msgid "Nonconformity and corrective action"
 msgstr "Nichtkonformität und Korrekturmaßnahmen"
 
 msgid "None"
 msgstr "Keine"
 
+msgid "Not yet assessed"
+msgstr "Noch nicht bewertet"
+
+msgid "Notice or inquiry from an authority."
+msgstr "Hinweis oder Rückfrage einer Behörde."
+
 msgid "Notification to authority / register"
 msgstr "Meldung an Behörde / Register"
 
+msgid "Official requirement or warning."
+msgstr "Behördliche Auflage oder Verwarnung."
+
 msgid "Operation"
 msgstr "Operation"
+
+msgid "Operational"
+msgstr "Operativ"
 
 msgid "Operational planning and control"
 msgstr "Betriebliche Planung und Steuerung"
@@ -647,6 +974,9 @@ msgstr "Operations"
 msgid "Opportunities"
 msgstr "Chancen"
 
+msgid "Opportunity"
+msgstr "Chance"
+
 msgid "Org. unit"
 msgstr "Org.-Einheit"
 
@@ -655,6 +985,9 @@ msgstr "Organisationseinheit"
 
 msgid "Organizational knowledge"
 msgstr "Wissen der Organisation"
+
+msgid "Origin"
+msgstr "Herkunft"
 
 msgid "Other"
 msgstr "Other"
@@ -673,6 +1006,15 @@ msgstr "Passwort"
 
 msgid "Performance evaluation"
 msgstr "Bewertung der Leistung"
+
+msgid "Periodic (department session)"
+msgstr "Periodisch (Bereichsworkshop)"
+
+msgid "Permanent harm or death, or widespread irreversible environmental damage."
+msgstr "Bleibende Schäden oder Tod bzw. großflächige, nicht behebbare Umweltschädigung."
+
+msgid "Personal or environmental harm"
+msgstr "Personen- oder Umweltschaden"
 
 msgid "Personal transfer required"
 msgstr "Persönliche Übertragung erforderlich"
@@ -719,6 +1061,9 @@ msgstr "Stellen & Personen"
 msgid "Post-delivery activities"
 msgstr "Tätigkeiten nach der Lieferung"
 
+msgid "Potential"
+msgstr "Potenzial"
+
 msgid "Preservation"
 msgstr "Erhaltung"
 
@@ -746,6 +1091,12 @@ msgstr "Prozessschritt"
 msgid "Processes"
 msgstr "Prozesse"
 
+msgid "Product Marketing"
+msgstr "Product Marketing"
+
+msgid "Product Qualification"
+msgstr "Product Qualification"
+
 msgid "Production and service provision"
 msgstr "Produktion und Dienstleistungserbringung"
 
@@ -758,11 +1109,20 @@ msgstr "Berufserfahrung"
 msgid "Profile"
 msgstr "Steckbrief"
 
+msgid "Prohibition of operations, withdrawal of essential permits or exclusion from tenders."
+msgstr "Betriebsuntersagung, Entzug wesentlicher Genehmigungen oder Ausschluss von Ausschreibungen."
+
+msgid "Project Management (PJM)"
+msgstr "Project Management (PJM)"
+
 msgid "Prokura (general commercial power)"
 msgstr "Prokura"
 
 msgid "Property of customers or external providers"
 msgstr "Eigentum der Kunden oder externer Anbieter"
+
+msgid "Protection goals"
+msgstr "Schutzziele"
 
 msgid "Prototype"
 msgstr "Prototyp"
@@ -775,6 +1135,9 @@ msgstr "Zweck & Anwendungsbereich"
 
 msgid "Purpose of the position"
 msgstr "Ziel / Zweck der Stelle"
+
+msgid "Quality"
+msgstr "Qualität"
 
 msgid "Quality approval by the I&A team"
 msgstr "Qualitätsfreigabe durch das I&A-Team"
@@ -804,14 +1167,29 @@ msgstr "Äußern von Bedenken (Hinweisgebersystem)"
 msgid "Read only"
 msgstr "Nur Lesen"
 
+msgid "Realised"
+msgstr "Realisiert"
+
 msgid "Really delete the process?"
 msgstr "Prozess wirklich löschen?"
 
 msgid "Really delete?"
 msgstr "Wirklich löschen?"
 
+msgid "Reason for the assessment"
+msgstr "Anlass der Bewertung"
+
+msgid "Reason for the impact"
+msgstr "Begründung des Ausmaßes"
+
+msgid "Reason for the likelihood"
+msgstr "Begründung der Wahrscheinlichkeit"
+
 msgid "Record-keeping"
 msgstr "Aufbewahrung von Aufzeichnungen"
+
+msgid "Reduce"
+msgstr "Reduzieren"
 
 msgid "Release of products and services"
 msgstr "Freigabe von Produkten und Dienstleistungen"
@@ -838,6 +1216,9 @@ msgstr "Berichtet disziplinarisch an"
 msgid "Reports functionally to"
 msgstr "Berichtet fachlich an"
 
+msgid "Reputational harm"
+msgstr "Reputationsschaden"
+
 msgid "Required competencies"
 msgstr "Erforderliche Kompetenzen"
 
@@ -859,8 +1240,32 @@ msgstr "Verantwortlichkeiten"
 msgid "Responsibilities & competence"
 msgstr "Verantwortung & Kompetenz"
 
+msgid "Responsible"
+msgstr "Verantwortlich"
+
 msgid "Review of the requirements"
 msgstr "Überprüfung der Anforderungen"
+
+msgid "Risk"
+msgstr "Risiko"
+
+msgid "Risk ID"
+msgstr "Risk-ID"
+
+msgid "Risk category"
+msgstr "Risikokategorie"
+
+msgid "Risk description"
+msgstr "Risikobeschreibung"
+
+msgid "Risk matrix"
+msgstr "Risikomatrix"
+
+msgid "Risk owner"
+msgstr "Risikoeigner"
+
+msgid "Risk score"
+msgstr "Risiko-Score"
 
 msgid "Risks"
 msgstr "Risiken"
@@ -886,6 +1291,9 @@ msgstr "Rollen, Verantwortlichkeiten und Befugnisse"
 msgid "Roles, responsibilities and authorities / compliance function"
 msgstr "Rollen, Verantwortlichkeiten und Befugnisse / Compliance-Funktion"
 
+msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
+msgstr "Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder eine dokumentierte Akzeptanz."
+
 msgid "Sales"
 msgstr "Sales"
 
@@ -906,6 +1314,15 @@ msgstr "Anwendungsbereich des Umweltmanagementsystems"
 
 msgid "Scope of the quality management system"
 msgstr "Anwendungsbereich des QM-Systems"
+
+msgid "Score"
+msgstr "Score"
+
+msgid "Score = likelihood × impact"
+msgstr "Score = Wahrscheinlichkeit × Ausmaß"
+
+msgid "Score = likelihood × impact (1–16). Medium from 4, higher risk above 8."
+msgstr "Score = Wahrscheinlichkeit × Ausmaß (1–16). Mittel ab 4, höheres Risiko über 8."
 
 msgid "Search…"
 msgstr "Suchen…"
@@ -931,8 +1348,20 @@ msgstr "Zurückweisen"
 msgid "Sent back by the I&A team"
 msgstr "Zurückgewiesen vom I&A-Team"
 
+msgid "Serious injury or significant environmental damage requiring lengthy remediation."
+msgstr "Schwere Verletzung bzw. erhebliche Umweltschädigung mit längerer Sanierung."
+
+msgid "Serious to existential"
+msgstr "Schwerwiegend bis existenzbedrohend"
+
 msgid "Set status (administration)"
 msgstr "Status setzen (Administration)"
+
+msgid "Short description of the risk"
+msgstr "Kurzbeschreibung des Risikos"
+
+msgid "Show all"
+msgstr "Alle anzeigen"
 
 msgid "Show changes"
 msgstr "Änderungen anzeigen"
@@ -942,6 +1371,9 @@ msgstr "Stellenbeschreibung (Zusammenfassung) anzeigen"
 
 msgid "Show role description (summary)"
 msgstr "Rollenbeschreibung (Zusammenfassung) anzeigen"
+
+msgid "Show the assessment scale"
+msgstr "Bewertungsskala anzeigen"
 
 msgid "Sign in"
 msgstr "Anmelden"
@@ -955,11 +1387,23 @@ msgstr "Anmeldung fehlgeschlagen."
 msgid "Signed in"
 msgstr "Angemeldet"
 
+msgid "Significant"
+msgstr "Erheblich"
+
+msgid "Significant damage claims or criminal investigation."
+msgstr "Erhebliche Schadensersatzforderungen oder Ermittlungsverfahren."
+
+msgid "Significant external change"
+msgstr "Wesentliche externe Änderung"
+
 msgid "Someone else changed this element in the meantime. Load the current values."
 msgstr "Jemand anderes hat dieses Element inzwischen geändert. Laden Sie die aktuellen Werte."
 
 msgid "Something went wrong."
 msgstr "Etwas ist schiefgelaufen."
+
+msgid "Source"
+msgstr "Quellenangabe"
 
 msgid "Sources of feedback on compliance performance"
 msgstr "Quellen für Rückmeldungen zur Compliance-Leistung"
@@ -986,6 +1430,9 @@ msgstr "Gesetzliche Vertretung (Organ)"
 msgid "Steps with roles"
 msgstr "Schritte mit Rollen"
 
+msgid "Strategic"
+msgstr "Strategisch"
+
 msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
 msgstr "Vorgesetzter und damit Owner der Stelle Director Export Control & Customs."
 
@@ -1006,6 +1453,9 @@ msgstr "Soll-Vollmacht der Stelle"
 
 msgid "Technology"
 msgstr "Technology"
+
+msgid "Test System Solutions"
+msgstr "Test System Solutions"
 
 msgid "The demo sign-in is switched off."
 msgstr "Die Demo-Anmeldung ist abgeschaltet."
@@ -1040,14 +1490,32 @@ msgstr "Bezeichnung des neuen Prozesses"
 msgid "Training"
 msgstr "Schulung"
 
+msgid "Transfer"
+msgstr "Übertragen"
+
+msgid "Treatment actions"
+msgstr "Behandlungsmaßnahmen"
+
+msgid "Treatment option"
+msgstr "Behandlungsoption"
+
+msgid "Treatment status"
+msgstr "Behandlungsstatus"
+
 msgid "Type"
 msgstr "Typ"
 
 msgid "Type and extent of control"
 msgstr "Art und Umfang der Steuerung"
 
+msgid "Type of consequence"
+msgstr "Auswirkungsart"
+
 msgid "Understanding the organization and its context"
 msgstr "Verstehen der Organisation und ihres Kontextes"
+
+msgid "Unfounded or minor claims."
+msgstr "Unbegründete oder geringfügige Ansprüche."
 
 msgid "Unsaved changes"
 msgstr "Ungespeicherte Änderungen"
@@ -1072,6 +1540,9 @@ msgstr "Gültigkeit & Review"
 
 msgid "Version"
 msgstr "Version"
+
+msgid "Very low"
+msgstr "Sehr gering"
 
 msgid "View this state"
 msgstr "Diesen Stand ansehen"
@@ -1134,6 +1605,9 @@ msgstr "legt die Ownership fest – nur Administration und I&A-Team"
 msgid "draft"
 msgstr "Entwurf"
 
+msgid "e.g. workshop minutes, audit report, hotline report"
+msgstr "z. B. Workshop-Protokoll, Auditbericht, Hinweis"
+
 msgid "employee"
 msgstr "Mitarbeiter"
 
@@ -1142,6 +1616,18 @@ msgstr "I&A-Team"
 
 msgid "last changed"
 msgstr "zuletzt geändert"
+
+msgid "law, contract, customer requirement, code · ISO 37301 4.5"
+msgstr "Gesetz, Vertrag, Kundenanforderung, Kodex · ISO 37301 4.5"
+
+msgid "not assessed"
+msgstr "nicht bewertet"
+
+msgid "one responsible person per action"
+msgstr "je Maßnahme ein/e Verantwortliche/r"
+
+msgid "regular interval 12 months"
+msgstr "Regelintervall 12 Monate"
 
 msgid "rejected"
 msgstr "Zurückgewiesen (I&A)"
@@ -1164,11 +1650,18 @@ msgstr "Status gesetzt (Administration)"
 msgid "submitted"
 msgstr "Fachlich freigegeben"
 
+msgid "the first sentence is shown in lists"
+msgstr "der erste Satz erscheint in Listen"
+
 msgid "vacant"
 msgstr "unbesetzt"
 
 msgid "with line management responsibility"
 msgstr "mit disziplinarischer Personalverantwortung"
+
+#, python-brace-format
+msgid "{n} risks"
+msgstr "{n} Risiken"
 
 #, python-brace-format
 msgid "{role} assigned to step {step}"
@@ -1178,6 +1671,12 @@ msgstr "{role} dem Schritt „{step}“ zugeordnet"
 msgid "{role} removed from step {step}"
 msgstr "{role} vom Schritt „{step}“ entfernt"
 
+msgid "— not assessed —"
+msgstr "— nicht bewertet —"
+
 msgid "— not assigned —"
 msgstr "— nicht zugewiesen —"
+
+msgid "≥ 3 m USD"
+msgstr "≥ 3 Mio. USD"
 

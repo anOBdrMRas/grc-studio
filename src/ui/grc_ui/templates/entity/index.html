@@ -6,9 +6,9 @@
   <div class="split-list">
     <div class="mb-2 flex items-center justify-between gap-2">
       <h1 class="text-lg font-bold">{{ _(mod.title) }}</h1>
-      {% if can(mod.manage_perm) %}
+      {% if can(mod.can_create) %}
       <form hx-post="{{ mod.base }}" class="join">
-        <input name="title" class="input input-bordered input-sm join-item w-40" placeholder="{{ _('Title of the new entry') }}" aria-label="{{ _('Title of the new entry') }}" required>
+        <input name="title" class="input input-bordered input-sm join-item w-40" placeholder="{{ _(mod.new_hint) }}" aria-label="{{ _(mod.new_hint) }}" required>
         <button class="btn btn-primary btn-sm join-item">{{ icon("plus") }} {{ _(mod.singular) }}</button>
       </form>
       {% endif %}
@@ -16,6 +16,7 @@
     <form role="search" hx-get="{{ mod.base }}" hx-target="#list" hx-swap="outerHTML" hx-trigger="input delay:300ms from:find input, submit" class="mb-2">
       <label class="input input-bordered input-sm flex items-center gap-2">{{ icon("search") }}<input name="q" value="{{ q }}" class="grow" placeholder="{{ _('Filter…') }}" aria-label="{{ _('Filter…') }}"></label>
     </form>
+    {% if matrix %}{% include "entity/_matrix.html" %}{% endif %}
     {% include "entity/_list.html" %}
   </div>
   <section class="split-detail" id="detail" aria-live="polite">

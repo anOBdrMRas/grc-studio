@@ -1,0 +1,8 @@
+<div class="flex gap-2" data-row>
+  <input name="actions.text" value="{{ a.text }}" class="input input-bordered input-sm grow" placeholder="{{ _('Action') }}" aria-label="{{ _('Action') }}">
+  <select name="actions.owner_user_id" class="select select-bordered select-sm w-1/3" aria-label="{{ _('Responsible') }}">
+    <option value="">{{ _("— not assigned —") }}</option>
+    {% for id_, label in refs["people"] %}<option value="{{ id_ }}" {% if id_ == a.owner_user_id %}selected{% endif %}>{{ label }}</option>{% endfor %}
+  </select>
+  <button type="button" class="btn btn-ghost btn-sm btn-square" data-action="remove-row" aria-label="{{ _('Remove') }}">{{ icon("x") }}</button>
+</div>

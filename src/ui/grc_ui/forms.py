@@ -340,9 +340,277 @@ PROCESS: list[Section] = [
     },
 ]
 
+RISK: list[Section] = [
+    {
+        "title": N_("1 Identify"),
+        "fields": [
+            {"key": "code", "label": N_("Risk ID"), "kind": "readonly"},
+            {"key": "status", "label": N_("Status"), "kind": "status"},
+            {"key": "doc_version", "label": N_("Version"), "kind": "readonly"},
+            {
+                "key": "department",
+                "label": N_("Department / function"),
+                "kind": "select",
+                "options": "risk_departments",
+                "empty": True,
+            },
+            {
+                "key": "category",
+                "label": N_("Risk category"),
+                "kind": "select",
+                "options": "risk_categories",
+                "empty": True,
+            },
+            {
+                "key": "activity",
+                "label": N_("Activity, process, product or service"),
+                "kind": "text",
+                "wide": True,
+            },
+            {
+                "key": "process_ids",
+                "label": N_("Linked processes"),
+                "kind": "refs",
+                "ref": "processes",
+                "wide": True,
+            },
+            {
+                "key": "compliance_obligation",
+                "label": N_("Legal area / obligation"),
+                "kind": "text",
+                "hint": N_("law, contract, customer requirement, code · ISO 37301 4.5"),
+                "wide": True,
+            },
+            {
+                "key": "description",
+                "label": N_("Risk description"),
+                "kind": "textarea",
+                "wide": True,
+                "hint": N_("the first sentence is shown in lists"),
+            },
+            {
+                "key": "cause",
+                "label": N_("Cause and consequence"),
+                "kind": "textarea",
+                "wide": True,
+            },
+            {
+                "key": "owner_user_id",
+                "label": N_("Risk owner"),
+                "kind": "ref",
+                "ref": "people",
+                "hint": N_("ISO 27001 6.1.2 c) 2)"),
+                "owner": True,
+            },
+            {
+                "key": "treatment_status",
+                "label": N_("Treatment status"),
+                "kind": "select",
+                "options": "treatment_statuses",
+            },
+        ],
+    },
+    {
+        "title": N_("2 Analyse"),
+        "fields": [
+            {
+                "key": "consequence_type",
+                "label": N_("Main type of consequence"),
+                "kind": "select",
+                "options": "consequence_types",
+                "empty": True,
+            },
+            {"key": "scale_guide", "label": N_("Assessment scale"), "kind": "risk_guide"},
+            {
+                "key": "likelihood",
+                "label": N_("Likelihood"),
+                "kind": "scale",
+                "options": "likelihood_levels",
+                "hint": N_("1 = very low … 4 = high"),
+            },
+            {
+                "key": "likelihood_reason",
+                "label": N_("Reason for the likelihood"),
+                "kind": "textarea",
+            },
+            {
+                "key": "impact",
+                "label": N_("Impact"),
+                "kind": "scale",
+                "options": "impact_levels",
+                "hint": N_("1 = insignificant … 4 = serious"),
+            },
+            {"key": "impact_reason", "label": N_("Reason for the impact"), "kind": "textarea"},
+        ],
+    },
+    {
+        "title": N_("3 Evaluate"),
+        "fields": [
+            {"key": "assessment", "label": N_("Risk score"), "kind": "risk_eval", "wide": True}
+        ],
+    },
+    {
+        "title": N_("4 Treat"),
+        "fields": [
+            {
+                "key": "treatment",
+                "label": N_("Treatment option"),
+                "kind": "select",
+                "options": "treatments",
+                "empty": True,
+                "hint": N_("ISO 27001 6.1.3"),
+            },
+            {
+                "key": "actions",
+                "label": N_("Treatment actions"),
+                "kind": "risk_actions",
+                "wide": True,
+                "hint": N_("one responsible person per action"),
+            },
+        ],
+    },
+    {
+        "title": N_("5 Monitor"),
+        "fields": [
+            {
+                "key": "assessment_reason",
+                "label": N_("Reason for the assessment"),
+                "kind": "select",
+                "options": "assessment_reasons",
+                "empty": True,
+                "hint": N_("ISO 37301 A.4.6"),
+            },
+            {"key": "last_assessment", "label": N_("Assessment date"), "kind": "date"},
+            {
+                "key": "next_review",
+                "label": N_("Next review"),
+                "kind": "date",
+                "hint": N_("regular interval 12 months"),
+            },
+            {
+                "key": "review_note",
+                "label": N_("Comment / review note"),
+                "kind": "textarea",
+                "wide": True,
+            },
+        ],
+    },
+    {
+        "title": N_("Information security (optional)"),
+        "fields": [
+            {
+                "key": "affected_assets",
+                "label": N_("Affected assets"),
+                "kind": "text",
+                "hint": N_("ISO 27001 A.5.9"),
+            },
+            {
+                "key": "protection_goals",
+                "label": N_("Protection goals"),
+                "kind": "multiselect",
+                "options": "protection_goals",
+            },
+            {
+                "key": "interested_parties",
+                "label": N_("Interested parties"),
+                "kind": "text",
+                "hint": N_("ISO 9001 / 37301 4.2"),
+            },
+        ],
+    },
+    {
+        "title": N_("Origin"),
+        "fields": [
+            {
+                "key": "entity",
+                "label": N_("Entity"),
+                "kind": "select",
+                "options": "risk_entities",
+                "empty": True,
+            },
+            {
+                "key": "source_ref",
+                "label": N_("Source"),
+                "kind": "text",
+                "hint": N_("e.g. workshop minutes, audit report, hotline report"),
+            },
+        ],
+    },
+    {
+        "title": N_("Standard references"),
+        "fields": [{"key": "iso_refs", "label": N_("ISO references"), "kind": "iso", "wide": True}],
+    },
+]
+
+OPPORTUNITY: list[Section] = [
+    {
+        "title": N_("Master data"),
+        "fields": [
+            {"key": "code", "label": N_("ID"), "kind": "readonly"},
+            {"key": "status", "label": N_("Status"), "kind": "status"},
+            {"key": "doc_version", "label": N_("Version"), "kind": "readonly"},
+            {"key": "title", "label": N_("Title"), "kind": "text"},
+            {"key": "description", "label": N_("Description"), "kind": "textarea", "wide": True},
+            {
+                "key": "category",
+                "label": N_("Category"),
+                "kind": "select",
+                "options": "opportunity_categories",
+                "empty": True,
+            },
+            {
+                "key": "progress_status",
+                "label": N_("Implementation status"),
+                "kind": "select",
+                "options": "progress_statuses",
+            },
+            {
+                "key": "owner_role_id",
+                "label": N_("Responsible"),
+                "kind": "ref",
+                "ref": "roles",
+                "owner": True,
+            },
+        ],
+    },
+    {
+        "title": N_("Assessment"),
+        "fields": [
+            {"key": "benefit", "label": N_("Expected benefit"), "kind": "textarea", "wide": True},
+            {
+                "key": "likelihood",
+                "label": N_("Likelihood of realisation"),
+                "kind": "scale",
+                "max": 5,
+                "hint": N_("1 = very low … 5 = very high"),
+            },
+            {
+                "key": "benefit_score",
+                "label": N_("Benefit potential"),
+                "kind": "scale",
+                "max": 5,
+                "hint": N_("1 = very low … 5 = very high"),
+            },
+            {
+                "key": "measures",
+                "label": N_("Measures to seize it"),
+                "kind": "textarea",
+                "wide": True,
+            },
+            {"key": "next_review", "label": N_("Next review"), "kind": "date"},
+        ],
+    },
+    {
+        "title": N_("Standard references"),
+        "fields": [{"key": "iso_refs", "label": N_("ISO references"), "kind": "iso", "wide": True}],
+    },
+]
+
 FORMS: dict[str, list[Section]] = {
     "role": ROLE,
     "position": POSITION,
     "user": USER,
     "process": PROCESS,
+    "risk": RISK,
+    "opportunity": OPPORTUNITY,
 }

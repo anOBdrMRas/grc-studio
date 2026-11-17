@@ -1,0 +1,20 @@
+<div class="flex items-start justify-between">
+  <h2 class="text-xl font-bold">{{ _("Assessment scale") }}</h2>
+  <form method="dialog"><button class="btn btn-ghost btn-sm btn-square" data-action="close-modal" aria-label="{{ _('Close') }}">{{ icon("x") }}</button></form>
+</div>
+<p class="text-sm opacity-70">{{ _("Score = likelihood × impact (1–16). Medium from 4, higher risk above 8.") }}</p>
+<h3 class="mt-3 font-semibold">{{ _("Likelihood") }}</h3>
+<table class="table table-sm">
+  <tbody>
+    {% for name in lists["likelihood_levels"] %}<tr><th class="w-36">{{ loop.index }} – {{ _(name) }}</th><td>{{ _(lists["likelihood_descriptions"][loop.index0]) }}</td></tr>{% endfor %}
+  </tbody>
+</table>
+<h3 class="mt-3 font-semibold">{{ _("Impact by type of consequence") }}</h3>
+<div class="overflow-x-auto">
+  <table class="table table-xs">
+    <thead><tr><th>{{ _("Type of consequence") }}</th>{% for name in lists["impact_levels"] %}<th>{{ loop.index }} – {{ _(name) }}</th>{% endfor %}</tr></thead>
+    <tbody>
+      {% for t, levels in impact.items() %}<tr><th>{{ _(t) }}</th>{% for d in levels %}<td>{{ _(d) }}</td>{% endfor %}</tr>{% endfor %}
+    </tbody>
+  </table>
+</div>
