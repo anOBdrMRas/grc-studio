@@ -70,6 +70,16 @@ MODULES = {
         "kpis",
         (("last_value", N_("Last value")),),
     ),
+    "delegations": Module(
+        "mandate",
+        "/delegations",
+        N_("Delegations & powers of attorney"),
+        N_("Delegation"),
+        "org:read",
+        "org:manage",
+        "mandates",
+        (("recipient_name", N_("Recipient")), ("state", N_("State"))),
+    ),
     "opportunities": Module(
         "opportunity",
         "/opportunities",
@@ -160,6 +170,16 @@ async def detail_context(
             "actor": state["actor_name"],
             "id": revision,
         }
+    # legal-certainty findings and delegations of roles, positions and persons
+    if mod.kind in ("role", "position", "user") and ctx.can("org:read"):
+        key = {"role": "role_id", "position": "position_id", "user": "user_id"}[mod.kind]
+        item["checks"] = [dict(c) for c in await ctx.api.checks_list(**{key: item_id})]
+        item["mandates"] = [
+            dict(m)
+            for m in await ctx.api.mandates_list()
+            if (mod.kind == "user" and m["recipient_user_id"] == item_id)
+            or (mod.kind != "user" and any(c.get("mandate_id") == m["id"] for c in item["checks"]))
+        ]
     spark = None
     if mod.kind == "kpi":
         spark = sparkline([m["value"] for m in item["measurements"]], item["target"])

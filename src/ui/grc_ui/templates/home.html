@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import status_badge, empty %}
+{% from "macros.html" import status_badge, empty, mandate_state %}
 {% block title %}{{ _("Start page") }} · {% endblock %}
 {% block content %}
 <div class="grid gap-4 p-6 lg:grid-cols-2">
@@ -20,9 +20,26 @@
     <h2 class="font-semibold">{{ _("In my responsibility") }} <span class="badge badge-sm">{{ owned|length }}</span></h2>
     {% if owned %}
     <ul class="mt-2 grid gap-1 text-sm">
-      {% for base, kind, x in owned %}<li class="flex items-center gap-2"><a class="link link-secondary grow" href="{{ base }}/{{ x.id }}">{{ x.code }} {{ x.title }}</a> {{ status_badge(x.status) }}</li>{% endfor %}
+      {% for base, kind, x in owned %}<li class="flex items-center gap-2"><a class="link link-secondary grow" href="{{ base }}/{{ x.id }}">{{ x.code }} {{ x.title }}</a> <span class="text-xs opacity-60">{{ _(kind) }}</span> {% if x.status is defined %}{{ status_badge(x.status) }}{% endif %}</li>{% endfor %}
     </ul>
     {% else %}<p class="mt-2 text-sm opacity-70">{{ _("You are not the owner of any element.") }}</p>{% endif %}
+  </section>
+  {% set pending = received|selectattr("state", "equalto", "pending")|list %}
+  <section class="rounded-box border border-base-300 bg-base-100 p-4">
+    <h2 class="font-semibold">{{ _("For me to do") }} <span class="badge badge-sm">{{ todo|length + pending|length + actions|length }}</span></h2>
+    {% if todo or pending or actions %}
+    <ul class="mt-2 grid gap-1 text-sm">
+      {% for m in pending %}<li>{{ icon("alert-triangle", "h-4 w-4 inline text-warning") }} <a class="link link-secondary" href="/delegations/{{ m.id }}">{{ _("Accept delegation: {name}").format(name=m.code ~ " " ~ m.title) }}</a></li>{% endfor %}
+      {% for a in actions %}<li>{{ icon("check", "h-4 w-4 inline") }} {{ a.text }} · <a class="link link-secondary" href="/risks/{{ a.risk.id }}">{{ a.risk.code }} {{ a.risk.title }}</a></li>{% endfor %}
+      {% for c in todo %}<li>{{ icon("alert-triangle", "h-4 w-4 inline text-warning") }} {{ c|check_text }}{% if c.mandate_id %} · <a class="link link-secondary" href="/delegations/{{ c.mandate_id }}">{{ _("open delegation") }}</a>{% endif %}</li>{% endfor %}
+    </ul>
+    {% else %}<p class="mt-2 text-sm opacity-70">{{ _("Nothing to do.") }}</p>{% endif %}
+  </section>
+  <section class="rounded-box border border-base-300 bg-base-100 p-4">
+    <h2 class="font-semibold">{{ _("My delegations & powers of attorney") }} <span class="badge badge-sm">{{ received|length }}</span></h2>
+    {% if received %}
+    <ul class="mt-2 grid gap-1 text-sm">{% for m in received %}<li class="flex items-center gap-2"><a class="link link-secondary grow" href="/delegations/{{ m.id }}">{{ m.code }} {{ m.title }}</a> {{ mandate_state(m.state) }}</li>{% endfor %}</ul>
+    {% else %}<p class="mt-2 text-sm opacity-70">{{ _("No delegations received.") }}</p>{% endif %}
   </section>
 </div>
 {% endblock %}

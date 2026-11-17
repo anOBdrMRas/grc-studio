@@ -2405,6 +2405,13 @@
       },
       "RiskListItem": {
         "properties": {
+          "actions": {
+            "items": {
+              "$ref": "#/components/schemas/RiskAction"
+            },
+            "title": "Actions",
+            "type": "array"
+          },
           "code": {
             "title": "Code",
             "type": "string"
@@ -2470,6 +2477,7 @@
           "score",
           "level",
           "treatment_status",
+          "actions",
           "status",
           "is_owner"
         ],

@@ -34,8 +34,44 @@ async def home(request: Request, ctx: UiContext = Depends(ui_context)) -> Respon
                 owned.append(("/positions", "Position", plain(p)))
             if p["status"] == "review":
                 review.append(("/positions", "Position", plain(p)))
+    me = ctx.me["id"]
+    actions: list[dict[str, Any]] = []
+    if ctx.can("grc:read"):
+        risks = [plain(e) for e in await ctx.api.risks_list()]
+        for base, label, elements in (
+            ("/risks", "Risk", risks),
+            (
+                "/opportunities",
+                "Opportunity",
+                [plain(e) for e in await ctx.api.opportunities_list()],
+            ),
+            ("/controls", "Control", [plain(e) for e in await ctx.api.controls_list()]),
+            ("/kpi", "KPI", [plain(e) for e in await ctx.api.kpis_list()]),
+        ):
+            for e in elements:
+                if e["is_owner"]:
+                    owned.append((base, label, e))
+                if e.get("status") == "review":
+                    review.append((base, label, e))
+        # treatment actions of open risks assigned to me
+        for risk in risks:
+            for a in risk["actions"]:
+                if a.get("owner_user_id") == me and risk["treatment_status"] != "Closed":
+                    actions.append({"risk": risk, "text": a["text"]})
+    received: list[dict[str, Any]] = []
+    todo: list[dict[str, Any]] = []
+    if ctx.can("org:read"):
+        received = [plain(m) for m in await ctx.api.mandates_list() if m["recipient_user_id"] == me]
+        todo = [dict(c) for c in await ctx.api.checks_list(user_id=me)]
     return render(
-        request, "home.html", ctx, owned=owned, review=review if ctx.can("quality:approve") else []
+        request,
+        "home.html",
+        ctx,
+        owned=owned,
+        review=review if ctx.can("quality:approve") else [],
+        received=received,
+        todo=todo,
+        actions=actions,
     )
 
 

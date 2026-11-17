@@ -506,6 +506,7 @@ RiskListItem = TypedDict(
         "score": "int",
         "level": "str",
         "treatment_status": "str",
+        "actions": "list[RiskAction]",
         "status": "str",
         "is_owner": "bool",
     },

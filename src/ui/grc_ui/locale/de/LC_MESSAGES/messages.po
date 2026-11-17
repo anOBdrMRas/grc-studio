@@ -19,6 +19,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+msgid "0 = none"
+msgstr "0 = keine"
+
 msgid "1 = insignificant … 4 = serious"
 msgstr "1 = unbedeutend … 4 = schwerwiegend"
 
@@ -55,8 +58,24 @@ msgstr "< 25 TUSD"
 msgid "Accept"
 msgstr "Akzeptieren"
 
+#, python-brace-format
+msgid "Accept delegation: {name}"
+msgstr "Übertragung annehmen: {name}"
+
+msgid "Accept the delegation"
+msgstr "Annehmen"
+
+msgid "Acceptance missing"
+msgstr "Annahme fehlt"
+
 msgid "Accepted"
 msgstr "Akzeptiert"
+
+msgid "Accepted (recipient)"
+msgstr "Angenommen (Empfänger/in)"
+
+msgid "Accepted / countersigned on"
+msgstr "Angenommen / gegengezeichnet am"
 
 msgid "Action"
 msgstr "Maßnahme"
@@ -78,6 +97,9 @@ msgstr "Administrator"
 
 msgid "Affected assets"
 msgstr "Betroffene Werte (Assets)"
+
+msgid "Amount limit (EUR)"
+msgstr "Betragsgrenze (EUR)"
 
 msgid "Analysis and evaluation"
 msgstr "Analyse und Bewertung"
@@ -305,6 +327,9 @@ msgstr "Vertraulichkeit"
 msgid "Confidentiality agreement required"
 msgstr "Vertraulichkeitsvereinbarung erforderlich"
 
+msgid "Content & scope"
+msgstr "Inhalt & Umfang"
+
 msgid "Context of the organization"
 msgstr "Kontext der Organisation"
 
@@ -395,6 +420,9 @@ msgstr "Datum"
 msgid "Degree of automation"
 msgstr "Automatisierungsgrad"
 
+msgid "Delegation"
+msgstr "Übertragung"
+
 msgid "Delegation of duties"
 msgstr "Pflichtendelegation"
 
@@ -418,6 +446,9 @@ msgstr "Bereich / Funktion"
 
 msgid "Deputised by position"
 msgstr "Vertretung durch Stelle"
+
+msgid "Deputy"
+msgstr "Stellvertretung"
 
 msgid "Deputy inducted"
 msgstr "Vertretung eingearbeitet"
@@ -467,6 +498,9 @@ msgstr "Optimierungsrichtung"
 msgid "Discarded"
 msgstr "Verworfen"
 
+msgid "Document"
+msgstr "Dokument"
+
 msgid "Documented information"
 msgstr "Dokumentierte Information"
 
@@ -475,6 +509,9 @@ msgstr "Entwurf"
 
 msgid "Draft (in progress)"
 msgstr "Entwurf (in Arbeit)"
+
+msgid "Duties / tasks transferred"
+msgstr "Übertragene Pflichten / Aufgaben"
 
 msgid "ECC"
 msgstr "ECC"
@@ -563,6 +600,9 @@ msgstr "Nachweis / Dokumentation"
 msgid "Expected benefit"
 msgstr "Erwarteter Nutzen"
 
+msgid "Expired"
+msgstr "Abgelaufen"
+
 msgid "Export Control & Customs"
 msgstr "Export Control & Customs"
 
@@ -598,6 +638,9 @@ msgstr "Vorname"
 
 msgid "Fit to view"
 msgstr "An Ansicht anpassen"
+
+msgid "For me to do"
+msgstr "Für mich zu tun"
 
 msgid "Formula"
 msgstr "Berechnungsformel"
@@ -683,11 +726,25 @@ msgstr "Global Sourcing"
 msgid "Governing body and top management"
 msgstr "Leitungsorgan und oberste Leitung"
 
+msgid "Grant"
+msgstr "Erteilen"
+
+msgid "Granted (grantor)"
+msgstr "Erteilt (Erteilende/r)"
+
+msgid "Granted by (body)"
+msgstr "Erteilt durch (Organ / Gremium)"
+
+msgid "Granted by (person)"
+msgstr "Erteilt durch (Person)"
+
 msgid "HR"
 msgstr "HR"
 
 msgid "Has not happened yet – not even at comparable companies – but cannot be ruled out."
-msgstr "Ist noch nicht vorgekommen – auch nicht bei vergleichbaren Unternehmen –, kann aber nicht ausgeschlossen werden."
+msgstr ""
+"Ist noch nicht vorgekommen – auch nicht bei vergleichbaren Unternehmen –, kann aber nicht "
+"ausgeschlossen werden."
 
 msgid "Headcount (planned)"
 msgstr "Planstellen (Anzahl)"
@@ -854,6 +911,9 @@ msgstr "Untersuchungsprozesse"
 msgid "Job description"
 msgstr "Stellenbeschreibung"
 
+msgid "Joint representation"
+msgstr "Gesamtvertretung"
+
 msgid "Justification (inclusion / exclusion)"
 msgstr "Begründung (Aufnahme/Ausschluss)"
 
@@ -868,6 +928,9 @@ msgstr "Schlüsselkontrolle (Key Control)"
 
 msgid "Language"
 msgstr "Sprache"
+
+msgid "Last check"
+msgstr "Letzte Kontrolle"
 
 msgid "Last name"
 msgstr "Nachname"
@@ -901,6 +964,12 @@ msgstr "Legal & Compliance"
 
 msgid "Legal area / obligation"
 msgstr "Rechtsgebiet / Verpflichtung"
+
+msgid "Legal basis / requirement"
+msgstr "Rechtsgrundlage / Anforderung"
+
+msgid "Legal-certainty checks"
+msgstr "Prüfungen zur Rechtssicherheit"
 
 msgid "Likelihood"
 msgstr "Wahrscheinlichkeit"
@@ -1031,6 +1100,9 @@ msgstr "Überwachung, Messung, Analyse und Bewertung"
 msgid "Monthly"
 msgstr "Monatlich"
 
+msgid "My delegations & powers of attorney"
+msgstr "Meine Übertragungen & Vollmachten"
+
 msgid "Name"
 msgstr "Name"
 
@@ -1049,6 +1121,9 @@ msgstr "Neue oder geänderte Aktivität, Produkt oder Service"
 msgid "New process"
 msgstr "Neuer Prozess"
 
+msgid "Next check"
+msgstr "Nächste Kontrolle"
+
 msgid "Next review"
 msgstr "Nächste Überprüfung"
 
@@ -1060,6 +1135,9 @@ msgstr "Nein"
 
 msgid "No changes recorded yet. Changes are recorded from now on."
 msgstr "Noch keine Änderungen protokolliert. Änderungen werden ab jetzt protokolliert."
+
+msgid "No delegations received."
+msgstr "Keine Übertragungen erhalten."
 
 msgid "No entries."
 msgstr "Keine Einträge."
@@ -1108,6 +1186,12 @@ msgstr "Nicht geprüft"
 
 msgid "Not yet assessed"
 msgstr "Noch nicht bewertet"
+
+msgid "Not yet valid"
+msgstr "Noch nicht gültig"
+
+msgid "Nothing to do."
+msgstr "Nichts zu tun."
 
 msgid "Notice or inquiry from an authority."
 msgstr "Hinweis oder Rückfrage einer Behörde."
@@ -1172,6 +1256,9 @@ msgstr "Eingeschränkt wirksam"
 msgid "Partially implemented"
 msgstr "Teilweise umgesetzt"
 
+msgid "Parties & reference"
+msgstr "Beteiligte & Bezug"
+
 msgid "Password"
 msgstr "Passwort"
 
@@ -1229,6 +1316,10 @@ msgstr "Stellenbeschreibung"
 msgid "Position holders"
 msgstr "Stelleninhaber"
 
+#, python-brace-format
+msgid "Position {position} provides for {type}, {user} has none."
+msgstr "Stelle „{position}“ sieht {type} vor, {user} hat keine."
+
 msgid "Positions"
 msgstr "Stellen"
 
@@ -1240,6 +1331,9 @@ msgstr "Tätigkeiten nach der Lieferung"
 
 msgid "Potential"
 msgstr "Potenzial"
+
+msgid "Powers (instruction, decision, information rights)"
+msgstr "Befugnisse (Weisungs-, Entscheidungs-, Informationsrechte)"
 
 msgid "Preservation"
 msgstr "Erhaltung"
@@ -1362,6 +1456,9 @@ msgstr "Prozess wirklich löschen?"
 msgid "Really delete?"
 msgstr "Wirklich löschen?"
 
+msgid "Really revoke the delegation?"
+msgstr "Übertragung wirklich widerrufen?"
+
 msgid "Reason for the assessment"
 msgstr "Anlass der Bewertung"
 
@@ -1371,6 +1468,12 @@ msgstr "Begründung des Ausmaßes"
 msgid "Reason for the likelihood"
 msgstr "Begründung der Wahrscheinlichkeit"
 
+msgid "Recipient"
+msgstr "Empfänger"
+
+msgid "Recipient (person)"
+msgstr "Empfänger (Person)"
+
 msgid "Record value"
 msgstr "Wert erfassen"
 
@@ -1379,6 +1482,18 @@ msgstr "Aufbewahrung von Aufzeichnungen"
 
 msgid "Reduce"
 msgstr "Reduzieren"
+
+msgid "Reference: position"
+msgstr "Bezug: Stelle"
+
+msgid "Reference: role"
+msgstr "Bezug: Rolle"
+
+msgid "Register entry / notification to authority"
+msgstr "Registereintrag / Behördenmeldung"
+
+msgid "Registered / notified on"
+msgstr "Eingetragen / gemeldet am"
 
 msgid "Related objective"
 msgstr "Zugehöriges Ziel"
@@ -1408,6 +1523,9 @@ msgstr "Berichtet disziplinarisch an"
 msgid "Reports functionally to"
 msgstr "Berichtet fachlich an"
 
+msgid "Representation"
+msgstr "Vertretung"
+
 msgid "Reputational harm"
 msgstr "Reputationsschaden"
 
@@ -1426,6 +1544,9 @@ msgstr "Anforderungen an Produkte und Dienstleistungen"
 msgid "Resources"
 msgstr "Ressourcen"
 
+msgid "Resources / budget"
+msgstr "Ressourcen / Budget"
+
 msgid "Responsibilities"
 msgstr "Verantwortlichkeiten"
 
@@ -1441,8 +1562,20 @@ msgstr "Verantwortlich für Auswertung"
 msgid "Responsible for measuring"
 msgstr "Verantwortlich für Messung"
 
+msgid "Return"
+msgstr "Zurückgeben"
+
 msgid "Review of the requirements"
 msgstr "Überprüfung der Anforderungen"
+
+msgid "Revoke"
+msgstr "Widerrufen"
+
+msgid "Revoked"
+msgstr "Widerrufen"
+
+msgid "Revoked on"
+msgstr "Widerrufen am"
 
 msgid "Risk"
 msgstr "Risiko"
@@ -1496,7 +1629,9 @@ msgid "Roles, responsibilities and authorities / compliance function"
 msgstr "Rollen, Verantwortlichkeiten und Befugnisse / Compliance-Funktion"
 
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
-msgstr "Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder eine dokumentierte Akzeptanz."
+msgstr ""
+"Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder "
+"eine dokumentierte Akzeptanz."
 
 msgid "Sales"
 msgstr "Sales"
@@ -1609,6 +1744,9 @@ msgstr "Erhebliche Schadensersatzforderungen oder Ermittlungsverfahren."
 msgid "Significant external change"
 msgstr "Wesentliche externe Änderung"
 
+msgid "Sole representation"
+msgstr "Einzelvertretung"
+
 msgid "Someone else changed this element in the meantime. Load the current values."
 msgstr "Jemand anderes hat dieses Element inzwischen geändert. Laden Sie die aktuellen Werte."
 
@@ -1630,6 +1768,9 @@ msgstr "Normbezug"
 msgid "Start page"
 msgstr "Startseite"
 
+msgid "State"
+msgstr "Zustand"
+
 #, python-brace-format
 msgid "State of {date} ({user}) – read only, no restore."
 msgstr "Stand vom {date} ({user}) – nur Lesen, kein Wiederherstellen."
@@ -1649,8 +1790,17 @@ msgstr "Schritte mit Rollen"
 msgid "Strategic"
 msgstr "Strategisch"
 
+msgid "Sub-delegation allowed"
+msgstr "Weiterdelegation erlaubt"
+
 msgid "Suggested"
 msgstr "Vorschlag"
+
+msgid "Supervision by the delegating person"
+msgstr "Überwachung durch den Delegierenden"
+
+msgid "Supervision measure"
+msgstr "Überwachungsmaßnahme"
 
 msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
 msgstr "Vorgesetzter und damit Owner der Stelle Director Export Control & Customs."
@@ -1748,6 +1898,9 @@ msgstr "Art und Umfang der Steuerung"
 msgid "Type of consequence"
 msgstr "Auswirkungsart"
 
+msgid "Type of transfer"
+msgstr "Art der Übertragung"
+
 msgid "Understanding the organization and its context"
 msgstr "Verstehen der Organisation und ihres Kontextes"
 
@@ -1778,6 +1931,15 @@ msgstr "Benutzerverwaltung"
 msgid "User name"
 msgstr "Benutzername"
 
+msgid "Valid from"
+msgstr "Gültig ab"
+
+msgid "Valid until"
+msgstr "Gültig bis"
+
+msgid "Validity & evidence"
+msgstr "Gültigkeit & Nachweis"
+
 msgid "Validity & review"
 msgstr "Gültigkeit & Review"
 
@@ -1798,6 +1960,9 @@ msgstr "Diesen Stand ansehen"
 
 msgid "Waiting for the I&A approval"
 msgstr "Wartet auf I&A-Freigabe"
+
+msgid "Waiting for the acceptance by the recipient"
+msgstr "Wartet auf die Annahme durch den Empfänger"
 
 msgid "Warning"
 msgstr "Warnung"
@@ -1836,14 +2001,24 @@ msgstr "Vergrößern"
 msgid "Zoom out"
 msgstr "Verkleinern"
 
+msgid "accepted"
+msgstr "Angenommen (Empfänger/in)"
+
+msgid "active"
+msgstr "Wirksam"
+
 msgid "admin"
 msgstr "Administrator"
 
 msgid "after"
 msgstr "nachher"
 
-msgid "applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the position or a transfer"
-msgstr "gilt für jeden Inhaber, z. B. Informations-, Prüf-, Vetorecht; Beträge und Vollmachten an der Stelle bzw. als Übertragung"
+msgid ""
+"applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the"
+" position or a transfer"
+msgstr ""
+"gilt für jeden Inhaber, z. B. Informations-, Prüf-, Vetorecht; Beträge und Vollmachten an der "
+"Stelle bzw. als Übertragung"
 
 msgid "approved"
 msgstr "Qualität freigegeben (I&A)"
@@ -1854,20 +2029,50 @@ msgstr "Archiviert"
 msgid "before"
 msgstr "vorher"
 
+msgid "clearly delimited"
+msgstr "klar abgegrenzt"
+
+msgid "declined"
+msgstr "Abgelehnt / zurückgegeben"
+
 msgid "defines and reviews the role"
 msgstr "definiert und reviewt die Rolle"
 
 msgid "defines the ownership – administration and I&A team only"
 msgstr "legt die Ownership fest – nur Administration und I&A-Team"
 
+msgid "document name, storage location or link"
+msgstr "Dokumentenname, Ablageort oder Link"
+
 msgid "draft"
 msgstr "Entwurf"
+
+msgid "e.g. Art. 37 GDPR, § 13 (2) ArbSchG, §§ 48 ff. HGB"
+msgstr "z. B. Art. 37 DSGVO, § 13 Abs. 2 ArbSchG, §§ 48 ff. HGB"
+
+msgid "e.g. commercial register, BAFA, data protection authority"
+msgstr "z. B. Handelsregister, BAFA, Datenschutzaufsicht"
+
+msgid "e.g. shareholders' meeting"
+msgstr "z. B. Gesellschafterversammlung"
 
 msgid "e.g. workshop minutes, audit report, hotline report"
 msgstr "z. B. Workshop-Protokoll, Auditbericht, Hinweis"
 
 msgid "employee"
 msgstr "Mitarbeiter"
+
+msgid "empty = unlimited"
+msgstr "leer = unbefristet"
+
+msgid "expired"
+msgstr "Abgelaufen"
+
+msgid "future"
+msgstr "Noch nicht gültig"
+
+msgid "granted"
+msgstr "Erteilt (Erteilende/r)"
 
 msgid "higher"
 msgstr "größer ist besser"
@@ -1893,6 +2098,12 @@ msgstr "nicht bewertet"
 msgid "one responsible person per action"
 msgstr "je Maßnahme ein/e Verantwortliche/r"
 
+msgid "open delegation"
+msgstr "Übertragung öffnen"
+
+msgid "pending"
+msgstr "Annahme fehlt"
+
 msgid "regular interval 12 months"
 msgstr "Regelintervall 12 Monate"
 
@@ -1910,6 +2121,12 @@ msgstr "von Norm, Gesetz oder Behörde gefordert, z. B. ISB, DSB, Ausfuhrverantw
 
 msgid "review"
 msgstr "I&A-Review"
+
+msgid "revoked"
+msgstr "Widerrufen"
+
+msgid "selection, instruction, supervision (§ 130 OWiG)"
+msgstr "Auswahl, Einweisung, Überwachung (§ 130 OWiG)"
 
 msgid "status"
 msgstr "Status gesetzt (Administration)"
@@ -1935,6 +2152,42 @@ msgid "{item} removed from step {step}"
 msgstr "{item} aus Schritt {step} entfernt"
 
 #, python-brace-format
+msgid "{mandate}: amount limit {amount} EUR above the limit of the position ({limit} EUR)."
+msgstr "{mandate}: Betragsgrenze {amount} EUR über dem Limit der Stelle ({limit} EUR)."
+
+#, python-brace-format
+msgid "{mandate}: delegation of duties without defined supervision."
+msgstr "{mandate}: Pflichtendelegation ohne festgelegte Überwachung."
+
+#, python-brace-format
+msgid "{mandate}: exceeds the target power of attorney of the position {position}."
+msgstr "{mandate}: geht über die Soll-Vollmacht der Stelle „{position}“ hinaus."
+
+#, python-brace-format
+msgid "{mandate}: expires on {date}."
+msgstr "{mandate}: läuft am {date} ab."
+
+#, python-brace-format
+msgid "{mandate}: no recipient set."
+msgstr "{mandate}: kein Empfänger festgelegt."
+
+#, python-brace-format
+msgid "{mandate}: sole authority for payments – four-eyes principle not ensured."
+msgstr "{mandate}: Einzelvollmacht für Zahlungen – Vier-Augen-Prinzip nicht gewährleistet."
+
+#, python-brace-format
+msgid "{mandate}: supervision overdue (due {date})."
+msgstr "{mandate}: Überwachung überfällig (fällig {date})."
+
+#, python-brace-format
+msgid "{mandate}: {user} has left or is inactive – revoke it."
+msgstr "{mandate}: {user} ist ausgeschieden oder inaktiv – widerrufen."
+
+#, python-brace-format
+msgid "{mandate}: {user} no longer holds the role (change of position?)."
+msgstr "{mandate}: {user} hat die Rolle nicht mehr (Stellenwechsel?)."
+
+#, python-brace-format
 msgid "{n} risks"
 msgstr "{n} Risiken"
 
@@ -1949,6 +2202,26 @@ msgstr "{role} dem Schritt „{step}“ zugeordnet"
 #, python-brace-format
 msgid "{role} removed from step {step}"
 msgstr "{role} vom Schritt „{step}“ entfernt"
+
+#, python-brace-format
+msgid "{role}: notification to {authority} for {user} not documented."
+msgstr "„{role}“: Meldung an {authority} für {user} nicht nachgewiesen."
+
+#, python-brace-format
+msgid "{role}: the {type} for {user} has expired."
+msgstr "„{role}“: {type} für {user} ist abgelaufen."
+
+#, python-brace-format
+msgid "{role}: {type} for {user} without a written document."
+msgstr "„{role}“: {type} für {user} ohne schriftliches Dokument."
+
+#, python-brace-format
+msgid "{role}: {user} has no effective {type}."
+msgstr "„{role}“: {user} hat keine wirksame {type}."
+
+#, python-brace-format
+msgid "{role}: {user} has not accepted the {type}."
+msgstr "„{role}“: {user} hat die {type} nicht angenommen."
 
 msgid "— not assessed —"
 msgstr "— nicht bewertet —"

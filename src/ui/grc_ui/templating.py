@@ -52,6 +52,15 @@ def num(v: float | int) -> str:
 
 
 env.filters["num"] = num
+
+
+def check_text(check: dict[str, Any]) -> str:
+    """A legal-certainty finding of the API in the current language (catalogue values translated)."""
+    values = {k: gettext(v) if k == "type" else v for k, v in check["vars"].items()}
+    return gettext(check["message"]).format(**values)
+
+
+env.filters["check_text"] = check_text
 env.tests["startingwith"] = lambda s, prefix: str(s).startswith(prefix)
 
 

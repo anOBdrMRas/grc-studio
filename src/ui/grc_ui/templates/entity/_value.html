@@ -1,8 +1,9 @@
 {# read view of one field value: f (definition), v (value), item.labels, iso, lists #}
-{% from "macros.html" import status_badge %}
+{% from "macros.html" import status_badge, mandate_state %}
 {% if f.kind in ("text", "textarea") %}{% if v %}<div class="field-value">{{ v }}</div>{% else %}<span class="opacity-50">–</span>{% endif %}
 {% elif f.kind == "readonly" %}<span class="font-mono text-sm">{{ v or "–" }}</span>
 {% elif f.kind == "status" %}{{ status_badge(v) }}
+{% elif f.kind == "mandate_state" %}{{ mandate_state(v) }}
 {% elif f.kind == "bool" %}{{ _("Yes") if v else _("No") }}
 {% elif f.kind == "decimal" %}{{ v|num if v is not none else "–" }}
 {% elif f.kind == "number" %}{{ v if v is not none else "–" }}
