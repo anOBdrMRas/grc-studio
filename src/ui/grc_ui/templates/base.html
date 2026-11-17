@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
-{% from "macros.html" import brand_mark, theme_toggle %}
+{% from "macros.html" import theme_toggle %}
 {% block body_attrs %} hx-headers='{{ {"X-CSRF-Token": csrf_token}|tojson }}'{% endblock %}
 {% block body %}
 <header class="app-header">
   <div class="flex items-center justify-between gap-3 px-4 py-2">
     <a href="/" class="flex items-center gap-2 font-brand text-lg font-extrabold" aria-label="GRC Studio">
-      {{ brand_mark() }}<span>GRC <span class="font-medium text-secondary">Studio</span></span>
+      <span>GRC <span class="font-medium text-secondary">Studio</span></span>
       <span class="ml-2 text-[11px] font-medium uppercase tracking-wider opacity-60">{{ _("Prototype") }}</span>
     </a>
     <div class="flex items-center gap-3">
