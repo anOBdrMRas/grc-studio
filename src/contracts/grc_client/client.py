@@ -53,6 +53,31 @@ class GrcClient:
             return None
         return r.json()
 
+    async def ai_settings_get(self) -> AiSettingsOut:
+        """GET /api/v1/ai/settings (permission: ai:manage)."""
+        return cast("AiSettingsOut", await self._call("GET", "/api/v1/ai/settings"))
+
+    async def ai_settings_update(
+        self, body: AiSettingsIn, if_match: str | None = None
+    ) -> AiSettingsOut:
+        """PUT /api/v1/ai/settings (permission: ai:manage)."""
+        return cast(
+            "AiSettingsOut",
+            await self._call("PUT", "/api/v1/ai/settings", json=body, if_match=if_match),
+        )
+
+    async def ai_test(self) -> AiTestOut:
+        """POST /api/v1/ai/test (permission: ai:manage)."""
+        return cast("AiTestOut", await self._call("POST", "/api/v1/ai/test"))
+
+    async def assistant_status(self) -> AssistantStatus:
+        """GET /api/v1/assistant (permission: people:read)."""
+        return cast("AssistantStatus", await self._call("GET", "/api/v1/assistant"))
+
+    async def assistant_ask(self, body: AskIn) -> AskOut:
+        """POST /api/v1/assistant/ask (permission: people:read)."""
+        return cast("AskOut", await self._call("POST", "/api/v1/assistant/ask", json=body))
+
     async def audits_list(self) -> list[AuditListItem]:
         """GET /api/v1/audits (permission: grc:read)."""
         return cast("list[AuditListItem]", await self._call("GET", "/api/v1/audits"))

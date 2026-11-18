@@ -1,6 +1,179 @@
 {
   "components": {
     "schemas": {
+      "AiSettingsIn": {
+        "properties": {
+          "api_key": {
+            "default": "",
+            "description": "new key; empty keeps the stored one",
+            "title": "Api Key",
+            "type": "string"
+          },
+          "enabled": {
+            "default": false,
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "model": {
+            "default": "claude-opus-5-5",
+            "title": "Model",
+            "type": "string"
+          },
+          "remove_key": {
+            "default": false,
+            "title": "Remove Key",
+            "type": "boolean"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version"
+        ],
+        "title": "AiSettingsIn",
+        "type": "object"
+      },
+      "AiSettingsOut": {
+        "properties": {
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "has_key": {
+            "description": "an API key is stored (it is never returned)",
+            "title": "Has Key",
+            "type": "boolean"
+          },
+          "key_hint": {
+            "description": "last four characters of the stored key",
+            "title": "Key Hint",
+            "type": "string"
+          },
+          "key_readable": {
+            "description": "the stored key can be decrypted with SETTINGS_SECRET",
+            "title": "Key Readable",
+            "type": "boolean"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "models": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Models",
+            "type": "array"
+          },
+          "secret_configured": {
+            "description": "SETTINGS_SECRET is set on the server",
+            "title": "Secret Configured",
+            "type": "boolean"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version",
+          "enabled",
+          "model",
+          "models",
+          "has_key",
+          "key_readable",
+          "key_hint",
+          "secret_configured"
+        ],
+        "title": "AiSettingsOut",
+        "type": "object"
+      },
+      "AiTestOut": {
+        "properties": {
+          "code": {
+            "description": "ok, no_key, ai_auth, ai_busy, ai_rejected, ai_unavailable",
+            "title": "Code",
+            "type": "string"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok",
+          "code"
+        ],
+        "title": "AiTestOut",
+        "type": "object"
+      },
+      "AskIn": {
+        "properties": {
+          "history": {
+            "items": {
+              "$ref": "#/components/schemas/Turn"
+            },
+            "maxItems": 20,
+            "title": "History",
+            "type": "array"
+          },
+          "lang": {
+            "default": "de",
+            "title": "Lang",
+            "type": "string"
+          },
+          "question": {
+            "maxLength": 2000,
+            "title": "Question",
+            "type": "string"
+          }
+        },
+        "required": [
+          "question"
+        ],
+        "title": "AskIn",
+        "type": "object"
+      },
+      "AskOut": {
+        "properties": {
+          "error": {
+            "default": "",
+            "description": "why the AI did not answer (search mode)",
+            "title": "Error",
+            "type": "string"
+          },
+          "hits": {
+            "description": "search hits (search mode)",
+            "items": {
+              "$ref": "#/components/schemas/Hit"
+            },
+            "title": "Hits",
+            "type": "array"
+          },
+          "mode": {
+            "enum": [
+              "ai",
+              "search"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "text": {
+            "description": "answer with links [[kind:id|label]] (AI mode)",
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "mode",
+          "text",
+          "hits"
+        ],
+        "title": "AskOut",
+        "type": "object"
+      },
       "Assessment": {
         "properties": {
           "high": {
@@ -29,6 +202,20 @@
           "high"
         ],
         "title": "Assessment",
+        "type": "object"
+      },
+      "AssistantStatus": {
+        "properties": {
+          "ai": {
+            "description": "the AI answers; otherwise the catalogue search does",
+            "title": "Ai",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ai"
+        ],
+        "title": "AssistantStatus",
         "type": "object"
       },
       "AuditListItem": {
@@ -1243,6 +1430,34 @@
           }
         },
         "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "Hit": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "sub": {
+            "title": "Sub",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "label",
+          "sub"
+        ],
+        "title": "Hit",
         "type": "object"
       },
       "Holder": {
@@ -3991,6 +4206,29 @@
         "title": "StepRoleIn",
         "type": "object"
       },
+      "Turn": {
+        "properties": {
+          "role": {
+            "enum": [
+              "user",
+              "assistant"
+            ],
+            "title": "Role",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 8000,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "text"
+        ],
+        "title": "Turn",
+        "type": "object"
+      },
       "Usage": {
         "description": "A process step the element is assigned to.",
         "properties": {
@@ -4407,6 +4645,174 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/v1/ai/settings": {
+      "get": {
+        "operationId": "ai_settings_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiSettingsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Ai Settings Get",
+        "tags": [
+          "assistant"
+        ],
+        "x-permission": "ai:manage"
+      },
+      "put": {
+        "operationId": "ai_settings_update",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiSettingsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiSettingsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Ai Settings Update",
+        "tags": [
+          "assistant"
+        ],
+        "x-permission": "ai:manage"
+      }
+    },
+    "/api/v1/ai/test": {
+      "post": {
+        "description": "Sends a short request with the stored key and model.",
+        "operationId": "ai_test",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiTestOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Ai Test",
+        "tags": [
+          "assistant"
+        ],
+        "x-permission": "ai:manage"
+      }
+    },
+    "/api/v1/assistant": {
+      "get": {
+        "operationId": "assistant_status",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssistantStatus"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Assistant Status",
+        "tags": [
+          "assistant"
+        ],
+        "x-permission": "people:read"
+      }
+    },
+    "/api/v1/assistant/ask": {
+      "post": {
+        "description": "Answer with links to elements the person may open (AI, or catalogue search without it).",
+        "operationId": "assistant_ask",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AskIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AskOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Assistant Ask",
+        "tags": [
+          "assistant"
+        ],
+        "x-permission": "people:read"
+      }
+    },
     "/api/v1/audits": {
       "get": {
         "operationId": "audits_list",

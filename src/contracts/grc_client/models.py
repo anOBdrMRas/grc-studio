@@ -3,7 +3,44 @@
 from typing import Any, TypedDict
 
 
+AiSettingsIn = TypedDict(
+    "AiSettingsIn",
+    {"version": "int", "enabled": "bool", "model": "str", "api_key": "str", "remove_key": "bool"},
+    total=False,
+)
+
+
+AiSettingsOut = TypedDict(
+    "AiSettingsOut",
+    {
+        "version": "int",
+        "enabled": "bool",
+        "model": "str",
+        "models": "list[str]",
+        "has_key": "bool",
+        "key_readable": "bool",
+        "key_hint": "str",
+        "secret_configured": "bool",
+    },
+    total=False,
+)
+
+
+AiTestOut = TypedDict("AiTestOut", {"ok": "bool", "code": "str"}, total=False)
+
+
+AskIn = TypedDict("AskIn", {"question": "str", "history": "list[Turn]", "lang": "str"}, total=False)
+
+
+AskOut = TypedDict(
+    "AskOut", {"mode": "str", "text": "str", "hits": "list[Hit]", "error": "str"}, total=False
+)
+
+
 Assessment = TypedDict("Assessment", {"score": "int", "level": "str", "high": "bool"}, total=False)
+
+
+AssistantStatus = TypedDict("AssistantStatus", {"ai": "bool"}, total=False)
 
 
 AuditListItem = TypedDict(
@@ -261,6 +298,9 @@ FindingOut = TypedDict(
 HTTPValidationError = TypedDict(
     "HTTPValidationError", {"detail": "list[ValidationError]"}, total=False
 )
+
+
+Hit = TypedDict("Hit", {"kind": "str", "id": "str", "label": "str", "sub": "str"}, total=False)
 
 
 Holder = TypedDict(
@@ -829,6 +869,9 @@ StepRole = TypedDict(
 StepRoleIn = TypedDict(
     "StepRoleIn", {"role_id": "str", "raci": "str", "version": "int | None"}, total=False
 )
+
+
+Turn = TypedDict("Turn", {"role": "str", "text": "str"}, total=False)
 
 
 Usage = TypedDict(

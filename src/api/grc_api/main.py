@@ -12,6 +12,7 @@ from grc_api.db import get_sessionmaker
 from grc_api.errors import install
 from grc_api.migrate import upgrade_async
 from grc_api.routers import (
+    assistant,
     audits,
     auth,
     content,
@@ -85,6 +86,7 @@ def create_app(*, run_lifespan: bool = True) -> FastAPI:
         mandates.router,
         audits.router,
         content.router,
+        assistant.router,
     ):
         app.include_router(r)
     return app

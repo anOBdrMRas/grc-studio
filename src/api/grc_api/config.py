@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     # Load the demo data at start when the database is empty.
     seed_demo_on_empty: bool = False
     log_level: str = "INFO"
+    # encrypts secrets stored in the database (AI API key); changing it makes them unreadable
+    settings_secret: str = ""
 
     @property
     def secure_cookies(self) -> bool:

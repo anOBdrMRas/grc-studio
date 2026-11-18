@@ -17,6 +17,7 @@ PERMISSIONS: Final[dict[str, str]] = {
     "quality:approve": "Give or refuse the I&A quality approval",
     "workflow:set-status": "Set the approval status directly",
     "content:manage": "Maintain custom fields and additional dropdown values",
+    "ai:manage": "Configure the AI assistant (API key, model)",
 }
 
 SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
@@ -51,6 +52,7 @@ SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
             "cockpit:read",
             "workflow:set-status",
             "content:manage",
+            "ai:manage",
         }
     ),
 }
