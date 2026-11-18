@@ -190,7 +190,7 @@ def decode(f: dict[str, Any], raw: Any, lk: Lookups) -> Any:
             raise ValueError(gettext("Number expected: {value}").format(value=text)) from None
     if kind == "decimal":
         if not text:
-            return 0.0
+            return None if f.get("nullable") else 0.0
         try:
             return float(text.replace(",", "."))
         except ValueError:
@@ -304,8 +304,11 @@ def read_rows(content: bytes, sections: list[Section], lk: Lookups) -> tuple[lis
 
 def _same(a: Any, b: Any) -> bool:
     """Equal for the import preview: empty values alike, numbers by value."""
-    empty: tuple[Any, ...] = (None, "", [])
-    if a in empty and b in empty:
+
+    def empty(x: Any) -> bool:
+        return x is None or x is False or x == "" or x == []
+
+    if empty(a) and empty(b):
         return True
     if isinstance(a, int | float) and isinstance(b, int | float):
         return float(a) == float(b)

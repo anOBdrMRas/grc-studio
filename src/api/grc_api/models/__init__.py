@@ -14,6 +14,7 @@ from grc_api.models.grc import (
 from grc_api.models.org import Mandate, Position, PositionRole, Role, User
 from grc_api.models.process import Process, StepAssignment
 from grc_api.models.session import UserSession
+from grc_api.models.settings import Setting
 
 __all__ = [
     "Audit",
@@ -29,6 +30,7 @@ __all__ = [
     "Process",
     "Risk",
     "Role",
+    "Setting",
     "StepAssignment",
     "StepLink",
     "User",

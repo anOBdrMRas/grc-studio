@@ -80,6 +80,7 @@ async def role_view(
     return RoleOut(
         **common.fields_of(r, RoleFields),
         id=r.id,
+        custom=r.custom,
         code=r.code,
         status=r.status,
         doc_version=r.doc_version,
@@ -224,6 +225,7 @@ async def position_view(db: AsyncSession, position_id: str, p: Principal) -> Pos
     return PositionOut(
         **_pos_fields(x, org),
         id=x.id,
+        custom=x.custom,
         code=x.code,
         status=x.status,
         doc_version=x.doc_version,
@@ -324,8 +326,8 @@ async def state(db: AsyncSession, kind: str, id_: str, revision_id: int, p: Prin
     org = await load_org(db)
     if kind == "role":
         r = await common.get_or_404(db, Role, id_)
-        current = common.fields_of(r, RoleFields)
+        current = common.state_of(r, RoleFields)
     else:
         x = await common.get_or_404(db, Position, id_)
-        current = _pos_fields(x, org)
+        current = _pos_fields(x, org) | dict(x.custom or {})
     return await common.state_after(db, kind, id_, revision_id, current, org)

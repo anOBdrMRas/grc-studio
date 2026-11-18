@@ -45,6 +45,9 @@ class IcsGap(BaseModel):
 
 
 class ProcessOut(ProcessFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     status: str

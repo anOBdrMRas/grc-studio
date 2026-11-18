@@ -18,6 +18,10 @@ class Versioned:
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now()
     )
+    # values of the custom fields defined in the content administration ("x_…" → value)
+    custom: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, nullable=False, default=dict, server_default="{}"
+    )
 
 
 class Approvable:

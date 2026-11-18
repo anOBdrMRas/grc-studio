@@ -7,8 +7,9 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 
 from grc_client import ApiError
+from grc_ui import content
+from grc_ui.content import flat
 from grc_ui.formdata import values_from_form
-from grc_ui.forms import FORMS
 from grc_ui.i18n import N_, gettext
 from grc_ui.routes.common import catalogs, iso_labels, plain, ref_options
 from grc_ui.session import UiContext, field_errors, problem_text, ui_context
@@ -46,8 +47,9 @@ async def create(request: Request, ctx: UiContext = Depends(ui_context)) -> Resp
 async def _profile_ctx(
     ctx: UiContext, process_id: str, revision: int | None = None, view: str = ""
 ) -> dict[str, Any]:
-    item = plain(await ctx.api.processes_get(process_id))
+    item = flat(plain(await ctx.api.processes_get(process_id)))
     cat = await catalogs(ctx.api)
+    cfg = await content.load(ctx.api, cat["lists"])
     shown = dict(item)
     banner = None
     if view == "released" and item.get("released"):
@@ -62,9 +64,9 @@ async def _profile_ctx(
         "mod": {"kind": "process", "base": "/processes", "singular": N_("Process")},
         "item": item,
         "shown": shown,
-        "sections": FORMS["process"],
+        "sections": cfg.sections("process"),
         "iso": iso_labels(cat),
-        "lists": cat["lists"],
+        "lists": cfg.lists,
         "banner": banner,
         "self_url": b,
         "edit_url": f"{b}/edit",
@@ -117,7 +119,8 @@ async def profile_save(
     request: Request, process_id: str, ctx: UiContext = Depends(ui_context)
 ) -> Response:
     form = await request.form()
-    values = values_from_form(FORMS["process"], form, ctx.can("processes:manage"))
+    cfg = await content.load(ctx.api, (await catalogs(ctx.api))["lists"])
+    values = values_from_form(cfg.sections("process"), form, ctx.can("processes:manage"))
     try:
         await ctx.api.processes_update(
             process_id, {"version": int(str(form.get("version"))), "values": values}
@@ -192,7 +195,7 @@ async def history(
     request: Request, process_id: str, ctx: UiContext = Depends(ui_context)
 ) -> Response:
     revisions = [dict(r) for r in await ctx.api.processes_history(process_id)]
-    labels = {f["key"]: f["label"] for s in FORMS["process"] for f in s["fields"]}
+    labels = (await content.load(ctx.api, {})).labels("process")
     return render(
         request,
         "entity/_history.html",

@@ -92,8 +92,17 @@ msgstr "Aktive Benutzer ohne Stelle"
 msgid "Activity, process, product or service"
 msgstr "Aktivität, Prozess, Produkt oder Service"
 
+msgid "Add field"
+msgstr "Feld hinzufügen"
+
 msgid "Add role …"
 msgstr "Rolle hinzufügen …"
+
+msgid "Additional details"
+msgstr "Weitere Angaben"
+
+msgid "Administration"
+msgstr "Administration"
 
 msgid "Administrative measures"
 msgstr "Behördliche Maßnahmen"
@@ -144,8 +153,12 @@ msgstr "Archiviert"
 msgid "Area"
 msgstr "Bereich"
 
-msgid "As the responsible person you document the cause, the corrective action and the progress. The auditors check the effectiveness and close the finding."
-msgstr "Als verantwortliche Person dokumentieren Sie Ursache, Korrekturmaßnahme und Fortschritt. Die Auditoren prüfen die Wirksamkeit und schließen die Feststellung."
+msgid ""
+"As the responsible person you document the cause, the corrective action and the progress. The "
+"auditors check the effectiveness and close the finding."
+msgstr ""
+"Als verantwortliche Person dokumentieren Sie Ursache, Korrekturmaßnahme und Fortschritt. Die "
+"Auditoren prüfen die Wirksamkeit und schließen die Feststellung."
 
 msgid "Assessed"
 msgstr "Bewertet"
@@ -427,6 +440,9 @@ msgstr "Ansprechpartner auditierte Seite"
 msgid "Content & scope"
 msgstr "Inhalt & Umfang"
 
+msgid "Content administration"
+msgstr "Inhaltsverwaltung"
+
 msgid "Context of the organization"
 msgstr "Kontext der Organisation"
 
@@ -557,6 +573,9 @@ msgstr "Delegationen & Vollmachten mit Handlungsbedarf"
 msgid "Delete"
 msgstr "Löschen"
 
+msgid "Delete field"
+msgstr "Feld löschen"
+
 msgid "Deleted"
 msgstr "Gelöscht"
 
@@ -640,6 +659,12 @@ msgstr "Entwurf"
 
 msgid "Draft (in progress)"
 msgstr "Entwurf (in Arbeit)"
+
+msgid "Dropdown"
+msgstr "Auswahl"
+
+msgid "Dropdown values"
+msgstr "Auswahlwerte"
 
 msgid "Due date"
 msgstr "Frist"
@@ -772,6 +797,17 @@ msgstr "Facility"
 
 msgid "Field"
 msgstr "Feld"
+
+#, python-brace-format
+msgid "Field {name} added"
+msgstr "Feld „{name}“ hinzugefügt"
+
+#, python-brace-format
+msgid "Field {name} hidden. Stored values are kept."
+msgstr "Feld „{name}“ ausgeblendet. Gespeicherte Werte bleiben erhalten."
+
+msgid "Fields and dropdown values"
+msgstr "Felder und Auswahlwerte"
 
 msgid "Filter…"
 msgstr "Filtern…"
@@ -921,10 +957,24 @@ msgid "HR"
 msgstr "HR"
 
 msgid "Has not happened yet – not even at comparable companies – but cannot be ruled out."
-msgstr "Ist noch nicht vorgekommen – auch nicht bei vergleichbaren Unternehmen –, kann aber nicht ausgeschlossen werden."
+msgstr ""
+"Ist noch nicht vorgekommen – auch nicht bei vergleichbaren Unternehmen –, kann aber nicht "
+"ausgeschlossen werden."
 
 msgid "Headcount (planned)"
 msgstr "Planstellen (Anzahl)"
+
+msgid ""
+"Here the administration adds custom fields and additional dropdown values. The changes apply at "
+"once in the forms and in Excel. Standard fields and values stay unchanged so that existing data "
+"remains valid."
+msgstr ""
+"Hier ergänzt die Administration eigene Felder und zusätzliche Auswahlwerte. Die Änderungen gelten"
+" sofort in Masken und Excel. Standardfelder und -werte bleiben unverändert, damit bestehende "
+"Daten gültig bleiben."
+
+msgid "Hide the field? Stored values are kept."
+msgstr "Feld ausblenden? Gespeicherte Werte bleiben erhalten."
 
 msgid "Hierarchy & reporting lines"
 msgstr "Hierarchie & Berichtslinien"
@@ -1146,6 +1196,9 @@ msgstr "Schlüsselkontrollen nicht wirksam"
 msgid "Kind of certification audit"
 msgstr "Auditart"
 
+msgid "Label"
+msgstr "Bezeichnung"
+
 msgid "Language"
 msgstr "Sprache"
 
@@ -1220,6 +1273,9 @@ msgstr "Abmelden"
 
 msgid "Logistics"
 msgstr "Logistik"
+
+msgid "Long text"
+msgstr "Langtext"
 
 msgid "Loss of important customers or partners, national media coverage."
 msgstr "Verlust wichtiger Kunden oder Partner, überregionale Berichterstattung."
@@ -1337,6 +1393,9 @@ msgstr "Überwachung, Messung, Analyse und Bewertung"
 
 msgid "Monthly"
 msgstr "Monatlich"
+
+msgid "Multiple choice"
+msgstr "Mehrfachauswahl"
 
 msgid "My delegations & powers of attorney"
 msgstr "Meine Übertragungen & Vollmachten"
@@ -1456,6 +1515,9 @@ msgstr "Hinweis oder Rückfrage einer Behörde."
 msgid "Notification to authority / register"
 msgstr "Meldung an Behörde / Register"
 
+msgid "Number"
+msgstr "Zahl"
+
 #, python-brace-format
 msgid "Number expected: {value}"
 msgstr "Zahl erwartet: {value}"
@@ -1561,6 +1623,9 @@ msgstr "Periodisch (Bereichsworkshop)"
 
 msgid "Permanent harm or death, or widespread irreversible environmental damage."
 msgstr "Bleibende Schäden oder Tod bzw. großflächige, nicht behebbare Umweltschädigung."
+
+msgid "Person"
+msgstr "Person"
 
 #, python-brace-format
 msgid "Person not found: {name}"
@@ -1820,11 +1885,17 @@ msgstr "Aufbewahrung von Aufzeichnungen"
 msgid "Reduce"
 msgstr "Reduzieren"
 
+msgid "Reference"
+msgstr "Verweis"
+
 msgid "Reference: position"
 msgstr "Bezug: Stelle"
 
 msgid "Reference: role"
 msgstr "Bezug: Rolle"
+
+msgid "References"
+msgstr "Verweise"
 
 msgid "Register entry / notification to authority"
 msgstr "Registereintrag / Behördenmeldung"
@@ -1853,6 +1924,13 @@ msgstr "Bemerkung"
 
 msgid "Remove"
 msgstr "Entfernen"
+
+#, python-brace-format
+msgid "Remove {value}"
+msgstr "{value} entfernen"
+
+msgid "Rename"
+msgstr "Umbenennen"
 
 msgid "Report date"
 msgstr "Berichtsdatum"
@@ -2022,7 +2100,9 @@ msgid "Row {row}: {code} saved"
 msgstr "Zeile {row}: {code} gespeichert"
 
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
-msgstr "Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder eine dokumentierte Akzeptanz."
+msgstr ""
+"Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder "
+"eine dokumentierte Akzeptanz."
 
 msgid "Sales"
 msgstr "Sales"
@@ -2038,6 +2118,9 @@ msgstr "Diagramm speichern"
 
 msgid "Saved"
 msgstr "Gespeichert"
+
+msgid "Scale"
+msgstr "Skala"
 
 msgid "Scope & criteria"
 msgstr "Umfang & Kriterien"
@@ -2062,6 +2145,9 @@ msgstr "Score = Wahrscheinlichkeit × Ausmaß (1–16). Mittel ab 4, höheres Ri
 
 msgid "Search…"
 msgstr "Suchen…"
+
+msgid "Section"
+msgstr "Abschnitt"
 
 msgid "Sees the process landscape and what is assigned to him."
 msgstr "Sieht die Prozesslandschaft und was ihm zugewiesen ist."
@@ -2165,11 +2251,20 @@ msgstr "Quellen für Rückmeldungen zur Compliance-Leistung"
 msgid "Special audit"
 msgstr "Sonderaudit"
 
+msgid "Special field"
+msgstr "Sonderfeld"
+
 msgid "Standard clause"
 msgstr "Normkapitel"
 
+msgid "Standard reference"
+msgstr "Normreferenz"
+
 msgid "Standard references"
 msgstr "Normreferenzen"
+
+msgid "Standard value"
+msgstr "Standardwert"
 
 msgid "Standards / rules"
 msgstr "Normen / Regelwerke"
@@ -2271,11 +2366,17 @@ msgstr "Prüfmethode"
 msgid "Test result / findings"
 msgstr "Prüfergebnis / Feststellungen"
 
+msgid "Text"
+msgstr "Text"
+
 msgid "The demo sign-in is switched off."
 msgstr "Die Demo-Anmeldung ist abgeschaltet."
 
 msgid "The element no longer exists."
 msgstr "Das Element existiert nicht mehr."
+
+msgid "The field appears at once in the form of the module and as a column in the Excel export."
+msgstr "Das Feld erscheint sofort in der Maske des Moduls und als Spalte im Excel-Export."
 
 msgid "The file is larger than 5 MB."
 msgstr "Die Datei ist größer als 5 MB."
@@ -2362,8 +2463,12 @@ msgstr "Ungespeicherte Änderungen am Diagramm gehen verloren."
 msgid "Upcoming audits (90 days)"
 msgstr "Anstehende Audits (90 Tage)"
 
-msgid "Use a file from the Excel export of this module. Rows are matched by their ID; rows without an ID are created. You see a preview before anything is saved."
-msgstr "Verwenden Sie eine Datei aus dem Excel-Export dieses Moduls. Zeilen werden über ihre ID zugeordnet, Zeilen ohne ID neu angelegt. Vor dem Speichern sehen Sie eine Vorschau."
+msgid ""
+"Use a file from the Excel export of this module. Rows are matched by their ID; rows without an ID"
+" are created. You see a preview before anything is saved."
+msgstr ""
+"Verwenden Sie eine Datei aus dem Excel-Export dieses Moduls. Zeilen werden über ihre ID "
+"zugeordnet, Zeilen ohne ID neu angelegt. Vor dem Speichern sehen Sie eine Vorschau."
 
 msgid "Used in process steps"
 msgstr "Verwendet in Prozessschritten"
@@ -2442,6 +2547,9 @@ msgstr "Ja"
 msgid "Yes or no expected: {value}"
 msgstr "Ja oder Nein erwartet: {value}"
 
+msgid "Yes/no"
+msgstr "Ja/Nein"
+
 msgid "You are not allowed to do this."
 msgstr "Das dürfen Sie nicht."
 
@@ -2472,14 +2580,21 @@ msgstr "Administrator"
 msgid "after"
 msgstr "nachher"
 
-msgid "applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the position or a transfer"
-msgstr "gilt für jeden Inhaber, z. B. Informations-, Prüf-, Vetorecht; Beträge und Vollmachten an der Stelle bzw. als Übertragung"
+msgid ""
+"applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the"
+" position or a transfer"
+msgstr ""
+"gilt für jeden Inhaber, z. B. Informations-, Prüf-, Vetorecht; Beträge und Vollmachten an der "
+"Stelle bzw. als Übertragung"
 
 msgid "approved"
 msgstr "Qualität freigegeben (I&A)"
 
 msgid "archived"
 msgstr "Archiviert"
+
+msgid "automatic"
+msgstr "automatisch"
 
 msgid "before"
 msgstr "vorher"
@@ -2566,6 +2681,9 @@ msgstr "Messwert"
 msgid "new"
 msgstr "neu"
 
+msgid "new value"
+msgstr "neuer Wert"
+
 msgid "no approval workflow"
 msgstr "ohne Freigabe-Workflow"
 
@@ -2574,6 +2692,9 @@ msgstr "nicht bewertet"
 
 msgid "one responsible person per action"
 msgstr "je Maßnahme ein/e Verantwortliche/r"
+
+msgid "one value per line, for dropdowns only"
+msgstr "ein Wert pro Zeile, nur für Auswahlfelder"
 
 msgid "open delegation"
 msgstr "Übertragung öffnen"

@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -14,6 +15,9 @@ class UserFields(BaseModel):
 
 
 class UserOut(UserFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     name: str

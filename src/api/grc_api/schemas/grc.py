@@ -62,6 +62,9 @@ class Assessment(BaseModel):
 
 
 class RiskOut(RiskFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     title: str
@@ -110,6 +113,9 @@ class OpportunityFields(BaseModel):
 
 
 class OpportunityOut(OpportunityFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     status: str
@@ -164,6 +170,9 @@ class ControlFields(BaseModel):
 
 
 class ControlOut(ControlFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     version: int
@@ -214,6 +223,9 @@ class MeasurementIn(Measurement):
 
 
 class KpiOut(KpiFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     version: int

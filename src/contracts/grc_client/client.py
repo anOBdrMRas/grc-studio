@@ -161,6 +161,16 @@ class GrcClient:
         """GET /api/v1/cockpit (permission: cockpit:read)."""
         return cast("CockpitOut", await self._call("GET", "/api/v1/cockpit"))
 
+    async def content_get(self) -> ContentOut:
+        """GET /api/v1/content (permission: people:read)."""
+        return cast("ContentOut", await self._call("GET", "/api/v1/content"))
+
+    async def content_update(self, body: ContentIn, if_match: str | None = None) -> ContentOut:
+        """PUT /api/v1/content (permission: content:manage)."""
+        return cast(
+            "ContentOut", await self._call("PUT", "/api/v1/content", json=body, if_match=if_match)
+        )
+
     async def controls_list(self) -> list[ControlListItem]:
         """GET /api/v1/controls (permission: grc:read)."""
         return cast("list[ControlListItem]", await self._call("GET", "/api/v1/controls"))

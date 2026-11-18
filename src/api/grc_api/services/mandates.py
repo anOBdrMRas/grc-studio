@@ -174,6 +174,7 @@ async def mandate_view(db: AsyncSession, mandate_id: str, p: Principal) -> Manda
     return MandateOut(
         **common.fields_of(m, MandateFields),
         id=m.id,
+        custom=m.custom,
         code=m.code,
         status=m.status,
         state=effective(m),
@@ -280,6 +281,6 @@ async def state(db: AsyncSession, mandate_id: str, revision_id: int, p: Principa
         "mandate",
         mandate_id,
         revision_id,
-        common.fields_of(m, MandateFields),
+        common.state_of(m, MandateFields),
         await load_org(db),
     )

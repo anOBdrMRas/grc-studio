@@ -218,3 +218,21 @@ def test_excel_export_and_import(page: "Page", tmp_path: Path) -> None:
     expect(page.locator("#modal-body")).to_contain_text("1 geändert")
     page.click("#modal-body button:has-text('übernehmen')")
     expect(page.locator("#modal-body")).to_contain_text("gespeichert")
+
+
+def test_content_administration(page: "Page") -> None:
+    sign_in(page, "U-001")
+    page.goto(BASE + "/admin/content?m=opportunity")
+    add = page.locator("form[hx-post='/admin/content/opportunity/fields']")
+    add.locator("input[name=label]").fill("Investition")
+    add.locator("select[name=type]").select_option("select")
+    add.locator("textarea").fill("Gering\nHoch")
+    add.locator("button").click()
+    expect(page.locator("#toasts")).to_contain_text("hinzugefügt")
+    expect(page.locator("#content-panel")).to_contain_text("x_investition")
+    page.goto(BASE + "/opportunities/CH-001?edit=1")
+    page.select_option("#f-x_investition", "Hoch")
+    page.click("#detail button:has-text('Speichern')")
+    expect(page.locator("#toasts")).to_contain_text("Gespeichert")
+    expect(page.locator("#detail")).to_contain_text("Weitere Angaben")
+    expect(page.locator("#detail")).to_contain_text("Hoch")

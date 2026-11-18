@@ -16,6 +16,7 @@ PERMISSIONS: Final[dict[str, str]] = {
     "cockpit:read": "Open the I&A cockpit (quality checks, review queue)",
     "quality:approve": "Give or refuse the I&A quality approval",
     "workflow:set-status": "Set the approval status directly",
+    "content:manage": "Maintain custom fields and additional dropdown values",
 }
 
 SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
@@ -49,6 +50,7 @@ SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
             "grc:manage",
             "cockpit:read",
             "workflow:set-status",
+            "content:manage",
         }
     ),
 }

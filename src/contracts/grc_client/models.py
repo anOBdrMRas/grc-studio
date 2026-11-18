@@ -52,6 +52,7 @@ AuditOut = TypedDict(
         "verdict": "str",
         "summary": "str",
         "strengths": "str",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "version": "int",
@@ -100,6 +101,30 @@ CockpitOut = TypedDict(
 )
 
 
+ContentIn = TypedDict(
+    "ContentIn",
+    {
+        "version": "int | None",
+        "fields": "dict[str, list[CustomFieldIO]]",
+        "options": "dict[str, list[str]]",
+    },
+    total=False,
+)
+
+
+ContentOut = TypedDict(
+    "ContentOut",
+    {
+        "version": "int",
+        "fields": "dict[str, list[CustomFieldIO]]",
+        "options": "dict[str, list[str]]",
+        "kinds": "list[str]",
+        "types": "list[str]",
+    },
+    total=False,
+)
+
+
 ControlListItem = TypedDict(
     "ControlListItem",
     {
@@ -140,6 +165,7 @@ ControlOut = TypedDict(
         "next_test": "str | None",
         "test_result": "str",
         "iso_refs": "list[str]",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "version": "int",
@@ -157,6 +183,20 @@ CreateElement = TypedDict("CreateElement", {"title": "str"}, total=False)
 
 
 CreateUser = TypedDict("CreateUser", {"last_name": "str", "first_name": "str"}, total=False)
+
+
+CustomFieldIO = TypedDict(
+    "CustomFieldIO",
+    {
+        "key": "str",
+        "label": "str",
+        "type": "str",
+        "section": "str",
+        "options": "list[str]",
+        "removed": "bool",
+    },
+    total=False,
+)
 
 
 DemoInfo = TypedDict("DemoInfo", {"enabled": "bool", "persons": "list[DemoPerson]"}, total=False)
@@ -281,6 +321,7 @@ KpiOut = TypedDict(
         "owner_role_id": "str | None",
         "evaluator_role_id": "str | None",
         "iso_refs": "list[str]",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "version": "int",
@@ -353,6 +394,7 @@ MandateOut = TypedDict(
         "supervision_frequency": "str",
         "last_supervision": "str | None",
         "next_supervision": "str | None",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "status": "str",
@@ -423,6 +465,7 @@ OpportunityOut = TypedDict(
         "measures": "str",
         "next_review": "str | None",
         "iso_refs": "list[str]",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "status": "str",
@@ -504,6 +547,7 @@ PositionOut = TypedDict(
         "last_review": "str | None",
         "next_review": "str | None",
         "roles": "list[PositionRoleIn]",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "status": "str",
@@ -556,6 +600,7 @@ ProcessOut = TypedDict(
         "resources": "str",
         "standards": "list[str]",
         "next_review": "str | None",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "status": "str",
@@ -675,6 +720,7 @@ RiskOut = TypedDict(
         "entity": "str",
         "source_ref": "str",
         "iso_refs": "list[str]",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "title": "str",
@@ -732,6 +778,7 @@ RoleOut = TypedDict(
         "iso_refs": "list[str]",
         "last_review": "str | None",
         "next_review": "str | None",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "status": "str",
@@ -808,6 +855,7 @@ UserOut = TypedDict(
         "position_id": "str | None",
         "description": "str",
         "system_roles": "list[str]",
+        "custom": "dict[str, Any]",
         "id": "str",
         "code": "str",
         "name": "str",

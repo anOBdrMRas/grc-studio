@@ -18,7 +18,7 @@
         <button type="button" class="btn btn-ghost btn-xs mt-1" data-action="add-row" data-template="tpl-{{ f.key }}" data-target="rows-{{ f.key }}">{{ icon("plus") }} {{ _("Action") }}</button>
         {% elif f.kind == "text" %}<input id="f-{{ f.key }}" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm w-full" {% if err %}aria-invalid="true"{% endif %}>
         {% elif f.kind == "textarea" %}<textarea id="f-{{ f.key }}" name="{{ f.key }}" class="textarea textarea-bordered w-full text-sm" rows="{{ [3, [((v or '')|length // 90) + (v or '').count('\n') + 1, 20]|min]|max }}">{{ v or '' }}</textarea>
-        {% elif f.kind == "decimal" %}<input id="f-{{ f.key }}" type="number" step="any" inputmode="decimal" name="{{ f.key }}" value="{{ v if v is not none else 0 }}" class="input input-bordered input-sm w-40">
+        {% elif f.kind == "decimal" %}<input id="f-{{ f.key }}" type="number" step="any" inputmode="decimal" name="{{ f.key }}" value="{{ v if v is not none else ('' if f.get('nullable') else 0) }}" class="input input-bordered input-sm w-40">
         {% elif f.kind == "number" %}<input id="f-{{ f.key }}" type="number" step="1" inputmode="numeric" name="{{ f.key }}" value="{{ v if v is not none else 0 }}" class="input input-bordered input-sm w-40">
         {% elif f.kind == "date" %}<input id="f-{{ f.key }}" type="date" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm">
         {% elif f.kind == "select" %}

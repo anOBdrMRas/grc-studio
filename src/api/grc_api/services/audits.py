@@ -127,6 +127,7 @@ async def audit_view(db: AsyncSession, audit_id: str, p: Principal) -> AuditOut:
     return AuditOut(
         **common.fields_of(a, AuditFields),
         id=a.id,
+        custom=a.custom,
         code=a.code,
         version=a.version,
         created_at=a.created_at,
@@ -279,7 +280,7 @@ async def state(db: AsyncSession, audit_id: str, revision_id: int, p: Principal)
     _need(p, "grc:read")
     a = await common.get_or_404(db, Audit, audit_id)
     return await common.state_after(
-        db, "audit", audit_id, revision_id, common.fields_of(a, AuditFields), await load_org(db)
+        db, "audit", audit_id, revision_id, common.state_of(a, AuditFields), await load_org(db)
     )
 
 

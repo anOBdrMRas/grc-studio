@@ -33,6 +33,8 @@ def values_from_form(
                     for t, o in zip(texts, owners, strict=False)
                     if str(t).strip()
                 ]
+            elif kind == "decimal" and f.get("nullable") and not str(form.get(key) or "").strip():
+                out[key] = None
             elif kind == "decimal":
                 raw = str(form.get(key) or "0").strip().replace(",", ".")
                 try:

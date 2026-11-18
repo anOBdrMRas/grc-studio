@@ -111,6 +111,7 @@ async def process_view(
     return ProcessOut(
         **common.fields_of(x, ProcessFields),
         id=x.id,
+        custom=x.custom,
         code=x.code,
         status=x.status,
         doc_version=x.doc_version,
@@ -341,7 +342,7 @@ async def state(db: AsyncSession, process_id: str, revision_id: int, p: Principa
         "process",
         process_id,
         revision_id,
-        common.fields_of(x, ProcessFields),
+        common.state_of(x, ProcessFields),
         await load_org(db),
     )
 
