@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 05:42+0000\n"
+"POT-Creation-Date: 2026-11-18 05:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,6 +102,9 @@ msgstr ""
 msgid "Affected assets"
 msgstr ""
 
+msgid "All modules as Excel"
+msgstr ""
+
 msgid "Amount limit (EUR)"
 msgstr ""
 
@@ -115,6 +118,10 @@ msgid "Annually"
 msgstr ""
 
 msgid "Applicable"
+msgstr ""
+
+#, python-brace-format
+msgid "Apply {n} rows"
 msgstr ""
 
 msgid "Appointed officer"
@@ -295,6 +302,9 @@ msgstr ""
 msgid "Checked on"
 msgstr ""
 
+msgid "Choose another file"
+msgstr ""
+
 msgid "Choose another person"
 msgstr ""
 
@@ -307,7 +317,13 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+msgid "Close and reload"
+msgstr ""
+
 msgid "Closed"
+msgstr ""
+
+msgid "Columns ignored (unknown)"
 msgstr ""
 
 msgid "Comment"
@@ -514,6 +530,10 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+#, python-brace-format
+msgid "Date expected (YYYY-MM-DD): {value}"
+msgstr ""
+
 msgid "Dates"
 msgstr ""
 
@@ -580,6 +600,9 @@ msgstr ""
 msgid "Design effectiveness"
 msgstr ""
 
+msgid "Details"
+msgstr ""
+
 msgid "Detective"
 msgstr ""
 
@@ -605,6 +628,9 @@ msgid "Document"
 msgstr ""
 
 msgid "Documented information"
+msgstr ""
+
+msgid "Download the current data as a template"
 msgstr ""
 
 msgid "Draft"
@@ -653,6 +679,9 @@ msgid "Effectiveness verified"
 msgstr ""
 
 msgid "Efficiency"
+msgstr ""
+
+msgid "Element"
 msgstr ""
 
 msgid "Emergency preparedness and response"
@@ -712,6 +741,15 @@ msgstr ""
 msgid "Evidence / documentation"
 msgstr ""
 
+msgid "Excel export"
+msgstr ""
+
+msgid "Excel file"
+msgstr ""
+
+msgid "Excel import"
+msgstr ""
+
 msgid "Expected benefit"
 msgstr ""
 
@@ -761,6 +799,9 @@ msgstr ""
 
 #, python-brace-format
 msgid "Finding {code} recorded"
+msgstr ""
+
+msgid "Findings"
 msgstr ""
 
 msgid "Findings & corrective actions"
@@ -919,6 +960,10 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
+#, python-brace-format
+msgid "ID {code} not found – it is created with a new ID."
+msgstr ""
+
 msgid "ISO 19011 5.2 / 6.2"
 msgstr ""
 
@@ -977,6 +1022,9 @@ msgid "Implementation status"
 msgstr ""
 
 msgid "Implemented"
+msgstr ""
+
+msgid "Import finished"
 msgstr ""
 
 msgid "Improvement"
@@ -1082,6 +1130,9 @@ msgid "Justified civil claims of limited amount."
 msgstr ""
 
 msgid "KPI"
+msgstr ""
+
+msgid "KPI values"
 msgstr ""
 
 msgid "Key control"
@@ -1291,6 +1342,10 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#, python-brace-format
+msgid "Name not unique: {name} – use the user ID"
+msgstr ""
+
 msgid "Near-miss"
 msgstr ""
 
@@ -1384,6 +1439,9 @@ msgstr ""
 msgid "Not yet valid"
 msgstr ""
 
+msgid "Nothing to apply."
+msgstr ""
+
 msgid "Nothing to do."
 msgstr ""
 
@@ -1394,6 +1452,10 @@ msgid "Notice or inquiry from an authority."
 msgstr ""
 
 msgid "Notification to authority / register"
+msgstr ""
+
+#, python-brace-format
+msgid "Number expected: {value}"
 msgstr ""
 
 msgid "Observation"
@@ -1498,6 +1560,10 @@ msgstr ""
 msgid "Permanent harm or death, or widespread irreversible environmental damage."
 msgstr ""
 
+#, python-brace-format
+msgid "Person not found: {name}"
+msgstr ""
+
 msgid "Personal or environmental harm"
 msgstr ""
 
@@ -1577,6 +1643,9 @@ msgstr ""
 msgid "Preventive"
 msgstr ""
 
+msgid "Preview"
+msgstr ""
+
 msgid "Process"
 msgstr ""
 
@@ -1599,6 +1668,9 @@ msgid "Process step"
 msgstr ""
 
 msgid "Process step (element id)"
+msgstr ""
+
+msgid "Process steps"
 msgstr ""
 
 msgid "Process steps without responsibility (R/A)"
@@ -1936,6 +2008,17 @@ msgstr ""
 msgid "Root cause analysis"
 msgstr ""
 
+msgid "Row"
+msgstr ""
+
+#, python-brace-format
+msgid "Row {row}: {code} not saved – {message}"
+msgstr ""
+
+#, python-brace-format
+msgid "Row {row}: {code} saved"
+msgstr ""
+
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
 msgstr ""
 
@@ -2027,6 +2110,9 @@ msgid "Show changes"
 msgstr ""
 
 msgid "Show position description (summary)"
+msgstr ""
+
+msgid "Show preview"
 msgstr ""
 
 msgid "Show role description (summary)"
@@ -2189,7 +2275,16 @@ msgstr ""
 msgid "The element no longer exists."
 msgstr ""
 
+msgid "The file is larger than 5 MB."
+msgstr ""
+
+msgid "The file is not an Excel workbook (.xlsx)."
+msgstr ""
+
 msgid "The server cannot be reached. Please try again."
+msgstr ""
+
+msgid "The sheet is empty."
 msgstr ""
 
 msgid "The version of the element is missing."
@@ -2252,6 +2347,10 @@ msgstr ""
 msgid "Unit"
 msgstr ""
 
+#, python-brace-format
+msgid "Unknown value: {value}"
+msgstr ""
+
 msgid "Unsaved changes"
 msgstr ""
 
@@ -2259,6 +2358,9 @@ msgid "Unsaved changes in the diagram will be lost."
 msgstr ""
 
 msgid "Upcoming audits (90 days)"
+msgstr ""
+
+msgid "Use a file from the Excel export of this module. Rows are matched by their ID; rows without an ID are created. You see a preview before anything is saved."
 msgstr ""
 
 msgid "Used in process steps"
@@ -2334,6 +2436,10 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
+#, python-brace-format
+msgid "Yes or no expected: {value}"
+msgstr ""
+
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -2379,6 +2485,9 @@ msgstr ""
 msgid "certification body, customer or supplier"
 msgstr ""
 
+msgid "changed"
+msgstr ""
+
 msgid "clearly delimited"
 msgstr ""
 
@@ -2415,6 +2524,9 @@ msgstr ""
 msgid "empty = unlimited"
 msgstr ""
 
+msgid "error"
+msgstr ""
+
 msgid "expired"
 msgstr ""
 
@@ -2447,6 +2559,9 @@ msgid "lower"
 msgstr ""
 
 msgid "measurement"
+msgstr ""
+
+msgid "new"
 msgstr ""
 
 msgid "no approval workflow"
@@ -2498,6 +2613,9 @@ msgid "submitted"
 msgstr ""
 
 msgid "the first sentence is shown in lists"
+msgstr ""
+
+msgid "unchanged"
 msgstr ""
 
 msgid "vacant"
@@ -2556,6 +2674,10 @@ msgstr ""
 
 #, python-brace-format
 msgid "{n} with findings"
+msgstr ""
+
+#, python-brace-format
+msgid "{ok} of {total} rows applied"
 msgstr ""
 
 #, python-brace-format

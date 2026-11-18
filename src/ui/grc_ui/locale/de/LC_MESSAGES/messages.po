@@ -104,6 +104,9 @@ msgstr "Administrator"
 msgid "Affected assets"
 msgstr "Betroffene Werte (Assets)"
 
+msgid "All modules as Excel"
+msgstr "Alle Module als Excel"
+
 msgid "Amount limit (EUR)"
 msgstr "Betragsgrenze (EUR)"
 
@@ -118,6 +121,10 @@ msgstr "Jährlich"
 
 msgid "Applicable"
 msgstr "Anwendbar"
+
+#, python-brace-format
+msgid "Apply {n} rows"
+msgstr "{n} Zeilen übernehmen"
 
 msgid "Appointed officer"
 msgstr "Beauftragter"
@@ -297,6 +304,9 @@ msgstr "Geprüft durch"
 msgid "Checked on"
 msgstr "Geprüft am"
 
+msgid "Choose another file"
+msgstr "Andere Datei wählen"
+
 msgid "Choose another person"
 msgstr "Andere Person wählen"
 
@@ -309,8 +319,14 @@ msgstr "Zivil- oder strafrechtliche Haftung"
 msgid "Close"
 msgstr "Schließen"
 
+msgid "Close and reload"
+msgstr "Schließen und neu laden"
+
 msgid "Closed"
 msgstr "Geschlossen"
+
+msgid "Columns ignored (unknown)"
+msgstr "Ignorierte Spalten (unbekannt)"
 
 msgid "Comment"
 msgstr "Kommentar"
@@ -516,6 +532,10 @@ msgstr "Datenquelle"
 msgid "Date"
 msgstr "Datum"
 
+#, python-brace-format
+msgid "Date expected (YYYY-MM-DD): {value}"
+msgstr "Datum erwartet (JJJJ-MM-TT): {value}"
+
 msgid "Dates"
 msgstr "Termine"
 
@@ -582,6 +602,9 @@ msgstr "Entwicklungsplanung"
 msgid "Design effectiveness"
 msgstr "Design-Wirksamkeit"
 
+msgid "Details"
+msgstr "Details"
+
 msgid "Detective"
 msgstr "Detektiv"
 
@@ -608,6 +631,9 @@ msgstr "Dokument"
 
 msgid "Documented information"
 msgstr "Dokumentierte Information"
+
+msgid "Download the current data as a template"
+msgstr "Aktuelle Daten als Vorlage herunterladen"
 
 msgid "Draft"
 msgstr "Entwurf"
@@ -656,6 +682,9 @@ msgstr "Wirksamkeit geprüft"
 
 msgid "Efficiency"
 msgstr "Effizienz"
+
+msgid "Element"
+msgstr "Element"
 
 msgid "Emergency preparedness and response"
 msgstr "Notfallvorsorge und Gefahrenabwehr"
@@ -714,6 +743,15 @@ msgstr "Nachweis / Evidenz"
 msgid "Evidence / documentation"
 msgstr "Nachweis / Dokumentation"
 
+msgid "Excel export"
+msgstr "Excel-Export"
+
+msgid "Excel file"
+msgstr "Excel-Datei"
+
+msgid "Excel import"
+msgstr "Excel-Import"
+
 msgid "Expected benefit"
 msgstr "Erwarteter Nutzen"
 
@@ -764,6 +802,9 @@ msgstr "Feststellung {code} gelöscht"
 #, python-brace-format
 msgid "Finding {code} recorded"
 msgstr "Feststellung {code} erfasst"
+
+msgid "Findings"
+msgstr "Feststellungen"
 
 msgid "Findings & corrective actions"
 msgstr "Feststellungen & Korrekturmaßnahmen"
@@ -921,6 +962,10 @@ msgstr "IKS-Prüfung"
 msgid "ID"
 msgstr "ID"
 
+#, python-brace-format
+msgid "ID {code} not found – it is created with a new ID."
+msgstr "ID {code} nicht gefunden – wird mit neuer ID angelegt."
+
 msgid "ISO 19011 5.2 / 6.2"
 msgstr "ISO 19011 5.2 / 6.2"
 
@@ -980,6 +1025,9 @@ msgstr "Umsetzungsstatus"
 
 msgid "Implemented"
 msgstr "Umgesetzt"
+
+msgid "Import finished"
+msgstr "Import abgeschlossen"
 
 msgid "Improvement"
 msgstr "Verbesserung"
@@ -1085,6 +1133,9 @@ msgstr "Begründete zivilrechtliche Ansprüche in begrenzter Höhe."
 
 msgid "KPI"
 msgstr "KPI"
+
+msgid "KPI values"
+msgstr "KPI-Messwerte"
 
 msgid "Key control"
 msgstr "Schlüsselkontrolle (Key Control)"
@@ -1293,6 +1344,10 @@ msgstr "Meine Übertragungen & Vollmachten"
 msgid "Name"
 msgstr "Name"
 
+#, python-brace-format
+msgid "Name not unique: {name} – use the user ID"
+msgstr "Name nicht eindeutig: {name} – bitte Benutzer-ID verwenden"
+
 msgid "Near-miss"
 msgstr "Beinahe-Vorfall"
 
@@ -1386,6 +1441,9 @@ msgstr "Noch nicht bewertet"
 msgid "Not yet valid"
 msgstr "Noch nicht gültig"
 
+msgid "Nothing to apply."
+msgstr "Nichts zu übernehmen."
+
 msgid "Nothing to do."
 msgstr "Nichts zu tun."
 
@@ -1397,6 +1455,10 @@ msgstr "Hinweis oder Rückfrage einer Behörde."
 
 msgid "Notification to authority / register"
 msgstr "Meldung an Behörde / Register"
+
+#, python-brace-format
+msgid "Number expected: {value}"
+msgstr "Zahl erwartet: {value}"
 
 msgid "Observation"
 msgstr "Beobachtung"
@@ -1500,6 +1562,10 @@ msgstr "Periodisch (Bereichsworkshop)"
 msgid "Permanent harm or death, or widespread irreversible environmental damage."
 msgstr "Bleibende Schäden oder Tod bzw. großflächige, nicht behebbare Umweltschädigung."
 
+#, python-brace-format
+msgid "Person not found: {name}"
+msgstr "Person nicht gefunden: {name}"
+
 msgid "Personal or environmental harm"
 msgstr "Personen- oder Umweltschaden"
 
@@ -1579,6 +1645,9 @@ msgstr "Erhaltung"
 msgid "Preventive"
 msgstr "Präventiv"
 
+msgid "Preview"
+msgstr "Vorschau"
+
 msgid "Process"
 msgstr "Prozess"
 
@@ -1602,6 +1671,9 @@ msgstr "Prozessschritt"
 
 msgid "Process step (element id)"
 msgstr "Prozessschritt (Element-ID)"
+
+msgid "Process steps"
+msgstr "Prozessschritte"
 
 msgid "Process steps without responsibility (R/A)"
 msgstr "Prozessschritte ohne Verantwortung (R/A)"
@@ -1938,6 +2010,17 @@ msgstr "Rollen, Verantwortlichkeiten und Befugnisse / Compliance-Funktion"
 msgid "Root cause analysis"
 msgstr "Ursachenanalyse"
 
+msgid "Row"
+msgstr "Zeile"
+
+#, python-brace-format
+msgid "Row {row}: {code} not saved – {message}"
+msgstr "Zeile {row}: {code} nicht gespeichert – {message}"
+
+#, python-brace-format
+msgid "Row {row}: {code} saved"
+msgstr "Zeile {row}: {code} gespeichert"
+
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
 msgstr "Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder eine dokumentierte Akzeptanz."
 
@@ -2030,6 +2113,9 @@ msgstr "Änderungen anzeigen"
 
 msgid "Show position description (summary)"
 msgstr "Stellenbeschreibung (Zusammenfassung) anzeigen"
+
+msgid "Show preview"
+msgstr "Vorschau anzeigen"
 
 msgid "Show role description (summary)"
 msgstr "Rollenbeschreibung (Zusammenfassung) anzeigen"
@@ -2191,8 +2277,17 @@ msgstr "Die Demo-Anmeldung ist abgeschaltet."
 msgid "The element no longer exists."
 msgstr "Das Element existiert nicht mehr."
 
+msgid "The file is larger than 5 MB."
+msgstr "Die Datei ist größer als 5 MB."
+
+msgid "The file is not an Excel workbook (.xlsx)."
+msgstr "Die Datei ist keine Excel-Arbeitsmappe (.xlsx)."
+
 msgid "The server cannot be reached. Please try again."
 msgstr "Der Server ist nicht erreichbar. Bitte erneut versuchen."
+
+msgid "The sheet is empty."
+msgstr "Das Tabellenblatt ist leer."
 
 msgid "The version of the element is missing."
 msgstr "Die Version des Elements fehlt."
@@ -2254,6 +2349,10 @@ msgstr "Unbegründete oder geringfügige Ansprüche."
 msgid "Unit"
 msgstr "Einheit"
 
+#, python-brace-format
+msgid "Unknown value: {value}"
+msgstr "Unbekannter Wert: {value}"
+
 msgid "Unsaved changes"
 msgstr "Ungespeicherte Änderungen"
 
@@ -2262,6 +2361,9 @@ msgstr "Ungespeicherte Änderungen am Diagramm gehen verloren."
 
 msgid "Upcoming audits (90 days)"
 msgstr "Anstehende Audits (90 Tage)"
+
+msgid "Use a file from the Excel export of this module. Rows are matched by their ID; rows without an ID are created. You see a preview before anything is saved."
+msgstr "Verwenden Sie eine Datei aus dem Excel-Export dieses Moduls. Zeilen werden über ihre ID zugeordnet, Zeilen ohne ID neu angelegt. Vor dem Speichern sehen Sie eine Vorschau."
 
 msgid "Used in process steps"
 msgstr "Verwendet in Prozessschritten"
@@ -2336,6 +2438,10 @@ msgstr "Schriftform erforderlich"
 msgid "Yes"
 msgstr "Ja"
 
+#, python-brace-format
+msgid "Yes or no expected: {value}"
+msgstr "Ja oder Nein erwartet: {value}"
+
 msgid "You are not allowed to do this."
 msgstr "Das dürfen Sie nicht."
 
@@ -2381,6 +2487,9 @@ msgstr "vorher"
 msgid "certification body, customer or supplier"
 msgstr "Zertifizierungsstelle, Kunde oder Lieferant"
 
+msgid "changed"
+msgstr "geändert"
+
 msgid "clearly delimited"
 msgstr "klar abgegrenzt"
 
@@ -2417,6 +2526,9 @@ msgstr "Mitarbeiter"
 msgid "empty = unlimited"
 msgstr "leer = unbefristet"
 
+msgid "error"
+msgstr "Fehler"
+
 msgid "expired"
 msgstr "Abgelaufen"
 
@@ -2450,6 +2562,9 @@ msgstr "kleiner ist besser"
 
 msgid "measurement"
 msgstr "Messwert"
+
+msgid "new"
+msgstr "neu"
 
 msgid "no approval workflow"
 msgstr "ohne Freigabe-Workflow"
@@ -2501,6 +2616,9 @@ msgstr "Fachlich freigegeben"
 
 msgid "the first sentence is shown in lists"
 msgstr "der erste Satz erscheint in Listen"
+
+msgid "unchanged"
+msgstr "unverändert"
 
 msgid "vacant"
 msgstr "unbesetzt"
@@ -2559,6 +2677,10 @@ msgstr "{n} Risiken"
 #, python-brace-format
 msgid "{n} with findings"
 msgstr "{n} mit Befund"
+
+#, python-brace-format
+msgid "{ok} of {total} rows applied"
+msgstr "{ok} von {total} Zeilen übernommen"
 
 #, python-brace-format
 msgid "{risk} has no mitigating control in this step."

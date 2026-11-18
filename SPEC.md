@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a** = Stufen 2a–2c, 3a (umgesetzt) · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a**, **S3b** = Stufen 2a–2c, 3a, 3b (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -20,7 +20,7 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-GEN-07 | Normbezüge über einen Katalog aller Kapitel von ISO 9001, ISO/IEC 27001 (inkl. Annex A), ISO 37301, ISO 14001; Auswahl fügt hinzu | S1 |
 | FR-GEN-08 | Rollen- und Stellenbeschreibung als druckbare Ansicht (📄-Symbol) | S1 |
 | FR-GEN-09 | Modulpunkte späterer Stufen zeigen „In Vorbereitung“ | S1 |
-| FR-GEN-10 | Excel-Import und -Export je Modul mit Vorschau (neu / geändert / unverändert) | S3 |
+| FR-GEN-10 | Excel-Export je Modul und für alle Module (mit Messwerten, Feststellungen, Prozessschritten); Import je Modul mit Vorschau (neu / geändert / unverändert / Fehler), Spalten auf Deutsch oder Englisch, Zuordnung per ID, Personen per Name; gespeichert wird über die API mit allen Rechte- und Versionsprüfungen | S3b |
 | FR-GEN-11 | KI-Assistent („Wo finde ich …?“, Textvorschläge, Prozessentwurf) | S3 |
 | FR-GEN-12 | Inhaltsverwaltung: eigene Felder und zusätzliche Auswahlwerte je Modul | S3 |
 

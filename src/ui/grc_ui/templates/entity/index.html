@@ -6,6 +6,10 @@
   <div class="split-list">
     <div class="mb-2 flex items-center justify-between gap-2">
       <h1 class="text-lg font-bold">{{ _(mod.title) }}</h1>
+      <span class="flex items-center gap-1">
+        <a class="btn btn-ghost btn-xs" href="{{ mod.base }}/export.xlsx" title="{{ _('Excel export') }}">{{ icon("download", "h-4 w-4") }} Excel</a>
+        {% if can(mod.manage_perm) %}<button class="btn btn-ghost btn-xs" hx-get="{{ mod.base }}/import" hx-target="#modal-body" title="{{ _('Excel import') }}">{{ icon("upload", "h-4 w-4") }} Excel</button>{% endif %}
+      </span>
       {% if can(mod.can_create) %}
       <form hx-post="{{ mod.base }}" class="join">
         <input name="title" class="input input-bordered input-sm join-item w-40" placeholder="{{ _(mod.new_hint) }}" aria-label="{{ _(mod.new_hint) }}" required>
