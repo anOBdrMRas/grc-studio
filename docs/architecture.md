@@ -46,6 +46,7 @@ Enforced by import-linter (`pyproject.toml`).
 | `controls` | internal controls: design, risks addressed, SoA (Annex A), effectiveness (no workflow) |
 | `kpis`, `kpi_measurements` | KPI with thresholds; measured values, one per KPI and date |
 | `step_links` | process × BPMN element × risk / opportunity / control / KPI (unique) |
+| `audits`, `audit_findings` | audits (own planning status, no approval workflow) and their findings with corrective actions |
 | `mandates` | delegations and powers of attorney; approval steps in `workflow_entries` (granted, accepted, declined, revoked) |
 | `audit_log` | every change (field diffs), sign-in, diagram and assignment notes |
 | `workflow_entries` | workflow steps per element (submitted, approved, rejected, reopened, status) |

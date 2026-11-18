@@ -9,7 +9,9 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.models import (
+    Audit,
     AuditEntry,
+    AuditFinding,
     Control,
     Kpi,
     KpiMeasurement,
@@ -42,6 +44,14 @@ DATES = (
     "registered_at",
     "last_supervision",
     "next_supervision",
+    "planned_date",
+    "start_date",
+    "end_date",
+    "report_date",
+    "certificate_valid_until",
+    "next_audit_due",
+    "due_date",
+    "verified_at",
 )
 
 
@@ -82,6 +92,8 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
         db.add(Kpi(**_row(k, ("measurements",))))
     for m in data.get("mandates", []):
         db.add(Mandate(**_row(m, ("workflow",))))
+    for a in data.get("audits", []):
+        db.add(Audit(**_row(a, ())))
     await db.flush()
     for p in data["positions"]:
         for i, pr in enumerate(p["roles"]):
@@ -95,6 +107,8 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
             db.add(StepAssignment(process_id=p["id"], **s))
         for link in p.get("links", []):
             db.add(StepLink(process_id=p["id"], **link))
+    for f in data.get("findings", []):
+        db.add(AuditFinding(**_row(f, ())))
     for k in data.get("kpis", []):
         for m in k["measurements"]:
             db.add(

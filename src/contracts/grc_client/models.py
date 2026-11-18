@@ -6,6 +6,66 @@ from typing import Any, TypedDict
 Assessment = TypedDict("Assessment", {"score": "int", "level": "str", "high": "bool"}, total=False)
 
 
+AuditListItem = TypedDict(
+    "AuditListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "audit_type": "str",
+        "audit_status": "str",
+        "when": "str | None",
+        "open_findings": "int",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+AuditOut = TypedDict(
+    "AuditOut",
+    {
+        "title": "str",
+        "description": "str",
+        "audit_type": "str",
+        "cert_stage": "str",
+        "program_year": "str",
+        "audit_status": "str",
+        "standards": "list[str]",
+        "objective": "str",
+        "criteria": "list[str]",
+        "process_ids": "list[str]",
+        "audited_role_ids": "list[str]",
+        "sites": "str",
+        "lead_auditor_user_id": "str | None",
+        "external_lead_auditor": "str",
+        "team_user_ids": "list[str]",
+        "external_org": "str",
+        "auditee_contact_user_id": "str | None",
+        "planned_date": "str | None",
+        "start_date": "str | None",
+        "end_date": "str | None",
+        "report_date": "str | None",
+        "report_document": "str",
+        "certificate_valid_until": "str | None",
+        "next_audit_due": "str | None",
+        "verdict": "str",
+        "summary": "str",
+        "strengths": "str",
+        "id": "str",
+        "code": "str",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "rights": "Rights",
+        "findings": "list[FindingOut]",
+        "independence": "list[Independence]",
+        "labels": "dict[str, str]",
+    },
+    total=False,
+)
+
+
 Catalogs = TypedDict(
     "Catalogs", {"lists": "dict[str, list[str]]", "iso": "list[IsoClause]"}, total=False
 )
@@ -14,17 +74,27 @@ Catalogs = TypedDict(
 Change = TypedDict("Change", {"key": "str", "from": "Any", "to": "Any"}, total=False)
 
 
-CheckOut = TypedDict(
-    "CheckOut",
+CheckItemOut = TypedDict(
+    "CheckItemOut",
     {
-        "message": "str",
-        "vars": "dict[str, str]",
         "kind": "str",
+        "id": "str",
+        "label": "str",
+        "detail": "str",
+        "vars": "dict[str, str] | None",
         "element_id": "str",
-        "user_id": "str | None",
-        "role_id": "str | None",
-        "position_id": "str | None",
-        "mandate_id": "str | None",
+    },
+    total=False,
+)
+
+
+CockpitOut = TypedDict(
+    "CockpitOut",
+    {
+        "checks": "list[grc_api__schemas__quality__CheckOut]",
+        "workflow": "dict[str, StatusCounts]",
+        "grades": "dict[str, int]",
+        "review_queue": "list[ReviewItem]",
     },
     total=False,
 )
@@ -113,6 +183,41 @@ ElementPatch = TypedDict(
 )
 
 
+FindingCreate = TypedDict("FindingCreate", {"description": "str"}, total=False)
+
+
+FindingOut = TypedDict(
+    "FindingOut",
+    {
+        "finding_type": "str",
+        "clause": "str",
+        "description": "str",
+        "evidence": "str",
+        "process_id": "str | None",
+        "element_id": "str",
+        "risk_ids": "list[str]",
+        "control_ids": "list[str]",
+        "responsible_role_id": "str | None",
+        "responsible_user_id": "str | None",
+        "root_cause": "str",
+        "corrective_action": "str",
+        "due_date": "str | None",
+        "status": "str",
+        "verified_at": "str | None",
+        "verified_by_user_id": "str | None",
+        "verification_result": "str",
+        "id": "str",
+        "code": "str",
+        "version": "int",
+        "open": "bool",
+        "overdue": "bool",
+        "can_edit": "bool",
+        "is_responsible": "bool",
+    },
+    total=False,
+)
+
+
 HTTPValidationError = TypedDict(
     "HTTPValidationError", {"detail": "list[ValidationError]"}, total=False
 )
@@ -124,6 +229,19 @@ Holder = TypedDict(
 
 
 IcsGap = TypedDict("IcsGap", {"risk_id": "str", "suggestions": "list[str]"}, total=False)
+
+
+Independence = TypedDict(
+    "Independence",
+    {
+        "user_id": "str",
+        "user_name": "str",
+        "process_id": "str",
+        "process_label": "str",
+        "role_label": "str",
+    },
+    total=False,
+)
 
 
 IsoClause = TypedDict(
@@ -247,7 +365,7 @@ MandateOut = TypedDict(
         "rights": "Rights",
         "actions": "MandateActions",
         "workflow": "list[WorkflowEntryOut]",
-        "checks": "list[CheckOut]",
+        "checks": "list[grc_api__schemas__mandates__CheckOut]",
         "labels": "dict[str, str]",
     },
     total=False,
@@ -458,6 +576,20 @@ ProcessOut = TypedDict(
 )
 
 
+ReviewItem = TypedDict(
+    "ReviewItem",
+    {
+        "kind": "str",
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "submitted_by": "str",
+        "submitted_at": "str | None",
+    },
+    total=False,
+)
+
+
 Revision = TypedDict(
     "Revision",
     {
@@ -625,6 +757,13 @@ StateView = TypedDict(
 )
 
 
+StatusCounts = TypedDict(
+    "StatusCounts",
+    {"draft": "int", "review": "int", "released": "int", "archived": "int", "total": "int"},
+    total=False,
+)
+
+
 StepLinkIn = TypedDict(
     "StepLinkIn", {"kind": "str", "target_id": "str", "version": "int | None"}, total=False
 )
@@ -713,5 +852,28 @@ WorkflowEntryOut = TypedDict(
         "comment": "str",
         "status": "str",
     },
+    total=False,
+)
+
+
+grc_api__schemas__mandates__CheckOut = TypedDict(
+    "grc_api__schemas__mandates__CheckOut",
+    {
+        "message": "str",
+        "vars": "dict[str, str]",
+        "kind": "str",
+        "element_id": "str",
+        "user_id": "str | None",
+        "role_id": "str | None",
+        "position_id": "str | None",
+        "mandate_id": "str | None",
+    },
+    total=False,
+)
+
+
+grc_api__schemas__quality__CheckOut = TypedDict(
+    "grc_api__schemas__quality__CheckOut",
+    {"key": "str", "label": "str", "module": "str", "items": "list[CheckItemOut]"},
     total=False,
 )

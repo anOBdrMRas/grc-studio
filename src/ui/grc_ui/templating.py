@@ -97,6 +97,8 @@ def render(
     return HTMLResponse(html, status_code=status, headers=headers)
 
 
-def toast(kind: str, message: str) -> dict[str, str]:
-    """HX-Trigger header for a toast in the page."""
-    return {"HX-Trigger": json.dumps({"toast": {"kind": kind, "message": message}})}
+def toast(kind: str, message: str, *events: str) -> dict[str, str]:
+    """HX-Trigger header for a toast in the page, plus further events (one header holds them all)."""
+    triggers: dict[str, object] = {e: True for e in events}
+    triggers["toast"] = {"kind": kind, "message": message}
+    return {"HX-Trigger": json.dumps(triggers)}

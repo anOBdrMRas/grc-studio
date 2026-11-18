@@ -45,3 +45,20 @@ async def test_migrations_match_models(migrated: None) -> None:
     async with get_engine().connect() as conn:
         changes = await conn.run_sync(diff)
     assert changes == []
+
+
+async def test_unexpected_errors_are_problems_without_details() -> None:
+    import httpx
+
+    app = create_app(run_lifespan=False)
+
+    @app.get("/boom")
+    async def boom() -> None:
+        raise RuntimeError("secret detail")
+
+    transport = httpx.ASGITransport(app=app, raise_app_exceptions=False)
+    async with httpx.AsyncClient(transport=transport, base_url="http://test") as c:
+        r = await c.get("/boom")
+    assert r.status_code == 500
+    assert r.json()["code"] == "internal"
+    assert "secret" not in r.text

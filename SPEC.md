@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a** / **S2b** / **S2c** = Stufe 2a/2b/2c (umgesetzt) · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a** = Stufen 2a–2c, 3a (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -93,7 +93,10 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-RSK-03 | Jede Person darf Risiken und Chancen erfassen; der Erfasser bearbeitet seinen Entwurf, wählt den Owner und löscht einen nie eingereichten Entwurf; Freigabe über den Workflow | S2a |
 | FR-ICS-01 | Controls (IKS) mit Kontrolldesign, adressierten Risiken, Wirksamkeit und Statement of Applicability (ISO 27001 Annex A); Owner = Inhaber der Rolle „Kontrollverantwortlicher“ | S2b |
 | FR-KPI-01 | KPI mit Schwellen, Messreihe (ein Wert je Datum), Verlauf und Ampel; Messwerte erfassen Owner, auswertende Rolle, I&A und Administration | S2b |
-| FR-AUD-01 | Audits, Zertifikate und Feststellungen; Qualitätsprüfungen | S3 |
+| FR-AUD-01 | Audits (intern, Zertifizierung, System, Kunde, Lieferant) mit Umfang, Kriterien, Beteiligten, Terminen, Ergebnis und Zertifikatslaufzeit | S3a |
+| FR-AUD-02 | Feststellungen mit Ursachenanalyse, Korrekturmaßnahme, Frist und Wirksamkeitsprüfung; die verantwortliche Person dokumentiert bis „umgesetzt“, Prüfen und Schließen bleibt bei den Auditoren | S3a |
+| FR-AUD-03 | Unabhängigkeit der Auditoren (ISO 19011): Hinweis, wenn ein Auditor einen eigenen Prozess prüft | S3a |
+| FR-QA-01 | I&A-Cockpit: Warteschlange der Qualitätsfreigabe, Freigabestatus und Qualitätsgrad je Modul, 33 Qualitätsprüfungen mit Sprung ins Element | S3a |
 
 ## 7. Nicht-funktionale Anforderungen
 

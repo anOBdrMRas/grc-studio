@@ -23,6 +23,13 @@
     });
   }
 
+  function closeModal() {
+    var m = document.getElementById('modal');
+    if (m && m.open) m.close();
+  }
+  // a fragment saved from the modal closes it (HX-Trigger: closeModal)
+  document.body.addEventListener('closeModal', closeModal);
+
   document.addEventListener('click', function (ev) {
     var btn = ev.target.closest('[data-action]');
     if (!btn) return;
@@ -30,8 +37,7 @@
     if (action === 'toggle-theme') {
       setTheme(document.documentElement.getAttribute('data-theme') === 'fidonis-dark' ? 'fidonis-light' : 'fidonis-dark');
     } else if (action === 'close-modal') {
-      var m = document.getElementById('modal');
-      if (m && m.open) m.close();
+      closeModal();
     } else if (action === 'add-row') {
       var tpl = document.getElementById(btn.getAttribute('data-template'));
       var target = document.getElementById(btn.getAttribute('data-target'));

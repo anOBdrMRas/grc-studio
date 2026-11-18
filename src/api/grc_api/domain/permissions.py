@@ -13,6 +13,7 @@ PERMISSIONS: Final[dict[str, str]] = {
     "grc:read": "Read risks, opportunities, controls and KPI",
     "grc:record": "Record new risks and opportunities",
     "grc:manage": "Create, edit and delete all GRC elements, set their owners",
+    "cockpit:read": "Open the I&A cockpit (quality checks, review queue)",
     "quality:approve": "Give or refuse the I&A quality approval",
     "workflow:set-status": "Set the approval status directly",
 }
@@ -30,6 +31,7 @@ SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
             "grc:record",
             "grc:manage",
             "quality:approve",
+            "cockpit:read",
             "workflow:set-status",
         }
     ),
@@ -45,6 +47,7 @@ SYSTEM_ROLES: Final[dict[str, frozenset[str]]] = {
             "grc:read",
             "grc:record",
             "grc:manage",
+            "cockpit:read",
             "workflow:set-status",
         }
     ),

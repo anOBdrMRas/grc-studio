@@ -5,7 +5,18 @@ from dataclasses import dataclass
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.domain.org import PersonRef, position_owners, role_holders
-from grc_api.models import Control, Kpi, Mandate, Opportunity, Position, Process, Risk, Role, User
+from grc_api.models import (
+    Audit,
+    Control,
+    Kpi,
+    Mandate,
+    Opportunity,
+    Position,
+    Process,
+    Risk,
+    Role,
+    User,
+)
 from grc_api.repositories import elements, org
 
 
@@ -28,6 +39,13 @@ class OrgData:
         roles_by_pos = {p: [r for r, _ in rs] for p, rs in self.position_roles.items()}
         return role_holders(role_id, roles_by_pos, self.refs)
 
+    def roles_of(self, user_id: str) -> set[str]:
+        """Roles a person holds through the position."""
+        u = self.users.get(user_id)
+        if u is None or u.status != "active" or not u.position_id:
+            return set()
+        return {r for r, _ in self.position_roles.get(u.position_id, [])}
+
     def owners(self, kind: str, obj: object) -> list[str]:
         if isinstance(obj, Role):
             return [obj.role_owner_user_id] if obj.role_owner_user_id else []
@@ -35,6 +53,8 @@ class OrgData:
             return position_owners(obj.reports_to_disciplinary_id, self.refs)
         if isinstance(obj, Process | Opportunity | Control | Kpi):
             return self.role_holders(obj.owner_role_id) if obj.owner_role_id else []
+        if isinstance(obj, Audit):
+            return [obj.lead_auditor_user_id] if obj.lead_auditor_user_id else []
         if isinstance(obj, Mandate):
             return [obj.granted_by_user_id] if obj.granted_by_user_id else []
         if isinstance(obj, Risk):

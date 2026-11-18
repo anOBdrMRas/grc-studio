@@ -182,6 +182,54 @@ EFFECTIVENESS: Final = ["Not tested", "Effective", "Partially effective", "Not e
 TEST_METHODS: Final = ["Inquiry", "Observation", "Inspection", "Re-performance", "Sampling"]
 KPI_FREQUENCIES: Final = ["Daily", "Weekly", "Monthly", "Quarterly", "Annually"]
 KPI_DIRECTIONS: Final = ["higher", "lower"]
+AUDIT_TYPES: Final = [
+    "Internal audit",
+    "Certification audit",
+    "System audit",
+    "Customer audit",
+    "Supplier audit",
+]
+CERT_STAGES: Final = [
+    "Initial certification stage 1",
+    "Initial certification stage 2",
+    "Surveillance audit",
+    "Recertification",
+    "Special audit",
+]
+# "Completed" (not "Closed"): the finding status "Closed" is translated differently
+AUDIT_STATUSES: Final = [
+    "Planned",
+    "In preparation",
+    "Conducted",
+    "Report issued",
+    "Actions open",
+    "Completed",
+    "Cancelled",
+]
+AUDIT_STANDARDS: Final = [
+    "ISO 9001",
+    "ISO 14001",
+    "ISO 27001",
+    "ISO 37301",
+    "Customer requirement",
+    "Supplier requirement",
+    "Other",
+]
+VERDICTS: Final = ["Conforming", "Conforming with findings", "Nonconforming"]
+FINDING_TYPES: Final = [
+    "Major nonconformity",
+    "Minor nonconformity",
+    "Observation",
+    "Opportunity for improvement",
+    "Positive finding",
+]
+FINDING_STATUSES: Final = [
+    "Open",
+    "In progress",
+    "Implemented",
+    "Effectiveness verified",
+    "Closed",
+]
 PROGRESS_STATUSES: Final = [
     "Identified",
     "Assessed",
@@ -221,6 +269,13 @@ def all_catalogs() -> dict[str, list[str]]:
         "impact_levels": list(IMPACT_LEVELS),
         "opportunity_categories": list(OPPORTUNITY_CATEGORIES),
         "progress_statuses": list(PROGRESS_STATUSES),
+        "audit_types": list(AUDIT_TYPES),
+        "cert_stages": list(CERT_STAGES),
+        "audit_statuses": list(AUDIT_STATUSES),
+        "audit_standards": list(AUDIT_STANDARDS),
+        "verdicts": list(VERDICTS),
+        "finding_types": list(FINDING_TYPES),
+        "finding_statuses": list(FINDING_STATUSES),
         "control_types": list(CONTROL_TYPES),
         "automation": list(AUTOMATION),
         "control_frequencies": list(CONTROL_FREQUENCIES),

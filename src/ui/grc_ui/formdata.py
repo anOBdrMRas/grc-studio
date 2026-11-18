@@ -42,6 +42,8 @@ def values_from_form(
             elif kind == "number":
                 raw = str(form.get(key) or "0").strip()
                 out[key] = int(raw) if raw.lstrip("-").isdigit() else 0
+            elif kind == "iso_one":
+                out[key] = str(form.get(key) or "")
             elif kind in ("date", "ref"):
                 out[key] = str(form.get(key) or "") or None
             elif kind == "position_roles":

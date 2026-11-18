@@ -1,0 +1,40 @@
+{# findings of an audit with corrective actions; editing in the modal #}
+{% if item.independence %}
+<div class="alert alert-warning py-2 text-sm" role="alert">{{ icon("alert-triangle") }}
+  <div><b>{{ _("Independence (ISO 19011)") }}</b>
+    <ul class="list-disc pl-4">{% for c in item.independence %}<li>{{ _("{user} audits {process} and holds {role} there.").format(user=c.user_name, process=c.process_label, role=c.role_label) }}</li>{% endfor %}</ul>
+  </div>
+</div>
+{% endif %}
+<fieldset class="rounded-box border border-base-300 p-3">
+  <legend class="px-1 text-sm font-semibold text-secondary">{{ _("Findings & corrective actions") }} ({{ item.findings|length }})</legend>
+  {% if item.findings %}
+  <div class="overflow-x-auto">
+    <table class="table table-xs">
+      <thead><tr><th>{{ _("ID") }}</th><th>{{ _("Type") }}</th><th>{{ _("Description") }}</th><th>{{ _("Responsible") }}</th><th>{{ _("Due date") }}</th><th>{{ _("Status") }}</th><th></th></tr></thead>
+      <tbody>
+        {% for f in item.findings %}
+        <tr>
+          <td class="font-mono">{{ f.code }}</td>
+          <td>{{ _(f.finding_type) }}</td>
+          <td class="max-w-xs">{{ f.description|truncate(90) }}</td>
+          <td>{{ item.labels.get(f.responsible_user_id, "") if f.responsible_user_id else item.labels.get(f.responsible_role_id, "–") if f.responsible_role_id else "–" }}</td>
+          <td>{{ f.due_date or "–" }}{% if f.overdue %} <span class="badge badge-xs badge-error">{{ _("overdue") }}</span>{% endif %}</td>
+          <td><span class="badge badge-sm badge-outline whitespace-nowrap {{ 'border-success text-success' if not f.open else '' }}">{{ _(f.status) }}</span></td>
+          <td class="whitespace-nowrap">
+            {% if f.can_edit or f.is_responsible %}<button class="btn btn-ghost btn-xs" hx-get="{{ self_url }}/findings/{{ f.id }}/edit" hx-target="#modal-body">{{ icon("pencil", "h-3 w-3") }} {{ _("Edit") }}</button>{% endif %}
+            {% if f.can_edit %}<button class="btn btn-ghost btn-xs text-error" hx-post="{{ self_url }}/findings/{{ f.id }}/delete" hx-target="#detail" hx-confirm="{{ _('Really delete?') }}" aria-label="{{ _('Delete') }}">{{ icon("trash", "h-3 w-3") }}</button>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}<p class="text-sm opacity-70">{{ _("No findings recorded.") }}</p>{% endif %}
+  {% if item.rights.can_edit %}
+  <form hx-post="{{ self_url }}/findings" hx-target="#detail" class="mt-2 flex gap-2">
+    <input name="description" class="input input-bordered input-sm grow" placeholder="{{ _('Short description of the finding') }}" aria-label="{{ _('Short description of the finding') }}" required>
+    <button class="btn btn-primary btn-sm">{{ icon("plus") }} {{ _("Finding") }}</button>
+  </form>
+  {% endif %}
+</fieldset>

@@ -75,6 +75,7 @@
   </fieldset>
   {% endif %}
   {% if mod.kind == "kpi" %}{% include "entity/_kpi.html" %}{% endif %}
+  {% if mod.kind == "audit" %}{% include "audits/_findings.html" %}{% endif %}
   {% if mod.kind == "user" and item.mandates is defined %}
   {% from "macros.html" import mandate_state %}
   <fieldset class="rounded-box border border-base-300 p-3">

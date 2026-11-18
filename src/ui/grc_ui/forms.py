@@ -953,6 +953,234 @@ MANDATE: list[Section] = [
     },
 ]
 
+AUDIT: list[Section] = [
+    {
+        "title": N_("Master data"),
+        "fields": [
+            {"key": "code", "label": N_("ID"), "kind": "readonly"},
+            {"key": "title", "label": N_("Title"), "kind": "text"},
+            {"key": "description", "label": N_("Description"), "kind": "textarea", "wide": True},
+            {
+                "key": "audit_type",
+                "label": N_("Audit type"),
+                "kind": "select",
+                "options": "audit_types",
+                "empty": True,
+            },
+            {
+                "key": "cert_stage",
+                "label": N_("Kind of certification audit"),
+                "kind": "select",
+                "options": "cert_stages",
+                "empty": True,
+                "hint": N_("ISO/IEC 17021-1"),
+            },
+            {"key": "program_year", "label": N_("Audit programme (year)"), "kind": "text"},
+            {
+                "key": "audit_status",
+                "label": N_("Status"),
+                "kind": "select",
+                "options": "audit_statuses",
+            },
+        ],
+    },
+    {
+        "title": N_("Scope & criteria"),
+        "fields": [
+            {
+                "key": "standards",
+                "label": N_("Standards / rules"),
+                "kind": "multiselect",
+                "options": "audit_standards",
+            },
+            {
+                "key": "objective",
+                "label": N_("Audit objective & scope"),
+                "kind": "textarea",
+                "wide": True,
+                "hint": N_("ISO 19011 5.2 / 6.2"),
+            },
+            {
+                "key": "criteria",
+                "label": N_("Audit criteria (clauses)"),
+                "kind": "iso",
+                "wide": True,
+            },
+            {
+                "key": "process_ids",
+                "label": N_("Audited processes"),
+                "kind": "refs",
+                "ref": "processes",
+                "wide": True,
+            },
+            {
+                "key": "audited_role_ids",
+                "label": N_("Audited roles"),
+                "kind": "refs",
+                "ref": "roles",
+                "wide": True,
+            },
+            {"key": "sites", "label": N_("Sites"), "kind": "text"},
+        ],
+    },
+    {
+        "title": N_("Participants"),
+        "fields": [
+            {
+                "key": "lead_auditor_user_id",
+                "label": N_("Lead auditor"),
+                "kind": "ref",
+                "ref": "people",
+                "owner": True,
+            },
+            {
+                "key": "external_lead_auditor",
+                "label": N_("Lead auditor (external)"),
+                "kind": "text",
+                "hint": N_("for certification, customer or supplier audits"),
+            },
+            {
+                "key": "team_user_ids",
+                "label": N_("Audit team"),
+                "kind": "refs",
+                "ref": "people",
+                "wide": True,
+            },
+            {
+                "key": "external_org",
+                "label": N_("External organisation"),
+                "kind": "text",
+                "hint": N_("certification body, customer or supplier"),
+            },
+            {
+                "key": "auditee_contact_user_id",
+                "label": N_("Contact of the audited party"),
+                "kind": "ref",
+                "ref": "people",
+            },
+        ],
+    },
+    {
+        "title": N_("Dates"),
+        "fields": [
+            {"key": "planned_date", "label": N_("Planned for"), "kind": "date"},
+            {"key": "start_date", "label": N_("Conducted from"), "kind": "date"},
+            {"key": "end_date", "label": N_("Conducted until"), "kind": "date"},
+            {"key": "report_date", "label": N_("Report date"), "kind": "date"},
+            {
+                "key": "report_document",
+                "label": N_("Audit report"),
+                "kind": "text",
+                "hint": N_("document name, storage location or link"),
+            },
+            {
+                "key": "certificate_valid_until",
+                "label": N_("Certificate valid until"),
+                "kind": "date",
+            },
+            {"key": "next_audit_due", "label": N_("Next audit due"), "kind": "date"},
+        ],
+    },
+    {
+        "title": N_("Result"),
+        "fields": [
+            {
+                "key": "verdict",
+                "label": N_("Overall verdict"),
+                "kind": "select",
+                "options": "verdicts",
+                "empty": True,
+            },
+            {"key": "summary", "label": N_("Summary"), "kind": "textarea", "wide": True},
+            {"key": "strengths", "label": N_("Strengths"), "kind": "textarea", "wide": True},
+        ],
+    },
+]
+
+FINDING: list[Section] = [
+    {
+        "title": N_("Finding"),
+        "fields": [
+            {
+                "key": "finding_type",
+                "label": N_("Type"),
+                "kind": "select",
+                "options": "finding_types",
+            },
+            {"key": "clause", "label": N_("Standard clause"), "kind": "iso_one"},
+            {"key": "description", "label": N_("Description"), "kind": "textarea", "wide": True},
+            {"key": "evidence", "label": N_("Evidence"), "kind": "text", "wide": True},
+            {"key": "process_id", "label": N_("Process"), "kind": "ref", "ref": "processes"},
+            {"key": "element_id", "label": N_("Process step (element id)"), "kind": "text"},
+            {"key": "risk_ids", "label": N_("Risks"), "kind": "refs", "ref": "risks", "wide": True},
+            {
+                "key": "control_ids",
+                "label": N_("Controls (ICS)"),
+                "kind": "refs",
+                "ref": "controls",
+                "wide": True,
+            },
+        ],
+    },
+    {
+        "title": N_("Corrective action"),
+        "fields": [
+            {
+                "key": "responsible_role_id",
+                "label": N_("Responsible role"),
+                "kind": "ref",
+                "ref": "roles",
+            },
+            {
+                "key": "responsible_user_id",
+                "label": N_("Responsible person"),
+                "kind": "ref",
+                "ref": "people",
+            },
+            {
+                "key": "root_cause",
+                "label": N_("Root cause analysis"),
+                "kind": "textarea",
+                "wide": True,
+                "responsible": True,
+            },
+            {
+                "key": "corrective_action",
+                "label": N_("Corrective action"),
+                "kind": "textarea",
+                "wide": True,
+                "responsible": True,
+            },
+            {"key": "due_date", "label": N_("Due date"), "kind": "date"},
+            {
+                "key": "status",
+                "label": N_("Status"),
+                "kind": "select",
+                "options": "finding_statuses",
+                "responsible": True,
+            },
+        ],
+    },
+    {
+        "title": N_("Effectiveness check"),
+        "fields": [
+            {"key": "verified_at", "label": N_("Checked on"), "kind": "date"},
+            {
+                "key": "verified_by_user_id",
+                "label": N_("Checked by"),
+                "kind": "ref",
+                "ref": "people",
+            },
+            {
+                "key": "verification_result",
+                "label": N_("Result of the effectiveness check"),
+                "kind": "textarea",
+                "wide": True,
+            },
+        ],
+    },
+]
+
 FORMS: dict[str, list[Section]] = {
     "role": ROLE,
     "position": POSITION,
@@ -963,4 +1191,6 @@ FORMS: dict[str, list[Section]] = {
     "control": CONTROL,
     "kpi": KPI,
     "mandate": MANDATE,
+    "audit": AUDIT,
+    "finding": FINDING,
 }

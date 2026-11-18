@@ -80,8 +80,14 @@ msgstr "Angenommen / gegengezeichnet am"
 msgid "Action"
 msgstr "Maßnahme"
 
+msgid "Actions open"
+msgstr "Maßnahmen offen"
+
 msgid "Actions to address risks and opportunities"
 msgstr "Maßnahmen zum Umgang mit Risiken und Chancen"
+
+msgid "Active users without a position"
+msgstr "Aktive Benutzer ohne Stelle"
 
 msgid "Activity, process, product or service"
 msgstr "Aktivität, Prozess, Produkt oder Service"
@@ -131,6 +137,9 @@ msgstr "Archiviert"
 msgid "Area"
 msgstr "Bereich"
 
+msgid "As the responsible person you document the cause, the corrective action and the progress. The auditors check the effectiveness and close the finding."
+msgstr "Als verantwortliche Person dokumentieren Sie Ursache, Korrekturmaßnahme und Fortschritt. Die Auditoren prüfen die Wirksamkeit und schließen die Feststellung."
+
 msgid "Assessed"
 msgstr "Bewertet"
 
@@ -155,11 +164,41 @@ msgstr "Zugeordnete Rollen"
 msgid "Assignment in process step"
 msgstr "Zuordnung im Prozessschritt"
 
+msgid "Audit"
+msgstr "Audit"
+
+msgid "Audit criteria (clauses)"
+msgstr "Auditkriterien (Normkapitel)"
+
+msgid "Audit objective & scope"
+msgstr "Auditziel & Geltungsbereich"
+
 msgid "Audit or hotline finding"
 msgstr "Audit- oder Hinweisgeber-Feststellung"
 
+msgid "Audit programme (year)"
+msgstr "Auditprogramm (Jahr)"
+
+msgid "Audit report"
+msgstr "Auditbericht"
+
+msgid "Audit team"
+msgstr "Auditteam"
+
+msgid "Audit type"
+msgstr "Audittyp"
+
+msgid "Audited processes"
+msgstr "Auditierte Prozesse"
+
+msgid "Audited roles"
+msgstr "Auditierte Rollen"
+
 msgid "Audits"
 msgstr "Audits"
+
+msgid "Audits where auditors audit their own work"
+msgstr "Audits, in denen Auditoren eigene Arbeit prüfen"
 
 msgid "Authorities of the position"
 msgstr "Befugnisse der Stelle"
@@ -222,11 +261,23 @@ msgstr "CUS"
 msgid "Cancel"
 msgstr "Abbrechen"
 
+msgid "Cancelled"
+msgstr "Abgesagt"
+
 msgid "Category"
 msgstr "Kategorie"
 
 msgid "Cause and consequence"
 msgstr "Ursache und Auswirkung"
+
+msgid "Certificate valid until"
+msgstr "Zertifikat gültig bis"
+
+msgid "Certificates expired or expiring (< 180 days)"
+msgstr "Zertifikate abgelaufen oder laufen ab (< 180 Tage)"
+
+msgid "Certification audit"
+msgstr "Zertifizierungsaudit"
 
 msgid "Change history"
 msgstr "Änderungshistorie"
@@ -239,6 +290,12 @@ msgstr "Änderung der Struktur oder Strategie"
 
 msgid "Changes to requirements"
 msgstr "Änderungen von Anforderungen"
+
+msgid "Checked by"
+msgstr "Geprüft durch"
+
+msgid "Checked on"
+msgstr "Geprüft am"
 
 msgid "Choose another person"
 msgstr "Andere Person wählen"
@@ -288,6 +345,9 @@ msgstr "Kompetenz / Schulung"
 msgid "Complaints from individual customers or partners, local media coverage."
 msgstr "Beschwerden einzelner Kunden oder Partner, lokale Berichterstattung."
 
+msgid "Completed"
+msgstr "Abgeschlossen"
+
 msgid "Compliance"
 msgstr "Compliance"
 
@@ -321,11 +381,32 @@ msgstr "Compliance-Berichterstattung"
 msgid "Compliance risk assessment"
 msgstr "Compliance-Risikobeurteilung"
 
+msgid "Conducted"
+msgstr "Durchgeführt"
+
+msgid "Conducted audits without a report"
+msgstr "Durchgeführte Audits ohne Bericht"
+
+msgid "Conducted from"
+msgstr "Durchgeführt von"
+
+msgid "Conducted until"
+msgstr "Durchgeführt bis"
+
 msgid "Confidentiality"
 msgstr "Vertraulichkeit"
 
 msgid "Confidentiality agreement required"
 msgstr "Vertraulichkeitsvereinbarung erforderlich"
+
+msgid "Conforming"
+msgstr "Konform"
+
+msgid "Conforming with findings"
+msgstr "Konform mit Feststellungen"
+
+msgid "Contact of the audited party"
+msgstr "Ansprechpartner auditierte Seite"
 
 msgid "Content & scope"
 msgstr "Inhalt & Umfang"
@@ -372,11 +453,23 @@ msgstr "Controlling"
 msgid "Controls (ICS)"
 msgstr "Controls (IKS)"
 
+msgid "Controls not (fully) effective or not tested"
+msgstr "Controls nicht (voll) wirksam oder ungeprüft"
+
+msgid "Controls without a control owner"
+msgstr "Controls ohne Kontrollverantwortlichen"
+
+msgid "Controls without a risk addressed"
+msgstr "Controls ohne adressiertes Risiko"
+
 msgid "Core process"
 msgstr "Kernprozess"
 
 msgid "Corrective"
 msgstr "Korrektiv"
+
+msgid "Corrective action"
+msgstr "Korrekturmaßnahme"
 
 msgid "Created"
 msgstr "Angelegt"
@@ -399,11 +492,17 @@ msgstr "Kritische Schwelle"
 msgid "Customer Repair & Service"
 msgstr "Customer Repair & Service"
 
+msgid "Customer audit"
+msgstr "Kundenaudit"
+
 msgid "Customer communication"
 msgstr "Kommunikation mit Kunden"
 
 msgid "Customer focus"
 msgstr "Kundenorientierung"
+
+msgid "Customer requirement"
+msgstr "Kundenanforderung"
 
 msgid "Customer satisfaction"
 msgstr "Kundenzufriedenheit"
@@ -417,6 +516,9 @@ msgstr "Datenquelle"
 msgid "Date"
 msgstr "Datum"
 
+msgid "Dates"
+msgstr "Termine"
+
 msgid "Degree of automation"
 msgstr "Automatisierungsgrad"
 
@@ -428,6 +530,9 @@ msgstr "Pflichtendelegation"
 
 msgid "Delegations & powers of attorney"
 msgstr "Delegationen & Vollmachten"
+
+msgid "Delegations & powers of attorney requiring action"
+msgstr "Delegationen & Vollmachten mit Handlungsbedarf"
 
 msgid "Delete"
 msgstr "Löschen"
@@ -510,6 +615,9 @@ msgstr "Entwurf"
 msgid "Draft (in progress)"
 msgstr "Entwurf (in Arbeit)"
 
+msgid "Due date"
+msgstr "Frist"
+
 msgid "Duties / tasks transferred"
 msgstr "Übertragene Pflichten / Aufgaben"
 
@@ -537,8 +645,14 @@ msgstr "Wirksam"
 msgid "Effectiveness"
 msgstr "Wirksamkeit"
 
+msgid "Effectiveness check"
+msgstr "Wirksamkeitsprüfung"
+
 msgid "Effectiveness test"
 msgstr "Wirksamkeitsprüfung"
+
+msgid "Effectiveness verified"
+msgstr "Wirksamkeit geprüft"
 
 msgid "Efficiency"
 msgstr "Effizienz"
@@ -594,6 +708,9 @@ msgstr "Bewertung der Einhaltung von Verpflichtungen"
 msgid "Event-driven"
 msgstr "Ereignisbezogen"
 
+msgid "Evidence"
+msgstr "Nachweis / Evidenz"
+
 msgid "Evidence / documentation"
 msgstr "Nachweis / Dokumentation"
 
@@ -608,6 +725,9 @@ msgstr "Export Control & Customs"
 
 msgid "External communication"
 msgstr "Externe Kommunikation"
+
+msgid "External organisation"
+msgstr "Externe Organisation"
 
 msgid "Facility"
 msgstr "Facility"
@@ -629,6 +749,24 @@ msgstr "Finance and Admin"
 
 msgid "Financial"
 msgstr "Finanziell"
+
+msgid "Finding"
+msgstr "Feststellung"
+
+#, python-brace-format
+msgid "Finding {code} changed"
+msgstr "Feststellung {code} geändert"
+
+#, python-brace-format
+msgid "Finding {code} deleted"
+msgstr "Feststellung {code} gelöscht"
+
+#, python-brace-format
+msgid "Finding {code} recorded"
+msgstr "Feststellung {code} erfasst"
+
+msgid "Findings & corrective actions"
+msgstr "Feststellungen & Korrekturmaßnahmen"
 
 msgid "Fine, inspection or withdrawal of individual permits."
 msgstr "Bußgeld, Prüfung oder Entzug einzelner Genehmigungen."
@@ -756,6 +894,12 @@ msgstr "Hoch"
 msgid "Higher risk – needs treatment or a documented acceptance"
 msgstr "Höheres Risiko – braucht eine Behandlung oder eine dokumentierte Akzeptanz"
 
+msgid "Higher risks (> 8)"
+msgstr "Höhere Risiken (> 8)"
+
+msgid "Higher risks (> 8) without actions or responsible persons"
+msgstr "Höhere Risiken (> 8) ohne Maßnahmen oder Maßnahmenverantwortliche"
+
 msgid "Holder"
 msgstr "Inhaber"
 
@@ -776,6 +920,9 @@ msgstr "IKS-Prüfung"
 
 msgid "ID"
 msgstr "ID"
+
+msgid "ISO 19011 5.2 / 6.2"
+msgstr "ISO 19011 5.2 / 6.2"
 
 msgid "ISO 27001 6.1.2 c) 2)"
 msgstr "ISO 27001 6.1.2 c) 2)"
@@ -810,6 +957,9 @@ msgstr "ISO 9001 9.1.1"
 msgid "ISO references"
 msgstr "Normreferenzen"
 
+msgid "ISO/IEC 17021-1"
+msgstr "ISO/IEC 17021-1"
+
 msgid "IT-dependent manual"
 msgstr "IT-abhängig manuell"
 
@@ -843,11 +993,20 @@ msgstr "In meiner Verantwortung"
 msgid "In preparation"
 msgstr "In Vorbereitung"
 
+msgid "In progress"
+msgstr "In Bearbeitung"
+
 msgid "In treatment"
 msgstr "In Behandlung"
 
+msgid "Inactive users with a position"
+msgstr "Inaktive Benutzer mit Stelle"
+
 msgid "Incompatible roles (SoD)"
 msgstr "Unvereinbare Rollen (SoD)"
+
+msgid "Independence (ISO 19011)"
+msgstr "Unabhängigkeit (ISO 19011)"
 
 msgid "Information for external providers"
 msgstr "Informationen für externe Anbieter"
@@ -860,6 +1019,12 @@ msgstr "Informationssicherheit (optional)"
 
 msgid "Infrastructure"
 msgstr "Infrastruktur"
+
+msgid "Initial certification stage 1"
+msgstr "Erstzertifizierung Stufe 1"
+
+msgid "Initial certification stage 2"
+msgstr "Erstzertifizierung Stufe 2"
 
 msgid "Injury with lost time or local, reversible environmental impact."
 msgstr "Verletzung mit Arbeitsausfall bzw. örtlich begrenzte, behebbare Umweltbeeinträchtigung."
@@ -924,6 +1089,12 @@ msgstr "KPI"
 msgid "Key control"
 msgstr "Schlüsselkontrolle (Key Control)"
 
+msgid "Key controls not effective"
+msgstr "Schlüsselkontrollen nicht wirksam"
+
+msgid "Kind of certification audit"
+msgstr "Auditart"
+
 msgid "Language"
 msgstr "Sprache"
 
@@ -944,6 +1115,12 @@ msgstr "Letzter Wert"
 
 msgid "Lasting loss of trust in the market, international media coverage."
 msgstr "Nachhaltiger Vertrauensverlust am Markt, internationale Berichterstattung."
+
+msgid "Lead auditor"
+msgstr "Leitender Auditor"
+
+msgid "Lead auditor (external)"
+msgstr "Leitender Auditor (extern)"
 
 msgid "Leadership"
 msgstr "Führung"
@@ -1008,6 +1185,9 @@ msgstr "Hauptaufgaben"
 msgid "Main type of consequence"
 msgstr "Hauptsächliche Auswirkungsart"
 
+msgid "Major nonconformity"
+msgstr "Hauptabweichung"
+
 msgid "Management"
 msgstr "Geschäftsführung"
 
@@ -1037,6 +1217,9 @@ msgstr "Führungskraft"
 
 msgid "Mandatory role"
 msgstr "Pflichtrolle"
+
+msgid "Mandatory roles without an effective transfer"
+msgstr "Pflichtrollen ohne wirksame Übertragung"
 
 msgid "Mandatory training / awareness"
 msgstr "Pflichtschulungen / Awareness"
@@ -1086,8 +1269,14 @@ msgstr "Mittel"
 msgid "Merger or acquisition"
 msgstr "Fusion oder Übernahme"
 
+msgid "Minor nonconformity"
+msgstr "Nebenabweichung"
+
 msgid "Model (BPMN)"
 msgstr "Modell (BPMN)"
+
+msgid "Module"
+msgstr "Modul"
 
 msgid "Monitoring and measuring resources"
 msgstr "Ressourcen zur Überwachung und Messung"
@@ -1119,6 +1308,9 @@ msgstr "Neue oder geänderte Aktivität, Produkt oder Service"
 msgid "New process"
 msgstr "Neuer Prozess"
 
+msgid "Next audit due"
+msgstr "Nächstes Audit fällig"
+
 msgid "Next check"
 msgstr "Nächste Kontrolle"
 
@@ -1140,6 +1332,9 @@ msgstr "Keine Übertragungen erhalten."
 msgid "No entries."
 msgstr "Keine Einträge."
 
+msgid "No findings recorded."
+msgstr "Keine Feststellungen erfasst."
+
 msgid "No incident, or one noticed only internally."
 msgstr "Kein oder nur intern wahrgenommener Vorfall."
 
@@ -1160,6 +1355,9 @@ msgstr "Noch kein Wert"
 
 msgid "Noncompliance"
 msgstr "Nichtkonformität"
+
+msgid "Nonconforming"
+msgstr "Nicht konform"
 
 msgid "Nonconformity and corrective action"
 msgstr "Nichtkonformität und Korrekturmaßnahmen"
@@ -1191,6 +1389,9 @@ msgstr "Noch nicht gültig"
 msgid "Nothing to do."
 msgstr "Nichts zu tun."
 
+msgid "Nothing waiting."
+msgstr "Nichts offen."
+
 msgid "Notice or inquiry from an authority."
 msgstr "Hinweis oder Rückfrage einer Behörde."
 
@@ -1202,6 +1403,12 @@ msgstr "Beobachtung"
 
 msgid "Official requirement or warning."
 msgstr "Behördliche Auflage oder Verwarnung."
+
+msgid "Open"
+msgstr "Offen"
+
+msgid "Open audit findings"
+msgstr "Offene Audit-Feststellungen"
 
 msgid "Operating effectiveness"
 msgstr "Operative Wirksamkeit"
@@ -1221,8 +1428,17 @@ msgstr "Operations"
 msgid "Opportunities"
 msgstr "Chancen"
 
+msgid "Opportunities without a responsible role"
+msgstr "Chancen ohne Verantwortlichen"
+
+msgid "Opportunities without measures to seize them"
+msgstr "Chancen ohne Maßnahmen zur Nutzung"
+
 msgid "Opportunity"
 msgstr "Chance"
+
+msgid "Opportunity for improvement"
+msgstr "Verbesserungspotenzial"
 
 msgid "Org. unit"
 msgstr "Org.-Einheit"
@@ -1242,6 +1458,15 @@ msgstr "Other"
 msgid "Outputs"
 msgstr "Ergebnisse (Outputs)"
 
+msgid "Overall verdict"
+msgstr "Gesamturteil"
+
+msgid "Overdue audit findings"
+msgstr "Überfällige Audit-Feststellungen"
+
+msgid "Overdue reviews"
+msgstr "Überfällige Reviews"
+
 msgid "Owner"
 msgstr "Eigner"
 
@@ -1253,6 +1478,9 @@ msgstr "Eingeschränkt wirksam"
 
 msgid "Partially implemented"
 msgstr "Teilweise umgesetzt"
+
+msgid "Participants"
+msgstr "Beteiligte"
 
 msgid "Parties & reference"
 msgstr "Beteiligte & Bezug"
@@ -1286,6 +1514,9 @@ msgstr "Personen"
 
 msgid "Planned"
 msgstr "Geplant"
+
+msgid "Planned for"
+msgstr "Geplant am"
 
 msgid "Planning"
 msgstr "Planung"
@@ -1324,6 +1555,15 @@ msgstr "Stellen"
 msgid "Positions & persons"
 msgstr "Stellen & Personen"
 
+msgid "Positions without a superior (no owner)"
+msgstr "Stellen ohne Vorgesetzten (ohne Owner)"
+
+msgid "Positions without purpose or main tasks"
+msgstr "Stellen ohne Zweck oder Hauptaufgaben"
+
+msgid "Positive finding"
+msgstr "Positive Feststellung"
+
 msgid "Post-delivery activities"
 msgstr "Tätigkeiten nach der Lieferung"
 
@@ -1360,8 +1600,20 @@ msgstr "Prozesssteckbrief (ISO 9001 4.4)"
 msgid "Process step"
 msgstr "Prozessschritt"
 
+msgid "Process step (element id)"
+msgstr "Prozessschritt (Element-ID)"
+
+msgid "Process steps without responsibility (R/A)"
+msgstr "Prozessschritte ohne Verantwortung (R/A)"
+
 msgid "Processes"
 msgstr "Prozesse"
+
+msgid "Processes without a process owner"
+msgstr "Prozesse ohne Prozessverantwortlichen"
+
+msgid "Processes without purpose & scope"
+msgstr "Prozesse ohne Zweck & Anwendungsbereich"
 
 msgid "Product Marketing"
 msgstr "Product Marketing"
@@ -1413,6 +1665,18 @@ msgstr "Qualität"
 
 msgid "Quality approval by the I&A team"
 msgstr "Qualitätsfreigabe durch das I&A-Team"
+
+msgid "Quality approvals, workflow status and the quality checks of the integrated management system."
+msgstr "Qualitätsfreigaben, Freigabestatus und Qualitätsprüfungen des integrierten Managementsystems."
+
+msgid "Quality checks"
+msgstr "Qualitätsprüfungen"
+
+msgid "Quality grade"
+msgstr "Qualitätsgrad"
+
+msgid "Quality grade: share of the elements without a finding of the quality checks."
+msgstr "Qualitätsgrad: Anteil der Elemente ohne Befund der Qualitätsprüfungen."
 
 msgid "Quality management"
 msgstr "Qualitätsmanagement"
@@ -1466,6 +1730,9 @@ msgstr "Begründung des Ausmaßes"
 msgid "Reason for the likelihood"
 msgstr "Begründung der Wahrscheinlichkeit"
 
+msgid "Recertification"
+msgstr "Rezertifizierung"
+
 msgid "Recipient"
 msgstr "Empfänger"
 
@@ -1515,6 +1782,12 @@ msgstr "Bemerkung"
 msgid "Remove"
 msgstr "Entfernen"
 
+msgid "Report date"
+msgstr "Berichtsdatum"
+
+msgid "Report issued"
+msgstr "Bericht erstellt"
+
 msgid "Reports disciplinarily to"
 msgstr "Berichtet disziplinarisch an"
 
@@ -1560,11 +1833,26 @@ msgstr "Verantwortlich für Auswertung"
 msgid "Responsible for measuring"
 msgstr "Verantwortlich für Messung"
 
+msgid "Responsible person"
+msgstr "Verantwortliche Person"
+
+msgid "Responsible role"
+msgstr "Verantwortliche Rolle"
+
+msgid "Result"
+msgstr "Ergebnis"
+
+msgid "Result of the effectiveness check"
+msgstr "Ergebnis der Wirksamkeitsprüfung"
+
 msgid "Return"
 msgstr "Zurückgeben"
 
 msgid "Review of the requirements"
 msgstr "Überprüfung der Anforderungen"
+
+msgid "Reviews"
+msgstr "Reviews"
 
 msgid "Revoke"
 msgstr "Widerrufen"
@@ -1605,6 +1893,18 @@ msgstr "Risiken"
 msgid "Risks addressed"
 msgstr "Adressierte Risiken"
 
+msgid "Risks without a mitigating control"
+msgstr "Risiken ohne mitigierende Kontrolle"
+
+msgid "Risks without a risk owner"
+msgstr "Risiken ohne Risikoeigner"
+
+msgid "Risks without department or reasons for the assessment"
+msgstr "Risiken ohne Bereich oder Bewertungsbegründung"
+
+msgid "Risks without description or cause and consequence"
+msgstr "Risiken ohne Beschreibung oder Ursache und Auswirkung"
+
 msgid "Role"
 msgstr "Rolle"
 
@@ -1620,11 +1920,23 @@ msgstr "Rollentyp"
 msgid "Roles"
 msgstr "Rollen"
 
+msgid "Roles without a holder"
+msgstr "Rollen ohne Inhaber"
+
+msgid "Roles without a role owner"
+msgstr "Rollen ohne Rollenverantwortlichen"
+
+msgid "Roles without responsibilities or authorities"
+msgstr "Rollen ohne Verantwortlichkeiten oder Befugnisse"
+
 msgid "Roles, responsibilities and authorities"
 msgstr "Rollen, Verantwortlichkeiten und Befugnisse"
 
 msgid "Roles, responsibilities and authorities / compliance function"
 msgstr "Rollen, Verantwortlichkeiten und Befugnisse / Compliance-Funktion"
+
+msgid "Root cause analysis"
+msgstr "Ursachenanalyse"
 
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
 msgstr "Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder eine dokumentierte Akzeptanz."
@@ -1643,6 +1955,9 @@ msgstr "Diagramm speichern"
 
 msgid "Saved"
 msgstr "Gespeichert"
+
+msgid "Scope & criteria"
+msgstr "Umfang & Kriterien"
 
 msgid "Scope of the compliance management system"
 msgstr "Anwendungsbereich des CMS"
@@ -1701,6 +2016,9 @@ msgstr "Schwerwiegend bis existenzbedrohend"
 msgid "Set status (administration)"
 msgstr "Status setzen (Administration)"
 
+msgid "Short description of the finding"
+msgstr "Kurzbeschreibung der Feststellung"
+
 msgid "Short description of the risk"
 msgstr "Kurzbeschreibung des Risikos"
 
@@ -1740,6 +2058,9 @@ msgstr "Erhebliche Schadensersatzforderungen oder Ermittlungsverfahren."
 msgid "Significant external change"
 msgstr "Wesentliche externe Änderung"
 
+msgid "Sites"
+msgstr "Standorte"
+
 msgid "Sole representation"
 msgstr "Einzelvertretung"
 
@@ -1755,8 +2076,17 @@ msgstr "Quellenangabe"
 msgid "Sources of feedback on compliance performance"
 msgstr "Quellen für Rückmeldungen zur Compliance-Leistung"
 
+msgid "Special audit"
+msgstr "Sonderaudit"
+
+msgid "Standard clause"
+msgstr "Normkapitel"
+
 msgid "Standard references"
 msgstr "Normreferenzen"
+
+msgid "Standards / rules"
+msgstr "Normen / Regelwerke"
 
 msgid "Standards reference"
 msgstr "Normbezug"
@@ -1786,11 +2116,17 @@ msgstr "Schritte mit Rollen"
 msgid "Strategic"
 msgstr "Strategisch"
 
+msgid "Strengths"
+msgstr "Stärken"
+
 msgid "Sub-delegation allowed"
 msgstr "Weiterdelegation erlaubt"
 
 msgid "Suggested"
 msgstr "Vorschlag"
+
+msgid "Summary"
+msgstr "Zusammenfassung"
 
 msgid "Supervision by the delegating person"
 msgstr "Überwachung durch den Delegierenden"
@@ -1801,14 +2137,26 @@ msgstr "Überwachungsmaßnahme"
 msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
 msgstr "Vorgesetzter und damit Owner der Stelle Director Export Control & Customs."
 
+msgid "Supplier audit"
+msgstr "Lieferantenaudit"
+
+msgid "Supplier requirement"
+msgstr "Lieferantenanforderung"
+
 msgid "Support"
 msgstr "Unterstützung"
 
 msgid "Support process"
 msgstr "Unterstützungsprozess"
 
+msgid "Surveillance audit"
+msgstr "Überwachungsaudit"
+
 msgid "Switch light / dark"
 msgstr "Hell / dunkel umschalten"
+
+msgid "System audit"
+msgstr "Systemaudit"
 
 msgid "System roles (permissions in the tool)"
 msgstr "Systemrollen (Berechtigungen im Tool)"
@@ -1912,6 +2260,9 @@ msgstr "Ungespeicherte Änderungen"
 msgid "Unsaved changes in the diagram will be lost."
 msgstr "Ungespeicherte Änderungen am Diagramm gehen verloren."
 
+msgid "Upcoming audits (90 days)"
+msgstr "Anstehende Audits (90 Tage)"
+
 msgid "Used in process steps"
 msgstr "Verwendet in Prozessschritten"
 
@@ -1926,6 +2277,9 @@ msgstr "Benutzerverwaltung"
 
 msgid "User name"
 msgstr "Benutzername"
+
+msgid "Vacant positions"
+msgstr "Unbesetzte Stellen"
 
 msgid "Valid from"
 msgstr "Gültig ab"
@@ -1972,6 +2326,9 @@ msgstr "Wöchentlich"
 #, python-brace-format
 msgid "Welcome, {name}"
 msgstr "Willkommen, {name}"
+
+msgid "Workflow status and quality grade"
+msgstr "Freigabestatus und Qualitätsgrad"
 
 msgid "Written form required"
 msgstr "Schriftform erforderlich"
@@ -2021,6 +2378,9 @@ msgstr "Archiviert"
 msgid "before"
 msgstr "vorher"
 
+msgid "certification body, customer or supplier"
+msgstr "Zertifizierungsstelle, Kunde oder Lieferant"
+
 msgid "clearly delimited"
 msgstr "klar abgegrenzt"
 
@@ -2060,6 +2420,13 @@ msgstr "leer = unbefristet"
 msgid "expired"
 msgstr "Abgelaufen"
 
+#, python-brace-format
+msgid "expired on {date}"
+msgstr "abgelaufen am {date}"
+
+msgid "for certification, customer or supplier audits"
+msgstr "bei Zertifizierungs-, Kunden- oder Lieferantenaudits"
+
 msgid "future"
 msgstr "Noch nicht gültig"
 
@@ -2084,6 +2451,9 @@ msgstr "kleiner ist besser"
 msgid "measurement"
 msgstr "Messwert"
 
+msgid "no approval workflow"
+msgstr "ohne Freigabe-Workflow"
+
 msgid "not assessed"
 msgstr "nicht bewertet"
 
@@ -2092,6 +2462,9 @@ msgstr "je Maßnahme ein/e Verantwortliche/r"
 
 msgid "open delegation"
 msgstr "Übertragung öffnen"
+
+msgid "overdue"
+msgstr "überfällig"
 
 msgid "pending"
 msgstr "Annahme fehlt"
@@ -2184,6 +2557,10 @@ msgid "{n} risks"
 msgstr "{n} Risiken"
 
 #, python-brace-format
+msgid "{n} with findings"
+msgstr "{n} mit Befund"
+
+#, python-brace-format
 msgid "{risk} has no mitigating control in this step."
 msgstr "{risk} hat in diesem Schritt keine mitigierende Kontrolle."
 
@@ -2214,6 +2591,10 @@ msgstr "„{role}“: {user} hat keine wirksame {type}."
 #, python-brace-format
 msgid "{role}: {user} has not accepted the {type}."
 msgstr "„{role}“: {user} hat die {type} nicht angenommen."
+
+#, python-brace-format
+msgid "{user} audits {process} and holds {role} there."
+msgstr "{user} auditiert {process} und hat dort die Rolle {role}."
 
 msgid "— not assessed —"
 msgstr "— nicht bewertet —"

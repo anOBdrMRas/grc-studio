@@ -31,6 +31,326 @@
         "title": "Assessment",
         "type": "object"
       },
+      "AuditListItem": {
+        "properties": {
+          "audit_status": {
+            "title": "Audit Status",
+            "type": "string"
+          },
+          "audit_type": {
+            "title": "Audit Type",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_owner": {
+            "title": "Is Owner",
+            "type": "boolean"
+          },
+          "open_findings": {
+            "title": "Open Findings",
+            "type": "integer"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "when": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "start date, else planned date",
+            "title": "When"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "audit_type",
+          "audit_status",
+          "when",
+          "open_findings",
+          "is_owner"
+        ],
+        "title": "AuditListItem",
+        "type": "object"
+      },
+      "AuditOut": {
+        "properties": {
+          "audit_status": {
+            "default": "Planned",
+            "title": "Audit Status",
+            "type": "string"
+          },
+          "audit_type": {
+            "default": "",
+            "title": "Audit Type",
+            "type": "string"
+          },
+          "audited_role_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Audited Role Ids",
+            "type": "array"
+          },
+          "auditee_contact_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Auditee Contact User Id"
+          },
+          "cert_stage": {
+            "default": "",
+            "title": "Cert Stage",
+            "type": "string"
+          },
+          "certificate_valid_until": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Certificate Valid Until"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "criteria": {
+            "description": "ISO clause ids",
+            "items": {
+              "type": "string"
+            },
+            "title": "Criteria",
+            "type": "array"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "end_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Date"
+          },
+          "external_lead_auditor": {
+            "default": "",
+            "title": "External Lead Auditor",
+            "type": "string"
+          },
+          "external_org": {
+            "default": "",
+            "title": "External Org",
+            "type": "string"
+          },
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/FindingOut"
+            },
+            "title": "Findings",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "independence": {
+            "items": {
+              "$ref": "#/components/schemas/Independence"
+            },
+            "title": "Independence",
+            "type": "array"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Labels",
+            "type": "object"
+          },
+          "lead_auditor_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Auditor User Id"
+          },
+          "next_audit_due": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Audit Due"
+          },
+          "objective": {
+            "default": "",
+            "title": "Objective",
+            "type": "string"
+          },
+          "planned_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planned Date"
+          },
+          "process_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Process Ids",
+            "type": "array"
+          },
+          "program_year": {
+            "default": "",
+            "title": "Program Year",
+            "type": "string"
+          },
+          "report_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Date"
+          },
+          "report_document": {
+            "default": "",
+            "title": "Report Document",
+            "type": "string"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          },
+          "sites": {
+            "default": "",
+            "title": "Sites",
+            "type": "string"
+          },
+          "standards": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Standards",
+            "type": "array"
+          },
+          "start_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Date"
+          },
+          "strengths": {
+            "default": "",
+            "title": "Strengths",
+            "type": "string"
+          },
+          "summary": {
+            "default": "",
+            "title": "Summary",
+            "type": "string"
+          },
+          "team_user_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Team User Ids",
+            "type": "array"
+          },
+          "title": {
+            "default": "",
+            "title": "Title",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "verdict": {
+            "default": "",
+            "title": "Verdict",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "version",
+          "created_at",
+          "updated_at",
+          "rights",
+          "findings",
+          "independence",
+          "labels"
+        ],
+        "title": "AuditOut",
+        "type": "object"
+      },
       "Catalogs": {
         "properties": {
           "iso": {
@@ -77,89 +397,95 @@
         "title": "Change",
         "type": "object"
       },
-      "CheckOut": {
-        "description": "A legal-certainty finding; `message` is an English message id, `vars` fill its placeholders.",
+      "CheckItemOut": {
         "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
           "element_id": {
             "title": "Element Id",
             "type": "string"
           },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
           "kind": {
-            "enum": [
-              "role",
-              "position",
-              "mandate"
-            ],
             "title": "Kind",
             "type": "string"
           },
-          "mandate_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Mandate Id"
-          },
-          "message": {
-            "title": "Message",
+          "label": {
+            "title": "Label",
             "type": "string"
           },
-          "position_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Position Id"
-          },
-          "role_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Role Id"
-          },
-          "user_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "User Id"
-          },
           "vars": {
-            "additionalProperties": {
-              "type": "string"
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "when set, `detail` is a message id to translate with these values",
+            "title": "Vars"
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "label",
+          "detail",
+          "vars",
+          "element_id"
+        ],
+        "title": "CheckItemOut",
+        "type": "object"
+      },
+      "CockpitOut": {
+        "properties": {
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/grc_api__schemas__quality__CheckOut"
             },
-            "title": "Vars",
+            "title": "Checks",
+            "type": "array"
+          },
+          "grades": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "description": "module → % of elements without findings",
+            "title": "Grades",
+            "type": "object"
+          },
+          "review_queue": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewItem"
+            },
+            "title": "Review Queue",
+            "type": "array"
+          },
+          "workflow": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/StatusCounts"
+            },
+            "description": "module → elements per status",
+            "title": "Workflow",
             "type": "object"
           }
         },
         "required": [
-          "message",
-          "vars",
-          "kind",
-          "element_id",
-          "user_id",
-          "role_id",
-          "position_id",
-          "mandate_id"
+          "checks",
+          "workflow",
+          "grades",
+          "review_queue"
         ],
-        "title": "CheckOut",
+        "title": "CockpitOut",
         "type": "object"
       },
       "ControlListItem": {
@@ -572,6 +898,190 @@
         "title": "ElementPatch",
         "type": "object"
       },
+      "FindingCreate": {
+        "properties": {
+          "description": {
+            "default": "",
+            "maxLength": 4000,
+            "title": "Description",
+            "type": "string"
+          }
+        },
+        "title": "FindingCreate",
+        "type": "object"
+      },
+      "FindingOut": {
+        "properties": {
+          "can_edit": {
+            "description": "may change every field (auditors, I&A)",
+            "title": "Can Edit",
+            "type": "boolean"
+          },
+          "clause": {
+            "default": "",
+            "title": "Clause",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "control_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Control Ids",
+            "type": "array"
+          },
+          "corrective_action": {
+            "default": "",
+            "title": "Corrective Action",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "title": "Description",
+            "type": "string"
+          },
+          "due_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due Date"
+          },
+          "element_id": {
+            "default": "",
+            "title": "Element Id",
+            "type": "string"
+          },
+          "evidence": {
+            "default": "",
+            "title": "Evidence",
+            "type": "string"
+          },
+          "finding_type": {
+            "default": "Observation",
+            "title": "Finding Type",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_responsible": {
+            "description": "may document cause, action and progress",
+            "title": "Is Responsible",
+            "type": "boolean"
+          },
+          "open": {
+            "title": "Open",
+            "type": "boolean"
+          },
+          "overdue": {
+            "title": "Overdue",
+            "type": "boolean"
+          },
+          "process_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Process Id"
+          },
+          "responsible_role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Responsible Role Id"
+          },
+          "responsible_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Responsible User Id"
+          },
+          "risk_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Risk Ids",
+            "type": "array"
+          },
+          "root_cause": {
+            "default": "",
+            "title": "Root Cause",
+            "type": "string"
+          },
+          "status": {
+            "default": "Open",
+            "title": "Status",
+            "type": "string"
+          },
+          "verification_result": {
+            "default": "",
+            "title": "Verification Result",
+            "type": "string"
+          },
+          "verified_at": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verified At"
+          },
+          "verified_by_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Verified By User Id"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "version",
+          "open",
+          "overdue",
+          "can_edit",
+          "is_responsible"
+        ],
+        "title": "FindingOut",
+        "type": "object"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -628,6 +1138,39 @@
           "suggestions"
         ],
         "title": "IcsGap",
+        "type": "object"
+      },
+      "Independence": {
+        "properties": {
+          "process_id": {
+            "title": "Process Id",
+            "type": "string"
+          },
+          "process_label": {
+            "title": "Process Label",
+            "type": "string"
+          },
+          "role_label": {
+            "title": "Role Label",
+            "type": "string"
+          },
+          "user_id": {
+            "title": "User Id",
+            "type": "string"
+          },
+          "user_name": {
+            "title": "User Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_id",
+          "user_name",
+          "process_id",
+          "process_label",
+          "role_label"
+        ],
+        "title": "Independence",
         "type": "object"
       },
       "IsoClause": {
@@ -1049,7 +1592,7 @@
           },
           "checks": {
             "items": {
-              "$ref": "#/components/schemas/CheckOut"
+              "$ref": "#/components/schemas/grc_api__schemas__mandates__CheckOut"
             },
             "title": "Checks",
             "type": "array"
@@ -2271,6 +2814,52 @@
         "title": "ProcessOut",
         "type": "object"
       },
+      "ReviewItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "submitted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted At"
+          },
+          "submitted_by": {
+            "title": "Submitted By",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "code",
+          "title",
+          "submitted_by",
+          "submitted_at"
+        ],
+        "title": "ReviewItem",
+        "type": "object"
+      },
       "Revision": {
         "properties": {
           "action": {
@@ -3052,6 +3641,37 @@
         "title": "StateView",
         "type": "object"
       },
+      "StatusCounts": {
+        "properties": {
+          "archived": {
+            "default": 0,
+            "title": "Archived",
+            "type": "integer"
+          },
+          "draft": {
+            "default": 0,
+            "title": "Draft",
+            "type": "integer"
+          },
+          "released": {
+            "default": 0,
+            "title": "Released",
+            "type": "integer"
+          },
+          "review": {
+            "default": 0,
+            "title": "Review",
+            "type": "integer"
+          },
+          "total": {
+            "default": 0,
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "title": "StatusCounts",
+        "type": "object"
+      },
       "StepLinkIn": {
         "properties": {
           "kind": {
@@ -3462,6 +4082,123 @@
         ],
         "title": "WorkflowEntryOut",
         "type": "object"
+      },
+      "grc_api__schemas__mandates__CheckOut": {
+        "description": "A legal-certainty finding; `message` is an English message id, `vars` fill its placeholders.",
+        "properties": {
+          "element_id": {
+            "title": "Element Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "role",
+              "position",
+              "mandate"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "mandate_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mandate Id"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "position_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position Id"
+          },
+          "role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Role Id"
+          },
+          "user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User Id"
+          },
+          "vars": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Vars",
+            "type": "object"
+          }
+        },
+        "required": [
+          "message",
+          "vars",
+          "kind",
+          "element_id",
+          "user_id",
+          "role_id",
+          "position_id",
+          "mandate_id"
+        ],
+        "title": "CheckOut",
+        "type": "object"
+      },
+      "grc_api__schemas__quality__CheckOut": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CheckItemOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "label": {
+            "description": "English message id",
+            "title": "Label",
+            "type": "string"
+          },
+          "module": {
+            "title": "Module",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "label",
+          "module",
+          "items"
+        ],
+        "title": "CheckOut",
+        "type": "object"
       }
     }
   },
@@ -3472,6 +4209,496 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/v1/audits": {
+      "get": {
+        "operationId": "audits_list",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AuditListItem"
+                  },
+                  "title": "Response Audits List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Audits List",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      },
+      "post": {
+        "operationId": "audits_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits Create",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:manage"
+      }
+    },
+    "/api/v1/audits/{audit_id}": {
+      "delete": {
+        "operationId": "audits_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits Delete",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:manage"
+      },
+      "get": {
+        "operationId": "audits_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits Get",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      },
+      "patch": {
+        "operationId": "audits_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits Update",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/audits/{audit_id}/findings": {
+      "post": {
+        "operationId": "audits_create_finding",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FindingCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits Create Finding",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/audits/{audit_id}/findings/{finding_id}": {
+      "delete": {
+        "operationId": "audits_delete_finding",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "finding_id",
+            "required": true,
+            "schema": {
+              "title": "Finding Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits Delete Finding",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      },
+      "patch": {
+        "operationId": "audits_update_finding",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "finding_id",
+            "required": true,
+            "schema": {
+              "title": "Finding Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits Update Finding",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/audits/{audit_id}/history": {
+      "get": {
+        "operationId": "audits_history",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Revision"
+                  },
+                  "title": "Response Audits History",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits History",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/audits/{audit_id}/history/{revision_id}": {
+      "get": {
+        "operationId": "audits_state",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "revision_id",
+            "required": true,
+            "schema": {
+              "title": "Revision Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StateView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Audits State",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "grc:read"
+      }
+    },
     "/api/v1/auth/demo": {
       "get": {
         "operationId": "auth_demo_info",
@@ -3687,7 +4914,7 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/CheckOut"
+                    "$ref": "#/components/schemas/grc_api__schemas__mandates__CheckOut"
                   },
                   "title": "Response Checks List",
                   "type": "array"
@@ -3712,6 +4939,29 @@
           "delegations"
         ],
         "x-permission": "org:read"
+      }
+    },
+    "/api/v1/cockpit": {
+      "get": {
+        "description": "Quality checks, quality grade, workflow status and the review queue (I&A cockpit).",
+        "operationId": "cockpit_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CockpitOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Cockpit Get",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "cockpit:read"
       }
     },
     "/api/v1/controls": {

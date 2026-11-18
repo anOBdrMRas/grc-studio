@@ -1,0 +1,41 @@
+{# finding in the modal: auditors change everything, the responsible person cause, action and progress #}
+{% set limited = not finding.can_edit %}
+<div class="flex items-start justify-between">
+  <h2 class="text-xl font-bold"><span class="font-mono text-base opacity-70">{{ finding.code }}</span> {{ _("Finding") }}</h2>
+  <form method="dialog"><button class="btn btn-ghost btn-sm btn-square" data-action="close-modal" aria-label="{{ _('Close') }}">{{ icon("x") }}</button></form>
+</div>
+{% if limited %}<p class="text-sm opacity-70">{{ _("As the responsible person you document the cause, the corrective action and the progress. The auditors check the effectiveness and close the finding.") }}</p>{% endif %}
+<form hx-post="{{ self_url }}/findings/{{ finding.id }}" hx-target="#detail" class="mt-3 grid gap-3">
+  <input type="hidden" name="version" value="{{ finding.version }}">
+  {% if message %}<div class="alert alert-error py-2 text-sm" role="alert">{{ message }}</div>{% endif %}
+  {% for sec in sections %}
+  <fieldset class="rounded-box border border-base-300 p-3">
+    <legend class="px-1 text-sm font-semibold text-secondary">{{ _(sec.title) }}</legend>
+    <div class="grid gap-x-6 gap-y-3 md:grid-cols-2">
+      {% for f in sec.fields %}
+      {% set v = finding.get(f.key) %}
+      <div class="{{ 'md:col-span-2' if f.get('wide') else '' }}">
+        {% if limited and not f.get("responsible") %}
+        <div class="field-label">{{ _(f.label) }}</div>
+        {% with item = {"labels": labels} %}<div class="text-sm">{% include "entity/_value.html" %}</div>{% endwith %}
+        {% elif limited and f.key == "status" %}
+        <label class="field-label" for="f-{{ f.key }}">{{ _(f.label) }}</label>
+        <select id="f-{{ f.key }}" name="status" class="select select-bordered select-sm w-full">
+          {% for o in responsible_statuses %}<option value="{{ o }}" {% if o == v %}selected{% endif %}>{{ _(o) }}</option>{% endfor %}
+        </select>
+        {% else %}
+        {% set item = {"id": finding.id, "labels": labels} %}
+        {% set locked = false %}
+        {% set err = errors.get(f.key) %}
+        {% include "entity/_field.html" %}
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </fieldset>
+  {% endfor %}
+  <div class="flex justify-end gap-2">
+    <button type="button" class="btn btn-ghost btn-sm" data-action="close-modal">{{ _("Cancel") }}</button>
+    <button class="btn btn-primary btn-sm">{{ icon("device-floppy") }} {{ _("Save") }}</button>
+  </div>
+</form>
