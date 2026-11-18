@@ -1,3 +1,4 @@
+{% macro shown(v) %}{% if v is none or v == "" or v == [] %}–{% elif v is string %}{{ _(v) }}{% elif v is sequence %}{% for x in v %}{{ x.text if x is mapping and x.text is defined else x.role_id if x is mapping else _(x|string) }}{% if not loop.last %}; {% endif %}{% endfor %}{% else %}{{ v }}{% endif %}{% endmacro %}
 {% set names = {"new": _("new"), "changed": _("changed"), "unchanged": _("unchanged"), "error": _("error")} %}
 {% set tones = {"new": "badge-info", "changed": "badge-warning", "unchanged": "badge-ghost", "error": "badge-error"} %}
 <div class="flex items-start justify-between">
@@ -19,7 +20,7 @@
         <td><span class="badge badge-sm {{ tones[p.action] }}">{{ names[p.action] }}</span></td>
         <td class="text-xs">
           {% if p.action == "error" %}<ul class="text-error">{% for e in p.errors %}<li>{{ e }}</li>{% endfor %}</ul>
-          {% elif p.action == "changed" %}<ul>{% for key, v in p["values"].items() %}<li><b>{{ _(labels.get(key, key)) }}</b>: {{ p.before.get(key) if p.before.get(key) not in (none, "", []) else "–" }} → {{ v if v not in (none, "", []) else "–" }}</li>{% endfor %}</ul>
+          {% elif p.action == "changed" %}<ul>{% for key, v in p["values"].items() %}<li><b>{{ _(labels.get(key, key)) }}</b>: {{ shown(p.before.get(key)) }} → {{ shown(v) }}</li>{% endfor %}</ul>
           {% elif p.action == "new" %}{{ p.note if p.note is defined else "" }}{% endif %}
         </td>
       </tr>

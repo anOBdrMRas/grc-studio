@@ -423,6 +423,7 @@ version = "0.1.0"
 source = { editable = "src/ui" }
 dependencies = [
     { name = "babel" },
+    { name = "defusedxml" },
     { name = "fastapi" },
     { name = "grc-client" },
     { name = "jinja2" },
@@ -435,6 +436,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "babel", specifier = ">=2.16" },
+    { name = "defusedxml", specifier = ">=0.7" },
     { name = "fastapi", specifier = ">=0.115" },
     { name = "grc-client", editable = "src/contracts" },
     { name = "jinja2", specifier = ">=3.1" },

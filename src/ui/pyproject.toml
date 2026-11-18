@@ -12,6 +12,7 @@ dependencies = [
   "pydantic-settings>=2.6",
   "grc-client",
   "openpyxl>=3.1.5",
+  "defusedxml>=0.7",
 ]
 
 [project.scripts]

@@ -16,6 +16,8 @@ the browser libraries are listed in NOTICE.
 | cffi | 2.1.1 | MIT-0 |
 | click | 8.5.1 | BSD-3-Clause |
 | defusedxml | 0.7.1 | PSFL |
+| et-xmlfile | 2.0.0 | MIT |
+| openpyxl | 3.1.5 | MIT |
 | fastapi | 0.163.1 | MIT |
 | greenlet | 3.5.6 | MIT AND PSF-2.0 |
 | h11 | 0.16.0 | MIT |

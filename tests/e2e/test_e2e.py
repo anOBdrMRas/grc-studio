@@ -7,6 +7,7 @@ They change data: run them against a fresh demo database only.
 import os
 import re
 from collections.abc import Iterator
+from pathlib import Path
 
 import pytest
 
@@ -194,3 +195,26 @@ def test_responsible_person_updates_finding(page: "Page") -> None:
     page.click("#modal-body button:has-text('Speichern')")
     expect(page.locator("#toasts")).to_contain_text("Gespeichert")
     expect(page.locator("#modal[open]")).to_have_count(0)
+
+
+def test_excel_export_and_import(page: "Page", tmp_path: Path) -> None:
+    import io
+
+    from openpyxl import load_workbook
+
+    sign_in(page, "U-013")
+    page.goto(BASE + "/opportunities")
+    with page.expect_download() as dl:
+        page.click("a[href='/opportunities/export.xlsx']")
+    wb = load_workbook(io.BytesIO(Path(dl.value.path()).read_bytes()))
+    ws = wb.worksheets[0]
+    headers = [c.value for c in ws[1]]
+    ws.cell(2, headers.index("Bezeichnung") + 1).value = "E2E geändert"
+    target = tmp_path / "opps.xlsx"
+    wb.save(target)
+    page.click("button[hx-get='/opportunities/import']")
+    page.set_input_files("#modal-body input[type=file]", str(target))
+    page.click("#modal-body button:has-text('Vorschau anzeigen')")
+    expect(page.locator("#modal-body")).to_contain_text("1 geändert")
+    page.click("#modal-body button:has-text('übernehmen')")
+    expect(page.locator("#modal-body")).to_contain_text("gespeichert")

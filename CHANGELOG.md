@@ -5,6 +5,15 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 3b)
+- Excel export per module and for all modules (with KPI values, audit findings and process
+  steps as additional sheets); columns in the current language.
+- Excel import per module with preview (new / changed / unchanged / errors per row, unknown
+  columns reported). Headers in German or English, selection values in either language,
+  elements by ID, persons by name or user ID. Saving goes through the API, so rights, version
+  checks, validation and history apply as for an edit in the browser. Uploads are limited to
+  5 MB and parsed with defusedxml.
+
 ### Added (stage 3a)
 - Audits with scope, criteria, participants, dates, result and certificate validity; findings
   with root cause, corrective action, due date and effectiveness check. The responsible person
