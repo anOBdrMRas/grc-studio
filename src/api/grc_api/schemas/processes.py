@@ -44,6 +44,22 @@ class IcsGap(BaseModel):
     suggestions: list[str] = Field(description="controls mitigating the risk elsewhere")
 
 
+class ProcessRef(BaseModel):
+    process_id: str
+    code: str
+    title: str
+
+
+class CallerRef(ProcessRef):
+    element_id: str
+    element_name: str
+
+
+class CallLinkIn(BaseModel):
+    target_process_id: str | None = Field(None, description="None removes the link")
+    version: int | None = None
+
+
 class ProcessOut(ProcessFields):
     custom: dict[str, Any] = Field(
         default_factory=dict, description="values of the custom fields (content administration)"
@@ -62,6 +78,11 @@ class ProcessOut(ProcessFields):
         description="element id → risks, opportunities, controls and KPI"
     )
     ics_gaps: dict[str, list[IcsGap]] = Field(description="element id → risks without control")
+    call_activities: dict[str, str] = Field(description="call activities: element id → name")
+    calls: dict[str, ProcessRef] = Field(description="call activity → called process")
+    called_by: list[CallerRef] = Field(
+        description="call activities of other processes calling this"
+    )
     workflow: list[WorkflowEntryOut]
     released: dict[str, Any] | None
     labels: dict[str, str]

@@ -96,6 +96,19 @@
     if (action === 'zoom-in') canvas.zoom(canvas.zoom() * 1.2);
     else if (action === 'zoom-out') canvas.zoom(canvas.zoom() / 1.2);
     else if (action === 'zoom-fit') canvas.zoom('fit-viewport');
+    else if (action === 'export-svg') {
+      // the diagram as shown (incl. unsaved changes) as an image file
+      modeler.saveSVG().then(function (res) {
+        var url = URL.createObjectURL(new Blob([res.svg], { type: 'image/svg+xml' }));
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = btn.getAttribute('data-filename') || 'diagram.svg';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      });
+    }
     else if (action === 'save-diagram') {
       btn.disabled = true;
       modeler.saveXML({ format: true }).then(function (res) {

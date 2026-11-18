@@ -70,3 +70,50 @@ async def test_step_role_assignment(login: Login) -> None:
     )
     assert r.status_code == 200, r.text
     assert all(s["role_id"] != "RO-001" for s in r.json()["steps"][step])
+
+
+async def test_call_activity_links(login: "Login") -> None:
+    from pathlib import Path
+
+    ia = await login("U-013")
+    xml = (Path(__file__).parents[1] / "fixtures" / "call_activity.bpmn").read_text()
+    p = (await ia.get("/api/v1/processes/P-003")).json()
+    r = await ia.put("/api/v1/processes/P-003/diagram", json={"xml": xml, "version": p["version"]})
+    assert r.status_code == 200, r.text
+    p = (await ia.get("/api/v1/processes/P-003")).json()
+    assert p["call_activities"] == {"Call_Beschaffung": "Beschaffung durchführen"}
+    url = "/api/v1/processes/P-003/steps/{}/call"
+    bad = await ia.put(
+        url.format("Task_Budget"), json={"target_process_id": "P-001", "version": p["version"]}
+    )
+    assert bad.status_code == 422  # not a call activity
+    own = await ia.put(
+        url.format("Call_Beschaffung"), json={"target_process_id": "P-003", "version": p["version"]}
+    )
+    assert own.status_code == 422
+    r = await ia.put(
+        url.format("Call_Beschaffung"), json={"target_process_id": "P-001", "version": p["version"]}
+    )
+    assert r.status_code == 200, r.text
+    assert r.json()["calls"]["Call_Beschaffung"]["code"] == "P-001"
+    called = (await ia.get("/api/v1/processes/P-001")).json()["called_by"]
+    assert [(c["process_id"], c["element_name"]) for c in called] == [
+        ("P-003", "Beschaffung durchführen")
+    ]
+    hist = (await ia.get("/api/v1/processes/P-003/history")).json()
+    assert hist[-1]["note"] == "{step} calls {process}"
+    stale = await ia.put(
+        url.format("Call_Beschaffung"), json={"target_process_id": None, "version": p["version"]}
+    )
+    assert stale.status_code == 409
+    r = await ia.put(
+        url.format("Call_Beschaffung"),
+        json={"target_process_id": None, "version": r.json()["version"]},
+    )
+    assert r.json()["calls"] == {}
+    employee = await login("U-004")
+    v = r.json()["version"]
+    denied = await employee.put(
+        url.format("Call_Beschaffung"), json={"target_process_id": "P-001", "version": v}
+    )
+    assert denied.status_code == 403

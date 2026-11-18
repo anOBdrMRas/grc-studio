@@ -115,6 +115,24 @@ AuditOut = TypedDict(
 )
 
 
+CallLinkIn = TypedDict(
+    "CallLinkIn", {"target_process_id": "str | None", "version": "int | None"}, total=False
+)
+
+
+CallerRef = TypedDict(
+    "CallerRef",
+    {
+        "process_id": "str",
+        "code": "str",
+        "title": "str",
+        "element_id": "str",
+        "element_name": "str",
+    },
+    total=False,
+)
+
+
 Catalogs = TypedDict(
     "Catalogs", {"lists": "dict[str, list[str]]", "iso": "list[IsoClause]"}, total=False
 )
@@ -749,11 +767,19 @@ ProcessOut = TypedDict(
         "steps": "dict[str, list[StepRole]]",
         "links": "dict[str, list[StepLinkOut]]",
         "ics_gaps": "dict[str, list[IcsGap]]",
+        "call_activities": "dict[str, str]",
+        "calls": "dict[str, ProcessRef]",
+        "called_by": "list[CallerRef]",
         "workflow": "list[WorkflowEntryOut]",
         "released": "dict[str, Any] | None",
         "labels": "dict[str, str]",
     },
     total=False,
+)
+
+
+ProcessRef = TypedDict(
+    "ProcessRef", {"process_id": "str", "code": "str", "title": "str"}, total=False
 )
 
 

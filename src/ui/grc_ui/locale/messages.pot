@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 10:30+0000\n"
+"POT-Creation-Date: 2026-11-18 11:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -305,6 +305,15 @@ msgstr ""
 msgid "CUS"
 msgstr ""
 
+msgid "Called by"
+msgstr ""
+
+msgid "Called process"
+msgstr ""
+
+msgid "Calls"
+msgstr ""
+
 msgid "Cancel"
 msgstr ""
 
@@ -545,6 +554,9 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
+msgid "Created from a draft"
+msgstr ""
+
 msgid "Creates new elements and maintains users."
 msgstr ""
 
@@ -684,6 +696,9 @@ msgstr ""
 msgid "Diagram changed"
 msgstr ""
 
+msgid "Diagram imported"
+msgstr ""
+
 msgid "Diagram saved"
 msgstr ""
 
@@ -700,6 +715,12 @@ msgid "Document"
 msgstr ""
 
 msgid "Documented information"
+msgstr ""
+
+msgid "Download as BPMN 2.0 file"
+msgstr ""
+
+msgid "Download as image (SVG)"
 msgstr ""
 
 msgid "Download the current data as a template"
@@ -1140,6 +1161,12 @@ msgstr ""
 msgid "Implemented"
 msgstr ""
 
+msgid "Import"
+msgstr ""
+
+msgid "Import a BPMN 2.0 file"
+msgstr ""
+
 msgid "Import finished"
 msgstr ""
 
@@ -1324,6 +1351,13 @@ msgid "Likelihood (rows) × impact (columns)"
 msgstr ""
 
 msgid "Likelihood of realisation"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+#, python-brace-format
+msgid "Link of {step} removed"
 msgstr ""
 
 msgid "Linked processes"
@@ -2548,7 +2582,14 @@ msgstr ""
 msgid "The file is larger than 5 MB."
 msgstr ""
 
+msgid "The file is not a BPMN 2.0 diagram (.bpmn)."
+msgstr ""
+
 msgid "The file is not an Excel workbook (.xlsx)."
+msgstr ""
+
+#, python-brace-format
+msgid "The file replaces the diagram of {process}. Role and other assignments stay with the element ids; steps that no longer exist keep them but are no longer shown."
 msgstr ""
 
 msgid "The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to the AI service."
@@ -3062,6 +3103,10 @@ msgid "{role}: {user} has not accepted the {type}."
 msgstr ""
 
 #, python-brace-format
+msgid "{step} calls {process}"
+msgstr ""
+
+#, python-brace-format
 msgid "{user} audits {process} and holds {role} there."
 msgstr ""
 
@@ -3069,6 +3114,9 @@ msgid "— not assessed —"
 msgstr ""
 
 msgid "— not assigned —"
+msgstr ""
+
+msgid "— not linked —"
 msgstr ""
 
 msgid "≥ 3 m USD"

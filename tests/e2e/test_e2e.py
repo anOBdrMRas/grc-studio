@@ -269,3 +269,21 @@ def test_org_chart_and_role_matrix(page: "Page") -> None:
     expect(page.locator(".org-tree .org-card").first).to_be_visible()
     page.click("a[role=tab]:has-text('Rollenzuordnungsmatrix')")
     expect(page.locator(".role-matrix tbody tr").first).to_contain_text("ST-001")
+
+
+def test_bpmn_import_and_call_link(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/processes/P-003")
+    page.click("button[hx-get$='/diagram/import']")
+    page.set_input_files(
+        "#modal-body input[type=file]",
+        str(Path(__file__).parents[1] / "fixtures" / "call_activity.bpmn"),
+    )
+    page.click("#modal-body button:has-text('Importieren')")
+    page.locator("[data-element-id='Call_Beschaffung']").click()
+    page.select_option("#step-panel select[name=target_process_id]", "P-001")
+    page.click("#step-panel button:has-text('Verknüpfen')")
+    expect(page.locator("#step-panel a[href='/processes/P-001']")).to_be_visible()
+    with page.expect_download() as dl:
+        page.click("button[data-action=export-svg]")
+    assert dl.value.suggested_filename == "P-003.svg"

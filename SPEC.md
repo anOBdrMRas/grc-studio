@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a**–**S3d**, **S4a** = Stufen 2a–2c, 3a–3d, 4a (umgesetzt) · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a**–**S3d**, **S4a**–**S4b** = Stufen 2a–2c, 3a–3d, 4a–4b (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -81,7 +81,7 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-PRC-07 | Änderungen an Diagramm und Zuordnungen zählen als Änderung des Prozesses (Version, Workflow, Historie) | S1 |
 | FR-PRC-08 | Risiken, Chancen, Controls, KPI je Schritt zuordnen; Badges je Art im Diagramm; IKS-Hinweis bei Risiko ohne Kontrolle im Schritt mit Vorschlag passender Controls | S2b |
 | FR-PRC-10 | Jedes Element zeigt, in welchen Prozessschritten es verwendet wird (Sprung direkt in den Schritt) | S2b |
-| FR-PRC-09 | Subprozesse mit Drill-down, Aufrufaktivitäten verknüpft, Import/Export `.bpmn` und `.svg` | S2 |
+| FR-PRC-09 | Subprozesse mit Drill-down (zugeklappte Subprozesse im Editor), Aufrufaktivitäten mit dem aufgerufenen Prozess verknüpft (Sprung dorthin, „Aufgerufen von“ beim Zielprozess, Historie), Import `.bpmn` (ersetzt das Diagramm, BPMN-Prüfung), Export `.bpmn` und `.svg` | S4b |
 
 ## 6. Risiken, Chancen, IKS, KPI, Audits
 

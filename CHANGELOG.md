@@ -11,6 +11,17 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
   holders, roles (can be hidden) and a segregation-of-duties hint; role matrix position × role
   with comments as tooltip. Reached from Positions and Roles (`GET /api/v1/org-chart`).
 
+### Added (stage 4b)
+- Call activities link to the process they call: chosen in the step panel, with a jump to the
+  called process; the called process lists "Called by", the calling one "Calls"; changes are
+  versioned and recorded like step assignments (migration 0007, column `call_links`).
+- Diagram import from a `.bpmn` file (replaces the diagram after the BPMN check) and export as
+  `.bpmn` and `.svg` (the diagram as shown). Collapsed sub-processes open with drill-down in the
+  editor.
+
+### Fixed
+- The history note "Created from a draft" (process draft) is translated.
+
 ### Added (stage 3d-2)
 - "Suggest with AI" on roles, positions, risks, controls and delegations: the AI proposes the
   text fields; the person edits and chooses per field what is applied. Applying is a normal

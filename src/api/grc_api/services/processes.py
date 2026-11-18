@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.auth.principal import Principal
 from grc_api.domain import bpmn_draft, ics
-from grc_api.domain.bpmn import element_names, is_bpmn
+from grc_api.domain.bpmn import call_activities, element_names, is_bpmn
 from grc_api.domain.catalogs import PROCESS_CATEGORIES
 from grc_api.domain.codes import next_code
 from grc_api.errors import ProblemError
@@ -15,12 +15,15 @@ from grc_api.schemas.assistant import DraftCreate
 from grc_api.schemas.common import ElementPatch, Revision, StateView, WorkflowAction
 from grc_api.schemas.grc import Usage
 from grc_api.schemas.processes import (
+    CallerRef,
+    CallLinkIn,
     DiagramIn,
     DiagramOut,
     IcsGap,
     ProcessFields,
     ProcessListItem,
     ProcessOut,
+    ProcessRef,
     StepLinkIn,
     StepLinkOut,
     StepRole,
@@ -110,6 +113,25 @@ async def process_view(
             gaps[element_id] = [
                 IcsGap(risk_id=g.risk_id, suggestions=list(g.suggestions)) for g in found
             ]
+    others = {p.id: p for p in await elements.list_all(db, Process)}
+    calls = {
+        el: ProcessRef(process_id=t.id, code=t.code, title=t.title)
+        for el, target in (x.call_links or {}).items()
+        if (t := others.get(target))
+    }
+    called_by = [
+        CallerRef(
+            process_id=o.id,
+            code=o.code,
+            title=o.title,
+            element_id=el,
+            element_name=call_activities(o.xml).get(el, el),
+        )
+        for o in others.values()
+        if o.id != x.id
+        for el, target in (o.call_links or {}).items()
+        if target == x.id
+    ]
     return ProcessOut(
         **common.fields_of(x, ProcessFields),
         id=x.id,
@@ -125,6 +147,9 @@ async def process_view(
         steps=steps,
         links=links,
         ics_gaps=gaps,
+        call_activities=call_activities(x.xml),
+        calls=calls,
+        called_by=called_by,
         workflow=await common.workflow_out(db, "process", x.id, org),
         released=x.released,
         labels={x.owner_role_id: org.label(x.owner_role_id)} if x.owner_role_id else {},
@@ -270,6 +295,56 @@ async def _step_change(
         note=note,
         vars_=vars_,
     )
+
+
+async def link_call(
+    db: AsyncSession,
+    process_id: str,
+    element_id: str,
+    body: CallLinkIn,
+    if_match: str | None,
+    p: Principal,
+) -> ProcessOut:
+    """Links a call activity to the process it calls (or removes the link)."""
+    org = await load_org(db)
+    x = await common.get_or_404(db, Process, process_id)
+    names = call_activities(x.xml)
+    if element_id not in names:
+        raise ProblemError("invalid", "The element is not a call activity of this diagram")
+    target = body.target_process_id or None
+    if target is not None:
+        if target == process_id:
+            raise ProblemError("invalid", "A process cannot call itself")
+        t = await elements.get(db, Process, target)
+        if t is None:
+            raise ProblemError("invalid", "Unknown process")
+        label = f"{t.code} {t.title}"
+    links = dict(x.call_links or {})
+    if links.get(element_id) == target:
+        return await process_view(db, process_id, p)
+    if target is None:
+        links.pop(element_id, None)
+        note, vars_ = "Link of {step} removed", {"step": names[element_id]}
+    else:
+        links[element_id] = target
+        note, vars_ = "{step} calls {process}", {"step": names[element_id], "process": label}
+    await common.save_element(
+        db,
+        "process",
+        x,
+        ProcessFields,
+        {},
+        common.expected_version(if_match, body.version),
+        p,
+        org,
+        column_values={"call_links": links},
+        action="assignment",
+        note=note,
+        vars_=vars_,
+    )
+    await db.commit()
+    db.expire_all()
+    return await process_view(db, process_id, p)
 
 
 async def assign_role(
