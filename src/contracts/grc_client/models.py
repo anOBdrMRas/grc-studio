@@ -6,6 +6,66 @@ from typing import Any, TypedDict
 Assessment = TypedDict("Assessment", {"score": "int", "level": "str", "high": "bool"}, total=False)
 
 
+AuditListItem = TypedDict(
+    "AuditListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "audit_type": "str",
+        "audit_status": "str",
+        "when": "str | None",
+        "open_findings": "int",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+AuditOut = TypedDict(
+    "AuditOut",
+    {
+        "title": "str",
+        "description": "str",
+        "audit_type": "str",
+        "cert_stage": "str",
+        "program_year": "str",
+        "audit_status": "str",
+        "standards": "list[str]",
+        "objective": "str",
+        "criteria": "list[str]",
+        "process_ids": "list[str]",
+        "audited_role_ids": "list[str]",
+        "sites": "str",
+        "lead_auditor_user_id": "str | None",
+        "external_lead_auditor": "str",
+        "team_user_ids": "list[str]",
+        "external_org": "str",
+        "auditee_contact_user_id": "str | None",
+        "planned_date": "str | None",
+        "start_date": "str | None",
+        "end_date": "str | None",
+        "report_date": "str | None",
+        "report_document": "str",
+        "certificate_valid_until": "str | None",
+        "next_audit_due": "str | None",
+        "verdict": "str",
+        "summary": "str",
+        "strengths": "str",
+        "id": "str",
+        "code": "str",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "rights": "Rights",
+        "findings": "list[FindingOut]",
+        "independence": "list[Independence]",
+        "labels": "dict[str, str]",
+    },
+    total=False,
+)
+
+
 Catalogs = TypedDict(
     "Catalogs", {"lists": "dict[str, list[str]]", "iso": "list[IsoClause]"}, total=False
 )
@@ -113,6 +173,41 @@ ElementPatch = TypedDict(
 )
 
 
+FindingCreate = TypedDict("FindingCreate", {"description": "str"}, total=False)
+
+
+FindingOut = TypedDict(
+    "FindingOut",
+    {
+        "finding_type": "str",
+        "clause": "str",
+        "description": "str",
+        "evidence": "str",
+        "process_id": "str | None",
+        "element_id": "str",
+        "risk_ids": "list[str]",
+        "control_ids": "list[str]",
+        "responsible_role_id": "str | None",
+        "responsible_user_id": "str | None",
+        "root_cause": "str",
+        "corrective_action": "str",
+        "due_date": "str | None",
+        "status": "str",
+        "verified_at": "str | None",
+        "verified_by_user_id": "str | None",
+        "verification_result": "str",
+        "id": "str",
+        "code": "str",
+        "version": "int",
+        "open": "bool",
+        "overdue": "bool",
+        "can_edit": "bool",
+        "is_responsible": "bool",
+    },
+    total=False,
+)
+
+
 HTTPValidationError = TypedDict(
     "HTTPValidationError", {"detail": "list[ValidationError]"}, total=False
 )
@@ -124,6 +219,19 @@ Holder = TypedDict(
 
 
 IcsGap = TypedDict("IcsGap", {"risk_id": "str", "suggestions": "list[str]"}, total=False)
+
+
+Independence = TypedDict(
+    "Independence",
+    {
+        "user_id": "str",
+        "user_name": "str",
+        "process_id": "str",
+        "process_label": "str",
+        "role_label": "str",
+    },
+    total=False,
+)
 
 
 IsoClause = TypedDict(

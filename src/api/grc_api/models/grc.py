@@ -162,3 +162,75 @@ class StepLink(Base):
     element_id: Mapped[str] = mapped_column(String(120), nullable=False)
     kind: Mapped[str] = mapped_column(String(20), nullable=False)
     target_id: Mapped[str] = mapped_column(String(40), nullable=False, index=True)
+
+
+class Audit(Versioned, Base):
+    """Audit (ISO 19011; ISO 9001 / 27001 / 37301 9.2; certification audits after ISO/IEC 17021-1).
+
+    `audit_status` is the planning status of the audit, not the approval workflow.
+    """
+
+    __tablename__ = "audits"
+
+    id: Mapped[str] = mapped_column(String(40), primary_key=True)
+    code: Mapped[str] = mapped_column(String(40), unique=True, nullable=False)
+    title: Mapped[str] = text_col()
+    description: Mapped[str] = text_col()
+    audit_type: Mapped[str] = text_col()
+    cert_stage: Mapped[str] = text_col()
+    program_year: Mapped[str] = text_col()
+    audit_status: Mapped[str] = mapped_column(
+        String(30), nullable=False, default="Planned", server_default="Planned"
+    )
+    standards: Mapped[list[str]] = str_list()
+    objective: Mapped[str] = text_col()
+    criteria: Mapped[list[str]] = str_list()
+    process_ids: Mapped[list[str]] = str_list()
+    audited_role_ids: Mapped[list[str]] = str_list()
+    sites: Mapped[str] = text_col()
+    lead_auditor_user_id: Mapped[str | None] = mapped_column(String(40))
+    external_lead_auditor: Mapped[str] = text_col()
+    team_user_ids: Mapped[list[str]] = str_list()
+    external_org: Mapped[str] = text_col()
+    auditee_contact_user_id: Mapped[str | None] = mapped_column(String(40))
+    planned_date: Mapped[date | None] = mapped_column(Date)
+    start_date: Mapped[date | None] = mapped_column(Date)
+    end_date: Mapped[date | None] = mapped_column(Date)
+    report_date: Mapped[date | None] = mapped_column(Date)
+    report_document: Mapped[str] = text_col()
+    certificate_valid_until: Mapped[date | None] = mapped_column(Date)
+    next_audit_due: Mapped[date | None] = mapped_column(Date)
+    verdict: Mapped[str] = text_col()
+    summary: Mapped[str] = text_col()
+    strengths: Mapped[str] = text_col()
+
+
+class AuditFinding(Versioned, Base):
+    """Finding of an audit with its corrective action (ISO 9001 10.2, ISO 19011 6.4.8)."""
+
+    __tablename__ = "audit_findings"
+
+    id: Mapped[str] = mapped_column(String(40), primary_key=True)
+    code: Mapped[str] = mapped_column(String(40), unique=True, nullable=False)
+    audit_id: Mapped[str] = mapped_column(
+        String(40), ForeignKey("audits.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    finding_type: Mapped[str] = text_col()
+    clause: Mapped[str] = text_col()
+    description: Mapped[str] = text_col()
+    evidence: Mapped[str] = text_col()
+    process_id: Mapped[str | None] = mapped_column(String(40))
+    element_id: Mapped[str] = text_col()
+    risk_ids: Mapped[list[str]] = str_list()
+    control_ids: Mapped[list[str]] = str_list()
+    responsible_role_id: Mapped[str | None] = mapped_column(String(40))
+    responsible_user_id: Mapped[str | None] = mapped_column(String(40))
+    root_cause: Mapped[str] = text_col()
+    corrective_action: Mapped[str] = text_col()
+    due_date: Mapped[date | None] = mapped_column(Date)
+    status: Mapped[str] = mapped_column(
+        String(30), nullable=False, default="Open", server_default="Open"
+    )
+    verified_at: Mapped[date | None] = mapped_column(Date)
+    verified_by_user_id: Mapped[str | None] = mapped_column(String(40))
+    verification_result: Mapped[str] = text_col()

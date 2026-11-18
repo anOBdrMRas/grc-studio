@@ -4017,5 +4017,337 @@
     }
    ]
   }
+ ],
+ "audits": [
+  {
+   "id": "AU-001",
+   "code": "AU-001",
+   "title": "Internes Audit Beschaffung 2026",
+   "description": "",
+   "audit_type": "Internal audit",
+   "cert_stage": "",
+   "program_year": "2026",
+   "audit_status": "Actions open",
+   "standards": [
+    "ISO 9001",
+    "ISO 37301"
+   ],
+   "objective": "Wirksamkeit des Beschaffungsprozesses inkl. Lieferantenauswahl und Vergabe (Anti-Korruption).",
+   "criteria": [
+    "9001:8.4",
+    "37301:8.2",
+    "37301:4.6"
+   ],
+   "process_ids": [
+    "P-001"
+   ],
+   "audited_role_ids": [
+    "RO-003",
+    "RO-004"
+   ],
+   "sites": "Hauptsitz",
+   "lead_auditor_user_id": "U-012",
+   "external_lead_auditor": "",
+   "team_user_ids": [
+    "U-013"
+   ],
+   "external_org": "",
+   "auditee_contact_user_id": "U-002",
+   "planned_date": "2026-03-10",
+   "start_date": "2026-03-10",
+   "end_date": "2026-03-11",
+   "report_date": "2026-03-20",
+   "report_document": "Auditbericht IA-2026-03 (DMS: AUD-2026-003)",
+   "certificate_valid_until": null,
+   "next_audit_due": "2027-03-15",
+   "verdict": "Conforming with findings",
+   "summary": "Prozess grundsätzlich wirksam; Vier-Augen-Prinzip bei Vergaben nicht durchgängig dokumentiert.",
+   "strengths": "Systemseitige Freigabe von Bedarfsanforderungen, automatisierter 3-Way-Match."
+  },
+  {
+   "id": "AU-002",
+   "code": "AU-002",
+   "title": "ISO 27001 Überwachungsaudit 2026",
+   "description": "",
+   "audit_type": "Certification audit",
+   "cert_stage": "Surveillance audit",
+   "program_year": "2026",
+   "audit_status": "Actions open",
+   "standards": [
+    "ISO 27001"
+   ],
+   "objective": "1. Überwachungsaudit des ISMS (Geltungsbereich: Hauptsitz, IT-Betrieb, Einkauf).",
+   "criteria": [
+    "27001:9.2",
+    "27001:A.5.15",
+    "27001:A.5.18",
+    "27001:A.8.2"
+   ],
+   "process_ids": [
+    "P-002"
+   ],
+   "audited_role_ids": [],
+   "sites": "",
+   "lead_auditor_user_id": null,
+   "external_lead_auditor": "Leitender Auditor der Zertifizierungsstelle",
+   "team_user_ids": [],
+   "external_org": "Zertifizierungsstelle (akkreditiert)",
+   "auditee_contact_user_id": "U-008",
+   "planned_date": "2026-06-15",
+   "start_date": "2026-06-15",
+   "end_date": "2026-06-17",
+   "report_date": "2026-06-30",
+   "report_document": "Auditbericht ÜA1 ISO 27001",
+   "certificate_valid_until": "2027-03-31",
+   "next_audit_due": "2027-01-20",
+   "verdict": "Conforming with findings",
+   "summary": "Zertifikat bleibt bestehen; eine Nebenabweichung im Berechtigungsmanagement.",
+   "strengths": ""
+  },
+  {
+   "id": "AU-003",
+   "code": "AU-003",
+   "title": "Lieferantenaudit Präzisionsteile",
+   "description": "",
+   "audit_type": "Supplier audit",
+   "cert_stage": "",
+   "program_year": "2026",
+   "audit_status": "Planned",
+   "standards": [
+    "ISO 9001",
+    "Supplier requirement"
+   ],
+   "objective": "Qualitätsfähigkeit und Informationssicherheit eines kritischen Lieferanten für Präzisionsteile.",
+   "criteria": [
+    "9001:8.4",
+    "9001:8.5",
+    "27001:A.5.19"
+   ],
+   "process_ids": [],
+   "audited_role_ids": [],
+   "sites": "",
+   "lead_auditor_user_id": "U-013",
+   "external_lead_auditor": "",
+   "team_user_ids": [
+    "U-003"
+   ],
+   "external_org": "Lieferant A (Präzisionsteile)",
+   "auditee_contact_user_id": null,
+   "planned_date": "2026-12-01",
+   "start_date": null,
+   "end_date": null,
+   "report_date": null,
+   "report_document": "",
+   "certificate_valid_until": null,
+   "next_audit_due": null,
+   "verdict": "",
+   "summary": "",
+   "strengths": ""
+  },
+  {
+   "id": "AU-004",
+   "code": "AU-004",
+   "title": "Kundenaudit Automotive",
+   "description": "",
+   "audit_type": "Customer audit",
+   "cert_stage": "",
+   "program_year": "2026",
+   "audit_status": "In preparation",
+   "standards": [
+    "ISO 9001",
+    "Customer requirement"
+   ],
+   "objective": "Prozessaudit des Kunden zu Beschaffung und Wareneingang.",
+   "criteria": [
+    "9001:8.4",
+    "9001:8.6"
+   ],
+   "process_ids": [
+    "P-001"
+   ],
+   "audited_role_ids": [],
+   "sites": "",
+   "lead_auditor_user_id": null,
+   "external_lead_auditor": "Lieferantenentwicklung des Kunden",
+   "team_user_ids": [],
+   "external_org": "Kunde B (Automotive)",
+   "auditee_contact_user_id": "U-013",
+   "planned_date": "2026-11-12",
+   "start_date": null,
+   "end_date": null,
+   "report_date": null,
+   "report_document": "",
+   "certificate_valid_until": null,
+   "next_audit_due": null,
+   "verdict": "",
+   "summary": "",
+   "strengths": ""
+  },
+  {
+   "id": "AU-005",
+   "code": "AU-005",
+   "title": "Systemaudit Compliance-Managementsystem",
+   "description": "",
+   "audit_type": "System audit",
+   "cert_stage": "",
+   "program_year": "2027",
+   "audit_status": "Planned",
+   "standards": [
+    "ISO 37301"
+   ],
+   "objective": "Systemaudit des CMS nach ISO 37301 inkl. Compliance-Risikobeurteilung im Einkauf.",
+   "criteria": [
+    "37301:4.6",
+    "37301:5.3",
+    "37301:8.2",
+    "37301:8.3"
+   ],
+   "process_ids": [
+    "P-001"
+   ],
+   "audited_role_ids": [],
+   "sites": "",
+   "lead_auditor_user_id": "U-012",
+   "external_lead_auditor": "",
+   "team_user_ids": [
+    "U-002"
+   ],
+   "external_org": "",
+   "auditee_contact_user_id": "U-007",
+   "planned_date": "2027-02-15",
+   "start_date": null,
+   "end_date": null,
+   "report_date": null,
+   "report_document": "",
+   "certificate_valid_until": null,
+   "next_audit_due": null,
+   "verdict": "",
+   "summary": "",
+   "strengths": ""
+  }
+ ],
+ "findings": [
+  {
+   "id": "F-001",
+   "code": "F-001",
+   "audit_id": "AU-001",
+   "finding_type": "Minor nonconformity",
+   "clause": "37301:8.2",
+   "description": "Vier-Augen-Prinzip bei Vergaben > 25 TEUR in 2 von 25 Stichproben nicht dokumentiert.",
+   "evidence": "Stichprobe Vergabevermerke Q4/2025",
+   "process_id": "P-001",
+   "element_id": "Task_Vergabe",
+   "risk_ids": [
+    "R-002"
+   ],
+   "control_ids": [
+    "K-002"
+   ],
+   "responsible_role_id": "RO-004",
+   "responsible_user_id": "U-002",
+   "root_cause": "Vergabevermerk-Vorlage ohne Pflichtfeld für die Zweitunterschrift.",
+   "corrective_action": "Vorlage um Pflichtfeld ergänzen, Einkäufer schulen, monatliche Stichprobe durch Leitung Einkauf.",
+   "due_date": "2026-11-30",
+   "status": "Implemented",
+   "verified_at": null,
+   "verified_by_user_id": null,
+   "verification_result": ""
+  },
+  {
+   "id": "F-002",
+   "code": "F-002",
+   "audit_id": "AU-001",
+   "finding_type": "Opportunity for improvement",
+   "clause": "9001:8.4",
+   "description": "Lieferantenbewertung um Kriterien zur Informationssicherheit erweitern.",
+   "evidence": "",
+   "process_id": "P-001",
+   "element_id": "Task_LiefPruefung",
+   "risk_ids": [],
+   "control_ids": [
+    "K-004"
+   ],
+   "responsible_role_id": "RO-007",
+   "responsible_user_id": "U-008",
+   "root_cause": "",
+   "corrective_action": "",
+   "due_date": "2026-12-31",
+   "status": "In progress",
+   "verified_at": null,
+   "verified_by_user_id": null,
+   "verification_result": ""
+  },
+  {
+   "id": "F-003",
+   "code": "F-003",
+   "audit_id": "AU-001",
+   "finding_type": "Positive finding",
+   "clause": "9001:8.4",
+   "description": "3-Way-Match vollständig automatisiert, keine Doppelzahlungen im Prüfzeitraum.",
+   "evidence": "",
+   "process_id": "P-001",
+   "element_id": "Task_Rechnung",
+   "risk_ids": [],
+   "control_ids": [
+    "K-005"
+   ],
+   "responsible_role_id": null,
+   "responsible_user_id": null,
+   "root_cause": "",
+   "corrective_action": "",
+   "due_date": null,
+   "status": "Closed",
+   "verified_at": null,
+   "verified_by_user_id": null,
+   "verification_result": ""
+  },
+  {
+   "id": "F-004",
+   "code": "F-004",
+   "audit_id": "AU-002",
+   "finding_type": "Minor nonconformity",
+   "clause": "27001:A.5.18",
+   "description": "Halbjährliche Rezertifizierung der Berechtigungen für Q1 nur zu 88 % abgeschlossen.",
+   "evidence": "Rezertifizierungsreport IAM, Stand 31.03.2026",
+   "process_id": "P-002",
+   "element_id": "IAM_Rezert",
+   "risk_ids": [
+    "R-006"
+   ],
+   "control_ids": [
+    "K-007"
+   ],
+   "responsible_role_id": "RO-007",
+   "responsible_user_id": "U-008",
+   "root_cause": "Keine Eskalation bei überfälligen Rezertifizierungen durch Führungskräfte.",
+   "corrective_action": "Automatische Erinnerung und Eskalation an die Bereichsleitung nach 14 Tagen.",
+   "due_date": "2026-09-30",
+   "status": "In progress",
+   "verified_at": null,
+   "verified_by_user_id": null,
+   "verification_result": ""
+  },
+  {
+   "id": "F-005",
+   "code": "F-005",
+   "audit_id": "AU-002",
+   "finding_type": "Observation",
+   "clause": "27001:A.8.2",
+   "description": "Privilegierte Konten werden nicht in einem separaten Verzeichnis geführt.",
+   "evidence": "",
+   "process_id": "P-002",
+   "element_id": "IAM_Einrichten",
+   "risk_ids": [],
+   "control_ids": [],
+   "responsible_role_id": "RO-009",
+   "responsible_user_id": "U-001",
+   "root_cause": "",
+   "corrective_action": "",
+   "due_date": "2027-01-15",
+   "status": "Open",
+   "verified_at": null,
+   "verified_by_user_id": null,
+   "verification_result": ""
+  }
  ]
 }

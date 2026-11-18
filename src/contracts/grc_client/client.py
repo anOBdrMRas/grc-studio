@@ -53,6 +53,68 @@ class GrcClient:
             return None
         return r.json()
 
+    async def audits_list(self) -> list[AuditListItem]:
+        """GET /api/v1/audits (permission: grc:read)."""
+        return cast("list[AuditListItem]", await self._call("GET", "/api/v1/audits"))
+
+    async def audits_create(self, body: CreateElement) -> AuditOut:
+        """POST /api/v1/audits (permission: grc:manage)."""
+        return cast("AuditOut", await self._call("POST", "/api/v1/audits", json=body))
+
+    async def audits_delete(self, audit_id: str) -> None:
+        """DELETE /api/v1/audits/{audit_id} (permission: grc:manage)."""
+        await self._call("DELETE", f"/api/v1/audits/{audit_id}")
+
+    async def audits_get(self, audit_id: str) -> AuditOut:
+        """GET /api/v1/audits/{audit_id} (permission: grc:read)."""
+        return cast("AuditOut", await self._call("GET", f"/api/v1/audits/{audit_id}"))
+
+    async def audits_update(
+        self, audit_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> AuditOut:
+        """PATCH /api/v1/audits/{audit_id} (permission: grc:read)."""
+        return cast(
+            "AuditOut",
+            await self._call("PATCH", f"/api/v1/audits/{audit_id}", json=body, if_match=if_match),
+        )
+
+    async def audits_create_finding(self, audit_id: str, body: FindingCreate) -> AuditOut:
+        """POST /api/v1/audits/{audit_id}/findings (permission: grc:read)."""
+        return cast(
+            "AuditOut", await self._call("POST", f"/api/v1/audits/{audit_id}/findings", json=body)
+        )
+
+    async def audits_delete_finding(self, audit_id: str, finding_id: str) -> AuditOut:
+        """DELETE /api/v1/audits/{audit_id}/findings/{finding_id} (permission: grc:read)."""
+        return cast(
+            "AuditOut",
+            await self._call("DELETE", f"/api/v1/audits/{audit_id}/findings/{finding_id}"),
+        )
+
+    async def audits_update_finding(
+        self, audit_id: str, finding_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> AuditOut:
+        """PATCH /api/v1/audits/{audit_id}/findings/{finding_id} (permission: grc:read)."""
+        return cast(
+            "AuditOut",
+            await self._call(
+                "PATCH",
+                f"/api/v1/audits/{audit_id}/findings/{finding_id}",
+                json=body,
+                if_match=if_match,
+            ),
+        )
+
+    async def audits_history(self, audit_id: str) -> list[Revision]:
+        """GET /api/v1/audits/{audit_id}/history (permission: grc:read)."""
+        return cast("list[Revision]", await self._call("GET", f"/api/v1/audits/{audit_id}/history"))
+
+    async def audits_state(self, audit_id: str, revision_id: str) -> StateView:
+        """GET /api/v1/audits/{audit_id}/history/{revision_id} (permission: grc:read)."""
+        return cast(
+            "StateView", await self._call("GET", f"/api/v1/audits/{audit_id}/history/{revision_id}")
+        )
+
     async def auth_demo_info(self) -> DemoInfo:
         """GET /api/v1/auth/demo (permission: public)."""
         return cast("DemoInfo", await self._call("GET", "/api/v1/auth/demo"))

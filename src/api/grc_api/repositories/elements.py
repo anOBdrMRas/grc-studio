@@ -6,6 +6,8 @@ from sqlalchemy import delete, func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.models import (
+    Audit,
+    AuditFinding,
     Control,
     Kpi,
     Mandate,
@@ -18,7 +20,19 @@ from grc_api.models import (
 )
 
 # every table of versioned elements
-Element = User | Role | Position | Process | Risk | Opportunity | Control | Kpi | Mandate
+Element = (
+    User
+    | Role
+    | Position
+    | Process
+    | Risk
+    | Opportunity
+    | Control
+    | Kpi
+    | Mandate
+    | Audit
+    | AuditFinding
+)
 
 
 async def list_all[M: Element](db: AsyncSession, model: type[M]) -> list[M]:

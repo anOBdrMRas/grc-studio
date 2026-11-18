@@ -11,6 +11,8 @@ from grc_api.domain import workflow as wf
 from grc_api.domain.history import diff, state_at
 from grc_api.errors import ProblemError
 from grc_api.models import (
+    Audit,
+    AuditFinding,
     Control,
     Kpi,
     Mandate,
@@ -27,7 +29,7 @@ from grc_api.services.context import OrgData
 
 # elements with the approval workflow (status, doc_version, released)
 Approvable = Role | Position | Process | Risk | Opportunity
-Element = Approvable | Control | Kpi | Mandate
+Element = Approvable | Control | Kpi | Mandate | Audit
 KIND_MODEL: dict[str, type[Element]] = {
     "role": Role,
     "position": Position,
@@ -37,6 +39,7 @@ KIND_MODEL: dict[str, type[Element]] = {
     "control": Control,
     "kpi": Kpi,
     "mandate": Mandate,
+    "audit": Audit,
 }
 MANAGE = {
     "role": "org:manage",
@@ -48,6 +51,7 @@ MANAGE = {
     "control": "grc:manage",
     "kpi": "grc:manage",
     "mandate": "org:manage",
+    "audit": "grc:manage",
 }
 # kinds that everybody records; the recorder edits them while they are drafts
 RECORDED = frozenset({"risk", "opportunity"})
@@ -61,6 +65,7 @@ OWNER_FIELDS = {
     "control": ["owner_role_id"],
     "kpi": ["owner_role_id"],
     "mandate": ["granted_by_user_id", "granted_by_body"],
+    "audit": ["lead_auditor_user_id"],
 }
 
 
@@ -178,7 +183,10 @@ async def save_element(
     if not changes and not cols and not note:
         return []
     extra: dict[str, Any] = {}
-    if not isinstance(obj, Control | Kpi | Mandate) and wf.reopens(obj.status, r.can_manage):  # type: ignore[arg-type]
+    if not isinstance(obj, Control | Kpi | Mandate | Audit) and wf.reopens(
+        obj.status,  # type: ignore[arg-type]
+        r.can_manage,
+    ):
         extra = {
             "status": "draft",
             "released": obj.released or {**before, "doc_version": obj.doc_version},
@@ -290,7 +298,9 @@ async def state_after(
     )
 
 
-async def get_or_404(db: AsyncSession, model: type[User] | type[Element], id_: str) -> Any:
+async def get_or_404(
+    db: AsyncSession, model: type[User] | type[Element] | type[AuditFinding], id_: str
+) -> Any:
     obj = await elements.get(db, model, id_)
     if obj is None:
         raise ProblemError("not_found", "Element not found")
