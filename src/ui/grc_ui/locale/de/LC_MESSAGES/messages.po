@@ -146,9 +146,19 @@ msgstr "Anthropic-kompatibel (Claude)"
 msgid "Applicable"
 msgstr "Anwendbar"
 
+msgid "Apply chosen fields"
+msgstr "Ausgewählte Felder übernehmen"
+
 #, python-brace-format
 msgid "Apply {n} rows"
 msgstr "{n} Zeilen übernehmen"
+
+msgid ""
+"Applying saves like an edit: rights, version check and history apply. AI texts can be wrong – "
+"read them first."
+msgstr ""
+"Übernehmen speichert wie eine Bearbeitung: Rechte, Versionsprüfung und Historie gelten. KI-Texte "
+"können falsch sein – bitte vorher lesen."
 
 msgid "Appointed officer"
 msgstr "Beauftragter"
@@ -262,6 +272,9 @@ msgstr "Bewusstsein"
 msgid "Back to the current state"
 msgstr "Zurück zum aktuellen Stand"
 
+msgid "Back to the description"
+msgstr "Zurück zur Beschreibung"
+
 msgid "Back to the start page"
 msgstr "Zurück zur Startseite"
 
@@ -349,6 +362,9 @@ msgstr "Andere Person wählen"
 
 msgid "Choose another person …"
 msgstr "Andere Person wählen …"
+
+msgid "Choose at least one suggestion."
+msgstr "Bitte mindestens einen Vorschlag auswählen."
 
 msgid "Civil or criminal liability"
 msgstr "Zivil- oder strafrechtliche Haftung"
@@ -530,6 +546,12 @@ msgstr "Korrektiv"
 msgid "Corrective action"
 msgstr "Korrekturmaßnahme"
 
+msgid "Create as draft"
+msgstr "Als Entwurf übernehmen"
+
+msgid "Create suggestions"
+msgstr "Vorschläge erzeugen"
+
 msgid "Created"
 msgstr "Angelegt"
 
@@ -582,6 +604,9 @@ msgstr "Datum erwartet (JJJJ-MM-TT): {value}"
 msgid "Dates"
 msgstr "Termine"
 
+msgid "Decision"
+msgstr "Entscheidung"
+
 msgid "Degree of automation"
 msgstr "Automatisierungsgrad"
 
@@ -624,8 +649,18 @@ msgstr "Stellvertretung"
 msgid "Deputy inducted"
 msgstr "Vertretung eingearbeitet"
 
+msgid ""
+"Describe the procedure in your own words. The AI turns it into steps, decisions and role "
+"assignments as a BPMN draft."
+msgstr ""
+"Beschreibe den Ablauf in eigenen Worten. Die KI erstellt daraus Schritte, Entscheidungen und "
+"Rollenzuordnungen als BPMN-Entwurf."
+
 msgid "Description"
 msgstr "Beschreibung"
+
+msgid "Description of the process"
+msgstr "Beschreibung des Ablaufs"
 
 msgid "Design and development changes"
 msgstr "Entwicklungsänderungen"
@@ -687,6 +722,12 @@ msgstr "Entwurf"
 msgid "Draft (in progress)"
 msgstr "Entwurf (in Arbeit)"
 
+msgid "Draft a process"
+msgstr "Prozess entwerfen"
+
+msgid "Draft with AI"
+msgstr "Mit KI entwerfen"
+
 msgid "Dropdown"
 msgstr "Auswahl"
 
@@ -746,6 +787,12 @@ msgstr "Mitarbeiter"
 
 msgid "Employment process"
 msgstr "Beschäftigungsprozess"
+
+msgid "End event"
+msgstr "Endereignis"
+
+msgid "End on no"
+msgstr "Ende bei „nein“"
 
 msgid "Engineering"
 msgstr "Engineering"
@@ -2346,6 +2393,9 @@ msgstr "Normen / Regelwerke"
 msgid "Standards reference"
 msgstr "Normbezug"
 
+msgid "Start event"
+msgstr "Startereignis"
+
 msgid "Start page"
 msgstr "Startseite"
 
@@ -2365,6 +2415,9 @@ msgstr "Status"
 msgid "Statutory representation (officer)"
 msgstr "Gesetzliche Vertretung (Organ)"
 
+msgid "Step"
+msgstr "Schritt"
+
 msgid "Steps with roles"
 msgstr "Schritte mit Rollen"
 
@@ -2376,6 +2429,9 @@ msgstr "Stärken"
 
 msgid "Sub-delegation allowed"
 msgstr "Weiterdelegation erlaubt"
+
+msgid "Suggest with AI"
+msgstr "Mit KI vorschlagen"
 
 msgid "Suggested"
 msgstr "Vorschlag"
@@ -2416,6 +2472,9 @@ msgstr "Systemaudit"
 msgid "System roles (permissions in the tool)"
 msgstr "Systemrollen (Berechtigungen im Tool)"
 
+msgid "System step"
+msgstr "Systemschritt"
+
 msgid "Target"
 msgstr "Ziel"
 
@@ -2427,6 +2486,9 @@ msgstr "Soll-Vollmacht der Stelle"
 
 msgid "Target value"
 msgstr "Zielwert"
+
+msgid "Task"
+msgstr "Aufgabe"
 
 msgid "Technology"
 msgstr "Technology"
@@ -2446,11 +2508,23 @@ msgstr "Prüfergebnis / Feststellungen"
 msgid "Text"
 msgstr "Text"
 
+msgid "The AI assistant is not set up. Ask the administration."
+msgstr "Der KI-Assistent ist nicht eingerichtet. Bitte wende dich an die Administration."
+
 msgid "The AI did not answer this question."
 msgstr "Die KI hat diese Frage nicht beantwortet."
 
 msgid "The AI did not answer."
 msgstr "Die KI hat nicht geantwortet."
+
+msgid "The AI gave no usable answer. Please try again."
+msgstr "Die KI hat keine verwertbare Antwort geliefert. Bitte versuche es erneut."
+
+msgid "The AI is drafting …"
+msgstr "Die KI entwirft …"
+
+msgid "The AI is writing …"
+msgstr "Die KI schreibt …"
 
 msgid "The AI service cannot be reached right now."
 msgstr "Der KI-Dienst ist gerade nicht erreichbar."
@@ -2463,6 +2537,13 @@ msgstr "Der KI-Dienst ist gerade ausgelastet. Bitte versuche es gleich noch einm
 
 msgid "The AI service rejected the request."
 msgstr "Der KI-Dienst hat die Anfrage abgelehnt."
+
+msgid ""
+"The AI suggests content for the text fields, based on the title and the data already entered. You"
+" decide per field what is applied."
+msgstr ""
+"Die KI schlägt Inhalte für die Textfelder vor, ausgehend von Bezeichnung und bereits erfassten "
+"Angaben. Du entscheidest je Feld, was übernommen wird."
 
 msgid ""
 "The assistant answers questions such as “Where do I find …?” with links to processes, steps, "
@@ -2515,6 +2596,9 @@ msgid ""
 msgstr ""
 "Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und "
 "die Elemente, die die fragende Person lesen darf, werden an den KI-Dienst übermittelt."
+
+msgid "The process is created as a draft and can be refined in the model afterwards."
+msgstr "Der Prozess wird als Entwurf angelegt und kann danach im Modell weiter bearbeitet werden."
 
 msgid "The server cannot be reached. Please try again."
 msgstr "Der Server ist nicht erreichbar. Bitte erneut versuchen."
@@ -2671,6 +2755,15 @@ msgstr "Wöchentlich"
 msgid "Welcome, {name}"
 msgstr "Willkommen, {name}"
 
+msgid ""
+"When a customer returns a product, sales records the return. The warehouse checks the goods. If "
+"they are damaged, the credit note is refused. Otherwise accounting issues a credit note and "
+"informs the customer."
+msgstr ""
+"Wenn ein Kunde ein Produkt zurückschickt, erfasst der Vertrieb die Retoure. Das Lager prüft die "
+"Ware. Ist die Ware beschädigt, wird eine Gutschrift abgelehnt. Sonst erstellt die Buchhaltung "
+"eine Gutschrift und informiert den Kunden."
+
 msgid "Where are invoices approved?"
 msgstr "Wo werden Rechnungen freigegeben?"
 
@@ -2682,6 +2775,16 @@ msgstr "Welche Prozessschritte betreffen mich?"
 
 msgid "Who is the data protection officer?"
 msgstr "Wer ist Datenschutzbeauftragter?"
+
+msgid "Without AI: one line = one step"
+msgstr "Ohne KI: eine Zeile = ein Schritt"
+
+msgid ""
+"Without AI: one line per step, a question ending in “?” becomes a decision, the role in brackets,"
+" e.g. “Check goods (Goods receipt / warehouse)”."
+msgstr ""
+"Ohne KI: eine Zeile pro Schritt, eine Frage mit „?“ wird zur Entscheidung, die Rolle in Klammern,"
+" z. B. „Ware prüfen (Wareneingang / Lager)“."
 
 msgid "Workflow status and quality grade"
 msgstr "Freigabestatus und Qualitätsgrad"
@@ -2845,6 +2948,9 @@ msgstr "neu"
 msgid "new value"
 msgstr "neuer Wert"
 
+msgid "no"
+msgstr "nein"
+
 msgid "no approval workflow"
 msgstr "ohne Freigabe-Workflow"
 
@@ -2892,6 +2998,9 @@ msgstr "Suche ohne KI (die Administration hat die KI nicht eingerichtet)"
 
 msgid "selection, instruction, supervision (§ 130 OWiG)"
 msgstr "Auswahl, Einweisung, Überwachung (§ 130 OWiG)"
+
+msgid "so far"
+msgstr "bisher"
 
 msgid "status"
 msgstr "Status gesetzt (Administration)"

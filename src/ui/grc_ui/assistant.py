@@ -8,6 +8,8 @@ from grc_ui.i18n import N_
 
 LINK = re.compile(r"\[\[([a-z]+):([^|\]]+)\|([^\]]+)\]\]")
 BOLD = re.compile(r"\*\*(.+?)\*\*")
+# modules whose text fields the AI may suggest (the API decides which fields)
+SUGGESTABLE = frozenset({"role", "position", "risk", "control", "mandate"})
 BASES = {
     "processes": "/processes/",
     "role": "/roles/",

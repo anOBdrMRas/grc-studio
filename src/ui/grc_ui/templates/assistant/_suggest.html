@@ -1,0 +1,29 @@
+{# AI suggestions for text fields: nothing is saved until the person applies chosen fields #}
+<div class="flex items-center justify-between gap-2">
+  <h3 class="flex items-center gap-1 text-lg font-bold">{{ icon("sparkles") }} {{ _("Suggest with AI") }}</h3>
+  <button class="btn btn-ghost btn-sm" data-action="close-modal" aria-label="{{ _('Close') }}">{{ icon("x") }}</button>
+</div>
+{% if not result %}
+<p class="mt-2 text-sm opacity-80">{{ _("The AI suggests content for the text fields, based on the title and the data already entered. You decide per field what is applied.") }}</p>
+{% if error is defined and error %}<div role="alert" class="alert alert-warning mt-3 text-sm">{{ icon("alert-triangle") }}<span>{{ error }}</span></div>{% endif %}
+<form class="mt-3" hx-post="/assistant/suggest/{{ kind }}/{{ item_id }}" hx-target="#modal-body">
+  <button class="btn btn-primary btn-sm">{{ icon("sparkles") }} {{ _("Create suggestions") }}</button>
+  <span class="htmx-indicator ml-2 items-center gap-2 text-sm opacity-70"><span class="loading loading-dots loading-sm"></span> {{ _("The AI is writing …") }}</span>
+</form>
+{% else %}
+<form class="mt-3 grid gap-3" hx-post="/assistant/suggest/{{ kind }}/{{ item_id }}/apply">
+  <input type="hidden" name="version" value="{{ result.version }}">
+  {% for f in result.fields %}
+  <fieldset class="rounded-box border border-base-300 p-3">
+    <label class="flex items-center gap-2 font-semibold"><input type="checkbox" class="checkbox checkbox-sm" name="apply" value="{{ f.key }}" {% if not f.current %}checked{% endif %}> {{ _(labels.get(f.key, f.key)) }}</label>
+    <textarea name="text.{{ f.key }}" rows="3" class="textarea textarea-bordered mt-2 w-full text-sm" aria-label="{{ _(labels.get(f.key, f.key)) }}">{{ f.text }}</textarea>
+    {% if f.current %}<p class="mt-1 text-xs opacity-60">{{ _("so far") }}: {{ f.current }}</p>{% endif %}
+  </fieldset>
+  {% endfor %}
+  <div class="flex flex-wrap gap-2">
+    <button class="btn btn-primary btn-sm">{{ icon("check") }} {{ _("Apply chosen fields") }}</button>
+    <button class="btn btn-ghost btn-sm" type="button" data-action="close-modal">{{ _("Cancel") }}</button>
+  </div>
+  <p class="text-xs opacity-60">{{ _("Applying saves like an edit: rights, version check and history apply. AI texts can be wrong – read them first.") }}</p>
+</form>
+{% endif %}

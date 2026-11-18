@@ -9,6 +9,7 @@ from fastapi.responses import HTMLResponse, Response
 
 from grc_client import ApiError
 from grc_ui import content
+from grc_ui.assistant import SUGGESTABLE
 from grc_ui.charts import sparkline
 from grc_ui.content import flat
 from grc_ui.formdata import values_from_form
@@ -195,8 +196,10 @@ async def detail_context(
     spark = None
     if mod.kind == "kpi":
         spark = sparkline([m["value"] for m in item["measurements"]], item["target"])
+    suggest_ai = mod.kind in SUGGESTABLE and bool((await ctx.api.assistant_status())["ai"])
     return {
         "mod": mod,
+        "suggest_ai": suggest_ai,
         "spark": spark,
         "item": item,
         "shown": shown,

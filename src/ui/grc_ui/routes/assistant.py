@@ -113,3 +113,171 @@ async def ai_test(request: Request, ctx: UiContext = Depends(ui_context)) -> Res
     result = dict(await ctx.api.ai_test())
     s = dict(await ctx.api.ai_settings_get())
     return render(request, "admin/_ai_form.html", ctx, s=s, test=result)
+
+
+# ---- text suggestions --------------------------------------------------------------------------
+
+
+def _module(kind: str) -> Any:
+    from grc_ui.routes.modules import MODULES
+
+    return next((m for m in MODULES.values() if m.kind == kind), None)
+
+
+def _labels(kind: str) -> dict[str, str]:
+    from grc_ui.forms import FORMS
+
+    return {f["key"]: f["label"] for s in FORMS.get(kind, []) for f in s["fields"]}
+
+
+@router.get("/assistant/suggest/{kind}/{item_id}", response_class=HTMLResponse)
+async def suggest_form(
+    request: Request, kind: str, item_id: str, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    return render(request, "assistant/_suggest.html", ctx, kind=kind, item_id=item_id, result=None)
+
+
+@router.post("/assistant/suggest/{kind}/{item_id}", response_class=HTMLResponse)
+async def suggest_run(
+    request: Request, kind: str, item_id: str, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    ctx.api.http.timeout = httpx.Timeout(55.0)
+    try:
+        result = dict(
+            await ctx.api.assistant_suggest(kind, item_id, {"lang": current_language.get()})
+        )
+    except ApiError as exc:
+        return render(
+            request,
+            "assistant/_suggest.html",
+            ctx,
+            kind=kind,
+            item_id=item_id,
+            result=None,
+            error=_ai_problem(exc),
+        )
+    return render(
+        request,
+        "assistant/_suggest.html",
+        ctx,
+        kind=kind,
+        item_id=item_id,
+        result=result,
+        labels=_labels(kind),
+    )
+
+
+@router.post("/assistant/suggest/{kind}/{item_id}/apply", response_class=HTMLResponse)
+async def suggest_apply(
+    request: Request, kind: str, item_id: str, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    mod = _module(kind)
+    if mod is None:
+        return Response(status_code=404)
+    form = await request.form()
+    keys = [str(k) for k in form.getlist("apply")]
+    values = {k: str(form.get(f"text.{k}") or "").strip() for k in keys}
+    if not values:
+        return Response(
+            status_code=204, headers=toast("error", gettext("Choose at least one suggestion."))
+        )
+    update = getattr(ctx.api, f"{mod.api}_update")
+    try:
+        await update(item_id, {"version": int(str(form.get("version"))), "values": values})
+    except ApiError as exc:
+        if exc.status not in (403, 409, 412, 422):
+            raise
+        return Response(status_code=204, headers=toast("error", problem_text(exc)))
+    return Response(status_code=204, headers={"HX-Redirect": f"{mod.base}/{item_id}"})
+
+
+def _ai_problem(exc: ApiError) -> str:
+    from grc_ui.assistant import ERRORS
+
+    if exc.code == "ai_off":
+        return gettext("The AI assistant is not set up. Ask the administration.")
+    if exc.code == "ai_unusable":
+        return gettext("The AI gave no usable answer. Please try again.")
+    if exc.code in ERRORS:
+        return gettext(ERRORS[exc.code])
+    return problem_text(exc)
+
+
+# ---- process draft -----------------------------------------------------------------------------
+
+
+async def _draft_ctx(ctx: UiContext) -> dict[str, Any]:
+    from grc_ui.routes.common import catalogs
+
+    roles = [(r["id"], f"{r['code']} {r['title']}") for r in await ctx.api.roles_list()]
+    cat = await catalogs(ctx.api)
+    return {
+        "ai": (await ctx.api.assistant_status())["ai"],
+        "roles": roles,
+        "categories": cat["lists"]["process_categories"],
+    }
+
+
+@router.get("/processes/draft", response_class=HTMLResponse)
+async def draft_form(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
+    return render(
+        request, "assistant/_draft.html", ctx, text="", draft=None, **await _draft_ctx(ctx)
+    )
+
+
+@router.post("/processes/draft", response_class=HTMLResponse)
+async def draft_run(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
+    form = await request.form()
+    text = str(form.get("text") or "").strip()[:5000]
+    extra = await _draft_ctx(ctx)
+    if form.get("back") or not text:
+        return render(request, "assistant/_draft.html", ctx, text=text, draft=None, **extra)
+    ctx.api.http.timeout = httpx.Timeout(55.0)
+    try:
+        draft = dict(
+            await ctx.api.assistant_process_draft(
+                {"text": text, "use_ai": form.get("mode") == "ai", "lang": current_language.get()}
+            )
+        )
+    except ApiError as exc:
+        return render(
+            request,
+            "assistant/_draft.html",
+            ctx,
+            text=text,
+            draft=None,
+            error=_ai_problem(exc),
+            **extra,
+        )
+    return render(request, "assistant/_draft.html", ctx, text=text, draft=draft, **extra)
+
+
+@router.post("/processes/draft/create", response_class=HTMLResponse)
+async def draft_create(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
+    form = await request.form()
+    names = [str(x) for x in form.getlist("step.name")]
+    types = [str(x) for x in form.getlist("step.type")]
+    roles = [str(x) for x in form.getlist("step.role_id")]
+    racis = [str(x) for x in form.getlist("step.raci")]
+    nos = [str(x) for x in form.getlist("step.no")]
+    steps = [
+        {"name": n.strip(), "type": t, "role_id": r, "raci": c, "no": o}
+        for n, t, r, c, o in zip(names, types, roles, racis, nos, strict=False)
+        if n.strip()
+    ]
+    body = {
+        "title": str(form.get("title") or "").strip(),
+        "category": str(form.get("category") or ""),
+        "area": str(form.get("area") or ""),
+        "description": str(form.get("text") or "")[:5000],
+        "start": str(form.get("start") or "Start"),
+        "end": str(form.get("end") or "Ende"),
+        "steps": steps,
+    }
+    try:
+        created = await ctx.api.processes_create_from_draft(body)  # type: ignore[arg-type]
+    except ApiError as exc:
+        if exc.status not in (403, 409, 422):
+            raise
+        return Response(status_code=204, headers=toast("error", problem_text(exc)))
+    return Response(status_code=204, headers={"HX-Redirect": f"/processes/{created['id']}"})

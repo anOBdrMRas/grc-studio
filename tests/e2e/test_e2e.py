@@ -244,3 +244,19 @@ def test_assistant_search_on_start_page(page: "Page") -> None:
     page.click("#assistant button:has-text('Fragen')")
     expect(page.locator("#assistant-log a").first).to_be_visible()
     expect(page.locator("#assistant-log")).to_contain_text("Wo werden Bestellungen freigegeben?")
+
+
+def test_process_draft_without_ai(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/processes")
+    page.click("button:has-text('Prozess entwerfen')")
+    page.fill(
+        "#modal-body textarea[name=text]",
+        "Retoure erfassen (Vertrieb)\nWare in Ordnung?\nGutschrift erstellen",
+    )
+    page.click("#modal-body button:has-text('Ohne KI')")
+    expect(page.locator("#modal-body input[name='step.name']")).to_have_count(3)
+    page.fill("#modal-body input[name=title]", "E2E Retoure")
+    page.click("#modal-body button:has-text('Als Entwurf übernehmen')")
+    page.wait_for_url(re.compile(r".*/processes/P-\d+"))
+    expect(page.locator("main")).to_contain_text("E2E Retoure")
