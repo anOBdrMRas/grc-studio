@@ -1,0 +1,60 @@
+{# input of one form field: f (definition), v (value), locked, err; refs, lists, iso, item #}
+        {% if f.kind == "bool" %}
+        <label class="label cursor-pointer justify-start gap-2"><input type="checkbox" class="checkbox checkbox-sm" name="{{ f.key }}" {% if v %}checked{% endif %}><span class="field-label">{{ _(f.label) }}</span></label>
+        {% else %}
+        <label class="field-label" for="f-{{ f.key }}">{{ _(f.label) }}{% if f.get("hint") %} <span class="font-normal opacity-70">· {{ _(f.get("hint")) }}</span>{% endif %}{% if locked %} <span class="font-normal">· {{ icon("lock", "h-3 w-3 inline") }} {{ _("defines the ownership – administration and I&A team only") }}</span>{% endif %}</label>
+        {% if f.kind in ("readonly", "status", "risk_eval", "risk_guide") %}<div class="text-sm">{% include "entity/_value.html" %}</div>
+        {% elif f.kind == "scale" %}
+        {% set names = lists[f.options] if f.get("options") else [] %}
+        <select id="f-{{ f.key }}" name="{{ f.key }}" class="select select-bordered select-sm w-full">
+          <option value="0" {% if not v %}selected{% endif %}>{{ _("— not assessed —") }}</option>
+          {% for n in range(1, (names|length or f.get("max", 5)) + 1) %}<option value="{{ n }}" {% if n == v %}selected{% endif %}>{{ n }}{% if names %} – {{ _(names[n - 1]) }}{% endif %}</option>{% endfor %}
+        </select>
+        {% elif f.kind == "risk_actions" %}
+        <div class="grid gap-2" id="rows-{{ f.key }}">
+          {% for a in (v or []) %}{% include "entity/_action_row.html" %}{% endfor %}
+        </div>
+        <template id="tpl-{{ f.key }}">{% with a = {"text": "", "owner_user_id": none} %}{% include "entity/_action_row.html" %}{% endwith %}</template>
+        <button type="button" class="btn btn-ghost btn-xs mt-1" data-action="add-row" data-template="tpl-{{ f.key }}" data-target="rows-{{ f.key }}">{{ icon("plus") }} {{ _("Action") }}</button>
+        {% elif f.kind == "text" %}<input id="f-{{ f.key }}" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm w-full" {% if err %}aria-invalid="true"{% endif %}>
+        {% elif f.kind == "textarea" %}<textarea id="f-{{ f.key }}" name="{{ f.key }}" class="textarea textarea-bordered w-full text-sm" rows="{{ [3, [((v or '')|length // 90) + (v or '').count('\n') + 1, 20]|min]|max }}">{{ v or '' }}</textarea>
+        {% elif f.kind == "decimal" %}<input id="f-{{ f.key }}" type="number" step="any" inputmode="decimal" name="{{ f.key }}" value="{{ v if v is not none else 0 }}" class="input input-bordered input-sm w-40">
+        {% elif f.kind == "number" %}<input id="f-{{ f.key }}" type="number" step="1" inputmode="numeric" name="{{ f.key }}" value="{{ v if v is not none else 0 }}" class="input input-bordered input-sm w-40">
+        {% elif f.kind == "date" %}<input id="f-{{ f.key }}" type="date" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm">
+        {% elif f.kind == "select" %}
+        <select id="f-{{ f.key }}" name="{{ f.key }}" class="select select-bordered select-sm w-full">
+          {% if f.get("empty") %}<option value="">—</option>{% endif %}
+          {% for o in lists[f.options] %}<option value="{{ o }}" {% if o == v %}selected{% endif %}>{{ _(o) }}</option>{% endfor %}
+        </select>
+        {% elif f.kind == "iso_one" %}
+        <select id="f-{{ f.key }}" name="{{ f.key }}" class="select select-bordered select-sm w-full">
+          <option value="">—</option>
+          {% for cid, c in iso.items() %}<option value="{{ cid }}" {% if cid == v %}selected{% endif %}>{{ c.label }} {{ _(c.title) }}</option>{% endfor %}
+        </select>
+        {% elif f.kind == "ref" %}
+        {% if locked %}<input type="hidden" name="{{ f.key }}" value="{{ v or '' }}">{% endif %}
+        <select id="f-{{ f.key }}" name="{{ f.key }}" class="select select-bordered select-sm w-full" {% if locked %}disabled{% endif %}>
+          <option value="">{{ _("— not assigned —") }}</option>
+          {% for id_, label in refs[f.ref] %}{% if id_ != item.id %}<option value="{{ id_ }}" {% if id_ == v %}selected{% endif %}>{{ label }}</option>{% endif %}{% endfor %}
+        </select>
+        {% elif f.kind in ("multiselect", "refs", "iso") %}
+        {% set choices = refs[f.get("ref", "roles")] if f.kind == "refs" else (lists[f.options]|map("string")|list if f.kind == "multiselect" else iso.keys()|select("startingwith", f.get("prefix", ""))|list) %}
+        <input type="search" class="input input-bordered input-xs mb-1 w-full" placeholder="{{ _('Search…') }}" data-filter-choices aria-controls="c-{{ f.key }}" aria-label="{{ _('Search…') }}">
+        <div id="c-{{ f.key }}" class="max-h-48 overflow-auto rounded border border-base-300 p-2 text-sm">
+          {% for c in choices %}
+          {% set cid = c[0] if f.kind == "refs" else c %}
+          {% if cid != item.id %}
+          <label class="flex items-start gap-2 py-0.5" data-choice><input type="checkbox" class="checkbox checkbox-xs mt-0.5" name="{{ f.key }}" value="{{ cid }}" {% if v and cid in v %}checked{% endif %}>
+            <span>{% if f.kind == "refs" %}{{ c[1] }}{% elif f.kind == "iso" %}<b>{{ iso[c].label }}</b> <span class="opacity-70">{{ _(iso[c].title) }}</span>{% else %}{{ _(c) }}{% endif %}</span></label>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% elif f.kind == "position_roles" %}
+        <div class="grid gap-2" id="rows-{{ f.key }}">
+          {% for pr in (v or []) %}{% include "entity/_role_row.html" %}{% endfor %}
+        </div>
+        <template id="tpl-{{ f.key }}">{% with pr = {"role_id": "", "comment": ""} %}{% include "entity/_role_row.html" %}{% endwith %}</template>
+        <button type="button" class="btn btn-ghost btn-xs mt-1" data-action="add-row" data-template="tpl-{{ f.key }}" data-target="rows-{{ f.key }}">{{ icon("plus") }} {{ _("Role") }}</button>
+        {% endif %}
+        {% if err %}<p class="text-xs text-error" role="alert">{{ err }}</p>{% endif %}
+        {% endif %}

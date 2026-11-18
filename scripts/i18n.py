@@ -19,6 +19,7 @@ DE = LOCALE / "de/LC_MESSAGES/messages.po"
 API_CATALOGS = ROOT / "src/api/grc_api/domain/catalogs.py"
 API_ISO = ROOT / "src/api/grc_api/domain/iso.py"
 API_CHECKS = ROOT / "src/api/grc_api/domain/mandates.py"
+API_QUALITY = ROOT / "src/api/grc_api/domain/quality.py"
 
 CALL = re.compile(r"""\b(?:_|N_|gettext)\(\s*(["'])((?:\\.|(?!\1).)*)\1""", re.S)
 # values shown through _(variable): option lists of the API, history actions, notes of the API
@@ -39,6 +40,9 @@ EXTRA = [
     "revoked",
     "{item} removed from step {step}",
     "measurement",
+    "Finding {code} recorded",
+    "Finding {code} changed",
+    "Finding {code} deleted",
     "RACI of {role} in step {step}: {raci}",
     "submitted",
     "approved",
@@ -83,6 +87,13 @@ def extract() -> list[str]:
         API_CHECKS.read_text(encoding="utf-8"),
     ):
         ids[m.group(1)] = None
+    # quality checks: labels and translatable details
+    for m in re.finditer(
+        r'Check\(\s*"[a-z-]+",\s*"([^"]+)"', API_QUALITY.read_text(encoding="utf-8")
+    ):
+        ids[m.group(1)] = None
+    for extra in ("Mandatory role", "expired on {date}"):
+        ids[extra] = None
     for e in EXTRA:
         ids[e] = None
     return [i for i in ids if i.strip()]

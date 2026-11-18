@@ -16,7 +16,7 @@ class NavItem:
 NAV: list[NavItem] = [
     NavItem("/", N_("Start page"), "people:read"),
     NavItem("/processes", N_("Processes"), "processes:read"),
-    NavItem("/ia", N_("I&A cockpit"), "quality:approve", ready=False),
+    NavItem("/ia", N_("I&A cockpit"), "cockpit:read"),
     NavItem("/risks", N_("Risks"), "grc:read"),
     NavItem("/opportunities", N_("Opportunities"), "grc:read"),
     NavItem("/controls", N_("Controls (ICS)"), "grc:read"),
@@ -24,7 +24,7 @@ NAV: list[NavItem] = [
     NavItem("/positions", N_("Positions"), "org:read"),
     NavItem("/delegations", N_("Delegations & powers of attorney"), "org:read"),
     NavItem("/kpi", N_("KPI"), "grc:read"),
-    NavItem("/audits", N_("Audits"), "org:read", ready=False),
+    NavItem("/audits", N_("Audits"), "grc:read"),
     NavItem("/users", N_("User management"), "users:read"),
 ]
 

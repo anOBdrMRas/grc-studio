@@ -70,6 +70,16 @@ MODULES = {
         "kpis",
         (("last_value", N_("Last value")),),
     ),
+    "audits": Module(
+        "audit",
+        "/audits",
+        N_("Audits"),
+        N_("Audit"),
+        "grc:read",
+        "grc:manage",
+        "audits",
+        (("audit_status", N_("Status")), ("when", N_("Date"))),
+    ),
     "delegations": Module(
         "mandate",
         "/delegations",
@@ -353,7 +363,7 @@ def page_routes(slug: str) -> None:
             ctx,
             **d,
             **detail_urls(mod, item_id),
-            headers={"HX-Trigger": "refreshList"} | toast("success", gettext("Saved")),
+            headers=toast("success", gettext("Saved"), "refreshList"),
         )
 
     @router.post(mod.base, response_class=HTMLResponse)
