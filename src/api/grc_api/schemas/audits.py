@@ -1,4 +1,5 @@
 from datetime import date, datetime
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -74,6 +75,9 @@ class Independence(BaseModel):
 
 
 class AuditOut(AuditFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     version: int

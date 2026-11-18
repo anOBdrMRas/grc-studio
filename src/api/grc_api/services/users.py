@@ -11,7 +11,7 @@ from grc_api.models import User
 from grc_api.repositories import audit, elements
 from grc_api.schemas.common import ElementPatch, Revision
 from grc_api.schemas.users import PersonOut, UserFields, UserListItem, UserOut
-from grc_api.services import common
+from grc_api.services import common, content
 from grc_api.services.context import load_org
 
 
@@ -64,6 +64,7 @@ async def user_view(db: AsyncSession, user_id: str, p: Principal) -> UserOut:
     return UserOut(
         **common.fields_of(u, UserFields),
         id=u.id,
+        custom=u.custom,
         code=u.code,
         name=u.display_name,
         status=u.status,
@@ -103,13 +104,20 @@ async def update_user(
     _need(p, "users:manage")
     u = await common.get_or_404(db, User, user_id)
     version = common.expected_version(if_match, patch.version)
+    std, custom_raw = content.split(patch.values)
     before = common.fields_of(u, UserFields)
-    after = common.validate_merge(UserFields, before, patch.values)
+    after = common.validate_merge(UserFields, before, std)
     if any(r not in SYSTEM_ROLE_IDS for r in after["system_roles"]):
         raise ProblemError("invalid", "Unknown system role")
     changes = diff(before, after)
+    custom_changes, custom_after = await common.custom_update(
+        db, "user", u, custom_raw, await load_org(db)
+    )
+    changes += custom_changes
     if changes:
         values = dict(after) | {"display_name": full_name(after["first_name"], after["last_name"])}
+        if custom_changes:
+            values["custom"] = custom_after
         if "position_id" in {c["key"] for c in changes}:
             from datetime import date
 

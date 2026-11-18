@@ -101,6 +101,7 @@ async def risk_view(
     return RiskOut(
         **common.fields_of(r, RiskFields),
         id=r.id,
+        custom=r.custom,
         code=r.code,
         title=r.title,
         status=r.status,
@@ -206,6 +207,7 @@ async def opportunity_view(
     return OpportunityOut(
         **common.fields_of(o, OpportunityFields),
         id=o.id,
+        custom=o.custom,
         code=o.code,
         status=o.status,
         doc_version=o.doc_version,
@@ -298,6 +300,7 @@ async def control_view(db: AsyncSession, control_id: str, p: Principal) -> Contr
     return ControlOut(
         **common.fields_of(c, ControlFields),
         id=c.id,
+        custom=c.custom,
         code=c.code,
         version=c.version,
         created_at=c.created_at,
@@ -380,6 +383,7 @@ async def kpi_view(db: AsyncSession, kpi_id: str, p: Principal) -> KpiOut:
     return KpiOut(
         **common.fields_of(k, KpiFields),
         id=k.id,
+        custom=k.custom,
         code=k.code,
         version=k.version,
         created_at=k.created_at,
@@ -541,5 +545,5 @@ async def state(db: AsyncSession, kind: str, id_: str, revision_id: int, p: Prin
     model, fields = MODELS[kind]
     obj = await common.get_or_404(db, model, id_)
     return await common.state_after(
-        db, kind, id_, revision_id, common.fields_of(obj, fields), await load_org(db)
+        db, kind, id_, revision_id, common.state_of(obj, fields), await load_org(db)
     )

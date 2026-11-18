@@ -34,6 +34,9 @@ class Holder(BaseModel):
 
 
 class RoleOut(RoleFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     status: str
@@ -96,6 +99,9 @@ class PositionFields(BaseModel):
 
 
 class PositionOut(PositionFields):
+    custom: dict[str, Any] = Field(
+        default_factory=dict, description="values of the custom fields (content administration)"
+    )
     id: str
     code: str
     status: str

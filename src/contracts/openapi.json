@@ -152,6 +152,12 @@
             "title": "Criteria",
             "type": "array"
           },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
+          },
           "description": {
             "default": "",
             "title": "Description",
@@ -488,6 +494,99 @@
         "title": "CockpitOut",
         "type": "object"
       },
+      "ContentIn": {
+        "properties": {
+          "fields": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/CustomFieldIO"
+              },
+              "type": "array"
+            },
+            "default": {},
+            "title": "Fields",
+            "type": "object"
+          },
+          "options": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "default": {},
+            "title": "Options",
+            "type": "object"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          }
+        },
+        "title": "ContentIn",
+        "type": "object"
+      },
+      "ContentOut": {
+        "properties": {
+          "fields": {
+            "additionalProperties": {
+              "items": {
+                "$ref": "#/components/schemas/CustomFieldIO"
+              },
+              "type": "array"
+            },
+            "description": "custom fields per module (kind)",
+            "title": "Fields",
+            "type": "object"
+          },
+          "kinds": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Kinds",
+            "type": "array"
+          },
+          "options": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "description": "additional values of standard dropdowns, key \"kind.field\"",
+            "title": "Options",
+            "type": "object"
+          },
+          "types": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Types",
+            "type": "array"
+          },
+          "version": {
+            "description": "0 while nothing has been configured",
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version",
+          "fields",
+          "options",
+          "kinds",
+          "types"
+        ],
+        "title": "ContentOut",
+        "type": "object"
+      },
       "ControlListItem": {
         "properties": {
           "code": {
@@ -559,6 +658,12 @@
             "format": "date-time",
             "title": "Created At",
             "type": "string"
+          },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
           },
           "description": {
             "default": "",
@@ -761,6 +866,51 @@
           "last_name"
         ],
         "title": "CreateUser",
+        "type": "object"
+      },
+      "CustomFieldIO": {
+        "properties": {
+          "key": {
+            "default": "",
+            "description": "\"x_…\"; empty for a new field (the API assigns it)",
+            "title": "Key",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "options": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Options",
+            "type": "array"
+          },
+          "removed": {
+            "default": false,
+            "description": "hidden; stored values are kept",
+            "title": "Removed",
+            "type": "boolean"
+          },
+          "section": {
+            "default": "",
+            "description": "section of the form the field is shown in",
+            "title": "Section",
+            "type": "string"
+          },
+          "type": {
+            "description": "text, textarea, number, date, bool, select, multiselect, user",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "type"
+        ],
+        "title": "CustomFieldIO",
         "type": "object"
       },
       "DemoInfo": {
@@ -1279,6 +1429,12 @@
             "title": "Critical",
             "type": "number"
           },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
+          },
           "data_source": {
             "default": "",
             "title": "Data Source",
@@ -1605,6 +1761,12 @@
             "format": "date-time",
             "title": "Created At",
             "type": "string"
+          },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
           },
           "description": {
             "default": "",
@@ -2028,6 +2190,12 @@
             ],
             "title": "Created By User Id"
           },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
+          },
           "description": {
             "default": "",
             "title": "Description",
@@ -2317,6 +2485,12 @@
             "format": "date-time",
             "title": "Created At",
             "type": "string"
+          },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
           },
           "deputy_inducted": {
             "default": false,
@@ -2642,6 +2816,12 @@
             "format": "date-time",
             "title": "Created At",
             "type": "string"
+          },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
           },
           "description": {
             "default": "",
@@ -3141,6 +3321,12 @@
             ],
             "title": "Created By User Id"
           },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
+          },
           "department": {
             "default": "",
             "title": "Department",
@@ -3427,6 +3613,12 @@
             "format": "date-time",
             "title": "Created At",
             "type": "string"
+          },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
           },
           "description": {
             "default": "",
@@ -3875,6 +4067,12 @@
             "format": "date-time",
             "title": "Created At",
             "type": "string"
+          },
+          "custom": {
+            "additionalProperties": true,
+            "description": "values of the custom fields (content administration)",
+            "title": "Custom",
+            "type": "object"
           },
           "department": {
             "default": "",
@@ -4962,6 +5160,87 @@
           "audits"
         ],
         "x-permission": "cockpit:read"
+      }
+    },
+    "/api/v1/content": {
+      "get": {
+        "description": "Custom fields and additional dropdown values (every form needs them).",
+        "operationId": "content_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Content Get",
+        "tags": [
+          "content"
+        ],
+        "x-permission": "people:read"
+      },
+      "put": {
+        "operationId": "content_update",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContentIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContentOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Content Update",
+        "tags": [
+          "content"
+        ],
+        "x-permission": "content:manage"
       }
     },
     "/api/v1/controls": {

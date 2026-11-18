@@ -25,6 +25,7 @@ from grc_api.models import (
 )
 from grc_api.repositories import audit, elements
 from grc_api.schemas.common import Change, Revision, Rights, StateView, WorkflowEntryOut
+from grc_api.services import content
 from grc_api.services.context import OrgData
 
 # elements with the approval workflow (status, doc_version, released)
@@ -106,6 +107,21 @@ def rights(
     )
 
 
+async def custom_update(
+    db: AsyncSession, kind: str, obj: Element | User, raw: dict[str, Any], org: OrgData
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Changes of the custom fields (one history entry per field) and the new stored values."""
+    current = dict(obj.custom or {})
+    checked = await content.custom_values(db, kind, raw, current, org)
+    after = current | checked
+    return diff(current, after), after
+
+
+def state_of(obj: Element | User, model: type[BaseModel]) -> dict[str, Any]:
+    """Standard and custom values: the current state the history is reverted from."""
+    return fields_of(obj, model) | dict(obj.custom or {})
+
+
 def expected_version(if_match: str | None, body_version: int | None) -> tuple[int, int]:
     """Version to check and the status code for a stale one (412 via If-Match, 409 via the body)."""
     if if_match:
@@ -176,10 +192,15 @@ async def save_element(
         raise ProblemError("forbidden", "You may not edit this element")
     if any(k in values and values[k] != jsonable(getattr(obj, k)) for k in r.owner_fields):
         raise ProblemError("forbidden", "Only the administration and the I&A team change the owner")
+    values, custom_raw = content.split(values)
     before = fields_of(obj, model) | (before_extra or {})
     after = validate_merge(model, before, values) if values else before
     changes = diff(before, after)
     cols = dict(column_values or {})
+    custom_changes, custom_after = await custom_update(db, kind, obj, custom_raw, org)
+    if custom_changes:
+        changes += custom_changes
+        cols["custom"] = custom_after
     if not changes and not cols and not note:
         return []
     extra: dict[str, Any] = {}
