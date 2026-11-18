@@ -26,6 +26,7 @@ dev = [
   "playwright>=1.49",
   "types-python-dateutil",
   "types-defusedxml",
+  "types-openpyxl",
 ]
 
 [tool.pytest.ini_options]

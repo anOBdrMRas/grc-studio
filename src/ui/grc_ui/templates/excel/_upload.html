@@ -1,0 +1,11 @@
+<div class="flex items-start justify-between">
+  <h2 class="text-xl font-bold">{{ _("Excel import") }}: {{ _(k.title) }}</h2>
+  <form method="dialog"><button class="btn btn-ghost btn-sm btn-square" data-action="close-modal" aria-label="{{ _('Close') }}">{{ icon("x") }}</button></form>
+</div>
+<p class="mt-1 text-sm opacity-70">{{ _("Use a file from the Excel export of this module. Rows are matched by their ID; rows without an ID are created. You see a preview before anything is saved.") }}</p>
+{% if error is defined and error %}<div class="alert alert-error mt-3 py-2 text-sm" role="alert">{{ error }}</div>{% endif %}
+<form hx-post="{{ k.base }}/import" hx-target="#modal-body" hx-encoding="multipart/form-data" class="mt-3 flex flex-wrap items-center gap-2">
+  <input type="file" name="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" class="file-input file-input-bordered file-input-sm" required aria-label="{{ _('Excel file') }}">
+  <button class="btn btn-primary btn-sm">{{ icon("search") }} {{ _("Show preview") }}</button>
+  <a class="link link-secondary text-sm" href="{{ k.base }}/export.xlsx">{{ _("Download the current data as a template") }}</a>
+</form>
