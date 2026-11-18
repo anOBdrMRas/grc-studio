@@ -22,7 +22,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from grc_api.auth.principal import Principal
 from grc_api.config import get_settings
 from grc_api.domain import assistant as asst
+from grc_api.domain import bpmn_draft
 from grc_api.domain.bpmn import activities
+from grc_api.domain.catalogs import PROCESS_CATEGORIES
 from grc_api.errors import ProblemError
 from grc_api.models import (
     Audit,
@@ -43,8 +45,16 @@ from grc_api.schemas.assistant import (
     AskIn,
     AskOut,
     AssistantStatus,
+    DraftIn,
+    DraftOut,
+    DraftStepIO,
     Hit,
+    SuggestedField,
+    SuggestIn,
+    SuggestOut,
 )
+from grc_api.services import common
+from grc_api.services.content import FIELDS
 from grc_api.services.context import OrgData, load_org
 
 log = logging.getLogger("grc_api.assistant")
@@ -450,3 +460,150 @@ async def ask(db: AsyncSession, body: AskIn, p: Principal) -> AskOut:
     except AiFailure as exc:
         return AskOut(mode="search", text="", hits=[_hit(e) for e in hits], error=exc.code)
     return AskOut(mode="ai", text=asst.checked_links(text, entries), hits=[])
+
+
+# ---- text suggestions --------------------------------------------------------------------------
+
+# text fields the AI may suggest per module
+SUGGESTABLE: dict[str, list[str]] = {
+    "role": ["description", "responsibilities", "authorities", "competencies", "trainings"],
+    "position": [
+        "description",
+        "purpose",
+        "tasks",
+        "authorities",
+        "qualification",
+        "experience",
+        "competencies",
+        "trainings",
+    ],
+    "risk": [
+        "description",
+        "activity",
+        "compliance_obligation",
+        "cause",
+        "likelihood_reason",
+        "impact_reason",
+    ],
+    "control": ["description", "objective", "evidence", "test_result"],
+    "mandate": ["description", "scope", "powers", "supervision"],
+}
+
+
+async def _ai_or_409(db: AsyncSession) -> AiConfig:
+    data, _ = await _load(db)
+    cfg = _config(data) if data.get("enabled") else None
+    if cfg is None:
+        raise ProblemError("ai_off", "The AI assistant is not set up", status=409)
+    return cfg
+
+
+def _ai_error(exc: AiFailure) -> ProblemError:
+    return ProblemError(exc.code, "The AI service did not answer", status=503)
+
+
+async def suggest(
+    db: AsyncSession, kind: str, element_id: str, body: SuggestIn, p: Principal
+) -> SuggestOut:
+    """Suggestions for the text fields of an element; saving goes through the normal update."""
+    if kind not in SUGGESTABLE:
+        raise ProblemError("not_found", "No suggestions for this kind of element")
+    obj = await common.get_or_404(db, common.KIND_MODEL[kind], element_id)
+    org = await load_org(db)
+    if not common.rights(kind, obj, org, p).can_edit:
+        raise ProblemError("forbidden", "You may not edit this element")
+    cfg = await _ai_or_409(db)
+    model = FIELDS[kind]
+    known = {
+        k: str(getattr(obj, k))[:600]
+        for k in model.model_fields
+        if isinstance(getattr(obj, k, None), str) and getattr(obj, k)
+    }
+    fields = SUGGESTABLE[kind]
+    system, user = asst.suggest_prompt(
+        "en" if body.lang == "en" else "de", kind, obj.title, known, fields
+    )
+    try:
+        answer = await _complete(cfg, system, [{"role": "user", "content": user}])
+    except AiFailure as exc:
+        raise _ai_error(exc) from exc
+    data = asst.json_object(answer) or {}
+    out = [
+        SuggestedField(key=k, text=str(data[k]).strip()[:4000], current=getattr(obj, k) or "")
+        for k in fields
+        if isinstance(data.get(k), str) and str(data[k]).strip()
+    ]
+    if not out:
+        raise ProblemError("ai_unusable", "The AI gave no usable suggestion", status=503)
+    return SuggestOut(version=obj.version, fields=out)
+
+
+# ---- process draft -----------------------------------------------------------------------------
+
+
+async def draft_process(db: AsyncSession, body: DraftIn, p: Principal) -> DraftOut:
+    """Steps, decisions and roles from a description (AI), or one line per step (without AI)."""
+    _need(p, "processes:manage")
+    text = body.text.strip()
+    if not text:
+        raise ProblemError("invalid", "Describe the process")
+    org = await load_org(db)
+    roles = {r.id: r.title for r in org.roles.values()}
+    de = body.lang != "en"
+    if not body.use_ai:
+        steps = bpmn_draft.steps_from_text(text)
+        if not steps:
+            raise ProblemError("invalid", "Write one step per line")
+        return DraftOut(
+            mode="text",
+            title="Neuer Prozess" if de else "New process",
+            category="Core process",
+            area="",
+            start="Start",
+            end="Ende" if de else "End",
+            steps=[_step_out(s, roles) for s in steps],
+        )
+    cfg = await _ai_or_409(db)
+    system, user = asst.draft_prompt(
+        "de" if de else "en", text, list(roles.values()), list(PROCESS_CATEGORIES)
+    )
+    try:
+        answer = await _complete(cfg, system, [{"role": "user", "content": user}])
+    except AiFailure as exc:
+        raise _ai_error(exc) from exc
+    data = asst.json_object(answer) or {}
+    raw = data.get("steps")
+    steps = [
+        bpmn_draft.Step(
+            name=str(s.get("name") or "").strip()[:120],
+            type=str(s.get("type")) if s.get("type") in bpmn_draft.STEP_TYPES else "task",
+            role=str(s.get("role") or ""),
+            raci="A" if s.get("raci") == "A" else "R",
+            no=str(s.get("no") or "")[:120],
+        )
+        for s in (raw if isinstance(raw, list) else [])[: bpmn_draft.MAX_STEPS]
+        if isinstance(s, dict)
+    ]
+    steps = [s for s in steps if s.name]
+    if not steps:
+        raise ProblemError("ai_unusable", "The AI gave no usable draft", status=503)
+    category = str(data.get("category") or "")
+    return DraftOut(
+        mode="ai",
+        title=str(data.get("title") or "").strip()[:120] or ("Neuer Prozess" if de else "New"),
+        category=category if category in PROCESS_CATEGORIES else "Core process",
+        area=str(data.get("area") or "")[:120],
+        start=str(data.get("start") or "Start")[:120],
+        end=str(data.get("end") or ("Ende" if de else "End"))[:120],
+        steps=[_step_out(s, roles) for s in steps],
+    )
+
+
+def _step_out(s: bpmn_draft.Step, roles: dict[str, str]) -> DraftStepIO:
+    return DraftStepIO(
+        name=s.name,
+        type=s.type,
+        role_id=bpmn_draft.match_role(s.role, roles),
+        raci="A" if s.raci == "A" else "R",
+        no=s.no,
+    )

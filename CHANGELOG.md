@@ -5,6 +5,15 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 3d-2)
+- "Suggest with AI" on roles, positions, risks, controls and delegations: the AI proposes the
+  text fields; the person edits and chooses per field what is applied. Applying is a normal
+  update (rights, version check, history); the suggestion itself saves nothing.
+- "Draft a process": a description becomes steps, decisions and role assignments (with AI, or
+  without AI one line per step, "?" for a decision, "(role)" for the role). The editable preview
+  creates a draft process with a generated BPMN diagram and the roles of its steps
+  (`POST /api/v1/processes/from-draft`).
+
 ### Added (stage 3d)
 - AI assistant ("Where do I find …?") on the start page and as a dialog from the header. It
   answers with links to processes, process steps, roles, positions, delegations, risks,

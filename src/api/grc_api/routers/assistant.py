@@ -13,8 +13,15 @@ from grc_api.schemas.assistant import (
     AskIn,
     AskOut,
     AssistantStatus,
+    DraftCreate,
+    DraftIn,
+    DraftOut,
+    SuggestIn,
+    SuggestOut,
 )
+from grc_api.schemas.processes import ProcessOut
 from grc_api.services import assistant as svc
+from grc_api.services import processes as processes_svc
 
 router = APIRouter(prefix="/api/v1", tags=["assistant"])
 Db = Annotated[AsyncSession, Depends(get_db)]
@@ -51,3 +58,36 @@ async def assistant_status(db: Db) -> AssistantStatus:
 async def assistant_ask(body: AskIn, db: Db, p: Me) -> AskOut:
     """Answer with links to elements the person may open (AI, or catalogue search without it)."""
     return await svc.ask(db, body, p)
+
+
+@router.post(
+    "/assistant/suggest/{kind}/{element_id}",
+    operation_id="assistant_suggest",
+    **secured("people:read"),
+)
+async def assistant_suggest(
+    kind: str, element_id: str, body: SuggestIn, db: Db, p: Me
+) -> SuggestOut:
+    """AI suggestions for the text fields of an element the person may edit (nothing is saved)."""
+    return await svc.suggest(db, kind, element_id, body, p)
+
+
+@router.post(
+    "/assistant/process-draft",
+    operation_id="assistant_process_draft",
+    **secured("processes:manage"),
+)
+async def assistant_process_draft(body: DraftIn, db: Db, p: Me) -> DraftOut:
+    """Steps of a process from a description: AI, or one line per step (nothing is saved)."""
+    return await svc.draft_process(db, body, p)
+
+
+@router.post(
+    "/processes/from-draft",
+    operation_id="processes_create_from_draft",
+    status_code=201,
+    **secured("processes:manage"),
+)
+async def processes_create_from_draft(body: DraftCreate, db: Db, p: Me) -> ProcessOut:
+    """A new draft process with a generated BPMN diagram and the roles of its steps."""
+    return await processes_svc.create_from_draft(db, body, p)

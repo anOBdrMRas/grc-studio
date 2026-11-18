@@ -3,13 +3,15 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.auth.principal import Principal
-from grc_api.domain import ics
+from grc_api.domain import bpmn_draft, ics
 from grc_api.domain.bpmn import element_names, is_bpmn
+from grc_api.domain.catalogs import PROCESS_CATEGORIES
 from grc_api.domain.codes import next_code
 from grc_api.errors import ProblemError
 from grc_api.models import Control, Kpi, Opportunity, Process, Risk
 from grc_api.repositories import audit, elements
 from grc_api.repositories import processes as proc_repo
+from grc_api.schemas.assistant import DraftCreate
 from grc_api.schemas.common import ElementPatch, Revision, StateView, WorkflowAction
 from grc_api.schemas.grc import Usage
 from grc_api.schemas.processes import (
@@ -135,6 +137,49 @@ async def create_process(db: AsyncSession, title: str, p: Principal) -> ProcessO
     await elements.insert(db, Process(id=code, code=code, title=title, xml=EMPTY_DIAGRAM))
     await audit.record(
         db, p.user_id, "create", "process", code, [{"key": "title", "from": None, "to": title}]
+    )
+    await db.commit()
+    return await process_view(db, code, p)
+
+
+async def create_from_draft(db: AsyncSession, body: DraftCreate, p: Principal) -> ProcessOut:
+    """A new draft process with a generated diagram and the roles of its steps."""
+    _need(p, "processes:manage")
+    org = await load_org(db)
+    code = next_code(await elements.codes(db, Process), "P")
+    steps = [
+        bpmn_draft.Step(s.name.strip() or "?", s.type, s.role_id, s.raci, s.no.strip())
+        for s in body.steps
+    ]
+    xml, ids = bpmn_draft.generate(
+        body.title.strip(), steps, code.replace("-", ""), body.start.strip(), body.end.strip()
+    )
+    if not is_bpmn(xml):
+        raise ProblemError("invalid", "The draft could not be turned into a diagram")
+    category = body.category if body.category in PROCESS_CATEGORIES else "Core process"
+    await elements.insert(
+        db,
+        Process(
+            id=code,
+            code=code,
+            title=body.title.strip(),
+            description=body.description.strip(),
+            category=category,
+            area=body.area.strip(),
+            xml=xml,
+        ),
+    )
+    for s, element_id in zip(steps, ids, strict=True):
+        if s.role and s.role in org.roles and s.type != "decision":
+            await proc_repo.add(db, code, element_id, s.role, s.raci)
+    await audit.record(
+        db,
+        p.user_id,
+        "create",
+        "process",
+        code,
+        [{"key": "title", "from": None, "to": body.title.strip()}],
+        "Created from a draft",
     )
     await db.commit()
     return await process_view(db, code, p)

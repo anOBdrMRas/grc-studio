@@ -22,7 +22,7 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-GEN-09 | Modulpunkte späterer Stufen zeigen „In Vorbereitung“ | S1 |
 | FR-GEN-10 | Excel-Export je Modul und für alle Module (mit Messwerten, Feststellungen, Prozessschritten); Import je Modul mit Vorschau (neu / geändert / unverändert / Fehler), Spalten auf Deutsch oder Englisch, Zuordnung per ID, Personen per Name; gespeichert wird über die API mit allen Rechte- und Versionsprüfungen | S3b |
 | FR-GEN-11 | KI-Assistent: Chat „Wo finde ich …?“ mit Verweisen nur auf Elemente, die die Person lesen darf (Startseite und Kopfzeile), Suche ohne KI als Rückfall; KI-Dienst in der Administration wählbar: OpenAI-kompatibel (interne con-AI) oder Anthropic-kompatibel, mit Adresse, Modell, API-Schlüssel (verschlüsselt, nie angezeigt) und Ein/Aus | S3d |
-| FR-GEN-11b | KI-Textvorschläge für Felder und Prozessentwurf aus Freitext | S3 |
+| FR-GEN-11b | KI-Textvorschläge für die Textfelder von Rollen, Stellen, Risiken, Controls und Delegationen (Übernahme je Feld wie eine Bearbeitung); Prozessentwurf aus Freitext (mit KI, oder ohne KI: eine Zeile = ein Schritt) mit bearbeitbarer Vorschau, erzeugt BPMN-Diagramm und Rollenzuordnungen als Entwurf | S3d |
 | FR-GEN-12 | Inhaltsverwaltung (nur Administration): eigene Felder (Text, Langtext, Zahl, Datum, Ja/Nein, Auswahl, Mehrfachauswahl, Person) und zusätzliche Auswahlwerte je Modul; wirken sofort in Masken, Historie und Excel. Standardfelder und -werte bleiben unverändert; ein eigenes Feld wird nur ausgeblendet, seine Werte bleiben erhalten; der Typ eines Feldes ist fest. Die API prüft Werte gegen Typ und Auswahlliste | S3c |
 
 ## 2. Anmeldung und Rechte

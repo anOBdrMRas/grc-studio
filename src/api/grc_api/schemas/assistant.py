@@ -61,3 +61,52 @@ class AskOut(BaseModel):
     text: str = Field(description="answer with links [[kind:id|label]] (AI mode)")
     hits: list[Hit] = Field(description="search hits (search mode)")
     error: str = Field("", description="why the AI did not answer (search mode)")
+
+
+class SuggestIn(BaseModel):
+    lang: str = "de"
+
+
+class SuggestedField(BaseModel):
+    key: str
+    text: str
+    current: str = Field(description="value stored now (shown for comparison)")
+
+
+class SuggestOut(BaseModel):
+    version: int = Field(description="version of the element the suggestions were made for")
+    fields: list[SuggestedField]
+
+
+class DraftStepIO(BaseModel):
+    name: str = Field(max_length=200)
+    type: Literal["task", "system", "manual", "decision"] = "task"
+    role_id: str = ""
+    raci: Literal["R", "A"] = "R"
+    no: str = Field("", max_length=200, description="decision only: end event on no")
+
+
+class DraftIn(BaseModel):
+    text: str = Field(max_length=5000)
+    use_ai: bool = True
+    lang: str = "de"
+
+
+class DraftOut(BaseModel):
+    mode: Literal["ai", "text"]
+    title: str
+    category: str
+    area: str
+    start: str
+    end: str
+    steps: list[DraftStepIO]
+
+
+class DraftCreate(BaseModel):
+    title: str = Field(min_length=1, max_length=200)
+    category: str = "Core process"
+    area: str = Field("", max_length=200)
+    description: str = Field("", max_length=5000)
+    start: str = Field("Start", max_length=200)
+    end: str = Field("Ende", max_length=200)
+    steps: list[DraftStepIO] = Field(min_length=1, max_length=30)

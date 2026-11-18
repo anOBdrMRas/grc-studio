@@ -1,0 +1,52 @@
+{# process draft: description → editable steps → new draft process with diagram and roles #}
+<div class="flex items-center justify-between gap-2">
+  <h3 class="flex items-center gap-1 text-lg font-bold">{{ icon("sparkles") }} {{ _("Draft a process") }}</h3>
+  <button class="btn btn-ghost btn-sm" data-action="close-modal" aria-label="{{ _('Close') }}">{{ icon("x") }}</button>
+</div>
+{% if not draft %}
+<form class="mt-2 grid gap-3" hx-post="/processes/draft" hx-target="#modal-body">
+  <p class="text-sm opacity-80">{{ _("Describe the procedure in your own words. The AI turns it into steps, decisions and role assignments as a BPMN draft.") if ai else "" }}
+    {{ _("Without AI: one line per step, a question ending in “?” becomes a decision, the role in brackets, e.g. “Check goods (Goods receipt / warehouse)”.") }}</p>
+  {% if error is defined and error %}<div role="alert" class="alert alert-warning text-sm">{{ icon("alert-triangle") }}<span>{{ error }}</span></div>{% endif %}
+  <textarea name="text" rows="8" class="textarea textarea-bordered text-sm" required maxlength="5000" aria-label="{{ _('Description of the process') }}" placeholder="{{ _('When a customer returns a product, sales records the return. The warehouse checks the goods. If they are damaged, the credit note is refused. Otherwise accounting issues a credit note and informs the customer.') if ai else 'Retoure erfassen (Vertrieb)&#10;Ware prüfen (Wareneingang / Lager)&#10;Ware in Ordnung?&#10;Gutschrift erstellen (Kreditorenbuchhaltung)' }}">{{ text }}</textarea>
+  <div class="flex flex-wrap items-center gap-2">
+    {% if ai %}<button class="btn btn-primary btn-sm" name="mode" value="ai">{{ icon("sparkles") }} {{ _("Draft with AI") }}</button>{% endif %}
+    <button class="btn {{ 'btn-outline' if ai else 'btn-primary' }} btn-sm" name="mode" value="text">{{ _("Without AI: one line = one step") }}</button>
+    <span class="htmx-indicator items-center gap-2 text-sm opacity-70"><span class="loading loading-dots loading-sm"></span> {{ _("The AI is drafting …") }}</span>
+  </div>
+</form>
+{% else %}
+<form class="mt-2 grid gap-3" hx-post="/processes/draft/create">
+  <input type="hidden" name="text" value="{{ text }}">
+  <div class="grid gap-2 md:grid-cols-3">
+    <label class="form-control"><span class="label-text text-sm">{{ _("Title") }}</span><input name="title" value="{{ draft.title }}" class="input input-bordered input-sm" required maxlength="200"></label>
+    <label class="form-control"><span class="label-text text-sm">{{ _("Process category") }}</span>
+      <select name="category" class="select select-bordered select-sm">{% for c in categories %}<option value="{{ c }}" {% if c == draft.category %}selected{% endif %}>{{ _(c) }}</option>{% endfor %}</select></label>
+    <label class="form-control"><span class="label-text text-sm">{{ _("Process area") }}</span><input name="area" value="{{ draft.area }}" class="input input-bordered input-sm" maxlength="200"></label>
+  </div>
+  <div class="overflow-x-auto">
+  <table class="table table-sm">
+    <thead><tr><th>#</th><th>{{ _("Step") }}</th><th>{{ _("Type") }}</th><th>{{ _("Role") }}</th><th>RACI</th></tr></thead>
+    <tbody>
+      <tr class="opacity-70"><td>○</td><td colspan="4"><input name="start" value="{{ draft.start }}" class="input input-ghost input-xs w-full" aria-label="{{ _('Start event') }}"></td></tr>
+      {% for s in draft.steps %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><input name="step.name" value="{{ s.name }}" class="input input-bordered input-xs w-full min-w-48" aria-label="{{ _('Step') }} {{ loop.index }}">
+          {% if s.type == "decision" %}<div class="mt-1 flex items-center gap-1 text-xs opacity-70">{{ _("no") }} → <input name="step.no" value="{{ s.no }}" class="input input-ghost input-xs" placeholder="{{ _('Cancelled') }}" aria-label="{{ _('End on no') }}"></div>{% else %}<input type="hidden" name="step.no" value="">{% endif %}</td>
+        <td><select name="step.type" class="select select-bordered select-xs" aria-label="{{ _('Type') }}">{% for t, label in (("task", _("Task")), ("system", _("System step")), ("manual", _("Manual")), ("decision", _("Decision"))) %}<option value="{{ t }}" {% if t == s.type %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></td>
+        <td><select name="step.role_id" class="select select-bordered select-xs max-w-56" aria-label="{{ _('Role') }}"><option value="">{{ _("— not assigned —") }}</option>{% for rid, label in roles %}<option value="{{ rid }}" {% if rid == s.role_id %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></td>
+        <td><select name="step.raci" class="select select-bordered select-xs" aria-label="RACI"><option value="R" {% if s.raci == "R" %}selected{% endif %}>R</option><option value="A" {% if s.raci == "A" %}selected{% endif %}>A</option></select></td>
+      </tr>
+      {% endfor %}
+      <tr class="opacity-70"><td>●</td><td colspan="4"><input name="end" value="{{ draft.end }}" class="input input-ghost input-xs w-full" aria-label="{{ _('End event') }}"></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    <button class="btn btn-primary btn-sm">{{ icon("check") }} {{ _("Create as draft") }}</button>
+    <button class="btn btn-ghost btn-sm" type="button" hx-post="/processes/draft" hx-target="#modal-body" hx-vals='{"back": "1"}' hx-include="closest form">{{ icon("arrow-back-up") }} {{ _("Back to the description") }}</button>
+  </div>
+  <p class="text-xs opacity-60">{{ _("The process is created as a draft and can be refined in the model afterwards.") }}</p>
+</form>
+{% endif %}

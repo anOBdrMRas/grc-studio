@@ -17,6 +17,7 @@
     <div class="flex gap-2">
       {% set can_edit = item.rights.can_edit if item.rights is defined else item.can_manage %}
       {% if can_edit and not banner %}<button class="btn btn-primary btn-sm" hx-get="{{ edit_url }}" hx-target="#{{ target }}">{{ icon("pencil") }} {{ _("Edit") }}</button>{% endif %}
+      {% if can_edit and not banner and suggest_ai is defined and suggest_ai %}<button class="btn btn-outline btn-sm" hx-get="/assistant/suggest/{{ mod.kind }}/{{ item.id }}" hx-target="#modal-body">{{ icon("sparkles") }} {{ _("Suggest with AI") }}</button>{% endif %}
       {% if mod.kind != "process" and ((item.rights is defined and item.rights.can_delete) or (item.can_manage is defined and item.can_manage)) %}
       <button class="btn btn-ghost btn-sm text-error" hx-post="{{ self_url }}/delete" hx-confirm="{{ _('Really delete?') }}">{{ icon("trash") }} {{ _("Delete") }}</button>
       {% endif %}

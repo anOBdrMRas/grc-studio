@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 06:57+0000\n"
+"POT-Creation-Date: 2026-11-18 07:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,8 +144,14 @@ msgstr ""
 msgid "Applicable"
 msgstr ""
 
+msgid "Apply chosen fields"
+msgstr ""
+
 #, python-brace-format
 msgid "Apply {n} rows"
+msgstr ""
+
+msgid "Applying saves like an edit: rights, version check and history apply. AI texts can be wrong – read them first."
 msgstr ""
 
 msgid "Appointed officer"
@@ -256,6 +262,9 @@ msgstr ""
 msgid "Back to the current state"
 msgstr ""
 
+msgid "Back to the description"
+msgstr ""
+
 msgid "Back to the start page"
 msgstr ""
 
@@ -342,6 +351,9 @@ msgid "Choose another person"
 msgstr ""
 
 msgid "Choose another person …"
+msgstr ""
+
+msgid "Choose at least one suggestion."
 msgstr ""
 
 msgid "Civil or criminal liability"
@@ -524,6 +536,12 @@ msgstr ""
 msgid "Corrective action"
 msgstr ""
 
+msgid "Create as draft"
+msgstr ""
+
+msgid "Create suggestions"
+msgstr ""
+
 msgid "Created"
 msgstr ""
 
@@ -576,6 +594,9 @@ msgstr ""
 msgid "Dates"
 msgstr ""
 
+msgid "Decision"
+msgstr ""
+
 msgid "Degree of automation"
 msgstr ""
 
@@ -618,7 +639,13 @@ msgstr ""
 msgid "Deputy inducted"
 msgstr ""
 
+msgid "Describe the procedure in your own words. The AI turns it into steps, decisions and role assignments as a BPMN draft."
+msgstr ""
+
 msgid "Description"
+msgstr ""
+
+msgid "Description of the process"
 msgstr ""
 
 msgid "Design and development changes"
@@ -681,6 +708,12 @@ msgstr ""
 msgid "Draft (in progress)"
 msgstr ""
 
+msgid "Draft a process"
+msgstr ""
+
+msgid "Draft with AI"
+msgstr ""
+
 msgid "Dropdown"
 msgstr ""
 
@@ -739,6 +772,12 @@ msgid "Employee"
 msgstr ""
 
 msgid "Employment process"
+msgstr ""
+
+msgid "End event"
+msgstr ""
+
+msgid "End on no"
 msgstr ""
 
 msgid "Engineering"
@@ -2322,6 +2361,9 @@ msgstr ""
 msgid "Standards reference"
 msgstr ""
 
+msgid "Start event"
+msgstr ""
+
 msgid "Start page"
 msgstr ""
 
@@ -2341,6 +2383,9 @@ msgstr ""
 msgid "Statutory representation (officer)"
 msgstr ""
 
+msgid "Step"
+msgstr ""
+
 msgid "Steps with roles"
 msgstr ""
 
@@ -2351,6 +2396,9 @@ msgid "Strengths"
 msgstr ""
 
 msgid "Sub-delegation allowed"
+msgstr ""
+
+msgid "Suggest with AI"
 msgstr ""
 
 msgid "Suggested"
@@ -2392,6 +2440,9 @@ msgstr ""
 msgid "System roles (permissions in the tool)"
 msgstr ""
 
+msgid "System step"
+msgstr ""
+
 msgid "Target"
 msgstr ""
 
@@ -2402,6 +2453,9 @@ msgid "Target power of attorney of the position"
 msgstr ""
 
 msgid "Target value"
+msgstr ""
+
+msgid "Task"
 msgstr ""
 
 msgid "Technology"
@@ -2422,10 +2476,22 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+msgid "The AI assistant is not set up. Ask the administration."
+msgstr ""
+
 msgid "The AI did not answer this question."
 msgstr ""
 
 msgid "The AI did not answer."
+msgstr ""
+
+msgid "The AI gave no usable answer. Please try again."
+msgstr ""
+
+msgid "The AI is drafting …"
+msgstr ""
+
+msgid "The AI is writing …"
 msgstr ""
 
 msgid "The AI service cannot be reached right now."
@@ -2438,6 +2504,9 @@ msgid "The AI service is busy right now. Please try again in a moment."
 msgstr ""
 
 msgid "The AI service rejected the request."
+msgstr ""
+
+msgid "The AI suggests content for the text fields, based on the title and the data already entered. You decide per field what is applied."
 msgstr ""
 
 msgid "The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses the AI service set here – the internal con-AI (OpenAI-compatible) or Claude (Anthropic-compatible). Without an API key it searches the elements without AI."
@@ -2462,6 +2531,9 @@ msgid "The file is not an Excel workbook (.xlsx)."
 msgstr ""
 
 msgid "The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to the AI service."
+msgstr ""
+
+msgid "The process is created as a draft and can be refined in the model afterwards."
 msgstr ""
 
 msgid "The server cannot be reached. Please try again."
@@ -2613,6 +2685,9 @@ msgstr ""
 msgid "Welcome, {name}"
 msgstr ""
 
+msgid "When a customer returns a product, sales records the return. The warehouse checks the goods. If they are damaged, the credit note is refused. Otherwise accounting issues a credit note and informs the customer."
+msgstr ""
+
 msgid "Where are invoices approved?"
 msgstr ""
 
@@ -2623,6 +2698,12 @@ msgid "Which process steps concern me?"
 msgstr ""
 
 msgid "Who is the data protection officer?"
+msgstr ""
+
+msgid "Without AI: one line = one step"
+msgstr ""
+
+msgid "Without AI: one line per step, a question ending in “?” becomes a decision, the role in brackets, e.g. “Check goods (Goods receipt / warehouse)”."
 msgstr ""
 
 msgid "Workflow status and quality grade"
@@ -2783,6 +2864,9 @@ msgstr ""
 msgid "new value"
 msgstr ""
 
+msgid "no"
+msgstr ""
+
 msgid "no approval workflow"
 msgstr ""
 
@@ -2829,6 +2913,9 @@ msgid "search without AI (the administration has not set up the AI)"
 msgstr ""
 
 msgid "selection, instruction, supervision (§ 130 OWiG)"
+msgstr ""
+
+msgid "so far"
 msgstr ""
 
 msgid "status"
