@@ -91,7 +91,9 @@ async def ai_save(request: Request, ctx: UiContext = Depends(ui_context)) -> Res
     body = {
         "version": int(str(form.get("version") or 0)),
         "enabled": form.get("enabled") == "on",
-        "model": str(form.get("model") or ""),
+        "provider": str(form.get("provider") or "openai"),
+        "base_url": str(form.get("base_url") or "").strip(),
+        "model": str(form.get("model") or "").strip(),
         "api_key": str(form.get("api_key") or "").strip(),
         "remove_key": form.get("remove_key") == "1",
     }

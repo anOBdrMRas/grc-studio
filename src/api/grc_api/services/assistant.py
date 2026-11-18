@@ -1,5 +1,8 @@
 """AI assistant: settings (API key encrypted at rest), catalogue of readable elements, questions.
 
+The AI service is either OpenAI-compatible (e.g. the internal con-AI) or Anthropic-compatible
+(Claude directly or through a gateway); the administration chooses it with address, model and key.
+
 Without an API key (or when the AI service fails) the assistant answers with the local catalogue
 search, so it always gives the person something to open.
 """
@@ -7,9 +10,12 @@ search, so it always gives the person something to open.
 import base64
 import hashlib
 import logging
+from dataclasses import dataclass
 from typing import Any
+from urllib.parse import urlsplit
 
 import anthropic
+import httpx
 from cryptography.fernet import Fernet, InvalidToken
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -45,8 +51,14 @@ log = logging.getLogger("grc_api.assistant")
 
 KEY = "ai"
 PERM = "ai:manage"
+PROVIDERS = ("openai", "anthropic")
+# suggestions for the model field (Anthropic); for an OpenAI-compatible service (e.g. con-AI)
+# the administration enters the model name of that service
 MODELS = ("claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-5-5")
 DEFAULT_MODEL = MODELS[0]
+TIMEOUT = 25.0
+# tests replace the transport of the OpenAI-compatible client
+_transport: httpx.AsyncBaseTransport | None = None
 # models that accept the server-side fallback on a refusal ("default" routing)
 FALLBACK_MODELS = frozenset({"claude-opus-5-5", "claude-sonnet-5-5"})
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
@@ -89,17 +101,52 @@ def _need(p: Principal, perm: str) -> None:
         raise ProblemError("forbidden", f"Permission {perm} required")
 
 
+@dataclass(frozen=True)
+class AiConfig:
+    provider: str  # openai (OpenAI-compatible, e.g. con-AI) or anthropic
+    base_url: str  # empty: api.anthropic.com (provider anthropic only)
+    model: str
+    key: str
+
+
+def _config(data: dict[str, Any]) -> AiConfig | None:
+    """The usable configuration, or None when the assistant cannot use AI."""
+    key = _api_key(data)
+    provider = data.get("provider") or "anthropic"
+    base_url = data.get("base_url") or ""
+    model = data.get("model") or (DEFAULT_MODEL if provider == "anthropic" else "")
+    if not key or not model or (provider == "openai" and not base_url):
+        return None
+    return AiConfig(provider, base_url, model, key)
+
+
 def _settings_out(data: dict[str, Any], version: int) -> AiSettingsOut:
+    provider = data.get("provider") or ("anthropic" if data.get("key") else "openai")
     return AiSettingsOut(
         version=version,
         enabled=bool(data.get("enabled")),
-        model=data.get("model") or DEFAULT_MODEL,
+        provider=provider,
+        providers=list(PROVIDERS),
+        base_url=data.get("base_url") or "",
+        model=data.get("model") or "",
         models=list(MODELS),
         has_key=bool(data.get("key")),
         key_readable=bool(_api_key(data)),
         key_hint=data.get("hint") or "",
         secret_configured=bool(get_settings().settings_secret),
     )
+
+
+def _clean_url(url: str) -> str:
+    url = url.strip().rstrip("/")
+    if not url:
+        return ""
+    parts = urlsplit(url)
+    if parts.scheme not in ("http", "https") or not parts.netloc or parts.query or parts.fragment:
+        raise ProblemError(
+            "invalid", "The address must be an http(s) URL, e.g. https://ai.example/v1"
+        )
+    return url
 
 
 async def settings_view(db: AsyncSession, p: Principal) -> AiSettingsOut:
@@ -120,13 +167,21 @@ async def update_settings(
             "Someone else changed the AI settings in the meantime. Load them again.",
             status=412 if if_match else 409,
         )
-    if body.model not in MODELS:
-        raise ProblemError("invalid", f"Unknown model: {body.model}")
-    new = dict(data) | {"enabled": body.enabled, "model": body.model}
+    if body.provider not in PROVIDERS:
+        raise ProblemError("invalid", f"Unknown interface: {body.provider}")
+    model = body.model.strip()[:200]
+    if any(c.isspace() for c in model):
+        raise ProblemError("invalid", "The model name contains spaces")
+    new = dict(data) | {
+        "enabled": body.enabled,
+        "provider": body.provider,
+        "base_url": _clean_url(body.base_url),
+        "model": model,
+    }
     changes: list[dict[str, Any]] = [
         {"key": k, "from": data.get(k), "to": new[k]}
-        for k in ("enabled", "model")
-        if data.get(k) != new[k]
+        for k in ("enabled", "provider", "base_url", "model")
+        if (data.get(k) or None) != (new[k] or None)
     ]
     if body.remove_key:
         new.pop("key", None)
@@ -142,6 +197,10 @@ async def update_settings(
         changes.append({"key": "api_key", "from": None, "to": f"…{key[-4:]}"})
     if new.get("enabled") and not new.get("key"):
         raise ProblemError("invalid", "Store an API key before switching the assistant on")
+    if new.get("enabled") and new["provider"] == "openai" and not (new["base_url"] and model):
+        raise ProblemError(
+            "invalid", "An OpenAI-compatible service needs its address and a model name"
+        )
     if changes:
         if not await settings_repo.save(db, KEY, version, new):
             raise ProblemError("version_conflict", "Load the AI settings again.", status=409)
@@ -155,17 +214,11 @@ async def update_settings(
 async def test_connection(db: AsyncSession, p: Principal) -> AiTestOut:
     _need(p, PERM)
     data, _ = await _load(db)
-    key = _api_key(data)
-    if not key:
-        return AiTestOut(ok=False, code="no_key")
+    cfg = _config(data)
+    if cfg is None:
+        return AiTestOut(ok=False, code="no_key" if not _api_key(data) else "incomplete")
     try:
-        await _complete(
-            key,
-            data.get("model") or DEFAULT_MODEL,
-            "Reply with: ok",
-            [{"role": "user", "content": "ok?"}],
-            max_tokens=200,
-        )
+        await _complete(cfg, "Reply with: ok", [{"role": "user", "content": "ok?"}], max_tokens=200)
     except AiFailure as exc:
         return AiTestOut(ok=False, code=exc.code)
     return AiTestOut(ok=True, code="ok")
@@ -173,7 +226,7 @@ async def test_connection(db: AsyncSession, p: Principal) -> AiTestOut:
 
 async def status(db: AsyncSession) -> AssistantStatus:
     data, _ = await _load(db)
-    return AssistantStatus(ai=bool(data.get("enabled") and _api_key(data)))
+    return AssistantStatus(ai=bool(data.get("enabled") and _config(data)))
 
 
 # ---- calling the AI ----------------------------------------------------------------------------
@@ -186,34 +239,82 @@ class AiFailure(Exception):
 
 
 async def _complete(
-    key: str,
-    model: str,
-    system: str,
-    messages: list[dict[str, str]],
-    *,
-    max_tokens: int = MAX_TOKENS,
+    cfg: AiConfig, system: str, messages: list[dict[str, str]], *, max_tokens: int = MAX_TOKENS
 ) -> str:
-    """One request to Claude; raises AiFailure with a stable code (never with the key)."""
-    client = anthropic.AsyncAnthropic(api_key=key, timeout=25.0, max_retries=1)
+    """One answer of the configured AI service; raises AiFailure with a stable code (never with
+    the key)."""
+    if cfg.provider == "openai":
+        return await _openai(cfg, system, messages, max_tokens)
+    return await _anthropic(cfg, system, messages, max_tokens)
+
+
+async def _openai(
+    cfg: AiConfig, system: str, messages: list[dict[str, str]], max_tokens: int
+) -> str:
+    """OpenAI-compatible chat completions (e.g. the internal con-AI): POST {base}/chat/completions."""
+    body = {
+        "model": cfg.model,
+        "messages": [{"role": "system", "content": system}, *messages],
+        "max_tokens": max_tokens,
+    }
+    async with httpx.AsyncClient(timeout=TIMEOUT, transport=_transport) as client:
+        try:
+            r = await client.post(
+                f"{cfg.base_url}/chat/completions",
+                json=body,
+                headers={"Authorization": f"Bearer {cfg.key}"},
+            )
+        except httpx.HTTPError as exc:
+            log.warning("AI service unavailable: %s", type(exc).__name__)
+            raise AiFailure("ai_unavailable") from exc
+    if r.status_code in (401, 403):
+        raise AiFailure("ai_auth")
+    if r.status_code == 429:
+        raise AiFailure("ai_busy")
+    if r.status_code in (400, 404, 413, 422):
+        log.warning("AI request rejected: HTTP %s", r.status_code)
+        raise AiFailure("ai_rejected")
+    if r.status_code != 200:
+        log.warning("AI service unavailable: HTTP %s", r.status_code)
+        raise AiFailure("ai_unavailable")
+    try:
+        choice = r.json()["choices"][0]
+        text = choice["message"]["content"] or ""
+    except (ValueError, KeyError, IndexError, TypeError) as exc:
+        log.warning("AI service answered in an unexpected format")
+        raise AiFailure("ai_unavailable") from exc
+    if choice.get("finish_reason") == "content_filter":
+        raise AiFailure("ai_refused")
+    return str(text).strip()
+
+
+async def _anthropic(
+    cfg: AiConfig, system: str, messages: list[dict[str, str]], max_tokens: int
+) -> str:
+    """Claude through the Messages API (Anthropic directly, or a compatible gateway)."""
+    official = not cfg.base_url
+    client = anthropic.AsyncAnthropic(
+        api_key=cfg.key, base_url=cfg.base_url or None, timeout=TIMEOUT, max_retries=1
+    )
     params: dict[str, Any] = {
-        "model": model,
+        "model": cfg.model,
         "max_tokens": max_tokens,
         # rules and catalogue are stable: cached between questions
         "system": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
         "messages": messages,
-        "output_config": {"effort": "low"},
     }
+    if official:
+        # options of the Anthropic API that a gateway may not know
+        params["output_config"] = {"effort": "low"}
     try:
-        if model in FALLBACK_MODELS:
+        if official and cfg.model in FALLBACK_MODELS:
             # on a refusal the API answers with a fallback model instead of stopping
             response: Any = await client.beta.messages.create(
                 betas=[FALLBACK_BETA], fallbacks="default", **params
             )
         else:
             response = await client.messages.create(**params)
-    except anthropic.AuthenticationError as exc:
-        raise AiFailure("ai_auth") from exc
-    except anthropic.PermissionDeniedError as exc:
+    except (anthropic.AuthenticationError, anthropic.PermissionDeniedError) as exc:
         raise AiFailure("ai_auth") from exc
     except anthropic.RateLimitError as exc:
         raise AiFailure("ai_busy") from exc
@@ -328,8 +429,8 @@ async def ask(db: AsyncSession, body: AskIn, p: Principal) -> AskOut:
     entries = await catalog(db, p, org, lang)
     hits = asst.search(entries, question)
     data, _ = await _load(db)
-    key = _api_key(data) if data.get("enabled") else ""
-    if not key:
+    cfg = _config(data) if data.get("enabled") else None
+    if cfg is None:
         return AskOut(mode="search", text="", hits=[_hit(e) for e in hits])
     me = org.users.get(p.user_id)
     roles = [org.roles[r].title for r in org.roles_of(p.user_id) if r in org.roles]
@@ -345,9 +446,7 @@ async def ask(db: AsyncSession, body: AskIn, p: Principal) -> AskOut:
         history.pop(0)
     messages = [*history, {"role": "user", "content": asst.question_prompt(question, who, hits)}]
     try:
-        text = await _complete(
-            key, data.get("model") or DEFAULT_MODEL, asst.system_prompt(lang, entries), messages
-        )
+        text = await _complete(cfg, asst.system_prompt(lang, entries), messages)
     except AiFailure as exc:
         return AskOut(mode="search", text="", hits=[_hit(e) for e in hits], error=exc.code)
     return AskOut(mode="ai", text=asst.checked_links(text, entries), hits=[])

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 06:49+0000\n"
+"POT-Creation-Date: 2026-11-18 06:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,6 +105,12 @@ msgstr ""
 msgid "Additional details"
 msgstr ""
 
+msgid "Address of the service"
+msgstr ""
+
+msgid "Address or model of the AI service is missing."
+msgstr ""
+
 msgid "Administration"
 msgstr ""
 
@@ -130,6 +136,9 @@ msgid "Annex A controls"
 msgstr ""
 
 msgid "Annually"
+msgstr ""
+
+msgid "Anthropic-compatible (Claude)"
 msgstr ""
 
 msgid "Applicable"
@@ -1158,6 +1167,9 @@ msgstr ""
 msgid "Interested parties"
 msgstr ""
 
+msgid "Interface"
+msgstr ""
+
 msgid "Internal approval authority"
 msgstr ""
 
@@ -1551,6 +1563,9 @@ msgid "Open"
 msgstr ""
 
 msgid "Open audit findings"
+msgstr ""
+
+msgid "OpenAI-compatible (e.g. con-AI)"
 msgstr ""
 
 msgid "Operating effectiveness"
@@ -2425,7 +2440,7 @@ msgstr ""
 msgid "The AI service rejected the request."
 msgstr ""
 
-msgid "The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses Claude (Anthropic). Without an API key it searches the elements without AI."
+msgid "The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses the AI service set here – the internal con-AI (OpenAI-compatible) or Claude (Anthropic-compatible). Without an API key it searches the elements without AI."
 msgstr ""
 
 msgid "The assistant is thinking …"
@@ -2446,7 +2461,7 @@ msgstr ""
 msgid "The file is not an Excel workbook (.xlsx)."
 msgstr ""
 
-msgid "The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to Anthropic."
+msgid "The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to the AI service."
 msgstr ""
 
 msgid "The server cannot be reached. Please try again."
@@ -2704,6 +2719,9 @@ msgstr ""
 msgid "e.g. commercial register, BAFA, data protection authority"
 msgstr ""
 
+msgid "e.g. https://con-ai.example/v1; empty for Anthropic directly"
+msgstr ""
+
 msgid "e.g. shareholders' meeting"
 msgstr ""
 
@@ -2754,6 +2772,9 @@ msgid "lower"
 msgstr ""
 
 msgid "measurement"
+msgstr ""
+
+msgid "name as given by the operator of the service"
 msgstr ""
 
 msgid "new"

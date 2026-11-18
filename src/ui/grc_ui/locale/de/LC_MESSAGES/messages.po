@@ -107,6 +107,12 @@ msgstr "Rolle hinzufügen …"
 msgid "Additional details"
 msgstr "Weitere Angaben"
 
+msgid "Address of the service"
+msgstr "Adresse des Dienstes"
+
+msgid "Address or model of the AI service is missing."
+msgstr "Adresse oder Modell des KI-Dienstes fehlt."
+
 msgid "Administration"
 msgstr "Administration"
 
@@ -133,6 +139,9 @@ msgstr "Annex-A-Controls"
 
 msgid "Annually"
 msgstr "Jährlich"
+
+msgid "Anthropic-compatible (Claude)"
+msgstr "Anthropic-kompatibel (Claude)"
 
 msgid "Applicable"
 msgstr "Anwendbar"
@@ -1172,6 +1181,9 @@ msgstr "Integrität"
 msgid "Interested parties"
 msgstr "Interessierte Parteien"
 
+msgid "Interface"
+msgstr "Schnittstelle"
+
 msgid "Internal approval authority"
 msgstr "Interne Freigabebefugnis"
 
@@ -1566,6 +1578,9 @@ msgstr "Offen"
 
 msgid "Open audit findings"
 msgstr "Offene Audit-Feststellungen"
+
+msgid "OpenAI-compatible (e.g. con-AI)"
+msgstr "OpenAI-kompatibel (z. B. con-AI)"
 
 msgid "Operating effectiveness"
 msgstr "Operative Wirksamkeit"
@@ -2458,6 +2473,17 @@ msgstr ""
 "Rollen und andere Elemente. Er nutzt Claude (Anthropic). Ohne API-Schlüssel durchsucht er die "
 "Elemente ohne KI."
 
+msgid ""
+"The assistant answers questions such as “Where do I find …?” with links to processes, steps, "
+"roles and other elements. It uses the AI service set here – the internal con-AI (OpenAI-"
+"compatible) or Claude (Anthropic-compatible). Without an API key it searches the elements without"
+" AI."
+msgstr ""
+"Der Assistent beantwortet Fragen wie „Wo finde ich …?“ mit Verweisen auf Prozesse, Schritte, "
+"Rollen und andere Elemente. Er nutzt den hier eingestellten KI-Dienst – die interne con-AI "
+"(OpenAI-kompatibel) oder Claude (Anthropic-kompatibel). Ohne API-Schlüssel durchsucht er die "
+"Elemente ohne KI."
+
 msgid "The assistant is thinking …"
 msgstr "Der Assistent überlegt …"
 
@@ -2482,6 +2508,13 @@ msgid ""
 msgstr ""
 "Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und "
 "die Elemente, die die fragende Person lesen darf, werden an Anthropic übermittelt."
+
+msgid ""
+"The key is stored encrypted on the server and is never shown again. Questions and the elements "
+"the asking person may read are sent to the AI service."
+msgstr ""
+"Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und "
+"die Elemente, die die fragende Person lesen darf, werden an den KI-Dienst übermittelt."
 
 msgid "The server cannot be reached. Please try again."
 msgstr "Der Server ist nicht erreichbar. Bitte erneut versuchen."
@@ -2748,6 +2781,9 @@ msgstr "z. B. Wo finde ich …?"
 msgid "e.g. commercial register, BAFA, data protection authority"
 msgstr "z. B. Handelsregister, BAFA, Datenschutzaufsicht"
 
+msgid "e.g. https://con-ai.example/v1; empty for Anthropic directly"
+msgstr "z. B. https://con-ai.example/v1; leer für Anthropic direkt"
+
 msgid "e.g. shareholders' meeting"
 msgstr "z. B. Gesellschafterversammlung"
 
@@ -2799,6 +2835,9 @@ msgstr "kleiner ist besser"
 
 msgid "measurement"
 msgstr "Messwert"
+
+msgid "name as given by the operator of the service"
+msgstr "Name laut Betreiber des Dienstes"
 
 msgid "new"
 msgstr "neu"

@@ -6,8 +6,11 @@ from pydantic import BaseModel, Field
 class AiSettingsOut(BaseModel):
     version: int
     enabled: bool
+    provider: str = Field(description="openai (OpenAI-compatible, e.g. con-AI) or anthropic")
+    providers: list[str]
+    base_url: str = Field(description="address of the service; empty: api.anthropic.com")
     model: str
-    models: list[str]
+    models: list[str] = Field(description="suggestions for Anthropic")
     has_key: bool = Field(description="an API key is stored (it is never returned)")
     key_readable: bool = Field(description="the stored key can be decrypted with SETTINGS_SECRET")
     key_hint: str = Field(description="last four characters of the stored key")
@@ -17,14 +20,18 @@ class AiSettingsOut(BaseModel):
 class AiSettingsIn(BaseModel):
     version: int
     enabled: bool = False
-    model: str = "claude-opus-5-5"
+    provider: str = "openai"
+    base_url: str = ""
+    model: str = ""
     api_key: str = Field("", description="new key; empty keeps the stored one")
     remove_key: bool = False
 
 
 class AiTestOut(BaseModel):
     ok: bool
-    code: str = Field(description="ok, no_key, ai_auth, ai_busy, ai_rejected, ai_unavailable")
+    code: str = Field(
+        description="ok, no_key, incomplete, ai_auth, ai_busy, ai_rejected, ai_unavailable"
+    )
 
 
 class AssistantStatus(BaseModel):

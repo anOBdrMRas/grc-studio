@@ -10,12 +10,20 @@
       <input type="checkbox" name="enabled" class="toggle toggle-primary" {% if s.enabled %}checked{% endif %}>
       <span>{{ _("Assistant uses AI") }}</span>
     </label>
-    <label class="form-control max-w-md"><span class="label-text text-sm">{{ _("Model") }}</span>
-      <select name="model" class="select select-bordered select-sm">{% for m in s.models %}<option value="{{ m }}" {% if m == s.model %}selected{% endif %}>{{ m }}</option>{% endfor %}</select></label>
+    <label class="form-control max-w-md"><span class="label-text text-sm">{{ _("Interface") }}</span>
+      <select name="provider" class="select select-bordered select-sm">
+        <option value="openai" {% if s.provider == "openai" %}selected{% endif %}>{{ _("OpenAI-compatible (e.g. con-AI)") }}</option>
+        <option value="anthropic" {% if s.provider == "anthropic" %}selected{% endif %}>{{ _("Anthropic-compatible (Claude)") }}</option>
+      </select></label>
+    <label class="form-control max-w-xl"><span class="label-text text-sm">{{ _("Address of the service") }} <span class="opacity-60">· {{ _("e.g. https://con-ai.example/v1; empty for Anthropic directly") }}</span></span>
+      <input name="base_url" value="{{ s.base_url }}" class="input input-bordered input-sm" inputmode="url" autocomplete="off" placeholder="https://…/v1"></label>
+    <label class="form-control max-w-md"><span class="label-text text-sm">{{ _("Model") }} <span class="opacity-60">· {{ _("name as given by the operator of the service") }}</span></span>
+      <input name="model" value="{{ s.model }}" list="ai-models" class="input input-bordered input-sm" autocomplete="off" maxlength="200">
+      <datalist id="ai-models">{% for m in s.models %}<option value="{{ m }}">{% endfor %}</datalist></label>
     <label class="form-control max-w-md"><span class="label-text text-sm">{{ _("API key") }}
       {% if s.has_key %}<span class="opacity-60">· {{ _("stored, ends with {hint}").format(hint=s.key_hint) }}</span>{% endif %}</span>
-      <input type="password" name="api_key" class="input input-bordered input-sm" autocomplete="off" placeholder="{{ _('leave empty to keep the stored key') if s.has_key else 'sk-ant-…' }}"></label>
-    <p class="text-xs opacity-60">{{ _("The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to Anthropic.") }}</p>
+      <input type="password" name="api_key" class="input input-bordered input-sm" autocomplete="off" placeholder="{{ _('leave empty to keep the stored key') if s.has_key else '' }}"></label>
+    <p class="text-xs opacity-60">{{ _("The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to the AI service.") }}</p>
     <div class="flex flex-wrap gap-2">
       <button class="btn btn-primary btn-sm">{{ icon("device-floppy") }} {{ _("Save") }}</button>
       {% if s.has_key %}

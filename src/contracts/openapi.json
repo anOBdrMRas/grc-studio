@@ -9,14 +9,24 @@
             "title": "Api Key",
             "type": "string"
           },
+          "base_url": {
+            "default": "",
+            "title": "Base Url",
+            "type": "string"
+          },
           "enabled": {
             "default": false,
             "title": "Enabled",
             "type": "boolean"
           },
           "model": {
-            "default": "claude-opus-5-5",
+            "default": "",
             "title": "Model",
+            "type": "string"
+          },
+          "provider": {
+            "default": "openai",
+            "title": "Provider",
             "type": "string"
           },
           "remove_key": {
@@ -37,6 +47,11 @@
       },
       "AiSettingsOut": {
         "properties": {
+          "base_url": {
+            "description": "address of the service; empty: api.anthropic.com",
+            "title": "Base Url",
+            "type": "string"
+          },
           "enabled": {
             "title": "Enabled",
             "type": "boolean"
@@ -61,10 +76,23 @@
             "type": "string"
           },
           "models": {
+            "description": "suggestions for Anthropic",
             "items": {
               "type": "string"
             },
             "title": "Models",
+            "type": "array"
+          },
+          "provider": {
+            "description": "openai (OpenAI-compatible, e.g. con-AI) or anthropic",
+            "title": "Provider",
+            "type": "string"
+          },
+          "providers": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Providers",
             "type": "array"
           },
           "secret_configured": {
@@ -80,6 +108,9 @@
         "required": [
           "version",
           "enabled",
+          "provider",
+          "providers",
+          "base_url",
           "model",
           "models",
           "has_key",
@@ -93,7 +124,7 @@
       "AiTestOut": {
         "properties": {
           "code": {
-            "description": "ok, no_key, ai_auth, ai_busy, ai_rejected, ai_unavailable",
+            "description": "ok, no_key, incomplete, ai_auth, ai_busy, ai_rejected, ai_unavailable",
             "title": "Code",
             "type": "string"
           },

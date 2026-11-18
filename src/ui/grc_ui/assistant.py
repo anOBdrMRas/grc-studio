@@ -32,6 +32,7 @@ KIND_LABELS = {
     "audit": N_("Audit"),
 }
 ERRORS = {
+    "incomplete": N_("Address or model of the AI service is missing."),
     "ai_auth": N_("The AI service did not accept the API key. Please tell the administration."),
     "ai_busy": N_("The AI service is busy right now. Please try again in a moment."),
     "ai_refused": N_("The AI did not answer this question."),

@@ -5,7 +5,15 @@ from typing import Any, TypedDict
 
 AiSettingsIn = TypedDict(
     "AiSettingsIn",
-    {"version": "int", "enabled": "bool", "model": "str", "api_key": "str", "remove_key": "bool"},
+    {
+        "version": "int",
+        "enabled": "bool",
+        "provider": "str",
+        "base_url": "str",
+        "model": "str",
+        "api_key": "str",
+        "remove_key": "bool",
+    },
     total=False,
 )
 
@@ -15,6 +23,9 @@ AiSettingsOut = TypedDict(
     {
         "version": "int",
         "enabled": "bool",
+        "provider": "str",
+        "providers": "list[str]",
+        "base_url": "str",
         "model": "str",
         "models": "list[str]",
         "has_key": "bool",

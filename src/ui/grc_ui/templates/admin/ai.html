@@ -5,7 +5,7 @@
   <section class="rounded-box border border-base-300 bg-base-100 p-4">
     <h1 class="text-2xl font-bold">{{ _("Administration") }}</h1>
     {% set active = "ai" %}{% include "admin/_tabs.html" %}
-    <p class="mt-3 max-w-4xl text-sm opacity-70">{{ _("The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses Claude (Anthropic). Without an API key it searches the elements without AI.") }}</p>
+    <p class="mt-3 max-w-4xl text-sm opacity-70">{{ _("The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses the AI service set here – the internal con-AI (OpenAI-compatible) or Claude (Anthropic-compatible). Without an API key it searches the elements without AI.") }}</p>
   </section>
   {% include "admin/_ai_form.html" %}
 </div>
