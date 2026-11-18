@@ -315,6 +315,15 @@ msgstr "CTW"
 msgid "CUS"
 msgstr "CUS"
 
+msgid "Called by"
+msgstr "Aufgerufen von"
+
+msgid "Called process"
+msgstr "Aufgerufener Prozess"
+
+msgid "Calls"
+msgstr "Ruft auf"
+
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -555,6 +564,9 @@ msgstr "Vorschläge erzeugen"
 msgid "Created"
 msgstr "Angelegt"
 
+msgid "Created from a draft"
+msgstr "Aus einem Entwurf angelegt"
+
 msgid "Creates new elements and maintains users."
 msgstr "Legt neue Elemente an und pflegt Benutzer."
 
@@ -698,6 +710,9 @@ msgstr "Entwicklung von Indikatoren"
 msgid "Diagram changed"
 msgstr "Diagramm geändert"
 
+msgid "Diagram imported"
+msgstr "Diagramm importiert"
+
 msgid "Diagram saved"
 msgstr "Diagramm gespeichert"
 
@@ -712,6 +727,12 @@ msgstr "Dokument"
 
 msgid "Documented information"
 msgstr "Dokumentierte Information"
+
+msgid "Download as BPMN 2.0 file"
+msgstr "Als BPMN-2.0-Datei herunterladen"
+
+msgid "Download as image (SVG)"
+msgstr "Als Bild herunterladen (SVG)"
 
 msgid "Download the current data as a template"
 msgstr "Aktuelle Daten als Vorlage herunterladen"
@@ -1153,6 +1174,12 @@ msgstr "Umsetzungsstatus"
 msgid "Implemented"
 msgstr "Umgesetzt"
 
+msgid "Import"
+msgstr "Importieren"
+
+msgid "Import a BPMN 2.0 file"
+msgstr "BPMN-2.0-Datei importieren"
+
 msgid "Import finished"
 msgstr "Import abgeschlossen"
 
@@ -1338,6 +1365,13 @@ msgstr "Wahrscheinlichkeit (Zeilen) × Ausmaß (Spalten)"
 
 msgid "Likelihood of realisation"
 msgstr "Realisierungswahrscheinlichkeit"
+
+msgid "Link"
+msgstr "Verknüpfen"
+
+#, python-brace-format
+msgid "Link of {step} removed"
+msgstr "Verknüpfung von {step} entfernt"
 
 msgid "Linked processes"
 msgstr "Verknüpfte Prozesse"
@@ -2580,8 +2614,19 @@ msgstr "Das Feld erscheint sofort in der Maske des Moduls und als Spalte im Exce
 msgid "The file is larger than 5 MB."
 msgstr "Die Datei ist größer als 5 MB."
 
+msgid "The file is not a BPMN 2.0 diagram (.bpmn)."
+msgstr "Die Datei ist kein BPMN-2.0-Diagramm (.bpmn)."
+
 msgid "The file is not an Excel workbook (.xlsx)."
 msgstr "Die Datei ist keine Excel-Arbeitsmappe (.xlsx)."
+
+#, python-brace-format
+msgid ""
+"The file replaces the diagram of {process}. Role and other assignments stay with the element ids;"
+" steps that no longer exist keep them but are no longer shown."
+msgstr ""
+"Die Datei ersetzt das Diagramm von {process}. Rollen- und andere Zuordnungen hängen an den "
+"Element-IDs; Schritte, die es nicht mehr gibt, behalten sie, werden aber nicht mehr angezeigt."
 
 msgid ""
 "The key is stored encrypted on the server and is never shown again. Questions and the elements "
@@ -3116,6 +3161,10 @@ msgid "{role}: {user} has not accepted the {type}."
 msgstr "„{role}“: {user} hat die {type} nicht angenommen."
 
 #, python-brace-format
+msgid "{step} calls {process}"
+msgstr "{step} ruft {process} auf"
+
+#, python-brace-format
 msgid "{user} audits {process} and holds {role} there."
 msgstr "{user} auditiert {process} und hat dort die Rolle {role}."
 
@@ -3124,6 +3173,9 @@ msgstr "— nicht bewertet —"
 
 msgid "— not assigned —"
 msgstr "— nicht zugewiesen —"
+
+msgid "— not linked —"
+msgstr "— nicht verknüpft —"
 
 msgid "≥ 3 m USD"
 msgstr "≥ 3 Mio. USD"

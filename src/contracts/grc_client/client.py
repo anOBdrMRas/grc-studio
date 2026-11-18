@@ -520,6 +520,20 @@ class GrcClient:
             await self._call("GET", f"/api/v1/processes/{process_id}/history/{revision_id}"),
         )
 
+    async def processes_link_call(
+        self, process_id: str, element_id: str, body: CallLinkIn, if_match: str | None = None
+    ) -> ProcessOut:
+        """PUT /api/v1/processes/{process_id}/steps/{element_id}/call (permission: processes:read)."""
+        return cast(
+            "ProcessOut",
+            await self._call(
+                "PUT",
+                f"/api/v1/processes/{process_id}/steps/{element_id}/call",
+                json=body,
+                if_match=if_match,
+            ),
+        )
+
     async def processes_link_element(
         self, process_id: str, element_id: str, body: StepLinkIn, if_match: str | None = None
     ) -> ProcessOut:

@@ -37,7 +37,12 @@
       <button class="btn btn-primary btn-xs" data-action="save-diagram" disabled>{{ icon("device-floppy", "h-3 w-3") }} {{ _("Save diagram") }}</button>
       <span class="text-xs opacity-70" id="diagram-state" data-msg-dirty="{{ _('Unsaved changes') }}" data-msg-saved="{{ _('Saved') }}"></span>
       {% else %}<span class="text-xs opacity-70">{{ icon("lock", "h-3 w-3 inline") }} {{ _("Read only") }}</span>{% endif %}
-      <span class="ml-auto join">
+      <span class="ml-auto flex items-center gap-1">
+        <a class="btn btn-ghost btn-xs" href="/processes/{{ item.id }}/diagram.bpmn" title="{{ _('Download as BPMN 2.0 file') }}">{{ icon("download", "h-3 w-3") }} BPMN</a>
+        <button class="btn btn-ghost btn-xs" data-action="export-svg" data-filename="{{ item.code }}.svg" title="{{ _('Download as image (SVG)') }}">{{ icon("download", "h-3 w-3") }} SVG</button>
+        {% if item.rights.can_edit %}<button class="btn btn-ghost btn-xs" hx-get="/processes/{{ item.id }}/diagram/import" hx-target="#modal-body" title="{{ _('Import a BPMN 2.0 file') }}">{{ icon("upload", "h-3 w-3") }} BPMN</button>{% endif %}
+      </span>
+      <span class="join">
         <button class="btn btn-ghost btn-xs join-item" data-action="zoom-in" aria-label="{{ _('Zoom in') }}">{{ icon("zoom-in", "h-3 w-3") }}</button>
         <button class="btn btn-ghost btn-xs join-item" data-action="zoom-out" aria-label="{{ _('Zoom out') }}">{{ icon("zoom-out", "h-3 w-3") }}</button>
         <button class="btn btn-ghost btn-xs join-item" data-action="zoom-fit" aria-label="{{ _('Fit to view') }}">{{ icon("focus-centered", "h-3 w-3") }}</button>

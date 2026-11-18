@@ -51,3 +51,13 @@ def test_json_object() -> None:
     }
     assert asst.json_object("kein JSON") is None
     assert asst.json_object("[1, 2]") is None
+
+
+def test_call_activities() -> None:
+    from pathlib import Path
+
+    from grc_api.domain.bpmn import call_activities
+
+    xml = (Path(__file__).parents[1] / "fixtures" / "call_activity.bpmn").read_text()
+    assert call_activities(xml) == {"Call_Beschaffung": "Beschaffung durchführen"}
+    assert call_activities("<kaputt") == {}

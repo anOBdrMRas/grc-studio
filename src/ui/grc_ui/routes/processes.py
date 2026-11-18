@@ -3,7 +3,7 @@
 import json
 from typing import Any
 
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, Request, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 
 from grc_client import ApiError
@@ -16,6 +16,7 @@ from grc_ui.session import UiContext, field_errors, problem_text, ui_context
 from grc_ui.templating import render, toast
 
 router = APIRouter()
+MAX_BPMN = 5 * 1024 * 1024
 CATEGORIES = [N_("Management process"), N_("Core process"), N_("Support process")]
 
 
@@ -311,6 +312,15 @@ async def _steps(
         gaps=item["ics_gaps"].get(element_id, []),
         codes=codes,
         raci=["R", "A", "C", "I"],
+        is_call=element_id in item["call_activities"],
+        call=item["calls"].get(element_id),
+        processes=[
+            (x["id"], f"{x['code']} {x['title']}")
+            for x in await ctx.api.processes_list()
+            if x["id"] != process_id
+        ]
+        if element_id in item["call_activities"]
+        else [],
         headers=headers,
     )
 
@@ -366,6 +376,80 @@ async def unassign(
     except ApiError as exc:
         headers = toast("error", problem_text(exc))
     return await _steps(request, ctx, process_id, element_id, str(form.get("name") or ""), headers)
+
+
+@router.post("/processes/{process_id}/steps/{element_id}/call", response_class=HTMLResponse)
+async def call_link(
+    request: Request, process_id: str, element_id: str, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    form = await request.form()
+    headers: dict[str, str] = {}
+    try:
+        await ctx.api.processes_link_call(
+            process_id,
+            element_id,
+            {
+                "target_process_id": str(form.get("target_process_id") or "") or None,
+                "version": int(str(form.get("version"))),
+            },
+        )
+        headers = toast("success", gettext("Saved"))
+    except ApiError as exc:
+        headers = toast("error", problem_text(exc))
+    return await _steps(request, ctx, process_id, element_id, str(form.get("name") or ""), headers)
+
+
+@router.get("/processes/{process_id}/diagram.bpmn")
+async def diagram_download(process_id: str, ctx: UiContext = Depends(ui_context)) -> Response:
+    item = await ctx.api.processes_get(process_id)
+    d = await ctx.api.processes_diagram(process_id)
+    return Response(
+        d["xml"],
+        media_type="application/xml",
+        headers={"Content-Disposition": f'attachment; filename="{item["code"]}.bpmn"'},
+    )
+
+
+@router.get("/processes/{process_id}/diagram/import", response_class=HTMLResponse)
+async def diagram_import_form(
+    request: Request, process_id: str, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    item = plain(await ctx.api.processes_get(process_id))
+    return render(request, "processes/_import_bpmn.html", ctx, item=item, error="")
+
+
+@router.post("/processes/{process_id}/diagram/import", response_class=HTMLResponse)
+async def diagram_import(
+    request: Request, process_id: str, file: UploadFile, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    item = plain(await ctx.api.processes_get(process_id))
+    raw = await file.read(MAX_BPMN + 1)
+    error = ""
+    if len(raw) > MAX_BPMN:
+        error = gettext("The file is larger than 5 MB.")
+    else:
+        try:
+            xml = raw.decode("utf-8-sig")
+        except UnicodeDecodeError:
+            error = gettext("The file is not a BPMN 2.0 diagram (.bpmn).")
+    if not error:
+        try:
+            await ctx.api.processes_save_diagram(
+                process_id, {"xml": xml, "version": int(item["version"])}
+            )
+        except ApiError as exc:
+            error = (
+                gettext("The file is not a BPMN 2.0 diagram (.bpmn).")
+                if exc.code == "invalid"
+                else problem_text(exc)
+            )
+    if error:
+        return render(request, "processes/_import_bpmn.html", ctx, item=item, error=error)
+    return Response(
+        status_code=204,
+        headers={"HX-Redirect": f"/processes/{process_id}"}
+        | toast("success", gettext("Diagram imported")),
+    )
 
 
 @router.post("/processes/{process_id}/steps/{element_id}/links", response_class=HTMLResponse)
