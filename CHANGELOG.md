@@ -5,6 +5,22 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 3a)
+- Audits with scope, criteria, participants, dates, result and certificate validity; findings
+  with root cause, corrective action, due date and effectiveness check. The responsible person
+  documents cause, action and progress; checking and closing stays with the auditors.
+- Auditor independence check (ISO 19011).
+- I&A cockpit: review queue, workflow status and quality grade per module, 33 quality checks
+  (processes, roles, positions, risks, opportunities, controls, reviews, audits and
+  certificates, delegations, users) linking straight to the element or process step.
+- Permission `cockpit:read` (I&A team, administration).
+
+### Fixed (stage 3a)
+- A toast and a further HTMX event in one response overwrote each other (e.g. the list did
+  not refresh after saving); both now travel in one HX-Trigger header.
+- Unexpected API errors are logged with their traceback and answered as problem+json
+  (`internal`) without internal details.
+
 ### Added (stage 2c)
 - Delegations & powers of attorney (appointments, delegation of duties, Prokura, commercial and
   payment authorities, internal approval authority, deputy) with their own approval: granted by

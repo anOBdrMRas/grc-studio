@@ -1,5 +1,6 @@
 """Errors are documents: application/problem+json (RFC 9457) with a stable code."""
 
+import logging
 from typing import Any
 
 from fastapi import FastAPI, Request
@@ -7,6 +8,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 PROBLEM = "application/problem+json"
+log = logging.getLogger("grc_api")
 
 # stable codes (the interface maps them to translated messages)
 CODES = {
@@ -60,3 +62,9 @@ def install(app: FastAPI) -> None:
             for e in exc.errors()
         ]
         return problem(422, "invalid", "Invalid request", errors=errors)
+
+    @app.exception_handler(Exception)
+    async def _unexpected(request: Request, exc: Exception) -> JSONResponse:
+        # the traceback goes to the log, the client gets a stable code without details
+        log.error("unexpected error on %s %s", request.method, request.url.path, exc_info=exc)
+        return problem(500, "internal", "Unexpected error")

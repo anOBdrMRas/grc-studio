@@ -174,3 +174,23 @@ def test_checks_on_role(page: "Page") -> None:
     sign_in(page, "U-013")
     page.goto(BASE + "/roles/RO-007")
     expect(page.locator("#detail .alert-warning")).to_contain_text("Prüfungen zur Rechtssicherheit")
+
+
+def test_ia_cockpit(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/ia")
+    expect(page.locator("main")).to_contain_text("Qualitätsprüfungen")
+    expect(page.locator(".check-tile")).to_have_count(33)
+    page.locator("a[href='/audits/AU-005']").first.click()
+    expect(page.locator("#detail")).to_contain_text("Unabhängigkeit")
+
+
+def test_responsible_person_updates_finding(page: "Page") -> None:
+    sign_in(page, "U-002")
+    page.goto(BASE + "/audits/AU-001")
+    page.locator("#detail table button:has-text('Bearbeiten')").first.click()
+    expect(page.locator("#modal-body")).to_contain_text("Als verantwortliche Person")
+    page.fill("#modal-body #f-corrective_action", "E2E-Maßnahme")
+    page.click("#modal-body button:has-text('Speichern')")
+    expect(page.locator("#toasts")).to_contain_text("Gespeichert")
+    expect(page.locator("#modal[open]")).to_have_count(0)

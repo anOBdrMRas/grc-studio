@@ -9,7 +9,7 @@ from grc_api.auth.principal import Principal
 from grc_api.domain import audits as ad
 from grc_api.domain.codes import next_code
 from grc_api.errors import ProblemError
-from grc_api.models import Audit, AuditFinding, Process
+from grc_api.models import Audit, AuditFinding, Control, Process, Risk
 from grc_api.repositories import audit as audit_log
 from grc_api.repositories import elements
 from grc_api.repositories import processes as proc_repo
@@ -121,6 +121,9 @@ async def audit_view(db: AsyncSession, audit_id: str, p: Principal) -> AuditOut:
     labels |= {
         x: processes.get(x, x) for x in [*a.process_ids, *(f.process_id for f in findings)] if x
     }
+    linked = {r.id: f"{r.code} {r.title}" for r in await elements.list_all(db, Risk)}
+    linked |= {c.id: f"{c.code} {c.title}" for c in await elements.list_all(db, Control)}
+    labels |= {x: linked.get(x, x) for f in findings for x in [*f.risk_ids, *f.control_ids]}
     return AuditOut(
         **common.fields_of(a, AuditFields),
         id=a.id,
@@ -208,7 +211,7 @@ async def create_finding(
         {"code": code},
     )
     await db.commit()
-    return await audit_view(db, a.id, p)
+    return await audit_view(db, audit_id, p)
 
 
 async def update_finding(
@@ -227,7 +230,7 @@ async def update_finding(
     after = common.validate_merge(FindingFields, before, patch.values)
     changed = {k: v for k, v in after.items() if before.get(k) != v}
     if not changed:
-        return await audit_view(db, a.id, p)
+        return await audit_view(db, audit_id, p)
     if not can_edit and not (_is_responsible(f, org, p) and ad.responsible_may_change(changed)):
         raise ProblemError("forbidden", "You may not change this finding")
     version = common.expected_version(if_match, patch.version)
@@ -246,7 +249,7 @@ async def update_finding(
     )
     await db.commit()
     db.expire_all()
-    return await audit_view(db, a.id, p)
+    return await audit_view(db, audit_id, p)
 
 
 async def delete_finding(
@@ -264,7 +267,7 @@ async def delete_finding(
     )
     await db.commit()
     db.expire_all()
-    return await audit_view(db, a.id, p)
+    return await audit_view(db, audit_id, p)
 
 
 async def history(db: AsyncSession, audit_id: str, p: Principal) -> list[Revision]:
