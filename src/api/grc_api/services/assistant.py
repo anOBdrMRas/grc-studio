@@ -194,7 +194,7 @@ async def _complete(
     max_tokens: int = MAX_TOKENS,
 ) -> str:
     """One request to Claude; raises AiFailure with a stable code (never with the key)."""
-    client = anthropic.AsyncAnthropic(api_key=key, timeout=60.0, max_retries=2)
+    client = anthropic.AsyncAnthropic(api_key=key, timeout=25.0, max_retries=1)
     params: dict[str, Any] = {
         "model": model,
         "max_tokens": max_tokens,

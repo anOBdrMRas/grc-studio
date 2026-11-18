@@ -10,6 +10,9 @@ from fastapi import Request
 from fastapi.responses import HTMLResponse
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 
+from grc_ui.assistant import ERRORS as AI_ERRORS
+from grc_ui.assistant import KIND_LABELS, answer_html
+from grc_ui.assistant import href as assistant_href
 from grc_ui.i18n import LANGUAGES, current_language, gettext
 from grc_ui.icons import icon
 from grc_ui.nav import is_active, nav_for
@@ -70,6 +73,8 @@ def check_text(check: dict[str, Any]) -> str:
 
 
 env.filters["check_text"] = check_text
+env.filters["answer_html"] = answer_html
+env.globals.update(assistant_href=assistant_href, kind_labels=KIND_LABELS, ai_errors=AI_ERRORS)
 env.tests["startingwith"] = lambda s, prefix: str(s).startswith(prefix)
 
 

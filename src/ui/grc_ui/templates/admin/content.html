@@ -4,9 +4,7 @@
 <div class="grid gap-4 p-6">
   <section class="rounded-box border border-base-300 bg-base-100 p-4">
     <h1 class="text-2xl font-bold">{{ _("Administration") }}</h1>
-    <div role="tablist" class="tabs tabs-bordered mt-2 w-fit">
-      <a role="tab" class="tab tab-active" href="/admin/content" aria-selected="true">{{ _("Content administration") }}</a>
-    </div>
+    {% set active = "content" %}{% include "admin/_tabs.html" %}
     <p class="mt-3 max-w-4xl text-sm opacity-70">{{ _("Here the administration adds custom fields and additional dropdown values. The changes apply at once in the forms and in Excel. Standard fields and values stay unchanged so that existing data remains valid.") }}</p>
     <nav class="mt-3 flex flex-wrap gap-1" aria-label="{{ _('Module') }}">
       {% for k, title in modules %}<a class="btn btn-sm {{ 'btn-primary' if k == kind else 'btn-ghost' }}" href="/admin/content?m={{ k }}" {% if k == kind %}aria-current="page"{% endif %}>{{ _(title) }}</a>{% endfor %}

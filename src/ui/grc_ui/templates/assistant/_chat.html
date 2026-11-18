@@ -1,0 +1,22 @@
+{# chat with the assistant: history travels as hidden fields in the log (no state on the server) #}
+<section id="assistant" class="rounded-box border border-base-300 bg-base-100 p-4">
+  <div class="flex flex-wrap items-start justify-between gap-2">
+    <div>
+      <h2 class="flex items-center gap-1 font-semibold">{{ icon("sparkles") }} {{ _("Assistant") }}</h2>
+      <p class="text-xs opacity-70">{{ _("with AI · finds processes, steps, roles and responsibilities") if ai else _("search without AI (the administration has not set up the AI)") }}</p>
+    </div>
+    <button class="btn btn-ghost btn-xs" hx-get="/assistant" hx-target="#assistant" hx-swap="outerHTML">{{ icon("refresh", "h-3 w-3") }} {{ _("New chat") }}</button>
+  </div>
+  <form class="mt-2 grid gap-2" hx-post="/assistant/ask" hx-target="#assistant-log" hx-swap="beforeend" data-chat>
+    <div id="assistant-log" class="grid max-h-[28rem] gap-2 overflow-y-auto" data-chat-log aria-live="polite"></div>
+    <div class="join w-full">
+      <input name="question" class="input input-bordered input-sm join-item w-full" placeholder="{{ _('e.g. Where do I find …?') }}" aria-label="{{ _('Question to the assistant') }}" maxlength="1000" autocomplete="off">
+      <button class="btn btn-primary btn-sm join-item">{{ _("Ask") }}</button>
+    </div>
+    <div class="flex flex-wrap gap-1" aria-label="{{ _('Examples') }}">
+      {% for ex in examples %}<button class="btn btn-outline btn-xs font-normal" name="example" value="{{ _(ex) }}">{{ _(ex) }}</button>{% endfor %}
+    </div>
+    <p class="htmx-indicator items-center gap-2 text-xs opacity-70"><span class="loading loading-dots loading-xs"></span> {{ _("The assistant is thinking …") }}</p>
+    {% if ai %}<p class="text-[11px] opacity-50">{{ _("Questions and the elements you may read are sent to the AI service. Answers can be wrong – check them in the linked element.") }}</p>{% endif %}
+  </form>
+</section>

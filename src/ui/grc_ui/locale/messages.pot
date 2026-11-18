@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 06:36+0000\n"
+"POT-Creation-Date: 2026-11-18 06:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,6 +51,12 @@ msgid "5 Monitor"
 msgstr ""
 
 msgid "< 25 TUSD"
+msgstr ""
+
+msgid "AI assistant"
+msgstr ""
+
+msgid "API key"
 msgstr ""
 
 msgid "Accept"
@@ -154,6 +160,9 @@ msgstr ""
 msgid "As the responsible person you document the cause, the corrective action and the progress. The auditors check the effectiveness and close the finding."
 msgstr ""
 
+msgid "Ask"
+msgstr ""
+
 msgid "Assessed"
 msgstr ""
 
@@ -176,6 +185,12 @@ msgid "Assigned roles"
 msgstr ""
 
 msgid "Assignment in process step"
+msgstr ""
+
+msgid "Assistant"
+msgstr ""
+
+msgid "Assistant uses AI"
 msgstr ""
 
 msgid "Audit"
@@ -426,6 +441,9 @@ msgid "Conforming"
 msgstr ""
 
 msgid "Conforming with findings"
+msgstr ""
+
+msgid "Connection works."
 msgstr ""
 
 msgid "Contact of the audited party"
@@ -760,6 +778,9 @@ msgid "Evidence"
 msgstr ""
 
 msgid "Evidence / documentation"
+msgstr ""
+
+msgid "Examples"
 msgstr ""
 
 msgid "Excel export"
@@ -1365,6 +1386,9 @@ msgstr ""
 msgid "Minor nonconformity"
 msgstr ""
 
+msgid "Model"
+msgstr ""
+
 msgid "Model (BPMN)"
 msgstr ""
 
@@ -1399,6 +1423,9 @@ msgstr ""
 msgid "Needs and expectations of interested parties"
 msgstr ""
 
+msgid "New chat"
+msgstr ""
+
 msgid "New entry"
 msgstr ""
 
@@ -1423,6 +1450,9 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+msgid "No API key stored."
+msgstr ""
+
 msgid "No changes recorded yet. Changes are recorded from now on."
 msgstr ""
 
@@ -1445,6 +1475,9 @@ msgid "No position holds this role."
 msgstr ""
 
 msgid "No processes."
+msgstr ""
+
+msgid "No results. Try other words, e.g. “export”, “invoice” or the name of a role."
 msgstr ""
 
 msgid "No roles assigned."
@@ -1816,6 +1849,12 @@ msgstr ""
 msgid "Quarterly"
 msgstr ""
 
+msgid "Question to the assistant"
+msgstr ""
+
+msgid "Questions and the elements you may read are sent to the AI service. Answers can be wrong – check them in the linked element."
+msgstr ""
+
 msgid "R = responsible, A = accountable, C = consulted, I = informed"
 msgstr ""
 
@@ -1909,6 +1948,12 @@ msgid "Remarks"
 msgstr ""
 
 msgid "Remove"
+msgstr ""
+
+msgid "Remove key"
+msgstr ""
+
+msgid "Remove the stored API key? The assistant then searches without AI."
 msgstr ""
 
 #, python-brace-format
@@ -2088,6 +2133,9 @@ msgstr ""
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
 msgstr ""
 
+msgid "SETTINGS_SECRET is not set on the server. Without it the API key cannot be stored (see the operations manual)."
+msgstr ""
+
 msgid "Sales"
 msgstr ""
 
@@ -2125,6 +2173,9 @@ msgid "Score = likelihood × impact"
 msgstr ""
 
 msgid "Score = likelihood × impact (1–16). Medium from 4, higher risk above 8."
+msgstr ""
+
+msgid "Search results instead:"
 msgstr ""
 
 msgid "Search…"
@@ -2344,6 +2395,9 @@ msgstr ""
 msgid "Test System Solutions"
 msgstr ""
 
+msgid "Test connection"
+msgstr ""
+
 msgid "Test method"
 msgstr ""
 
@@ -2351,6 +2405,30 @@ msgid "Test result / findings"
 msgstr ""
 
 msgid "Text"
+msgstr ""
+
+msgid "The AI did not answer this question."
+msgstr ""
+
+msgid "The AI did not answer."
+msgstr ""
+
+msgid "The AI service cannot be reached right now."
+msgstr ""
+
+msgid "The AI service did not accept the API key. Please tell the administration."
+msgstr ""
+
+msgid "The AI service is busy right now. Please try again in a moment."
+msgstr ""
+
+msgid "The AI service rejected the request."
+msgstr ""
+
+msgid "The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses Claude (Anthropic). Without an API key it searches the elements without AI."
+msgstr ""
+
+msgid "The assistant is thinking …"
 msgstr ""
 
 msgid "The demo sign-in is switched off."
@@ -2368,10 +2446,16 @@ msgstr ""
 msgid "The file is not an Excel workbook (.xlsx)."
 msgstr ""
 
+msgid "The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to Anthropic."
+msgstr ""
+
 msgid "The server cannot be reached. Please try again."
 msgstr ""
 
 msgid "The sheet is empty."
+msgstr ""
+
+msgid "The stored API key cannot be decrypted (SETTINGS_SECRET was changed). Enter the key again."
 msgstr ""
 
 msgid "The version of the element is missing."
@@ -2514,6 +2598,18 @@ msgstr ""
 msgid "Welcome, {name}"
 msgstr ""
 
+msgid "Where are invoices approved?"
+msgstr ""
+
+msgid "Where do I find the sanctions list check?"
+msgstr ""
+
+msgid "Which process steps concern me?"
+msgstr ""
+
+msgid "Who is the data protection officer?"
+msgstr ""
+
 msgid "Workflow status and quality grade"
 msgstr ""
 
@@ -2602,6 +2698,9 @@ msgstr ""
 msgid "e.g. Art. 37 GDPR, § 13 (2) ArbSchG, §§ 48 ff. HGB"
 msgstr ""
 
+msgid "e.g. Where do I find …?"
+msgstr ""
+
 msgid "e.g. commercial register, BAFA, data protection authority"
 msgstr ""
 
@@ -2646,6 +2745,9 @@ msgid "last changed"
 msgstr ""
 
 msgid "law, contract, customer requirement, code · ISO 37301 4.5"
+msgstr ""
+
+msgid "leave empty to keep the stored key"
 msgstr ""
 
 msgid "lower"
@@ -2702,10 +2804,17 @@ msgstr ""
 msgid "revoked"
 msgstr ""
 
+msgid "search without AI (the administration has not set up the AI)"
+msgstr ""
+
 msgid "selection, instruction, supervision (§ 130 OWiG)"
 msgstr ""
 
 msgid "status"
+msgstr ""
+
+#, python-brace-format
+msgid "stored, ends with {hint}"
 msgstr ""
 
 msgid "submitted"
@@ -2718,6 +2827,9 @@ msgid "unchanged"
 msgstr ""
 
 msgid "vacant"
+msgstr ""
+
+msgid "with AI · finds processes, steps, roles and responsibilities"
 msgstr ""
 
 msgid "with line management responsibility"

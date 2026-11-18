@@ -88,9 +88,19 @@ docker compose exec api grc-api create-admin <benutzername>   # fragt das Passwo
 | `BOOTSTRAP_ADMIN_USER` / `_PASSWORD` | leer | erster Administrator |
 | `SESSION_TTL_HOURS` | `12` | Gültigkeit einer Sitzung |
 | `SEED_DEMO_ON_EMPTY` | `true` | Demodaten in eine leere Datenbank laden |
+| `SETTINGS_SECRET` | – | verschlüsselt in der Datenbank gespeicherte Geheimnisse (API-Schlüssel des KI-Assistenten); stabil halten – ein neuer Wert macht den gespeicherten Schlüssel unlesbar |
 | `DEFAULT_LANGUAGE` | `de` | Sprache der Oberfläche (`de`, `en`) |
 | `LOG_LEVEL` | `INFO` | Protokollstufe der API |
 | `API_IMAGE` / `UI_IMAGE` | lokaler Build | fertige Images aus `ghcr.io` statt Build |
+
+### KI-Assistent
+
+Der Assistent („Wo finde ich …?“) nutzt Claude von Anthropic. Die Administration hinterlegt den
+API-Schlüssel unter **Administration → KI-Assistent**; er wird mit `SETTINGS_SECRET` verschlüsselt
+gespeichert und nie wieder angezeigt. Der API-Container braucht dafür ausgehend HTTPS zu
+`api.anthropic.com`. An Anthropic gehen die Frage, die letzten Gesprächsschritte und die Elemente,
+die die fragende Person lesen darf (Bezeichnungen, kurze Beschreibungen, Inhaber). Ohne Schlüssel
+oder wenn der Dienst nicht antwortet, durchsucht der Assistent die Elemente ohne KI.
 
 ### Aktualisieren
 

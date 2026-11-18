@@ -236,3 +236,11 @@ def test_content_administration(page: "Page") -> None:
     expect(page.locator("#toasts")).to_contain_text("Gespeichert")
     expect(page.locator("#detail")).to_contain_text("Weitere Angaben")
     expect(page.locator("#detail")).to_contain_text("Hoch")
+
+
+def test_assistant_search_on_start_page(page: "Page") -> None:
+    sign_in(page, "U-004")
+    page.fill("#assistant input[name=question]", "Wo werden Bestellungen freigegeben?")
+    page.click("#assistant button:has-text('Fragen')")
+    expect(page.locator("#assistant-log a").first).to_be_visible()
+    expect(page.locator("#assistant-log")).to_contain_text("Wo werden Bestellungen freigegeben?")

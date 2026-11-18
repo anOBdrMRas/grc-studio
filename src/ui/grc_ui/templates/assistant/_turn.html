@@ -1,0 +1,18 @@
+{# one question and its answer, appended to the chat log #}
+<div class="chat chat-end"><div class="chat-bubble chat-bubble-secondary text-sm">{{ question }}</div></div>
+<input type="hidden" name="h_role" value="user"><input type="hidden" name="h_text" value="{{ question }}">
+<div class="chat chat-start">
+  <div class="chat-bubble bg-base-200 text-base-content text-sm">
+    {% if failure %}<p class="text-error">{{ failure }}</p>
+    {% elif answer.mode == "ai" %}<div class="whitespace-pre-line">{{ answer.text|answer_html }}</div>
+    {% else %}
+      {% if answer.error %}<p class="mb-1 text-xs text-warning">{{ _(ai_errors[answer.error]) if answer.error in ai_errors else _("The AI did not answer.") }} {{ _("Search results instead:") }}</p>{% endif %}
+      {% if answer.hits %}
+      <ul class="grid gap-1">
+        {% for h in answer.hits %}<li><span class="badge badge-ghost badge-sm">{{ _(kind_labels.get(h.kind, h.kind)) }}</span> <a class="link link-secondary font-medium" href="{{ assistant_href(h.kind, h.id) }}">{{ h.label }}</a> <span class="text-xs opacity-60">{{ h.sub }}</span></li>{% endfor %}
+      </ul>
+      {% else %}<p>{{ _("No results. Try other words, e.g. “export”, “invoice” or the name of a role.") }}</p>{% endif %}
+    {% endif %}
+  </div>
+</div>
+{% if answer.mode == "ai" %}<input type="hidden" name="h_role" value="assistant"><input type="hidden" name="h_text" value="{{ answer.text }}">{% endif %}

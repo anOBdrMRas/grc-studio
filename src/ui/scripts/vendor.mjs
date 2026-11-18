@@ -33,7 +33,7 @@ for (const [from, to] of fonts) copy(from, join(stat, 'fonts/files', to));
 
 // the icon subset (Tabler outline), inlined by grc_ui/icons.py
 const icons = ['home', 'pencil', 'trash', 'history', 'file-description', 'check', 'x', 'arrow-back-up', 'device-floppy', 'plus',
-  'search', 'lock', 'logout', 'settings', 'sun', 'moon', 'eye', 'alert-triangle', 'chevron-down', 'refresh', 'user', 'zoom-in', 'zoom-out', 'focus-centered', 'download', 'upload'];
+  'search', 'lock', 'logout', 'settings', 'sun', 'moon', 'eye', 'alert-triangle', 'chevron-down', 'refresh', 'user', 'zoom-in', 'zoom-out', 'focus-centered', 'download', 'upload', 'sparkles'];
 for (const name of icons) {
   const src = join(nm, '@tabler/icons/icons/outline', `${name}.svg`);
   if (!existsSync(src)) throw new Error(`icon ${name} missing`);
