@@ -74,17 +74,27 @@ Catalogs = TypedDict(
 Change = TypedDict("Change", {"key": "str", "from": "Any", "to": "Any"}, total=False)
 
 
-CheckOut = TypedDict(
-    "CheckOut",
+CheckItemOut = TypedDict(
+    "CheckItemOut",
     {
-        "message": "str",
-        "vars": "dict[str, str]",
         "kind": "str",
+        "id": "str",
+        "label": "str",
+        "detail": "str",
+        "vars": "dict[str, str] | None",
         "element_id": "str",
-        "user_id": "str | None",
-        "role_id": "str | None",
-        "position_id": "str | None",
-        "mandate_id": "str | None",
+    },
+    total=False,
+)
+
+
+CockpitOut = TypedDict(
+    "CockpitOut",
+    {
+        "checks": "list[grc_api__schemas__quality__CheckOut]",
+        "workflow": "dict[str, StatusCounts]",
+        "grades": "dict[str, int]",
+        "review_queue": "list[ReviewItem]",
     },
     total=False,
 )
@@ -355,7 +365,7 @@ MandateOut = TypedDict(
         "rights": "Rights",
         "actions": "MandateActions",
         "workflow": "list[WorkflowEntryOut]",
-        "checks": "list[CheckOut]",
+        "checks": "list[grc_api__schemas__mandates__CheckOut]",
         "labels": "dict[str, str]",
     },
     total=False,
@@ -566,6 +576,20 @@ ProcessOut = TypedDict(
 )
 
 
+ReviewItem = TypedDict(
+    "ReviewItem",
+    {
+        "kind": "str",
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "submitted_by": "str",
+        "submitted_at": "str | None",
+    },
+    total=False,
+)
+
+
 Revision = TypedDict(
     "Revision",
     {
@@ -733,6 +757,13 @@ StateView = TypedDict(
 )
 
 
+StatusCounts = TypedDict(
+    "StatusCounts",
+    {"draft": "int", "review": "int", "released": "int", "archived": "int", "total": "int"},
+    total=False,
+)
+
+
 StepLinkIn = TypedDict(
     "StepLinkIn", {"kind": "str", "target_id": "str", "version": "int | None"}, total=False
 )
@@ -821,5 +852,28 @@ WorkflowEntryOut = TypedDict(
         "comment": "str",
         "status": "str",
     },
+    total=False,
+)
+
+
+grc_api__schemas__mandates__CheckOut = TypedDict(
+    "grc_api__schemas__mandates__CheckOut",
+    {
+        "message": "str",
+        "vars": "dict[str, str]",
+        "kind": "str",
+        "element_id": "str",
+        "user_id": "str | None",
+        "role_id": "str | None",
+        "position_id": "str | None",
+        "mandate_id": "str | None",
+    },
+    total=False,
+)
+
+
+grc_api__schemas__quality__CheckOut = TypedDict(
+    "grc_api__schemas__quality__CheckOut",
+    {"key": "str", "label": "str", "module": "str", "items": "list[CheckItemOut]"},
     total=False,
 )

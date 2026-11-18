@@ -21,6 +21,9 @@ ACTIVITY_TYPES = frozenset(
 )
 
 
+BPMN_NS = "http://www.omg.org/spec/BPMN/20100524/MODEL"
+
+
 def element_names(xml: str) -> dict[str, str]:
     try:
         root = fromstring(xml)
@@ -31,6 +34,21 @@ def element_names(xml: str) -> dict[str, str]:
         id_ = el.get("id")
         if id_ and el.tag.startswith("{http://www.omg.org/spec/BPMN/20100524/MODEL}"):
             out[id_] = el.get("name") or id_
+    return out
+
+
+def activities(xml: str) -> list[tuple[str, str]]:
+    """Tasks, sub-processes and call activities: (element id, name)."""
+    try:
+        root = fromstring(xml)
+    except (ParseError, DefusedXmlException):
+        return []
+    out = []
+    for el in root.iter():
+        ns, _, local = el.tag.partition("}")
+        id_ = el.get("id")
+        if id_ and ns == "{" + BPMN_NS and local in ACTIVITY_TYPES:
+            out.append((id_, el.get("name") or id_))
     return out
 
 

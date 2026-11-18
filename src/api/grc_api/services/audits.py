@@ -59,7 +59,7 @@ def _finding_out(f: AuditFinding, can_edit_audit: bool, org: OrgData, p: Princip
     )
 
 
-async def _independence(db: AsyncSession, a: Audit, org: OrgData) -> list[Independence]:
+async def independence_of(db: AsyncSession, a: Audit, org: OrgData) -> list[Independence]:
     processes = []
     labels = {}
     for pid in a.process_ids:
@@ -130,7 +130,7 @@ async def audit_view(db: AsyncSession, audit_id: str, p: Principal) -> AuditOut:
         updated_at=a.updated_at,
         rights=rights,
         findings=[_finding_out(f, rights.can_edit, org, p) for f in findings],
-        independence=await _independence(db, a, org),
+        independence=await independence_of(db, a, org),
         labels=labels,
     )
 

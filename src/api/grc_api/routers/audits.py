@@ -10,7 +10,9 @@ from grc_api.auth.principal import Principal
 from grc_api.db import get_db
 from grc_api.schemas.audits import AuditListItem, AuditOut, FindingCreate
 from grc_api.schemas.common import CreateElement, ElementPatch, Revision, StateView
+from grc_api.schemas.quality import CockpitOut
 from grc_api.services import audits as svc
+from grc_api.services import quality as quality_svc
 
 router = APIRouter(prefix="/api/v1", tags=["audits"])
 Db = Annotated[AsyncSession, Depends(get_db)]
@@ -84,3 +86,9 @@ async def audits_history(audit_id: str, db: Db, p: Me) -> list[Revision]:
 )
 async def audits_state(audit_id: str, revision_id: int, db: Db, p: Me) -> StateView:
     return await svc.state(db, audit_id, revision_id, p)
+
+
+@router.get("/cockpit", operation_id="cockpit_get", **secured("cockpit:read"))
+async def cockpit_get(db: Db, p: Me) -> CockpitOut:
+    """Quality checks, quality grade, workflow status and the review queue (I&A cockpit)."""
+    return await quality_svc.cockpit(db, p)

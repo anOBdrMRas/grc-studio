@@ -141,10 +141,10 @@ class GrcClient:
         role_id: str | None | None = None,
         position_id: str | None | None = None,
         mandate_id: str | None | None = None,
-    ) -> list[CheckOut]:
+    ) -> list[grc_api__schemas__mandates__CheckOut]:
         """GET /api/v1/checks (permission: org:read)."""
         return cast(
-            "list[CheckOut]",
+            "list[grc_api__schemas__mandates__CheckOut]",
             await self._call(
                 "GET",
                 "/api/v1/checks",
@@ -156,6 +156,10 @@ class GrcClient:
                 },
             ),
         )
+
+    async def cockpit_get(self) -> CockpitOut:
+        """GET /api/v1/cockpit (permission: cockpit:read)."""
+        return cast("CockpitOut", await self._call("GET", "/api/v1/cockpit"))
 
     async def controls_list(self) -> list[ControlListItem]:
         """GET /api/v1/controls (permission: grc:read)."""

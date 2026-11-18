@@ -397,89 +397,95 @@
         "title": "Change",
         "type": "object"
       },
-      "CheckOut": {
-        "description": "A legal-certainty finding; `message` is an English message id, `vars` fill its placeholders.",
+      "CheckItemOut": {
         "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
           "element_id": {
             "title": "Element Id",
             "type": "string"
           },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
           "kind": {
-            "enum": [
-              "role",
-              "position",
-              "mandate"
-            ],
             "title": "Kind",
             "type": "string"
           },
-          "mandate_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Mandate Id"
-          },
-          "message": {
-            "title": "Message",
+          "label": {
+            "title": "Label",
             "type": "string"
           },
-          "position_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Position Id"
-          },
-          "role_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Role Id"
-          },
-          "user_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "User Id"
-          },
           "vars": {
-            "additionalProperties": {
-              "type": "string"
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "when set, `detail` is a message id to translate with these values",
+            "title": "Vars"
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "label",
+          "detail",
+          "vars",
+          "element_id"
+        ],
+        "title": "CheckItemOut",
+        "type": "object"
+      },
+      "CockpitOut": {
+        "properties": {
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/grc_api__schemas__quality__CheckOut"
             },
-            "title": "Vars",
+            "title": "Checks",
+            "type": "array"
+          },
+          "grades": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "description": "module → % of elements without findings",
+            "title": "Grades",
+            "type": "object"
+          },
+          "review_queue": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewItem"
+            },
+            "title": "Review Queue",
+            "type": "array"
+          },
+          "workflow": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/StatusCounts"
+            },
+            "description": "module → elements per status",
+            "title": "Workflow",
             "type": "object"
           }
         },
         "required": [
-          "message",
-          "vars",
-          "kind",
-          "element_id",
-          "user_id",
-          "role_id",
-          "position_id",
-          "mandate_id"
+          "checks",
+          "workflow",
+          "grades",
+          "review_queue"
         ],
-        "title": "CheckOut",
+        "title": "CockpitOut",
         "type": "object"
       },
       "ControlListItem": {
@@ -1586,7 +1592,7 @@
           },
           "checks": {
             "items": {
-              "$ref": "#/components/schemas/CheckOut"
+              "$ref": "#/components/schemas/grc_api__schemas__mandates__CheckOut"
             },
             "title": "Checks",
             "type": "array"
@@ -2808,6 +2814,52 @@
         "title": "ProcessOut",
         "type": "object"
       },
+      "ReviewItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "submitted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted At"
+          },
+          "submitted_by": {
+            "title": "Submitted By",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "code",
+          "title",
+          "submitted_by",
+          "submitted_at"
+        ],
+        "title": "ReviewItem",
+        "type": "object"
+      },
       "Revision": {
         "properties": {
           "action": {
@@ -3589,6 +3641,37 @@
         "title": "StateView",
         "type": "object"
       },
+      "StatusCounts": {
+        "properties": {
+          "archived": {
+            "default": 0,
+            "title": "Archived",
+            "type": "integer"
+          },
+          "draft": {
+            "default": 0,
+            "title": "Draft",
+            "type": "integer"
+          },
+          "released": {
+            "default": 0,
+            "title": "Released",
+            "type": "integer"
+          },
+          "review": {
+            "default": 0,
+            "title": "Review",
+            "type": "integer"
+          },
+          "total": {
+            "default": 0,
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "title": "StatusCounts",
+        "type": "object"
+      },
       "StepLinkIn": {
         "properties": {
           "kind": {
@@ -3998,6 +4081,123 @@
           "status"
         ],
         "title": "WorkflowEntryOut",
+        "type": "object"
+      },
+      "grc_api__schemas__mandates__CheckOut": {
+        "description": "A legal-certainty finding; `message` is an English message id, `vars` fill its placeholders.",
+        "properties": {
+          "element_id": {
+            "title": "Element Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "role",
+              "position",
+              "mandate"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "mandate_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mandate Id"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "position_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Position Id"
+          },
+          "role_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Role Id"
+          },
+          "user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User Id"
+          },
+          "vars": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Vars",
+            "type": "object"
+          }
+        },
+        "required": [
+          "message",
+          "vars",
+          "kind",
+          "element_id",
+          "user_id",
+          "role_id",
+          "position_id",
+          "mandate_id"
+        ],
+        "title": "CheckOut",
+        "type": "object"
+      },
+      "grc_api__schemas__quality__CheckOut": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CheckItemOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "label": {
+            "description": "English message id",
+            "title": "Label",
+            "type": "string"
+          },
+          "module": {
+            "title": "Module",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "label",
+          "module",
+          "items"
+        ],
+        "title": "CheckOut",
         "type": "object"
       }
     }
@@ -4714,7 +4914,7 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/CheckOut"
+                    "$ref": "#/components/schemas/grc_api__schemas__mandates__CheckOut"
                   },
                   "title": "Response Checks List",
                   "type": "array"
@@ -4739,6 +4939,29 @@
           "delegations"
         ],
         "x-permission": "org:read"
+      }
+    },
+    "/api/v1/cockpit": {
+      "get": {
+        "description": "Quality checks, quality grade, workflow status and the review queue (I&A cockpit).",
+        "operationId": "cockpit_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CockpitOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Cockpit Get",
+        "tags": [
+          "audits"
+        ],
+        "x-permission": "cockpit:read"
       }
     },
     "/api/v1/controls": {

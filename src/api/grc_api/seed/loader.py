@@ -10,8 +10,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.models import (
     Audit,
-    AuditFinding,
     AuditEntry,
+    AuditFinding,
     Control,
     Kpi,
     KpiMeasurement,
