@@ -26,7 +26,7 @@ NAV: list[NavItem] = [
     NavItem("/kpi", N_("KPI"), "grc:read"),
     NavItem("/audits", N_("Audits"), "grc:read"),
     NavItem("/users", N_("User management"), "users:read"),
-    NavItem("/admin/content", N_("Administration"), "content:manage"),
+    NavItem("/admin", N_("Administration"), "content:manage"),
 ]
 
 
@@ -37,6 +37,4 @@ def nav_for(permissions: frozenset[str]) -> list[NavItem]:
 def is_active(path: str, href: str) -> bool:
     if href == "/":
         return path == href
-    if href.startswith("/admin/"):
-        return path.startswith("/admin")
     return path == href or path.startswith(href + "/")

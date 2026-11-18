@@ -88,9 +88,28 @@ docker compose exec api grc-api create-admin <benutzername>   # fragt das Passwo
 | `BOOTSTRAP_ADMIN_USER` / `_PASSWORD` | leer | erster Administrator |
 | `SESSION_TTL_HOURS` | `12` | Gültigkeit einer Sitzung |
 | `SEED_DEMO_ON_EMPTY` | `true` | Demodaten in eine leere Datenbank laden |
+| `SETTINGS_SECRET` | – | verschlüsselt in der Datenbank gespeicherte Geheimnisse (API-Schlüssel des KI-Assistenten); stabil halten – ein neuer Wert macht den gespeicherten Schlüssel unlesbar |
 | `DEFAULT_LANGUAGE` | `de` | Sprache der Oberfläche (`de`, `en`) |
 | `LOG_LEVEL` | `INFO` | Protokollstufe der API |
 | `API_IMAGE` / `UI_IMAGE` | lokaler Build | fertige Images aus `ghcr.io` statt Build |
+
+### KI-Assistent
+
+Der Assistent („Wo finde ich …?“) nutzt einen KI-Dienst, den die Administration unter
+**Administration → KI-Assistent** einstellt:
+
+- **Schnittstelle:** *OpenAI-kompatibel* (z. B. die interne con-AI; Aufruf
+  `POST {Adresse}/chat/completions`, Schlüssel als `Authorization: Bearer`) oder
+  *Anthropic-kompatibel* (Claude über `/v1/messages`, direkt oder über ein Gateway).
+- **Adresse** des Dienstes, z. B. `https://con-ai.example/v1` (bei Anthropic direkt leer lassen),
+  **Modell** laut Betreiber des Dienstes und **API-Schlüssel** (von den con-AI-Admins).
+- Der Schlüssel wird mit `SETTINGS_SECRET` verschlüsselt gespeichert und nie wieder angezeigt.
+
+Der API-Container braucht ausgehend HTTPS zur Adresse des Dienstes. Ist dessen Zertifikat von
+einer internen Zertifizierungsstelle ausgestellt, das CA-Zertifikat in den API-Container einbinden
+und `SSL_CERT_FILE` darauf setzen. An den Dienst gehen die Frage, die letzten Gesprächsschritte und
+die Elemente, die die fragende Person lesen darf (Bezeichnungen, kurze Beschreibungen, Inhaber).
+Ohne Schlüssel oder wenn der Dienst nicht antwortet, durchsucht der Assistent die Elemente ohne KI.
 
 ### Aktualisieren
 

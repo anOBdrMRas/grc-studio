@@ -5,6 +5,20 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 3d)
+- AI assistant ("Where do I find …?") on the start page and as a dialog from the header. It
+  answers with links to processes, process steps, roles, positions, delegations, risks,
+  opportunities, controls, KPI and audits – only elements the asking person may read; links the
+  AI invents are turned into plain text. Without an API key, or when the AI service fails, the
+  assistant answers with a catalogue search.
+- Administration → AI assistant (permission `ai:manage`): switch on/off, interface
+  (OpenAI-compatible, e.g. the internal con-AI, or Anthropic-compatible for Claude directly or
+  through a gateway), address, model, API key (encrypted with `SETTINGS_SECRET`, never shown
+  again; only its last four characters), connection test. Changes go into the history without
+  the key.
+- Claude directly is called through the Anthropic SDK with prompt caching of the catalogue and
+  the server-side fallback on refusals (Opus/Sonnet). New setting `SETTINGS_SECRET`.
+
 ### Added (stage 3c)
 - Content administration (menu "Administration", permission `content:manage`, administrators
   only): custom fields per module (text, long text, number, date, yes/no, dropdown, multiple

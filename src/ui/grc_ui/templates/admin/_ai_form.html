@@ -1,0 +1,41 @@
+<section id="ai-settings" class="max-w-3xl rounded-box border border-base-300 bg-base-100 p-4">
+  {% if not s.secret_configured %}
+  <div role="alert" class="alert alert-warning mb-3 text-sm">{{ icon("alert-triangle") }}<span>{{ _("SETTINGS_SECRET is not set on the server. Without it the API key cannot be stored (see the operations manual).") }}</span></div>
+  {% elif s.has_key and not s.key_readable %}
+  <div role="alert" class="alert alert-warning mb-3 text-sm">{{ icon("alert-triangle") }}<span>{{ _("The stored API key cannot be decrypted (SETTINGS_SECRET was changed). Enter the key again.") }}</span></div>
+  {% endif %}
+  <form class="grid gap-3" hx-post="/admin/ai" hx-target="#ai-settings" hx-swap="outerHTML">
+    <input type="hidden" name="version" value="{{ s.version }}">
+    <label class="label cursor-pointer justify-start gap-3">
+      <input type="checkbox" name="enabled" class="toggle toggle-primary" {% if s.enabled %}checked{% endif %}>
+      <span>{{ _("Assistant uses AI") }}</span>
+    </label>
+    <label class="form-control max-w-md"><span class="label-text text-sm">{{ _("Interface") }}</span>
+      <select name="provider" class="select select-bordered select-sm">
+        <option value="openai" {% if s.provider == "openai" %}selected{% endif %}>{{ _("OpenAI-compatible (e.g. con-AI)") }}</option>
+        <option value="anthropic" {% if s.provider == "anthropic" %}selected{% endif %}>{{ _("Anthropic-compatible (Claude)") }}</option>
+      </select></label>
+    <label class="form-control max-w-xl"><span class="label-text text-sm">{{ _("Address of the service") }} <span class="opacity-60">· {{ _("e.g. https://con-ai.example/v1; empty for Anthropic directly") }}</span></span>
+      <input name="base_url" value="{{ s.base_url }}" class="input input-bordered input-sm" inputmode="url" autocomplete="off" placeholder="https://…/v1"></label>
+    <label class="form-control max-w-md"><span class="label-text text-sm">{{ _("Model") }} <span class="opacity-60">· {{ _("name as given by the operator of the service") }}</span></span>
+      <input name="model" value="{{ s.model }}" list="ai-models" class="input input-bordered input-sm" autocomplete="off" maxlength="200">
+      <datalist id="ai-models">{% for m in s.models %}<option value="{{ m }}">{% endfor %}</datalist></label>
+    <label class="form-control max-w-md"><span class="label-text text-sm">{{ _("API key") }}
+      {% if s.has_key %}<span class="opacity-60">· {{ _("stored, ends with {hint}").format(hint=s.key_hint) }}</span>{% endif %}</span>
+      <input type="password" name="api_key" class="input input-bordered input-sm" autocomplete="off" placeholder="{{ _('leave empty to keep the stored key') if s.has_key else '' }}"></label>
+    <p class="text-xs opacity-60">{{ _("The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to the AI service.") }}</p>
+    <div class="flex flex-wrap gap-2">
+      <button class="btn btn-primary btn-sm">{{ icon("device-floppy") }} {{ _("Save") }}</button>
+      {% if s.has_key %}
+      <button class="btn btn-outline btn-sm" type="button" hx-post="/admin/ai/test" hx-target="#ai-settings" hx-swap="outerHTML">{{ _("Test connection") }}</button>
+      <button class="btn btn-ghost btn-sm text-error" name="remove_key" value="1" hx-confirm="{{ _('Remove the stored API key? The assistant then searches without AI.') }}">{{ icon("trash") }} {{ _("Remove key") }}</button>
+      {% endif %}
+      <span class="htmx-indicator items-center"><span class="loading loading-spinner loading-sm"></span></span>
+    </div>
+  </form>
+  {% if test %}
+  <div role="status" class="alert {{ 'alert-success' if test.ok else 'alert-error' }} mt-3 text-sm">
+    {{ _("Connection works.") if test.ok else (_(ai_errors[test.code]) if test.code in ai_errors else _("No API key stored.")) }}
+  </div>
+  {% endif %}
+</section>

@@ -55,6 +55,12 @@ msgstr "5 Überwachen"
 msgid "< 25 TUSD"
 msgstr "< 25 TUSD"
 
+msgid "AI assistant"
+msgstr "KI-Assistent"
+
+msgid "API key"
+msgstr "API-Schlüssel"
+
 msgid "Accept"
 msgstr "Akzeptieren"
 
@@ -101,6 +107,12 @@ msgstr "Rolle hinzufügen …"
 msgid "Additional details"
 msgstr "Weitere Angaben"
 
+msgid "Address of the service"
+msgstr "Adresse des Dienstes"
+
+msgid "Address or model of the AI service is missing."
+msgstr "Adresse oder Modell des KI-Dienstes fehlt."
+
 msgid "Administration"
 msgstr "Administration"
 
@@ -127,6 +139,9 @@ msgstr "Annex-A-Controls"
 
 msgid "Annually"
 msgstr "Jährlich"
+
+msgid "Anthropic-compatible (Claude)"
+msgstr "Anthropic-kompatibel (Claude)"
 
 msgid "Applicable"
 msgstr "Anwendbar"
@@ -160,6 +175,9 @@ msgstr ""
 "Als verantwortliche Person dokumentieren Sie Ursache, Korrekturmaßnahme und Fortschritt. Die "
 "Auditoren prüfen die Wirksamkeit und schließen die Feststellung."
 
+msgid "Ask"
+msgstr "Fragen"
+
 msgid "Assessed"
 msgstr "Bewertet"
 
@@ -183,6 +201,12 @@ msgstr "Zugeordnete Rollen"
 
 msgid "Assignment in process step"
 msgstr "Zuordnung im Prozessschritt"
+
+msgid "Assistant"
+msgstr "Assistent"
+
+msgid "Assistant uses AI"
+msgstr "Assistent nutzt KI"
 
 msgid "Audit"
 msgstr "Audit"
@@ -433,6 +457,9 @@ msgstr "Konform"
 
 msgid "Conforming with findings"
 msgstr "Konform mit Feststellungen"
+
+msgid "Connection works."
+msgstr "Die Verbindung funktioniert."
 
 msgid "Contact of the audited party"
 msgstr "Ansprechpartner auditierte Seite"
@@ -767,6 +794,9 @@ msgstr "Nachweis / Evidenz"
 
 msgid "Evidence / documentation"
 msgstr "Nachweis / Dokumentation"
+
+msgid "Examples"
+msgstr "Beispiele"
 
 msgid "Excel export"
 msgstr "Excel-Export"
@@ -1151,6 +1181,9 @@ msgstr "Integrität"
 msgid "Interested parties"
 msgstr "Interessierte Parteien"
 
+msgid "Interface"
+msgstr "Schnittstelle"
+
 msgid "Internal approval authority"
 msgstr "Interne Freigabebefugnis"
 
@@ -1379,6 +1412,9 @@ msgstr "Fusion oder Übernahme"
 msgid "Minor nonconformity"
 msgstr "Nebenabweichung"
 
+msgid "Model"
+msgstr "Modell"
+
 msgid "Model (BPMN)"
 msgstr "Modell (BPMN)"
 
@@ -1413,6 +1449,9 @@ msgstr "Beinahe-Vorfall"
 msgid "Needs and expectations of interested parties"
 msgstr "Erfordernisse und Erwartungen interessierter Parteien"
 
+msgid "New chat"
+msgstr "Neuer Chat"
+
 msgid "New entry"
 msgstr "Neuer Eintrag"
 
@@ -1437,6 +1476,9 @@ msgstr "Nächste Prüfung"
 msgid "No"
 msgstr "Nein"
 
+msgid "No API key stored."
+msgstr "Kein API-Schlüssel hinterlegt."
+
 msgid "No changes recorded yet. Changes are recorded from now on."
 msgstr "Noch keine Änderungen protokolliert. Änderungen werden ab jetzt protokolliert."
 
@@ -1460,6 +1502,9 @@ msgstr "Keine Stelle hat diese Rolle."
 
 msgid "No processes."
 msgstr "Keine Prozesse."
+
+msgid "No results. Try other words, e.g. “export”, “invoice” or the name of a role."
+msgstr "Keine Treffer. Versuche andere Begriffe, z. B. „Export“, „Rechnung“ oder einen Rollennamen."
 
 msgid "No roles assigned."
 msgstr "Keine Rollen zugeordnet."
@@ -1533,6 +1578,9 @@ msgstr "Offen"
 
 msgid "Open audit findings"
 msgstr "Offene Audit-Feststellungen"
+
+msgid "OpenAI-compatible (e.g. con-AI)"
+msgstr "OpenAI-kompatibel (z. B. con-AI)"
 
 msgid "Operating effectiveness"
 msgstr "Operative Wirksamkeit"
@@ -1830,6 +1878,16 @@ msgstr "Qualitätspolitik"
 msgid "Quarterly"
 msgstr "Quartalsweise"
 
+msgid "Question to the assistant"
+msgstr "Frage an den Assistenten"
+
+msgid ""
+"Questions and the elements you may read are sent to the AI service. Answers can be wrong – check "
+"them in the linked element."
+msgstr ""
+"Fragen und die Elemente, die du lesen darfst, werden an den KI-Dienst übermittelt. Antworten "
+"können falsch sein – prüfe sie im verlinkten Element."
+
 msgid "R = responsible, A = accountable, C = consulted, I = informed"
 msgstr "R = durchführend, A = verantwortlich, C = beratend, I = informiert"
 
@@ -1924,6 +1982,12 @@ msgstr "Bemerkung"
 
 msgid "Remove"
 msgstr "Entfernen"
+
+msgid "Remove key"
+msgstr "Schlüssel entfernen"
+
+msgid "Remove the stored API key? The assistant then searches without AI."
+msgstr "Gespeicherten API-Schlüssel entfernen? Der Assistent sucht dann ohne KI."
 
 #, python-brace-format
 msgid "Remove {value}"
@@ -2104,6 +2168,13 @@ msgstr ""
 "Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder "
 "eine dokumentierte Akzeptanz."
 
+msgid ""
+"SETTINGS_SECRET is not set on the server. Without it the API key cannot be stored (see the "
+"operations manual)."
+msgstr ""
+"SETTINGS_SECRET ist auf dem Server nicht gesetzt. Ohne diesen Wert kann der API-Schlüssel nicht "
+"gespeichert werden (siehe Betriebshandbuch)."
+
 msgid "Sales"
 msgstr "Sales"
 
@@ -2142,6 +2213,9 @@ msgstr "Score = Wahrscheinlichkeit × Ausmaß"
 
 msgid "Score = likelihood × impact (1–16). Medium from 4, higher risk above 8."
 msgstr "Score = Wahrscheinlichkeit × Ausmaß (1–16). Mittel ab 4, höheres Risiko über 8."
+
+msgid "Search results instead:"
+msgstr "Stattdessen Suchtreffer:"
 
 msgid "Search…"
 msgstr "Suchen…"
@@ -2360,6 +2434,9 @@ msgstr "Technology"
 msgid "Test System Solutions"
 msgstr "Test System Solutions"
 
+msgid "Test connection"
+msgstr "Verbindung testen"
+
 msgid "Test method"
 msgstr "Prüfmethode"
 
@@ -2368,6 +2445,47 @@ msgstr "Prüfergebnis / Feststellungen"
 
 msgid "Text"
 msgstr "Text"
+
+msgid "The AI did not answer this question."
+msgstr "Die KI hat diese Frage nicht beantwortet."
+
+msgid "The AI did not answer."
+msgstr "Die KI hat nicht geantwortet."
+
+msgid "The AI service cannot be reached right now."
+msgstr "Der KI-Dienst ist gerade nicht erreichbar."
+
+msgid "The AI service did not accept the API key. Please tell the administration."
+msgstr "Der KI-Dienst hat den API-Schlüssel nicht angenommen. Bitte informiere die Administration."
+
+msgid "The AI service is busy right now. Please try again in a moment."
+msgstr "Der KI-Dienst ist gerade ausgelastet. Bitte versuche es gleich noch einmal."
+
+msgid "The AI service rejected the request."
+msgstr "Der KI-Dienst hat die Anfrage abgelehnt."
+
+msgid ""
+"The assistant answers questions such as “Where do I find …?” with links to processes, steps, "
+"roles and other elements. It uses Claude (Anthropic). Without an API key it searches the elements"
+" without AI."
+msgstr ""
+"Der Assistent beantwortet Fragen wie „Wo finde ich …?“ mit Verweisen auf Prozesse, Schritte, "
+"Rollen und andere Elemente. Er nutzt Claude (Anthropic). Ohne API-Schlüssel durchsucht er die "
+"Elemente ohne KI."
+
+msgid ""
+"The assistant answers questions such as “Where do I find …?” with links to processes, steps, "
+"roles and other elements. It uses the AI service set here – the internal con-AI (OpenAI-"
+"compatible) or Claude (Anthropic-compatible). Without an API key it searches the elements without"
+" AI."
+msgstr ""
+"Der Assistent beantwortet Fragen wie „Wo finde ich …?“ mit Verweisen auf Prozesse, Schritte, "
+"Rollen und andere Elemente. Er nutzt den hier eingestellten KI-Dienst – die interne con-AI "
+"(OpenAI-kompatibel) oder Claude (Anthropic-kompatibel). Ohne API-Schlüssel durchsucht er die "
+"Elemente ohne KI."
+
+msgid "The assistant is thinking …"
+msgstr "Der Assistent überlegt …"
 
 msgid "The demo sign-in is switched off."
 msgstr "Die Demo-Anmeldung ist abgeschaltet."
@@ -2384,11 +2502,30 @@ msgstr "Die Datei ist größer als 5 MB."
 msgid "The file is not an Excel workbook (.xlsx)."
 msgstr "Die Datei ist keine Excel-Arbeitsmappe (.xlsx)."
 
+msgid ""
+"The key is stored encrypted on the server and is never shown again. Questions and the elements "
+"the asking person may read are sent to Anthropic."
+msgstr ""
+"Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und "
+"die Elemente, die die fragende Person lesen darf, werden an Anthropic übermittelt."
+
+msgid ""
+"The key is stored encrypted on the server and is never shown again. Questions and the elements "
+"the asking person may read are sent to the AI service."
+msgstr ""
+"Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und "
+"die Elemente, die die fragende Person lesen darf, werden an den KI-Dienst übermittelt."
+
 msgid "The server cannot be reached. Please try again."
 msgstr "Der Server ist nicht erreichbar. Bitte erneut versuchen."
 
 msgid "The sheet is empty."
 msgstr "Das Tabellenblatt ist leer."
+
+msgid "The stored API key cannot be decrypted (SETTINGS_SECRET was changed). Enter the key again."
+msgstr ""
+"Der gespeicherte API-Schlüssel lässt sich nicht entschlüsseln (SETTINGS_SECRET wurde geändert). "
+"Bitte den Schlüssel neu eingeben."
 
 msgid "The version of the element is missing."
 msgstr "Die Version des Elements fehlt."
@@ -2534,6 +2671,18 @@ msgstr "Wöchentlich"
 msgid "Welcome, {name}"
 msgstr "Willkommen, {name}"
 
+msgid "Where are invoices approved?"
+msgstr "Wo werden Rechnungen freigegeben?"
+
+msgid "Where do I find the sanctions list check?"
+msgstr "Wo finde ich die Sanktionslistenprüfung?"
+
+msgid "Which process steps concern me?"
+msgstr "Welche Prozessschritte betreffen mich?"
+
+msgid "Who is the data protection officer?"
+msgstr "Wer ist Datenschutzbeauftragter?"
+
 msgid "Workflow status and quality grade"
 msgstr "Freigabestatus und Qualitätsgrad"
 
@@ -2626,8 +2775,14 @@ msgstr "Entwurf"
 msgid "e.g. Art. 37 GDPR, § 13 (2) ArbSchG, §§ 48 ff. HGB"
 msgstr "z. B. Art. 37 DSGVO, § 13 Abs. 2 ArbSchG, §§ 48 ff. HGB"
 
+msgid "e.g. Where do I find …?"
+msgstr "z. B. Wo finde ich …?"
+
 msgid "e.g. commercial register, BAFA, data protection authority"
 msgstr "z. B. Handelsregister, BAFA, Datenschutzaufsicht"
+
+msgid "e.g. https://con-ai.example/v1; empty for Anthropic directly"
+msgstr "z. B. https://con-ai.example/v1; leer für Anthropic direkt"
 
 msgid "e.g. shareholders' meeting"
 msgstr "z. B. Gesellschafterversammlung"
@@ -2672,11 +2827,17 @@ msgstr "zuletzt geändert"
 msgid "law, contract, customer requirement, code · ISO 37301 4.5"
 msgstr "Gesetz, Vertrag, Kundenanforderung, Kodex · ISO 37301 4.5"
 
+msgid "leave empty to keep the stored key"
+msgstr "leer lassen, um den gespeicherten Schlüssel zu behalten"
+
 msgid "lower"
 msgstr "kleiner ist besser"
 
 msgid "measurement"
 msgstr "Messwert"
+
+msgid "name as given by the operator of the service"
+msgstr "Name laut Betreiber des Dienstes"
 
 msgid "new"
 msgstr "neu"
@@ -2726,11 +2887,18 @@ msgstr "I&A-Review"
 msgid "revoked"
 msgstr "Widerrufen"
 
+msgid "search without AI (the administration has not set up the AI)"
+msgstr "Suche ohne KI (die Administration hat die KI nicht eingerichtet)"
+
 msgid "selection, instruction, supervision (§ 130 OWiG)"
 msgstr "Auswahl, Einweisung, Überwachung (§ 130 OWiG)"
 
 msgid "status"
 msgstr "Status gesetzt (Administration)"
+
+#, python-brace-format
+msgid "stored, ends with {hint}"
+msgstr "hinterlegt, endet auf {hint}"
 
 msgid "submitted"
 msgstr "Fachlich freigegeben"
@@ -2743,6 +2911,9 @@ msgstr "unverändert"
 
 msgid "vacant"
 msgstr "unbesetzt"
+
+msgid "with AI · finds processes, steps, roles and responsibilities"
+msgstr "mit KI · findet Prozesse, Schritte, Rollen und Zuständigkeiten"
 
 msgid "with line management responsibility"
 msgstr "mit disziplinarischer Personalverantwortung"

@@ -78,6 +78,15 @@
         if (m && !m.open) m.showModal();
       }
     });
+    // a chat form (data-chat) empties its question after an answer arrived and scrolls to it
+    document.body.addEventListener('htmx:afterRequest', function (ev) {
+      var form = ev.detail.elt;
+      if (!ev.detail.successful || !form.matches || !form.matches('form[data-chat]')) return;
+      var q = form.querySelector('[name="question"]');
+      if (q) { q.value = ''; q.focus(); }
+      var log = form.querySelector('[data-chat-log]');
+      if (log) log.scrollTop = log.scrollHeight;
+    });
     var modal = document.getElementById('modal');
     if (modal) modal.addEventListener('close', function () { document.getElementById('modal-body').innerHTML = ''; });
   });

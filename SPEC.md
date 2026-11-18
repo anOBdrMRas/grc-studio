@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a**–**S3c** = Stufen 2a–2c, 3a–3c (umgesetzt) · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a**–**S3d** = Stufen 2a–2c, 3a–3d (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -21,7 +21,8 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-GEN-08 | Rollen- und Stellenbeschreibung als druckbare Ansicht (📄-Symbol) | S1 |
 | FR-GEN-09 | Modulpunkte späterer Stufen zeigen „In Vorbereitung“ | S1 |
 | FR-GEN-10 | Excel-Export je Modul und für alle Module (mit Messwerten, Feststellungen, Prozessschritten); Import je Modul mit Vorschau (neu / geändert / unverändert / Fehler), Spalten auf Deutsch oder Englisch, Zuordnung per ID, Personen per Name; gespeichert wird über die API mit allen Rechte- und Versionsprüfungen | S3b |
-| FR-GEN-11 | KI-Assistent („Wo finde ich …?“, Textvorschläge, Prozessentwurf) | S3 |
+| FR-GEN-11 | KI-Assistent: Chat „Wo finde ich …?“ mit Verweisen nur auf Elemente, die die Person lesen darf (Startseite und Kopfzeile), Suche ohne KI als Rückfall; KI-Dienst in der Administration wählbar: OpenAI-kompatibel (interne con-AI) oder Anthropic-kompatibel, mit Adresse, Modell, API-Schlüssel (verschlüsselt, nie angezeigt) und Ein/Aus | S3d |
+| FR-GEN-11b | KI-Textvorschläge für Felder und Prozessentwurf aus Freitext | S3 |
 | FR-GEN-12 | Inhaltsverwaltung (nur Administration): eigene Felder (Text, Langtext, Zahl, Datum, Ja/Nein, Auswahl, Mehrfachauswahl, Person) und zusätzliche Auswahlwerte je Modul; wirken sofort in Masken, Historie und Excel. Standardfelder und -werte bleiben unverändert; ein eigenes Feld wird nur ausgeblendet, seine Werte bleiben erhalten; der Typ eines Feldes ist fest. Die API prüft Werte gegen Typ und Auswahlliste | S3c |
 
 ## 2. Anmeldung und Rechte

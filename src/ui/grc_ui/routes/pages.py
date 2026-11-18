@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse, Response
 
 from grc_ui.nav import NAV
+from grc_ui.routes.assistant import chat_context
 from grc_ui.routes.common import plain
 from grc_ui.session import UiContext, ui_context
 from grc_ui.templating import render
@@ -72,6 +73,7 @@ async def home(request: Request, ctx: UiContext = Depends(ui_context)) -> Respon
         received=received,
         todo=todo,
         actions=actions,
+        **await chat_context(ctx),
     )
 
 

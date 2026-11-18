@@ -8,6 +8,7 @@
     <h1 class="text-2xl font-bold">{{ _("Welcome, {name}").format(name=me.name) }}</h1>
     {% if me.position_title %}<p class="mt-1 text-sm">{{ me.position_title }}</p>{% endif %}
   </section>
+  <div class="lg:col-span-2">{% include "assistant/_chat.html" %}</div>
   {% if review %}
   <section class="rounded-box border border-base-300 bg-base-100 p-4">
     <h2 class="font-semibold">{{ _("Waiting for the I&A approval") }} <span class="badge badge-sm">{{ review|length }}</span></h2>

@@ -15,6 +15,7 @@
         <button class="btn join-item btn-xs {% if code == lang %}btn-secondary{% else %}btn-ghost{% endif %}" name="lang" value="{{ code }}" lang="{{ code }}" {% if code == lang %}aria-current="true"{% endif %} title="{{ name }}">{{ code|upper }}</button>
         {% endfor %}
       </form>
+      {% if path != "/" %}<button class="btn btn-ghost btn-sm" hx-get="/assistant" hx-target="#modal-body" title="{{ _('Assistant') }}">{{ icon("sparkles") }}<span class="hidden md:inline">{{ _("Assistant") }}</span></button>{% endif %}
       {{ theme_toggle() }}
       <div class="hidden text-right text-xs leading-tight sm:block">
         <div class="font-semibold">{{ me.name }}</div>

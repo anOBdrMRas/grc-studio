@@ -54,3 +54,7 @@ dialog.modal:not([open]) { display: none; }
 .kpi-target { stroke: #2f9e44; stroke-width: 1; stroke-dasharray: 4 3; }
 [data-theme='fidonis-dark'] .kpi-line { stroke: #8cc4ef; }
 [data-theme='fidonis-dark'] .kpi-dot { fill: #8cc4ef; }
+
+/* HTMX request indicator (the built-in indicator styles are off because of the CSP) */
+.htmx-indicator { display: none; }
+.htmx-request .htmx-indicator, .htmx-request.htmx-indicator { display: inline-flex; }
