@@ -42,7 +42,8 @@ async def test_only_admins_configure_the_ai(login: Login, secret: None) -> None:
     assert (await ia.get("/api/v1/ai/settings")).status_code == 403
     admin = await login("U-001")
     s = (await admin.get("/api/v1/ai/settings")).json()
-    assert s["has_key"] is False and s["secret_configured"] is True
+    assert s["has_key"] is False
+    assert s["secret_configured"] is True
     r = await admin.put("/api/v1/ai/settings", json={"version": 0, "enabled": True})
     assert r.status_code == 422  # no key yet
     r = await admin.put(
@@ -120,7 +121,8 @@ async def test_ai_answer_keeps_only_known_links(
     body = r.json()
     assert body["mode"] == "ai", body
     assert "[[role:RO-001|Rolle]]" in body["text"]
-    assert "R-999" not in body["text"] and "Geheimes Risiko" in body["text"]
+    assert "R-999" not in body["text"]
+    assert "Geheimes Risiko" in body["text"]
     call = fake_ai[0]
     assert call["key"] == KEY
     assert call["messages"][0]["role"] == "user"  # history starts with the person
