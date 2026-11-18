@@ -16,7 +16,7 @@
     <tbody>
       {% for p in plan %}
       <tr>
-        <td>{{ p.row }}</td><td class="font-mono">{{ p.code or "–" }}</td><td>{{ p.label }}</td>
+        <td>{{ p.row }}</td><td class="whitespace-nowrap font-mono">{{ p.code or "–" }}</td><td>{{ p.label }}</td>
         <td><span class="badge badge-sm {{ tones[p.action] }}">{{ names[p.action] }}</span></td>
         <td class="text-xs">
           {% if p.action == "error" %}<ul class="text-error">{% for e in p.errors %}<li>{{ e }}</li>{% endfor %}</ul>
