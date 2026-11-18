@@ -38,3 +38,19 @@ async def test_owner_may_edit_own_role_only(login: Login) -> None:
         "/api/v1/roles/RO-005", json={"version": other["version"], "values": {"description": "x"}}
     )
     assert r.status_code == 403
+
+
+async def test_org_chart(login: "Login") -> None:
+    employee = await login("U-004")
+    r = await employee.get("/api/v1/org-chart")
+    assert r.status_code == 200, r.text
+    chart = r.json()
+    ids = {p["id"] for p in chart["positions"]}
+    in_tree = set(chart["disciplinary"]["roots"]) | set(chart["disciplinary"]["separate"])
+    for kids in chart["disciplinary"]["children"].values():
+        in_tree |= set(kids)
+    assert in_tree == ids  # every position appears exactly in the hierarchy
+    assert {u for x in chart["units"] for u in x["position_ids"]} == ids
+    used = {r["role_id"] for p in chart["positions"] for r in p["roles"]}
+    assert {r["role_id"] for r in chart["matrix_roles"]} == used
+    assert any(p["sod_conflict"] for p in chart["positions"])

@@ -7,7 +7,7 @@ from grc_api.auth.deps import current_principal, secured
 from grc_api.auth.principal import Principal
 from grc_api.db import get_db
 from grc_api.schemas.common import CreateElement, ElementPatch, Revision, StateView, WorkflowAction
-from grc_api.schemas.org import PositionListItem, PositionOut, RoleListItem, RoleOut
+from grc_api.schemas.org import OrgChartOut, PositionListItem, PositionOut, RoleListItem, RoleOut
 from grc_api.services import org as svc
 
 router = APIRouter(prefix="/api/v1", tags=["organisation"])
@@ -62,6 +62,12 @@ async def roles_history(role_id: str, db: Db, p: Me) -> list[Revision]:
 )
 async def roles_state(role_id: str, revision_id: int, db: Db, p: Me) -> StateView:
     return await svc.state(db, "role", role_id, revision_id, p)
+
+
+@router.get("/org-chart", operation_id="org_chart", **secured("org:read"))
+async def org_chart(db: Db, p: Me) -> OrgChartOut:
+    """Hierarchies of the positions, positions by unit and the role matrix."""
+    return await svc.org_chart(db, p)
 
 
 @router.get("/positions", operation_id="positions_list", **secured("org:read"))

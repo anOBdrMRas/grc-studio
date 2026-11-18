@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.auth.principal import Principal
 from grc_api.domain.codes import next_code
-from grc_api.domain.org import sod_conflicts
+from grc_api.domain.org import sod_conflicts, tree
 from grc_api.errors import ProblemError
 from grc_api.models import Position, Role
 from grc_api.repositories import audit, elements
@@ -14,7 +14,12 @@ from grc_api.repositories import org as org_repo
 from grc_api.schemas.common import ElementPatch, Revision, StateView, WorkflowAction
 from grc_api.schemas.common import PersonRef as PersonRefOut
 from grc_api.schemas.org import (
+    ChartPosition,
+    ChartRole,
+    ChartTree,
+    ChartUnit,
     Holder,
+    OrgChartOut,
     PositionFields,
     PositionListItem,
     PositionOut,
@@ -204,6 +209,63 @@ async def list_positions(db: AsyncSession, p: Principal) -> list[PositionListIte
         )
         for x in org.positions.values()
     ]
+
+
+async def org_chart(db: AsyncSession, p: Principal) -> OrgChartOut:
+    """Positions as hierarchies (disciplinary, functional), by organisational unit and as role
+    matrix."""
+    _need(p, "org:read")
+    org = await load_org(db)
+    positions = sorted(org.positions.values(), key=lambda x: x.code)
+
+    def chart_role(role_id: str, comment: str) -> ChartRole | None:
+        r = org.roles.get(role_id)
+        return ChartRole(role_id=r.id, code=r.code, title=r.title, comment=comment) if r else None
+
+    out: list[ChartPosition] = []
+    for x in positions:
+        pairs = org.position_roles.get(x.id, [])
+        role_ids = [r for r, _ in pairs]
+        incompatible = {
+            rid: list(org.roles[rid].incompatible_role_ids) for rid in role_ids if rid in org.roles
+        }
+        out.append(
+            ChartPosition(
+                id=x.id,
+                code=x.code,
+                title=x.title,
+                org_unit=x.org_unit,
+                is_manager=x.is_manager,
+                headcount=x.headcount,
+                holders=[
+                    u.display_name
+                    for u in org.users.values()
+                    if u.position_id == x.id and u.status == "active"
+                ],
+                roles=[cr for r, c in pairs if (cr := chart_role(r, c))],
+                sod_conflict=bool(sod_conflicts(role_ids, incompatible)),
+            )
+        )
+    used = {r for x in positions for r, _ in org.position_roles.get(x.id, [])}
+    units: dict[str, list[str]] = {}
+    for x in positions:
+        units.setdefault(x.org_unit or "–", []).append(x.id)
+
+    def chart_tree(line: str) -> ChartTree:
+        t = tree([(x.id, getattr(x, f"reports_to_{line}_id")) for x in positions])
+        return ChartTree(roots=t.roots, children=t.children, separate=t.separate)
+
+    return OrgChartOut(
+        positions=out,
+        disciplinary=chart_tree("disciplinary"),
+        functional=chart_tree("functional"),
+        units=[ChartUnit(unit=u, position_ids=ids) for u, ids in units.items()],
+        matrix_roles=[
+            cr
+            for r in sorted(org.roles.values(), key=lambda r: r.code)
+            if r.id in used and (cr := chart_role(r.id, ""))
+        ],
+    )
 
 
 async def position_view(db: AsyncSession, position_id: str, p: Principal) -> PositionOut:

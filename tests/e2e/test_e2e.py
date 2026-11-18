@@ -262,6 +262,15 @@ def test_process_draft_without_ai(page: "Page") -> None:
     expect(page.locator("main")).to_contain_text("E2E Retoure")
 
 
+def test_org_chart_and_role_matrix(page: "Page") -> None:
+    sign_in(page, "U-004")
+    page.goto(BASE + "/positions")
+    page.click("a:has-text('Organigramm')")
+    expect(page.locator(".org-tree .org-card").first).to_be_visible()
+    page.click("a[role=tab]:has-text('Rollenzuordnungsmatrix')")
+    expect(page.locator(".role-matrix tbody tr").first).to_contain_text("ST-001")
+
+
 def test_bpmn_import_and_call_link(page: "Page") -> None:
     sign_in(page, "U-013")
     page.goto(BASE + "/processes/P-003")

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 10:34+0000\n"
+"POT-Creation-Date: 2026-11-18 11:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -708,6 +708,9 @@ msgstr ""
 msgid "Discarded"
 msgstr ""
 
+msgid "Disciplinary"
+msgstr ""
+
 msgid "Document"
 msgstr ""
 
@@ -950,6 +953,9 @@ msgstr ""
 msgid "Frequency"
 msgstr ""
 
+msgid "Functional"
+msgstr ""
+
 msgid "Functional authorities of the role"
 msgstr ""
 
@@ -1047,6 +1053,9 @@ msgid "Headcount (planned)"
 msgstr ""
 
 msgid "Here the administration adds custom fields and additional dropdown values. The changes apply at once in the forms and in Excel. Standard fields and values stay unchanged so that existing data remains valid."
+msgstr ""
+
+msgid "Hide roles"
 msgstr ""
 
 msgid "Hide the field? Stored values are kept."
@@ -1559,6 +1568,9 @@ msgstr ""
 msgid "No position holds this role."
 msgstr ""
 
+msgid "No positions yet."
+msgstr ""
+
 msgid "No processes."
 msgstr ""
 
@@ -1669,6 +1681,9 @@ msgid "Opportunity"
 msgstr ""
 
 msgid "Opportunity for improvement"
+msgstr ""
+
+msgid "Org chart"
 msgstr ""
 
 msgid "Org. unit"
@@ -2180,6 +2195,9 @@ msgstr ""
 msgid "Role description"
 msgstr ""
 
+msgid "Role matrix"
+msgstr ""
+
 msgid "Role owner"
 msgstr ""
 
@@ -2327,6 +2345,9 @@ msgid "Show preview"
 msgstr ""
 
 msgid "Show role description (summary)"
+msgstr ""
+
+msgid "Show roles"
 msgstr ""
 
 msgid "Show the assessment scale"
@@ -2646,6 +2667,9 @@ msgstr ""
 msgid "Unit"
 msgstr ""
 
+msgid "Units"
+msgstr ""
+
 #, python-brace-format
 msgid "Unknown value: {value}"
 msgstr ""
@@ -2745,6 +2769,12 @@ msgid "Without AI: one line = one step"
 msgstr ""
 
 msgid "Without AI: one line per step, a question ending in “?” becomes a decision, the role in brackets, e.g. “Check goods (Goods receipt / warehouse)”."
+msgstr ""
+
+msgid "Without functional reporting line (n/a)"
+msgstr ""
+
+msgid "Without reporting line (n/a)"
 msgstr ""
 
 msgid "Workflow status and quality grade"
@@ -3090,5 +3120,8 @@ msgid "— not linked —"
 msgstr ""
 
 msgid "≥ 3 m USD"
+msgstr ""
+
+msgid "● role assigned · * with comment (tooltip)"
 msgstr ""
 

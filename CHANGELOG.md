@@ -5,6 +5,12 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 4a)
+- Org chart of the positions: disciplinary and functional hierarchy (cycles and unknown
+  superiors become roots, positions without reporting line shown apart), positions by unit,
+  holders, roles (can be hidden) and a segregation-of-duties hint; role matrix position × role
+  with comments as tooltip. Reached from Positions and Roles (`GET /api/v1/org-chart`).
+
 ### Added (stage 4b)
 - Call activities link to the process they call: chosen in the step panel, with a jump to the
   called process; the called process lists "Called by", the calling one "Calls"; changes are

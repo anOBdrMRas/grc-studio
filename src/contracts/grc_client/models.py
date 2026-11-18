@@ -141,6 +141,38 @@ Catalogs = TypedDict(
 Change = TypedDict("Change", {"key": "str", "from": "Any", "to": "Any"}, total=False)
 
 
+ChartPosition = TypedDict(
+    "ChartPosition",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "org_unit": "str",
+        "is_manager": "bool",
+        "headcount": "int",
+        "holders": "list[str]",
+        "roles": "list[ChartRole]",
+        "sod_conflict": "bool",
+    },
+    total=False,
+)
+
+
+ChartRole = TypedDict(
+    "ChartRole", {"role_id": "str", "code": "str", "title": "str", "comment": "str"}, total=False
+)
+
+
+ChartTree = TypedDict(
+    "ChartTree",
+    {"roots": "list[str]", "children": "dict[str, list[str]]", "separate": "list[str]"},
+    total=False,
+)
+
+
+ChartUnit = TypedDict("ChartUnit", {"unit": "str", "position_ids": "list[str]"}, total=False)
+
+
 CheckItemOut = TypedDict(
     "CheckItemOut",
     {
@@ -589,6 +621,19 @@ OpportunityOut = TypedDict(
         "workflow": "list[WorkflowEntryOut]",
         "released": "dict[str, Any] | None",
         "labels": "dict[str, str]",
+    },
+    total=False,
+)
+
+
+OrgChartOut = TypedDict(
+    "OrgChartOut",
+    {
+        "positions": "list[ChartPosition]",
+        "disciplinary": "ChartTree",
+        "functional": "ChartTree",
+        "units": "list[ChartUnit]",
+        "matrix_roles": "list[ChartRole]",
     },
     total=False,
 )

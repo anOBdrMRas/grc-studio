@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% from "macros.html" import empty %}
+{% block title %}{{ _("Org chart") }} · {% endblock %}
+{% macro card(p) %}
+<a class="org-card {{ 'org-manager' if p.is_manager }}" href="/positions/{{ p.id }}">
+  <span class="block font-semibold leading-tight">{{ p.title }}</span>
+  <span class="block text-[11px] opacity-60"><span class="font-mono">{{ p.code }}</span> · {{ _(p.org_unit) if p.org_unit else "–" }}{% if p.headcount > 1 %} · {{ p.holders|length }}/{{ p.headcount }}{% endif %}</span>
+  <span class="mt-1 block text-xs {{ 'text-warning' if not p.holders }}">{{ p.holders|join(", ") if p.holders else _("vacant") }}</span>
+  {% if show_roles and p.roles %}<span class="mt-1 flex flex-wrap gap-1">{% for r in p.roles %}<span class="org-role" title="{{ r.comment or r.title }}">{{ r.title }}</span>{% endfor %}</span>{% endif %}
+  {% if p.sod_conflict %}<span class="mt-1 block text-[11px] text-error">⚠ {{ _("Segregation of duties") }}</span>{% endif %}
+</a>
+{% endmacro %}
+{% macro branch(id, t, seen) %}
+{% if id not in seen and id in by_id %}
+<li>{{ card(by_id[id]) }}
+  {% set kids = t.children.get(id, []) %}
+  {% if kids %}<ul>{% for k in kids %}{{ branch(k, t, seen + [id]) }}{% endfor %}</ul>{% endif %}
+</li>
+{% endif %}
+{% endmacro %}
+{% block content %}
+<div class="grid gap-4 p-6">
+  <section class="rounded-box border border-base-300 bg-base-100 p-4">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <h1 class="text-2xl font-bold">{{ _("Org chart") }}</h1>
+      <div class="flex flex-wrap items-center gap-3">
+        {% if view in ("disciplinary", "functional") %}
+        <a class="link text-sm" href="/org-chart?view={{ view }}&roles={{ 0 if show_roles else 1 }}">{{ _("Hide roles") if show_roles else _("Show roles") }}</a>
+        {% endif %}
+        <div role="tablist" class="tabs tabs-boxed tabs-sm">
+          {% for v, label in (("disciplinary", _("Disciplinary")), ("functional", _("Functional")), ("units", _("Units")), ("roles", _("Role matrix"))) %}
+          <a role="tab" class="tab {{ 'tab-active' if v == view }}" href="/org-chart?view={{ v }}{% if not show_roles %}&roles=0{% endif %}" {% if v == view %}aria-selected="true"{% endif %}>{{ label }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% if not chart.positions %}{{ empty(_("No positions yet.")) }}
+  {% elif view in ("disciplinary", "functional") %}
+  {% set t = chart[view] %}
+  <section class="overflow-x-auto rounded-box border border-base-300 bg-base-100 p-4">
+    <ul class="org-tree">{% for r in t.roots %}{{ branch(r, t, []) }}{% endfor %}</ul>
+    {% if t.separate %}
+    <h2 class="mt-6 text-sm font-semibold uppercase tracking-wide opacity-70">{{ _("Without functional reporting line (n/a)") if view == "functional" else _("Without reporting line (n/a)") }}</h2>
+    <div class="mt-2 flex flex-wrap gap-2">{% for id in t.separate %}{{ card(by_id[id]) }}{% endfor %}</div>
+    {% endif %}
+  </section>
+  {% elif view == "units" %}
+  <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+    {% for u in chart.units %}
+    <section class="rounded-box border border-base-300 bg-base-100 p-3">
+      <h2 class="mb-2 text-sm font-semibold uppercase tracking-wide text-secondary">{{ _(u.unit) }}</h2>
+      <div class="grid gap-2">{% for id in u.position_ids %}{{ card(by_id[id]) }}{% endfor %}</div>
+    </section>
+    {% endfor %}
+  </div>
+  {% else %}
+  <section class="overflow-x-auto rounded-box border border-base-300 bg-base-100 p-4">
+    <table class="table table-xs role-matrix w-auto">
+      <thead><tr><th>{{ _("Position") }}</th>{% for r in chart.matrix_roles %}<th class="matrix-head" title="{{ r.code }} {{ r.title }}"><a href="/roles/{{ r.role_id }}"><span>{{ r.title }}</span></a></th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for p in chart.positions %}
+        <tr class="hover">
+          <td class="whitespace-nowrap"><a class="link link-hover" href="/positions/{{ p.id }}"><span class="font-mono text-xs opacity-70">{{ p.code }}</span> {{ p.title }}</a>{% if p.sod_conflict %} <span class="text-error" title="{{ _('Segregation of duties') }}">⚠</span>{% endif %}</td>
+          {% for r in chart.matrix_roles %}
+          {% set pr = (p.roles|selectattr("role_id", "equalto", r.role_id)|list or [none])[0] %}
+          <td class="text-center" {% if pr and pr.comment %}title="{{ pr.comment }}"{% endif %}>{% if pr %}●{% if pr.comment %}*{% endif %}{% endif %}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="mt-2 text-xs opacity-60">{{ _("● role assigned · * with comment (tooltip)") }}</p>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

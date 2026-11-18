@@ -57,3 +57,24 @@ def test_is_bpmn() -> None:
     assert is_bpmn('<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"/>')
     assert not is_bpmn("<svg/>")
     assert not is_bpmn('<?xml version="1.0"?><!DOCTYPE d [<!ENTITY a "a">]><d/>')
+
+
+def test_org_tree_roots_children_cycles_and_separate() -> None:
+    from grc_api.domain.org import tree
+
+    t = tree(
+        [
+            ("A", None),
+            ("B", "A"),
+            ("C", "A"),
+            ("D", "B"),
+            ("X", "Y"),  # cycle X ↔ Y
+            ("Y", "X"),
+            ("N", "n/a"),
+        ]
+    )
+    assert t.roots == ["A", "X"]
+    assert t.children["A"] == ["B", "C"]
+    assert t.children["B"] == ["D"]
+    assert t.separate == ["N"]
+    assert tree([("N", "n/a")]).separate == []

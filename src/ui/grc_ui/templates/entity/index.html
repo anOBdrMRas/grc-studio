@@ -7,6 +7,7 @@
     <div class="mb-2 flex items-center justify-between gap-2">
       <h1 class="text-lg font-bold">{{ _(mod.title) }}</h1>
       <span class="flex items-center gap-1">
+        {% if mod.kind == "position" %}<a class="btn btn-ghost btn-xs" href="/org-chart">{{ _("Org chart") }}</a>{% elif mod.kind == "role" %}<a class="btn btn-ghost btn-xs" href="/org-chart?view=roles">{{ _("Role matrix") }}</a>{% endif %}
         <a class="btn btn-ghost btn-xs" href="{{ mod.base }}/export.xlsx" title="{{ _('Excel export') }}">{{ icon("download", "h-4 w-4") }} Excel</a>
         {% if can(mod.manage_perm) %}<button class="btn btn-ghost btn-xs" hx-get="{{ mod.base }}/import" hx-target="#modal-body" title="{{ _('Excel import') }}">{{ icon("upload", "h-4 w-4") }} Excel</button>{% endif %}
       </span>
