@@ -59,3 +59,16 @@ def is_bpmn(xml: str) -> bool:
     except (ParseError, DefusedXmlException):
         return False
     return bool(root.tag == "{http://www.omg.org/spec/BPMN/20100524/MODEL}definitions")
+
+
+def call_activities(xml: str) -> dict[str, str]:
+    """Call activities of a diagram: element id → name."""
+    try:
+        root = fromstring(xml)
+    except (ParseError, DefusedXmlException):
+        return {}
+    return {
+        el.get("id") or "": el.get("name") or el.get("id") or ""
+        for el in root.iter(f"{{{BPMN_NS}}}callActivity")
+        if el.get("id")
+    }

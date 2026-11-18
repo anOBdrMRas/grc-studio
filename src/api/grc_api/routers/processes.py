@@ -8,6 +8,7 @@ from grc_api.auth.principal import Principal
 from grc_api.db import get_db
 from grc_api.schemas.common import CreateElement, ElementPatch, Revision, StateView, WorkflowAction
 from grc_api.schemas.processes import (
+    CallLinkIn,
     DiagramIn,
     DiagramOut,
     ProcessListItem,
@@ -64,6 +65,18 @@ async def processes_save_diagram(
     process_id: str, body: DiagramIn, db: Db, p: Me, if_match: IfMatch = None
 ) -> DiagramOut:
     return await svc.save_diagram(db, process_id, body, if_match, p)
+
+
+@router.put(
+    "/{process_id}/steps/{element_id}/call",
+    operation_id="processes_link_call",
+    **secured("processes:read"),
+)
+async def processes_link_call(
+    process_id: str, element_id: str, body: CallLinkIn, db: Db, p: Me, if_match: IfMatch = None
+) -> ProcessOut:
+    """Links a call activity to the called process; the editing rights of the process apply."""
+    return await svc.link_call(db, process_id, element_id, body, if_match, p)
 
 
 @router.put(

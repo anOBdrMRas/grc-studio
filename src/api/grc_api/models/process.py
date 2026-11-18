@@ -1,6 +1,7 @@
 """Processes (BPMN) and the roles assigned to their steps."""
 
 from sqlalchemy import ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
 from grc_api.db import Base
@@ -25,6 +26,10 @@ class Process(Versioned, Approvable, Base):
     resources: Mapped[str] = text_col()
     standards: Mapped[list[str]] = str_list()
     xml: Mapped[str] = mapped_column(Text, nullable=False, default="", server_default="")
+    # call activities of the diagram → called process (element id → process id)
+    call_links: Mapped[dict[str, str]] = mapped_column(
+        JSONB, nullable=False, default=dict, server_default="{}"
+    )
 
 
 class StepAssignment(Base):

@@ -575,6 +575,68 @@
         "title": "AuditOut",
         "type": "object"
       },
+      "CallLinkIn": {
+        "properties": {
+          "target_process_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "None removes the link",
+            "title": "Target Process Id"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          }
+        },
+        "title": "CallLinkIn",
+        "type": "object"
+      },
+      "CallerRef": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "element_id": {
+            "title": "Element Id",
+            "type": "string"
+          },
+          "element_name": {
+            "title": "Element Name",
+            "type": "string"
+          },
+          "process_id": {
+            "title": "Process Id",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "process_id",
+          "code",
+          "title",
+          "element_id",
+          "element_name"
+        ],
+        "title": "CallerRef",
+        "type": "object"
+      },
       "Catalogs": {
         "properties": {
           "iso": {
@@ -3223,6 +3285,30 @@
             "title": "Area",
             "type": "string"
           },
+          "call_activities": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "call activities: element id → name",
+            "title": "Call Activities",
+            "type": "object"
+          },
+          "called_by": {
+            "description": "call activities of other processes calling this",
+            "items": {
+              "$ref": "#/components/schemas/CallerRef"
+            },
+            "title": "Called By",
+            "type": "array"
+          },
+          "calls": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ProcessRef"
+            },
+            "description": "call activity → called process",
+            "title": "Calls",
+            "type": "object"
+          },
           "category": {
             "default": "Core process",
             "title": "Category",
@@ -3407,11 +3493,37 @@
           "steps",
           "links",
           "ics_gaps",
+          "call_activities",
+          "calls",
+          "called_by",
           "workflow",
           "released",
           "labels"
         ],
         "title": "ProcessOut",
+        "type": "object"
+      },
+      "ProcessRef": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "process_id": {
+            "title": "Process Id",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "process_id",
+          "code",
+          "title"
+        ],
+        "title": "ProcessRef",
         "type": "object"
       },
       "ReviewItem": {
@@ -8379,6 +8491,85 @@
           }
         },
         "summary": "Processes State",
+        "tags": [
+          "processes"
+        ],
+        "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/processes/{process_id}/steps/{element_id}/call": {
+      "put": {
+        "description": "Links a call activity to the called process; the editing rights of the process apply.",
+        "operationId": "processes_link_call",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "process_id",
+            "required": true,
+            "schema": {
+              "title": "Process Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "element_id",
+            "required": true,
+            "schema": {
+              "title": "Element Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallLinkIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Processes Link Call",
         "tags": [
           "processes"
         ],

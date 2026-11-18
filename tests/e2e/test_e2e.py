@@ -260,3 +260,21 @@ def test_process_draft_without_ai(page: "Page") -> None:
     page.click("#modal-body button:has-text('Als Entwurf übernehmen')")
     page.wait_for_url(re.compile(r".*/processes/P-\d+"))
     expect(page.locator("main")).to_contain_text("E2E Retoure")
+
+
+def test_bpmn_import_and_call_link(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/processes/P-003")
+    page.click("button[hx-get$='/diagram/import']")
+    page.set_input_files(
+        "#modal-body input[type=file]",
+        str(Path(__file__).parents[1] / "fixtures" / "call_activity.bpmn"),
+    )
+    page.click("#modal-body button:has-text('Importieren')")
+    page.locator("[data-element-id='Call_Beschaffung']").click()
+    page.select_option("#step-panel select[name=target_process_id]", "P-001")
+    page.click("#step-panel button:has-text('Verknüpfen')")
+    expect(page.locator("#step-panel a[href='/processes/P-001']")).to_be_visible()
+    with page.expect_download() as dl:
+        page.click("button[data-action=export-svg]")
+    assert dl.value.suggested_filename == "P-003.svg"

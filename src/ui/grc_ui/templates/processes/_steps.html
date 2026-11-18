@@ -1,6 +1,20 @@
 <div data-process-version="{{ item.version }}">
   <p class="text-xs opacity-60">{{ _("Process step") }}</p>
   <h3 class="font-semibold">{{ name or element_id }}</h3>
+  {% if is_call %}
+  <h4 class="mt-3 text-xs font-semibold uppercase tracking-wide text-secondary">{{ _("Called process") }}</h4>
+  {% if call %}<p class="mt-1"><a class="link link-secondary" href="/processes/{{ call.process_id }}">{{ call.code }} {{ call.title }} →</a></p>{% else %}<p class="mt-1 text-xs opacity-70">{{ _("— not linked —") }}</p>{% endif %}
+  {% if item.rights.can_edit %}
+  <form hx-post="/processes/{{ item.id }}/steps/{{ element_id }}/call" hx-target="#step-panel" class="mt-1 flex min-w-0 gap-1">
+    <input type="hidden" name="version" value="{{ item.version }}"><input type="hidden" name="name" value="{{ name }}">
+    <select name="target_process_id" class="select select-bordered select-sm min-w-0 flex-1" aria-label="{{ _('Called process') }}">
+      <option value="">{{ _("— not linked —") }}</option>
+      {% for pid, label in processes %}<option value="{{ pid }}" {% if call and call.process_id == pid %}selected{% endif %}>{{ label }}</option>{% endfor %}
+    </select>
+    <button class="btn btn-primary btn-sm">{{ _("Link") }}</button>
+  </form>
+  {% endif %}
+  {% endif %}
   <h4 class="mt-3 text-xs font-semibold uppercase tracking-wide text-secondary">{{ _("Roles") }} ({{ assigned|length }})</h4>
   {% if assigned %}
   <ul class="mt-1 grid gap-1">
