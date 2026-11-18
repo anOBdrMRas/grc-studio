@@ -182,7 +182,7 @@ def value(f: CustomField, raw: Any, current: Any = None) -> Any:
     if t == "number":
         if isinstance(raw, bool) or not isinstance(raw, int | float):
             raise ContentError(f"{f.label}: number expected")
-        return raw
+        return int(raw) if isinstance(raw, float) and raw.is_integer() else raw
     if t == "bool":
         if not isinstance(raw, bool):
             raise ContentError(f"{f.label}: yes or no expected")

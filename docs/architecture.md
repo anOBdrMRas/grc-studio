@@ -48,11 +48,13 @@ Enforced by import-linter (`pyproject.toml`).
 | `step_links` | process × BPMN element × risk / opportunity / control / KPI (unique) |
 | `audits`, `audit_findings` | audits (own planning status, no approval workflow) and their findings with corrective actions |
 | `mandates` | delegations and powers of attorney; approval steps in `workflow_entries` (granted, accepted, declined, revoked) |
+| `settings` | settings documents with version: `content` = custom fields and additional dropdown values |
 | `audit_log` | every change (field diffs), sign-in, diagram and assignment notes |
 | `workflow_entries` | workflow steps per element (submitted, approved, rejected, reopened, status) |
 | `sessions` | server sessions (token hash, CSRF token, expiry) |
 
-Every element table carries `version`, `created_at` and `updated_at` (mixin `Versioned`); workflow
+Every element table carries `version`, `created_at`, `updated_at` and `custom` (values of the
+custom fields, `x_…` → value; mixin `Versioned`); workflow
 elements also carry `status`, `doc_version`, `next_review` and `released` (mixin `Approvable`).
 
 ## Request flow: saving a role

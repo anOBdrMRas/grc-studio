@@ -129,3 +129,16 @@ async def test_custom_values_of_users(login: Login) -> None:
     )
     assert r.status_code == 200, r.text
     assert r.json()["custom"] == {"x_badge_number": "4711"}
+
+
+async def test_empty_values_of_unfilled_fields_are_no_change(login: Login) -> None:
+    admin = await login("U-001")
+    await _configure(admin)
+    risk = (await admin.get("/api/v1/risks/R-002")).json()
+    r = await admin.patch(
+        "/api/v1/risks/R-002",
+        json={"version": risk["version"], "values": {"x_budget_eur": None}},
+    )
+    assert r.status_code == 200, r.text
+    assert r.json()["custom"] == {}
+    assert r.json()["version"] == risk["version"]

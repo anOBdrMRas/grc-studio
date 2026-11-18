@@ -1,0 +1,60 @@
+{# panel of one module: standard fields (dropdowns extendable), custom fields, new field #}
+{% macro chips(fixed, extra, add_url, remove_url) %}
+<div class="mt-1 flex flex-wrap items-center gap-1">
+  {% for o in fixed %}<span class="badge badge-ghost gap-1" title="{{ _('Standard value') }}">{{ _(o|string) }}</span>{% endfor %}
+  {% for o in extra %}<span class="badge badge-secondary badge-outline gap-1">{{ o }}
+    <button class="leading-none" hx-post="{{ remove_url }}" hx-vals='{"value": {{ o|tojson }}}' hx-target="#content-panel" hx-swap="outerHTML" aria-label="{{ _('Remove {value}').format(value=o) }}">×</button></span>{% endfor %}
+  <form class="join" hx-post="{{ add_url }}" hx-target="#content-panel" hx-swap="outerHTML">
+    <input name="value" class="input input-bordered input-xs join-item w-36" placeholder="{{ _('new value') }}" aria-label="{{ _('new value') }}" required maxlength="200">
+    <button class="btn btn-xs join-item">+ {{ _("Value") }}</button>
+  </form>
+</div>
+{% endmacro %}
+<div id="content-panel" class="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+  <section class="rounded-box border border-base-300 bg-base-100 p-4">
+    <h2 class="font-semibold">{{ _("Fields and dropdown values") }}</h2>
+    {% for sec in sections %}
+    <div class="mt-3">
+      <h3 class="border-b border-base-300 pb-1 text-sm font-semibold uppercase tracking-wide opacity-70">{{ _(sec.title) }}</h3>
+      <ul class="divide-y divide-base-200">
+        {% for f in sec.standard %}
+        <li class="py-2 text-sm">
+          <div class="flex flex-wrap items-center gap-2">{{ icon("lock", "h-3 w-3 opacity-50") }}<span class="font-medium">{{ _(f.label) }}</span><span class="text-xs opacity-60">{{ _(f.type_label) }}</span></div>
+          {% if f.extendable %}{{ chips(f.fixed, f.extra, "/admin/content/" ~ kind ~ "/options/" ~ f.key ~ "/add", "/admin/content/" ~ kind ~ "/options/" ~ f.key ~ "/remove") }}{% endif %}
+        </li>
+        {% endfor %}
+        {% for c in sec.custom %}
+        <li class="bg-base-200/40 py-2 text-sm">
+          <div class="flex flex-wrap items-center gap-2">
+            {{ icon("pencil", "h-3 w-3 opacity-60") }}
+            <form class="join" hx-post="/admin/content/{{ kind }}/fields/{{ c.key }}/label" hx-target="#content-panel" hx-swap="outerHTML">
+              <input name="value" value="{{ c.label }}" class="input input-bordered input-xs join-item w-56" aria-label="{{ _('Label') }}" required maxlength="200">
+              <button class="btn btn-xs join-item">{{ _("Rename") }}</button>
+            </form>
+            <span class="text-xs opacity-60">{{ _(type_labels[c.type]) }} · <code>{{ c.key }}</code></span>
+            <button class="btn btn-ghost btn-xs ml-auto text-error" hx-post="/admin/content/{{ kind }}/fields/{{ c.key }}/remove" hx-target="#content-panel" hx-swap="outerHTML" hx-confirm="{{ _('Hide the field? Stored values are kept.') }}">{{ icon("trash", "h-3 w-3") }} {{ _("Delete field") }}</button>
+          </div>
+          {% if c.type in with_options %}{{ chips([], c.options, "/admin/content/" ~ kind ~ "/fields/" ~ c.key ~ "/options/add", "/admin/content/" ~ kind ~ "/fields/" ~ c.key ~ "/options/remove") }}{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="h-fit rounded-box border border-base-300 bg-base-100 p-4">
+    <h2 class="font-semibold">+ {{ _("Add field") }}</h2>
+    <form class="mt-2 grid gap-2" hx-post="/admin/content/{{ kind }}/fields" hx-target="#content-panel" hx-swap="outerHTML">
+      <label class="form-control"><span class="label-text text-sm">{{ _("Label") }}</span>
+        <input name="label" class="input input-bordered input-sm" required maxlength="200"></label>
+      <label class="form-control"><span class="label-text text-sm">{{ _("Type") }}</span>
+        <select name="type" class="select select-bordered select-sm">{% for k, label in type_labels.items() %}<option value="{{ k }}">{{ _(label) }}</option>{% endfor %}</select></label>
+      <label class="form-control"><span class="label-text text-sm">{{ _("Section") }}</span>
+        <select name="section" class="select select-bordered select-sm">{% for t in section_titles %}<option value="{{ t }}" {% if loop.last %}selected{% endif %}>{{ _(t) }}</option>{% endfor %}</select></label>
+      <label class="form-control"><span class="label-text text-sm">{{ _("Dropdown values") }} <span class="opacity-60">· {{ _("one value per line, for dropdowns only") }}</span></span>
+        <textarea name="options" rows="4" class="textarea textarea-bordered text-sm"></textarea></label>
+      <button class="btn btn-primary btn-sm">+ {{ _("Add field") }}</button>
+      <p class="text-xs opacity-60">{{ _("The field appears at once in the form of the module and as a column in the Excel export.") }}</p>
+    </form>
+  </section>
+</div>

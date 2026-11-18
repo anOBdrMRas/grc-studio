@@ -164,3 +164,55 @@ def test_export_all_sheets_have_headers() -> None:
     wb = load_workbook(io.BytesIO(content))
     assert len(wb.worksheets) == 8
     assert all(ws.max_row >= 1 for ws in wb.worksheets)
+
+
+def test_custom_fields_and_extra_values_in_forms_and_excel() -> None:
+    from grc_ui.content import NEW_SECTION, Content, flat
+
+    cfg = Content(
+        version=1,
+        fields={
+            "risk": [
+                {"key": "x_budget", "label": "Budget", "type": "number", "section": ""},
+                {"key": "x_agency", "label": "Agency", "type": "select", "options": ["A", "B"]},
+                {"key": "x_gone", "label": "Gone", "type": "text", "removed": True},
+            ]
+        },
+        options={"risk.category": ["Supply chain"]},
+        base_lists=dict(LK.lists),
+    )
+    sections = cfg.sections("risk")
+    assert sections[-1]["title"] == NEW_SECTION
+    assert [f["key"] for f in sections[-1]["fields"]] == ["x_budget", "x_agency"]
+    category = next(f for s in sections for f in s["fields"] if f["key"] == "category")
+    assert category["options"] == "risk.category"
+    lists = cfg.lists
+    assert lists["risk.category"] == ["Quality", "Financial", "Strategic", "Supply chain"]
+    assert lists["custom:risk.x_agency"] == ["A", "B"]
+    assert cfg.labels("risk")["x_gone"] == "Gone"
+    # the forms of the code are not changed by the configuration
+    assert all(f["key"] != "x_budget" for s in FORMS["risk"] for f in s["fields"])
+
+    lk = excel.Lookups(people=LK.people, lists=lists)
+    item = flat(RISK | {"category": "Supply chain", "custom": {"x_budget": 5, "x_agency": "B"}})
+    data = excel.workbook([excel.SheetData("Risks", sections, [item])], [], lk)
+    rows, unknown = excel.read_rows(data, sections, lk)
+    assert unknown == []
+    assert rows[0].errors == []
+    assert rows[0].values["category"] == "Supply chain"
+    assert rows[0].values["x_budget"] == 5
+    assert rows[0].values["x_agency"] == "B"
+
+
+def test_empty_custom_number_stays_empty() -> None:
+    from starlette.datastructures import FormData
+
+    from grc_ui.content import field_def
+    from grc_ui.formdata import values_from_form
+
+    f = field_def("risk", {"key": "x_n", "label": "N", "type": "number"})
+    sections = [{"title": "T", "fields": [f]}]
+    assert values_from_form(sections, FormData([("x_n", "")]), True) == {"x_n": None}
+    assert values_from_form(sections, FormData([("x_n", "2,5")]), True) == {"x_n": 2.5}
+    assert excel.decode(f, None, LK) is None
+    assert excel.changes({"x_b": None}, {"x_b": False}) == {}

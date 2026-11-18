@@ -15,8 +15,9 @@ from fastapi import APIRouter, Depends, Request, UploadFile
 from fastapi.responses import HTMLResponse, Response
 
 from grc_client import ApiError, GrcClient
-from grc_ui import excel
-from grc_ui.forms import FORMS, Section
+from grc_ui import content, excel
+from grc_ui.content import Content, flat
+from grc_ui.forms import Section
 from grc_ui.i18n import N_, gettext
 from grc_ui.routes.common import catalogs, plain
 from grc_ui.routes.modules import MODULES
@@ -38,9 +39,8 @@ class Kind:
     read_perm: str
     manage_perm: str
 
-    @property
-    def sections(self) -> list[Section]:
-        return FORMS[self.kind]
+    def sections(self, cfg: Content) -> list[Section]:
+        return cfg.sections(self.kind)
 
 
 KINDS: dict[str, Kind] = {
@@ -68,16 +68,20 @@ def _fn(api: GrcClient, k: Kind, op: str) -> Callable[..., Awaitable[Any]]:
 
 async def _items(api: GrcClient, k: Kind) -> list[dict[str, Any]]:
     """Full elements of a module (the lists carry only a few columns)."""
-    return [plain(await _fn(api, k, "get")(x["id"])) for x in await _fn(api, k, "list")()]
+    return [flat(plain(await _fn(api, k, "get")(x["id"]))) for x in await _fn(api, k, "list")()]
 
 
-async def _lookups(ctx: UiContext) -> excel.Lookups:
+async def _content(ctx: UiContext) -> Content:
+    return await content.load(ctx.api, dict((await catalogs(ctx.api))["lists"]))
+
+
+async def _lookups(ctx: UiContext, cfg: Content) -> excel.Lookups:
     people = {p["id"]: p["name"] for p in await ctx.api.people_list()}
-    return excel.Lookups(people=people, lists=dict((await catalogs(ctx.api))["lists"]))
+    return excel.Lookups(people=people, lists=cfg.lists)
 
 
 async def _extras(
-    ctx: UiContext, kinds: list[Kind], cache: dict[str, list[dict[str, Any]]]
+    ctx: UiContext, kinds: list[Kind], cache: dict[str, list[dict[str, Any]]], cfg: Content
 ) -> list[excel.ExtraSheet]:
     """Additional tables for export: KPI values, audit findings, process steps."""
     out = []
@@ -95,7 +99,7 @@ async def _extras(
             )
         )
     if "audits" in slugs:
-        lk = await _lookups(ctx)
+        lk = await _lookups(ctx, cfg)
         out.append(
             excel.ExtraSheet(
                 gettext("Findings"),
@@ -172,10 +176,11 @@ def _download(content: bytes, name: str) -> Response:
 async def export_all(ctx: UiContext = Depends(ui_context)) -> Response:
     """All modules the person may read, one sheet each, plus the additional tables."""
     kinds = [k for k in KINDS.values() if ctx.can(k.read_perm)]
+    cfg = await _content(ctx)
     cache = {k.slug: await _items(ctx.api, k) for k in kinds}
-    sheets = [excel.SheetData(gettext(k.title), k.sections, cache[k.slug]) for k in kinds]
-    content = excel.workbook(sheets, await _extras(ctx, kinds, cache), await _lookups(ctx))
-    return _download(content, "grc-studio")
+    sheets = [excel.SheetData(gettext(k.title), k.sections(cfg), cache[k.slug]) for k in kinds]
+    data = excel.workbook(sheets, await _extras(ctx, kinds, cache, cfg), await _lookups(ctx, cfg))
+    return _download(data, "grc-studio")
 
 
 def export_route(k: Kind) -> None:
@@ -183,10 +188,11 @@ def export_route(k: Kind) -> None:
     async def export(ctx: UiContext = Depends(ui_context)) -> Response:
         if not ctx.can(k.read_perm):
             return Response(status_code=403)
+        cfg = await _content(ctx)
         items = await _items(ctx.api, k)
-        sheets = [excel.SheetData(gettext(k.title), k.sections, items)]
-        extras = await _extras(ctx, [k], {k.slug: items})
-        return _download(excel.workbook(sheets, extras, await _lookups(ctx)), k.slug)
+        sheets = [excel.SheetData(gettext(k.title), k.sections(cfg), items)]
+        extras = await _extras(ctx, [k], {k.slug: items}, cfg)
+        return _download(excel.workbook(sheets, extras, await _lookups(ctx, cfg)), k.slug)
 
     @router.get(k.base + "/import", response_class=HTMLResponse, name=f"{k.slug}_import")
     async def import_form(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
@@ -204,8 +210,8 @@ def export_route(k: Kind) -> None:
                 k=k,
                 error=gettext("You are not allowed to do this."),
             )
-        content = await file.read(MAX_UPLOAD + 1)
-        if len(content) > MAX_UPLOAD:
+        data = await file.read(MAX_UPLOAD + 1)
+        if len(data) > MAX_UPLOAD:
             return render(
                 request,
                 "excel/_upload.html",
@@ -213,9 +219,10 @@ def export_route(k: Kind) -> None:
                 k=k,
                 error=gettext("The file is larger than 5 MB."),
             )
-        lk = await _lookups(ctx)
+        cfg = await _content(ctx)
+        lk = await _lookups(ctx, cfg)
         try:
-            rows, unknown = excel.read_rows(content, k.sections, lk)
+            rows, unknown = excel.read_rows(data, k.sections(cfg), lk)
         except ValueError as exc:
             return render(request, "excel/_upload.html", ctx, k=k, error=str(exc))
         current = {x["code"]: x for x in await _items(ctx.api, k)}
@@ -253,7 +260,7 @@ def export_route(k: Kind) -> None:
                     "before": {key: item.get(key) for key in diff},
                 }
             plan.append(entry)
-        labels = {c["key"]: c["label"] for c in excel.columns(k.sections)}
+        labels = {c["key"]: c["label"] for c in excel.columns(k.sections(cfg))}
         counts = {
             a: sum(1 for p in plan if p["action"] == a)
             for a in ("new", "changed", "unchanged", "error")
@@ -283,7 +290,7 @@ def export_route(k: Kind) -> None:
             try:
                 if p["action"] == "new":
                     item_id = await _create(ctx.api, k, p["values"])
-                    current = plain(await _fn(ctx.api, k, "get")(item_id))
+                    current = flat(plain(await _fn(ctx.api, k, "get")(item_id)))
                     rest = excel.changes(current, p["values"])
                     if rest:
                         await _fn(ctx.api, k, "update")(

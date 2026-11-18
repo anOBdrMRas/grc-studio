@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 05:50+0000\n"
+"POT-Creation-Date: 2026-11-18 06:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,16 @@ msgstr ""
 msgid "Activity, process, product or service"
 msgstr ""
 
+msgid "Add field"
+msgstr ""
+
 msgid "Add role …"
+msgstr ""
+
+msgid "Additional details"
+msgstr ""
+
+msgid "Administration"
 msgstr ""
 
 msgid "Administrative measures"
@@ -425,6 +434,9 @@ msgstr ""
 msgid "Content & scope"
 msgstr ""
 
+msgid "Content administration"
+msgstr ""
+
 msgid "Context of the organization"
 msgstr ""
 
@@ -555,6 +567,9 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+msgid "Delete field"
+msgstr ""
+
 msgid "Deleted"
 msgstr ""
 
@@ -637,6 +652,12 @@ msgid "Draft"
 msgstr ""
 
 msgid "Draft (in progress)"
+msgstr ""
+
+msgid "Dropdown"
+msgstr ""
+
+msgid "Dropdown values"
 msgstr ""
 
 msgid "Due date"
@@ -769,6 +790,17 @@ msgid "Facility"
 msgstr ""
 
 msgid "Field"
+msgstr ""
+
+#, python-brace-format
+msgid "Field {name} added"
+msgstr ""
+
+#, python-brace-format
+msgid "Field {name} hidden. Stored values are kept."
+msgstr ""
+
+msgid "Fields and dropdown values"
 msgstr ""
 
 msgid "Filter…"
@@ -922,6 +954,12 @@ msgid "Has not happened yet – not even at comparable companies – but cannot 
 msgstr ""
 
 msgid "Headcount (planned)"
+msgstr ""
+
+msgid "Here the administration adds custom fields and additional dropdown values. The changes apply at once in the forms and in Excel. Standard fields and values stay unchanged so that existing data remains valid."
+msgstr ""
+
+msgid "Hide the field? Stored values are kept."
 msgstr ""
 
 msgid "Hierarchy & reporting lines"
@@ -1144,6 +1182,9 @@ msgstr ""
 msgid "Kind of certification audit"
 msgstr ""
 
+msgid "Label"
+msgstr ""
+
 msgid "Language"
 msgstr ""
 
@@ -1217,6 +1258,9 @@ msgid "Log out"
 msgstr ""
 
 msgid "Logistics"
+msgstr ""
+
+msgid "Long text"
 msgstr ""
 
 msgid "Loss of important customers or partners, national media coverage."
@@ -1334,6 +1378,9 @@ msgid "Monitoring, measurement, analysis and evaluation"
 msgstr ""
 
 msgid "Monthly"
+msgstr ""
+
+msgid "Multiple choice"
 msgstr ""
 
 msgid "My delegations & powers of attorney"
@@ -1454,6 +1501,9 @@ msgstr ""
 msgid "Notification to authority / register"
 msgstr ""
 
+msgid "Number"
+msgstr ""
+
 #, python-brace-format
 msgid "Number expected: {value}"
 msgstr ""
@@ -1558,6 +1608,9 @@ msgid "Periodic (department session)"
 msgstr ""
 
 msgid "Permanent harm or death, or widespread irreversible environmental damage."
+msgstr ""
+
+msgid "Person"
 msgstr ""
 
 #, python-brace-format
@@ -1818,10 +1871,16 @@ msgstr ""
 msgid "Reduce"
 msgstr ""
 
+msgid "Reference"
+msgstr ""
+
 msgid "Reference: position"
 msgstr ""
 
 msgid "Reference: role"
+msgstr ""
+
+msgid "References"
 msgstr ""
 
 msgid "Register entry / notification to authority"
@@ -1850,6 +1909,13 @@ msgid "Remarks"
 msgstr ""
 
 msgid "Remove"
+msgstr ""
+
+#, python-brace-format
+msgid "Remove {value}"
+msgstr ""
+
+msgid "Rename"
 msgstr ""
 
 msgid "Report date"
@@ -2037,6 +2103,9 @@ msgstr ""
 msgid "Saved"
 msgstr ""
 
+msgid "Scale"
+msgstr ""
+
 msgid "Scope & criteria"
 msgstr ""
 
@@ -2059,6 +2128,9 @@ msgid "Score = likelihood × impact (1–16). Medium from 4, higher risk above 8
 msgstr ""
 
 msgid "Search…"
+msgstr ""
+
+msgid "Section"
 msgstr ""
 
 msgid "Sees the process landscape and what is assigned to him."
@@ -2163,10 +2235,19 @@ msgstr ""
 msgid "Special audit"
 msgstr ""
 
+msgid "Special field"
+msgstr ""
+
 msgid "Standard clause"
 msgstr ""
 
+msgid "Standard reference"
+msgstr ""
+
 msgid "Standard references"
+msgstr ""
+
+msgid "Standard value"
 msgstr ""
 
 msgid "Standards / rules"
@@ -2269,10 +2350,16 @@ msgstr ""
 msgid "Test result / findings"
 msgstr ""
 
+msgid "Text"
+msgstr ""
+
 msgid "The demo sign-in is switched off."
 msgstr ""
 
 msgid "The element no longer exists."
+msgstr ""
+
+msgid "The field appears at once in the form of the module and as a column in the Excel export."
 msgstr ""
 
 msgid "The file is larger than 5 MB."
@@ -2440,6 +2527,9 @@ msgstr ""
 msgid "Yes or no expected: {value}"
 msgstr ""
 
+msgid "Yes/no"
+msgstr ""
+
 msgid "You are not allowed to do this."
 msgstr ""
 
@@ -2477,6 +2567,9 @@ msgid "approved"
 msgstr ""
 
 msgid "archived"
+msgstr ""
+
+msgid "automatic"
 msgstr ""
 
 msgid "before"
@@ -2564,6 +2657,9 @@ msgstr ""
 msgid "new"
 msgstr ""
 
+msgid "new value"
+msgstr ""
+
 msgid "no approval workflow"
 msgstr ""
 
@@ -2571,6 +2667,9 @@ msgid "not assessed"
 msgstr ""
 
 msgid "one responsible person per action"
+msgstr ""
+
+msgid "one value per line, for dropdowns only"
 msgstr ""
 
 msgid "open delegation"

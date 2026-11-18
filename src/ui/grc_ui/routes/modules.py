@@ -8,9 +8,10 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse, Response
 
 from grc_client import ApiError
+from grc_ui import content
 from grc_ui.charts import sparkline
+from grc_ui.content import flat
 from grc_ui.formdata import values_from_form
-from grc_ui.forms import FORMS
 from grc_ui.i18n import N_, gettext
 from grc_ui.routes.common import catalogs, iso_labels, ref_options
 from grc_ui.session import UiContext, field_errors, problem_text, ui_context
@@ -164,8 +165,9 @@ async def detail_context(
     view: str = "",
     revision: int | None = None,
 ) -> dict[str, Any]:
-    item = dict(await _m(ctx, mod, "get")(item_id))
+    item = flat(dict(await _m(ctx, mod, "get")(item_id)))
     cat = await catalogs(ctx.api)
+    cfg = await content.load(ctx.api, cat["lists"])
     shown = dict(item)
     banner: dict[str, Any] | None = None
     if view == "released" and item.get("released"):
@@ -198,9 +200,9 @@ async def detail_context(
         "spark": spark,
         "item": item,
         "shown": shown,
-        "sections": FORMS[mod.kind],
+        "sections": cfg.sections(mod.kind),
         "iso": iso_labels(cat),
-        "lists": cat["lists"],
+        "lists": cfg.lists,
         "banner": banner,
     }
 
@@ -335,7 +337,8 @@ def page_routes(slug: str) -> None:
         owner_editable = ctx.can(mod.manage_perm) or (
             isinstance(rights, dict) and not rights.get("owner_fields")
         )
-        values = values_from_form(FORMS[mod.kind], form, owner_editable)
+        cfg = await content.load(ctx.api, (await catalogs(ctx.api))["lists"])
+        values = values_from_form(cfg.sections(mod.kind), form, owner_editable)
         version = int(str(form.get("version") or item["version"]))
         try:
             await _m(ctx, mod, "update")(item_id, {"version": version, "values": values})
@@ -413,7 +416,8 @@ def page_routes(slug: str) -> None:
         request: Request, item_id: str, ctx: UiContext = Depends(ui_context)
     ) -> Response:
         revisions = [dict(r) for r in await _m(ctx, mod, "history")(item_id)]
-        labels = {f["key"]: f["label"] for s in FORMS[mod.kind] for f in s["fields"]}
+        cfg = await content.load(ctx.api, {})
+        labels = cfg.labels(mod.kind)
         return render(
             request,
             "entity/_history.html",

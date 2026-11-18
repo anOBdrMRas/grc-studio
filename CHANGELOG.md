@@ -5,6 +5,16 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 3c)
+- Content administration (menu "Administration", permission `content:manage`, administrators
+  only): custom fields per module (text, long text, number, date, yes/no, dropdown, multiple
+  choice, person) placed in a section of the form, and additional values for the standard
+  dropdowns. They apply at once in the forms, the detail view, the history and the Excel
+  export and import.
+- The API checks custom values against type and value list and records them in the history
+  field by field. A custom field is never deleted, only hidden (its values are kept); its type
+  cannot change. New table `settings`, column `custom` on every element (migration 0006).
+
 ### Added (stage 3b)
 - Excel export per module and for all modules (with KPI values, audit findings and process
   steps as additional sheets); columns in the current language.

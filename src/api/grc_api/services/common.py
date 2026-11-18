@@ -113,6 +113,10 @@ async def custom_update(
     """Changes of the custom fields (one history entry per field) and the new stored values."""
     current = dict(obj.custom or {})
     checked = await content.custom_values(db, kind, raw, current, org)
+    # an empty value for a field never filled in is no change (forms send every field)
+    checked = {
+        k: v for k, v in checked.items() if k in current or not (v is None or v is False or v == [])
+    }
     after = current | checked
     return diff(current, after), after
 
