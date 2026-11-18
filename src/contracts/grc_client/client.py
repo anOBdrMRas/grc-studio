@@ -402,6 +402,10 @@ class GrcClient:
             ),
         )
 
+    async def org_chart(self) -> OrgChartOut:
+        """GET /api/v1/org-chart (permission: org:read)."""
+        return cast("OrgChartOut", await self._call("GET", "/api/v1/org-chart"))
+
     async def people_list(self) -> list[PersonOut]:
         """GET /api/v1/people (permission: people:read)."""
         return cast("list[PersonOut]", await self._call("GET", "/api/v1/people"))

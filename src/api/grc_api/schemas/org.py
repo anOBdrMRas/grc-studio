@@ -127,3 +127,41 @@ class PositionListItem(BaseModel):
     holders: list[str]
     status: str
     is_owner: bool
+
+
+class ChartRole(BaseModel):
+    role_id: str
+    code: str
+    title: str
+    comment: str
+
+
+class ChartPosition(BaseModel):
+    id: str
+    code: str
+    title: str
+    org_unit: str
+    is_manager: bool
+    headcount: int
+    holders: list[str]
+    roles: list[ChartRole]
+    sod_conflict: bool = Field(description="incompatible roles combined in this position")
+
+
+class ChartTree(BaseModel):
+    roots: list[str]
+    children: dict[str, list[str]]
+    separate: list[str] = Field(description="without reporting line (n/a) and without children")
+
+
+class ChartUnit(BaseModel):
+    unit: str
+    position_ids: list[str]
+
+
+class OrgChartOut(BaseModel):
+    positions: list[ChartPosition]
+    disciplinary: ChartTree
+    functional: ChartTree
+    units: list[ChartUnit]
+    matrix_roles: list[ChartRole] = Field(description="roles held by at least one position")

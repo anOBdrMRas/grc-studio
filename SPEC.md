@@ -3,7 +3,7 @@
 Abgeleitet aus dem abgestimmten Prototyp (Repository `GRC2`, Stand November 2026). Jede
 Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 
-**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a**–**S3d** = Stufen 2a–2c, 3a–3d (umgesetzt) · **S2** / **S3** = folgt.
+**Stufen:** **S1** = Stufe 1 (umgesetzt) · **S2a**–**S2c**, **S3a**–**S3d**, **S4a** = Stufen 2a–2c, 3a–3d, 4a (umgesetzt) · **S2** / **S3** = folgt.
 
 ---
 
@@ -66,7 +66,7 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-ORG-06 | Benutzer: Nachname, Vorname, Bereich, Abteilung, Stelle, Bemerkung, Systemrollen | S1 |
 | FR-ORG-07 | Delegationen und Vollmachten mit Gültigkeit, Annahme, Überwachung; Prüfungen zur Rechtssicherheit an Rolle, Stelle, Person und Übertragung | S2c |
 | FR-ORG-09 | Startseite: „In meiner Verantwortung“ (alle Module), „Für mich zu tun“ (anzunehmende Übertragungen, eigene Maßnahmen, Prüfhinweise), „Meine Übertragungen“ | S2c |
-| FR-ORG-08 | Organigramm und Rollenzuordnungsmatrix | S2 |
+| FR-ORG-08 | Organigramm (disziplinarisch, fachlich, nach Funktionen; Inhaber, Rollen, Hinweis Funktionstrennung, Stellen ohne Berichtslinie gesondert) und Rollenzuordnungsmatrix Stelle × Rolle (mit Kommentar); erreichbar aus Stellen und Rollen | S4a |
 
 ## 5. Prozesse
 

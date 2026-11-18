@@ -621,6 +621,151 @@
         "title": "Change",
         "type": "object"
       },
+      "ChartPosition": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "headcount": {
+            "title": "Headcount",
+            "type": "integer"
+          },
+          "holders": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Holders",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_manager": {
+            "title": "Is Manager",
+            "type": "boolean"
+          },
+          "org_unit": {
+            "title": "Org Unit",
+            "type": "string"
+          },
+          "roles": {
+            "items": {
+              "$ref": "#/components/schemas/ChartRole"
+            },
+            "title": "Roles",
+            "type": "array"
+          },
+          "sod_conflict": {
+            "description": "incompatible roles combined in this position",
+            "title": "Sod Conflict",
+            "type": "boolean"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "org_unit",
+          "is_manager",
+          "headcount",
+          "holders",
+          "roles",
+          "sod_conflict"
+        ],
+        "title": "ChartPosition",
+        "type": "object"
+      },
+      "ChartRole": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "comment": {
+            "title": "Comment",
+            "type": "string"
+          },
+          "role_id": {
+            "title": "Role Id",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role_id",
+          "code",
+          "title",
+          "comment"
+        ],
+        "title": "ChartRole",
+        "type": "object"
+      },
+      "ChartTree": {
+        "properties": {
+          "children": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "title": "Children",
+            "type": "object"
+          },
+          "roots": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Roots",
+            "type": "array"
+          },
+          "separate": {
+            "description": "without reporting line (n/a) and without children",
+            "items": {
+              "type": "string"
+            },
+            "title": "Separate",
+            "type": "array"
+          }
+        },
+        "required": [
+          "roots",
+          "children",
+          "separate"
+        ],
+        "title": "ChartTree",
+        "type": "object"
+      },
+      "ChartUnit": {
+        "properties": {
+          "position_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Position Ids",
+            "type": "array"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "unit",
+          "position_ids"
+        ],
+        "title": "ChartUnit",
+        "type": "object"
+      },
       "CheckItemOut": {
         "properties": {
           "detail": {
@@ -2753,6 +2898,47 @@
           "labels"
         ],
         "title": "OpportunityOut",
+        "type": "object"
+      },
+      "OrgChartOut": {
+        "properties": {
+          "disciplinary": {
+            "$ref": "#/components/schemas/ChartTree"
+          },
+          "functional": {
+            "$ref": "#/components/schemas/ChartTree"
+          },
+          "matrix_roles": {
+            "description": "roles held by at least one position",
+            "items": {
+              "$ref": "#/components/schemas/ChartRole"
+            },
+            "title": "Matrix Roles",
+            "type": "array"
+          },
+          "positions": {
+            "items": {
+              "$ref": "#/components/schemas/ChartPosition"
+            },
+            "title": "Positions",
+            "type": "array"
+          },
+          "units": {
+            "items": {
+              "$ref": "#/components/schemas/ChartUnit"
+            },
+            "title": "Units",
+            "type": "array"
+          }
+        },
+        "required": [
+          "positions",
+          "disciplinary",
+          "functional",
+          "units",
+          "matrix_roles"
+        ],
+        "title": "OrgChartOut",
         "type": "object"
       },
       "PasswordLogin": {
@@ -7517,6 +7703,29 @@
           "risks and opportunities"
         ],
         "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/org-chart": {
+      "get": {
+        "description": "Hierarchies of the positions, positions by unit and the role matrix.",
+        "operationId": "org_chart",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgChartOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Org Chart",
+        "tags": [
+          "organisation"
+        ],
+        "x-permission": "org:read"
       }
     },
     "/api/v1/people": {
