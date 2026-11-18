@@ -78,6 +78,19 @@ class GrcClient:
         """POST /api/v1/assistant/ask (permission: people:read)."""
         return cast("AskOut", await self._call("POST", "/api/v1/assistant/ask", json=body))
 
+    async def assistant_process_draft(self, body: DraftIn) -> DraftOut:
+        """POST /api/v1/assistant/process-draft (permission: processes:manage)."""
+        return cast(
+            "DraftOut", await self._call("POST", "/api/v1/assistant/process-draft", json=body)
+        )
+
+    async def assistant_suggest(self, kind: str, element_id: str, body: SuggestIn) -> SuggestOut:
+        """POST /api/v1/assistant/suggest/{kind}/{element_id} (permission: people:read)."""
+        return cast(
+            "SuggestOut",
+            await self._call("POST", f"/api/v1/assistant/suggest/{kind}/{element_id}", json=body),
+        )
+
     async def audits_list(self) -> list[AuditListItem]:
         """GET /api/v1/audits (permission: grc:read)."""
         return cast("list[AuditListItem]", await self._call("GET", "/api/v1/audits"))
@@ -451,6 +464,12 @@ class GrcClient:
     async def processes_create(self, body: CreateElement) -> ProcessOut:
         """POST /api/v1/processes (permission: processes:manage)."""
         return cast("ProcessOut", await self._call("POST", "/api/v1/processes", json=body))
+
+    async def processes_create_from_draft(self, body: DraftCreate) -> ProcessOut:
+        """POST /api/v1/processes/from-draft (permission: processes:manage)."""
+        return cast(
+            "ProcessOut", await self._call("POST", "/api/v1/processes/from-draft", json=body)
+        )
 
     async def processes_delete(self, process_id: str) -> None:
         """DELETE /api/v1/processes/{process_id} (permission: processes:manage)."""

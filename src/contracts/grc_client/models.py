@@ -266,6 +266,46 @@ DiagramIn = TypedDict("DiagramIn", {"xml": "str", "version": "int | None"}, tota
 DiagramOut = TypedDict("DiagramOut", {"xml": "str", "version": "int"}, total=False)
 
 
+DraftCreate = TypedDict(
+    "DraftCreate",
+    {
+        "title": "str",
+        "category": "str",
+        "area": "str",
+        "description": "str",
+        "start": "str",
+        "end": "str",
+        "steps": "list[DraftStepIO]",
+    },
+    total=False,
+)
+
+
+DraftIn = TypedDict("DraftIn", {"text": "str", "use_ai": "bool", "lang": "str"}, total=False)
+
+
+DraftOut = TypedDict(
+    "DraftOut",
+    {
+        "mode": "str",
+        "title": "str",
+        "category": "str",
+        "area": "str",
+        "start": "str",
+        "end": "str",
+        "steps": "list[DraftStepIO]",
+    },
+    total=False,
+)
+
+
+DraftStepIO = TypedDict(
+    "DraftStepIO",
+    {"name": "str", "type": "str", "role_id": "str", "raci": "str", "no": "str"},
+    total=False,
+)
+
+
 ElementPatch = TypedDict(
     "ElementPatch", {"version": "int | None", "values": "dict[str, Any]"}, total=False
 )
@@ -879,6 +919,19 @@ StepRole = TypedDict(
 
 StepRoleIn = TypedDict(
     "StepRoleIn", {"role_id": "str", "raci": "str", "version": "int | None"}, total=False
+)
+
+
+SuggestIn = TypedDict("SuggestIn", {"lang": "str"}, total=False)
+
+
+SuggestOut = TypedDict(
+    "SuggestOut", {"version": "int", "fields": "list[SuggestedField]"}, total=False
+)
+
+
+SuggestedField = TypedDict(
+    "SuggestedField", {"key": "str", "text": "str", "current": "str"}, total=False
 )
 
 

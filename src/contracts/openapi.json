@@ -1240,6 +1240,180 @@
         "title": "DiagramOut",
         "type": "object"
       },
+      "DraftCreate": {
+        "properties": {
+          "area": {
+            "default": "",
+            "maxLength": 200,
+            "title": "Area",
+            "type": "string"
+          },
+          "category": {
+            "default": "Core process",
+            "title": "Category",
+            "type": "string"
+          },
+          "description": {
+            "default": "",
+            "maxLength": 5000,
+            "title": "Description",
+            "type": "string"
+          },
+          "end": {
+            "default": "Ende",
+            "maxLength": 200,
+            "title": "End",
+            "type": "string"
+          },
+          "start": {
+            "default": "Start",
+            "maxLength": 200,
+            "title": "Start",
+            "type": "string"
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/DraftStepIO"
+            },
+            "maxItems": 30,
+            "minItems": 1,
+            "title": "Steps",
+            "type": "array"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "steps"
+        ],
+        "title": "DraftCreate",
+        "type": "object"
+      },
+      "DraftIn": {
+        "properties": {
+          "lang": {
+            "default": "de",
+            "title": "Lang",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 5000,
+            "title": "Text",
+            "type": "string"
+          },
+          "use_ai": {
+            "default": true,
+            "title": "Use Ai",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "title": "DraftIn",
+        "type": "object"
+      },
+      "DraftOut": {
+        "properties": {
+          "area": {
+            "title": "Area",
+            "type": "string"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "end": {
+            "title": "End",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "ai",
+              "text"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "start": {
+            "title": "Start",
+            "type": "string"
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/DraftStepIO"
+            },
+            "title": "Steps",
+            "type": "array"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "mode",
+          "title",
+          "category",
+          "area",
+          "start",
+          "end",
+          "steps"
+        ],
+        "title": "DraftOut",
+        "type": "object"
+      },
+      "DraftStepIO": {
+        "properties": {
+          "name": {
+            "maxLength": 200,
+            "title": "Name",
+            "type": "string"
+          },
+          "no": {
+            "default": "",
+            "description": "decision only: end event on no",
+            "maxLength": 200,
+            "title": "No",
+            "type": "string"
+          },
+          "raci": {
+            "default": "R",
+            "enum": [
+              "R",
+              "A"
+            ],
+            "title": "Raci",
+            "type": "string"
+          },
+          "role_id": {
+            "default": "",
+            "title": "Role Id",
+            "type": "string"
+          },
+          "type": {
+            "default": "task",
+            "enum": [
+              "task",
+              "system",
+              "manual",
+              "decision"
+            ],
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "DraftStepIO",
+        "type": "object"
+      },
       "ElementPatch": {
         "description": "Changed fields; the version is checked (If-Match header or this field).",
         "properties": {
@@ -4237,6 +4411,63 @@
         "title": "StepRoleIn",
         "type": "object"
       },
+      "SuggestIn": {
+        "properties": {
+          "lang": {
+            "default": "de",
+            "title": "Lang",
+            "type": "string"
+          }
+        },
+        "title": "SuggestIn",
+        "type": "object"
+      },
+      "SuggestOut": {
+        "properties": {
+          "fields": {
+            "items": {
+              "$ref": "#/components/schemas/SuggestedField"
+            },
+            "title": "Fields",
+            "type": "array"
+          },
+          "version": {
+            "description": "version of the element the suggestions were made for",
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version",
+          "fields"
+        ],
+        "title": "SuggestOut",
+        "type": "object"
+      },
+      "SuggestedField": {
+        "properties": {
+          "current": {
+            "description": "value stored now (shown for comparison)",
+            "title": "Current",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "text": {
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "text",
+          "current"
+        ],
+        "title": "SuggestedField",
+        "type": "object"
+      },
       "Turn": {
         "properties": {
           "role": {
@@ -4838,6 +5069,112 @@
           }
         },
         "summary": "Assistant Ask",
+        "tags": [
+          "assistant"
+        ],
+        "x-permission": "people:read"
+      }
+    },
+    "/api/v1/assistant/process-draft": {
+      "post": {
+        "description": "Steps of a process from a description: AI, or one line per step (nothing is saved).",
+        "operationId": "assistant_process_draft",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DraftIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DraftOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Assistant Process Draft",
+        "tags": [
+          "assistant"
+        ],
+        "x-permission": "processes:manage"
+      }
+    },
+    "/api/v1/assistant/suggest/{kind}/{element_id}": {
+      "post": {
+        "description": "AI suggestions for the text fields of an element the person may edit (nothing is saved).",
+        "operationId": "assistant_suggest",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "kind",
+            "required": true,
+            "schema": {
+              "title": "Kind",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "element_id",
+            "required": true,
+            "schema": {
+              "title": "Element Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuggestIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuggestOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Assistant Suggest",
         "tags": [
           "assistant"
         ],
@@ -7648,6 +7985,49 @@
         "summary": "Processes Create",
         "tags": [
           "processes"
+        ],
+        "x-permission": "processes:manage"
+      }
+    },
+    "/api/v1/processes/from-draft": {
+      "post": {
+        "description": "A new draft process with a generated BPMN diagram and the roles of its steps.",
+        "operationId": "processes_create_from_draft",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DraftCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Processes Create From Draft",
+        "tags": [
+          "assistant"
         ],
         "x-permission": "processes:manage"
       }
