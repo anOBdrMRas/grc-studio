@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-20 07:58+0000\n"
+"POT-Creation-Date: 2026-11-20 08:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,9 @@ msgstr ""
 msgid "1 Identify"
 msgstr ""
 
+msgid "1 step"
+msgstr ""
+
 msgid "2 Analyse"
 msgstr ""
 
@@ -54,6 +57,9 @@ msgid "5 Monitor"
 msgstr ""
 
 msgid "< 25 TUSD"
+msgstr ""
+
+msgid "A click on a process opens its model."
 msgstr ""
 
 msgid "AI assistant"
@@ -126,7 +132,17 @@ msgstr ""
 msgid "Affected assets"
 msgstr ""
 
+msgid "All"
+msgstr ""
+
 msgid "All modules as Excel"
+msgstr ""
+
+#, python-brace-format
+msgid "All processes ({n})"
+msgstr ""
+
+msgid "All statuses"
 msgstr ""
 
 msgid "Amount limit (EUR)"
@@ -164,6 +180,9 @@ msgid "Appointment / designation"
 msgstr ""
 
 msgid "Approval limit (EUR)"
+msgstr ""
+
+msgid "Approval status"
 msgstr ""
 
 msgid "Approval workflow"
@@ -542,6 +561,9 @@ msgstr ""
 msgid "Core process"
 msgstr ""
 
+msgid "Core processes (end to end)"
+msgstr ""
+
 msgid "Corrective"
 msgstr ""
 
@@ -591,6 +613,9 @@ msgid "Customer requirement"
 msgstr ""
 
 msgid "Customer satisfaction"
+msgstr ""
+
+msgid "Customer satisfied"
 msgstr ""
 
 msgid "Daily"
@@ -1414,6 +1439,9 @@ msgstr ""
 msgid "Management process"
 msgstr ""
 
+msgid "Management processes"
+msgstr ""
+
 msgid "Management review"
 msgstr ""
 
@@ -1507,6 +1535,9 @@ msgstr ""
 msgid "My delegations & powers of attorney"
 msgstr ""
 
+msgid "My involvement"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -1569,9 +1600,6 @@ msgid "No position holds this role."
 msgstr ""
 
 msgid "No positions yet."
-msgstr ""
-
-msgid "No processes."
 msgstr ""
 
 msgid "No results. Try other words, e.g. “export”, “invoice” or the name of a role."
@@ -2096,6 +2124,9 @@ msgstr ""
 msgid "Requirements for products and services"
 msgstr ""
 
+msgid "Resize list"
+msgstr ""
+
 msgid "Resources"
 msgstr ""
 
@@ -2480,6 +2511,9 @@ msgstr ""
 msgid "Support process"
 msgstr ""
 
+msgid "Support processes"
+msgstr ""
+
 msgid "Surveillance audit"
 msgstr ""
 
@@ -2790,6 +2824,12 @@ msgstr ""
 msgid "You are not the owner of any element."
 msgstr ""
 
+msgid "You are the owner and may edit"
+msgstr ""
+
+msgid "You take part in steps"
+msgstr ""
+
 msgid "Your session has expired. Please reload the page."
 msgstr ""
 
@@ -2941,6 +2981,9 @@ msgstr ""
 msgid "one value per line, for dropdowns only"
 msgstr ""
 
+msgid "only mine"
+msgstr ""
+
 msgid "open delegation"
 msgstr ""
 
@@ -3051,6 +3094,10 @@ msgstr ""
 
 #, python-brace-format
 msgid "{n} risks"
+msgstr ""
+
+#, python-brace-format
+msgid "{n} steps"
 msgstr ""
 
 #, python-brace-format

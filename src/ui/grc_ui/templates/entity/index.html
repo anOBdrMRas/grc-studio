@@ -21,6 +21,7 @@
     {% if matrix %}{% include "entity/_matrix.html" %}{% endif %}
     {% include "entity/_list.html" %}
   </div>
+  <div class="split-handle" role="separator" aria-orientation="vertical" tabindex="0" aria-label="{{ _('Resize list') }}" data-split-handle></div>
   <section class="split-detail" id="detail" aria-live="polite">
     {% if detail and form %}
       {% with %}{% set d = detail %}{% include "entity/_form_wrap.html" %}{% endwith %}

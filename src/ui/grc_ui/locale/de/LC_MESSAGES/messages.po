@@ -37,6 +37,9 @@ msgstr "1 = sehr gering … 5 = sehr hoch"
 msgid "1 Identify"
 msgstr "1 Identifizieren"
 
+msgid "1 step"
+msgstr "1 Schritt"
+
 msgid "2 Analyse"
 msgstr "2 Analysieren"
 
@@ -57,6 +60,9 @@ msgstr "5 Überwachen"
 
 msgid "< 25 TUSD"
 msgstr "< 25 TUSD"
+
+msgid "A click on a process opens its model."
+msgstr "Klick auf einen Prozess öffnet das Prozessmodell."
 
 msgid "AI assistant"
 msgstr "KI-Assistent"
@@ -128,8 +134,18 @@ msgstr "Administrator"
 msgid "Affected assets"
 msgstr "Betroffene Werte (Assets)"
 
+msgid "All"
+msgstr "Alle"
+
 msgid "All modules as Excel"
 msgstr "Alle Module als Excel"
+
+#, python-brace-format
+msgid "All processes ({n})"
+msgstr "Alle Prozesse ({n})"
+
+msgid "All statuses"
+msgstr "Alle Status"
 
 msgid "Amount limit (EUR)"
 msgstr "Betragsgrenze (EUR)"
@@ -171,6 +187,9 @@ msgstr "Bestellung / Benennung"
 
 msgid "Approval limit (EUR)"
 msgstr "Freigabelimit (EUR)"
+
+msgid "Approval status"
+msgstr "Freigabestatus"
 
 msgid "Approval workflow"
 msgstr "Freigabe-Workflow"
@@ -552,6 +571,9 @@ msgstr "Controls ohne adressiertes Risiko"
 msgid "Core process"
 msgstr "Kernprozess"
 
+msgid "Core processes (end to end)"
+msgstr "Kernprozesse (Ende zu Ende)"
+
 msgid "Corrective"
 msgstr "Korrektiv"
 
@@ -602,6 +624,9 @@ msgstr "Kundenanforderung"
 
 msgid "Customer satisfaction"
 msgstr "Kundenzufriedenheit"
+
+msgid "Customer satisfied"
+msgstr "Kunde zufrieden"
 
 msgid "Daily"
 msgstr "Täglich"
@@ -1436,6 +1461,9 @@ msgstr "Führungsstelle"
 msgid "Management process"
 msgstr "Führungsprozess"
 
+msgid "Management processes"
+msgstr "Führungsprozesse"
+
 msgid "Management review"
 msgstr "Managementbewertung"
 
@@ -1528,6 +1556,9 @@ msgstr "Mehrfachauswahl"
 
 msgid "My delegations & powers of attorney"
 msgstr "Meine Übertragungen & Vollmachten"
+
+msgid "My involvement"
+msgstr "Meine Beteiligung"
 
 msgid "Name"
 msgstr "Name"
@@ -2125,6 +2156,9 @@ msgstr "Anforderungen & Kompetenz"
 msgid "Requirements for products and services"
 msgstr "Anforderungen an Produkte und Dienstleistungen"
 
+msgid "Resize list"
+msgstr "Listenbreite ändern"
+
 msgid "Resources"
 msgstr "Ressourcen"
 
@@ -2518,6 +2552,9 @@ msgstr "Unterstützung"
 msgid "Support process"
 msgstr "Unterstützungsprozess"
 
+msgid "Support processes"
+msgstr "Unterstützungsprozesse"
+
 msgid "Surveillance audit"
 msgstr "Überwachungsaudit"
 
@@ -2886,6 +2923,12 @@ msgstr "Das dürfen Sie nicht."
 msgid "You are not the owner of any element."
 msgstr "Sie sind für kein Element Owner."
 
+msgid "You are the owner and may edit"
+msgstr "Sie sind Owner und dürfen bearbeiten"
+
+msgid "You take part in steps"
+msgstr "Sie sind an Schritten beteiligt"
+
 msgid "Your session has expired. Please reload the page."
 msgstr "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu."
 
@@ -3041,6 +3084,9 @@ msgstr "je Maßnahme ein/e Verantwortliche/r"
 msgid "one value per line, for dropdowns only"
 msgstr "ein Wert pro Zeile, nur für Auswahlfelder"
 
+msgid "only mine"
+msgstr "nur meine"
+
 msgid "open delegation"
 msgstr "Übertragung öffnen"
 
@@ -3152,6 +3198,10 @@ msgstr "{mandate}: {user} hat die Rolle nicht mehr (Stellenwechsel?)."
 #, python-brace-format
 msgid "{n} risks"
 msgstr "{n} Risiken"
+
+#, python-brace-format
+msgid "{n} steps"
+msgstr "{n} Schritte"
 
 #, python-brace-format
 msgid "{n} with findings"

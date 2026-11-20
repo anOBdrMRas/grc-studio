@@ -48,10 +48,11 @@
   <form class="mt-6 mb-2 flex flex-wrap items-center justify-between gap-2" hx-get="/processes" hx-target="#process-table" hx-select="#process-table" hx-swap="outerHTML" hx-push-url="true" hx-trigger="change, submit">
     <h2 class="text-lg font-bold">{{ _("All processes ({n})").format(n=total) }}</h2>
     <div class="flex flex-wrap items-center gap-2">
-      <input type="hidden" name="cat" value="{{ cat }}">
-      {% for value, label in [("", _("All"))] + categories %}
-      <button class="btn btn-xs rounded-full {{ 'btn-primary' if value == cat else 'btn-outline font-normal' }}" name="cat" value="{{ value }}">{{ label }}</button>
-      {% endfor %}
+      <div class="flex flex-wrap gap-1" role="radiogroup" aria-label="{{ _('Process category') }}">
+        {% for value, label in [("", _("All"))] + categories %}
+        <input type="radio" name="cat" value="{{ value }}" class="btn btn-xs rounded-full font-normal" aria-label="{{ label }}" {% if value == cat %}checked{% endif %}>
+        {% endfor %}
+      </div>
       <select name="status" class="select select-bordered select-sm" aria-label="{{ _('Approval status') }}">
         <option value="">{{ _("All statuses") }}</option>
         {% for s, label in statuses %}<option value="{{ s }}" {% if s == status_filter %}selected{% endif %}>{{ label }}</option>{% endfor %}
