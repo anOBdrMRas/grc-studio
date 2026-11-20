@@ -1284,15 +1284,13 @@
       "CreateElement": {
         "properties": {
           "title": {
+            "default": "",
+            "description": "may be empty: the form opens next",
             "maxLength": 300,
-            "minLength": 1,
             "title": "Title",
             "type": "string"
           }
         },
-        "required": [
-          "title"
-        ],
         "title": "CreateElement",
         "type": "object"
       },
@@ -1304,14 +1302,12 @@
             "type": "string"
           },
           "last_name": {
-            "minLength": 1,
+            "default": "",
+            "maxLength": 200,
             "title": "Last Name",
             "type": "string"
           }
         },
-        "required": [
-          "last_name"
-        ],
         "title": "CreateUser",
         "type": "object"
       },

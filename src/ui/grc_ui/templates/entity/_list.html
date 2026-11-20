@@ -7,7 +7,7 @@
       <tbody>
         {% for x in items %}
         <tr {% if x.id == selected %}aria-current="true"{% endif %} hx-get="{{ mod.base }}/{{ x.id }}" hx-target="#detail" hx-swap="innerHTML" hx-push-url="true" tabindex="0" title="{{ x.code }}">
-          <td>{{ x.title if x.title is defined else x.name }}{% if x.is_owner is defined and x.is_owner %} <span class="badge badge-xs badge-accent">{{ _("Owner") }}</span>{% endif %}</td>
+          <td>{{ (x.title if x.title is defined else x.name) or _("(no title)") }}{% if x.is_owner is defined and x.is_owner %} <span class="badge badge-xs badge-accent">{{ _("Owner") }}</span>{% endif %}</td>
           {% for key, label in mod.columns %}
           <td>
             {% set v = x[key] %}

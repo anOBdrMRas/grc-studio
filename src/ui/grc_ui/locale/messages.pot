@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-20 07:41+0000\n"
+"POT-Creation-Date: 2026-11-20 08:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+msgid "(no title)"
+msgstr ""
 
 msgid "0 = none"
 msgstr ""
@@ -1574,9 +1577,6 @@ msgstr ""
 msgid "New or changed activity, product or service"
 msgstr ""
 
-msgid "New process"
-msgstr ""
-
 msgid "Next audit due"
 msgstr ""
 
@@ -2411,9 +2411,6 @@ msgstr ""
 msgid "Short description of the finding"
 msgstr ""
 
-msgid "Short description of the risk"
-msgstr ""
-
 msgid "Show all"
 msgstr ""
 
@@ -2702,12 +2699,6 @@ msgid "This step is not possible in the current status."
 msgstr ""
 
 msgid "Title"
-msgstr ""
-
-msgid "Title of the new entry"
-msgstr ""
-
-msgid "Title of the new process"
 msgstr ""
 
 msgid "Training"

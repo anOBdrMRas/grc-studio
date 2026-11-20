@@ -46,5 +46,5 @@ class PersonOut(BaseModel):
 
 
 class CreateUser(BaseModel):
-    last_name: str = Field(min_length=1)
+    last_name: str = Field("", max_length=200)
     first_name: str = ""
