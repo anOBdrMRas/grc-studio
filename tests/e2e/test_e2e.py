@@ -354,3 +354,41 @@ def test_risk_list_columns_and_resizable_split(page: "Page") -> None:
     after = page.locator(".split-list").bounding_box()
     assert after
     assert after["width"] > before["width"] + 150
+
+
+def test_work_instruction_rich_text_and_step(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/instructions")
+    page.click("button[hx-post='/instructions']")
+    page.wait_for_url(re.compile(r"/instructions/WI-\d+\?edit=1"))
+    page.fill("#f-title", "E2E Wareneingang")
+    editor = page.locator(".rt-editor .rt-content")
+    expect(editor).to_be_visible()
+    editor.click()
+    page.keyboard.type("Prüfschritte")
+    page.click(".rt-btn[data-key='table']")
+    page.keyboard.type("Merkmal")
+    page.click("#detail button:has-text('Speichern')")
+    expect(page.locator("#detail .rt-view table")).to_be_visible()
+    expect(page.locator("#detail .rt-view")).to_contain_text("Prüfschritte")
+    page.wait_for_load_state("networkidle")  # the swapped detail is wired up by htmx
+    # refers to: assign a process step from the work instruction
+    page.select_option("#wi-steps select[name=process_id]", "P-004")
+    expect(page.locator("#wi-steps select[name=element_id]")).to_be_enabled()
+    page.select_option("#wi-steps select[name=element_id]", label="Bewertung durchführen")
+    page.click("#wi-steps button:has-text('Zuordnen')")
+    expect(page.locator("#wi-steps")).to_contain_text("Bewertung durchführen")
+
+
+def test_step_description_and_matrix(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/processes/P-001?step=Task_Genehmigen")
+    panel = page.locator("#step-panel")
+    expect(panel).to_contain_text("WI-001")
+    panel.locator("textarea[name=text]").fill("E2E Betrag gegen Budget prüfen.")
+    panel.locator("button:has-text('Beschreibung speichern')").click()
+    expect(panel.locator("textarea[name=text]")).to_have_value("E2E Betrag gegen Budget prüfen.")
+    page.click("a[role=tab]:has-text('Schrittmatrix')")
+    row = page.locator(".step-matrix tbody tr", has_text="Anforderung genehmigen")
+    expect(row).to_contain_text("E2E Betrag gegen Budget prüfen.")
+    expect(row).to_contain_text("WI-001")

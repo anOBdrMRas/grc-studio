@@ -22,6 +22,7 @@ from grc_api.models import (
     Risk,
     Role,
     User,
+    WorkInstruction,
 )
 from grc_api.repositories import audit, elements
 from grc_api.schemas.common import Change, Revision, Rights, StateView, WorkflowEntryOut
@@ -29,7 +30,7 @@ from grc_api.services import content
 from grc_api.services.context import OrgData
 
 # elements with the approval workflow (status, doc_version, released)
-Approvable = Role | Position | Process | Risk | Opportunity
+Approvable = Role | Position | Process | Risk | Opportunity | WorkInstruction
 Element = Approvable | Control | Kpi | Mandate | Audit
 KIND_MODEL: dict[str, type[Element]] = {
     "role": Role,
@@ -41,6 +42,7 @@ KIND_MODEL: dict[str, type[Element]] = {
     "kpi": Kpi,
     "mandate": Mandate,
     "audit": Audit,
+    "instruction": WorkInstruction,
 }
 MANAGE = {
     "role": "org:manage",
@@ -53,6 +55,7 @@ MANAGE = {
     "kpi": "grc:manage",
     "mandate": "org:manage",
     "audit": "grc:manage",
+    "instruction": "processes:manage",
 }
 # kinds that everybody records; the recorder edits them while they are drafts
 RECORDED = frozenset({"risk", "opportunity"})
@@ -67,6 +70,7 @@ OWNER_FIELDS = {
     "kpi": ["owner_role_id"],
     "mandate": ["granted_by_user_id", "granted_by_body"],
     "audit": ["lead_auditor_user_id"],
+    "instruction": ["owner_user_id"],
 }
 
 

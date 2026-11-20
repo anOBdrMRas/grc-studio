@@ -32,6 +32,7 @@ the browser libraries are listed in NOTICE.
 | jinja2 | 3.1.6 | BSD License |
 | jiter | 0.19.0 | MIT |
 | mako | 1.4.3 | MIT |
+| nh3 | 0.3.8 | MIT (Rust library ammonia: MIT OR Apache-2.0) |
 | markupsafe | 3.0.4 | BSD-3-Clause |
 | openpyxl | 3.1.5 | MIT |
 | opentelemetry-api | 1.45.2 | Apache-2.0 |

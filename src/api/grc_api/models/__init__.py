@@ -11,6 +11,7 @@ from grc_api.models.grc import (
     Risk,
     StepLink,
 )
+from grc_api.models.instruction import WorkInstruction
 from grc_api.models.org import Mandate, Position, PositionRole, Role, User
 from grc_api.models.process import Process, StepAssignment
 from grc_api.models.session import UserSession
@@ -35,5 +36,6 @@ __all__ = [
     "StepLink",
     "User",
     "UserSession",
+    "WorkInstruction",
     "WorkflowEntry",
 ]

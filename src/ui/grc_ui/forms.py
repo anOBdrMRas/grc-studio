@@ -1181,7 +1181,50 @@ FINDING: list[Section] = [
     },
 ]
 
+INSTRUCTION: list[Section] = [
+    {
+        "title": N_("Master data"),
+        "fields": [
+            {"key": "code", "label": N_("ID"), "kind": "readonly"},
+            {"key": "status", "label": N_("Status"), "kind": "status"},
+            {"key": "doc_version", "label": N_("Version"), "kind": "readonly"},
+            {"key": "title", "label": N_("Title"), "kind": "text"},
+            {
+                "key": "description",
+                "label": N_("Short description"),
+                "kind": "textarea",
+                "wide": True,
+            },
+            {
+                "key": "owner_user_id",
+                "label": N_("Owner"),
+                "kind": "ref",
+                "ref": "people",
+                "owner": True,
+            },
+            {"key": "next_review", "label": N_("Next review"), "kind": "date"},
+        ],
+    },
+    {
+        "title": N_("Refers to"),
+        "fields": [
+            {
+                "key": "used_in",
+                "label": N_("Process steps"),
+                "kind": "steps",
+                "wide": True,
+                "hint": N_("assigned here or in the process step"),
+            }
+        ],
+    },
+    {
+        "title": N_("Work instruction"),
+        "fields": [{"key": "content", "label": N_("Content"), "kind": "richtext", "wide": True}],
+    },
+]
+
 FORMS: dict[str, list[Section]] = {
+    "instruction": INSTRUCTION,
     "role": ROLE,
     "position": POSITION,
     "user": USER,

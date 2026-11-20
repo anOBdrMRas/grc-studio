@@ -26,6 +26,7 @@ from grc_api.models import (
     StepLink,
     User,
     WorkflowEntry,
+    WorkInstruction,
 )
 from grc_api.schemas.org import RoleFields
 
@@ -82,6 +83,8 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
         db.add(Position(**_row(p, ("workflow", "roles"))))
     for p in data["processes"]:
         db.add(Process(**_row(p, ("workflow", "steps", "links"))))
+    for w in data.get("instructions", []):
+        db.add(WorkInstruction(**_row(w, ("workflow",))))
     for r in data.get("risks", []):
         db.add(Risk(**_row(r, ("workflow",))))
     for o in data.get("opportunities", []):
@@ -118,6 +121,7 @@ async def load_demo(db: AsyncSession) -> dict[str, int]:
         ("role", data["roles"]),
         ("position", data["positions"]),
         ("process", data["processes"]),
+        ("instruction", data.get("instructions", [])),
         ("risk", data.get("risks", [])),
         ("opportunity", data.get("opportunities", [])),
         ("mandate", data.get("mandates", [])),

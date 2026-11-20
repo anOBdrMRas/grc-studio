@@ -134,6 +134,14 @@
     });
   }
 
+  // rich text editors (work instructions); the editor bundle is loaded on those pages only
+  function mountRichText(root) {
+    if (!window.GrcRichText || !root.querySelectorAll) return;
+    root.querySelectorAll('[data-richtext]').forEach(function (el) { window.GrcRichText.mount(el); });
+  }
+  document.addEventListener('htmx:load', function (ev) { mountRichText(ev.detail.elt); });
+  window.addEventListener('load', function () { mountRichText(document); });
+
   document.addEventListener('DOMContentLoaded', function () {
     initSplit();
     var cd = document.getElementById('confirm-dialog');
@@ -141,6 +149,10 @@
     setTheme(document.documentElement.getAttribute('data-theme'));
     document.body.addEventListener('toast', function (ev) { toast(ev.detail.kind, ev.detail.message); });
     document.body.addEventListener('htmx:sendError', function () { toast('error', document.body.getAttribute('data-msg-unreachable')); });
+    document.body.addEventListener('htmx:responseError', function (ev) {
+      var s = ev.detail.xhr.status;
+      if (s === 413 || (s === 400 && ev.detail.requestConfig && ev.detail.requestConfig.verb === 'post')) toast('error', document.body.getAttribute('data-msg-too-large'));
+    });
     document.body.addEventListener('htmx:timeout', function () { toast('error', document.body.getAttribute('data-msg-unreachable')); });
     document.body.addEventListener('htmx:afterSwap', function (ev) {
       if (ev.detail.target && ev.detail.target.id === 'modal-body' && !ev.detail.xhr.getResponseHeader('HX-Reswap')) {

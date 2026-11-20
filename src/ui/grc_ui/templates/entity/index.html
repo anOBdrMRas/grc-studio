@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import empty %}
 {% block title %}{{ _(mod.title) }} · {% endblock %}
+{% block head_scripts %}{% if mod.kind == "instruction" %}<script src="{{ asset_url('vendor/richtext.min.js') }}" defer></script>{% endif %}{% endblock %}
 {% block content %}
 <div class="split">
   <div class="split-list">

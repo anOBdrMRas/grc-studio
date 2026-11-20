@@ -20,6 +20,7 @@ router = APIRouter()
 # colours of the modules (as in the prototype)
 COLORS = {
     "process": "#1f4e79",
+    "instruction": "#5f3dc4",
     "risk": "#d64545",
     "opportunity": "#2f9e44",
     "control": "#1971c2",
@@ -32,6 +33,7 @@ COLORS = {
 }
 KIND_LABELS = {
     "process": N_("Process"),
+    "instruction": N_("Work instruction"),
     "role": N_("Role"),
     "position": N_("Position"),
     "risk": N_("Risk"),
@@ -39,6 +41,7 @@ KIND_LABELS = {
 }
 WORKFLOW_API = {
     "process": "processes",
+    "instruction": "instructions",
     "role": "roles",
     "position": "positions",
     "risk": "risks",
@@ -106,6 +109,7 @@ async def _context(ctx: UiContext) -> dict[str, Any]:
     people = {p["id"]: p["name"] for p in await ctx.api.people_list()}
     counts: list[tuple[str, int, str]] = [
         ("process", len(processes), "/processes"),
+        ("instruction", len(await ctx.api.instructions_list()), "/instructions"),
         ("risk", len(risks), "/risks"),
         ("opportunity", len(opportunities), "/opportunities"),
         ("control", len(controls), "/controls"),
@@ -119,7 +123,7 @@ async def _context(ctx: UiContext) -> dict[str, Any]:
         counts.append(("user", len(await ctx.api.users_list()), "/users"))
     quality = [
         {"kind": k, "segments": None, "counts": workflow.get(k)}
-        for k in ("process", "role", "position")
+        for k in ("process", "instruction", "role", "position")
     ] + [
         {
             "kind": "risk",

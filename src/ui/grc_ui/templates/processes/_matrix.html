@@ -1,0 +1,25 @@
+{# step matrix: all activities (sub-process steps included) with description, roles and assigned elements #}
+{% set bases = {"instruction": "/instructions", "risk": "/risks", "control": "/controls", "opportunity": "/opportunities", "kpi": "/kpi"} %}
+{% set heads = {"instruction": _("Work instructions"), "risk": _("Risks"), "control": _("Controls (ICS)"), "opportunity": _("Opportunities"), "kpi": _("KPI")} %}
+<section class="rounded-box border border-base-300 bg-base-100 p-3">
+  <p class="mb-2 text-sm opacity-70">{{ _("All activities including sub-process steps with their assignments. A click on a step opens it in the model.") }}</p>
+  {% if matrix %}
+  <div class="overflow-x-auto">
+    <table class="table table-xs step-matrix">
+      <thead><tr><th>{{ _("Step") }}</th><th>{{ _("Description") }}</th><th>{{ _("Roles (RACI)") }}</th>{% for k in heads %}<th>{{ heads[k] }}</th>{% endfor %}</tr></thead>
+      <tbody>
+        {% for r in matrix %}
+        <tr class="hover">
+          <td class="min-w-40"><a class="link link-secondary font-medium" href="/processes/{{ item.id }}?step={{ r.id }}">{{ r.name }}</a><div class="font-mono text-[10px] opacity-50">{{ r.id }}</div></td>
+          <td class="min-w-56 max-w-sm whitespace-pre-wrap">{{ r.note or "–" }}</td>
+          <td class="min-w-40">{% for a in r.roles %}<a class="badge badge-outline badge-sm mr-1 mb-1" href="/roles/{{ a.role_id }}" title="{{ a.title }}">{{ a.code }} · {{ a.raci }}</a>{% else %}<span class="text-warning">–</span>{% endfor %}</td>
+          {% for k in heads %}
+          <td>{% for x in r.links[k] %}<a class="badge badge-outline badge-sm mr-1 mb-1" href="{{ bases[k] }}/{{ x.target_id }}" title="{{ x.title }}">{{ x.code }}</a>{% else %}<span class="opacity-40">–</span>{% endfor %}{% if k == "risk" and r.gap %} <span class="text-error" title="{{ _('Risk without a control in this step') }}">{{ icon("alert-triangle", "h-3 w-3 inline") }}</span>{% endif %}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}<p class="text-sm opacity-70">{{ _("The diagram has no activities yet.") }}</p>{% endif %}
+</section>

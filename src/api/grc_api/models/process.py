@@ -30,6 +30,10 @@ class Process(Versioned, Approvable, Base):
     call_links: Mapped[dict[str, str]] = mapped_column(
         JSONB, nullable=False, default=dict, server_default="{}"
     )
+    # element id → description of the step (definition, specifics)
+    step_notes: Mapped[dict[str, str]] = mapped_column(
+        JSONB, nullable=False, default=dict, server_default="{}"
+    )
 
 
 class StepAssignment(Base):

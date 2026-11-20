@@ -19,6 +19,8 @@ from grc_ui.session import UiContext, field_errors, problem_text, ui_context
 from grc_ui.templating import render, toast
 
 router = APIRouter()
+# the API accepts 8 MB of rich text; the proxy (nginx) 10 MB per request
+FORM_PART_MAX = 9 * 1024 * 1024
 
 
 @dataclass(frozen=True)
@@ -40,6 +42,16 @@ class Module:
 
 
 MODULES = {
+    "instructions": Module(
+        "instruction",
+        "/instructions",
+        N_("Work instructions"),
+        N_("Work instruction"),
+        "processes:read",
+        "processes:manage",
+        "instructions",
+        (("owner_name", N_("Owner")), ("steps", N_("Steps")), ("status", N_("Status"))),
+    ),
     "risks": Module(
         "risk",
         "/risks",
@@ -200,6 +212,11 @@ async def detail_context(
     spark = None
     if mod.kind == "kpi":
         spark = sparkline([m["value"] for m in item["measurements"]], item["target"])
+    step_processes = (
+        [(x["id"], f"{x['code']} {x['title']}") for x in await ctx.api.processes_list()]
+        if mod.kind == "instruction" and ctx.can("processes:manage")
+        else []
+    )
     suggest_ai = mod.kind in SUGGESTABLE and bool((await ctx.api.assistant_status())["ai"])
     return {
         "mod": mod,
@@ -211,6 +228,7 @@ async def detail_context(
         "iso": iso_labels(cat),
         "lists": cfg.lists,
         "banner": banner,
+        "step_processes": step_processes,
     }
 
 
@@ -337,7 +355,8 @@ def page_routes(slug: str) -> None:
     async def save(
         request: Request, item_id: str, ctx: UiContext = Depends(ui_context)
     ) -> Response:
-        form = await request.form()
+        # rich text with embedded images (work instructions) is larger than the default 1 MB
+        form = await request.form(max_part_size=FORM_PART_MAX)
         item = dict(await _m(ctx, mod, "get")(item_id))
         rights = item.get("rights")
         # owner fields: managers, and the recorder of an own draft (the API lists none then)

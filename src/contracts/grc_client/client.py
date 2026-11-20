@@ -249,6 +249,61 @@ class GrcClient:
             await self._call("GET", f"/api/v1/controls/{control_id}/history/{revision_id}"),
         )
 
+    async def instructions_list(self) -> list[WorkInstructionListItem]:
+        """GET /api/v1/instructions (permission: processes:read)."""
+        return cast(
+            "list[WorkInstructionListItem]", await self._call("GET", "/api/v1/instructions")
+        )
+
+    async def instructions_create(self, body: CreateElement) -> WorkInstructionOut:
+        """POST /api/v1/instructions (permission: processes:manage)."""
+        return cast(
+            "WorkInstructionOut", await self._call("POST", "/api/v1/instructions", json=body)
+        )
+
+    async def instructions_delete(self, wi_id: str) -> None:
+        """DELETE /api/v1/instructions/{wi_id} (permission: processes:manage)."""
+        await self._call("DELETE", f"/api/v1/instructions/{wi_id}")
+
+    async def instructions_get(self, wi_id: str) -> WorkInstructionOut:
+        """GET /api/v1/instructions/{wi_id} (permission: processes:read)."""
+        return cast("WorkInstructionOut", await self._call("GET", f"/api/v1/instructions/{wi_id}"))
+
+    async def instructions_update(
+        self, wi_id: str, body: ElementPatch, if_match: str | None = None
+    ) -> WorkInstructionOut:
+        """PATCH /api/v1/instructions/{wi_id} (permission: processes:read)."""
+        return cast(
+            "WorkInstructionOut",
+            await self._call(
+                "PATCH", f"/api/v1/instructions/{wi_id}", json=body, if_match=if_match
+            ),
+        )
+
+    async def instructions_history(self, wi_id: str) -> list[Revision]:
+        """GET /api/v1/instructions/{wi_id}/history (permission: processes:read)."""
+        return cast(
+            "list[Revision]", await self._call("GET", f"/api/v1/instructions/{wi_id}/history")
+        )
+
+    async def instructions_state(self, wi_id: str, revision_id: str) -> StateView:
+        """GET /api/v1/instructions/{wi_id}/history/{revision_id} (permission: processes:read)."""
+        return cast(
+            "StateView",
+            await self._call("GET", f"/api/v1/instructions/{wi_id}/history/{revision_id}"),
+        )
+
+    async def instructions_workflow(
+        self, wi_id: str, body: WorkflowAction, if_match: str | None = None
+    ) -> WorkInstructionOut:
+        """POST /api/v1/instructions/{wi_id}/workflow (permission: processes:read)."""
+        return cast(
+            "WorkInstructionOut",
+            await self._call(
+                "POST", f"/api/v1/instructions/{wi_id}/workflow", json=body, if_match=if_match
+            ),
+        )
+
     async def kpis_list(self) -> list[KpiListItem]:
         """GET /api/v1/kpis (permission: grc:read)."""
         return cast("list[KpiListItem]", await self._call("GET", "/api/v1/kpis"))
@@ -568,6 +623,20 @@ class GrcClient:
                 "DELETE",
                 f"/api/v1/processes/{process_id}/steps/{element_id}/links/{kind}/{target_id}",
                 params={"version": version},
+                if_match=if_match,
+            ),
+        )
+
+    async def processes_step_note(
+        self, process_id: str, element_id: str, body: StepNoteIn, if_match: str | None = None
+    ) -> ProcessOut:
+        """PUT /api/v1/processes/{process_id}/steps/{element_id}/note (permission: processes:read)."""
+        return cast(
+            "ProcessOut",
+            await self._call(
+                "PUT",
+                f"/api/v1/processes/{process_id}/steps/{element_id}/note",
+                json=body,
                 if_match=if_match,
             ),
         )

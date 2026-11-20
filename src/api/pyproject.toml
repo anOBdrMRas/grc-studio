@@ -16,6 +16,7 @@ dependencies = [
   "anthropic>=1.0",
   "httpx>=0.28",
   "cryptography>=44",
+  "nh3>=0.2.20",
 ]
 
 [project.scripts]

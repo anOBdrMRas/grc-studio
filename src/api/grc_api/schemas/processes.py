@@ -27,7 +27,7 @@ class StepRole(BaseModel):
     raci: str
 
 
-LinkKind = Literal["risk", "opportunity", "control", "kpi"]
+LinkKind = Literal["instruction", "risk", "opportunity", "control", "kpi"]
 
 
 class StepLinkOut(BaseModel):
@@ -75,9 +75,15 @@ class ProcessOut(ProcessFields):
     owners: list[str]
     steps: dict[str, list[StepRole]] = Field(description="element id → roles with RACI")
     links: dict[str, list[StepLinkOut]] = Field(
-        description="element id → risks, opportunities, controls and KPI"
+        description="element id → work instructions, risks, opportunities, controls and KPI"
     )
     ics_gaps: dict[str, list[IcsGap]] = Field(description="element id → risks without control")
+    activities: dict[str, str] = Field(
+        default_factory=dict, description="activities of the diagram (steps): element id → name"
+    )
+    step_notes: dict[str, str] = Field(
+        default_factory=dict, description="element id → description of the step"
+    )
     call_activities: dict[str, str] = Field(description="call activities: element id → name")
     calls: dict[str, ProcessRef] = Field(description="call activity → called process")
     called_by: list[CallerRef] = Field(
@@ -114,6 +120,11 @@ class DiagramIn(BaseModel):
 class StepLinkIn(BaseModel):
     kind: LinkKind
     target_id: str
+    version: int | None = None
+
+
+class StepNoteIn(BaseModel):
+    text: str = Field("", max_length=20000, description="description of the step; empty removes it")
     version: int | None = None
 
 

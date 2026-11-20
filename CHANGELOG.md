@@ -5,6 +5,27 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Added (stage 7: work instructions, process steps like the prototype)
+- Module "Work instructions": short description, owner (person), approval workflow (draft,
+  business approval by the owner, I&A review, released), "refers to" (process steps; assigned
+  in the step or, by I&A and administration, from the work instruction) and the content in a
+  rich text editor (TipTap, bundled at build time: headings, lists, tables, images by pasting,
+  dragging or from the toolbar, links, alignment, highlighting). The API keeps only the markup
+  of the editor (nh3) and at most 8 MB per text; images are scaled down in the browser.
+  `/api/v1/instructions` (migration 0008); demo data WI-001 … WI-003.
+- Process steps: a description at the top (`PUT …/steps/{element}/note`, versioned and recorded
+  like the other step changes), then roles (RACI), work instructions, risks with the ICS hint,
+  controls, opportunities, KPI; "WI" badges in the diagram.
+- Processes: new tab "Step matrix" (all activities with description, roles and assignments).
+  `ProcessOut` carries the activities of the diagram and the step descriptions.
+
+### Changed
+- Menu bar in the order of the prototype: I&A cockpit, processes, work instructions, positions,
+  roles, org chart, delegations, risks, opportunities, controls, KPI, audits, user management,
+  administration.
+- Browser tab icon: a circle with a check mark instead of the four squares.
+- The I&A cockpit counts and approves work instructions like the other workflow elements.
+
 ### Changed (dialogs and sign-in)
 - Questions before deleting, revoking or hiding open the application's own dialog (title,
   question, "Cancel" and a red button named after the action) instead of the browser dialog.

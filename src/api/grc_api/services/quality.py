@@ -12,7 +12,7 @@ from grc_api.domain import risk as rk
 from grc_api.domain.bpmn import activities
 from grc_api.domain.org import sod_conflicts
 from grc_api.errors import ProblemError
-from grc_api.models import Audit, Control, Mandate, Opportunity, Process, Risk
+from grc_api.models import Audit, Control, Mandate, Opportunity, Process, Risk, WorkInstruction
 from grc_api.repositories import audit as audit_log
 from grc_api.repositories import elements
 from grc_api.repositories import processes as proc_repo
@@ -170,6 +170,7 @@ async def snapshot(db: AsyncSession, org: OrgData) -> q.Snapshot:
 
 WORKFLOW_KINDS = {
     "process": Process,
+    "instruction": WorkInstruction,
     "risk": Risk,
     "opportunity": Opportunity,
 }
@@ -183,6 +184,7 @@ async def cockpit(db: AsyncSession, p: Principal) -> CockpitOut:
     found = q.checks(snap, date.today())
     collections: dict[str, list[Any]] = {
         "process": await elements.list_all(db, Process),
+        "instruction": await elements.list_all(db, WorkInstruction),
         "role": list(org.roles.values()),
         "position": list(org.positions.values()),
         "risk": await elements.list_all(db, Risk),

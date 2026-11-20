@@ -3,7 +3,7 @@
         <label class="label cursor-pointer justify-start gap-2"><input type="checkbox" class="checkbox checkbox-sm" name="{{ f.key }}" {% if v %}checked{% endif %}><span class="field-label">{{ _(f.label) }}</span></label>
         {% else %}
         <label class="field-label" for="f-{{ f.key }}">{{ _(f.label) }}{% if f.get("hint") %} <span class="font-normal opacity-70">· {{ _(f.get("hint")) }}</span>{% endif %}{% if locked %} <span class="font-normal">· {{ icon("lock", "h-3 w-3 inline") }} {{ _("defines the ownership – administration and I&A team only") }}</span>{% endif %}</label>
-        {% if f.kind in ("readonly", "status", "risk_eval", "risk_guide") %}<div class="text-sm">{% include "entity/_value.html" %}</div>
+        {% if f.kind in ("readonly", "status", "risk_eval", "risk_guide", "steps") %}<div class="text-sm">{% with in_form = true %}{% include "entity/_value.html" %}{% endwith %}</div>
         {% elif f.kind == "scale" %}
         {% set names = lists[f.options] if f.get("options") else [] %}
         <select id="f-{{ f.key }}" name="{{ f.key }}" class="select select-bordered select-sm w-full">
@@ -16,6 +16,10 @@
         </div>
         <template id="tpl-{{ f.key }}">{% with a = {"text": "", "owner_user_id": none} %}{% include "entity/_action_row.html" %}{% endwith %}</template>
         <button type="button" class="btn btn-ghost btn-xs mt-1" data-action="add-row" data-template="tpl-{{ f.key }}" data-target="rows-{{ f.key }}">{{ icon("plus") }} {{ _("Action") }}</button>
+        {% elif f.kind == "richtext" %}
+        <div class="rt-editor" data-richtext data-placeholder="{{ _('Write the work instruction here … add images by pasting, dragging or from the toolbar.') }}" data-labels="{{ rt_labels()|tojson|forceescape }}">
+          <textarea id="f-{{ f.key }}" name="{{ f.key }}" hidden>{{ v or '' }}</textarea>
+        </div>
         {% elif f.kind == "text" %}<input id="f-{{ f.key }}" name="{{ f.key }}" value="{{ v or '' }}" class="input input-bordered input-sm w-full" {% if err %}aria-invalid="true"{% endif %}>
         {% elif f.kind == "textarea" %}<textarea id="f-{{ f.key }}" name="{{ f.key }}" class="textarea textarea-bordered w-full text-sm" rows="{{ [3, [((v or '')|length // 90) + (v or '').count('\n') + 1, 20]|min]|max }}">{{ v or '' }}</textarea>
         {% elif f.kind == "decimal" %}<input id="f-{{ f.key }}" type="number" step="any" inputmode="decimal" name="{{ f.key }}" value="{{ v if v is not none else ('' if f.get('nullable') else 0) }}" class="input input-bordered input-sm w-40">

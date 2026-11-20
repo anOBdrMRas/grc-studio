@@ -17,6 +17,7 @@ from grc_api.models import (
     Risk,
     Role,
     User,
+    WorkInstruction,
 )
 
 # every table of versioned elements
@@ -27,6 +28,7 @@ Element = (
     | Process
     | Risk
     | Opportunity
+    | WorkInstruction
     | Control
     | Kpi
     | Mandate

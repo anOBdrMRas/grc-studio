@@ -1,0 +1,26 @@
+{# "Refers to": process steps of a work instruction (item.used_in); I&A and administration assign here #}
+<div id="wi-steps" class="grid gap-2">
+  {% if item.used_in %}
+  <ul class="grid gap-1 text-sm">
+    {% for u in item.used_in %}
+    <li class="flex items-center gap-2">
+      <a class="link link-secondary" href="/processes/{{ u.process_id }}?step={{ u.element_id }}">{{ u.process_label }}</a> › {{ u.element_name }}
+      {% if can("processes:manage") and not banner and in_form is not defined %}
+      <button type="button" class="btn btn-ghost btn-xs text-error" hx-post="/instructions/{{ item.id }}/steps/remove" hx-vals='{{ {"process_id": u.process_id, "element_id": u.element_id}|tojson }}' hx-target="#detail" hx-confirm="{{ _('Remove the assignment to this step?') }}" aria-label="{{ _('Remove') }}">{{ icon("x", "h-3 w-3") }}</button>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}<p class="text-sm opacity-70">{{ _("Not assigned to any process step yet.") }}</p>{% endif %}
+  {% if in_form is defined %}<p class="text-xs opacity-60">{{ _("Assign steps in the read view (after saving) or in the process step.") }}</p>{% endif %}
+  {% if can("processes:manage") and not banner and in_form is not defined %}
+  <form class="flex flex-wrap items-center gap-2" hx-post="/instructions/{{ item.id }}/steps" hx-target="#detail">
+    <select name="process_id" class="select select-bordered select-xs" aria-label="{{ _('Process') }}" hx-get="/instructions/{{ item.id }}/step-options" hx-target="next select" hx-swap="outerHTML" hx-trigger="change" required>
+      <option value="">{{ _("Choose process …") }}</option>
+      {% for id_, label in step_processes %}<option value="{{ id_ }}">{{ label }}</option>{% endfor %}
+    </select>
+    <select name="element_id" class="select select-bordered select-xs" aria-label="{{ _('Process step') }}" disabled required><option value="">{{ _("Choose process step …") }}</option></select>
+    <button class="btn btn-outline btn-xs">{{ icon("plus", "h-3 w-3") }} {{ _("Assign") }}</button>
+  </form>
+  {% endif %}
+</div>

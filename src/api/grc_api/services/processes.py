@@ -8,7 +8,7 @@ from grc_api.domain.bpmn import activities, call_activities, element_names, is_b
 from grc_api.domain.catalogs import PROCESS_CATEGORIES
 from grc_api.domain.codes import next_code
 from grc_api.errors import ProblemError
-from grc_api.models import Control, Kpi, Opportunity, Process, Risk
+from grc_api.models import Control, Kpi, Opportunity, Process, Risk, WorkInstruction
 from grc_api.repositories import audit, elements
 from grc_api.repositories import processes as proc_repo
 from grc_api.schemas.assistant import DraftCreate
@@ -26,6 +26,7 @@ from grc_api.schemas.processes import (
     ProcessRef,
     StepLinkIn,
     StepLinkOut,
+    StepNoteIn,
     StepRole,
     StepRoleIn,
 )
@@ -153,6 +154,8 @@ async def process_view(
         steps=steps,
         links=links,
         ics_gaps=gaps,
+        activities={el: name for el, name in activities(x.xml)},
+        step_notes=dict(x.step_notes or {}),
         call_activities=call_activities(x.xml),
         calls=calls,
         called_by=called_by,
@@ -353,6 +356,47 @@ async def link_call(
     return await process_view(db, process_id, p)
 
 
+async def set_step_note(
+    db: AsyncSession,
+    process_id: str,
+    element_id: str,
+    body: StepNoteIn,
+    if_match: str | None,
+    p: Principal,
+) -> ProcessOut:
+    """Description of a step (definition, specifics); a change of the process like any other."""
+    org = await load_org(db)
+    x = await common.get_or_404(db, Process, process_id)
+    names = element_names(x.xml)
+    if element_id not in names:
+        raise ProblemError("invalid", "The element is not part of this diagram")
+    notes = dict(x.step_notes or {})
+    text = body.text.strip()
+    if notes.get(element_id, "") == text:
+        return await process_view(db, process_id, p)
+    if text:
+        notes[element_id] = text
+    else:
+        notes.pop(element_id, None)
+    await common.save_element(
+        db,
+        "process",
+        x,
+        ProcessFields,
+        {},
+        common.expected_version(if_match, body.version),
+        p,
+        org,
+        column_values={"step_notes": notes},
+        action="assignment",
+        note="Description of step {step} changed",
+        vars_={"step": names[element_id]},
+    )
+    await db.commit()
+    db.expire_all()
+    return await process_view(db, process_id, p)
+
+
 async def assign_role(
     db: AsyncSession,
     process_id: str,
@@ -475,7 +519,10 @@ async def state(db: AsyncSession, process_id: str, revision_id: int, p: Principa
 
 # ---- risks, opportunities, controls and KPI of process steps -----------------------------------
 
-LINK_MODELS: dict[str, type[Risk] | type[Opportunity] | type[Control] | type[Kpi]] = {
+LINK_MODELS: dict[
+    str, type[WorkInstruction] | type[Risk] | type[Opportunity] | type[Control] | type[Kpi]
+] = {
+    "instruction": WorkInstruction,
     "risk": Risk,
     "opportunity": Opportunity,
     "control": Control,

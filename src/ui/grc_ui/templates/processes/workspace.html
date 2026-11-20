@@ -22,6 +22,7 @@
       <div role="tablist" class="tabs tabs-boxed tabs-sm">
         <a role="tab" class="tab {% if tab == 'model' %}tab-active{% endif %}" href="/processes/{{ item.id }}">{{ _("Model (BPMN)") }}</a>
         <a role="tab" class="tab {% if tab == 'profile' %}tab-active{% endif %}" href="/processes/{{ item.id }}?tab=profile">{{ _("Profile") }}</a>
+        <a role="tab" class="tab {% if tab == 'matrix' %}tab-active{% endif %}" href="/processes/{{ item.id }}?tab=matrix">{{ _("Step matrix") }}</a>
       </div>
       {% if item.rights.is_owner and not item.rights.can_manage %}<span class="badge badge-accent">{{ _("Owner – you may edit") }}</span>{% endif %}
       {% if item.rights.can_delete %}<button class="btn btn-ghost btn-sm text-error" hx-post="/processes/{{ item.id }}/delete" hx-confirm="{{ _('Really delete the process?') }}">{{ icon("trash") }} {{ _("Delete") }}</button>{% endif %}
@@ -54,6 +55,8 @@
     {% include "processes/_summary.html" %}
   </aside>
 </div>
+{% elif tab == "matrix" %}
+<div class="px-4 pb-4">{% include "processes/_matrix.html" %}</div>
 {% else %}
 <div class="px-4 pb-4"><section id="profile" class="rounded-box border border-base-300 bg-base-100 p-4">
   {% with d = profile %}{% if form %}{% include "entity/_form_wrap.html" %}{% else %}{% include "entity/_detail_wrap.html" %}{% endif %}{% endwith %}

@@ -22,4 +22,6 @@
 {% elif f.kind == "iso_one" %}{% if v %}<span class="badge badge-outline badge-sm" title="{{ _(iso[v].title) if v in iso else '' }}">{{ iso[v].label if v in iso else v }}</span>{% else %}<span class="opacity-50">–</span>{% endif %}
 {% elif f.kind == "iso" %}{% if v %}<div class="flex flex-wrap gap-1">{% for r in v %}<span class="badge badge-outline badge-sm" title="{{ _(iso[r].title) if r in iso else '' }}">{{ iso[r].label if r in iso else r }}</span>{% endfor %}</div>{% else %}<span class="opacity-50">–</span>{% endif %}
 {% elif f.kind == "position_roles" %}{% if v %}<ul class="grid gap-1 text-sm">{% for pr in v %}<li><a class="link link-secondary" href="/roles/{{ pr.role_id }}">{{ item.labels.get(pr.role_id, pr.role_id) }}</a>{% if pr.comment %} <span class="opacity-60">– {{ pr.comment }}</span>{% endif %}</li>{% endfor %}</ul>{% else %}<span class="opacity-50">–</span>{% endif %}
+{% elif f.kind == "richtext" %}{% if v %}<div class="rt-view rt-content">{{ v|safe }}</div>{% else %}<span class="opacity-50">–</span>{% endif %}
+{% elif f.kind == "steps" %}{% include "instructions/_steps.html" %}
 {% else %}{{ v }}{% endif %}

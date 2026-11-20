@@ -41,7 +41,7 @@ for (const name of icons) {
 }
 
 // licences for THIRD_PARTY_LICENSES.md
-for (const pkg of ['htmx.org', '@alpinejs/csp', 'sortablejs', 'bpmn-js', 'diagram-js', '@fontsource/manrope', '@fontsource/ibm-plex-sans', '@tabler/icons']) {
+for (const pkg of ['htmx.org', '@alpinejs/csp', 'sortablejs', 'bpmn-js', 'diagram-js', '@fontsource/manrope', '@fontsource/ibm-plex-sans', '@tabler/icons', '@tiptap/core', 'prosemirror-model', 'prosemirror-view', 'prosemirror-state']) {
   for (const f of ['LICENSE', 'LICENSE.md', 'LICENSE.txt']) {
     const p = join(nm, pkg, f);
     if (existsSync(p)) {
