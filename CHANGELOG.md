@@ -5,6 +5,12 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Changed (dialogs and sign-in)
+- Questions before deleting, revoking or hiding open the application's own dialog (title,
+  question, "Cancel" and a red button named after the action) instead of the browser dialog.
+- Demo sign-in: only "Sign in as …" with a dropdown of all active people of the user
+  administration; the four persona tiles are gone.
+
 ### Changed (process page, risk list, list width like the prototype)
 - Processes: landscape as in the prototype (management band, core processes as chevrons from
   "customer requirement" to "customer satisfied", support band, legend) and below it the table

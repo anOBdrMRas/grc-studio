@@ -44,7 +44,8 @@ def page(browser: "Browser") -> Iterator["Page"]:
         ),
     )
     p.on("pageerror", lambda e: errors.append(str(e)))
-    p.on("dialog", lambda d: d.accept())
+    # questions use the application's dialog; a browser dialog is an error
+    p.on("dialog", lambda d: (errors.append("browser dialog: " + d.message), d.dismiss()))
     yield p
     ctx.close()
     assert errors == [], f"browser errors: {errors}"
@@ -57,9 +58,10 @@ def sign_in(page: "Page", user_id: str) -> None:
     page.wait_for_url(BASE + "/")
 
 
-def test_tiles_menubar_and_split_view(page: "Page") -> None:
+def test_sign_in_menubar_and_split_view(page: "Page") -> None:
     page.goto(BASE + "/login")
-    expect(page.locator("button.persona")).to_have_count(4)
+    expect(page.locator("button.persona")).to_have_count(0)
+    expect(page.locator(".login-other select option")).not_to_have_count(0)
     sign_in(page, "U-010")
     expect(page.locator(".app-menubar")).to_contain_text("Prozesse")
     page.goto(BASE + "/roles/RO-006")
@@ -292,6 +294,24 @@ def test_bpmn_import_and_call_link(page: "Page") -> None:
     with page.expect_download() as dl:
         page.click("button[data-action=export-svg]")
     assert dl.value.suggested_filename == "P-003.svg"
+
+
+def test_delete_asks_in_application_dialog(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/kpi/KPI-001")
+    rows = page.locator("#detail tbody tr:has(button[hx-post$='/delete'])")
+    count = rows.count()
+    assert count > 0
+    rows.first.locator("button").click()
+    dialog = page.locator("#confirm-dialog")
+    expect(dialog).to_be_visible()
+    expect(dialog).to_contain_text("Wirklich löschen?")
+    dialog.locator("[data-confirm=no]").click()
+    expect(dialog).to_be_hidden()
+    expect(rows).to_have_count(count)
+    rows.first.locator("button").click()
+    dialog.locator("[data-confirm=yes]").click()
+    expect(rows).to_have_count(count - 1)
 
 
 def test_new_process_opens_its_profile_form(page: "Page") -> None:

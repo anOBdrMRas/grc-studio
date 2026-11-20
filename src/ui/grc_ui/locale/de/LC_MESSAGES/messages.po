@@ -395,6 +395,9 @@ msgstr "Geprüft durch"
 msgid "Checked on"
 msgstr "Geprüft am"
 
+msgid "Choose a person …"
+msgstr "Person auswählen …"
+
 msgid "Choose another file"
 msgstr "Andere Datei wählen"
 
@@ -511,6 +514,9 @@ msgstr "Vertraulichkeit"
 
 msgid "Confidentiality agreement required"
 msgstr "Vertraulichkeitsvereinbarung erforderlich"
+
+msgid "Confirm"
+msgstr "Bestätigen"
 
 msgid "Conforming"
 msgstr "Konform"
@@ -1887,6 +1893,9 @@ msgstr "Planung von Änderungen"
 
 msgid "Please check your entries."
 msgstr "Bitte prüfen Sie Ihre Eingaben."
+
+msgid "Please confirm"
+msgstr "Bitte bestätigen"
 
 msgid "Please sign in."
 msgstr "Bitte melden Sie sich an."
