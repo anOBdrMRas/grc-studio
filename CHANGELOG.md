@@ -5,6 +5,9 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Changed
+- The org chart has its own entry in the menu bar (after Positions).
+
 ### Changed (I&A cockpit like the prototype)
 - Figures per module on top (processes with their activities), quality overview as cards with
   status bars (processes, roles, positions), treatment / progress / effectiveness bars (risks,

@@ -22,6 +22,7 @@ NAV: list[NavItem] = [
     NavItem("/controls", N_("Controls (ICS)"), "grc:read"),
     NavItem("/roles", N_("Roles"), "org:read"),
     NavItem("/positions", N_("Positions"), "org:read"),
+    NavItem("/org-chart", N_("Org chart"), "org:read"),
     NavItem("/delegations", N_("Delegations & powers of attorney"), "org:read"),
     NavItem("/kpi", N_("KPI"), "grc:read"),
     NavItem("/audits", N_("Audits"), "grc:read"),
