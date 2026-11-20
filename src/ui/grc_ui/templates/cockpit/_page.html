@@ -1,0 +1,195 @@
+{# I&A cockpit, laid out like the prototype #}
+{% macro kind_tag(kind) %}<span class="ia-kind" style="color: {{ colors.get(kind, '#495057') }}">{{ _(kind_labels.get(kind, kind)) }}</span>{% endmacro %}
+{% macro grade_pill(g) %}<span class="ia-grade {{ 'good' if g >= 80 else 'mid' if g >= 50 else 'bad' }}">{{ _("Quality") }} {{ g }} %</span>{% endmacro %}
+<header class="flex flex-wrap items-end justify-between gap-2">
+  <h1 class="text-2xl font-bold">{{ _("I&A cockpit") }}</h1>
+  <div class="flex flex-wrap items-center gap-3">
+    <span class="text-sm opacity-70">{{ _("Integrity & Assurance: quality approval of processes, roles, positions, risks and opportunities") }}</span>
+    <a class="btn btn-outline btn-sm" href="/export.xlsx">{{ icon("download") }} {{ _("All modules as Excel") }}</a>
+  </div>
+</header>
+
+<div class="ia-stats">
+  {% for kind, n, href in counts %}
+  <a class="ia-stat" href="{{ href }}" style="border-top-color: {{ colors[kind] }}">
+    <span class="ia-stat-num">{{ n }}</span>
+    <span class="ia-stat-label">{% if kind == "process" %}{{ _("Processes · {n} activities").format(n=activities) }}{% else %}{{ _(titles.get(kind, kind)) }}{% endif %}</span>
+  </a>
+  {% endfor %}
+</div>
+
+<section>
+  <h2 class="ia-heading">{{ _("Quality overview") }}</h2>
+  <div class="ia-quality">
+    {% for q in quality %}
+    {% set c = q.counts %}
+    <div class="ia-card" style="border-top-color: {{ colors[q.kind] }}">
+      <div class="flex items-center justify-between gap-2">
+        <a class="font-semibold hover:underline" href="{{ links[q.kind][:-1] }}">{{ _(titles[q.kind]) }}</a>
+        {{ grade_pill(grades.get(q.kind, 100)) }}
+      </div>
+      {% if q.segments %}
+      {% set total = q.segments|sum(attribute="n") %}
+      <div class="ia-bar" title="{% for s in q.segments %}{{ _(s.label) }} {{ s.n }}{% if not loop.last %} · {% endif %}{% endfor %}">
+        {% for s in q.segments %}{% if s.n %}<span style="width: {{ (100 * s.n / total)|round(2) }}%; background: {{ s.color }}"></span>{% endif %}{% endfor %}
+      </div>
+      {% else %}
+      <div class="ia-bar">
+        {% for part, color in (("released", "#40c057"), ("review", "#15aabf"), ("draft", "#fab005"), ("archived", "#adb5bd")) %}{% if c[part] %}<span style="width: {{ (100 * c[part] / c.total)|round(2) }}%; background: {{ color }}"></span>{% endif %}{% endfor %}
+      </div>
+      {% endif %}
+      {% if c %}<p class="text-xs opacity-70">{{ _("{a} of {b} released").format(a=c.released, b=c.total) }} · {{ _("{n} in I&A review").format(n=c.review) }} · {{ _("{n} in draft").format(n=c.draft) }}</p>{% endif %}
+      {% if q.segments %}<p class="ia-legend">{% for s in q.segments if s.n %}<span><i style="background: {{ s.color }}"></i>{{ _(s.label) }} {{ s.n }}</span>{% endfor %}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="ia-section">
+  <h2 class="ia-section-title">{{ _("Waiting for the I&A approval") }} <span class="badge badge-sm">{{ queue|length }}</span></h2>
+  {% if not queue %}<p class="text-sm text-success">✓ {{ _("No open approvals.") }}</p>{% else %}
+  <div class="overflow-x-auto">
+  <table class="table table-sm">
+    <thead><tr><th>{{ _("Element") }}</th><th>{{ _("Owner") }}</th><th>{{ _("Business approval") }}</th><th>{{ _("waiting") }}</th><th>{{ _("Decision") }}</th></tr></thead>
+    <tbody>
+      {% for r in queue %}
+      <tr class="align-top">
+        <td>{{ kind_tag(r.kind) }}<a class="block hover:underline" href="{{ links[r.kind] }}{{ r.id }}"><span class="font-mono text-xs opacity-70">{{ r.code }}</span> {{ r.title }}</a><span class="text-xs opacity-60">v{{ r.doc_version }}</span></td>
+        <td class="text-sm">{{ r.owners|join(", ") or "–" }}</td>
+        <td class="text-sm">{{ r.submitted_by or "–" }}{% if r.submitted_at %}, {{ r.submitted_at[:10] }} {{ r.submitted_at[11:16] }}{% endif %}{% if r.comment %}<span class="block text-xs opacity-70">„{{ r.comment }}“</span>{% endif %}</td>
+        <td class="whitespace-nowrap text-sm">{% if r.days is not none %}{{ _("{n} days").format(n=r.days) }}{% else %}–{% endif %}</td>
+        <td class="min-w-72">
+          {% if can_approve %}
+          <form class="grid gap-1" hx-post="/ia/review/{{ r.kind }}/{{ r.id }}" hx-target="#cockpit">
+            <input type="hidden" name="version" value="{{ r.version }}">
+            <input name="comment" class="input input-bordered input-xs w-full" placeholder="{{ _('Comment (required to reject)') }}" aria-label="{{ _('Comment') }}">
+            <div class="flex flex-wrap gap-1">
+              <a class="btn btn-ghost btn-xs" href="{{ links[r.kind] }}{{ r.id }}">{{ _("Open element") }}</a>
+              <button class="btn btn-primary btn-xs" name="action" value="approve">{{ icon("check", "h-3 w-3") }} {{ _("Approve") }}</button>
+              <button class="btn btn-ghost btn-xs text-error" name="action" value="reject">{{ icon("arrow-back-up", "h-3 w-3") }} {{ _("Reject") }}</button>
+            </div>
+          </form>
+          {% else %}<a class="btn btn-ghost btn-xs" href="{{ links[r.kind] }}{{ r.id }}">{{ _("Open element") }}</a> <span class="text-xs opacity-60">{{ _("Quality approval by the I&A team") }}</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% endif %}
+</section>
+
+<section class="ia-section">
+  <h2 class="ia-section-title">{{ _("Delegations in approval") }} <span class="badge badge-sm">{{ pending|length }}</span></h2>
+  <p class="text-xs opacity-70">{{ _("Delegations are granted by the granting person and accepted by the receiving person.") }}</p>
+  {% if not pending %}<p class="mt-2 text-sm text-success">✓ {{ _("No open delegations.") }}</p>{% else %}
+  <table class="table table-sm mt-1">
+    <thead><tr><th>{{ _("Delegation") }}</th><th>{{ _("waiting for") }}</th><th></th></tr></thead>
+    <tbody>
+      {% for m in pending %}
+      <tr class="align-top">
+        <td><span class="ia-kind" style="color: {{ colors.mandate }}">{{ _(m.mandate_type) }}</span><a class="block hover:underline" href="/delegations/{{ m.id }}"><span class="font-mono text-xs opacity-70">{{ m.code }}</span> {{ m.title }}</a><span class="text-xs opacity-60">{{ _("to {name}").format(name=m.recipient_name or "–") }}</span></td>
+        <td class="text-sm"><b>{{ _(m.waiting_for) }}</b>: {{ m.person }}</td>
+        <td><a class="btn btn-ghost btn-xs" href="/delegations/{{ m.id }}">{{ _("Open element") }}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</section>
+
+<div class="grid gap-5 lg:grid-cols-2">
+  <section class="ia-section">
+    <h2 class="ia-section-title">{{ _("In progress with the owner") }} <span class="badge badge-sm">{{ in_work|length }}</span></h2>
+    {% if not in_work %}<p class="text-sm opacity-60">–</p>{% endif %}
+    <ul class="divide-y divide-base-200">
+      {% for w in in_work %}
+      <li class="py-2 text-sm">{{ kind_tag(w.kind) }} <a class="hover:underline" href="{{ links[w.kind] }}{{ w.id }}"><span class="font-mono text-xs opacity-70">{{ w.code }}</span> {{ w.title }}</a> <span class="text-xs opacity-60">· {{ w.owners|join(", ") or "–" }}</span>
+        {% if w.rejected %}<span class="block text-xs text-warning">↩ {{ _("rejected") }}: {{ w.rejected }}</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  <section class="ia-section">
+    <h2 class="ia-section-title">{{ _("Recently released") }}</h2>
+    {% if not released %}<p class="text-sm opacity-60">–</p>{% endif %}
+    <ul class="divide-y divide-base-200">
+      {% for r in released %}
+      <li class="py-2 text-sm"><span class="text-xs opacity-60">{{ r.at[:10] }} {{ r.at[11:16] }}</span> <a class="hover:underline" href="{{ links[r.kind] }}{{ r.id }}"><span class="font-mono text-xs opacity-70">{{ r.code }}</span> {{ r.title }}</a> <span class="text-xs opacity-60">· v{{ r.doc_version }} · {{ r.by }}</span></li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+
+<section class="ia-section">
+  <h2 class="ia-section-title">{{ _("Quality checks") }} <span class="badge badge-sm {{ 'badge-warning' if open_total else 'badge-success' }}">{{ _("{n} with findings").format(n=open_total) }}</span></h2>
+  <p class="text-xs opacity-70">{{ _("Automatic checks. A click on a tile shows the elements concerned.") }}</p>
+  {% for title, checks in groups %}
+  <h3 class="mt-3 mb-1 text-sm font-semibold opacity-80">{{ _(title) }}</h3>
+  <div class="ia-checks">
+    {% for c in checks %}
+    {% set n = c["items"]|length %}
+    <button type="button" class="ia-check {{ 'has' if n else 'none' }}" hx-get="/ia/checks/{{ c.key }}" hx-target="#modal-body">
+      <span class="ia-check-num">{{ n }}</span><span class="ia-check-label">{{ _(c.label) }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</section>
+
+<section>
+  <h2 class="ia-heading">{{ _("GRC situation") }}</h2>
+  <div class="ia-dash">
+    <div class="ia-section ia-matrix">
+      {% with mod = risk_mod %}{% include "entity/_matrix.html" %}{% endwith %}
+    </div>
+    <div class="ia-section">
+      <h3 class="ia-section-title">{{ _("Risks by department") }}</h3>
+      {% if not by_department %}<p class="text-sm opacity-60">{{ _("No risks recorded.") }}</p>{% endif %}
+      {% for d in by_department %}
+      <div class="ia-bar-row" title="{{ _('{n} of them higher risks (> 8)').format(n=d.high) }}">
+        <span class="ia-bar-label">{{ _(d.department) }}</span>
+        <span class="ia-bar-track"><span style="width: {{ (100 * d.high / max_department)|round(2) }}%; background: #ff8787"></span><span style="width: {{ (100 * (d.n - d.high) / max_department)|round(2) }}%; background: #a5d8ff"></span></span>
+        <span class="ia-bar-num">{{ d.n }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="ia-section">
+      <h3 class="ia-section-title">{{ _("ICS – operating effectiveness") }}</h3>
+      {% for s in effectiveness %}
+      <div class="ia-bar-row">
+        <span class="ia-bar-label">{{ _(s.label) }}</span>
+        <span class="ia-bar-track"><span style="width: {{ (100 * s.n / controls_total)|round(2) if controls_total else 0 }}%; background: {{ s.color }}"></span></span>
+        <span class="ia-bar-num">{{ s.n }}</span>
+      </div>
+      {% endfor %}
+      <h3 class="ia-section-title mt-4">{{ _("Role coverage of the process steps") }}</h3>
+      <div class="ia-bar-row">
+        <span class="ia-bar-label">{{ _("with responsible role (R/A)") }}</span>
+        <span class="ia-bar-track"><span style="width: {{ coverage }}%; background: #40c057"></span></span>
+        <span class="ia-bar-num">{{ coverage }} %</span>
+      </div>
+    </div>
+    <div class="ia-section">
+      <h3 class="ia-section-title">{{ _("KPI traffic lights") }}</h3>
+      {% if not kpis %}<p class="text-sm opacity-60">–</p>{% endif %}
+      <ul class="divide-y divide-base-200">
+        {% for k in kpis %}
+        <li class="flex items-center gap-2 py-1.5 text-sm"><span class="ia-dot traffic-{{ k.traffic }}" aria-label="{{ _(k.traffic) }}"></span>
+          <a class="grow hover:underline" href="/kpi/{{ k.id }}">{{ k.title }}</a>
+          <span class="whitespace-nowrap font-mono text-xs opacity-80">{{ k.last_value|num if k.last_value is not none else "—" }} {{ k.unit }} / {{ _("target") }} {{ k.target|num }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="ia-section">
+      <h3 class="ia-section-title">{{ _("Open audit findings by type") }}</h3>
+      {% for f in findings %}
+      <div class="ia-bar-row">
+        <span class="ia-bar-label">{{ _(f.type) }}</span>
+        <span class="ia-bar-track"><span style="width: {{ (100 * f.n / findings_open)|round(2) if findings_open else 0 }}%; background: {{ f.color }}"></span></span>
+        <span class="ia-bar-num">{{ f.n }}</span>
+      </div>
+      {% endfor %}
+      <p class="mt-1 text-xs opacity-70">{{ _("{n} open").format(n=findings_open) }} · {{ _("{n} overdue").format(n=findings_overdue) }}</p>
+    </div>
+  </div>
+</section>

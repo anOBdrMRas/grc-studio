@@ -5,6 +5,23 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Changed
+- The org chart has its own entry in the menu bar (after Positions).
+
+### Changed (I&A cockpit like the prototype)
+- Figures per module on top (processes with their activities), quality overview as cards with
+  status bars (processes, roles, positions), treatment / progress / effectiveness bars (risks,
+  opportunities, controls) and the quality grade.
+- "Waiting for the I&A approval" with owners, the comment of the business approval, waiting days
+  and approve / reject right in the cockpit (a comment is required to reject).
+- New: delegations in approval, drafts in progress with the owner (rejected ones first with the
+  reason), recently released.
+- Quality checks as compact tiles by area; a click shows the elements concerned.
+- New GRC situation: risk matrix, risks by department, ICS operating effectiveness, role
+  coverage of the process steps, KPI traffic lights, open audit findings by type.
+- API: the cockpit carries owners, comment and version per queue item, `in_work`,
+  `recently_released` and `situation`; the KPI list carries the target.
+
 ### Changed (create like the prototype)
 - "+ <element>" in every module and "+ Process" create an empty element and open its form
   at once (a new process opens its profile in edit mode); the extra title field next to the

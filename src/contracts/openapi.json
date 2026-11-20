@@ -894,12 +894,31 @@
             "title": "Grades",
             "type": "object"
           },
+          "in_work": {
+            "description": "drafts at their owners, rejected first",
+            "items": {
+              "$ref": "#/components/schemas/WorkItem"
+            },
+            "title": "In Work",
+            "type": "array"
+          },
+          "recently_released": {
+            "description": "latest ten I&A approvals",
+            "items": {
+              "$ref": "#/components/schemas/ReleasedItem"
+            },
+            "title": "Recently Released",
+            "type": "array"
+          },
           "review_queue": {
             "items": {
               "$ref": "#/components/schemas/ReviewItem"
             },
             "title": "Review Queue",
             "type": "array"
+          },
+          "situation": {
+            "$ref": "#/components/schemas/Situation"
           },
           "workflow": {
             "additionalProperties": {
@@ -914,7 +933,10 @@
           "checks",
           "workflow",
           "grades",
-          "review_queue"
+          "review_queue",
+          "in_work",
+          "recently_released",
+          "situation"
         ],
         "title": "CockpitOut",
         "type": "object"
@@ -1998,6 +2020,11 @@
               }
             ],
             "title": "Last Value"
+          },
+          "target": {
+            "default": 0,
+            "title": "Target",
+            "type": "number"
           },
           "title": {
             "title": "Title",
@@ -3708,10 +3735,23 @@
         "title": "ProcessRef",
         "type": "object"
       },
-      "ReviewItem": {
+      "ReleasedItem": {
         "properties": {
+          "at": {
+            "format": "date-time",
+            "title": "At",
+            "type": "string"
+          },
+          "by": {
+            "title": "By",
+            "type": "string"
+          },
           "code": {
             "title": "Code",
+            "type": "string"
+          },
+          "doc_version": {
+            "title": "Doc Version",
             "type": "string"
           },
           "id": {
@@ -3721,6 +3761,56 @@
           "kind": {
             "title": "Kind",
             "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "code",
+          "title",
+          "doc_version",
+          "by",
+          "at"
+        ],
+        "title": "ReleasedItem",
+        "type": "object"
+      },
+      "ReviewItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "comment": {
+            "default": "",
+            "description": "comment of the business approval",
+            "title": "Comment",
+            "type": "string"
+          },
+          "doc_version": {
+            "default": "",
+            "title": "Doc Version",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "owners": {
+            "description": "names of the owners",
+            "items": {
+              "type": "string"
+            },
+            "title": "Owners",
+            "type": "array"
           },
           "submitted_at": {
             "anyOf": [
@@ -3741,6 +3831,12 @@
           "title": {
             "title": "Title",
             "type": "string"
+          },
+          "version": {
+            "default": 0,
+            "description": "row version, for approving or rejecting",
+            "title": "Version",
+            "type": "integer"
           }
         },
         "required": [
@@ -4516,6 +4612,45 @@
         "title": "RoleOut",
         "type": "object"
       },
+      "Situation": {
+        "description": "Figures for the GRC situation picture that the element lists do not carry.",
+        "properties": {
+          "activities": {
+            "description": "activities in all process diagrams",
+            "title": "Activities",
+            "type": "integer"
+          },
+          "findings_by_type": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Findings By Type",
+            "type": "object"
+          },
+          "findings_open": {
+            "title": "Findings Open",
+            "type": "integer"
+          },
+          "findings_overdue": {
+            "title": "Findings Overdue",
+            "type": "integer"
+          },
+          "role_coverage": {
+            "description": "% of activities with a role that is R or A",
+            "title": "Role Coverage",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "activities",
+          "role_coverage",
+          "findings_by_type",
+          "findings_open",
+          "findings_overdue"
+        ],
+        "title": "Situation",
+        "type": "object"
+      },
       "StateView": {
         "description": "Fields of an element right after a recorded change (read-only).",
         "properties": {
@@ -4992,6 +5127,48 @@
           "type"
         ],
         "title": "ValidationError",
+        "type": "object"
+      },
+      "WorkItem": {
+        "description": "A draft with its owners; `rejected` holds the reason when the I&A team sent it back.",
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "owners": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Owners",
+            "type": "array"
+          },
+          "rejected": {
+            "default": "",
+            "title": "Rejected",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "id",
+          "code",
+          "title",
+          "owners"
+        ],
+        "title": "WorkItem",
         "type": "object"
       },
       "WorkflowAction": {

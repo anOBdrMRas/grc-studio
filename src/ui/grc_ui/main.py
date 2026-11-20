@@ -9,7 +9,18 @@ from fastapi.staticfiles import StaticFiles
 from grc_client import ApiError
 from grc_ui.config import get_settings
 from grc_ui.i18n import LANGUAGES, current_language, gettext
-from grc_ui.routes import admin, assistant, auth, excel, grc, modules, orgchart, pages, processes
+from grc_ui.routes import (
+    admin,
+    assistant,
+    auth,
+    cockpit,
+    excel,
+    grc,
+    modules,
+    orgchart,
+    pages,
+    processes,
+)
 from grc_ui.security import security_headers
 from grc_ui.session import CsrfFailed, NotSignedIn, problem_text
 from grc_ui.templating import STATIC, render, toast
@@ -82,6 +93,7 @@ def create_app() -> FastAPI:
         admin.router,
         assistant.router,
         orgchart.router,
+        cockpit.router,
         excel.router,
         pages.router,
         processes.router,
