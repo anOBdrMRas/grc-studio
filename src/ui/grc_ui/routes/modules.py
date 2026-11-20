@@ -33,7 +33,6 @@ class Module:
     columns: tuple[tuple[str, str], ...]  # (key, label) of the narrow list
     create_perm: str = ""  # who may create (default: manage_perm)
     title_label: str = N_("Title")  # header of the first list column
-    new_hint: str = N_("Title of the new entry")
 
     @property
     def can_create(self) -> str:
@@ -55,7 +54,6 @@ MODULES = {
             ("score", N_("Score")),
         ),
         create_perm="grc:record",
-        new_hint=N_("Short description of the risk"),
         title_label=N_("Risk"),
     ),
     "controls": Module(
@@ -381,7 +379,8 @@ def page_routes(slug: str) -> None:
     @router.post(mod.base, response_class=HTMLResponse)
     async def create(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
         form = await request.form()
-        title = str(form.get("title") or gettext("New entry")).strip()
+        # like the prototype: an empty element whose form opens at once
+        title = str(form.get("title") or "").strip()
         if mod.kind == "user":
             created = await ctx.api.users_create({"last_name": title, "first_name": ""})
         else:

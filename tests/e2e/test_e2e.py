@@ -111,10 +111,11 @@ def test_risk_recorded_assessed_and_released(page: "Page") -> None:
     sign_in(page, "U-004")
     page.goto(BASE + "/risks")
     expect(page.locator(".risk-cell")).to_have_count(16)
-    page.fill("input[name=title]", "E2E: Lieferant liefert verspätet. Produktion steht.")
-    page.click("form[hx-post='/risks'] button")
+    # "+ Risk" opens the empty form at once (as in the prototype)
+    page.click("button[hx-post='/risks']")
     page.wait_for_url(re.compile(r"/risks/R-\d+\?edit=1"))
     url = page.url.split("?")[0]
+    page.fill("#f-description", "E2E: Lieferant liefert verspätet. Produktion steht.")
     page.select_option("#f-likelihood", "3")
     page.select_option("#f-impact", "4")
     page.click("#detail button:has-text('Maßnahme')")
@@ -287,3 +288,13 @@ def test_bpmn_import_and_call_link(page: "Page") -> None:
     with page.expect_download() as dl:
         page.click("button[data-action=export-svg]")
     assert dl.value.suggested_filename == "P-003.svg"
+
+
+def test_new_process_opens_its_profile_form(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/processes")
+    page.click("button[hx-post='/processes']")
+    page.wait_for_url(re.compile(r"/processes/P-\d+\?tab=profile&edit=1"))
+    page.fill("#f-title", "E2E Neuer Prozess")
+    page.click("#profile button:has-text('Speichern')")
+    expect(page.locator("#profile")).to_contain_text("E2E Neuer Prozess")

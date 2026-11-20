@@ -12,10 +12,7 @@
         {% if can(mod.manage_perm) %}<button class="btn btn-ghost btn-xs" hx-get="{{ mod.base }}/import" hx-target="#modal-body" title="{{ _('Excel import') }}">{{ icon("upload", "h-4 w-4") }} Excel</button>{% endif %}
       </span>
       {% if can(mod.can_create) %}
-      <form hx-post="{{ mod.base }}" class="join">
-        <input name="title" class="input input-bordered input-sm join-item w-40" placeholder="{{ _(mod.new_hint) }}" aria-label="{{ _(mod.new_hint) }}" required>
-        <button class="btn btn-primary btn-sm join-item">{{ icon("plus") }} {{ _(mod.singular) }}</button>
-      </form>
+      <button class="btn btn-primary btn-sm" hx-post="{{ mod.base }}">{{ icon("plus") }} {{ _(mod.singular) }}</button>
       {% endif %}
     </div>
     <form role="search" hx-get="{{ mod.base }}" hx-target="#list" hx-swap="outerHTML" hx-trigger="input delay:300ms from:find input, submit" class="mb-2">

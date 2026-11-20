@@ -65,7 +65,7 @@ class WorkflowAction(BaseModel):
 
 
 class CreateElement(BaseModel):
-    title: str = Field(min_length=1, max_length=300)
+    title: str = Field("", max_length=300, description="may be empty: the form opens next")
 
 
 class StateView(BaseModel):
