@@ -34,6 +34,7 @@ EXTRA = [
     "{role} assigned to step {step}",
     "{step} calls {process}",
     "Link of {step} removed",
+    "Description of step {step} changed",
     "Created from a draft",
     "{role} removed from step {step}",
     "{item} assigned to step {step}",

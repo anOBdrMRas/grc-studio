@@ -14,6 +14,7 @@ from grc_api.schemas.processes import (
     ProcessListItem,
     ProcessOut,
     StepLinkIn,
+    StepNoteIn,
     StepRoleIn,
 )
 from grc_api.services import processes as svc
@@ -128,6 +129,18 @@ async def processes_history(process_id: str, db: Db, p: Me) -> list[Revision]:
 )
 async def processes_state(process_id: str, revision_id: int, db: Db, p: Me) -> StateView:
     return await svc.state(db, process_id, revision_id, p)
+
+
+@router.put(
+    "/{process_id}/steps/{element_id}/note",
+    operation_id="processes_step_note",
+    **secured("processes:read"),
+)
+async def processes_step_note(
+    process_id: str, element_id: str, body: StepNoteIn, db: Db, p: Me, if_match: IfMatch = None
+) -> ProcessOut:
+    """Description of a step; the editing rights of the process apply."""
+    return await svc.set_step_note(db, process_id, element_id, body, if_match, p)
 
 
 @router.put(

@@ -1,6 +1,16 @@
+{% from "macros.html" import status_badge %}
 <div data-process-version="{{ item.version }}">
   <p class="text-xs opacity-60">{{ _("Process step") }}</p>
   <h3 class="font-semibold">{{ name or element_id }}</h3>
+  <h4 class="mt-3 text-xs font-semibold uppercase tracking-wide text-secondary">{{ _("Description") }}</h4>
+  {% if item.rights.can_edit %}
+  <form hx-post="/processes/{{ item.id }}/steps/{{ element_id }}/note" hx-target="#step-panel" class="mt-1 grid gap-1">
+    <input type="hidden" name="version" value="{{ item.version }}"><input type="hidden" name="name" value="{{ name }}">
+    <textarea name="text" rows="{{ [3, [(note|length // 45) + note.count('\n') + 1, 12]|min]|max }}" class="textarea textarea-bordered w-full text-sm" placeholder="{{ _('What happens in this step? Definition, specifics, inputs and outputs …') }}" aria-label="{{ _('Description of the process step') }}">{{ note }}</textarea>
+    <button class="btn btn-ghost btn-xs justify-self-end">{{ icon("device-floppy", "h-3 w-3") }} {{ _("Save description") }}</button>
+  </form>
+  {% elif note %}<p class="mt-1 whitespace-pre-wrap text-sm">{{ note }}</p>
+  {% else %}<p class="mt-1 text-xs opacity-70">{{ _("No description yet.") }}</p>{% endif %}
   {% if is_call %}
   <h4 class="mt-3 text-xs font-semibold uppercase tracking-wide text-secondary">{{ _("Called process") }}</h4>
   {% if call %}<p class="mt-1"><a class="link link-secondary" href="/processes/{{ call.process_id }}">{{ call.code }} {{ call.title }} →</a></p>{% else %}<p class="mt-1 text-xs opacity-70">{{ _("— not linked —") }}</p>{% endif %}
@@ -47,16 +57,6 @@
   </form>
   <p class="mt-2 text-xs opacity-60">{{ _("R = responsible, A = accountable, C = consulted, I = informed") }}</p>
   {% endif %}
-  {% if gaps %}
-  <div class="alert alert-warning mt-3 py-2 text-xs" role="alert">
-    <div>{{ icon("alert-triangle", "h-4 w-4 inline") }} <b>{{ _("ICS check") }}:</b>
-      {% for g in gaps %}
-      <p>{{ _("{risk} has no mitigating control in this step.").format(risk=codes.get(g.risk_id, g.risk_id)) }}
-        {% if g.suggestions %}{{ _("Suggested") }}: {% for c in g.suggestions %}<a class="link" href="/controls/{{ c }}">{{ codes.get(c, c) }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</p>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
   {% for g in groups %}
   <h4 class="mt-4 text-xs font-semibold uppercase tracking-wide text-secondary">{{ _(g.title) }} ({{ g["items"]|length }})</h4>
   {% if g["items"] %}
@@ -64,6 +64,7 @@
     {% for x in g["items"] %}
     <li class="flex items-center gap-2">
       <a class="link link-secondary grow" href="{{ g.base }}/{{ x.target_id }}">{{ x.code }} {{ x.title }}</a>
+      {% if g.kind == "instruction" and x.target_id in statuses %}<span class="shrink-0 whitespace-nowrap">{{ status_badge(statuses[x.target_id]) }}</span>{% endif %}
       {% if item.rights.can_edit %}
       <form hx-post="/processes/{{ item.id }}/steps/{{ element_id }}/links/{{ x.kind }}/{{ x.target_id }}/delete" hx-target="#step-panel">
         <input type="hidden" name="version" value="{{ item.version }}"><input type="hidden" name="name" value="{{ name }}">
@@ -84,5 +85,17 @@
     <button class="btn btn-primary btn-xs" aria-label="{{ _('Assign') }}">{{ icon("plus", "h-3 w-3") }}</button>
   </form>
   {% elif not g["items"] %}<p class="mt-1 text-xs opacity-70">{{ _("None assigned.") }}</p>{% endif %}
+  {% if g.kind == "risk" %}
+  {% if gaps %}
+  <div class="alert alert-warning mt-3 py-2 text-xs" role="alert">
+    <div>{{ icon("alert-triangle", "h-4 w-4 inline") }} <b>{{ _("ICS check") }}:</b>
+      {% for g in gaps %}
+      <p>{{ _("{risk} has no mitigating control in this step.").format(risk=codes.get(g.risk_id, g.risk_id)) }}
+        {% if g.suggestions %}{{ _("Suggested") }}: {% for c in g.suggestions %}<a class="link" href="/controls/{{ c }}">{{ codes.get(c, c) }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</p>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  {% endif %}
   {% endfor %}
 </div>

@@ -30,8 +30,8 @@
     if (state) state.textContent = d ? state.getAttribute('data-msg-dirty') : '';
   }
 
-  // assignments per step as small badges: roles (R), risks, controls, opportunities, KPI; red when the ICS check finds a gap
-  var BADGE = [['role', 'R'], ['risk', '\u26a0'], ['control', '\u2713'], ['opportunity', '\u2197'], ['kpi', '\u25d4']];
+  // assignments per step as small badges: roles (R), work instructions (WI), risks, controls, opportunities, KPI; red when the ICS check finds a gap
+  var BADGE = [['role', 'R'], ['instruction', 'WI'], ['risk', '\u26a0'], ['control', '\u2713'], ['opportunity', '\u2197'], ['kpi', '\u25d4']];
   function badges() {
     fetch('/processes/' + encodeURIComponent(pid) + '/badges.json', { credentials: 'same-origin' })
       .then(function (r) { return r.json(); })

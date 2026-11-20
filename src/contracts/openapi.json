@@ -3495,6 +3495,14 @@
       },
       "ProcessOut": {
         "properties": {
+          "activities": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "activities of the diagram (steps): element id → name",
+            "title": "Activities",
+            "type": "object"
+          },
           "area": {
             "default": "",
             "title": "Area",
@@ -3592,7 +3600,7 @@
               },
               "type": "array"
             },
-            "description": "element id → risks, opportunities, controls and KPI",
+            "description": "element id → work instructions, risks, opportunities, controls and KPI",
             "title": "Links",
             "type": "object"
           },
@@ -3661,6 +3669,14 @@
           "status": {
             "title": "Status",
             "type": "string"
+          },
+          "step_notes": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "element id → description of the step",
+            "title": "Step Notes",
+            "type": "object"
           },
           "steps": {
             "additionalProperties": {
@@ -4723,6 +4739,7 @@
         "properties": {
           "kind": {
             "enum": [
+              "instruction",
               "risk",
               "opportunity",
               "control",
@@ -4762,6 +4779,7 @@
           },
           "kind": {
             "enum": [
+              "instruction",
               "risk",
               "opportunity",
               "control",
@@ -4786,6 +4804,30 @@
           "title"
         ],
         "title": "StepLinkOut",
+        "type": "object"
+      },
+      "StepNoteIn": {
+        "properties": {
+          "text": {
+            "default": "",
+            "description": "description of the step; empty removes it",
+            "maxLength": 20000,
+            "title": "Text",
+            "type": "string"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version"
+          }
+        },
+        "title": "StepNoteIn",
         "type": "object"
       },
       "StepRole": {
@@ -5133,6 +5175,192 @@
           "type"
         ],
         "title": "ValidationError",
+        "type": "object"
+      },
+      "WorkInstructionListItem": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "doc_version": {
+            "title": "Doc Version",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "is_owner": {
+            "title": "Is Owner",
+            "type": "boolean"
+          },
+          "owner_name": {
+            "title": "Owner Name",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "steps": {
+            "description": "number of process steps it is assigned to",
+            "title": "Steps",
+            "type": "integer"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "title",
+          "description",
+          "owner_name",
+          "steps",
+          "status",
+          "doc_version",
+          "is_owner"
+        ],
+        "title": "WorkInstructionListItem",
+        "type": "object"
+      },
+      "WorkInstructionOut": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "content": {
+            "default": "",
+            "description": "rich text (HTML); sanitised by the API",
+            "title": "Content",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "custom": {
+            "additionalProperties": true,
+            "title": "Custom",
+            "type": "object"
+          },
+          "description": {
+            "default": "",
+            "description": "short description",
+            "title": "Description",
+            "type": "string"
+          },
+          "doc_version": {
+            "title": "Doc Version",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "labels": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Labels",
+            "type": "object"
+          },
+          "next_review": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Review"
+          },
+          "owner_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner User Id"
+          },
+          "released": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Released"
+          },
+          "rights": {
+            "$ref": "#/components/schemas/Rights"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "title": {
+            "default": "",
+            "title": "Title",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          },
+          "used_in": {
+            "description": "process steps the work instruction refers to",
+            "items": {
+              "$ref": "#/components/schemas/Usage"
+            },
+            "title": "Used In",
+            "type": "array"
+          },
+          "version": {
+            "title": "Version",
+            "type": "integer"
+          },
+          "workflow": {
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEntryOut"
+            },
+            "title": "Workflow",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "status",
+          "doc_version",
+          "version",
+          "created_at",
+          "updated_at",
+          "rights",
+          "used_in",
+          "workflow",
+          "released",
+          "labels"
+        ],
+        "title": "WorkInstructionOut",
         "type": "object"
       },
       "WorkItem": {
@@ -6801,6 +7029,385 @@
           "risks and opportunities"
         ],
         "x-permission": "grc:read"
+      }
+    },
+    "/api/v1/instructions": {
+      "get": {
+        "operationId": "instructions_list",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/WorkInstructionListItem"
+                  },
+                  "title": "Response Instructions List",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Instructions List",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:read"
+      },
+      "post": {
+        "operationId": "instructions_create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkInstructionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Instructions Create",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:manage"
+      }
+    },
+    "/api/v1/instructions/{wi_id}": {
+      "delete": {
+        "operationId": "instructions_delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "wi_id",
+            "required": true,
+            "schema": {
+              "title": "Wi Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Instructions Delete",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:manage"
+      },
+      "get": {
+        "operationId": "instructions_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "wi_id",
+            "required": true,
+            "schema": {
+              "title": "Wi Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkInstructionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Instructions Get",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:read"
+      },
+      "patch": {
+        "description": "Owners edit their work instruction; the content is sanitised (only editor markup).",
+        "operationId": "instructions_update",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "wi_id",
+            "required": true,
+            "schema": {
+              "title": "Wi Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ElementPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkInstructionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Instructions Update",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/instructions/{wi_id}/history": {
+      "get": {
+        "operationId": "instructions_history",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "wi_id",
+            "required": true,
+            "schema": {
+              "title": "Wi Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Revision"
+                  },
+                  "title": "Response Instructions History",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Instructions History",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/instructions/{wi_id}/history/{revision_id}": {
+      "get": {
+        "operationId": "instructions_state",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "wi_id",
+            "required": true,
+            "schema": {
+              "title": "Wi Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "revision_id",
+            "required": true,
+            "schema": {
+              "title": "Revision Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StateView"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Instructions State",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/instructions/{wi_id}/workflow": {
+      "post": {
+        "operationId": "instructions_workflow",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "wi_id",
+            "required": true,
+            "schema": {
+              "title": "Wi Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkflowAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkInstructionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Instructions Workflow",
+        "tags": [
+          "work instructions"
+        ],
+        "x-permission": "processes:read"
       }
     },
     "/api/v1/kpis": {
@@ -9138,6 +9745,85 @@
           }
         },
         "summary": "Processes Unlink Element",
+        "tags": [
+          "processes"
+        ],
+        "x-permission": "processes:read"
+      }
+    },
+    "/api/v1/processes/{process_id}/steps/{element_id}/note": {
+      "put": {
+        "description": "Description of a step; the editing rights of the process apply.",
+        "operationId": "processes_step_note",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "process_id",
+            "required": true,
+            "schema": {
+              "title": "Process Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "element_id",
+            "required": true,
+            "schema": {
+              "title": "Element Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "if-match",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "If-Match"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StepNoteIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcessOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Processes Step Note",
         "tags": [
           "processes"
         ],

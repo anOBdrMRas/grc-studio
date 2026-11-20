@@ -16,7 +16,7 @@
   <script src="{{ asset_url('js/app.js') }}" defer></script>
   {% block head_scripts %}{% endblock %}
 </head>
-<body class="min-h-screen bg-base-200 text-base-content font-sans" data-msg-unreachable="{{ _('The server cannot be reached. Please try again.') }}"{% block body_attrs %}{% endblock %}>
+<body class="min-h-screen bg-base-200 text-base-content font-sans" data-msg-unreachable="{{ _('The server cannot be reached. Please try again.') }}" data-msg-too-large="{{ _('Too large to save. Please shrink or remove large images.') }}"{% block body_attrs %}{% endblock %}>
 {% block body %}{% endblock %}
 <div id="toasts" class="toast toast-end toast-bottom z-50" aria-live="polite"></div>
 </body>

@@ -12,6 +12,7 @@ BOLD = re.compile(r"\*\*(.+?)\*\*")
 SUGGESTABLE = frozenset({"role", "position", "risk", "control", "mandate"})
 BASES = {
     "processes": "/processes/",
+    "instruction": "/instructions/",
     "role": "/roles/",
     "position": "/positions/",
     "mandate": "/delegations/",
@@ -24,6 +25,7 @@ BASES = {
 KIND_LABELS = {
     "processes": N_("Process"),
     "step": N_("Process step"),
+    "instruction": N_("Work instruction"),
     "role": N_("Role"),
     "position": N_("Position"),
     "mandate": N_("Delegation"),

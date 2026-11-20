@@ -140,8 +140,21 @@ msgstr "Administrator"
 msgid "Affected assets"
 msgstr "Betroffene Werte (Assets)"
 
+msgid "Align left"
+msgstr "Linksbündig"
+
+msgid "Align right"
+msgstr "Rechtsbündig"
+
 msgid "All"
 msgstr "Alle"
+
+msgid ""
+"All activities including sub-process steps with their assignments. A click on a step opens it in "
+"the model."
+msgstr ""
+"Alle Aktivitäten inkl. Subprozess-Schritte mit ihren Zuordnungen. Klick auf einen Schritt öffnet "
+"ihn im Modell."
 
 msgid "All modules as Excel"
 msgstr "Alle Module als Excel"
@@ -178,8 +191,12 @@ msgstr "Ausgewählte Felder übernehmen"
 msgid "Apply {n} rows"
 msgstr "{n} Zeilen übernehmen"
 
-msgid "Applying saves like an edit: rights, version check and history apply. AI texts can be wrong – read them first."
-msgstr "Übernehmen speichert wie eine Bearbeitung: Rechte, Versionsprüfung und Historie gelten. KI-Texte können falsch sein – bitte vorher lesen."
+msgid ""
+"Applying saves like an edit: rights, version check and history apply. AI texts can be wrong – "
+"read them first."
+msgstr ""
+"Übernehmen speichert wie eine Bearbeitung: Rechte, Versionsprüfung und Historie gelten. KI-Texte "
+"können falsch sein – bitte vorher lesen."
 
 msgid "Appointed officer"
 msgstr "Beauftragter"
@@ -208,8 +225,12 @@ msgstr "Archiviert"
 msgid "Area"
 msgstr "Bereich"
 
-msgid "As the responsible person you document the cause, the corrective action and the progress. The auditors check the effectiveness and close the finding."
-msgstr "Als verantwortliche Person dokumentieren Sie Ursache, Korrekturmaßnahme und Fortschritt. Die Auditoren prüfen die Wirksamkeit und schließen die Feststellung."
+msgid ""
+"As the responsible person you document the cause, the corrective action and the progress. The "
+"auditors check the effectiveness and close the finding."
+msgstr ""
+"Als verantwortliche Person dokumentieren Sie Ursache, Korrekturmaßnahme und Fortschritt. Die "
+"Auditoren prüfen die Wirksamkeit und schließen die Feststellung."
 
 msgid "Ask"
 msgstr "Fragen"
@@ -229,14 +250,23 @@ msgstr "Bewertungsskala"
 msgid "Assign"
 msgstr "Zuordnen"
 
+msgid "Assign steps in the read view (after saving) or in the process step."
+msgstr "Schritte in der Ansicht (nach dem Speichern) oder im Prozessschritt zuordnen."
+
 msgid "Assign …"
 msgstr "Zuordnen …"
+
+msgid "Assigned"
+msgstr "Zugeordnet"
 
 msgid "Assigned roles"
 msgstr "Zugeordnete Rollen"
 
 msgid "Assignment in process step"
 msgstr "Zuordnung im Prozessschritt"
+
+msgid "Assignment removed"
+msgstr "Zuordnung entfernt"
 
 msgid "Assistant"
 msgstr "Assistent"
@@ -319,6 +349,12 @@ msgstr "Bank- / Zahlungsvollmacht"
 msgid "Benefit potential"
 msgstr "Nutzenpotenzial"
 
+msgid "Bold"
+msgstr "Fett"
+
+msgid "Bullet list"
+msgstr "Aufzählung"
+
 msgid "Business Enablement"
 msgstr "Business Enablement"
 
@@ -368,6 +404,9 @@ msgstr "Kategorie"
 msgid "Cause and consequence"
 msgstr "Ursache und Auswirkung"
 
+msgid "Centre"
+msgstr "Zentriert"
+
 msgid "Certificate valid until"
 msgstr "Zertifikat gültig bis"
 
@@ -398,6 +437,9 @@ msgstr "Geprüft am"
 msgid "Choose a person …"
 msgstr "Person auswählen …"
 
+msgid "Choose a process and a step."
+msgstr "Bitte Prozess und Schritt wählen."
+
 msgid "Choose another file"
 msgstr "Andere Datei wählen"
 
@@ -409,6 +451,12 @@ msgstr "Andere Person wählen …"
 
 msgid "Choose at least one suggestion."
 msgstr "Bitte mindestens einen Vorschlag auswählen."
+
+msgid "Choose process step …"
+msgstr "Prozessschritt wählen …"
+
+msgid "Choose process …"
+msgstr "Prozess wählen …"
 
 msgid "Civil or criminal liability"
 msgstr "Zivil- oder strafrechtliche Haftung"
@@ -529,6 +577,9 @@ msgstr "Die Verbindung funktioniert."
 
 msgid "Contact of the audited party"
 msgstr "Ansprechpartner auditierte Seite"
+
+msgid "Content"
+msgstr "Inhalt"
 
 msgid "Content & scope"
 msgstr "Inhalt & Umfang"
@@ -693,8 +744,17 @@ msgstr "Delegationen in Freigabe"
 msgid "Delete"
 msgstr "Löschen"
 
+msgid "Delete column"
+msgstr "Spalte löschen"
+
 msgid "Delete field"
 msgstr "Feld löschen"
+
+msgid "Delete row"
+msgstr "Zeile löschen"
+
+msgid "Delete table"
+msgstr "Tabelle löschen"
 
 msgid "Deleted"
 msgstr "Gelöscht"
@@ -717,14 +777,25 @@ msgstr "Stellvertretung"
 msgid "Deputy inducted"
 msgstr "Vertretung eingearbeitet"
 
-msgid "Describe the procedure in your own words. The AI turns it into steps, decisions and role assignments as a BPMN draft."
-msgstr "Beschreibe den Ablauf in eigenen Worten. Die KI erstellt daraus Schritte, Entscheidungen und Rollenzuordnungen als BPMN-Entwurf."
+msgid ""
+"Describe the procedure in your own words. The AI turns it into steps, decisions and role "
+"assignments as a BPMN draft."
+msgstr ""
+"Beschreibe den Ablauf in eigenen Worten. Die KI erstellt daraus Schritte, Entscheidungen und "
+"Rollenzuordnungen als BPMN-Entwurf."
 
 msgid "Description"
 msgstr "Beschreibung"
 
+#, python-brace-format
+msgid "Description of step {step} changed"
+msgstr "Beschreibung von Schritt {step} geändert"
+
 msgid "Description of the process"
 msgstr "Beschreibung des Ablaufs"
+
+msgid "Description of the process step"
+msgstr "Beschreibung des Prozessschritts"
 
 msgid "Design and development changes"
 msgstr "Entwicklungsänderungen"
@@ -1010,6 +1081,9 @@ msgstr "An Ansicht anpassen"
 msgid "For me to do"
 msgstr "Für mich zu tun"
 
+msgid "Formatting"
+msgstr "Formatierung"
+
 msgid "Formula"
 msgstr "Berechnungsformel"
 
@@ -1119,13 +1193,33 @@ msgid "HR"
 msgstr "HR"
 
 msgid "Has not happened yet – not even at comparable companies – but cannot be ruled out."
-msgstr "Ist noch nicht vorgekommen – auch nicht bei vergleichbaren Unternehmen –, kann aber nicht ausgeschlossen werden."
+msgstr ""
+"Ist noch nicht vorgekommen – auch nicht bei vergleichbaren Unternehmen –, kann aber nicht "
+"ausgeschlossen werden."
 
 msgid "Headcount (planned)"
 msgstr "Planstellen (Anzahl)"
 
-msgid "Here the administration adds custom fields and additional dropdown values. The changes apply at once in the forms and in Excel. Standard fields and values stay unchanged so that existing data remains valid."
-msgstr "Hier ergänzt die Administration eigene Felder und zusätzliche Auswahlwerte. Die Änderungen gelten sofort in Masken und Excel. Standardfelder und -werte bleiben unverändert, damit bestehende Daten gültig bleiben."
+msgid "Header row on/off"
+msgstr "Kopfzeile ein/aus"
+
+msgid "Heading 1"
+msgstr "Überschrift 1"
+
+msgid "Heading 2"
+msgstr "Überschrift 2"
+
+msgid "Heading 3"
+msgstr "Überschrift 3"
+
+msgid ""
+"Here the administration adds custom fields and additional dropdown values. The changes apply at "
+"once in the forms and in Excel. Standard fields and values stay unchanged so that existing data "
+"remains valid."
+msgstr ""
+"Hier ergänzt die Administration eigene Felder und zusätzliche Auswahlwerte. Die Änderungen gelten"
+" sofort in Masken und Excel. Standardfelder und -werte bleiben unverändert, damit bestehende "
+"Daten gültig bleiben."
 
 msgid "Hide roles"
 msgstr "Rollen ausblenden"
@@ -1147,6 +1241,9 @@ msgstr "Höhere Risiken (> 8)"
 
 msgid "Higher risks (> 8) without actions or responsible persons"
 msgstr "Höhere Risiken (> 8) ohne Maßnahmen oder Maßnahmenverantwortliche"
+
+msgid "Highlight"
+msgstr "Hervorheben"
 
 msgid "Holder"
 msgstr "Inhaber"
@@ -1305,6 +1402,18 @@ msgstr "Eingaben (Inputs)"
 msgid "Inquiry"
 msgstr "Befragung"
 
+msgid "Insert column right"
+msgstr "Spalte rechts einfügen"
+
+msgid "Insert image"
+msgstr "Bild einfügen"
+
+msgid "Insert row below"
+msgstr "Zeile darunter einfügen"
+
+msgid "Insert table"
+msgstr "Tabelle einfügen"
+
 msgid "Insignificant"
 msgstr "Unbedeutend"
 
@@ -1343,6 +1452,9 @@ msgstr "Ungültiger Wert"
 
 msgid "Investigation processes"
 msgstr "Untersuchungsprozesse"
+
+msgid "Italic"
+msgstr "Kursiv"
 
 msgid "Job description"
 msgstr "Stellenbeschreibung"
@@ -1439,6 +1551,9 @@ msgstr "Realisierungswahrscheinlichkeit"
 
 msgid "Link"
 msgstr "Verknüpfen"
+
+msgid "Link address (empty = remove link)"
+msgstr "Adresse des Links (leer = Link entfernen)"
 
 #, python-brace-format
 msgid "Link of {step} removed"
@@ -1643,6 +1758,9 @@ msgstr "Noch keine Änderungen protokolliert. Änderungen werden ab jetzt protok
 msgid "No delegations received."
 msgstr "Keine Übertragungen erhalten."
 
+msgid "No description yet."
+msgstr "Noch keine Beschreibung."
+
 msgid "No entries."
 msgstr "Keine Einträge."
 
@@ -1740,6 +1858,9 @@ msgstr "Zahl"
 msgid "Number expected: {value}"
 msgstr "Zahl erwartet: {value}"
 
+msgid "Numbered list"
+msgstr "Nummerierte Liste"
+
 msgid "Observation"
 msgstr "Beobachtung"
 
@@ -1826,6 +1947,9 @@ msgstr "Eigner"
 
 msgid "Owner – you may edit"
 msgstr "Owner – Sie dürfen bearbeiten"
+
+msgid "Paragraph style"
+msgstr "Absatzformat"
 
 msgid "Partially effective"
 msgstr "Eingeschränkt wirksam"
@@ -2080,8 +2204,15 @@ msgstr "Quartalsweise"
 msgid "Question to the assistant"
 msgstr "Frage an den Assistenten"
 
-msgid "Questions and the elements you may read are sent to the AI service. Answers can be wrong – check them in the linked element."
-msgstr "Fragen und die Elemente, die du lesen darfst, werden an den KI-Dienst übermittelt. Antworten können falsch sein – prüfe sie im verlinkten Element."
+msgid ""
+"Questions and the elements you may read are sent to the AI service. Answers can be wrong – check "
+"them in the linked element."
+msgstr ""
+"Fragen und die Elemente, die du lesen darfst, werden an den KI-Dienst übermittelt. Antworten "
+"können falsch sein – prüfe sie im verlinkten Element."
+
+msgid "Quote / note"
+msgstr "Zitat / Hinweis"
 
 msgid "R = responsible, A = accountable, C = consulted, I = informed"
 msgstr "R = durchführend, A = verantwortlich, C = beratend, I = informiert"
@@ -2138,6 +2269,9 @@ msgstr "Wert erfassen"
 msgid "Record-keeping"
 msgstr "Aufbewahrung von Aufzeichnungen"
 
+msgid "Redo"
+msgstr "Wiederholen"
+
 msgid "Reduce"
 msgstr "Reduzieren"
 
@@ -2152,6 +2286,9 @@ msgstr "Bezug: Rolle"
 
 msgid "References"
 msgstr "Verweise"
+
+msgid "Refers to"
+msgstr "Bezieht sich auf"
 
 msgid "Register entry / notification to authority"
 msgstr "Registereintrag / Behördenmeldung"
@@ -2189,6 +2326,9 @@ msgstr "Entfernen"
 
 msgid "Remove key"
 msgstr "Schlüssel entfernen"
+
+msgid "Remove the assignment to this step?"
+msgstr "Zuordnung zu diesem Schritt entfernen?"
 
 msgid "Remove the stored API key? The assistant then searches without AI."
 msgstr "Gespeicherten API-Schlüssel entfernen? Der Assistent sucht dann ohne KI."
@@ -2353,6 +2493,9 @@ msgstr "Rollentyp"
 msgid "Roles"
 msgstr "Rollen"
 
+msgid "Roles (RACI)"
+msgstr "Rollen (RACI)"
+
 msgid "Roles without a holder"
 msgstr "Rollen ohne Inhaber"
 
@@ -2383,10 +2526,16 @@ msgid "Row {row}: {code} saved"
 msgstr "Zeile {row}: {code} gespeichert"
 
 msgid "Rows: likelihood · columns: impact. Higher risks (> 8) need treatment or a documented acceptance."
-msgstr "Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder eine dokumentierte Akzeptanz."
+msgstr ""
+"Zeilen: Wahrscheinlichkeit · Spalten: Ausmaß. Höhere Risiken (> 8) brauchen eine Behandlung oder "
+"eine dokumentierte Akzeptanz."
 
-msgid "SETTINGS_SECRET is not set on the server. Without it the API key cannot be stored (see the operations manual)."
-msgstr "SETTINGS_SECRET ist auf dem Server nicht gesetzt. Ohne diesen Wert kann der API-Schlüssel nicht gespeichert werden (siehe Betriebshandbuch)."
+msgid ""
+"SETTINGS_SECRET is not set on the server. Without it the API key cannot be stored (see the "
+"operations manual)."
+msgstr ""
+"SETTINGS_SECRET ist auf dem Server nicht gesetzt. Ohne diesen Wert kann der API-Schlüssel nicht "
+"gespeichert werden (siehe Betriebshandbuch)."
 
 msgid "Sales"
 msgstr "Sales"
@@ -2396,6 +2545,9 @@ msgstr "Stichprobe"
 
 msgid "Save"
 msgstr "Speichern"
+
+msgid "Save description"
+msgstr "Beschreibung speichern"
 
 msgid "Save diagram"
 msgstr "Diagramm speichern"
@@ -2471,6 +2623,9 @@ msgstr "Schwerwiegend bis existenzbedrohend"
 
 msgid "Set status (administration)"
 msgstr "Status setzen (Administration)"
+
+msgid "Short description"
+msgstr "Kurzbeschreibung"
 
 msgid "Short description of the finding"
 msgstr "Kurzbeschreibung der Feststellung"
@@ -2587,6 +2742,12 @@ msgstr "Gesetzliche Vertretung (Organ)"
 msgid "Step"
 msgstr "Schritt"
 
+msgid "Step matrix"
+msgstr "Schrittmatrix"
+
+msgid "Steps"
+msgstr "Schritte"
+
 msgid "Steps with roles"
 msgstr "Schritte mit Rollen"
 
@@ -2595,6 +2756,9 @@ msgstr "Strategisch"
 
 msgid "Strengths"
 msgstr "Stärken"
+
+msgid "Strikethrough"
+msgstr "Durchgestrichen"
 
 msgid "Sub-delegation allowed"
 msgstr "Weiterdelegation erlaubt"
@@ -2710,20 +2874,41 @@ msgstr "Der KI-Dienst ist gerade ausgelastet. Bitte versuche es gleich noch einm
 msgid "The AI service rejected the request."
 msgstr "Der KI-Dienst hat die Anfrage abgelehnt."
 
-msgid "The AI suggests content for the text fields, based on the title and the data already entered. You decide per field what is applied."
-msgstr "Die KI schlägt Inhalte für die Textfelder vor, ausgehend von Bezeichnung und bereits erfassten Angaben. Du entscheidest je Feld, was übernommen wird."
+msgid ""
+"The AI suggests content for the text fields, based on the title and the data already entered. You"
+" decide per field what is applied."
+msgstr ""
+"Die KI schlägt Inhalte für die Textfelder vor, ausgehend von Bezeichnung und bereits erfassten "
+"Angaben. Du entscheidest je Feld, was übernommen wird."
 
-msgid "The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses Claude (Anthropic). Without an API key it searches the elements without AI."
-msgstr "Der Assistent beantwortet Fragen wie „Wo finde ich …?“ mit Verweisen auf Prozesse, Schritte, Rollen und andere Elemente. Er nutzt Claude (Anthropic). Ohne API-Schlüssel durchsucht er die Elemente ohne KI."
+msgid ""
+"The assistant answers questions such as “Where do I find …?” with links to processes, steps, "
+"roles and other elements. It uses Claude (Anthropic). Without an API key it searches the elements"
+" without AI."
+msgstr ""
+"Der Assistent beantwortet Fragen wie „Wo finde ich …?“ mit Verweisen auf Prozesse, Schritte, "
+"Rollen und andere Elemente. Er nutzt Claude (Anthropic). Ohne API-Schlüssel durchsucht er die "
+"Elemente ohne KI."
 
-msgid "The assistant answers questions such as “Where do I find …?” with links to processes, steps, roles and other elements. It uses the AI service set here – the internal con-AI (OpenAI-compatible) or Claude (Anthropic-compatible). Without an API key it searches the elements without AI."
-msgstr "Der Assistent beantwortet Fragen wie „Wo finde ich …?“ mit Verweisen auf Prozesse, Schritte, Rollen und andere Elemente. Er nutzt den hier eingestellten KI-Dienst – die interne con-AI (OpenAI-kompatibel) oder Claude (Anthropic-kompatibel). Ohne API-Schlüssel durchsucht er die Elemente ohne KI."
+msgid ""
+"The assistant answers questions such as “Where do I find …?” with links to processes, steps, "
+"roles and other elements. It uses the AI service set here – the internal con-AI (OpenAI-"
+"compatible) or Claude (Anthropic-compatible). Without an API key it searches the elements without"
+" AI."
+msgstr ""
+"Der Assistent beantwortet Fragen wie „Wo finde ich …?“ mit Verweisen auf Prozesse, Schritte, "
+"Rollen und andere Elemente. Er nutzt den hier eingestellten KI-Dienst – die interne con-AI "
+"(OpenAI-kompatibel) oder Claude (Anthropic-kompatibel). Ohne API-Schlüssel durchsucht er die "
+"Elemente ohne KI."
 
 msgid "The assistant is thinking …"
 msgstr "Der Assistent überlegt …"
 
 msgid "The demo sign-in is switched off."
 msgstr "Die Demo-Anmeldung ist abgeschaltet."
+
+msgid "The diagram has no activities yet."
+msgstr "Das Diagramm hat noch keine Aktivitäten."
 
 msgid "The element no longer exists."
 msgstr "Das Element existiert nicht mehr."
@@ -2741,14 +2926,26 @@ msgid "The file is not an Excel workbook (.xlsx)."
 msgstr "Die Datei ist keine Excel-Arbeitsmappe (.xlsx)."
 
 #, python-brace-format
-msgid "The file replaces the diagram of {process}. Role and other assignments stay with the element ids; steps that no longer exist keep them but are no longer shown."
-msgstr "Die Datei ersetzt das Diagramm von {process}. Rollen- und andere Zuordnungen hängen an den Element-IDs; Schritte, die es nicht mehr gibt, behalten sie, werden aber nicht mehr angezeigt."
+msgid ""
+"The file replaces the diagram of {process}. Role and other assignments stay with the element ids;"
+" steps that no longer exist keep them but are no longer shown."
+msgstr ""
+"Die Datei ersetzt das Diagramm von {process}. Rollen- und andere Zuordnungen hängen an den "
+"Element-IDs; Schritte, die es nicht mehr gibt, behalten sie, werden aber nicht mehr angezeigt."
 
-msgid "The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to Anthropic."
-msgstr "Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und die Elemente, die die fragende Person lesen darf, werden an Anthropic übermittelt."
+msgid ""
+"The key is stored encrypted on the server and is never shown again. Questions and the elements "
+"the asking person may read are sent to Anthropic."
+msgstr ""
+"Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und "
+"die Elemente, die die fragende Person lesen darf, werden an Anthropic übermittelt."
 
-msgid "The key is stored encrypted on the server and is never shown again. Questions and the elements the asking person may read are sent to the AI service."
-msgstr "Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und die Elemente, die die fragende Person lesen darf, werden an den KI-Dienst übermittelt."
+msgid ""
+"The key is stored encrypted on the server and is never shown again. Questions and the elements "
+"the asking person may read are sent to the AI service."
+msgstr ""
+"Der Schlüssel wird verschlüsselt auf dem Server gespeichert und nie wieder angezeigt. Fragen und "
+"die Elemente, die die fragende Person lesen darf, werden an den KI-Dienst übermittelt."
 
 msgid "The process is created as a draft and can be refined in the model afterwards."
 msgstr "Der Prozess wird als Entwurf angelegt und kann danach im Modell weiter bearbeitet werden."
@@ -2760,7 +2957,9 @@ msgid "The sheet is empty."
 msgstr "Das Tabellenblatt ist leer."
 
 msgid "The stored API key cannot be decrypted (SETTINGS_SECRET was changed). Enter the key again."
-msgstr "Der gespeicherte API-Schlüssel lässt sich nicht entschlüsseln (SETTINGS_SECRET wurde geändert). Bitte den Schlüssel neu eingeben."
+msgstr ""
+"Der gespeicherte API-Schlüssel lässt sich nicht entschlüsseln (SETTINGS_SECRET wurde geändert). "
+"Bitte den Schlüssel neu eingeben."
 
 msgid "The version of the element is missing."
 msgstr "Die Version des Elements fehlt."
@@ -2782,6 +2981,9 @@ msgstr "Bezeichnung des neuen Eintrags"
 
 msgid "Title of the new process"
 msgstr "Bezeichnung des neuen Prozesses"
+
+msgid "Too large to save. Please shrink or remove large images."
+msgstr "Zu groß zum Speichern. Bitte große Bilder verkleinern oder entfernen."
 
 msgid "Training"
 msgstr "Schulung"
@@ -2813,8 +3015,14 @@ msgstr "Auswirkungsart"
 msgid "Type of transfer"
 msgstr "Art der Übertragung"
 
+msgid "Underline"
+msgstr "Unterstrichen"
+
 msgid "Understanding the organization and its context"
 msgstr "Verstehen der Organisation und ihres Kontextes"
+
+msgid "Undo"
+msgstr "Rückgängig"
 
 msgid "Unfounded or minor claims."
 msgstr "Unbegründete oder geringfügige Ansprüche."
@@ -2838,8 +3046,12 @@ msgstr "Ungespeicherte Änderungen am Diagramm gehen verloren."
 msgid "Upcoming audits (90 days)"
 msgstr "Anstehende Audits (90 Tage)"
 
-msgid "Use a file from the Excel export of this module. Rows are matched by their ID; rows without an ID are created. You see a preview before anything is saved."
-msgstr "Verwenden Sie eine Datei aus dem Excel-Export dieses Moduls. Zeilen werden über ihre ID zugeordnet, Zeilen ohne ID neu angelegt. Vor dem Speichern sehen Sie eine Vorschau."
+msgid ""
+"Use a file from the Excel export of this module. Rows are matched by their ID; rows without an ID"
+" are created. You see a preview before anything is saved."
+msgstr ""
+"Verwenden Sie eine Datei aus dem Excel-Export dieses Moduls. Zeilen werden über ihre ID "
+"zugeordnet, Zeilen ohne ID neu angelegt. Vor dem Speichern sehen Sie eine Vorschau."
 
 msgid "Used in process steps"
 msgstr "Verwendet in Prozessschritten"
@@ -2905,8 +3117,17 @@ msgstr "Wöchentlich"
 msgid "Welcome, {name}"
 msgstr "Willkommen, {name}"
 
-msgid "When a customer returns a product, sales records the return. The warehouse checks the goods. If they are damaged, the credit note is refused. Otherwise accounting issues a credit note and informs the customer."
-msgstr "Wenn ein Kunde ein Produkt zurückschickt, erfasst der Vertrieb die Retoure. Das Lager prüft die Ware. Ist die Ware beschädigt, wird eine Gutschrift abgelehnt. Sonst erstellt die Buchhaltung eine Gutschrift und informiert den Kunden."
+msgid "What happens in this step? Definition, specifics, inputs and outputs …"
+msgstr "Was passiert in diesem Schritt? Definition, Besonderheiten, Ein- und Ausgaben …"
+
+msgid ""
+"When a customer returns a product, sales records the return. The warehouse checks the goods. If "
+"they are damaged, the credit note is refused. Otherwise accounting issues a credit note and "
+"informs the customer."
+msgstr ""
+"Wenn ein Kunde ein Produkt zurückschickt, erfasst der Vertrieb die Retoure. Das Lager prüft die "
+"Ware. Ist die Ware beschädigt, wird eine Gutschrift abgelehnt. Sonst erstellt die Buchhaltung "
+"eine Gutschrift und informiert den Kunden."
 
 msgid "Where are invoices approved?"
 msgstr "Wo werden Rechnungen freigegeben?"
@@ -2923,8 +3144,12 @@ msgstr "Wer ist Datenschutzbeauftragter?"
 msgid "Without AI: one line = one step"
 msgstr "Ohne KI: eine Zeile = ein Schritt"
 
-msgid "Without AI: one line per step, a question ending in “?” becomes a decision, the role in brackets, e.g. “Check goods (Goods receipt / warehouse)”."
-msgstr "Ohne KI: eine Zeile pro Schritt, eine Frage mit „?“ wird zur Entscheidung, die Rolle in Klammern, z. B. „Ware prüfen (Wareneingang / Lager)“."
+msgid ""
+"Without AI: one line per step, a question ending in “?” becomes a decision, the role in brackets,"
+" e.g. “Check goods (Goods receipt / warehouse)”."
+msgstr ""
+"Ohne KI: eine Zeile pro Schritt, eine Frage mit „?“ wird zur Entscheidung, die Rolle in Klammern,"
+" z. B. „Ware prüfen (Wareneingang / Lager)“."
 
 msgid "Without functional reporting line (n/a)"
 msgstr "Ohne fachliche Berichtslinie (n/a)"
@@ -2932,8 +3157,17 @@ msgstr "Ohne fachliche Berichtslinie (n/a)"
 msgid "Without reporting line (n/a)"
 msgstr "Ohne Berichtslinie (n/a)"
 
+msgid "Work instruction"
+msgstr "Work Instruction"
+
+msgid "Work instructions"
+msgstr "Work Instructions"
+
 msgid "Workflow status and quality grade"
 msgstr "Freigabestatus und Qualitätsgrad"
+
+msgid "Write the work instruction here … add images by pasting, dragging or from the toolbar."
+msgstr "Arbeitsanweisung hier schreiben … Bilder per Einfügen, Ziehen oder über die Symbolleiste."
 
 msgid "Written form required"
 msgstr "Schriftform erforderlich"
@@ -2984,14 +3218,21 @@ msgstr "Administrator"
 msgid "after"
 msgstr "nachher"
 
-msgid "applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the position or a transfer"
-msgstr "gilt für jeden Inhaber, z. B. Informations-, Prüf-, Vetorecht; Beträge und Vollmachten an der Stelle bzw. als Übertragung"
+msgid ""
+"applies to every holder, e.g. right to information, audit, veto; amounts and powers belong to the"
+" position or a transfer"
+msgstr ""
+"gilt für jeden Inhaber, z. B. Informations-, Prüf-, Vetorecht; Beträge und Vollmachten an der "
+"Stelle bzw. als Übertragung"
 
 msgid "approved"
 msgstr "Qualität freigegeben (I&A)"
 
 msgid "archived"
 msgstr "Archiviert"
+
+msgid "assigned here or in the process step"
+msgstr "Zuordnung hier oder im Prozessschritt"
 
 msgid "automatic"
 msgstr "automatisch"

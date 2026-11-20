@@ -195,6 +195,7 @@ async def delete_finding(
 
 LINKS = {
     "process": "/processes/",
+    "instruction": "/instructions/",
     "role": "/roles/",
     "position": "/positions/",
     "risk": "/risks/",
@@ -207,6 +208,7 @@ LINKS = {
 }
 MODULE_TITLES = {
     "process": N_("Processes"),
+    "instruction": N_("Work instructions"),
     "role": N_("Roles"),
     "position": N_("Positions"),
     "risk": N_("Risks"),

@@ -772,6 +772,8 @@ ProcessOut = TypedDict(
         "steps": "dict[str, list[StepRole]]",
         "links": "dict[str, list[StepLinkOut]]",
         "ics_gaps": "dict[str, list[IcsGap]]",
+        "activities": "dict[str, str]",
+        "step_notes": "dict[str, str]",
         "call_activities": "dict[str, str]",
         "calls": "dict[str, ProcessRef]",
         "called_by": "list[CallerRef]",
@@ -1020,6 +1022,9 @@ StepLinkOut = TypedDict(
 )
 
 
+StepNoteIn = TypedDict("StepNoteIn", {"text": "str", "version": "int | None"}, total=False)
+
+
 StepRole = TypedDict(
     "StepRole", {"role_id": "str", "code": "str", "title": "str", "raci": "str"}, total=False
 )
@@ -1093,6 +1098,49 @@ ValidationError = TypedDict(
         "type": "str",
         "input": "Any",
         "ctx": "dict[str, Any]",
+    },
+    total=False,
+)
+
+
+WorkInstructionListItem = TypedDict(
+    "WorkInstructionListItem",
+    {
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "description": "str",
+        "owner_name": "str",
+        "steps": "int",
+        "status": "str",
+        "doc_version": "str",
+        "is_owner": "bool",
+    },
+    total=False,
+)
+
+
+WorkInstructionOut = TypedDict(
+    "WorkInstructionOut",
+    {
+        "title": "str",
+        "description": "str",
+        "owner_user_id": "str | None",
+        "content": "str",
+        "next_review": "str | None",
+        "custom": "dict[str, Any]",
+        "id": "str",
+        "code": "str",
+        "status": "str",
+        "doc_version": "str",
+        "version": "int",
+        "created_at": "str",
+        "updated_at": "str",
+        "rights": "Rights",
+        "used_in": "list[Usage]",
+        "workflow": "list[WorkflowEntryOut]",
+        "released": "dict[str, Any] | None",
+        "labels": "dict[str, str]",
     },
     total=False,
 )

@@ -82,6 +82,9 @@ Anforderung hat eine ID; Code, Tests und Notizen verweisen darauf.
 | FR-PRC-08 | Risiken, Chancen, Controls, KPI je Schritt zuordnen; Badges je Art im Diagramm; IKS-Hinweis bei Risiko ohne Kontrolle im Schritt mit Vorschlag passender Controls | S2b |
 | FR-PRC-10 | Jedes Element zeigt, in welchen Prozessschritten es verwendet wird (Sprung direkt in den Schritt) | S2b |
 | FR-PRC-09 | Subprozesse mit Drill-down (zugeklappte Subprozesse im Editor), Aufrufaktivitäten mit dem aufgerufenen Prozess verknüpft (Sprung dorthin, „Aufgerufen von“ beim Zielprozess, Historie), Import `.bpmn` (ersetzt das Diagramm, BPMN-Prüfung), Export `.bpmn` und `.svg` | S4b |
+| FR-PRC-11 | Beschreibung je Prozessschritt (oben im Schrittbereich, versioniert wie die übrigen Schrittänderungen); Reihenfolge im Schritt: Beschreibung, Rollen, Work Instructions, Risiken, Controls, Chancen, KPI | S7 |
+| FR-PRC-12 | Schrittmatrix: alle Aktivitäten mit Beschreibung, Rollen (RACI) und Zuordnungen als eigener Reiter neben Modell und Steckbrief | S7 |
+| FR-WI-01 | Work Instructions: Kurzbeschreibung, Owner (Person), Freigabe-Workflow wie Prozesse, Zuordnung zu Prozessschritten („Bezieht sich auf“), Inhalt als formatierter Text mit Tabellen und Bildern (Editor im Browser, serverseitig bereinigt, max. 8 MB) | S7 |
 
 ## 6. Risiken, Chancen, IKS, KPI, Audits
 

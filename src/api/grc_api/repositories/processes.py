@@ -56,6 +56,10 @@ async def links_to(db: AsyncSession, kind: str, target_id: str) -> list[StepLink
     return list((await db.execute(stmt.order_by(StepLink.process_id, StepLink.id))).scalars())
 
 
+async def links_of_kind(db: AsyncSession, kind: str) -> list[StepLink]:
+    return list((await db.execute(select(StepLink).where(StepLink.kind == kind))).scalars())
+
+
 async def find_link(
     db: AsyncSession, process_id: str, element_id: str, kind: str, target_id: str
 ) -> StepLink | None:

@@ -86,7 +86,7 @@
     {% else %}<p class="text-sm opacity-70">{{ _("No delegations received.") }}</p>{% endif %}
   </fieldset>
   {% endif %}
-  {% if item.used_in is defined %}
+  {% if item.used_in is defined and mod.kind != "instruction" %}
   <fieldset class="rounded-box border border-base-300 p-3">
     <legend class="px-1 text-sm font-semibold text-secondary">{{ _("Used in process steps") }}</legend>
     {% if item.used_in %}

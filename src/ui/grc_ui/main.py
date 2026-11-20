@@ -16,6 +16,7 @@ from grc_ui.routes import (
     cockpit,
     excel,
     grc,
+    instructions,
     modules,
     orgchart,
     pages,
@@ -98,6 +99,7 @@ def create_app() -> FastAPI:
         pages.router,
         processes.router,
         grc.router,
+        instructions.router,
         modules.router,
     ):
         app.include_router(r)

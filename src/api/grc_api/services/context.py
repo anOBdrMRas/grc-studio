@@ -16,6 +16,7 @@ from grc_api.models import (
     Risk,
     Role,
     User,
+    WorkInstruction,
 )
 from grc_api.repositories import elements, org
 
@@ -57,7 +58,7 @@ class OrgData:
             return [obj.lead_auditor_user_id] if obj.lead_auditor_user_id else []
         if isinstance(obj, Mandate):
             return [obj.granted_by_user_id] if obj.granted_by_user_id else []
-        if isinstance(obj, Risk):
+        if isinstance(obj, Risk | WorkInstruction):
             return [obj.owner_user_id] if obj.owner_user_id else []
         return []
 

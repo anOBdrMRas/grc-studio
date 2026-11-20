@@ -75,6 +75,45 @@ def check_text(check: dict[str, Any]) -> str:
 env.filters["check_text"] = check_text
 env.filters["answer_html"] = answer_html
 env.globals.update(assistant_href=assistant_href, kind_labels=KIND_LABELS, ai_errors=AI_ERRORS)
+
+
+def rt_labels() -> dict[str, str]:
+    """Button labels of the rich text editor in the current language."""
+    return {
+        "formatting": gettext("Formatting"),
+        "paragraph": gettext("Paragraph style"),
+        "content": gettext("Content"),
+        "text": gettext("Text"),
+        "h1": gettext("Heading 1"),
+        "h2": gettext("Heading 2"),
+        "h3": gettext("Heading 3"),
+        "bold": gettext("Bold"),
+        "italic": gettext("Italic"),
+        "underline": gettext("Underline"),
+        "strike": gettext("Strikethrough"),
+        "highlight": gettext("Highlight"),
+        "bullet": gettext("Bullet list"),
+        "ordered": gettext("Numbered list"),
+        "quote": gettext("Quote / note"),
+        "left": gettext("Align left"),
+        "center": gettext("Centre"),
+        "right": gettext("Align right"),
+        "link": gettext("Link"),
+        "linkPrompt": gettext("Link address (empty = remove link)"),
+        "image": gettext("Insert image"),
+        "table": gettext("Insert table"),
+        "addRow": gettext("Insert row below"),
+        "addCol": gettext("Insert column right"),
+        "delRow": gettext("Delete row"),
+        "delCol": gettext("Delete column"),
+        "header": gettext("Header row on/off"),
+        "delTable": gettext("Delete table"),
+        "undo": gettext("Undo"),
+        "redo": gettext("Redo"),
+    }
+
+
+env.globals["rt_labels"] = rt_labels
 env.tests["startingwith"] = lambda s, prefix: str(s).startswith(prefix)
 
 

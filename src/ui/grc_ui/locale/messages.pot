@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-20 08:36+0000\n"
+"POT-Creation-Date: 2026-11-20 09:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,7 +138,16 @@ msgstr ""
 msgid "Affected assets"
 msgstr ""
 
+msgid "Align left"
+msgstr ""
+
+msgid "Align right"
+msgstr ""
+
 msgid "All"
+msgstr ""
+
+msgid "All activities including sub-process steps with their assignments. A click on a step opens it in the model."
 msgstr ""
 
 msgid "All modules as Excel"
@@ -227,13 +236,22 @@ msgstr ""
 msgid "Assign"
 msgstr ""
 
+msgid "Assign steps in the read view (after saving) or in the process step."
+msgstr ""
+
 msgid "Assign …"
+msgstr ""
+
+msgid "Assigned"
 msgstr ""
 
 msgid "Assigned roles"
 msgstr ""
 
 msgid "Assignment in process step"
+msgstr ""
+
+msgid "Assignment removed"
 msgstr ""
 
 msgid "Assistant"
@@ -317,6 +335,12 @@ msgstr ""
 msgid "Benefit potential"
 msgstr ""
 
+msgid "Bold"
+msgstr ""
+
+msgid "Bullet list"
+msgstr ""
+
 msgid "Business Enablement"
 msgstr ""
 
@@ -366,6 +390,9 @@ msgstr ""
 msgid "Cause and consequence"
 msgstr ""
 
+msgid "Centre"
+msgstr ""
+
 msgid "Certificate valid until"
 msgstr ""
 
@@ -396,10 +423,19 @@ msgstr ""
 msgid "Choose a person …"
 msgstr ""
 
+msgid "Choose a process and a step."
+msgstr ""
+
 msgid "Choose another file"
 msgstr ""
 
 msgid "Choose at least one suggestion."
+msgstr ""
+
+msgid "Choose process step …"
+msgstr ""
+
+msgid "Choose process …"
 msgstr ""
 
 msgid "Civil or criminal liability"
@@ -520,6 +556,9 @@ msgid "Connection works."
 msgstr ""
 
 msgid "Contact of the audited party"
+msgstr ""
+
+msgid "Content"
 msgstr ""
 
 msgid "Content & scope"
@@ -682,7 +721,16 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+msgid "Delete column"
+msgstr ""
+
 msgid "Delete field"
+msgstr ""
+
+msgid "Delete row"
+msgstr ""
+
+msgid "Delete table"
 msgstr ""
 
 msgid "Deleted"
@@ -712,7 +760,14 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#, python-brace-format
+msgid "Description of step {step} changed"
+msgstr ""
+
 msgid "Description of the process"
+msgstr ""
+
+msgid "Description of the process step"
 msgstr ""
 
 msgid "Design and development changes"
@@ -999,6 +1054,9 @@ msgstr ""
 msgid "For me to do"
 msgstr ""
 
+msgid "Formatting"
+msgstr ""
+
 msgid "Formula"
 msgstr ""
 
@@ -1110,6 +1168,18 @@ msgstr ""
 msgid "Headcount (planned)"
 msgstr ""
 
+msgid "Header row on/off"
+msgstr ""
+
+msgid "Heading 1"
+msgstr ""
+
+msgid "Heading 2"
+msgstr ""
+
+msgid "Heading 3"
+msgstr ""
+
 msgid "Here the administration adds custom fields and additional dropdown values. The changes apply at once in the forms and in Excel. Standard fields and values stay unchanged so that existing data remains valid."
 msgstr ""
 
@@ -1132,6 +1202,9 @@ msgid "Higher risks (> 8)"
 msgstr ""
 
 msgid "Higher risks (> 8) without actions or responsible persons"
+msgstr ""
+
+msgid "Highlight"
 msgstr ""
 
 msgid "Holder"
@@ -1291,6 +1364,18 @@ msgstr ""
 msgid "Inquiry"
 msgstr ""
 
+msgid "Insert column right"
+msgstr ""
+
+msgid "Insert image"
+msgstr ""
+
+msgid "Insert row below"
+msgstr ""
+
+msgid "Insert table"
+msgstr ""
+
 msgid "Insignificant"
 msgstr ""
 
@@ -1328,6 +1413,9 @@ msgid "Invalid value"
 msgstr ""
 
 msgid "Investigation processes"
+msgstr ""
+
+msgid "Italic"
 msgstr ""
 
 msgid "Job description"
@@ -1424,6 +1512,9 @@ msgid "Likelihood of realisation"
 msgstr ""
 
 msgid "Link"
+msgstr ""
+
+msgid "Link address (empty = remove link)"
 msgstr ""
 
 #, python-brace-format
@@ -1623,6 +1714,9 @@ msgstr ""
 msgid "No delegations received."
 msgstr ""
 
+msgid "No description yet."
+msgstr ""
+
 msgid "No entries."
 msgstr ""
 
@@ -1714,6 +1808,9 @@ msgstr ""
 msgid "Number expected: {value}"
 msgstr ""
 
+msgid "Numbered list"
+msgstr ""
+
 msgid "Observation"
 msgstr ""
 
@@ -1799,6 +1896,9 @@ msgid "Owner"
 msgstr ""
 
 msgid "Owner – you may edit"
+msgstr ""
+
+msgid "Paragraph style"
 msgstr ""
 
 msgid "Partially effective"
@@ -2044,6 +2144,9 @@ msgstr ""
 msgid "Questions and the elements you may read are sent to the AI service. Answers can be wrong – check them in the linked element."
 msgstr ""
 
+msgid "Quote / note"
+msgstr ""
+
 msgid "R = responsible, A = accountable, C = consulted, I = informed"
 msgstr ""
 
@@ -2099,6 +2202,9 @@ msgstr ""
 msgid "Record-keeping"
 msgstr ""
 
+msgid "Redo"
+msgstr ""
+
 msgid "Reduce"
 msgstr ""
 
@@ -2112,6 +2218,9 @@ msgid "Reference: role"
 msgstr ""
 
 msgid "References"
+msgstr ""
+
+msgid "Refers to"
 msgstr ""
 
 msgid "Register entry / notification to authority"
@@ -2149,6 +2258,9 @@ msgid "Remove"
 msgstr ""
 
 msgid "Remove key"
+msgstr ""
+
+msgid "Remove the assignment to this step?"
 msgstr ""
 
 msgid "Remove the stored API key? The assistant then searches without AI."
@@ -2314,6 +2426,9 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
+msgid "Roles (RACI)"
+msgstr ""
+
 msgid "Roles without a holder"
 msgstr ""
 
@@ -2356,6 +2471,9 @@ msgid "Sampling"
 msgstr ""
 
 msgid "Save"
+msgstr ""
+
+msgid "Save description"
 msgstr ""
 
 msgid "Save diagram"
@@ -2428,6 +2546,9 @@ msgid "Serious to existential"
 msgstr ""
 
 msgid "Set status (administration)"
+msgstr ""
+
+msgid "Short description"
 msgstr ""
 
 msgid "Short description of the finding"
@@ -2542,6 +2663,12 @@ msgstr ""
 msgid "Step"
 msgstr ""
 
+msgid "Step matrix"
+msgstr ""
+
+msgid "Steps"
+msgstr ""
+
 msgid "Steps with roles"
 msgstr ""
 
@@ -2549,6 +2676,9 @@ msgid "Strategic"
 msgstr ""
 
 msgid "Strengths"
+msgstr ""
+
+msgid "Strikethrough"
 msgstr ""
 
 msgid "Sub-delegation allowed"
@@ -2674,6 +2804,9 @@ msgstr ""
 msgid "The demo sign-in is switched off."
 msgstr ""
 
+msgid "The diagram has no activities yet."
+msgstr ""
+
 msgid "The element no longer exists."
 msgstr ""
 
@@ -2723,6 +2856,9 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+msgid "Too large to save. Please shrink or remove large images."
+msgstr ""
+
 msgid "Training"
 msgstr ""
 
@@ -2753,7 +2889,13 @@ msgstr ""
 msgid "Type of transfer"
 msgstr ""
 
+msgid "Underline"
+msgstr ""
+
 msgid "Understanding the organization and its context"
+msgstr ""
+
+msgid "Undo"
 msgstr ""
 
 msgid "Unfounded or minor claims."
@@ -2845,6 +2987,9 @@ msgstr ""
 msgid "Welcome, {name}"
 msgstr ""
 
+msgid "What happens in this step? Definition, specifics, inputs and outputs …"
+msgstr ""
+
 msgid "When a customer returns a product, sales records the return. The warehouse checks the goods. If they are damaged, the credit note is refused. Otherwise accounting issues a credit note and informs the customer."
 msgstr ""
 
@@ -2870,6 +3015,15 @@ msgid "Without functional reporting line (n/a)"
 msgstr ""
 
 msgid "Without reporting line (n/a)"
+msgstr ""
+
+msgid "Work instruction"
+msgstr ""
+
+msgid "Work instructions"
+msgstr ""
+
+msgid "Write the work instruction here … add images by pasting, dragging or from the toolbar."
 msgstr ""
 
 msgid "Written form required"
@@ -2928,6 +3082,9 @@ msgid "approved"
 msgstr ""
 
 msgid "archived"
+msgstr ""
+
+msgid "assigned here or in the process step"
 msgstr ""
 
 msgid "automatic"

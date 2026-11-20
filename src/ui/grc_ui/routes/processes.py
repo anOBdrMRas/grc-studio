@@ -126,9 +126,38 @@ async def workspace(
         if profile is not None and edit and item["rights"]["can_edit"]
         else None
     )
+    matrix = _matrix(item) if tab == "matrix" else None
     return render(
-        request, "processes/workspace.html", ctx, item=item, tab=tab, profile=profile, form=form
+        request,
+        "processes/workspace.html",
+        ctx,
+        item=item,
+        tab=tab,
+        profile=profile,
+        form=form,
+        matrix=matrix,
     )
+
+
+MATRIX_KINDS = ("instruction", "risk", "control", "opportunity", "kpi")
+
+
+def _matrix(item: dict[str, Any]) -> list[dict[str, Any]]:
+    """Step matrix: every activity with its description, roles (RACI) and assigned elements."""
+    rows = []
+    for el, name in item["activities"].items():
+        links = item["links"].get(el, [])
+        rows.append(
+            {
+                "id": el,
+                "name": name,
+                "note": item["step_notes"].get(el, ""),
+                "roles": item["steps"].get(el, []),
+                "links": {k: [x for x in links if x["kind"] == k] for k in MATRIX_KINDS},
+                "gap": bool(item["ics_gaps"].get(el)),
+            }
+        )
+    return rows
 
 
 @router.get("/processes/{process_id}/profile", response_class=HTMLResponse)
@@ -291,6 +320,7 @@ async def badges(process_id: str, ctx: UiContext = Depends(ui_context)) -> Respo
         out.setdefault(el, {})["gap"] = 1
     titles = {
         "role": gettext("Roles"),
+        "instruction": gettext("Work instructions"),
         "risk": gettext("Risks"),
         "opportunity": gettext("Opportunities"),
         "control": gettext("Controls (ICS)"),
@@ -301,6 +331,7 @@ async def badges(process_id: str, ctx: UiContext = Depends(ui_context)) -> Respo
 
 
 LINK_GROUPS = (
+    ("instruction", N_("Work instructions"), "/instructions"),
     ("risk", N_("Risks"), "/risks"),
     ("control", N_("Controls (ICS)"), "/controls"),
     ("opportunity", N_("Opportunities"), "/opportunities"),
@@ -322,6 +353,7 @@ async def _steps(
     links = item["links"].get(element_id, [])
     linked = {(x["kind"], x["target_id"]) for x in links}
     candidates: dict[str, list[dict[str, Any]]] = {
+        "instruction": [plain(x) for x in await ctx.api.instructions_list()],
         "risk": [plain(x) for x in await ctx.api.risks_list()],
         "opportunity": [plain(x) for x in await ctx.api.opportunities_list()],
         "control": [plain(x) for x in await ctx.api.controls_list()],
@@ -354,6 +386,8 @@ async def _steps(
         roles=[r for r in roles if r["id"] not in {a["role_id"] for a in assigned}],
         groups=groups,
         gaps=item["ics_gaps"].get(element_id, []),
+        note=item["step_notes"].get(element_id, ""),
+        statuses={x["id"]: x["status"] for x in candidates["instruction"]},
         codes=codes,
         raci=["R", "A", "C", "I"],
         is_call=element_id in item["call_activities"],
@@ -378,6 +412,26 @@ async def steps(
     ctx: UiContext = Depends(ui_context),
 ) -> Response:
     return await _steps(request, ctx, process_id, element_id, name)
+
+
+@router.post("/processes/{process_id}/steps/{element_id}/note", response_class=HTMLResponse)
+async def step_note(
+    request: Request, process_id: str, element_id: str, ctx: UiContext = Depends(ui_context)
+) -> Response:
+    """Description of the step (definition, specifics)."""
+    form = await request.form()
+    headers: dict[str, str] = toast("success", gettext("Saved"))
+    try:
+        await ctx.api.processes_step_note(
+            process_id,
+            element_id,
+            {"text": str(form.get("text") or ""), "version": int(str(form.get("version")))},
+        )
+    except ApiError as exc:
+        if exc.status not in (403, 409, 412, 422):
+            raise
+        headers = toast("error", problem_text(exc))
+    return await _steps(request, ctx, process_id, element_id, str(form.get("name") or ""), headers)
 
 
 @router.post("/processes/{process_id}/steps/{element_id}/roles", response_class=HTMLResponse)
