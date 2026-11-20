@@ -1,0 +1,12 @@
+<div class="flex items-center justify-between gap-2">
+  <h3 class="text-lg font-bold">{{ _(check.label) }} <span class="badge badge-sm">{{ check["items"]|length }}</span></h3>
+  <button class="btn btn-ghost btn-sm" data-action="close-modal" aria-label="{{ _('Close') }}">{{ icon("x") }}</button>
+</div>
+{% if not check["items"] %}<p class="mt-2 text-sm text-success">✓ {{ _("Nothing open.") }}</p>{% else %}
+<ul class="mt-2 grid gap-1 text-sm">
+  {% for i in check["items"] %}
+  <li><a class="link link-secondary" href="{{ links.get(i.kind, '/') }}{{ i.id }}{% if i.element_id %}?step={{ i.element_id }}{% endif %}">{{ i.label }}</a>
+    {% if i.detail %}<span class="opacity-70">· {% if i.vars is not none %}{{ {"message": i.detail, "vars": i.vars}|check_text }}{% else %}{{ i.detail }}{% endif %}</span>{% endif %}</li>
+  {% endfor %}
+</ul>
+{% endif %}

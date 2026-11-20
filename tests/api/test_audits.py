@@ -105,3 +105,25 @@ async def test_cockpit(login: Login) -> None:
     assert 0 <= data["grades"]["role"] <= 100
     admin = await login("U-001")
     assert (await admin.get("/api/v1/cockpit")).status_code == 200
+
+
+async def test_cockpit_queue_work_and_situation(login: Login) -> None:
+    ia = await login("U-013")
+    data = (await ia.get("/api/v1/cockpit")).json()
+    first = data["review_queue"][0]
+    assert first["owners"]
+    assert first["version"] > 0
+    assert first["doc_version"]
+    rejected = [w for w in data["in_work"] if w["rejected"]]
+    assert rejected
+    assert data["in_work"][0]["rejected"]  # rejected drafts come first
+    released = data["recently_released"]
+    assert 0 < len(released) <= 10
+    assert released == sorted(released, key=lambda r: r["at"], reverse=True)
+    s = data["situation"]
+    assert s["activities"] > 0
+    assert 0 <= s["role_coverage"] <= 100
+    assert s["findings_open"] == sum(s["findings_by_type"].values())
+    assert s["findings_overdue"] <= s["findings_open"]
+    kpi = (await ia.get("/api/v1/kpis")).json()[0]
+    assert "target" in kpi

@@ -181,8 +181,11 @@ def test_ia_cockpit(page: "Page") -> None:
     sign_in(page, "U-013")
     page.goto(BASE + "/ia")
     expect(page.locator("main")).to_contain_text("Qualitätsprüfungen")
-    expect(page.locator(".check-tile")).to_have_count(33)
-    page.locator("a[href='/audits/AU-005']").first.click()
+    expect(page.locator(".ia-check")).to_have_count(33)
+    expect(page.locator("main")).to_contain_text("GRC-Lagebild")
+    expect(page.locator(".ia-stat").first).to_contain_text("Aktivitäten")
+    page.locator(".ia-check:has-text('Auditoren')").click()
+    page.locator("#modal-body a[href='/audits/AU-005']").click()
     expect(page.locator("#detail")).to_contain_text("Unabhängigkeit")
 
 
