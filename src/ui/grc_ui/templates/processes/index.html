@@ -13,10 +13,7 @@
     {% if can("processes:manage") %}
     <button class="btn btn-ghost btn-xs" hx-get="/processes/import" hx-target="#modal-body" title="{{ _('Excel import') }}">{{ icon("upload", "h-4 w-4") }} Excel</button>
     <button class="btn btn-outline btn-sm" hx-get="/processes/draft" hx-target="#modal-body">{{ icon("sparkles") }} {{ _("Draft a process") }}</button>
-    <form hx-post="/processes" class="join">
-      <input name="title" class="input input-bordered input-sm join-item" placeholder="{{ _('Title of the new process') }}" aria-label="{{ _('Title of the new process') }}" required>
-      <button class="btn btn-primary btn-sm join-item">{{ icon("plus") }} {{ _("Process") }}</button>
-    </form>
+    <button class="btn btn-primary btn-sm" hx-post="/processes">{{ icon("plus") }} {{ _("Process") }}</button>
     {% endif %}
     </div>
   </div>

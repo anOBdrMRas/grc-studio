@@ -39,10 +39,12 @@ async def landscape(request: Request, ctx: UiContext = Depends(ui_context)) -> R
 @router.post("/processes", response_class=HTMLResponse)
 async def create(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
     form = await request.form()
-    created = await ctx.api.processes_create(
-        {"title": str(form.get("title") or gettext("New process"))}
+    # like the prototype: an empty process, its profile opens in edit mode
+    created = await ctx.api.processes_create({"title": str(form.get("title") or "")})
+    return Response(
+        status_code=204,
+        headers={"HX-Redirect": f"/processes/{created['id']}?tab=profile&edit=1"},
     )
-    return Response(status_code=204, headers={"HX-Redirect": f"/processes/{created['id']}"})
 
 
 async def _profile_ctx(
@@ -80,11 +82,23 @@ async def _profile_ctx(
 
 @router.get("/processes/{process_id}", response_class=HTMLResponse)
 async def workspace(
-    request: Request, process_id: str, tab: str = "model", ctx: UiContext = Depends(ui_context)
+    request: Request,
+    process_id: str,
+    tab: str = "model",
+    edit: int = 0,
+    ctx: UiContext = Depends(ui_context),
 ) -> Response:
     item = plain(await ctx.api.processes_get(process_id))
     profile = await _profile_ctx(ctx, process_id) if tab == "profile" else None
-    return render(request, "processes/workspace.html", ctx, item=item, tab=tab, profile=profile)
+    # a new process opens its profile in edit mode
+    form = (
+        {"refs": await ref_options(ctx), "errors": {}, "conflict": False}
+        if profile is not None and edit and item["rights"]["can_edit"]
+        else None
+    )
+    return render(
+        request, "processes/workspace.html", ctx, item=item, tab=tab, profile=profile, form=form
+    )
 
 
 @router.get("/processes/{process_id}/profile", response_class=HTMLResponse)

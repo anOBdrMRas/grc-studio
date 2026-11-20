@@ -5,6 +5,12 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Changed (create like the prototype)
+- "+ <element>" in every module and "+ Process" create an empty element and open its form
+  at once (a new process opens its profile in edit mode); the extra title field next to the
+  button is gone. The API accepts an empty title (user: an empty last name); lists show
+  "(no title)" until one is entered.
+
 ### Added (stage 4a)
 - Org chart of the positions: disciplinary and functional hierarchy (cycles and unknown
   superiors become roots, positions without reporting line shown apart), positions by unit,
