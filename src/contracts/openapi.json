@@ -3460,6 +3460,12 @@
             "title": "Landscape Order",
             "type": "integer"
           },
+          "my_steps": {
+            "default": 0,
+            "description": "steps where the person holds an assigned role",
+            "title": "My Steps",
+            "type": "integer"
+          },
           "owner_role_title": {
             "title": "Owner Role Title",
             "type": "string"

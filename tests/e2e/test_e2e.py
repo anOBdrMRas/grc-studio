@@ -302,3 +302,35 @@ def test_new_process_opens_its_profile_form(page: "Page") -> None:
     page.fill("#f-title", "E2E Neuer Prozess")
     page.click("#profile button:has-text('Speichern')")
     expect(page.locator("#profile")).to_contain_text("E2E Neuer Prozess")
+
+
+def test_process_landscape_and_table_filters(page: "Page") -> None:
+    sign_in(page, "U-002")
+    page.goto(BASE + "/processes")
+    expect(page.locator(".ls-chevron").first).to_be_visible()
+    rows = page.locator("#process-table tbody tr")
+    expect(rows.filter(has_text="Führungsprozess").first).to_be_visible()
+    page.check("input[name=cat][value='Core process']")
+    expect(rows.filter(has_text="Führungsprozess")).to_have_count(0)
+    expect(rows.filter(has_text="Lead-to-Cash")).to_have_count(1)
+    page.check("input[name=mine]")
+    expect(rows.filter(has_text="Lead-to-Cash")).to_have_count(0)
+    expect(rows.filter(has_text="P-001")).to_contain_text("4 Schritte")
+
+
+def test_risk_list_columns_and_resizable_split(page: "Page") -> None:
+    sign_in(page, "U-002")
+    page.goto(BASE + "/risks")
+    expect(page.locator("#list thead")).to_contain_text("Risikoeigner")
+    expect(page.locator("#list thead th").first).to_have_text("Risiko")
+    before = page.locator(".split-list").bounding_box()
+    handle = page.locator("[data-split-handle]").bounding_box()
+    assert before
+    assert handle
+    page.mouse.move(handle["x"] + 3, handle["y"] + 100)
+    page.mouse.down()
+    page.mouse.move(handle["x"] + 203, handle["y"] + 100, steps=4)
+    page.mouse.up()
+    after = page.locator(".split-list").bounding_box()
+    assert after
+    assert after["width"] > before["width"] + 150

@@ -739,6 +739,7 @@ ProcessListItem = TypedDict(
         "status": "str",
         "owner_role_title": "str",
         "is_owner": "bool",
+        "my_steps": "int",
     },
     total=False,
 )

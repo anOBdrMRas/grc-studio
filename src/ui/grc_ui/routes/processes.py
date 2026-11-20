@@ -18,22 +18,52 @@ from grc_ui.templating import render, toast
 router = APIRouter()
 MAX_BPMN = 5 * 1024 * 1024
 CATEGORIES = [N_("Management process"), N_("Core process"), N_("Support process")]
+STATUSES = [
+    ("draft", N_("Draft")),
+    ("review", N_("I&A review")),
+    ("released", N_("Released")),
+    ("archived", N_("Archived")),
+]
 
 
 @router.get("/processes", response_class=HTMLResponse)
-async def landscape(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
-    items = [dict(x) for x in await ctx.api.processes_list()]
-    bands = [
-        (
-            c,
-            sorted(
-                [x for x in items if x["category"] == c],
-                key=lambda x: (x["landscape_order"], x["code"]),
-            ),
-        )
-        for c in CATEGORIES
+async def landscape(
+    request: Request,
+    cat: str = "",
+    status: str = "",
+    mine: int = 0,
+    ctx: UiContext = Depends(ui_context),
+) -> Response:
+    """Process landscape (as in the prototype) and the table of all processes with filters."""
+    items = sorted(
+        (dict(x) for x in await ctx.api.processes_list()),
+        key=lambda x: (
+            CATEGORIES.index(x["category"]) if x["category"] in CATEGORIES else 9,
+            x["landscape_order"],
+            x["code"],
+        ),
+    )
+    bands = [(c, [x for x in items if x["category"] == c]) for c in CATEGORIES]
+    rows = [
+        x
+        for x in items
+        if (not cat or x["category"] == cat)
+        and (not status or x["status"] == status)
+        and (not mine or x["my_steps"] or x["is_owner"])
     ]
-    return render(request, "processes/index.html", ctx, bands=bands)
+    return render(
+        request,
+        "processes/index.html",
+        ctx,
+        bands=bands,
+        rows=rows,
+        total=len(items),
+        cat=cat,
+        status_filter=status,
+        mine=bool(mine),
+        categories=[(c, gettext(c)) for c in CATEGORIES],
+        statuses=[(s, gettext(label)) for s, label in STATUSES],
+    )
 
 
 @router.post("/processes", response_class=HTMLResponse)

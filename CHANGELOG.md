@@ -5,6 +5,17 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Changed (process page, risk list, list width like the prototype)
+- Processes: landscape as in the prototype (management band, core processes as chevrons from
+  "customer requirement" to "customer satisfied", support band, legend) and below it the table
+  "All processes" with ID, process, category, area, process owner, approval status and "my
+  involvement" (owner badge, number of steps with one of my roles); filters by category,
+  status and "only mine". The API lists `my_steps` per process.
+- Risks: first list column "Risk", further columns department / function, risk owner (name)
+  and score.
+- Every module: the divider between list and detail can be dragged (or moved with the arrow
+  keys); the width is kept per browser, a double click resets it.
+
 ### Changed
 - The org chart has its own entry in the menu bar (after Positions).
 
