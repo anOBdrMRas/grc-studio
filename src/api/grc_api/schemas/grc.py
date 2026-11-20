@@ -245,5 +245,6 @@ class KpiListItem(BaseModel):
     title: str
     unit: str
     last_value: float | None
+    target: float = 0
     traffic: Traffic = Field(description="traffic light of the latest value")
     is_owner: bool

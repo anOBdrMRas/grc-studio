@@ -20,8 +20,11 @@ from grc_api.schemas.quality import (
     CheckItemOut,
     CheckOut,
     CockpitOut,
+    ReleasedItem,
     ReviewItem,
+    Situation,
     StatusCounts,
+    WorkItem,
 )
 from grc_api.services import audits as audit_svc
 from grc_api.services import mandates as mandate_svc
@@ -187,12 +190,28 @@ async def cockpit(db: AsyncSession, p: Principal) -> CockpitOut:
     }
     workflow: dict[str, StatusCounts] = {}
     queue: list[ReviewItem] = []
+    in_work: list[WorkItem] = []
+    released: list[ReleasedItem] = []
     for kind, items in collections.items():
         counts = StatusCounts(total=len(items))
         for e in items:
             setattr(counts, e.status, getattr(counts, e.status) + 1)
+            entries = await audit_log.workflow(db, kind, e.id)
+            owners = [org.name(u) for u in org.owners(kind, e)]
+            last_approval = next((w for w in reversed(entries) if w.step == "approved"), None)
+            if last_approval:
+                released.append(
+                    ReleasedItem(
+                        kind=kind,
+                        id=e.id,
+                        code=e.code,
+                        title=e.title,
+                        doc_version=e.doc_version,
+                        by=org.name(last_approval.by_user_id),
+                        at=last_approval.at,
+                    )
+                )
             if e.status == "review":
-                entries = await audit_log.workflow(db, kind, e.id)
                 sub = next((w for w in reversed(entries) if w.step == "submitted"), None)
                 queue.append(
                     ReviewItem(
@@ -202,6 +221,22 @@ async def cockpit(db: AsyncSession, p: Principal) -> CockpitOut:
                         title=e.title,
                         submitted_by=org.name(sub.by_user_id) if sub else "",
                         submitted_at=sub.at if sub else None,
+                        comment=sub.comment if sub else "",
+                        owners=owners,
+                        doc_version=e.doc_version,
+                        version=e.version,
+                    )
+                )
+            elif e.status == "draft":
+                last = entries[-1] if entries else None
+                in_work.append(
+                    WorkItem(
+                        kind=kind,
+                        id=e.id,
+                        code=e.code,
+                        title=e.title,
+                        owners=owners,
+                        rejected=last.comment if last and last.step == "rejected" else "",
                     )
                 )
         workflow[kind] = counts
@@ -232,4 +267,23 @@ async def cockpit(db: AsyncSession, p: Principal) -> CockpitOut:
         review_queue=sorted(
             queue, key=lambda r: r.submitted_at.isoformat() if r.submitted_at else ""
         ),
+        in_work=sorted(in_work, key=lambda w: (not w.rejected, w.kind, w.code)),
+        recently_released=sorted(released, key=lambda r: r.at, reverse=True)[:10],
+        situation=_situation(snap, date.today()),
+    )
+
+
+def _situation(snap: q.Snapshot, today: date) -> Situation:
+    steps = sum(len(p.activities) for p in snap.processes)
+    covered = sum(1 for p in snap.processes for el, _ in p.activities if el in p.ra_elements)
+    open_findings = [f for f in snap.findings if f.open]
+    by_type: dict[str, int] = {}
+    for f in open_findings:
+        by_type[f.finding_type] = by_type.get(f.finding_type, 0) + 1
+    return Situation(
+        activities=steps,
+        role_coverage=round(100 * covered / steps) if steps else 100,
+        findings_by_type=by_type,
+        findings_open=len(open_findings),
+        findings_overdue=sum(1 for f in open_findings if f.due_date and f.due_date < today),
     )

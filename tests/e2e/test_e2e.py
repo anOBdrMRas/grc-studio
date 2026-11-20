@@ -182,8 +182,11 @@ def test_ia_cockpit(page: "Page") -> None:
     sign_in(page, "U-013")
     page.goto(BASE + "/ia")
     expect(page.locator("main")).to_contain_text("Qualitätsprüfungen")
-    expect(page.locator(".check-tile")).to_have_count(33)
-    page.locator("a[href='/audits/AU-005']").first.click()
+    expect(page.locator(".ia-check")).to_have_count(33)
+    expect(page.locator("main")).to_contain_text("GRC-Lagebild")
+    expect(page.locator(".ia-stat").first).to_contain_text("Aktivitäten")
+    page.locator(".ia-check:has-text('Auditoren')").click()
+    page.locator("#modal-body a[href='/audits/AU-005']").click()
     expect(page.locator("#detail")).to_contain_text("Unabhängigkeit")
 
 
@@ -266,7 +269,8 @@ def test_process_draft_without_ai(page: "Page") -> None:
 def test_org_chart_and_role_matrix(page: "Page") -> None:
     sign_in(page, "U-004")
     page.goto(BASE + "/positions")
-    page.click("a:has-text('Organigramm')")
+    page.click(".app-menubar a[href='/org-chart']")
+    expect(page.locator(".app-menubar a[aria-current='page']")).to_have_text("Organigramm")
     expect(page.locator(".org-tree .org-card").first).to_be_visible()
     page.click("a[role=tab]:has-text('Rollenzuordnungsmatrix')")
     expect(page.locator(".role-matrix tbody tr").first).to_contain_text("ST-001")
