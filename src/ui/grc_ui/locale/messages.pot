@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 11:02+0000\n"
+"POT-Creation-Date: 2026-11-20 07:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,9 @@ msgstr ""
 msgid "< 25 TUSD"
 msgstr ""
 
+msgid "A comment is required to reject."
+msgstr ""
+
 msgid "AI assistant"
 msgstr ""
 
@@ -67,6 +70,9 @@ msgid "Accept delegation: {name}"
 msgstr ""
 
 msgid "Accept the delegation"
+msgstr ""
+
+msgid "Acceptance"
 msgstr ""
 
 msgid "Acceptance missing"
@@ -166,6 +172,12 @@ msgstr ""
 msgid "Approval workflow"
 msgstr ""
 
+msgid "Approve"
+msgstr ""
+
+msgid "Approved"
+msgstr ""
+
 msgid "Archived"
 msgstr ""
 
@@ -241,6 +253,9 @@ msgstr ""
 msgid "Audits"
 msgstr ""
 
+msgid "Audits & certificates"
+msgstr ""
+
 msgid "Audits where auditors audit their own work"
 msgstr ""
 
@@ -248,6 +263,9 @@ msgid "Authorities of the position"
 msgstr ""
 
 msgid "Automated"
+msgstr ""
+
+msgid "Automatic checks. A click on a tile shows the elements concerned."
 msgstr ""
 
 msgid "Availability"
@@ -384,6 +402,9 @@ msgid "Comment"
 msgstr ""
 
 msgid "Comment (optional)"
+msgstr ""
+
+msgid "Comment (required to reject)"
 msgstr ""
 
 msgid "Comment (required to send back)"
@@ -618,10 +639,19 @@ msgstr ""
 msgid "Delegation of duties"
 msgstr ""
 
+msgid "Delegations & persons"
+msgstr ""
+
 msgid "Delegations & powers of attorney"
 msgstr ""
 
 msgid "Delegations & powers of attorney requiring action"
+msgstr ""
+
+msgid "Delegations are granted by the granting person and accepted by the receiving person."
+msgstr ""
+
+msgid "Delegations in approval"
 msgstr ""
 
 msgid "Delete"
@@ -965,6 +995,9 @@ msgstr ""
 msgid "Further ISO references"
 msgstr ""
 
+msgid "GRC situation"
+msgstr ""
+
 msgid "General (communication)"
 msgstr ""
 
@@ -1043,6 +1076,9 @@ msgstr ""
 msgid "Granted by (person)"
 msgstr ""
 
+msgid "Granting"
+msgstr ""
+
 msgid "HR"
 msgstr ""
 
@@ -1092,6 +1128,9 @@ msgid "I&A team"
 msgstr ""
 
 msgid "ICS check"
+msgstr ""
+
+msgid "ICS – operating effectiveness"
 msgstr ""
 
 msgid "ID"
@@ -1185,6 +1224,9 @@ msgstr ""
 msgid "In progress"
 msgstr ""
 
+msgid "In progress with the owner"
+msgstr ""
+
 msgid "In treatment"
 msgstr ""
 
@@ -1239,6 +1281,9 @@ msgstr ""
 msgid "Integrity"
 msgstr ""
 
+msgid "Integrity & Assurance: quality approval of processes, roles, positions, risks and opportunities"
+msgstr ""
+
 msgid "Interested parties"
 msgstr ""
 
@@ -1276,6 +1321,9 @@ msgid "Justified civil claims of limited amount."
 msgstr ""
 
 msgid "KPI"
+msgstr ""
+
+msgid "KPI traffic lights"
 msgstr ""
 
 msgid "KPI values"
@@ -1562,6 +1610,12 @@ msgstr ""
 msgid "No incident, or one noticed only internally."
 msgstr ""
 
+msgid "No open approvals."
+msgstr ""
+
+msgid "No open delegations."
+msgstr ""
+
 msgid "No or minor injury or environmental impact without lasting effects."
 msgstr ""
 
@@ -1575,6 +1629,9 @@ msgid "No processes."
 msgstr ""
 
 msgid "No results. Try other words, e.g. “export”, “invoice” or the name of a role."
+msgstr ""
+
+msgid "No risks recorded."
 msgstr ""
 
 msgid "No roles assigned."
@@ -1616,13 +1673,13 @@ msgstr ""
 msgid "Not yet valid"
 msgstr ""
 
+msgid "Nothing open."
+msgstr ""
+
 msgid "Nothing to apply."
 msgstr ""
 
 msgid "Nothing to do."
-msgstr ""
-
-msgid "Nothing waiting."
 msgstr ""
 
 msgid "Notice or inquiry from an authority."
@@ -1648,6 +1705,12 @@ msgid "Open"
 msgstr ""
 
 msgid "Open audit findings"
+msgstr ""
+
+msgid "Open audit findings by type"
+msgstr ""
+
+msgid "Open element"
 msgstr ""
 
 msgid "OpenAI-compatible (e.g. con-AI)"
@@ -1868,10 +1931,17 @@ msgstr ""
 msgid "Processes"
 msgstr ""
 
+msgid "Processes & organisation"
+msgstr ""
+
 msgid "Processes without a process owner"
 msgstr ""
 
 msgid "Processes without purpose & scope"
+msgstr ""
+
+#, python-brace-format
+msgid "Processes · {n} activities"
 msgstr ""
 
 msgid "Product Marketing"
@@ -1925,16 +1995,7 @@ msgstr ""
 msgid "Quality approval by the I&A team"
 msgstr ""
 
-msgid "Quality approvals, workflow status and the quality checks of the integrated management system."
-msgstr ""
-
 msgid "Quality checks"
-msgstr ""
-
-msgid "Quality grade"
-msgstr ""
-
-msgid "Quality grade: share of the elements without a finding of the quality checks."
 msgstr ""
 
 msgid "Quality management"
@@ -1944,6 +2005,9 @@ msgid "Quality management system and its processes"
 msgstr ""
 
 msgid "Quality objectives and planning to achieve them"
+msgstr ""
+
+msgid "Quality overview"
 msgstr ""
 
 msgid "Quality policy"
@@ -1995,6 +2059,9 @@ msgstr ""
 msgid "Reason for the likelihood"
 msgstr ""
 
+msgid "Recently released"
+msgstr ""
+
 msgid "Recertification"
 msgstr ""
 
@@ -2029,6 +2096,12 @@ msgid "Register entry / notification to authority"
 msgstr ""
 
 msgid "Registered / notified on"
+msgstr ""
+
+msgid "Reject"
+msgstr ""
+
+msgid "Rejected"
 msgstr ""
 
 msgid "Related objective"
@@ -2177,6 +2250,9 @@ msgstr ""
 msgid "Risks addressed"
 msgstr ""
 
+msgid "Risks by department"
+msgstr ""
+
 msgid "Risks without a mitigating control"
 msgstr ""
 
@@ -2189,7 +2265,13 @@ msgstr ""
 msgid "Risks without description or cause and consequence"
 msgstr ""
 
+msgid "Risks, opportunities & controls"
+msgstr ""
+
 msgid "Role"
+msgstr ""
+
+msgid "Role coverage of the process steps"
 msgstr ""
 
 msgid "Role description"
@@ -2777,9 +2859,6 @@ msgstr ""
 msgid "Without reporting line (n/a)"
 msgstr ""
 
-msgid "Workflow status and quality grade"
-msgstr ""
-
 msgid "Written form required"
 msgstr ""
 
@@ -2938,9 +3017,6 @@ msgstr ""
 msgid "no"
 msgstr ""
 
-msgid "no approval workflow"
-msgstr ""
-
 msgid "not assessed"
 msgstr ""
 
@@ -2999,7 +3075,14 @@ msgstr ""
 msgid "submitted"
 msgstr ""
 
+msgid "target"
+msgstr ""
+
 msgid "the first sentence is shown in lists"
+msgstr ""
+
+#, python-brace-format
+msgid "to {name}"
 msgstr ""
 
 msgid "unchanged"
@@ -3008,10 +3091,26 @@ msgstr ""
 msgid "vacant"
 msgstr ""
 
+msgid "waiting"
+msgstr ""
+
+msgid "waiting for"
+msgstr ""
+
 msgid "with AI · finds processes, steps, roles and responsibilities"
 msgstr ""
 
 msgid "with line management responsibility"
+msgstr ""
+
+msgid "with responsible role (R/A)"
+msgstr ""
+
+msgid "without department"
+msgstr ""
+
+#, python-brace-format
+msgid "{a} of {b} released"
 msgstr ""
 
 #, python-brace-format
@@ -3056,6 +3155,30 @@ msgstr ""
 
 #, python-brace-format
 msgid "{mandate}: {user} no longer holds the role (change of position?)."
+msgstr ""
+
+#, python-brace-format
+msgid "{n} days"
+msgstr ""
+
+#, python-brace-format
+msgid "{n} in I&A review"
+msgstr ""
+
+#, python-brace-format
+msgid "{n} in draft"
+msgstr ""
+
+#, python-brace-format
+msgid "{n} of them higher risks (> 8)"
+msgstr ""
+
+#, python-brace-format
+msgid "{n} open"
+msgstr ""
+
+#, python-brace-format
+msgid "{n} overdue"
 msgstr ""
 
 #, python-brace-format

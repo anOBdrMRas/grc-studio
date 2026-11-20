@@ -215,34 +215,6 @@ MODULE_TITLES = {
     "audit": N_("Audits"),
     "mandate": N_("Delegations & powers of attorney"),
     "user": N_("User management"),
+    "kpi": N_("KPI"),
     "other": N_("Reviews"),
 }
-
-
-@router.get("/ia", response_class=HTMLResponse)
-async def cockpit(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
-    if not ctx.can("cockpit:read"):
-        return render(
-            request,
-            "error.html",
-            ctx,
-            status=403,
-            message=gettext("You are not allowed to do this."),
-        )
-    data = await ctx.api.cockpit_get()
-    checks: list[dict[str, Any]] = [dict(c) for c in data["checks"]]
-    groups: dict[str, list[dict[str, Any]]] = {}
-    for c in checks:
-        groups.setdefault(c["module"], []).append(c)
-    return render(
-        request,
-        "cockpit.html",
-        ctx,
-        groups=groups,
-        open_total=sum(1 for c in checks if c["items"]),
-        workflow=dict(data["workflow"]),
-        grades=dict(data["grades"]),
-        queue=[dict(r) for r in data["review_queue"]],
-        links=LINKS,
-        titles=MODULE_TITLES,
-    )
