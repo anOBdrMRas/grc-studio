@@ -5,37 +5,79 @@
 <div class="p-6">
   <div class="mb-4 flex items-center justify-between gap-2">
     <div>
-      <p class="text-xs opacity-60">{{ _("Process landscape") }}</p>
-      <h1 class="text-xl font-bold">{{ _("Processes") }}</h1>
+      <h1 class="text-2xl font-bold">{{ _("Process landscape") }}</h1>
+      <p class="text-sm opacity-70">{{ _("A click on a process opens its model.") }}</p>
     </div>
     <div class="flex flex-wrap items-center gap-2">
     <a class="btn btn-ghost btn-xs" href="/processes/export.xlsx" title="{{ _('Excel export') }}">{{ icon("download", "h-4 w-4") }} Excel</a>
     {% if can("processes:manage") %}
     <button class="btn btn-ghost btn-xs" hx-get="/processes/import" hx-target="#modal-body" title="{{ _('Excel import') }}">{{ icon("upload", "h-4 w-4") }} Excel</button>
     <button class="btn btn-outline btn-sm" hx-get="/processes/draft" hx-target="#modal-body">{{ icon("sparkles") }} {{ _("Draft a process") }}</button>
-    <form hx-post="/processes" class="join">
-      <input name="title" class="input input-bordered input-sm join-item" placeholder="{{ _('Title of the new process') }}" aria-label="{{ _('Title of the new process') }}" required>
-      <button class="btn btn-primary btn-sm join-item">{{ icon("plus") }} {{ _("Process") }}</button>
-    </form>
+    <button class="btn btn-primary btn-sm" hx-post="/processes">{{ icon("plus") }} {{ _("Process") }}</button>
     {% endif %}
     </div>
   </div>
-  {% for category, items in bands %}
-  <section class="mb-4 rounded-box border border-base-300 bg-base-100 p-4">
-    <h2 class="mb-3 text-sm font-semibold uppercase tracking-wide text-secondary">{{ _(category) }}</h2>
-    {% if items %}
-    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-      {% for x in items %}
-      <a href="/processes/{{ x.id }}" class="block rounded-box border border-base-300 p-3 hover:border-secondary">
-        <div class="flex items-center justify-between gap-2"><span class="font-mono text-xs opacity-60">{{ x.code }}</span>{{ status_badge(x.status) }}</div>
-        <div class="mt-1 font-semibold">{{ x.title }}</div>
-        <div class="text-xs opacity-70">{{ x.area }}{% if x.owner_role_title %} · {{ x.owner_role_title }}{% endif %}</div>
-        {% if x.is_owner %}<span class="badge badge-xs badge-accent mt-1">{{ _("Owner") }}</span>{% endif %}
-      </a>
-      {% endfor %}
-    </div>
-    {% else %}{{ empty(_("No processes.")) }}{% endif %}
+  {% macro tile(x, chevron=false) %}
+  <a href="/processes/{{ x.id }}" class="{{ 'ls-chevron' if chevron else 'ls-tile' }} {{ 'is-mine' if x.my_steps else '' }}">
+    <span class="ls-area">{{ x.area or _(x.category) }}</span>
+    <span class="ls-title">{{ x.title or _("(no title)") }}</span>
+    <span class="ls-badges">
+      {% if x.is_owner %}<span class="ls-owner">{{ _("Owner") }}</span>{% endif %}
+      {% if x.my_steps %}<span class="ls-mine">● {{ _("1 step") if x.my_steps == 1 else _("{n} steps").format(n=x.my_steps) }}</span>{% endif %}
+    </span>
+  </a>
+  {% endmacro %}
+  <section class="ls-band" aria-label="{{ _('Management processes') }}">
+    <h2 class="ls-band-title">{{ _("Management processes") }}</h2>
+    <div class="ls-row">{% for x in bands[0][1] %}{{ tile(x) }}{% else %}<span class="text-sm opacity-60">–</span>{% endfor %}</div>
   </section>
-  {% endfor %}
+  <div class="ls-core">
+    <div class="ls-customer">{{ _("Customer requirement") }}</div>
+    <section class="ls-chevrons" aria-label="{{ _('Core processes (end to end)') }}">
+      <h2 class="ls-band-title">{{ _("Core processes (end to end)") }}</h2>
+      <div class="ls-chevron-row">{% for x in bands[1][1] %}{{ tile(x, true) }}{% else %}<span class="text-sm opacity-80">–</span>{% endfor %}</div>
+    </section>
+    <div class="ls-customer">{{ _("Customer satisfied") }}</div>
+  </div>
+  <section class="ls-band" aria-label="{{ _('Support processes') }}">
+    <h2 class="ls-band-title">{{ _("Support processes") }}</h2>
+    <div class="ls-row">{% for x in bands[2][1] %}{{ tile(x) }}{% else %}<span class="text-sm opacity-60">–</span>{% endfor %}</div>
+  </section>
+  <p class="mt-2 text-xs opacity-70"><span class="ls-mine">●</span> {{ _("You take part in steps") }} · <span class="ls-owner">{{ _("Owner") }}</span> {{ _("You are the owner and may edit") }}</p>
+
+  <form class="mt-6 mb-2 flex flex-wrap items-center justify-between gap-2" hx-get="/processes" hx-target="#process-table" hx-select="#process-table" hx-swap="outerHTML" hx-push-url="true" hx-trigger="change, submit">
+    <h2 class="text-lg font-bold">{{ _("All processes ({n})").format(n=total) }}</h2>
+    <div class="flex flex-wrap items-center gap-2">
+      <input type="hidden" name="cat" value="{{ cat }}">
+      {% for value, label in [("", _("All"))] + categories %}
+      <button class="btn btn-xs rounded-full {{ 'btn-primary' if value == cat else 'btn-outline font-normal' }}" name="cat" value="{{ value }}">{{ label }}</button>
+      {% endfor %}
+      <select name="status" class="select select-bordered select-sm" aria-label="{{ _('Approval status') }}">
+        <option value="">{{ _("All statuses") }}</option>
+        {% for s, label in statuses %}<option value="{{ s }}" {% if s == status_filter %}selected{% endif %}>{{ label }}</option>{% endfor %}
+      </select>
+      <label class="label cursor-pointer gap-1 text-sm"><input type="checkbox" name="mine" value="1" class="checkbox checkbox-sm" {% if mine %}checked{% endif %}> {{ _("only mine") }}</label>
+    </div>
+  </form>
+  <div id="process-table" class="overflow-x-auto rounded-box border border-base-300 bg-base-100">
+    {% if rows %}
+    <table class="table table-sm">
+      <thead><tr><th>ID</th><th>{{ _("Process") }}</th><th>{{ _("Process category") }}</th><th>{{ _("Process area") }}</th><th>{{ _("Process owner") }}</th><th>{{ _("Approval status") }}</th><th>{{ _("My involvement") }}</th></tr></thead>
+      <tbody>
+        {% for x in rows %}
+        <tr class="hover">
+          <td class="font-mono text-xs opacity-70"><a href="/processes/{{ x.id }}">{{ x.code }}</a></td>
+          <td><a class="hover:underline" href="/processes/{{ x.id }}">{{ x.title or _("(no title)") }}</a></td>
+          <td>{{ _(x.category) }}</td>
+          <td>{{ x.area or "–" }}</td>
+          <td>{{ x.owner_role_title or "–" }}</td>
+          <td>{{ status_badge(x.status) }}</td>
+          <td class="text-sm">{% if x.is_owner %}<span class="badge badge-xs badge-accent">{{ _("Owner") }}</span> {% endif %}{% if x.my_steps %}{{ _("1 step") if x.my_steps == 1 else _("{n} steps").format(n=x.my_steps) }}{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}{{ empty(_("No entries.")) }}{% endif %}
+  </div>
 </div>
 {% endblock %}

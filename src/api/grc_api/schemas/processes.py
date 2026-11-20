@@ -98,6 +98,7 @@ class ProcessListItem(BaseModel):
     status: str
     owner_role_title: str
     is_owner: bool
+    my_steps: int = Field(0, description="steps where the person holds an assigned role")
 
 
 class DiagramOut(BaseModel):

@@ -32,6 +32,7 @@ class Module:
     api: str  # method prefix of the generated client: roles, positions, users
     columns: tuple[tuple[str, str], ...]  # (key, label) of the narrow list
     create_perm: str = ""  # who may create (default: manage_perm)
+    title_label: str = N_("Title")  # header of the first list column
     new_hint: str = N_("Title of the new entry")
 
     @property
@@ -48,9 +49,14 @@ MODULES = {
         "grc:read",
         "grc:manage",
         "risks",
-        (("owner_name", N_("Owner")), ("score", N_("Score"))),
+        (
+            ("department", N_("Department / function")),
+            ("owner_name", N_("Risk owner")),
+            ("score", N_("Score")),
+        ),
         create_perm="grc:record",
         new_hint=N_("Short description of the risk"),
+        title_label=N_("Risk"),
     ),
     "controls": Module(
         "control",
