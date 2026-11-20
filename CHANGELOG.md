@@ -5,6 +5,9 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Changed
+- The org chart has its own entry in the menu bar (after Positions).
+
 ### Added (stage 4a)
 - Org chart of the positions: disciplinary and functional hierarchy (cycles and unknown
   superiors become roots, positions without reporting line shown apart), positions by unit,
