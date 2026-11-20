@@ -42,4 +42,15 @@
   <div class="modal-box max-w-4xl" id="modal-body"></div>
   <form method="dialog" class="modal-backdrop"><button>{{ _("Close") }}</button></form>
 </dialog>
+<dialog id="confirm-dialog" class="modal" aria-modal="true" aria-labelledby="confirm-title">
+  <div class="modal-box max-w-md">
+    <h3 id="confirm-title" class="flex items-center gap-2 text-lg font-bold">{{ icon("alert-triangle", "h-5 w-5 text-warning") }} {{ _("Please confirm") }}</h3>
+    <p class="mt-3" data-confirm-text></p>
+    <div class="modal-action">
+      <button type="button" class="btn btn-ghost" data-confirm="no">{{ _("Cancel") }}</button>
+      <button type="button" class="btn btn-error" data-confirm="yes" data-default-label="{{ _('Confirm') }}"></button>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop"><button>{{ _("Cancel") }}</button></form>
+</dialog>
 {% endblock %}

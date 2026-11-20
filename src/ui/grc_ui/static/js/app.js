@@ -67,7 +67,33 @@
     });
   });
 
+  // questions before deleting, revoking …: the application's own dialog instead of window.confirm
+  var pendingConfirm = null;
+  document.addEventListener('htmx:confirm', function (ev) {
+    var question = ev.detail.question;
+    var dlg = document.getElementById('confirm-dialog');
+    if (!question || !dlg) return;
+    ev.preventDefault();
+    var label = (ev.detail.elt.textContent || '').trim() || ev.detail.elt.getAttribute('aria-label') || '';
+    var yes = dlg.querySelector('[data-confirm=yes]');
+    yes.textContent = label && label.length <= 30 ? label : yes.getAttribute('data-default-label');
+    dlg.querySelector('[data-confirm-text]').textContent = question;
+    pendingConfirm = ev.detail;
+    dlg.showModal();
+    dlg.querySelector('[data-confirm=no]').focus();
+  });
+  document.addEventListener('click', function (ev) {
+    var btn = ev.target.closest && ev.target.closest('#confirm-dialog [data-confirm]');
+    if (!btn) return;
+    var detail = pendingConfirm;
+    pendingConfirm = null;
+    document.getElementById('confirm-dialog').close();
+    if (detail && btn.getAttribute('data-confirm') === 'yes') detail.issueRequest(true);
+  });
+
   document.addEventListener('DOMContentLoaded', function () {
+    var cd = document.getElementById('confirm-dialog');
+    if (cd) cd.addEventListener('close', function () { pendingConfirm = null; });
     setTheme(document.documentElement.getAttribute('data-theme'));
     document.body.addEventListener('toast', function (ev) { toast(ev.detail.kind, ev.detail.message); });
     document.body.addEventListener('htmx:sendError', function () { toast('error', document.body.getAttribute('data-msg-unreachable')); });

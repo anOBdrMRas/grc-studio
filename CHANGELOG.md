@@ -5,6 +5,12 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 
 ## [Unreleased]
 
+### Changed (dialogs and sign-in)
+- Questions before deleting, revoking or hiding open the application's own dialog (title,
+  question, "Cancel" and a red button named after the action) instead of the browser dialog.
+- Demo sign-in: only "Sign in as …" with a dropdown of all active people of the user
+  administration; the four persona tiles are gone.
+
 ### Added (stage 4a)
 - Org chart of the positions: disciplinary and functional hierarchy (cycles and unknown
   superiors become roots, positions without reporting line shown apart), positions by unit,

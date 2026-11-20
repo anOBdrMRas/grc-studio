@@ -6,23 +6,11 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, Response
 
 from grc_client import ApiError, GrcClient
-from grc_ui.i18n import LANGUAGES, N_
+from grc_ui.i18n import LANGUAGES
 from grc_ui.session import SESSION_COOKIE, anonymous_api, problem_text
 from grc_ui.templating import render
 
 router = APIRouter()
-
-# tiles of the sign-in page: one person per kind of user
-PERSONAS = [
-    ("U-006", N_("Employee"), N_("Sees the process landscape and what is assigned to him.")),
-    (
-        "U-016",
-        N_("Manager"),
-        N_("Supervisor and therefore owner of the position Director Export Control & Customs."),
-    ),
-    ("U-013", N_("I&A team"), N_("Gives the quality approval and manages the GRC modules.")),
-    ("U-001", N_("Administrator"), N_("Creates new elements and maintains users.")),
-]
 
 
 @router.get("/login", response_class=HTMLResponse)
@@ -30,14 +18,11 @@ async def login_page(
     request: Request, api: GrcClient = Depends(anonymous_api), error: str = ""
 ) -> Response:
     info = await api.auth_demo_info()
-    persons = {p["id"]: p for p in info["persons"]}
-    tiles = [(persons[i], kind, text) for i, kind, text in PERSONAS if i in persons]
     return render(
         request,
         "login.html",
         None,
         demo=info["enabled"],
-        tiles=tiles,
         persons=info["persons"],
         error=error,
     )

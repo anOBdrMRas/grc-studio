@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GRC Studio VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-11-18 11:02+0000\n"
+"POT-Creation-Date: 2026-11-20 08:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -353,13 +353,10 @@ msgstr ""
 msgid "Checked on"
 msgstr ""
 
+msgid "Choose a person …"
+msgstr ""
+
 msgid "Choose another file"
-msgstr ""
-
-msgid "Choose another person"
-msgstr ""
-
-msgid "Choose another person …"
 msgstr ""
 
 msgid "Choose at least one suggestion."
@@ -467,6 +464,9 @@ msgstr ""
 msgid "Confidentiality agreement required"
 msgstr ""
 
+msgid "Confirm"
+msgstr ""
+
 msgid "Conforming"
 msgstr ""
 
@@ -555,9 +555,6 @@ msgid "Created"
 msgstr ""
 
 msgid "Created from a draft"
-msgstr ""
-
-msgid "Creates new elements and maintains users."
 msgstr ""
 
 msgid "Creating and updating"
@@ -1016,9 +1013,6 @@ msgstr ""
 msgid "Give quality approval"
 msgstr ""
 
-msgid "Gives the quality approval and manages the GRC modules."
-msgstr ""
-
 msgid "Global IT"
 msgstr ""
 
@@ -1420,9 +1414,6 @@ msgstr ""
 msgid "Management review outputs"
 msgstr ""
 
-msgid "Manager"
-msgstr ""
-
 msgid "Mandatory role"
 msgstr ""
 
@@ -1784,6 +1775,9 @@ msgid "Planning of changes"
 msgstr ""
 
 msgid "Please check your entries."
+msgstr ""
+
+msgid "Please confirm"
 msgstr ""
 
 msgid "Please sign in."
@@ -2290,9 +2284,6 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-msgid "Sees the process landscape and what is assigned to him."
-msgstr ""
-
 msgid "Segregation of duties"
 msgstr ""
 
@@ -2466,9 +2457,6 @@ msgid "Supervision by the delegating person"
 msgstr ""
 
 msgid "Supervision measure"
-msgstr ""
-
-msgid "Supervisor and therefore owner of the position Director Export Control & Customs."
 msgstr ""
 
 msgid "Supplier audit"
