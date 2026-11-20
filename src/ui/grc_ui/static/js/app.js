@@ -91,7 +91,51 @@
     if (detail && btn.getAttribute('data-confirm') === 'yes') detail.issueRequest(true);
   });
 
+  // draggable divider between list and detail; the width is kept per browser
+  var SPLIT_KEY = 'gs-split-list';
+  function setSplit(split, px) {
+    var max = split.clientWidth - 320;
+    px = Math.max(220, Math.min(px, max));
+    split.style.setProperty('--split-list', px + 'px');
+    try { localStorage.setItem(SPLIT_KEY, String(Math.round(px))); } catch (e) { /* ignore */ }
+  }
+  function initSplit() {
+    var handle = document.querySelector('[data-split-handle]');
+    if (!handle) return;
+    var split = handle.parentElement;
+    var stored = null;
+    try { stored = parseInt(localStorage.getItem(SPLIT_KEY), 10); } catch (e) { /* ignore */ }
+    if (stored) split.style.setProperty('--split-list', stored + 'px');
+    handle.addEventListener('pointerdown', function (ev) {
+      ev.preventDefault();
+      handle.setPointerCapture(ev.pointerId);
+      handle.classList.add('is-dragging');
+      document.body.classList.add('is-resizing');
+      var left = split.getBoundingClientRect().left;
+      function move(e) { setSplit(split, e.clientX - left); }
+      function up() {
+        handle.classList.remove('is-dragging');
+        document.body.classList.remove('is-resizing');
+        handle.removeEventListener('pointermove', move);
+        handle.removeEventListener('pointerup', up);
+      }
+      handle.addEventListener('pointermove', move);
+      handle.addEventListener('pointerup', up);
+    });
+    handle.addEventListener('keydown', function (ev) {
+      var step = ev.shiftKey ? 80 : 20;
+      var width = split.firstElementChild.getBoundingClientRect().width;
+      if (ev.key === 'ArrowLeft') { setSplit(split, width - step); ev.preventDefault(); }
+      if (ev.key === 'ArrowRight') { setSplit(split, width + step); ev.preventDefault(); }
+    });
+    handle.addEventListener('dblclick', function () {
+      split.style.removeProperty('--split-list');
+      try { localStorage.removeItem(SPLIT_KEY); } catch (e) { /* ignore */ }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    initSplit();
     var cd = document.getElementById('confirm-dialog');
     if (cd) cd.addEventListener('close', function () { pendingConfirm = null; });
     setTheme(document.documentElement.getAttribute('data-theme'));

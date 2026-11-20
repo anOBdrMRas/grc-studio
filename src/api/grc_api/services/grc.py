@@ -365,6 +365,7 @@ async def list_kpis(db: AsyncSession, p: Principal) -> list[KpiListItem]:
             title=k.title,
             unit=k.unit,
             last_value=last.get(k.id),
+            target=k.target,
             traffic=kp.status(last.get(k.id), k.direction, k.target, k.critical),
             is_owner=p.user_id in org.owners("kpi", k),
         )

@@ -113,10 +113,11 @@ def test_risk_recorded_assessed_and_released(page: "Page") -> None:
     sign_in(page, "U-004")
     page.goto(BASE + "/risks")
     expect(page.locator(".risk-cell")).to_have_count(16)
-    page.fill("input[name=title]", "E2E: Lieferant liefert verspätet. Produktion steht.")
-    page.click("form[hx-post='/risks'] button")
+    # "+ Risk" opens the empty form at once (as in the prototype)
+    page.click("button[hx-post='/risks']")
     page.wait_for_url(re.compile(r"/risks/R-\d+\?edit=1"))
     url = page.url.split("?")[0]
+    page.fill("#f-description", "E2E: Lieferant liefert verspätet. Produktion steht.")
     page.select_option("#f-likelihood", "3")
     page.select_option("#f-impact", "4")
     page.click("#detail button:has-text('Maßnahme')")
@@ -183,8 +184,11 @@ def test_ia_cockpit(page: "Page") -> None:
     sign_in(page, "U-013")
     page.goto(BASE + "/ia")
     expect(page.locator("main")).to_contain_text("Qualitätsprüfungen")
-    expect(page.locator(".check-tile")).to_have_count(33)
-    page.locator("a[href='/audits/AU-005']").first.click()
+    expect(page.locator(".ia-check")).to_have_count(33)
+    expect(page.locator("main")).to_contain_text("GRC-Lagebild")
+    expect(page.locator(".ia-stat").first).to_contain_text("Aktivitäten")
+    page.locator(".ia-check:has-text('Auditoren')").click()
+    page.locator("#modal-body a[href='/audits/AU-005']").click()
     expect(page.locator("#detail")).to_contain_text("Unabhängigkeit")
 
 
@@ -267,7 +271,8 @@ def test_process_draft_without_ai(page: "Page") -> None:
 def test_org_chart_and_role_matrix(page: "Page") -> None:
     sign_in(page, "U-004")
     page.goto(BASE + "/positions")
-    page.click("a:has-text('Organigramm')")
+    page.click(".app-menubar a[href='/org-chart']")
+    expect(page.locator(".app-menubar a[aria-current='page']")).to_have_text("Organigramm")
     expect(page.locator(".org-tree .org-card").first).to_be_visible()
     page.click("a[role=tab]:has-text('Rollenzuordnungsmatrix')")
     expect(page.locator(".role-matrix tbody tr").first).to_contain_text("ST-001")
@@ -307,3 +312,45 @@ def test_delete_asks_in_application_dialog(page: "Page") -> None:
     rows.first.locator("button").click()
     dialog.locator("[data-confirm=yes]").click()
     expect(rows).to_have_count(count - 1)
+
+
+def test_new_process_opens_its_profile_form(page: "Page") -> None:
+    sign_in(page, "U-013")
+    page.goto(BASE + "/processes")
+    page.click("button[hx-post='/processes']")
+    page.wait_for_url(re.compile(r"/processes/P-\d+\?tab=profile&edit=1"))
+    page.fill("#f-title", "E2E Neuer Prozess")
+    page.click("#profile button:has-text('Speichern')")
+    expect(page.locator("#profile")).to_contain_text("E2E Neuer Prozess")
+
+
+def test_process_landscape_and_table_filters(page: "Page") -> None:
+    sign_in(page, "U-002")
+    page.goto(BASE + "/processes")
+    expect(page.locator(".ls-chevron").first).to_be_visible()
+    rows = page.locator("#process-table tbody tr")
+    expect(rows.filter(has_text="Führungsprozess").first).to_be_visible()
+    page.check("input[name=cat][value='Core process']")
+    expect(rows.filter(has_text="Führungsprozess")).to_have_count(0)
+    expect(rows.filter(has_text="Lead-to-Cash")).to_have_count(1)
+    page.check("input[name=mine]")
+    expect(rows.filter(has_text="Lead-to-Cash")).to_have_count(0)
+    expect(rows.filter(has_text="P-001")).to_contain_text("4 Schritte")
+
+
+def test_risk_list_columns_and_resizable_split(page: "Page") -> None:
+    sign_in(page, "U-002")
+    page.goto(BASE + "/risks")
+    expect(page.locator("#list thead")).to_contain_text("Risikoeigner")
+    expect(page.locator("#list thead th").first).to_have_text("Risiko")
+    before = page.locator(".split-list").bounding_box()
+    handle = page.locator("[data-split-handle]").bounding_box()
+    assert before
+    assert handle
+    page.mouse.move(handle["x"] + 3, handle["y"] + 100)
+    page.mouse.down()
+    page.mouse.move(handle["x"] + 203, handle["y"] + 100, steps=4)
+    page.mouse.up()
+    after = page.locator(".split-list").bounding_box()
+    assert after
+    assert after["width"] > before["width"] + 150

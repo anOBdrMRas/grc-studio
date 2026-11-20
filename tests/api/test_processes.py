@@ -14,6 +14,15 @@ async def test_landscape_lists_processes(login: Login) -> None:
     assert len(items) >= 12
 
 
+async def test_landscape_counts_my_steps(login: Login) -> None:
+    """Steps of the processes in which a role of the user is assigned (column "My involvement")."""
+    c = await login("U-002")
+    items = {x["code"]: x for x in (await c.get("/api/v1/processes")).json()}
+    assert items["P-001"]["is_owner"]
+    assert items["P-001"]["my_steps"] == 4
+    assert items["P-004"]["my_steps"] == 0
+
+
 async def test_diagram_save_and_conflict(login: Login) -> None:
     c = await login("U-013")
     d = (await c.get("/api/v1/processes/P-008/diagram")).json()

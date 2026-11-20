@@ -194,6 +194,9 @@ CockpitOut = TypedDict(
         "workflow": "dict[str, StatusCounts]",
         "grades": "dict[str, int]",
         "review_queue": "list[ReviewItem]",
+        "in_work": "list[WorkItem]",
+        "recently_released": "list[ReleasedItem]",
+        "situation": "Situation",
     },
     total=False,
 )
@@ -438,6 +441,7 @@ KpiListItem = TypedDict(
         "title": "str",
         "unit": "str",
         "last_value": "float | None",
+        "target": "float",
         "traffic": "str",
         "is_owner": "bool",
     },
@@ -735,6 +739,7 @@ ProcessListItem = TypedDict(
         "status": "str",
         "owner_role_title": "str",
         "is_owner": "bool",
+        "my_steps": "int",
     },
     total=False,
 )
@@ -783,6 +788,21 @@ ProcessRef = TypedDict(
 )
 
 
+ReleasedItem = TypedDict(
+    "ReleasedItem",
+    {
+        "kind": "str",
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "doc_version": "str",
+        "by": "str",
+        "at": "str",
+    },
+    total=False,
+)
+
+
 ReviewItem = TypedDict(
     "ReviewItem",
     {
@@ -792,6 +812,10 @@ ReviewItem = TypedDict(
         "title": "str",
         "submitted_by": "str",
         "submitted_at": "str | None",
+        "comment": "str",
+        "owners": "list[str]",
+        "doc_version": "str",
+        "version": "int",
     },
     total=False,
 )
@@ -959,6 +983,19 @@ RoleOut = TypedDict(
 )
 
 
+Situation = TypedDict(
+    "Situation",
+    {
+        "activities": "int",
+        "role_coverage": "int",
+        "findings_by_type": "dict[str, int]",
+        "findings_open": "int",
+        "findings_overdue": "int",
+    },
+    total=False,
+)
+
+
 StateView = TypedDict(
     "StateView",
     {"revision_id": "int", "at": "str", "actor_name": "str", "values": "dict[str, Any]"},
@@ -1056,6 +1093,20 @@ ValidationError = TypedDict(
         "type": "str",
         "input": "Any",
         "ctx": "dict[str, Any]",
+    },
+    total=False,
+)
+
+
+WorkItem = TypedDict(
+    "WorkItem",
+    {
+        "kind": "str",
+        "id": "str",
+        "code": "str",
+        "title": "str",
+        "owners": "list[str]",
+        "rejected": "str",
     },
     total=False,
 )

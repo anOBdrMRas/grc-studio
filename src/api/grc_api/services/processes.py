@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from grc_api.auth.principal import Principal
 from grc_api.domain import bpmn_draft, ics
-from grc_api.domain.bpmn import call_activities, element_names, is_bpmn
+from grc_api.domain.bpmn import activities, call_activities, element_names, is_bpmn
 from grc_api.domain.catalogs import PROCESS_CATEGORIES
 from grc_api.domain.codes import next_code
 from grc_api.errors import ProblemError
@@ -56,6 +56,11 @@ def _need(p: Principal, perm: str) -> None:
 async def list_processes(db: AsyncSession, p: Principal) -> list[ProcessListItem]:
     _need(p, "processes:read")
     org = await load_org(db)
+    my_roles = org.roles_of(p.user_id)
+    mine: dict[str, set[str]] = {}
+    for a in await proc_repo.assignments(db):
+        if a.role_id in my_roles:
+            mine.setdefault(a.process_id, set()).add(a.element_id)
     out = []
     for x in await elements.list_all(db, Process):
         owner = org.roles.get(x.owner_role_id or "")
@@ -70,6 +75,7 @@ async def list_processes(db: AsyncSession, p: Principal) -> list[ProcessListItem
                 status=x.status,
                 owner_role_title=owner.title if owner else "",
                 is_owner=p.user_id in org.owners("process", x),
+                my_steps=len(mine.get(x.id, set()) & {el for el, _ in activities(x.xml)}),
             )
         )
     return out

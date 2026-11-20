@@ -18,31 +18,63 @@ from grc_ui.templating import render, toast
 router = APIRouter()
 MAX_BPMN = 5 * 1024 * 1024
 CATEGORIES = [N_("Management process"), N_("Core process"), N_("Support process")]
+STATUSES = [
+    ("draft", N_("Draft")),
+    ("review", N_("I&A review")),
+    ("released", N_("Released")),
+    ("archived", N_("Archived")),
+]
 
 
 @router.get("/processes", response_class=HTMLResponse)
-async def landscape(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
-    items = [dict(x) for x in await ctx.api.processes_list()]
-    bands = [
-        (
-            c,
-            sorted(
-                [x for x in items if x["category"] == c],
-                key=lambda x: (x["landscape_order"], x["code"]),
-            ),
-        )
-        for c in CATEGORIES
+async def landscape(
+    request: Request,
+    cat: str = "",
+    status: str = "",
+    mine: int = 0,
+    ctx: UiContext = Depends(ui_context),
+) -> Response:
+    """Process landscape (as in the prototype) and the table of all processes with filters."""
+    items = sorted(
+        (dict(x) for x in await ctx.api.processes_list()),
+        key=lambda x: (
+            CATEGORIES.index(x["category"]) if x["category"] in CATEGORIES else 9,
+            x["landscape_order"],
+            x["code"],
+        ),
+    )
+    bands = [(c, [x for x in items if x["category"] == c]) for c in CATEGORIES]
+    rows = [
+        x
+        for x in items
+        if (not cat or x["category"] == cat)
+        and (not status or x["status"] == status)
+        and (not mine or x["my_steps"] or x["is_owner"])
     ]
-    return render(request, "processes/index.html", ctx, bands=bands)
+    return render(
+        request,
+        "processes/index.html",
+        ctx,
+        bands=bands,
+        rows=rows,
+        total=len(items),
+        cat=cat,
+        status_filter=status,
+        mine=bool(mine),
+        categories=[(c, gettext(c)) for c in CATEGORIES],
+        statuses=[(s, gettext(label)) for s, label in STATUSES],
+    )
 
 
 @router.post("/processes", response_class=HTMLResponse)
 async def create(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
     form = await request.form()
-    created = await ctx.api.processes_create(
-        {"title": str(form.get("title") or gettext("New process"))}
+    # like the prototype: an empty process, its profile opens in edit mode
+    created = await ctx.api.processes_create({"title": str(form.get("title") or "")})
+    return Response(
+        status_code=204,
+        headers={"HX-Redirect": f"/processes/{created['id']}?tab=profile&edit=1"},
     )
-    return Response(status_code=204, headers={"HX-Redirect": f"/processes/{created['id']}"})
 
 
 async def _profile_ctx(
@@ -80,11 +112,23 @@ async def _profile_ctx(
 
 @router.get("/processes/{process_id}", response_class=HTMLResponse)
 async def workspace(
-    request: Request, process_id: str, tab: str = "model", ctx: UiContext = Depends(ui_context)
+    request: Request,
+    process_id: str,
+    tab: str = "model",
+    edit: int = 0,
+    ctx: UiContext = Depends(ui_context),
 ) -> Response:
     item = plain(await ctx.api.processes_get(process_id))
     profile = await _profile_ctx(ctx, process_id) if tab == "profile" else None
-    return render(request, "processes/workspace.html", ctx, item=item, tab=tab, profile=profile)
+    # a new process opens its profile in edit mode
+    form = (
+        {"refs": await ref_options(ctx), "errors": {}, "conflict": False}
+        if profile is not None and edit and item["rights"]["can_edit"]
+        else None
+    )
+    return render(
+        request, "processes/workspace.html", ctx, item=item, tab=tab, profile=profile, form=form
+    )
 
 
 @router.get("/processes/{process_id}/profile", response_class=HTMLResponse)

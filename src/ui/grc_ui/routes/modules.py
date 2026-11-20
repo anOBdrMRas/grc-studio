@@ -32,7 +32,7 @@ class Module:
     api: str  # method prefix of the generated client: roles, positions, users
     columns: tuple[tuple[str, str], ...]  # (key, label) of the narrow list
     create_perm: str = ""  # who may create (default: manage_perm)
-    new_hint: str = N_("Title of the new entry")
+    title_label: str = N_("Title")  # header of the first list column
 
     @property
     def can_create(self) -> str:
@@ -48,9 +48,13 @@ MODULES = {
         "grc:read",
         "grc:manage",
         "risks",
-        (("owner_name", N_("Owner")), ("score", N_("Score"))),
+        (
+            ("department", N_("Department / function")),
+            ("owner_name", N_("Risk owner")),
+            ("score", N_("Score")),
+        ),
         create_perm="grc:record",
-        new_hint=N_("Short description of the risk"),
+        title_label=N_("Risk"),
     ),
     "controls": Module(
         "control",
@@ -375,7 +379,8 @@ def page_routes(slug: str) -> None:
     @router.post(mod.base, response_class=HTMLResponse)
     async def create(request: Request, ctx: UiContext = Depends(ui_context)) -> Response:
         form = await request.form()
-        title = str(form.get("title") or gettext("New entry")).strip()
+        # like the prototype: an empty element whose form opens at once
+        title = str(form.get("title") or "").strip()
         if mod.kind == "user":
             created = await ctx.api.users_create({"last_name": title, "first_name": ""})
         else:

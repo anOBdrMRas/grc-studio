@@ -11,6 +11,40 @@ All notable changes; format after [Keep a Changelog](https://keepachangelog.com/
 - Demo sign-in: only "Sign in as …" with a dropdown of all active people of the user
   administration; the four persona tiles are gone.
 
+### Changed (process page, risk list, list width like the prototype)
+- Processes: landscape as in the prototype (management band, core processes as chevrons from
+  "customer requirement" to "customer satisfied", support band, legend) and below it the table
+  "All processes" with ID, process, category, area, process owner, approval status and "my
+  involvement" (owner badge, number of steps with one of my roles); filters by category,
+  status and "only mine". The API lists `my_steps` per process.
+- Risks: first list column "Risk", further columns department / function, risk owner (name)
+  and score.
+- Every module: the divider between list and detail can be dragged (or moved with the arrow
+  keys); the width is kept per browser, a double click resets it.
+
+### Changed
+- The org chart has its own entry in the menu bar (after Positions).
+
+### Changed (I&A cockpit like the prototype)
+- Figures per module on top (processes with their activities), quality overview as cards with
+  status bars (processes, roles, positions), treatment / progress / effectiveness bars (risks,
+  opportunities, controls) and the quality grade.
+- "Waiting for the I&A approval" with owners, the comment of the business approval, waiting days
+  and approve / reject right in the cockpit (a comment is required to reject).
+- New: delegations in approval, drafts in progress with the owner (rejected ones first with the
+  reason), recently released.
+- Quality checks as compact tiles by area; a click shows the elements concerned.
+- New GRC situation: risk matrix, risks by department, ICS operating effectiveness, role
+  coverage of the process steps, KPI traffic lights, open audit findings by type.
+- API: the cockpit carries owners, comment and version per queue item, `in_work`,
+  `recently_released` and `situation`; the KPI list carries the target.
+
+### Changed (create like the prototype)
+- "+ <element>" in every module and "+ Process" create an empty element and open its form
+  at once (a new process opens its profile in edit mode); the extra title field next to the
+  button is gone. The API accepts an empty title (user: an empty last name); lists show
+  "(no title)" until one is entered.
+
 ### Added (stage 4a)
 - Org chart of the positions: disciplinary and functional hierarchy (cycles and unknown
   superiors become roots, positions without reporting line shown apart), positions by unit,

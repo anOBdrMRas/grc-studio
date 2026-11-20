@@ -19,6 +19,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+msgid "(no title)"
+msgstr "(ohne Bezeichnung)"
+
 msgid "0 = none"
 msgstr "0 = keine"
 
@@ -33,6 +36,9 @@ msgstr "1 = sehr gering … 5 = sehr hoch"
 
 msgid "1 Identify"
 msgstr "1 Identifizieren"
+
+msgid "1 step"
+msgstr "1 Schritt"
 
 msgid "2 Analyse"
 msgstr "2 Analysieren"
@@ -55,6 +61,12 @@ msgstr "5 Überwachen"
 msgid "< 25 TUSD"
 msgstr "< 25 TUSD"
 
+msgid "A click on a process opens its model."
+msgstr "Klick auf einen Prozess öffnet das Prozessmodell."
+
+msgid "A comment is required to reject."
+msgstr "Zum Zurückweisen ist ein Kommentar nötig."
+
 msgid "AI assistant"
 msgstr "KI-Assistent"
 
@@ -70,6 +82,9 @@ msgstr "Übertragung annehmen: {name}"
 
 msgid "Accept the delegation"
 msgstr "Annehmen"
+
+msgid "Acceptance"
+msgstr "Annahme"
 
 msgid "Acceptance missing"
 msgstr "Annahme fehlt"
@@ -125,8 +140,18 @@ msgstr "Administrator"
 msgid "Affected assets"
 msgstr "Betroffene Werte (Assets)"
 
+msgid "All"
+msgstr "Alle"
+
 msgid "All modules as Excel"
 msgstr "Alle Module als Excel"
+
+#, python-brace-format
+msgid "All processes ({n})"
+msgstr "Alle Prozesse ({n})"
+
+msgid "All statuses"
+msgstr "Alle Status"
 
 msgid "Amount limit (EUR)"
 msgstr "Betragsgrenze (EUR)"
@@ -165,8 +190,17 @@ msgstr "Bestellung / Benennung"
 msgid "Approval limit (EUR)"
 msgstr "Freigabelimit (EUR)"
 
+msgid "Approval status"
+msgstr "Freigabestatus"
+
 msgid "Approval workflow"
 msgstr "Freigabe-Workflow"
+
+msgid "Approve"
+msgstr "Freigeben"
+
+msgid "Approved"
+msgstr "Freigegeben"
 
 msgid "Archived"
 msgstr "Archiviert"
@@ -243,6 +277,9 @@ msgstr "Auditierte Rollen"
 msgid "Audits"
 msgstr "Audits"
 
+msgid "Audits & certificates"
+msgstr "Audits & Zertifikate"
+
 msgid "Audits where auditors audit their own work"
 msgstr "Audits, in denen Auditoren eigene Arbeit prüfen"
 
@@ -251,6 +288,9 @@ msgstr "Befugnisse der Stelle"
 
 msgid "Automated"
 msgstr "Automatisiert"
+
+msgid "Automatic checks. A click on a tile shows the elements concerned."
+msgstr "Automatische Prüfungen. Klick auf eine Kachel zeigt die betroffenen Elemente."
 
 msgid "Availability"
 msgstr "Verfügbarkeit"
@@ -390,6 +430,9 @@ msgstr "Kommentar"
 
 msgid "Comment (optional)"
 msgstr "Kommentar (optional)"
+
+msgid "Comment (required to reject)"
+msgstr "Kommentar (für Zurückweisen erforderlich)"
 
 msgid "Comment (required to send back)"
 msgstr "Kommentar (für Zurückweisen erforderlich)"
@@ -547,6 +590,9 @@ msgstr "Controls ohne adressiertes Risiko"
 msgid "Core process"
 msgstr "Kernprozess"
 
+msgid "Core processes (end to end)"
+msgstr "Kernprozesse (Ende zu Ende)"
+
 msgid "Corrective"
 msgstr "Korrektiv"
 
@@ -598,6 +644,9 @@ msgstr "Kundenanforderung"
 msgid "Customer satisfaction"
 msgstr "Kundenzufriedenheit"
 
+msgid "Customer satisfied"
+msgstr "Kunde zufrieden"
+
 msgid "Daily"
 msgstr "Täglich"
 
@@ -626,11 +675,20 @@ msgstr "Übertragung"
 msgid "Delegation of duties"
 msgstr "Pflichtendelegation"
 
+msgid "Delegations & persons"
+msgstr "Delegationen & Personen"
+
 msgid "Delegations & powers of attorney"
 msgstr "Delegationen & Vollmachten"
 
 msgid "Delegations & powers of attorney requiring action"
 msgstr "Delegationen & Vollmachten mit Handlungsbedarf"
+
+msgid "Delegations are granted by the granting person and accepted by the receiving person."
+msgstr "Delegationen werden von der erteilenden Person erteilt und von der empfangenden Person angenommen."
+
+msgid "Delegations in approval"
+msgstr "Delegationen in Freigabe"
 
 msgid "Delete"
 msgstr "Löschen"
@@ -973,6 +1031,9 @@ msgstr "Fachrolle"
 msgid "Further ISO references"
 msgstr "Weitere Normreferenzen"
 
+msgid "GRC situation"
+msgstr "GRC-Lagebild"
+
 msgid "General (communication)"
 msgstr "Allgemeines (Kommunikation)"
 
@@ -1051,6 +1112,9 @@ msgstr "Erteilt durch (Organ / Gremium)"
 msgid "Granted by (person)"
 msgstr "Erteilt durch (Person)"
 
+msgid "Granting"
+msgstr "Erteilung"
+
 msgid "HR"
 msgstr "HR"
 
@@ -1101,6 +1165,9 @@ msgstr "I&A-Team"
 
 msgid "ICS check"
 msgstr "IKS-Prüfung"
+
+msgid "ICS – operating effectiveness"
+msgstr "IKS – operative Wirksamkeit"
 
 msgid "ID"
 msgstr "ID"
@@ -1193,6 +1260,9 @@ msgstr "In Vorbereitung"
 msgid "In progress"
 msgstr "In Bearbeitung"
 
+msgid "In progress with the owner"
+msgstr "Beim Owner in Arbeit"
+
 msgid "In treatment"
 msgstr "In Behandlung"
 
@@ -1247,6 +1317,9 @@ msgstr "Integriertes Managementsystem: Prozesse, Rollen, Stellen und Verantwortl
 msgid "Integrity"
 msgstr "Integrität"
 
+msgid "Integrity & Assurance: quality approval of processes, roles, positions, risks and opportunities"
+msgstr "Integrity & Assurance: Qualitätsfreigabe von Prozessen, Rollen, Stellen, Risiken und Chancen"
+
 msgid "Interested parties"
 msgstr "Interessierte Parteien"
 
@@ -1285,6 +1358,9 @@ msgstr "Begründete zivilrechtliche Ansprüche in begrenzter Höhe."
 
 msgid "KPI"
 msgstr "KPI"
+
+msgid "KPI traffic lights"
+msgstr "KPI-Ampel"
 
 msgid "KPI values"
 msgstr "KPI-Messwerte"
@@ -1419,6 +1495,9 @@ msgstr "Führungsstelle"
 msgid "Management process"
 msgstr "Führungsprozess"
 
+msgid "Management processes"
+msgstr "Führungsprozesse"
+
 msgid "Management review"
 msgstr "Managementbewertung"
 
@@ -1512,6 +1591,9 @@ msgstr "Mehrfachauswahl"
 msgid "My delegations & powers of attorney"
 msgstr "Meine Übertragungen & Vollmachten"
 
+msgid "My involvement"
+msgstr "Meine Beteiligung"
+
 msgid "Name"
 msgstr "Name"
 
@@ -1570,6 +1652,12 @@ msgstr "Keine Feststellungen erfasst."
 msgid "No incident, or one noticed only internally."
 msgstr "Kein oder nur intern wahrgenommener Vorfall."
 
+msgid "No open approvals."
+msgstr "Keine offenen Freigaben."
+
+msgid "No open delegations."
+msgstr "Keine offenen Delegationen."
+
 msgid "No or minor injury or environmental impact without lasting effects."
 msgstr "Keine oder geringfügige Verletzung bzw. Umweltbeeinträchtigung ohne bleibende Folgen."
 
@@ -1584,6 +1672,9 @@ msgstr "Keine Prozesse."
 
 msgid "No results. Try other words, e.g. “export”, “invoice” or the name of a role."
 msgstr "Keine Treffer. Versuche andere Begriffe, z. B. „Export“, „Rechnung“ oder einen Rollennamen."
+
+msgid "No risks recorded."
+msgstr "Keine Risiken erfasst."
 
 msgid "No roles assigned."
 msgstr "Keine Rollen zugeordnet."
@@ -1624,6 +1715,9 @@ msgstr "Noch nicht bewertet"
 msgid "Not yet valid"
 msgstr "Noch nicht gültig"
 
+msgid "Nothing open."
+msgstr "Nichts offen."
+
 msgid "Nothing to apply."
 msgstr "Nichts zu übernehmen."
 
@@ -1657,6 +1751,12 @@ msgstr "Offen"
 
 msgid "Open audit findings"
 msgstr "Offene Audit-Feststellungen"
+
+msgid "Open audit findings by type"
+msgstr "Offene Audit-Feststellungen nach Typ"
+
+msgid "Open element"
+msgstr "Öffnen"
 
 msgid "OpenAI-compatible (e.g. con-AI)"
 msgstr "OpenAI-kompatibel (z. B. con-AI)"
@@ -1879,11 +1979,18 @@ msgstr "Prozessschritte ohne Verantwortung (R/A)"
 msgid "Processes"
 msgstr "Prozesse"
 
+msgid "Processes & organisation"
+msgstr "Prozesse & Organisation"
+
 msgid "Processes without a process owner"
 msgstr "Prozesse ohne Prozessverantwortlichen"
 
 msgid "Processes without purpose & scope"
 msgstr "Prozesse ohne Zweck & Anwendungsbereich"
+
+#, python-brace-format
+msgid "Processes · {n} activities"
+msgstr "Prozesse · {n} Aktivitäten"
 
 msgid "Product Marketing"
 msgstr "Product Marketing"
@@ -1957,8 +2064,15 @@ msgstr "QM-System und seine Prozesse"
 msgid "Quality objectives and planning to achieve them"
 msgstr "Qualitätsziele und Planung zu deren Erreichung"
 
+msgid "Quality overview"
+msgstr "Qualitätsübersicht"
+
 msgid "Quality policy"
 msgstr "Qualitätspolitik"
+
+#, python-brace-format
+msgid "Quality {n} %"
+msgstr "Qualität {n} %"
 
 msgid "Quarterly"
 msgstr "Quartalsweise"
@@ -2006,6 +2120,9 @@ msgstr "Begründung des Ausmaßes"
 msgid "Reason for the likelihood"
 msgstr "Begründung der Wahrscheinlichkeit"
 
+msgid "Recently released"
+msgstr "Zuletzt freigegeben"
+
 msgid "Recertification"
 msgstr "Rezertifizierung"
 
@@ -2041,6 +2158,12 @@ msgstr "Registereintrag / Behördenmeldung"
 
 msgid "Registered / notified on"
 msgstr "Eingetragen / gemeldet am"
+
+msgid "Reject"
+msgstr "Zurückweisen"
+
+msgid "Rejected"
+msgstr "Zurückgewiesen"
 
 msgid "Related objective"
 msgstr "Zugehöriges Ziel"
@@ -2106,6 +2229,9 @@ msgstr "Anforderungen & Kompetenz"
 
 msgid "Requirements for products and services"
 msgstr "Anforderungen an Produkte und Dienstleistungen"
+
+msgid "Resize list"
+msgstr "Listenbreite ändern"
 
 msgid "Resources"
 msgstr "Ressourcen"
@@ -2188,6 +2314,9 @@ msgstr "Risiken"
 msgid "Risks addressed"
 msgstr "Adressierte Risiken"
 
+msgid "Risks by department"
+msgstr "Risiken je Bereich"
+
 msgid "Risks without a mitigating control"
 msgstr "Risiken ohne mitigierende Kontrolle"
 
@@ -2200,8 +2329,14 @@ msgstr "Risiken ohne Bereich oder Bewertungsbegründung"
 msgid "Risks without description or cause and consequence"
 msgstr "Risiken ohne Beschreibung oder Ursache und Auswirkung"
 
+msgid "Risks, opportunities & controls"
+msgstr "Risiken, Chancen & Controls"
+
 msgid "Role"
 msgstr "Rolle"
+
+msgid "Role coverage of the process steps"
+msgstr "Rollenabdeckung der Prozessschritte"
 
 msgid "Role description"
 msgstr "Rollenbeschreibung"
@@ -2493,6 +2628,9 @@ msgstr "Unterstützung"
 
 msgid "Support process"
 msgstr "Unterstützungsprozess"
+
+msgid "Support processes"
+msgstr "Unterstützungsprozesse"
 
 msgid "Surveillance audit"
 msgstr "Überwachungsaudit"
@@ -2816,6 +2954,12 @@ msgstr "Das dürfen Sie nicht."
 msgid "You are not the owner of any element."
 msgstr "Sie sind für kein Element Owner."
 
+msgid "You are the owner and may edit"
+msgstr "Sie sind Owner und dürfen bearbeiten"
+
+msgid "You take part in steps"
+msgstr "Sie sind an Schritten beteiligt"
+
 msgid "Your session has expired. Please reload the page."
 msgstr "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu."
 
@@ -2967,6 +3111,9 @@ msgstr "je Maßnahme ein/e Verantwortliche/r"
 msgid "one value per line, for dropdowns only"
 msgstr "ein Wert pro Zeile, nur für Auswahlfelder"
 
+msgid "only mine"
+msgstr "nur meine"
+
 msgid "open delegation"
 msgstr "Übertragung öffnen"
 
@@ -3016,8 +3163,15 @@ msgstr "hinterlegt, endet auf {hint}"
 msgid "submitted"
 msgstr "Fachlich freigegeben"
 
+msgid "target"
+msgstr "Ziel"
+
 msgid "the first sentence is shown in lists"
 msgstr "der erste Satz erscheint in Listen"
+
+#, python-brace-format
+msgid "to {name}"
+msgstr "an {name}"
 
 msgid "unchanged"
 msgstr "unverändert"
@@ -3025,11 +3179,27 @@ msgstr "unverändert"
 msgid "vacant"
 msgstr "unbesetzt"
 
+msgid "waiting"
+msgstr "wartet"
+
+msgid "waiting for"
+msgstr "wartet auf"
+
 msgid "with AI · finds processes, steps, roles and responsibilities"
 msgstr "mit KI · findet Prozesse, Schritte, Rollen und Zuständigkeiten"
 
 msgid "with line management responsibility"
 msgstr "mit disziplinarischer Personalverantwortung"
+
+msgid "with responsible role (R/A)"
+msgstr "mit verantw. Rolle (R/A)"
+
+msgid "without department"
+msgstr "ohne Bereich"
+
+#, python-brace-format
+msgid "{a} of {b} released"
+msgstr "{a} von {b} freigegeben"
 
 #, python-brace-format
 msgid "{item} assigned to step {step}"
@@ -3076,8 +3246,36 @@ msgid "{mandate}: {user} no longer holds the role (change of position?)."
 msgstr "{mandate}: {user} hat die Rolle nicht mehr (Stellenwechsel?)."
 
 #, python-brace-format
+msgid "{n} days"
+msgstr "{n} Tage"
+
+#, python-brace-format
+msgid "{n} in I&A review"
+msgstr "{n} im I&A-Review"
+
+#, python-brace-format
+msgid "{n} in draft"
+msgstr "{n} im Entwurf"
+
+#, python-brace-format
+msgid "{n} of them higher risks (> 8)"
+msgstr "davon {n} höhere Risiken (> 8)"
+
+#, python-brace-format
+msgid "{n} open"
+msgstr "{n} offen"
+
+#, python-brace-format
+msgid "{n} overdue"
+msgstr "{n} überfällig"
+
+#, python-brace-format
 msgid "{n} risks"
 msgstr "{n} Risiken"
+
+#, python-brace-format
+msgid "{n} steps"
+msgstr "{n} Schritte"
 
 #, python-brace-format
 msgid "{n} with findings"
